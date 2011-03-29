@@ -1,0 +1,44 @@
+/* reset styles for browser compatibility */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,table, caption, tbody, tfoot, thead, tr, th, td 
+{margin:0;padding:0;border:0;outline:0;font-weight:inherit;font-style:inherit;
+font-size:100%;font-family:inherit;vertical-align: baseline;}
+/* remember to define focus styles! */
+ol, ul {list-style: none;}
+/* tables still need 'cellspacing="0"' in the markup */
+table {border-collapse:separate;border-spacing:0;}
+caption, th, td {text-align:left;font-weight:normal;}
+blockquote:before, blockquote:after,q:before, q:after {content:"";}
+blockquote, q {quotes:"" "";}
+
+body 
+{
+    font-family: Arial, Helvetica,sans-serif;
+    font-size:13px;    
+    font-style:normal;
+    font-variant:normal;
+    font-weight:normal;
+    line-height:1.385em;    
+    color: #fff;
+    background: #3796ff url('/content/BlueBg.png') top left repeat-x;     
+}
+.clear {clear:both;line-height:1px;font-size:1px;height:1px;}
+.hide {display: none;}
+.spacer {font-size:1px;}
+strong, b {font-weight:bold;}
+.padded {padding:0 10px;}
+.padded-full {padding:10px;}
+.top {vertical-align:top;}
+em, u {text-decoration:underline;}
+p {margin:0 0 1.385em 0;}
+a {text-decoration:none;}
+a:hover {text-decoration:underline;}
+a:visited {}
+.curved {-moz-border-radius:10px;-webkit-border-radius:10px;border-radius:10px;}             
+
+.logo {width:500px;height:300px;margin:0 auto;
+       background:url('/content/MerchantTribeLogo.png') top left no-repeat;}
+       
+.band {background: #888;height:50px;}
