@@ -3,6 +3,22 @@
 <head>
     <title>@ViewBag.Title</title>
     <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />    
+    <script src="/Scripts/jquery-1.4.4.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#email").focus(function () {
+                if ($(this).val() == "Enter Your Email") {
+                    $("#email").val("");
+                }
+            });
+
+            $("#email").blur(function () {
+                if ($(this).val() == "") {
+                    $("#email").val("Enter Your Email");
+                }
+            });
+        });
+    </script>
 </head>
 <body>
     <div class="logo">
