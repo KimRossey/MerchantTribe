@@ -85,6 +85,7 @@
   <ItemGroup>
     <Content Include="App_Data\TeaserData.sdf" />
     <Content Include="Content\Leaves.jpg" />
+    <Content Include="Content\MerchantTribeLogo.png" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\jquery-ui.css" />
