@@ -1,5 +1,0 @@
-c:\git\MerchantTribe\Teaser\TeaserWeb\bin\TeaserWeb.dll
-c:\git\MerchantTribe\Teaser\TeaserWeb\bin\TeaserWeb.pdb
-c:\git\MerchantTribe\Teaser\TeaserWeb\obj\Debug\ResolveAssemblyReference.cache
-c:\git\MerchantTribe\Teaser\TeaserWeb\obj\Debug\TeaserWeb.dll
-c:\git\MerchantTribe\Teaser\TeaserWeb\obj\Debug\TeaserWeb.pdb
