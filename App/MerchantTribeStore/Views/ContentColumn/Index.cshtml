@@ -1,0 +1,12 @@
+﻿@{
+    Layout = null;
+}
+@model BVSoftware.Commerce.Content.ContentColumn
+@using BVSoftware.Commerce.Contacts;
+
+@foreach (var b in Model.Blocks)
+{
+    <div style="border:solid 1px red;">
+    @Html.Partial("~/views/ContentBlocks/" + b.ControlName.Replace(" ","-") + ".cshtml", b)
+    </div>
+}

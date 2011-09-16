@@ -1,0 +1,21 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using BVSoftware.Commerce.Shipping;
+
+namespace BVCommerce
+{
+
+    public partial class BVAdmin_Configuration_Shipping_Zones_Delete : BaseAdminPage
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            string zoneid = Request.QueryString["id"];
+            BVApp.OrderServices.ShippingZones.Delete(long.Parse(zoneid));
+            Response.Redirect("Shipping_Zones.aspx");
+        }
+    }
+}

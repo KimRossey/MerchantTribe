@@ -1,0 +1,49 @@
+
+namespace BVSoftware.Commerce.BusinessRules.OrderTasks
+{
+	public class MakeOrderAddressUsersCurrentAddress : OrderTask
+	{
+
+		public override bool Execute(OrderTaskContext context)
+		{
+			if (context.UserId != string.Empty) {
+				Membership.CustomerAccount user = context.BVApp.MembershipServices.Customers.Find(context.UserId);
+                if (user == null) return true;
+
+                context.BVApp.MembershipServices.CustomerSetShippingAddress(user,context.Order.ShippingAddress);
+                context.BVApp.MembershipServices.CustomerSetBillingAddress(user,context.Order.BillingAddress);
+				context.BVApp.MembershipServices.UpdateCustomer(user);
+			}
+			return true;
+		}
+
+		public override bool Rollback(OrderTaskContext context)
+		{
+			return true;
+		}
+
+		public override string TaskId()
+		{
+			return "7cf8a5b6-3999-41b0-b283-e8280d19f3bb";
+		}
+
+		public override string TaskName()
+		{
+			return "Make Order Address User's Current Address";
+		}
+
+		public override string StepName()
+		{
+			string result = string.Empty;
+            result = "Make Order Address User's Current Address";
+			return result;
+		}
+
+		public override Task Clone()
+		{
+			return new MakeOrderAddressUsersCurrentAddress();
+		}
+	}
+
+}
+

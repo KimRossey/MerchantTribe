@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="commerce6" Class="LinqDataDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.;Initial Catalog=commerce6;Integrated Security=True" SettingsObjectName="BVSoftware.Search.Properties.Settings" SettingsPropertyName="commerce6ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.bv_SearchLexicon" Member="bv_SearchLexicons">
+    <Type Name="bv_SearchLexicon">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Word" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Association Name="bv_SearchLexicon_bv_SearchObjectWord" Member="bv_SearchObjectWords" ThisKey="Id" OtherKey="WordId" Type="bv_SearchObjectWord" />
+    </Type>
+  </Table>
+  <Table Name="dbo.bv_SearchObjectWords" Member="bv_SearchObjectWords">
+    <Type Name="bv_SearchObjectWord">
+      <Column Name="SearchObjectId" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="WordId" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Score" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SiteId" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="bv_SearchLexicon_bv_SearchObjectWord" Member="bv_SearchLexicon" ThisKey="WordId" OtherKey="Id" Type="bv_SearchLexicon" IsForeignKey="true" />
+      <Association Name="bv_SearchObject_bv_SearchObjectWord" Member="bv_SearchObject" ThisKey="SearchObjectId" OtherKey="Id" Type="bv_SearchObject" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.bv_SearchObjects" Member="bv_SearchObjects">
+    <Type Name="bv_SearchObject">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ObjectType" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ObjectId" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(512) NOT NULL" CanBeNull="false" />
+      <Column Name="SiteId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="LastIndexUtc" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="bv_SearchObject_bv_SearchObjectWord" Member="bv_SearchObjectWords" ThisKey="Id" OtherKey="SearchObjectId" Type="bv_SearchObjectWord" />
+    </Type>
+  </Table>
+</Database>

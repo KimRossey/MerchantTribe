@@ -1,0 +1,2 @@
+﻿<%@ Page Language="C#" AutoEventWireup="True" Inherits="BVCommerce.BVAdmin_Content_StoreAssets_Delete" Codebehind="StoreAssets_Delete.aspx.cs" %>
+<asp:Literal id="litOutput" runat="server" EnableViewState="False" />

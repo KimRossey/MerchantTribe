@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <meta name="keywords" content="@Html.Raw(ViewBag.MetaKeywords)" />
+    <meta name="description" content="@Html.Raw(ViewBag.MetaDescription)" />
+    <link href="@Url.Content("~/content/system.css")" rel="Stylesheet" type="text/css" />
+    <link href="@Html.Raw((string)ViewData["basecss"])" rel="Stylesheet" type="text/css" />
+    <link href="@Html.Raw((string)ViewData["css"])" rel="stylesheet" type="text/css" />
+    @Html.Raw((string)ViewData["jqueryinclude"])   
+    @RenderSection("HeadContent", false)    
+    @Html.Raw((string)ViewData["analyticstop"])
+</head>
+<body @if (!String.IsNullOrEmpty(ViewBag.BodyClass)) { <text>class="@ViewBag.BodyClass"</text> } >
+    @if (IsSectionDefined("AdminPanel"))
+    {
+        @RenderSection("AdminPanel", false)
+    }
+    else
+    {
+        @Html.Partial("_AdminPanel")
+    }
+    @RenderSection("OutsideWrapperContent", false)
+    <div id="site-wrapper">
+        <div id="header">
+            @Html.Raw((string)ViewData["siteheader"])
+        </div>
+        <div id="main-content">
+            @RenderBody()
+        </div>
+        <div id="footer">
+            @Html.Raw((string)ViewData["sitefooter"])
+        </div>
+    </div>
+    @RenderSection("PreBodyCloseContent", false)    
+    @Html.Raw((string)ViewData["analyticsbottom"])
+</body>
+</html>

@@ -1,0 +1,67 @@
+﻿using System;
+using System.Text;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Collections.ObjectModel;
+using BVSoftware.Commerce.Content;
+using BVSoftware.Commerce.Membership;
+using BVSoftware.Commerce.Storage;
+
+namespace BVCommerce
+{
+
+    public partial class BVAdmin_Content_StoreAssets : BaseAdminPage
+    {
+        protected override void OnInit(System.EventArgs e)
+        {
+            base.OnInit(e);
+            this.PageTitle = "Page Images";
+            this.CurrentTab = AdminTabType.Content;
+            ValidateCurrentUserHasPermission(SystemPermissions.SettingsView);
+        }
+
+        protected override void OnLoad(System.EventArgs e)
+        {
+            base.OnLoad(e);
+
+            if (!Page.IsPostBack)
+            {
+                LoadTheInfo();
+            }
+
+        }
+
+        void LoadTheInfo()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append("<ul class=\"removablelist\">");
+
+            List<BVSoftware.Commerce.Storage.StoreAssetSnapshot> assets =
+                BVSoftware.Commerce.Storage.DiskStorage.ListStoreAssets(BVApp.CurrentStore.Id);
+            foreach (BVSoftware.Commerce.Storage.StoreAssetSnapshot snapshot in assets)
+            {
+                sb.Append("<li id=\"" + snapshot.FileName + "\">");
+                sb.Append("<a href=\"#\" title=\"" + snapshot.FileName + "\" class=\"deleteitem\"><img src=\"../../images/system/trashcan.png\" alt=\"Delete Item\" /></a>");
+                sb.Append("<span class=\"preview\"><img src=\"" + snapshot.Url(true) + "?uid=" + System.Guid.NewGuid().ToString() + "\" alt=\"" + snapshot.FileName + "\" /></span>");
+                sb.Append("&nbsp;&nbsp;<span class=\"details\">" + snapshot.FileName + "</span><div class=\"clear smalldetails\">" + snapshot.Url(false) + "</div>");
+                sb.Append("</li>");
+            }
+            sb.Append("</ul>");
+
+            this.litMain.Text = sb.ToString();
+        }
+
+        protected void btnUpload_Click(object sender, ImageClickEventArgs e)
+        {
+            if (this.fileupload1.HasFile)
+            {
+                BVSoftware.Commerce.Storage.DiskStorage.UploadStoreAsset(BVApp.CurrentStore.Id, this.fileupload1.PostedFile);
+                LoadTheInfo();
+            }
+        }
+    }
+}

@@ -1,0 +1,91 @@
+﻿<%@ Master Language="C#" Inherits="BVCommerce.signup_SignUp" Codebehind="SignUp.master.cs" AutoEventWireup="True" %>
+<%@ Register src="../JQueryInclude.ascx" tagname="JQueryInclude" tagprefix="uc1" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>Home</title>
+    <meta content="IE=EmulateIE7" http-equiv="X-UA-Compatible" />
+    <link href="/content/Signup2.css?v=7" rel="stylesheet" type="text/css" />
+    <uc1:JQueryInclude ID="JQueryInclude1" runat="server" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body id="HomePage">
+    <form id="form1" runat="server">
+        <div id="header">
+        <div id="headerwrapper" class="max-width">
+            <div id="bv-logo">
+                <a href="/" title="Hosted Shopping Cart | BV Commerce">
+                    <img src="/content/images/system/logo4.png" alt="BV Commerce Hosted Shopping Cart" /></a>
+            </div>
+            <div id="action-links">
+                <ul>
+                    <li><a href="/" title="Hosted Shopping Cart | BV Commerce">Home</a></li>
+                    <li><a href="/signup/tour" title="Feature Tour">Tour</a></li>
+                    <li><a href="/signup/design" title="Build a Theme / Design">Design</a></li>
+                    <li><a href="/signup/about" title="About BV Software">About Us</a></li>
+                    <li><a class="hottab" href="/signup" title="Sign Up and Pricing">Pricing &amp; Sign
+                        Up</a></li>
+                </ul>
+            </div>
+            <div id="phone">
+                <span>Start Selling Now <strong><%=PhoneNumber %></strong></span></div>
+        </div>
+    </div>
+    <div class="headertabs max-blockwidth">
+        <ul>
+            <li><a href="/signup/tour" title="Feature Tour">
+                <img src="/content/images/system/TabsTour.png" border="0" alt="Feature Tour" /></a></li>
+            <li><a href="/signup/design" title="Build a Theme / Design">
+                <img src="/content/images/system/TabsDesign.png" border="0" alt="Design Your Store" /></a>
+            </li>
+            <li><a href="/signup" title="Sign Up and Pricing">
+                <img src="/content/images/system/TabSignUpNow.png" border="0" alt="Sign Up Now" /></a></li>
+        </ul>
+        <div class="nocreditcard"><span>No Credit Card Required</span></div>
+    </div>    
+    <div id="maintext-wrapper">
+        <asp:ContentPlaceHolder ID="HeroPlaceHolder" runat="server">
+        </asp:ContentPlaceHolder>
+        <div id="main-text" class="padded">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                <div class="tempMessage">
+                    If you are not automatically redirected to the home page please click
+                    <asp:HyperLink ID="lnkHome" runat="server" NavigateUrl="~/default.aspx" ToolTip="Click here"
+                        Text="here."></asp:HyperLink>
+                </div>
+            </asp:ContentPlaceHolder>
+        </div>
+    </div>
+    <div id="footer">
+        <div id="footer-wrapper">
+            <div class="block2">
+                <div id="footermenu">
+                    <a href="/" title="Hosted Shopping Cart | BV Commerce">Home</a> <a href="/signup/tour"
+                        title="Feature Tour">Tour</a> <a href="/signup" title="Pricing & Sign Up">Sign Up</a>
+                </div>
+                <div id="footer-extra">
+                    &copy; Copyright 2002-<%=DateTime.Now.Year %>
+                    by <a href="http://www.bvsoftware.com">BV Software, LLC</a>. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+
+    <script type="text/javascript">
+        try {
+            var pageTracker = _gat._getTracker("UA-66804-7");
+            pageTracker._trackPageview();
+        } catch (err) { }</script>
+
+        <asp:ContentPlaceHolder ID="EndOfForm" runat="Server">            
+	    </asp:ContentPlaceHolder>
+        
+    </form>
+</body>
+</html>

@@ -1,0 +1,377 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Xml;
+using System.IO;
+
+namespace BVSoftware.Commerce.Content
+{
+    public class ThemeManager
+    {
+
+        private BVApplication BVApp = null;
+
+        public ThemeManager(BVApplication bvapp)        
+        {
+            BVApp = bvapp;           
+        }
+
+        public static string DefaultThemeGuid = "bv-simplegray";
+
+        /// <summary>
+        /// Locate all available themes for a store
+        /// </summary>
+        /// <returns></returns>
+        public List<ThemeView> FindAvailableThemes()
+        {
+            List<ThemeView> result = new List<ThemeView>();
+            List<ThemeView> installed = FindInstalledThemes();
+
+            string[] availablePaths = Storage.DiskStorage.ListAvailableThemePaths();
+            if (availablePaths == null) return result;
+            if (availablePaths.Length < 1) return result;
+
+            foreach (string themePath in availablePaths)
+            {
+                string themeId = System.IO.Path.GetFileName(themePath);
+                themeId = themeId.Replace("theme-", "");
+
+                if (!AlreadyInstalled(installed, themeId))
+                {
+                    ThemeView v = new ThemeView();
+                    v.LoadAvailableTheme(themeId);
+                    result.Add(v);
+                }                
+            }
+
+            return result.OrderBy(y => y.Info.Title).ToList();
+        }
+
+        private bool AlreadyInstalled(List<ThemeView> installed, string themeId)
+        {
+            bool result = false;
+
+            if (installed == null) return result;
+            foreach (ThemeView t in installed)
+            {
+                if (t.Info.UniqueIdAsString == themeId.ToLower())
+                {
+                    return true;
+                }
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Locate all themes already installed for a given store
+        /// </summary>
+        /// <param name="storeId"></param>
+        /// <returns></returns>
+        public List<ThemeView> FindInstalledThemes()
+        {
+            List<ThemeView> result = new List<ThemeView>();
+            
+            string[] installedPaths = Storage.DiskStorage.ListInstalledThemePaths(BVApp.CurrentStore.Id);
+            if (installedPaths == null) return result;
+            if (installedPaths.Length < 1) return result;
+
+            foreach (string themePath in installedPaths)
+            {
+                string themeId = System.IO.Path.GetFileName(themePath);
+                themeId = themeId.Replace("theme-", "");
+                ThemeView v = new ThemeView();
+                v.LoadInstalledTheme(BVApp.CurrentStore.Id, themeId);
+                result.Add(v);
+            }
+
+            return result.OrderBy(y => y.Info.Title).ToList();
+        }
+
+        //public static List<Theme> FindAllThemes(long storeId)
+        //{
+        //    List<Theme> result = FindAvailableThemes();
+        //    result.AddRange(FindInstalledThemes(storeId));
+        //    return result;
+        //}
+       
+        //internal static Theme FindTheme(string name, long storeId)
+        //{
+        //    string testName = name.Trim().ToLowerInvariant();
+        //    List<Theme> all = FindAllThemes(storeId);
+        //    foreach (Theme t in all)
+        //    {
+        //        if (t.Name.Trim().ToLowerInvariant() == testName)
+        //        {
+        //            return t;
+        //        }
+        //    }
+        //    // If we can't find the default, something is VERY wrong!
+        //    if (name == "Default") return null;
+
+        //    // Can't find the requested theme, go back to default
+        //    return FindTheme("Default", storeId);
+
+        //}
+
+        //public static string CurrentStyleSheet(long storeId)
+        //{
+        //    return CurrentStyleSheet(storeId, false);
+        //}
+
+        //public static string CurrentStyleSheet(long storeId, bool isSecure)
+        //{
+        //    Accounts.Store s = Accounts.StoreManager.FindById(storeId);
+        //    return CurrentStyleSheet(s, isSecure);
+        //}
+
+        public string CurrentStyleSheet()
+        {
+            return CurrentStyleSheet(false);
+        }
+
+        public string CurrentStyleSheet(bool isSecure)
+        {
+            string defaultCss = "/content/themes/theme-" + DefaultThemeGuid + "/styles.css";
+
+            if (BVApp.CurrentStore == null) return defaultCss;                        
+            return FullCss(isSecure);
+        }
+
+        public ThemeInfo GetThemeInfo(string themeId)
+        {
+            string newInfoXml = Storage.DiskStorage.ReadThemeFile(BVApp.CurrentStore.Id, themeId, "bvtheme.xml");
+            ThemeInfo newInfo = new ThemeInfo();
+            newInfo.LoadFromString(newInfoXml);
+            return newInfo;            
+        }
+
+        public bool SaveThemeInfo(string themeId, ThemeInfo info)
+        {
+            Storage.DiskStorage.WriteThemeFile(BVApp.CurrentStore.Id, themeId, "bvtheme.xml", info.WriteToXmlString());
+            return true;
+        }
+     
+        public string FullCss(bool isSecure)
+        {            
+            string defaultCss = "/content/themes/theme-" + DefaultThemeGuid + "/styles.css";                                    
+            if (BVApp.CurrentStore == null) return defaultCss;
+
+            string result = BVApp.CurrentStore.RootUrl();
+            if (isSecure) result = BVApp.CurrentStore.RootUrlSecure();
+            result += "css/theme-" + BVApp.CurrentStore.Settings.ThemeId + "/styles.css";            
+
+            return result;                                    
+        }
+    
+        public string ButtonUrl(string buttonName, bool isSecure)
+        {
+            string fileName = buttonName + ".png";
+            return Storage.DiskStorage.ThemeButtonUrl(BVApp.CurrentStore.Id, BVApp.CurrentStore.Settings.ThemeId, fileName, isSecure);
+        }
+
+        public bool InstallTheme(string themeId)
+        {
+            bool result = false;
+
+            result = Storage.DiskStorage.InstallTheme(BVApp.CurrentStore.Id, themeId);
+            if (result)
+            {
+                BVApp.SwitchTheme(themeId);
+                CopyColumnsFromThemeToStore(themeId);                
+            }
+            return result;
+        }
+
+        public bool DeleteTheme(string themeId)
+        {
+            bool result = false;
+
+            result = Storage.DiskStorage.DeleteThemeFolder(BVApp.CurrentStore.Id,themeId);
+            if (result)
+            {
+                // If we're deleting the current theme, reset the store theme id
+                if (BVApp.CurrentStore.Settings.ThemeId.ToLower() == themeId)
+                {
+                    BVApp.CurrentStore.Settings.SetProp("ThemeId", string.Empty);
+                    BVApp.AccountServices.Stores.Update(BVApp.CurrentStore);                    
+                }
+            }
+
+            return result;
+        }
+
+        public bool DuplicateTheme(string themeId)
+        {
+            // Generate a new ID for the copy
+            string newThemeId = System.Guid.NewGuid().ToString().ToLower();
+            
+            // Create the new folder
+            Storage.FileHelper.CreateAndCheckDirectory(Storage.DiskStorage.BaseStoreThemePhysicalPath(BVApp.CurrentStore.Id, newThemeId));
+
+            if (Storage.FileHelper.CopyAllFiles(Storage.DiskStorage.BaseStoreThemePhysicalPath(BVApp.CurrentStore.Id, themeId),
+                                            Storage.DiskStorage.BaseStoreThemePhysicalPath(BVApp.CurrentStore.Id, newThemeId)))
+            {                
+                ThemeInfo newInfo = GetThemeInfo(newThemeId);                
+                newInfo.Title = "Copy of " + newInfo.Title;
+                newInfo.UniqueId = newThemeId;
+                SaveThemeInfo(newThemeId, newInfo);                
+                return true;
+            }
+
+            return false;
+        }
+        
+        
+        // Minify is no longer needed. Done dynamically now.
+        //
+        // Minify's style sheet and other files as needed
+        //public void GenerateDynamicThemeFiles(string themeId)
+        //{
+        //    Storage.DiskStorage.MinifyStyleSheet(_CurrentStore.Id, themeId);
+        //}
+
+        public string CurrentStyleSheetContent(string themeId)
+        {
+            string result = string.Empty;
+            result = Storage.DiskStorage.ReadStyleSheet(BVApp.CurrentStore.Id, themeId);
+            return result;
+        }
+
+        public string CurrentStyleSheetContentMinifiedAndReplaced(string themeId)
+        {
+            return Storage.DiskStorage.GetMinifiedStyleSheet(BVApp.CurrentStore.Id, themeId);            
+        }
+
+        public string AdminStyleSheetContentMinifiedAndReplaced(string physicalFile, string baseUrl)
+        {
+            return Storage.DiskStorage.GetMinifiedAdminStyleSheet(physicalFile, baseUrl);
+        }
+
+        public bool UpdateStyleSheet(string themeId, string updatedCSS)
+        {
+            return Storage.DiskStorage.WriteStyleSheet(BVApp.CurrentStore.Id, themeId, updatedCSS);
+        }
+
+        public bool CopyCurrentContentColumnsToTheme(string themeId)
+        {
+            bool result = false;
+
+            XmlWriterSettings writersettings = new XmlWriterSettings();      
+            
+            string data = string.Empty;
+            StringBuilder sb = new StringBuilder();
+            writersettings.ConformanceLevel = ConformanceLevel.Fragment;
+            XmlWriter xw = XmlWriter.Create(sb, writersettings);
+
+            xw.WriteStartElement("ColumnData");
+
+            AddColumn("1", ref xw);
+            AddColumn("2", ref xw);
+            AddColumn("3", ref xw);
+            AddColumn("4", ref xw);
+            AddColumn("5", ref xw);
+            AddColumn("201", ref xw);
+            AddColumn("202", ref xw);
+            AddColumn("601", ref xw);
+            
+            xw.WriteEndElement();            
+            xw.Flush();
+            xw.Close();
+            data = sb.ToString();
+        
+            result = Storage.DiskStorage.WriteThemeFile(BVApp.CurrentStore.Id, themeId, "ColumnData.xml", data);
+
+            return result;
+        }
+
+        private void AddColumn(string columnbvin, ref XmlWriter xw)
+        {
+            ContentColumn col = BVApp.ContentServices.Columns.Find(columnbvin);
+            if (col != null)
+            {
+                col.ToXmlWriter(ref xw);
+            }
+        }
+
+        public bool ClearContentColumnDataFromTheme(string themeId)
+        {
+            return Storage.DiskStorage.WriteThemeFile(this.BVApp.CurrentStore.Id, themeId, "ColumnData.xml", string.Empty);
+        }
+
+        public bool CopyColumnsFromThemeToStore(string themeId)
+        {            
+            string columnData = Storage.DiskStorage.ReadThemeFile(this.BVApp.CurrentStore.Id, themeId, "ColumnData.xml");
+
+            if (columnData == string.Empty) return false;
+
+            try
+            {
+               
+                    XmlDocument xdoc = new XmlDocument();
+                    xdoc.LoadXml(columnData);
+
+                    XmlNodeList columnNodes;
+                    columnNodes = xdoc.SelectNodes("/ColumnData/ContentColumn");
+
+                    if (columnNodes != null)
+                    {
+                        for (int i = 0; i <= columnNodes.Count - 1; i++)
+                        {
+                            InstallColumn(columnNodes[i].OuterXml);                            
+                        }
+                    }
+               
+            }
+            catch (Exception ex)
+            {
+                EventLog.LogEvent(ex);
+                return false;
+            }
+
+           
+
+            return true;
+        }
+
+        private void InstallColumn(string xmlData)
+        {            
+            if (xmlData == string.Empty) return;
+
+            XmlDocument xdoc = new XmlDocument();
+            xdoc.LoadXml(xmlData);
+            
+            // Find Column
+            XmlNode bvinNode = xdoc.SelectSingleNode("/ContentColumn/Bvin");
+            if (bvinNode == null) return;
+            string columnBvin = bvinNode.InnerText;
+
+            ContentColumn col = BVApp.ContentServices.Columns.Find(columnBvin);
+            if (col == null) return;
+            if (col.SystemColumn == false) return;
+
+            // remove existing blocks
+            col.Blocks.Clear();
+            BVApp.ContentServices.Columns.Update(col);
+
+            // add blocks from xml
+            XmlNodeList blockNodes;
+            blockNodes = xdoc.SelectNodes("/ContentColumn/Blocks/ContentBlock");
+
+            if (blockNodes != null)
+            {
+                for (int i = 0; i <= blockNodes.Count - 1; i++)
+                {
+
+                    ContentBlock b = new ContentBlock();
+                    b.FromXmlString(blockNodes[i].OuterXml);                    
+                    b.Bvin = string.Empty;
+                    col.Blocks.Add(b);
+                }
+            }
+            BVApp.ContentServices.Columns.Update(col);
+
+        }
+        
+    }
+}

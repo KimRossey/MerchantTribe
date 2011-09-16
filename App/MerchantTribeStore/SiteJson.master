@@ -1,0 +1,2 @@
+﻿<%@ Master Language="C#" Inherits="BVCommerce.SiteJson" Codebehind="SiteJson.master.cs" AutoEventWireup="True" %>
+<asp:ContentPlaceHolder ID="MainContent" runat="server" />
