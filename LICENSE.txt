@@ -1,5 +1,6 @@
 
-MerchantTribe is a free opion-source ecommerce platform licensed using an MIT License. A copy of the license agreement is listed below:
+MerchantTribe is a free opion-source ecommerce platform licensed using an 
+MIT License. A copy of the license agreement is listed below:
 
 
 The MIT License (MIT)
