@@ -1,0 +1,222 @@
+using System;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Web.UI.HtmlControls;
+using BVSoftware.Commerce.Content;
+using BVSoftware.Commerce.Shipping;
+using BVSoftware.Commerce;
+using BVSoftware.Shipping.Ups;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+
+namespace BVCommerce
+{
+
+    partial class BVModules_Shipping_UPS_edit : BVShippingModule
+    {
+
+        protected void btnCancel_Click(object sender, System.Web.UI.ImageClickEventArgs e)
+        {
+            this.NotifyFinishedEditing("Canceled");
+        }
+
+        protected void btnSave_Click(object sender, System.Web.UI.ImageClickEventArgs e)
+        {
+            SaveData();
+            this.NotifyFinishedEditing(this.NameField.Text.Trim());
+        }
+
+        protected override void OnLoad(System.EventArgs e)
+        {
+            base.OnLoad(e);                                  
+            if (!Page.IsPostBack)
+            {
+                LoadZones();
+                LoadServiceCodes();
+                LoadData();
+            }
+        }
+
+        private void LoadZones()
+        {
+            this.lstZones.DataSource = MyPage.BVApp.OrderServices.ShippingZones.FindForStore(MyPage.BVApp.CurrentStore.Id);
+            this.lstZones.DataTextField = "Name";
+            this.lstZones.DataValueField = "id";
+            this.lstZones.DataBind();
+        }
+
+        private void LoadServiceCodes()
+        {
+            BVSoftware.Shipping.IShippingService ups = AvailableServices.FindById(ShippingMethod.ShippingProviderId, CurrentStore);
+            this.ShippingTypesCheckBoxList.DataSource= ups.ListAllServiceCodes();
+            this.ShippingTypesCheckBoxList.DataTextField = "DisplayName";
+            this.ShippingTypesCheckBoxList.DataValueField = "Code";
+            this.ShippingTypesCheckBoxList.DataBind();
+        }
+
+        private void LoadData()
+        {
+            // Name
+            this.NameField.Text = ShippingMethod.Name;
+            if (this.NameField.Text == string.Empty)
+            {
+                this.NameField.Text = "UPS Shipping";
+            }
+
+            // Adjustment
+            AdjustmentDropDownList.SelectedValue = ((int)ShippingMethod.AdjustmentType).ToString();
+            if (ShippingMethod.AdjustmentType == ShippingMethodAdjustmentType.Amount)
+            {
+                AdjustmentTextBox.Text = string.Format("{0:c}", ShippingMethod.Adjustment);
+            }
+            else
+            {
+                AdjustmentTextBox.Text = string.Format("{0:f}", ShippingMethod.Adjustment);
+            }
+
+                                    
+            // Zones
+            if (this.lstZones.Items.FindByValue(ShippingMethod.ZoneId.ToString()) != null)
+            {
+                this.lstZones.ClearSelection();
+                this.lstZones.Items.FindByValue(ShippingMethod.ZoneId.ToString()).Selected = true;
+            }
+
+            // Global Settings
+            this.AccountNumberField.Text = MyPage.BVApp.CurrentStore.Settings.ShippingUpsAccountNumber;
+            this.ResidentialAddressCheckBox.Checked = MyPage.BVApp.CurrentStore.Settings.ShippingUpsForceResidential;
+            this.PickupTypeRadioButtonList.SelectedValue = MyPage.BVApp.CurrentStore.Settings.ShippingUpsPickupType.ToString();
+            this.DefaultPackagingField.SelectedValue = MyPage.BVApp.CurrentStore.Settings.ShippingUpsDefaultPackaging.ToString();
+            //this.DefaultPaymentField.SelectedValue = MyPage.Services.CurrentStore.ShippingUpsDefaultPayment.ToString();
+            this.DefaultServiceField.SelectedValue = MyPage.BVApp.CurrentStore.Settings.ShippingUpsDefaultService.ToString();
+            if (MyPage.BVApp.CurrentStore.Settings.ShippingUpsLicense.Trim().Length > 0)
+            {
+                this.lnkRegister.Text = "Already Registered with UPS (click to register again)";
+            }
+            else
+            {
+                this.lnkRegister.Text = "Register with UPS to use Online Tools";
+            }
+            this.SkipDimensionsCheckBox.Checked = MyPage.BVApp.CurrentStore.Settings.ShippingUpsSkipDimensions;
+            this.chkDiagnostics.Checked = MyPage.BVApp.CurrentStore.Settings.ShippingUPSDiagnostics;
+
+
+            // Method Settings
+            UPSServiceSettings Settings = new UPSServiceSettings();
+            Settings.Merge(ShippingMethod.Settings);
+
+
+            if (Settings.ServiceCodeFilter == null)
+            {
+                Settings.ServiceCodeFilter = new List<BVSoftware.Shipping.IServiceCode>();
+            }
+
+            if (Settings.ServiceCodeFilter.Count < 1 || Settings.GetAllRates)
+            {
+                this.litMessage.Text = "Setting rbfilter to 1";
+
+                if (rbFilterMode.Items.FindByValue("1") != null)
+                {
+                    this.rbFilterMode.ClearSelection();
+                    this.rbFilterMode.Items.FindByValue("1").Selected = true;
+                }
+            }
+            else
+            {
+                this.litMessage.Text = "Setting rbfilter to 0";
+                if (rbFilterMode.Items.FindByValue("0") != null)
+                {
+                    this.rbFilterMode.ClearSelection();
+                    this.rbFilterMode.Items.FindByValue("0").Selected = true;
+                }
+
+                foreach (BVSoftware.Shipping.ServiceCode code in Settings.ServiceCodeFilter)
+                {                    
+                    foreach (ListItem item in ShippingTypesCheckBoxList.Items)
+                    {
+                        if (string.Compare(item.Value, code.Code, true) == 0)
+                        {
+                            item.Selected = true;
+                            break;
+                        }
+                    }
+                }
+            }                                                         
+            
+        }
+
+        private void SaveData()
+        {
+            ShippingMethod.Name = this.NameField.Text.Trim();            
+            ShippingMethod.ZoneId = long.Parse(this.lstZones.SelectedItem.Value);
+            ShippingMethod.AdjustmentType = (ShippingMethodAdjustmentType)int.Parse(AdjustmentDropDownList.SelectedValue);
+            ShippingMethod.Adjustment = decimal.Parse(AdjustmentTextBox.Text, System.Globalization.NumberStyles.Currency);
+
+            // Global Settings
+            MyPage.BVApp.CurrentStore.Settings.ShippingUpsAccountNumber = this.AccountNumberField.Text.Trim();
+            MyPage.BVApp.CurrentStore.Settings.ShippingUpsForceResidential = this.ResidentialAddressCheckBox.Checked;
+            MyPage.BVApp.CurrentStore.Settings.ShippingUpsPickupType = int.Parse(this.PickupTypeRadioButtonList.SelectedValue);
+            MyPage.BVApp.CurrentStore.Settings.ShippingUpsDefaultService = int.Parse(this.DefaultServiceField.SelectedValue);
+            MyPage.BVApp.CurrentStore.Settings.ShippingUpsDefaultPackaging = int.Parse(this.DefaultPackagingField.SelectedValue);
+            //MyPage.Services.CurrentStore.Settings.ShippingUpsDefaultPayment = int.Parse(this.DefaultPaymentField.SelectedValue);
+            MyPage.BVApp.CurrentStore.Settings.ShippingUpsSkipDimensions = this.SkipDimensionsCheckBox.Checked;
+            MyPage.BVApp.CurrentStore.Settings.ShippingUPSDiagnostics = this.chkDiagnostics.Checked;
+            
+
+
+            // Method Settings
+            UPSServiceSettings Settings = new UPSServiceSettings();
+            Settings.Merge(ShippingMethod.Settings);
+
+            List<BVSoftware.Shipping.IServiceCode> filter = new List<BVSoftware.Shipping.IServiceCode>();
+
+            if (this.rbFilterMode.SelectedValue == "0")
+            {
+                Settings.GetAllRates = false;
+
+                foreach (ListItem item in ShippingTypesCheckBoxList.Items)
+                {
+                    if (item.Selected)
+                    {
+                        BVSoftware.Shipping.ServiceCode code = new BVSoftware.Shipping.ServiceCode() { Code = item.Value, DisplayName = item.Text };
+                        filter.Add(code);
+                    }
+                }
+            }
+            else
+            {
+                Settings.GetAllRates = true;
+            }
+
+            Settings.ServiceCodeFilter = filter;
+            ShippingMethod.Settings.Merge(Settings);
+
+            MyPage.BVApp.AccountServices.Stores.Update(MyPage.BVApp.CurrentStore);
+        }
+     
+        protected void CustomValidator1_ServerValidate(object source, System.Web.UI.WebControls.ServerValidateEventArgs args)
+        {
+            decimal val = 0m;
+            if (decimal.TryParse(AdjustmentTextBox.Text, System.Globalization.NumberStyles.Currency, System.Globalization.CultureInfo.CurrentCulture, out val))
+            {
+                args.IsValid = true;
+            }
+            else
+            {
+                args.IsValid = false;
+            }
+        }
+
+        protected void rbFilterMode_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (rbFilterMode.SelectedValue == "1")
+            {
+                this.pnlFilter.Visible = false;
+            }
+            else
+            {
+                this.pnlFilter.Visible = true;
+            }
+        }
+    }
+}

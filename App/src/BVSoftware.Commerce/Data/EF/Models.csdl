@@ -1,0 +1,1743 @@
+<Schema Namespace="EfModels" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="EntityFrameworkDevConnectionString" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="bv_SearchLexicon" EntityType="EfModels.bv_SearchLexicon" />
+    <EntitySet Name="bv_SearchObjects" EntityType="EfModels.bv_SearchObjects" />
+    <EntitySet Name="bv_SearchObjectWords" EntityType="EfModels.bv_SearchObjectWords" />
+    <EntitySet Name="bvb_BillingAccounts" EntityType="EfModels.bvb_BillingAccounts" />
+    <EntitySet Name="bvc_Address" EntityType="EfModels.bvc_Address" />
+    <EntitySet Name="bvc_Audit" EntityType="EfModels.bvc_Audit" />
+    <EntitySet Name="bvc_AuthenticationToken" EntityType="EfModels.bvc_AuthenticationToken" />
+    <EntitySet Name="bvc_Category" EntityType="EfModels.bvc_Category" />
+    <EntitySet Name="bvc_CategoryXProperty" EntityType="EfModels.bvc_CategoryXProperty" />
+    <EntitySet Name="bvc_ContentBlock" EntityType="EfModels.bvc_ContentBlock" />
+    <EntitySet Name="bvc_ContentColumn" EntityType="EfModels.bvc_ContentColumn" />
+    <EntitySet Name="bvc_CustomUrl" EntityType="EfModels.bvc_CustomUrl" />
+    <EntitySet Name="bvc_EventLog" EntityType="EfModels.bvc_EventLog" />
+    <EntitySet Name="bvc_Fraud" EntityType="EfModels.bvc_Fraud" />
+    <EntitySet Name="bvc_GiftCard" EntityType="EfModels.bvc_GiftCard" />
+    <EntitySet Name="bvc_Manufacturer" EntityType="EfModels.bvc_Manufacturer" />
+    <EntitySet Name="bvc_Policy" EntityType="EfModels.bvc_Policy" />
+    <EntitySet Name="bvc_PolicyBlock" EntityType="EfModels.bvc_PolicyBlock" />
+    <EntitySet Name="bvc_PriceGroup" EntityType="EfModels.bvc_PriceGroup" />
+    <EntitySet Name="bvc_Product" EntityType="EfModels.bvc_Product" />
+    <EntitySet Name="bvc_ProductFile" EntityType="EfModels.bvc_ProductFile" />
+    <EntitySet Name="bvc_ProductFilter" EntityType="EfModels.bvc_ProductFilter" />
+    <EntitySet Name="bvc_ProductImage" EntityType="EfModels.bvc_ProductImage" />
+    <EntitySet Name="bvc_ProductInventory" EntityType="EfModels.bvc_ProductInventory" />
+    <EntitySet Name="bvc_ProductOptions" EntityType="EfModels.bvc_ProductOptions" />
+    <EntitySet Name="bvc_ProductOptionsItems" EntityType="EfModels.bvc_ProductOptionsItems" />
+    <EntitySet Name="bvc_ProductProperty" EntityType="EfModels.bvc_ProductProperty" />
+    <EntitySet Name="bvc_ProductPropertyChoice" EntityType="EfModels.bvc_ProductPropertyChoice" />
+    <EntitySet Name="bvc_ProductReview" EntityType="EfModels.bvc_ProductReview" />
+    <EntitySet Name="bvc_ProductType" EntityType="EfModels.bvc_ProductType" />
+    <EntitySet Name="bvc_ProductVolumeDiscounts" EntityType="EfModels.bvc_ProductVolumeDiscounts" />
+    <EntitySet Name="bvc_ProductXCategory" EntityType="EfModels.bvc_ProductXCategory" />
+    <EntitySet Name="bvc_ProductXOption" EntityType="EfModels.bvc_ProductXOption" />
+    <EntitySet Name="bvc_RewardsPoints" EntityType="EfModels.bvc_RewardsPoints" />
+    <EntitySet Name="bvc_RMA" EntityType="EfModels.bvc_RMA" />
+    <EntitySet Name="bvc_RMAItem" EntityType="EfModels.bvc_RMAItem" />
+    <EntitySet Name="bvc_SearchQuery" EntityType="EfModels.bvc_SearchQuery" />
+    <EntitySet Name="bvc_ShippingMethod" EntityType="EfModels.bvc_ShippingMethod" />
+    <EntitySet Name="bvc_User" EntityType="EfModels.bvc_User" />
+    <EntitySet Name="bvc_UserQuestions" EntityType="EfModels.bvc_UserQuestions" />
+    <EntitySet Name="bvc_USGeoData" EntityType="EfModels.bvc_USGeoData" />
+    <EntitySet Name="bvc_Variants" EntityType="EfModels.bvc_Variants" />
+    <EntitySet Name="bvc_Vendor" EntityType="EfModels.bvc_Vendor" />
+    <EntitySet Name="ecommrc_News" EntityType="EfModels.ecommrc_News" />
+    <EntitySet Name="ecommrc_OrderTransactions" EntityType="EfModels.ecommrc_OrderTransactions" />
+    <EntitySet Name="ecommrc_ShippingZones" EntityType="EfModels.ecommrc_ShippingZones" />
+    <EntitySet Name="ecommrc_Stores" EntityType="EfModels.ecommrc_Stores" />
+    <EntitySet Name="ecommrc_Taxes" EntityType="EfModels.ecommrc_Taxes" />
+    <EntitySet Name="ecommrc_TaxSchedules" EntityType="EfModels.ecommrc_TaxSchedules" />
+    <EntitySet Name="ecommrc_UserAccounts" EntityType="EfModels.ecommrc_UserAccounts" />
+    <EntitySet Name="PageVersions" EntityType="EfModels.PageVersion" />
+    <AssociationSet Name="FK_bv_SearchObjectWords_bv_SearchLexicon" Association="EfModels.FK_bv_SearchObjectWords_bv_SearchLexicon">
+      <End Role="bv_SearchLexicon" EntitySet="bv_SearchLexicon" />
+      <End Role="bv_SearchObjectWords" EntitySet="bv_SearchObjectWords" />
+    </AssociationSet>
+    <AssociationSet Name="FK_bv_SearchObjectWords_bv_SearchObjects" Association="EfModels.FK_bv_SearchObjectWords_bv_SearchObjects">
+      <End Role="bv_SearchObjects" EntitySet="bv_SearchObjects" />
+      <End Role="bv_SearchObjectWords" EntitySet="bv_SearchObjectWords" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductXCategory_bvc_Category" Association="EfModels.FK_ProductXCategory_bvc_Category">
+      <End Role="bvc_Category" EntitySet="bvc_Category" />
+      <End Role="bvc_ProductXCategory" EntitySet="bvc_ProductXCategory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_bvc_ContentBlock_bvc_ContentColumn" Association="EfModels.FK_bvc_ContentBlock_bvc_ContentColumn">
+      <End Role="bvc_ContentColumn" EntitySet="bvc_ContentColumn" />
+      <End Role="bvc_ContentBlock" EntitySet="bvc_ContentBlock" />
+    </AssociationSet>
+    <AssociationSet Name="FK_bvc_PolicyBlock_bvc_Policy" Association="EfModels.FK_bvc_PolicyBlock_bvc_Policy">
+      <End Role="bvc_Policy" EntitySet="bvc_Policy" />
+      <End Role="bvc_PolicyBlock" EntitySet="bvc_PolicyBlock" />
+    </AssociationSet>
+    <AssociationSet Name="FK_bvc_ProductInventory_bvc_Product" Association="EfModels.FK_bvc_ProductInventory_bvc_Product">
+      <End Role="bvc_Product" EntitySet="bvc_Product" />
+      <End Role="bvc_ProductInventory" EntitySet="bvc_ProductInventory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductXCategory_bvc_Product" Association="EfModels.FK_ProductXCategory_bvc_Product">
+      <End Role="bvc_Product" EntitySet="bvc_Product" />
+      <End Role="bvc_ProductXCategory" EntitySet="bvc_ProductXCategory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_bvc_ProductOptionsItems_bvc_ProductOptions" Association="EfModels.FK_bvc_ProductOptionsItems_bvc_ProductOptions">
+      <End Role="bvc_ProductOptions" EntitySet="bvc_ProductOptions" />
+      <End Role="bvc_ProductOptionsItems" EntitySet="bvc_ProductOptionsItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_bvc_ProductPropertyChoice_bvc_ProductProperty" Association="EfModels.FK_bvc_ProductPropertyChoice_bvc_ProductProperty">
+      <End Role="bvc_ProductProperty" EntitySet="bvc_ProductProperty" />
+      <End Role="bvc_ProductPropertyChoice" EntitySet="bvc_ProductPropertyChoice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_bvc_ProductXOption_bvc_ProductXOption" Association="EfModels.FK_bvc_ProductXOption_bvc_ProductXOption">
+      <End Role="bvc_ProductXOption" EntitySet="bvc_ProductXOption" />
+      <End Role="bvc_ProductXOption1" EntitySet="bvc_ProductXOption" />
+    </AssociationSet>
+    <AssociationSet Name="FK_bvc_RMAItem_bvc_RMA" Association="EfModels.FK_bvc_RMAItem_bvc_RMA">
+      <End Role="bvc_RMA" EntitySet="bvc_RMA" />
+      <End Role="bvc_RMAItem" EntitySet="bvc_RMAItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ecommrc_OrderTransactions_ecommrc_Stores" Association="EfModels.FK_ecommrc_OrderTransactions_ecommrc_Stores">
+      <End Role="ecommrc_Stores" EntitySet="ecommrc_Stores" />
+      <End Role="ecommrc_OrderTransactions" EntitySet="ecommrc_OrderTransactions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ecommrc_ShippingZones_ecommrc_Stores" Association="EfModels.FK_ecommrc_ShippingZones_ecommrc_Stores">
+      <End Role="ecommrc_Stores" EntitySet="ecommrc_Stores" />
+      <End Role="ecommrc_ShippingZones" EntitySet="ecommrc_ShippingZones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ecommrc_Taxes_ecommrc_Stores" Association="EfModels.FK_ecommrc_Taxes_ecommrc_Stores">
+      <End Role="ecommrc_Stores" EntitySet="ecommrc_Stores" />
+      <End Role="ecommrc_Taxes" EntitySet="ecommrc_Taxes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ecommrc_TaxSchedules_ecommrc_Stores" Association="EfModels.FK_ecommrc_TaxSchedules_ecommrc_Stores">
+      <End Role="ecommrc_Stores" EntitySet="ecommrc_Stores" />
+      <End Role="ecommrc_TaxSchedules" EntitySet="ecommrc_TaxSchedules" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ecommrc_Taxes_ecommrc_TaxSchedules" Association="EfModels.FK_ecommrc_Taxes_ecommrc_TaxSchedules">
+      <End Role="ecommrc_TaxSchedules" EntitySet="ecommrc_TaxSchedules" />
+      <End Role="ecommrc_Taxes" EntitySet="ecommrc_Taxes" />
+    </AssociationSet>
+    <EntitySet Name="bvc_ProductRelationship" EntityType="EfModels.bvc_ProductRelationship" />
+    <EntitySet Name="ecommrc_StoreDomains" EntityType="EfModels.ecommrc_StoreDomains" />
+    <EntitySet Name="ToDoItems" EntityType="EfModels.ToDoItem" />
+    <EntitySet Name="ConversationAuthors" EntityType="EfModels.ConversationAuthor" />
+    <EntitySet Name="ConversationGroups" EntityType="EfModels.ConversationGroup" />
+    <EntitySet Name="ConversationMessages" EntityType="EfModels.ConversationMessage" />
+    <EntitySet Name="Conversations" EntityType="EfModels.Conversation" />
+    <AssociationSet Name="FK_Conversations_ConversationGroups" Association="EfModels.FK_Conversations_ConversationGroups">
+      <End Role="ConversationGroup" EntitySet="ConversationGroups" />
+      <End Role="Conversation" EntitySet="Conversations" />
+    </AssociationSet>
+    <EntitySet Name="bvc_MailingList" EntityType="EfModels.bvc_MailingList" />
+    <EntitySet Name="bvc_MailingListMember" EntityType="EfModels.bvc_MailingListMember" />
+    <AssociationSet Name="FK_bvc_MailingListMember_bvc_MailingList" Association="EfModels.FK_bvc_MailingListMember_bvc_MailingList">
+      <End Role="bvc_MailingList" EntitySet="bvc_MailingList" />
+      <End Role="bvc_MailingListMember" EntitySet="bvc_MailingListMember" />
+    </AssociationSet>
+    <EntitySet Name="ApiKeys" EntityType="EfModels.ApiKey" />
+    <EntitySet Name="ecommrc_AuthTokens" EntityType="EfModels.ecommrc_AuthTokens" />
+    <AssociationSet Name="FK_ecommrc_AuthTokens_ecommrc_UserAccounts" Association="EfModels.FK_ecommrc_AuthTokens_ecommrc_UserAccounts">
+      <End Role="ecommrc_UserAccounts" EntitySet="ecommrc_UserAccounts" />
+      <End Role="ecommrc_AuthTokens" EntitySet="ecommrc_AuthTokens" />
+    </AssociationSet>
+    <EntitySet Name="ecommrc_StoresXUsers" EntityType="EfModels.ecommrc_StoresXUsers" />
+    <AssociationSet Name="FK_ecommrc_StoresXUsers_ecommrc_Stores" Association="EfModels.FK_ecommrc_StoresXUsers_ecommrc_Stores">
+      <End Role="ecommrc_Stores" EntitySet="ecommrc_Stores" />
+      <End Role="ecommrc_StoresXUsers" EntitySet="ecommrc_StoresXUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ecommrc_StoresXUsers_ecommrc_UserAccounts" Association="EfModels.FK_ecommrc_StoresXUsers_ecommrc_UserAccounts">
+      <End Role="ecommrc_UserAccounts" EntitySet="ecommrc_UserAccounts" />
+      <End Role="ecommrc_StoresXUsers" EntitySet="ecommrc_StoresXUsers" />
+    </AssociationSet>
+    <EntitySet Name="ecommrc_StoreSettings" EntityType="EfModels.ecommrc_StoreSettings" />
+    <AssociationSet Name="FK_ecommrc_StoreSettings_ecommrc_Stores" Association="EfModels.FK_ecommrc_StoreSettings_ecommrc_Stores">
+      <End Role="ecommrc_Stores" EntitySet="ecommrc_Stores" />
+      <End Role="ecommrc_StoreSettings" EntitySet="ecommrc_StoreSettings" />
+    </AssociationSet>
+    <FunctionImport Name="GenerateNewOrderNumber" ReturnType="Collection(Int64)">
+      <Parameter Name="storeid" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="ReportingOrderStatusSummary" ReturnType="Collection(EfModels.ReportingOrderStatusSummary_Result)">
+      <Parameter Name="StoreId" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="RewardPointsAvailableForUser" ReturnType="Collection(Int32)">
+      <Parameter Name="UserId" Mode="In" Type="String" />
+      <Parameter Name="StoreId" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="RewardPointsCapture">
+      <Parameter Name="bvin" Mode="In" Type="String" />
+      <Parameter Name="amount" Mode="In" Type="Int32" />
+      <Parameter Name="StoreId" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="RewardPointsDecAmount">
+      <Parameter Name="bvin" Mode="In" Type="String" />
+      <Parameter Name="amount" Mode="In" Type="Int32" />
+      <Parameter Name="StoreId" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="RewardPointsHeldForUser" ReturnType="Collection(Int32)">
+      <Parameter Name="UserId" Mode="In" Type="String" />
+      <Parameter Name="StoreId" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="RewardPointHold">
+      <Parameter Name="bvin" Mode="In" Type="String" />
+      <Parameter Name="amount" Mode="In" Type="Int32" />
+      <Parameter Name="StoreId" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="RewardPointsIncAmount">
+      <Parameter Name="bvin" Mode="In" Type="String" />
+      <Parameter Name="amount" Mode="In" Type="Int32" />
+      <Parameter Name="StoreId" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="RewardPointsTotalIssued" ReturnType="Collection(Int32)">
+      <Parameter Name="StoreId" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="RewardPointsTotalReserved" ReturnType="Collection(Int32)">
+      <Parameter Name="StoreId" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="RewardPointsUnHold">
+      <Parameter Name="bvin" Mode="In" Type="String" />
+      <Parameter Name="amount" Mode="In" Type="Int32" />
+      <Parameter Name="StoreId" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <EntitySet Name="bvc_UserXContact" EntityType="EfModels.bvc_UserXContact" />
+    <AssociationSet Name="FK_bvc_UserXAffiliate_bvc_User" Association="EfModels.FK_bvc_UserXAffiliate_bvc_User">
+      <End Role="bvc_User" EntitySet="bvc_User" />
+      <End Role="bvc_UserXContact" EntitySet="bvc_UserXContact" />
+    </AssociationSet>
+    <EntitySet Name="bvc_OrderCoupon" EntityType="EfModels.bvc_OrderCoupon" />
+    <EntitySet Name="bvc_OrderNote" EntityType="EfModels.bvc_OrderNote" />
+    <EntitySet Name="bvc_OrderPackage" EntityType="EfModels.bvc_OrderPackage" />
+    <EntitySet Name="bvc_HtmlTemplates" EntityType="EfModels.bvc_HtmlTemplates" />
+    <EntitySet Name="bvc_Affiliate" EntityType="EfModels.bvc_Affiliate" />
+    <EntitySet Name="bvc_AffiliateReferral" EntityType="EfModels.bvc_AffiliateReferral" />
+    <EntitySet Name="bvc_LineItem" EntityType="EfModels.bvc_LineItem" />
+    <EntitySet Name="bvc_Promotions" EntityType="EfModels.bvc_Promotions" />
+    <EntitySet Name="bvc_Order" EntityType="EfModels.bvc_Order" />
+    <AssociationSet Name="FK_bvc_LineItem_bvc_LineItem" Association="EfModels.FK_bvc_LineItem_bvc_LineItem">
+      <End Role="bvc_Order" EntitySet="bvc_Order" />
+      <End Role="bvc_LineItem" EntitySet="bvc_LineItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK_bvc_OrderCoupon_bvc_Order" Association="EfModels.FK_bvc_OrderCoupon_bvc_Order">
+      <End Role="bvc_Order" EntitySet="bvc_Order" />
+      <End Role="bvc_OrderCoupon" EntitySet="bvc_OrderCoupon" />
+    </AssociationSet>
+    <AssociationSet Name="FK_bvc_OrderNote_bvc_Order" Association="EfModels.FK_bvc_OrderNote_bvc_Order">
+      <End Role="bvc_Order" EntitySet="bvc_Order" />
+      <End Role="bvc_OrderNote" EntitySet="bvc_OrderNote" />
+    </AssociationSet>
+    <EntitySet Name="QueuedTasks" EntityType="EfModels.QueuedTask" />
+    <EntitySet Name="bvc_ProductFileXProduct" EntityType="EfModels.bvc_ProductFileXProduct" />
+    <AssociationSet Name="FK_bvc_ProductFileXProduct_bvc_ProductFile" Association="EfModels.FK_bvc_ProductFileXProduct_bvc_ProductFile">
+      <End Role="bvc_ProductFile" EntitySet="bvc_ProductFile" />
+      <End Role="bvc_ProductFileXProduct" EntitySet="bvc_ProductFileXProduct" />
+    </AssociationSet>
+    <EntitySet Name="bvc_ProductTypeXProductProperty" EntityType="EfModels.bvc_ProductTypeXProductProperty" />
+    <AssociationSet Name="FK_ProductTypeProperties_ProductType" Association="EfModels.FK_ProductTypeProperties_ProductType">
+      <End Role="bvc_ProductType" EntitySet="bvc_ProductType" />
+      <End Role="bvc_ProductTypeXProductProperty" EntitySet="bvc_ProductTypeXProductProperty" />
+    </AssociationSet>
+    <EntitySet Name="bvc_ProductPropertyValue" EntityType="EfModels.bvc_ProductPropertyValue" />
+    <AssociationSet Name="FK_bvc_ProductPropertyValue_bvc_Product" Association="EfModels.FK_bvc_ProductPropertyValue_bvc_Product">
+      <End Role="bvc_Product" EntitySet="bvc_Product" />
+      <End Role="bvc_ProductPropertyValue" EntitySet="bvc_ProductPropertyValue" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="bv_SearchLexicon">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Word" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="bv_SearchObjectWords" Relationship="EfModels.FK_bv_SearchObjectWords_bv_SearchLexicon" FromRole="bv_SearchLexicon" ToRole="bv_SearchObjectWords" />
+  </EntityType>
+  <EntityType Name="bv_SearchObjects">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="ObjectType" Nullable="false" />
+    <Property Type="String" Name="ObjectId" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Title" Nullable="false" MaxLength="512" FixedLength="false" Unicode="true" />
+    <Property Type="Int64" Name="SiteId" Nullable="false" />
+    <Property Type="DateTime" Name="LastIndexUtc" Nullable="false" />
+    <NavigationProperty Name="bv_SearchObjectWords" Relationship="EfModels.FK_bv_SearchObjectWords_bv_SearchObjects" FromRole="bv_SearchObjects" ToRole="bv_SearchObjectWords" />
+  </EntityType>
+  <EntityType Name="bv_SearchObjectWords">
+    <Key>
+      <PropertyRef Name="SearchObjectId" />
+      <PropertyRef Name="WordId" />
+      <PropertyRef Name="SiteId" />
+    </Key>
+    <Property Type="Int64" Name="SearchObjectId" Nullable="false" />
+    <Property Type="Int64" Name="WordId" Nullable="false" />
+    <Property Type="Int32" Name="Score" Nullable="false" />
+    <Property Type="Int64" Name="SiteId" Nullable="false" />
+    <NavigationProperty Name="bv_SearchLexicon" Relationship="EfModels.FK_bv_SearchObjectWords_bv_SearchLexicon" FromRole="bv_SearchObjectWords" ToRole="bv_SearchLexicon" />
+    <NavigationProperty Name="bv_SearchObjects" Relationship="EfModels.FK_bv_SearchObjectWords_bv_SearchObjects" FromRole="bv_SearchObjectWords" ToRole="bv_SearchObjects" />
+  </EntityType>
+  <EntityType Name="bvb_BillingAccounts">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="CreditCard" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="BillingZipCode" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="bvc_Address">
+    <Key>
+      <PropertyRef Name="bvin" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="bvin" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="LastUpdated" Nullable="false" />
+    <Property Type="String" Name="NickName" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="MiddleInitial" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Company" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Line1" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Line2" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Line3" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="City" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="RegionBvin" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="RegionName" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PostalCode" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="CountryBvin" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CountryName" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="CountyBvin" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CountyName" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Phone" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Fax" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="WebSiteUrl" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="UserBvin" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+    <Property Type="Int32" Name="AddressType" Nullable="false" />
+  </EntityType>
+  <EntityType Name="bvc_Audit">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="DateTime" Name="TimeStampUtc" Nullable="false" />
+    <Property Type="Int32" Name="SourceModule" Nullable="false" />
+    <Property Type="String" Name="ShortName" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Description" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="UserId" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="UserIdText" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="Severity" Nullable="false" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+  </EntityType>
+  <EntityType Name="bvc_AuthenticationToken">
+    <Key>
+      <PropertyRef Name="bvin" />
+    </Key>
+    <Property Type="String" Name="bvin" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="UserBvin" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="ExpirationDate" Nullable="false" />
+    <Property Type="DateTime" Name="LastUpdated" Nullable="false" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+  </EntityType>
+  <EntityType Name="bvc_Category">
+    <Key>
+      <PropertyRef Name="bvin" />
+    </Key>
+    <Property Type="String" Name="bvin" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Description" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ParentID" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="SortOrder" Nullable="false" />
+    <Property Type="String" Name="MetaTitle" Nullable="false" MaxLength="512" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="MetaKeywords" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="MetaDescription" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ImageURL" Nullable="false" MaxLength="512" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="BannerImageURL" Nullable="false" MaxLength="512" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="SourceType" Nullable="false" />
+    <Property Type="Int32" Name="DisplaySortOrder" Nullable="false" />
+    <Property Type="Int32" Name="LatestProductCount" Nullable="false" />
+    <Property Type="String" Name="CustomPageURL" Nullable="false" MaxLength="512" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="CustomPageNewWindow" Nullable="false" />
+    <Property Type="Int32" Name="ShowInTopMenu" Nullable="false" />
+    <Property Type="Int32" Name="Hidden" Nullable="false" />
+    <Property Type="String" Name="TemplateName" Nullable="false" MaxLength="512" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PostContentColumnId" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PreContentColumnId" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="LastUpdated" Nullable="false" />
+    <Property Type="String" Name="RewriteUrl" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="ShowTitle" Nullable="false" />
+    <Property Type="String" Name="Criteria" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="CustomPageId" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PreTransformDescription" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Keywords" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="CustomerChangeableSortOrder" Nullable="false" />
+    <Property Type="Int32" Name="CustomPageLayout" Nullable="false" />
+    <NavigationProperty Name="bvc_ProductXCategory" Relationship="EfModels.FK_ProductXCategory_bvc_Category" FromRole="bvc_Category" ToRole="bvc_ProductXCategory" />
+  </EntityType>
+  <EntityType Name="bvc_CategoryXProperty">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="CategoryId" Nullable="false" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Type="Int64" Name="PropertyId" Nullable="false" />
+    <Property Type="Int64" Name="ParentPropertyId" Nullable="false" />
+    <Property Type="Int32" Name="SortOrder" Nullable="false" />
+    <Property Type="String" Name="FilterName" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="DisplayMode" Nullable="false" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+  </EntityType>
+  <EntityType Name="bvc_ContentBlock">
+    <Key>
+      <PropertyRef Name="bvin" />
+    </Key>
+    <Property Type="String" Name="bvin" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ColumnID" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="SortOrder" Nullable="false" />
+    <Property Type="String" Name="ControlName" Nullable="false" MaxLength="512" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="LastUpdated" Nullable="false" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+    <Property Type="String" Name="SerializedSettings" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="SerializedLists" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="bvc_ContentColumn" Relationship="EfModels.FK_bvc_ContentBlock_bvc_ContentColumn" FromRole="bvc_ContentBlock" ToRole="bvc_ContentColumn" />
+  </EntityType>
+  <EntityType Name="bvc_ContentColumn">
+    <Key>
+      <PropertyRef Name="bvin" />
+    </Key>
+    <Property Type="String" Name="bvin" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="DisplayName" Nullable="false" MaxLength="512" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="SystemColumn" Nullable="false" />
+    <Property Type="DateTime" Name="LastUpdated" Nullable="false" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+    <NavigationProperty Name="bvc_ContentBlock" Relationship="EfModels.FK_bvc_ContentBlock_bvc_ContentColumn" FromRole="bvc_ContentColumn" ToRole="bvc_ContentBlock" />
+  </EntityType>
+  <EntityType Name="bvc_CustomUrl">
+    <Key>
+      <PropertyRef Name="bvin" />
+    </Key>
+    <Property Type="String" Name="bvin" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="RequestedUrl" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="RedirectToUrl" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="IsPermanentRedirect" Nullable="false" />
+    <Property Type="Int32" Name="SystemDataType" Nullable="false" />
+    <Property Type="String" Name="SystemData" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="LastUpdated" Nullable="false" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+  </EntityType>
+  <EntityType Name="bvc_EventLog">
+    <Key>
+      <PropertyRef Name="bvin" />
+    </Key>
+    <Property Type="String" Name="bvin" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="EventTime" Nullable="false" />
+    <Property Type="String" Name="Source" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Message" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="Severity" Nullable="false" />
+    <Property Type="DateTime" Name="LastUpdated" Nullable="false" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+  </EntityType>
+  <EntityType Name="bvc_Fraud">
+    <Key>
+      <PropertyRef Name="bvin" />
+    </Key>
+    <Property Type="String" Name="bvin" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="RuleType" Nullable="false" />
+    <Property Type="String" Name="RuleValue" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="LastUpdated" Nullable="false" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+  </EntityType>
+  <EntityType Name="bvc_GiftCard">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+    <Property Type="String" Name="CardNumber" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Decimal" Name="Amount" Nullable="false" Precision="18" Scale="10" />
+    <Property Type="DateTime" Name="IssueDateUtc" Nullable="false" />
+    <Property Type="DateTime" Name="ExpirationDateUtc" Nullable="false" />
+    <Property Type="String" Name="PurchaserEmail" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="RecipientEmail" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="GiftMessage" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="IsRedeemed" Nullable="false" />
+    <Property Type="DateTime" Name="RedemptionDateUtc" Nullable="false" />
+    <Property Type="String" Name="RedemptionUserId" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="bvc_Manufacturer">
+    <Key>
+      <PropertyRef Name="bvin" />
+    </Key>
+    <Property Type="String" Name="bvin" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="DisplayName" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="EmailAddress" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Address" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="DropShipEmailTemplateId" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="LastUpdated" Nullable="false" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+  </EntityType>
+  <EntityType Name="bvc_Policy">
+    <Key>
+      <PropertyRef Name="bvin" />
+    </Key>
+    <Property Type="String" Name="bvin" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Title" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="SystemPolicy" Nullable="false" />
+    <Property Type="DateTime" Name="LastUpdated" Nullable="false" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+    <Property Type="Int32" Name="PolicyType" Nullable="false" />
+    <NavigationProperty Name="bvc_PolicyBlock" Relationship="EfModels.FK_bvc_PolicyBlock_bvc_Policy" FromRole="bvc_Policy" ToRole="bvc_PolicyBlock" />
+  </EntityType>
+  <EntityType Name="bvc_PolicyBlock">
+    <Key>
+      <PropertyRef Name="bvin" />
+    </Key>
+    <Property Type="String" Name="bvin" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Description" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="SortOrder" Nullable="false" />
+    <Property Type="DateTime" Name="LastUpdated" Nullable="false" />
+    <Property Type="String" Name="PolicyID" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="DescriptionPreTransform" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+    <NavigationProperty Name="bvc_Policy" Relationship="EfModels.FK_bvc_PolicyBlock_bvc_Policy" FromRole="bvc_PolicyBlock" ToRole="bvc_Policy" />
+  </EntityType>
+  <EntityType Name="bvc_PriceGroup">
+    <Key>
+      <PropertyRef Name="bvin" />
+    </Key>
+    <Property Type="String" Name="bvin" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="PricingType" Nullable="false" />
+    <Property Type="Decimal" Name="AdjustmentAmount" Nullable="false" Precision="18" Scale="10" />
+    <Property Type="DateTime" Name="LastUpdated" Nullable="false" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+  </EntityType>
+  <EntityType Name="bvc_Product">
+    <Key>
+      <PropertyRef Name="bvin" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="bvin" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="SKU" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ProductName" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ProductTypeId" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="Decimal" Name="ListPrice" Nullable="false" Precision="18" Scale="10" />
+    <Property Type="Decimal" Name="SitePrice" Nullable="false" Precision="18" Scale="10" />
+    <Property Type="Decimal" Name="SiteCost" Nullable="false" Precision="18" Scale="10" />
+    <Property Type="String" Name="MetaKeywords" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="MetaDescription" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="MetaTitle" Nullable="false" MaxLength="512" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="TaxExempt" Nullable="false" />
+    <Property Type="String" Name="TaxClass" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="NonShipping" Nullable="false" />
+    <Property Type="Int32" Name="ShipSeparately" Nullable="false" />
+    <Property Type="Int32" Name="ShippingMode" Nullable="false" />
+    <Property Type="Decimal" Name="ShippingWeight" Nullable="false" Precision="18" Scale="10" />
+    <Property Type="Decimal" Name="ShippingLength" Nullable="false" Precision="18" Scale="10" />
+    <Property Type="Decimal" Name="ShippingWidth" Nullable="false" Precision="18" Scale="10" />
+    <Property Type="Decimal" Name="ShippingHeight" Nullable="false" Precision="18" Scale="10" />
+    <Property Type="Int32" Name="Status" Nullable="false" />
+    <Property Type="String" Name="ImageFileSmall" Nullable="false" MaxLength="512" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ImageFileMedium" Nullable="false" MaxLength="512" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="CreationDate" Nullable="false" />
+    <Property Type="Int32" Name="MinimumQty" Nullable="false" />
+    <Property Type="String" Name="ShortDescription" Nullable="false" MaxLength="512" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="LongDescription" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ManufacturerID" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="VendorID" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="GiftWrapAllowed" Nullable="false" />
+    <Property Type="Decimal" Name="ExtraShipFee" Nullable="false" Precision="18" Scale="10" />
+    <Property Type="DateTime" Name="LastUpdated" Nullable="false" />
+    <Property Type="String" Name="Keywords" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="TemplateName" Nullable="false" MaxLength="512" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PreContentColumnId" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PostContentColumnId" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="RewriteUrl" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="SitePriceOverrideText" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PreTransformLongDescription" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="SmallImageAlternateText" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="MediumImageAlternateText" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="CustomProperties" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Decimal" Name="GiftWrapPrice" Nullable="false" Precision="18" Scale="10" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+    <Property Type="Boolean" Name="Featured" Nullable="false" />
+    <Property Type="Boolean" Name="AllowReviews" Nullable="false" />
+    <Property Type="String" Name="DescriptionTabs" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="OutOfStockMode" Nullable="false" />
+    <Property Type="Boolean" Name="IsAvailableForSale" Nullable="false" />
+    <NavigationProperty Name="bvc_ProductInventory" Relationship="EfModels.FK_bvc_ProductInventory_bvc_Product" FromRole="bvc_Product" ToRole="bvc_ProductInventory" />
+    <NavigationProperty Name="bvc_ProductXCategory" Relationship="EfModels.FK_ProductXCategory_bvc_Product" FromRole="bvc_Product" ToRole="bvc_ProductXCategory" />
+    <NavigationProperty Name="bvc_ProductPropertyValue" Relationship="EfModels.FK_bvc_ProductPropertyValue_bvc_Product" FromRole="bvc_Product" ToRole="bvc_ProductPropertyValue" />
+  </EntityType>
+  <EntityType Name="bvc_ProductFile">
+    <Key>
+      <PropertyRef Name="bvin" />
+    </Key>
+    <Property Type="String" Name="bvin" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="FileName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ShortDescription" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="LastUpdated" Nullable="false" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+    <NavigationProperty Name="bvc_ProductFileXProduct" Relationship="EfModels.FK_bvc_ProductFileXProduct_bvc_ProductFile" FromRole="bvc_ProductFile" ToRole="bvc_ProductFileXProduct" />
+  </EntityType>
+  <EntityType Name="bvc_ProductFilter">
+    <Key>
+      <PropertyRef Name="bvin" />
+    </Key>
+    <Property Type="String" Name="bvin" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="FilterName" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Criteria" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Page" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="LastUpdated" Nullable="false" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+  </EntityType>
+  <EntityType Name="bvc_ProductImage">
+    <Key>
+      <PropertyRef Name="bvin" />
+    </Key>
+    <Property Type="String" Name="bvin" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ProductID" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="FileName" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Caption" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="AlternateText" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="SortOrder" Nullable="false" />
+    <Property Type="DateTime" Name="LastUpdated" Nullable="false" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+  </EntityType>
+  <EntityType Name="bvc_ProductInventory">
+    <Key>
+      <PropertyRef Name="bvin" />
+    </Key>
+    <Property Type="String" Name="bvin" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ProductBvin" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="VariantId" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="QuantityOnHand" Nullable="false" />
+    <Property Type="Int32" Name="QuantityReserved" Nullable="false" />
+    <Property Type="Int32" Name="QuantityAvailableForSale" annotation:StoreGeneratedPattern="Computed" />
+    <Property Type="Int32" Name="LowStockPoint" Nullable="false" />
+    <Property Type="DateTime" Name="LastUpdated" Nullable="false" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+    <NavigationProperty Name="bvc_Product" Relationship="EfModels.FK_bvc_ProductInventory_bvc_Product" FromRole="bvc_ProductInventory" ToRole="bvc_Product" />
+  </EntityType>
+  <EntityType Name="bvc_ProductOptions">
+    <Key>
+      <PropertyRef Name="bvin" />
+    </Key>
+    <Property Type="String" Name="bvin" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+    <Property Type="Int32" Name="OptionType" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="NameIsHidden" Nullable="false" />
+    <Property Type="Boolean" Name="IsVariant" Nullable="false" />
+    <Property Type="Boolean" Name="IsShared" Nullable="false" />
+    <Property Type="String" Name="Settings" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="bvc_ProductOptionsItems" Relationship="EfModels.FK_bvc_ProductOptionsItems_bvc_ProductOptions" FromRole="bvc_ProductOptions" ToRole="bvc_ProductOptionsItems" />
+  </EntityType>
+  <EntityType Name="bvc_ProductOptionsItems">
+    <Key>
+      <PropertyRef Name="bvin" />
+    </Key>
+    <Property Type="String" Name="bvin" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+    <Property Type="String" Name="OptionBvin" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="Decimal" Name="PriceAdjustment" Nullable="false" Precision="18" Scale="10" />
+    <Property Type="Decimal" Name="WeightAdjustment" Nullable="false" Precision="18" Scale="10" />
+    <Property Type="Boolean" Name="IsLabel" Nullable="false" />
+    <Property Type="Int32" Name="SortOrder" Nullable="false" />
+    <NavigationProperty Name="bvc_ProductOptions" Relationship="EfModels.FK_bvc_ProductOptionsItems_bvc_ProductOptions" FromRole="bvc_ProductOptionsItems" ToRole="bvc_ProductOptions" />
+  </EntityType>
+  <EntityType Name="bvc_ProductProperty">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="PropertyName" Nullable="false" MaxLength="512" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="DisplayName" Nullable="false" MaxLength="512" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="DisplayOnSite" Nullable="false" />
+    <Property Type="Int32" Name="DisplayToDropShipper" Nullable="false" />
+    <Property Type="Int32" Name="TypeCode" Nullable="false" />
+    <Property Type="String" Name="DefaultValue" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="CultureCode" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="LastUpdated" Nullable="false" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+    <NavigationProperty Name="bvc_ProductPropertyChoice" Relationship="EfModels.FK_bvc_ProductPropertyChoice_bvc_ProductProperty" FromRole="bvc_ProductProperty" ToRole="bvc_ProductPropertyChoice" />
+  </EntityType>
+  <EntityType Name="bvc_ProductPropertyChoice">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="PropertyId" Nullable="false" />
+    <Property Type="String" Name="ChoiceName" Nullable="false" MaxLength="512" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="SortOrder" Nullable="false" />
+    <Property Type="DateTime" Name="LastUpdated" Nullable="false" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+    <NavigationProperty Name="bvc_ProductProperty" Relationship="EfModels.FK_bvc_ProductPropertyChoice_bvc_ProductProperty" FromRole="bvc_ProductPropertyChoice" ToRole="bvc_ProductProperty" />
+  </EntityType>
+  <EntityType Name="bvc_ProductReview">
+    <Key>
+      <PropertyRef Name="bvin" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="DateTime" Name="lastUpdated" Nullable="false" />
+    <Property Type="String" Name="bvin" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="Approved" Nullable="false" />
+    <Property Type="String" Name="Description" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="Karma" Nullable="false" />
+    <Property Type="DateTime" Name="ReviewDate" Nullable="false" />
+    <Property Type="Int32" Name="Rating" Nullable="false" />
+    <Property Type="String" Name="UserID" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ProductBvin" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+  </EntityType>
+  <EntityType Name="bvc_ProductType">
+    <Key>
+      <PropertyRef Name="bvin" />
+    </Key>
+    <Property Type="String" Name="bvin" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ProductTypeName" Nullable="false" MaxLength="512" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="IsPermanent" Nullable="false" />
+    <Property Type="DateTime" Name="LastUpdated" Nullable="false" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+    <NavigationProperty Name="bvc_ProductTypeXProductProperty" Relationship="EfModels.FK_ProductTypeProperties_ProductType" FromRole="bvc_ProductType" ToRole="bvc_ProductTypeXProductProperty" />
+  </EntityType>
+  <EntityType Name="bvc_ProductVolumeDiscounts">
+    <Key>
+      <PropertyRef Name="bvin" />
+    </Key>
+    <Property Type="String" Name="bvin" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ProductID" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="Qty" Nullable="false" />
+    <Property Type="Int32" Name="DiscountType" Nullable="false" />
+    <Property Type="Decimal" Name="Amount" Nullable="false" Precision="18" Scale="10" />
+    <Property Type="DateTime" Name="LastUpdated" Nullable="false" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+  </EntityType>
+  <EntityType Name="bvc_ProductXCategory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="ProductId" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CategoryId" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="SortOrder" Nullable="false" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+    <NavigationProperty Name="bvc_Category" Relationship="EfModels.FK_ProductXCategory_bvc_Category" FromRole="bvc_ProductXCategory" ToRole="bvc_Category" />
+    <NavigationProperty Name="bvc_Product" Relationship="EfModels.FK_ProductXCategory_bvc_Product" FromRole="bvc_ProductXCategory" ToRole="bvc_Product" />
+  </EntityType>
+  <EntityType Name="bvc_ProductXOption">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+    <Property Type="String" Name="ProductBvin" Nullable="false" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="OptionBvin" Nullable="false" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="SortOrder" Nullable="false" />
+    <NavigationProperty Name="bvc_ProductXOption1" Relationship="EfModels.FK_bvc_ProductXOption_bvc_ProductXOption" FromRole="bvc_ProductXOption" ToRole="bvc_ProductXOption1" />
+    <NavigationProperty Name="bvc_ProductXOption2" Relationship="EfModels.FK_bvc_ProductXOption_bvc_ProductXOption" FromRole="bvc_ProductXOption1" ToRole="bvc_ProductXOption" />
+  </EntityType>
+  <EntityType Name="bvc_RewardsPoints">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="UserId" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="Points" Nullable="false" />
+    <Property Type="Int32" Name="PointsHeld" Nullable="false" />
+    <Property Type="DateTime" Name="TransactionTime" Nullable="false" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+  </EntityType>
+  <EntityType Name="bvc_RMA">
+    <Key>
+      <PropertyRef Name="bvin" />
+    </Key>
+    <Property Type="String" Name="bvin" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="OrderBvin" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="Number" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="EmailAddress" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PhoneNumber" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Comments" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="Status" Nullable="false" />
+    <Property Type="DateTime" Name="DateOfReturn" Nullable="false" />
+    <Property Type="DateTime" Name="LastUpdated" Nullable="false" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+    <NavigationProperty Name="bvc_RMAItem" Relationship="EfModels.FK_bvc_RMAItem_bvc_RMA" FromRole="bvc_RMA" ToRole="bvc_RMAItem" />
+  </EntityType>
+  <EntityType Name="bvc_RMAItem">
+    <Key>
+      <PropertyRef Name="bvin" />
+    </Key>
+    <Property Type="String" Name="bvin" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="RMABvin" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="LineItemBvin" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ItemName" Nullable="false" MaxLength="512" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ItemDescription" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Note" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Reason" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="Replace" Nullable="false" />
+    <Property Type="Int32" Name="Quantity" Nullable="false" />
+    <Property Type="Int32" Name="QuantityReceived" Nullable="false" />
+    <Property Type="Int32" Name="QuantityReturnedToInventory" Nullable="false" />
+    <Property Type="DateTime" Name="LastUpdated" Nullable="false" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+    <NavigationProperty Name="bvc_RMA" Relationship="EfModels.FK_bvc_RMAItem_bvc_RMA" FromRole="bvc_RMAItem" ToRole="bvc_RMA" />
+  </EntityType>
+  <EntityType Name="bvc_SearchQuery">
+    <Key>
+      <PropertyRef Name="bvin" />
+    </Key>
+    <Property Type="String" Name="bvin" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="QueryPhrase" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ShopperId" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="LastUpdated" Nullable="false" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+  </EntityType>
+  <EntityType Name="bvc_ShippingMethod">
+    <Key>
+      <PropertyRef Name="bvin" />
+    </Key>
+    <Property Type="String" Name="bvin" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="LastUpdated" Nullable="false" />
+    <Property Type="Decimal" Name="Adjustment" Nullable="false" Precision="18" Scale="10" />
+    <Property Type="Int32" Name="AdjustmentType" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ShippingProviderId" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+    <Property Type="Int64" Name="ZoneId" Nullable="false" />
+    <Property Type="String" Name="Settings" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="bvc_User">
+    <Key>
+      <PropertyRef Name="bvin" />
+    </Key>
+    <Property Type="String" Name="bvin" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Password" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Salt" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="TaxExempt" Nullable="false" />
+    <Property Type="DateTime" Name="CreationDate" Nullable="false" />
+    <Property Type="DateTime" Name="LastLoginDate" Nullable="false" />
+    <Property Type="String" Name="Comment" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="AddressBook" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="LastUpdated" Nullable="false" />
+    <Property Type="Int32" Name="Locked" Nullable="false" />
+    <Property Type="DateTime" Name="LockedUntil" Nullable="false" />
+    <Property Type="Int32" Name="FailedLoginCount" Nullable="false" />
+    <Property Type="String" Name="Phones" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PricingGroup" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CustomQuestionAnswers" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+    <NavigationProperty Name="bvc_UserXContact" Relationship="EfModels.FK_bvc_UserXAffiliate_bvc_User" FromRole="bvc_User" ToRole="bvc_UserXContact" />
+  </EntityType>
+  <EntityType Name="bvc_UserQuestions">
+    <Key>
+      <PropertyRef Name="bvin" />
+    </Key>
+    <Property Type="String" Name="bvin" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="QuestionName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="QuestionType" Nullable="false" />
+    <Property Type="String" Name="Values" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="Order" Nullable="false" />
+    <Property Type="DateTime" Name="LastUpdated" Nullable="false" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+  </EntityType>
+  <EntityType Name="bvc_USGeoData">
+    <Key>
+      <PropertyRef Name="Zip" />
+    </Key>
+    <Property Type="String" Name="Zip" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="Decimal" Name="Latitude" Nullable="false" Precision="18" Scale="10" />
+    <Property Type="Decimal" Name="Longitude" Nullable="false" Precision="18" Scale="10" />
+    <Property Type="String" Name="City" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="State" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="County" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ZipType" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="bvc_Variants">
+    <Key>
+      <PropertyRef Name="bvin" />
+    </Key>
+    <Property Type="String" Name="bvin" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ProductId" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Sku" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="Decimal" Name="Price" Nullable="false" Precision="18" Scale="10" />
+    <Property Type="String" Name="SelectionData" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+  </EntityType>
+  <EntityType Name="bvc_Vendor">
+    <Key>
+      <PropertyRef Name="bvin" />
+    </Key>
+    <Property Type="String" Name="bvin" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="DisplayName" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="EmailAddress" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Address" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="DropShipEmailTemplateId" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="LastUpdated" Nullable="false" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ecommrc_News">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="DateTime" Name="TimeStampUtc" Nullable="false" />
+    <Property Type="String" Name="Message" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ecommrc_OrderTransactions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Guid" Name="Id" Nullable="false" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+    <Property Type="String" Name="OrderId" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="OrderNumber" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="Timestamp" Nullable="false" />
+    <Property Type="Int32" Name="Action" Nullable="false" />
+    <Property Type="Decimal" Name="Amount" Nullable="false" Precision="18" Scale="10" />
+    <Property Type="String" Name="CreditCard" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="Success" Nullable="false" />
+    <Property Type="Boolean" Name="Voided" Nullable="false" />
+    <Property Type="String" Name="RefNum1" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="RefNum2" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="LinkedToTransaction" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Messages" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="CheckNumber" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PurchaseOrderNumber" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="GiftCardNumber" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="CompanyAccountNumber" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ecommrc_Stores" Relationship="EfModels.FK_ecommrc_OrderTransactions_ecommrc_Stores" FromRole="ecommrc_OrderTransactions" ToRole="ecommrc_Stores" />
+  </EntityType>
+  <EntityType Name="ecommrc_ShippingZones">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Areas" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ecommrc_Stores" Relationship="EfModels.FK_ecommrc_ShippingZones_ecommrc_Stores" FromRole="ecommrc_ShippingZones" ToRole="ecommrc_Stores" />
+  </EntityType>
+  <EntityType Name="ecommrc_Stores">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="StoreName" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="Status" Nullable="false" />
+    <Property Type="DateTime" Name="DateCreated" Nullable="false" />
+    <Property Type="Int64" Name="SubscriptionId" Nullable="false" />
+    <Property Type="Int32" Name="PlanId" Nullable="false" />
+    <Property Type="String" Name="CustomUrl" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="Decimal" Name="CurrentPlanRate" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="CurrentPlanPercent" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Int32" Name="CurrentPlanDayOfMonth" Nullable="false" />
+    <Property Type="DateTime" Name="DateCancelled" />
+    <NavigationProperty Name="ecommrc_OrderTransactions" Relationship="EfModels.FK_ecommrc_OrderTransactions_ecommrc_Stores" FromRole="ecommrc_Stores" ToRole="ecommrc_OrderTransactions" />
+    <NavigationProperty Name="ecommrc_ShippingZones" Relationship="EfModels.FK_ecommrc_ShippingZones_ecommrc_Stores" FromRole="ecommrc_Stores" ToRole="ecommrc_ShippingZones" />
+    <NavigationProperty Name="ecommrc_Taxes" Relationship="EfModels.FK_ecommrc_Taxes_ecommrc_Stores" FromRole="ecommrc_Stores" ToRole="ecommrc_Taxes" />
+    <NavigationProperty Name="ecommrc_TaxSchedules" Relationship="EfModels.FK_ecommrc_TaxSchedules_ecommrc_Stores" FromRole="ecommrc_Stores" ToRole="ecommrc_TaxSchedules" />
+    <NavigationProperty Name="ecommrc_StoresXUsers" Relationship="EfModels.FK_ecommrc_StoresXUsers_ecommrc_Stores" FromRole="ecommrc_Stores" ToRole="ecommrc_StoresXUsers" />
+    <NavigationProperty Name="ecommrc_StoreSettings" Relationship="EfModels.FK_ecommrc_StoreSettings_ecommrc_Stores" FromRole="ecommrc_Stores" ToRole="ecommrc_StoreSettings" />
+  </EntityType>
+  <EntityType Name="ecommrc_Taxes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+    <Property Type="String" Name="CountryName" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="RegionName" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PostalCode" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="Int64" Name="TaxScheduleId" Nullable="false" />
+    <Property Type="Decimal" Name="Rate" Nullable="false" Precision="18" Scale="10" />
+    <Property Type="Boolean" Name="ApplyToShipping" Nullable="false" />
+    <NavigationProperty Name="ecommrc_Stores" Relationship="EfModels.FK_ecommrc_Taxes_ecommrc_Stores" FromRole="ecommrc_Taxes" ToRole="ecommrc_Stores" />
+    <NavigationProperty Name="ecommrc_TaxSchedules" Relationship="EfModels.FK_ecommrc_Taxes_ecommrc_TaxSchedules" FromRole="ecommrc_Taxes" ToRole="ecommrc_TaxSchedules" />
+  </EntityType>
+  <EntityType Name="ecommrc_TaxSchedules">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ecommrc_Stores" Relationship="EfModels.FK_ecommrc_TaxSchedules_ecommrc_Stores" FromRole="ecommrc_TaxSchedules" ToRole="ecommrc_Stores" />
+    <NavigationProperty Name="ecommrc_Taxes" Relationship="EfModels.FK_ecommrc_Taxes_ecommrc_TaxSchedules" FromRole="ecommrc_TaxSchedules" ToRole="ecommrc_Taxes" />
+  </EntityType>
+  <EntityType Name="ecommrc_UserAccounts">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="email" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="password" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="DateCreated" Nullable="false" />
+    <Property Type="Int32" Name="statuscode" Nullable="false" />
+    <Property Type="String" Name="Salt" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ecommrc_AuthTokens" Relationship="EfModels.FK_ecommrc_AuthTokens_ecommrc_UserAccounts" FromRole="ecommrc_UserAccounts" ToRole="ecommrc_AuthTokens" />
+    <NavigationProperty Name="ecommrc_StoresXUsers" Relationship="EfModels.FK_ecommrc_StoresXUsers_ecommrc_UserAccounts" FromRole="ecommrc_UserAccounts" ToRole="ecommrc_StoresXUsers" />
+    <Property Type="String" Name="ResetKey" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="PageVersion">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="PageId" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="AdminName" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int64" Name="AvailableScheduleId" Nullable="false" />
+    <Property Type="DateTime" Name="AvailableStartDateUtc" Nullable="false" />
+    <Property Type="DateTime" Name="AvailableEndDateUtc" Nullable="false" />
+    <Property Type="String" Name="SerializedContent" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="PublishedStatus" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_bv_SearchObjectWords_bv_SearchLexicon">
+    <End Type="EfModels.bv_SearchLexicon" Role="bv_SearchLexicon" Multiplicity="1" />
+    <End Type="EfModels.bv_SearchObjectWords" Role="bv_SearchObjectWords" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="bv_SearchLexicon">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="bv_SearchObjectWords">
+        <PropertyRef Name="WordId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_bv_SearchObjectWords_bv_SearchObjects">
+    <End Type="EfModels.bv_SearchObjects" Role="bv_SearchObjects" Multiplicity="1" />
+    <End Type="EfModels.bv_SearchObjectWords" Role="bv_SearchObjectWords" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="bv_SearchObjects">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="bv_SearchObjectWords">
+        <PropertyRef Name="SearchObjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductXCategory_bvc_Category">
+    <End Type="EfModels.bvc_Category" Role="bvc_Category" Multiplicity="1" />
+    <End Type="EfModels.bvc_ProductXCategory" Role="bvc_ProductXCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="bvc_Category">
+        <PropertyRef Name="bvin" />
+      </Principal>
+      <Dependent Role="bvc_ProductXCategory">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_bvc_ContentBlock_bvc_ContentColumn">
+    <End Type="EfModels.bvc_ContentColumn" Role="bvc_ContentColumn" Multiplicity="1" />
+    <End Type="EfModels.bvc_ContentBlock" Role="bvc_ContentBlock" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="bvc_ContentColumn">
+        <PropertyRef Name="bvin" />
+      </Principal>
+      <Dependent Role="bvc_ContentBlock">
+        <PropertyRef Name="ColumnID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_bvc_PolicyBlock_bvc_Policy">
+    <End Type="EfModels.bvc_Policy" Role="bvc_Policy" Multiplicity="1" />
+    <End Type="EfModels.bvc_PolicyBlock" Role="bvc_PolicyBlock" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="bvc_Policy">
+        <PropertyRef Name="bvin" />
+      </Principal>
+      <Dependent Role="bvc_PolicyBlock">
+        <PropertyRef Name="PolicyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_bvc_ProductInventory_bvc_Product">
+    <End Type="EfModels.bvc_Product" Role="bvc_Product" Multiplicity="1" />
+    <End Type="EfModels.bvc_ProductInventory" Role="bvc_ProductInventory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="bvc_Product">
+        <PropertyRef Name="bvin" />
+      </Principal>
+      <Dependent Role="bvc_ProductInventory">
+        <PropertyRef Name="ProductBvin" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductXCategory_bvc_Product">
+    <End Type="EfModels.bvc_Product" Role="bvc_Product" Multiplicity="1" />
+    <End Type="EfModels.bvc_ProductXCategory" Role="bvc_ProductXCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="bvc_Product">
+        <PropertyRef Name="bvin" />
+      </Principal>
+      <Dependent Role="bvc_ProductXCategory">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_bvc_ProductOptionsItems_bvc_ProductOptions">
+    <End Type="EfModels.bvc_ProductOptions" Role="bvc_ProductOptions" Multiplicity="1" />
+    <End Type="EfModels.bvc_ProductOptionsItems" Role="bvc_ProductOptionsItems" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="bvc_ProductOptions">
+        <PropertyRef Name="bvin" />
+      </Principal>
+      <Dependent Role="bvc_ProductOptionsItems">
+        <PropertyRef Name="OptionBvin" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_bvc_ProductPropertyChoice_bvc_ProductProperty">
+    <End Type="EfModels.bvc_ProductProperty" Role="bvc_ProductProperty" Multiplicity="1" />
+    <End Type="EfModels.bvc_ProductPropertyChoice" Role="bvc_ProductPropertyChoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="bvc_ProductProperty">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="bvc_ProductPropertyChoice">
+        <PropertyRef Name="PropertyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_bvc_ProductXOption_bvc_ProductXOption">
+    <End Type="EfModels.bvc_ProductXOption" Role="bvc_ProductXOption" Multiplicity="1" />
+    <End Type="EfModels.bvc_ProductXOption" Role="bvc_ProductXOption1" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="bvc_ProductXOption">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="bvc_ProductXOption1">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_bvc_RMAItem_bvc_RMA">
+    <End Type="EfModels.bvc_RMA" Role="bvc_RMA" Multiplicity="1" />
+    <End Type="EfModels.bvc_RMAItem" Role="bvc_RMAItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="bvc_RMA">
+        <PropertyRef Name="bvin" />
+      </Principal>
+      <Dependent Role="bvc_RMAItem">
+        <PropertyRef Name="RMABvin" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ecommrc_OrderTransactions_ecommrc_Stores">
+    <End Type="EfModels.ecommrc_Stores" Role="ecommrc_Stores" Multiplicity="1" />
+    <End Type="EfModels.ecommrc_OrderTransactions" Role="ecommrc_OrderTransactions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ecommrc_Stores">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ecommrc_OrderTransactions">
+        <PropertyRef Name="StoreId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ecommrc_ShippingZones_ecommrc_Stores">
+    <End Type="EfModels.ecommrc_Stores" Role="ecommrc_Stores" Multiplicity="1" />
+    <End Type="EfModels.ecommrc_ShippingZones" Role="ecommrc_ShippingZones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ecommrc_Stores">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ecommrc_ShippingZones">
+        <PropertyRef Name="StoreId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ecommrc_Taxes_ecommrc_Stores">
+    <End Type="EfModels.ecommrc_Stores" Role="ecommrc_Stores" Multiplicity="1" />
+    <End Type="EfModels.ecommrc_Taxes" Role="ecommrc_Taxes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ecommrc_Stores">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ecommrc_Taxes">
+        <PropertyRef Name="StoreId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ecommrc_TaxSchedules_ecommrc_Stores">
+    <End Type="EfModels.ecommrc_Stores" Role="ecommrc_Stores" Multiplicity="1" />
+    <End Type="EfModels.ecommrc_TaxSchedules" Role="ecommrc_TaxSchedules" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ecommrc_Stores">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ecommrc_TaxSchedules">
+        <PropertyRef Name="StoreId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ecommrc_Taxes_ecommrc_TaxSchedules">
+    <End Type="EfModels.ecommrc_TaxSchedules" Role="ecommrc_TaxSchedules" Multiplicity="1" />
+    <End Type="EfModels.ecommrc_Taxes" Role="ecommrc_Taxes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ecommrc_TaxSchedules">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ecommrc_Taxes">
+        <PropertyRef Name="TaxScheduleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="bvc_ProductRelationship">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="ProductId" Nullable="false" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="RelatedProductId" Nullable="false" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="SortOrder" Nullable="false" />
+    <Property Type="String" Name="MarketingDescription" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+    <Property Type="Boolean" Name="IsSubstitute" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ecommrc_StoreDomains">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+    <Property Type="String" Name="DomainName" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ToDoItem">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="AccountId" Nullable="false" />
+    <Property Type="Boolean" Name="IsComplete" Nullable="false" />
+    <Property Type="Int32" Name="SortOrder" Nullable="false" />
+    <Property Type="String" Name="Title" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Details" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ConversationAuthor">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+    <Property Type="String" Name="DisplayName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Bio" Nullable="false" MaxLength="1024" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="AuthenticationType" Nullable="false" />
+    <Property Type="String" Name="AuthenticationKey" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="AccessLevel" Nullable="false" />
+    <Property Type="Binary" Name="Avatar" MaxLength="Max" FixedLength="false" />
+    <Property Type="Boolean" Name="Verified" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ConversationGroup">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+    <Property Type="String" Name="Title" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Slug" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="SortOrder" Nullable="false" />
+    <NavigationProperty Name="Conversations" Relationship="EfModels.FK_Conversations_ConversationGroups" FromRole="ConversationGroup" ToRole="Conversation" />
+  </EntityType>
+  <EntityType Name="ConversationMessage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int64" Name="Id" Nullable="false" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+    <Property Type="Int64" Name="ConversationId" Nullable="false" />
+    <Property Type="Int64" Name="AuthorId" Nullable="false" />
+    <Property Type="String" Name="Message" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Conversation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+    <Property Type="Int64" Name="GroupId" Nullable="false" />
+    <Property Type="String" Name="Topic" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Description" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="DateCreatedUtc" Nullable="false" />
+    <Property Type="Int64" Name="AuthorId" Nullable="false" />
+    <NavigationProperty Name="ConversationGroup" Relationship="EfModels.FK_Conversations_ConversationGroups" FromRole="Conversation" ToRole="ConversationGroup" />
+  </EntityType>
+  <Association Name="FK_Conversations_ConversationGroups">
+    <End Type="EfModels.ConversationGroup" Role="ConversationGroup" Multiplicity="1" />
+    <End Type="EfModels.Conversation" Role="Conversation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ConversationGroup">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Conversation">
+        <PropertyRef Name="GroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="bvc_MailingList">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+    <Property Type="Boolean" Name="Private" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="LastUpdatedUtc" Nullable="false" />
+    <NavigationProperty Name="bvc_MailingListMember" Relationship="EfModels.FK_bvc_MailingListMember_bvc_MailingList" FromRole="bvc_MailingList" ToRole="bvc_MailingListMember" />
+  </EntityType>
+  <EntityType Name="bvc_MailingListMember">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+    <Property Type="Int64" Name="ListID" Nullable="false" />
+    <Property Type="String" Name="EmailAddress" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="LastUpdatedUtc" Nullable="false" />
+    <NavigationProperty Name="bvc_MailingList" Relationship="EfModels.FK_bvc_MailingListMember_bvc_MailingList" FromRole="bvc_MailingListMember" ToRole="bvc_MailingList" />
+  </EntityType>
+  <Association Name="FK_bvc_MailingListMember_bvc_MailingList">
+    <End Type="EfModels.bvc_MailingList" Role="bvc_MailingList" Multiplicity="1" />
+    <End Type="EfModels.bvc_MailingListMember" Role="bvc_MailingListMember" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="bvc_MailingList">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="bvc_MailingListMember">
+        <PropertyRef Name="ListID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ApiKey">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+    <Property Type="String" Name="ApiKey1" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ecommrc_AuthTokens">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Guid" Name="TokenId" Nullable="false" />
+    <Property Type="Int64" Name="UserId" Nullable="false" />
+    <Property Type="DateTime" Name="Expires" Nullable="false" />
+    <NavigationProperty Name="ecommrc_UserAccounts" Relationship="EfModels.FK_ecommrc_AuthTokens_ecommrc_UserAccounts" FromRole="ecommrc_AuthTokens" ToRole="ecommrc_UserAccounts" />
+  </EntityType>
+  <Association Name="FK_ecommrc_AuthTokens_ecommrc_UserAccounts">
+    <End Type="EfModels.ecommrc_UserAccounts" Role="ecommrc_UserAccounts" Multiplicity="1" />
+    <End Type="EfModels.ecommrc_AuthTokens" Role="ecommrc_AuthTokens" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ecommrc_UserAccounts">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ecommrc_AuthTokens">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ecommrc_StoresXUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+    <Property Type="Int64" Name="UserId" Nullable="false" />
+    <Property Type="Int32" Name="AccessMode" Nullable="false" />
+    <NavigationProperty Name="ecommrc_Stores" Relationship="EfModels.FK_ecommrc_StoresXUsers_ecommrc_Stores" FromRole="ecommrc_StoresXUsers" ToRole="ecommrc_Stores" />
+    <NavigationProperty Name="ecommrc_UserAccounts" Relationship="EfModels.FK_ecommrc_StoresXUsers_ecommrc_UserAccounts" FromRole="ecommrc_StoresXUsers" ToRole="ecommrc_UserAccounts" />
+  </EntityType>
+  <Association Name="FK_ecommrc_StoresXUsers_ecommrc_Stores">
+    <End Type="EfModels.ecommrc_Stores" Role="ecommrc_Stores" Multiplicity="1" />
+    <End Type="EfModels.ecommrc_StoresXUsers" Role="ecommrc_StoresXUsers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ecommrc_Stores">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ecommrc_StoresXUsers">
+        <PropertyRef Name="StoreId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ecommrc_StoresXUsers_ecommrc_UserAccounts">
+    <End Type="EfModels.ecommrc_UserAccounts" Role="ecommrc_UserAccounts" Multiplicity="1" />
+    <End Type="EfModels.ecommrc_StoresXUsers" Role="ecommrc_StoresXUsers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ecommrc_UserAccounts">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ecommrc_StoresXUsers">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ecommrc_StoreSettings">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+    <Property Type="String" Name="SettingName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="SettingValue" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ecommrc_Stores" Relationship="EfModels.FK_ecommrc_StoreSettings_ecommrc_Stores" FromRole="ecommrc_StoreSettings" ToRole="ecommrc_Stores" />
+  </EntityType>
+  <Association Name="FK_ecommrc_StoreSettings_ecommrc_Stores">
+    <End Type="EfModels.ecommrc_Stores" Role="ecommrc_Stores" Multiplicity="1" />
+    <End Type="EfModels.ecommrc_StoreSettings" Role="ecommrc_StoreSettings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ecommrc_Stores">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ecommrc_StoreSettings">
+        <PropertyRef Name="StoreId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="ReportingOrderStatusSummary_Result">
+    <Property Type="String" Name="StatusCode" Nullable="false" MaxLength="36" />
+    <Property Type="Int32" Name="OrderCount" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="bvc_UserXContact">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="ContactId" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="UserId" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+    <NavigationProperty Name="bvc_User" Relationship="EfModels.FK_bvc_UserXAffiliate_bvc_User" FromRole="bvc_UserXContact" ToRole="bvc_User" />
+  </EntityType>
+  <Association Name="FK_bvc_UserXAffiliate_bvc_User">
+    <End Type="EfModels.bvc_User" Role="bvc_User" Multiplicity="1" />
+    <End Type="EfModels.bvc_UserXContact" Role="bvc_UserXContact" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="bvc_User">
+        <PropertyRef Name="bvin" />
+      </Principal>
+      <Dependent Role="bvc_UserXContact">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="bvc_OrderCoupon">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="DateTime" Name="LastUpdatedUtc" Nullable="false" />
+    <Property Type="String" Name="CouponCode" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="OrderBvin" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+    <Property Type="String" Name="UserId" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="Boolean" Name="IsUsed" Nullable="false" />
+    <NavigationProperty Name="bvc_Order" Relationship="EfModels.FK_bvc_OrderCoupon_bvc_Order" FromRole="bvc_OrderCoupon" ToRole="bvc_Order" />
+  </EntityType>
+  <EntityType Name="bvc_OrderNote">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="OrderId" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="AuditDate" Nullable="false" />
+    <Property Type="String" Name="Note" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="IsPublic" Nullable="false" />
+    <Property Type="DateTime" Name="LastUpdatedUtc" Nullable="false" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+    <NavigationProperty Name="bvc_Order" Relationship="EfModels.FK_bvc_OrderNote_bvc_Order" FromRole="bvc_OrderNote" ToRole="bvc_Order" />
+  </EntityType>
+  <EntityType Name="bvc_OrderPackage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Description" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Decimal" Name="Width" Nullable="false" Precision="18" Scale="4" />
+    <Property Type="Decimal" Name="Height" Nullable="false" Precision="18" Scale="4" />
+    <Property Type="Decimal" Name="Length" Nullable="false" Precision="18" Scale="4" />
+    <Property Type="Int32" Name="SizeUnits" Nullable="false" />
+    <Property Type="Decimal" Name="Weight" Nullable="false" Precision="18" Scale="4" />
+    <Property Type="Int32" Name="WeightUnits" Nullable="false" />
+    <Property Type="String" Name="OrderId" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ShippingProviderId" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ShippingProviderServiceCode" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="HasShipped" Nullable="false" />
+    <Property Type="String" Name="TrackingNumber" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="ShipDateUtc" Nullable="false" />
+    <Property Type="Decimal" Name="EstimatedShippingCost" Nullable="false" Precision="18" Scale="10" />
+    <Property Type="String" Name="Items" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="LastUpdatedUtc" Nullable="false" />
+    <Property Type="String" Name="CustomProperties" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+  </EntityType>
+  <EntityType Name="bvc_HtmlTemplates">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+    <Property Type="DateTime" Name="LastUpdatedUtc" Nullable="false" />
+    <Property Type="String" Name="DisplayName" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FromEmail" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Subject" Nullable="false" MaxLength="1024" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Body" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="RepeatingSection" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="TemplateType" Nullable="false" />
+  </EntityType>
+  <EntityType Name="bvc_Affiliate">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="ReferralID" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="Enabled" Nullable="false" />
+    <Property Type="String" Name="DisplayName" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="Decimal" Name="CommissionAmount" Nullable="false" Precision="18" Scale="10" />
+    <Property Type="Int32" Name="CommissionType" Nullable="false" />
+    <Property Type="Int32" Name="ReferralDays" Nullable="false" />
+    <Property Type="String" Name="TaxID" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="DriversLicenseNumber" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="WebSiteURL" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="StyleSheet" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Notes" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="LastUpdated" Nullable="false" />
+    <Property Type="String" Name="Address" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+  </EntityType>
+  <EntityType Name="bvc_AffiliateReferral">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="AffiliateId" Nullable="false" />
+    <Property Type="String" Name="referrerurl" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="TimeOfReferralUtc" Nullable="false" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+  </EntityType>
+  <EntityType Name="bvc_LineItem">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="DateTime" Name="LastUpdated" Nullable="false" />
+    <Property Type="String" Name="ProductId" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="VariantId" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="Quantity" Nullable="false" />
+    <Property Type="String" Name="OrderBvin" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="Decimal" Name="BasePrice" Nullable="false" Precision="18" Scale="10" />
+    <Property Type="String" Name="DiscountDetails" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Decimal" Name="AdjustedPrice" Nullable="false" Precision="18" Scale="10" />
+    <Property Type="Decimal" Name="ShippingPortion" Nullable="false" Precision="18" Scale="10" />
+    <Property Type="Decimal" Name="TaxPortion" Nullable="false" Precision="18" Scale="10" />
+    <Property Type="Decimal" Name="LineTotal" Nullable="false" Precision="18" Scale="10" />
+    <Property Type="String" Name="CustomProperties" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="QuantityReturned" Nullable="false" />
+    <Property Type="Int32" Name="QuantityShipped" Nullable="false" />
+    <Property Type="String" Name="ProductName" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ProductShortDescription" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ProductSku" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="StatusCode" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="StatusName" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="SelectionData" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+    <Property Type="Int64" Name="ShippingScheduleId" Nullable="false" />
+    <Property Type="Int64" Name="TaxScheduleId" Nullable="false" />
+    <Property Type="Decimal" Name="ProductShippingWeight" Nullable="false" Precision="10" Scale="4" />
+    <Property Type="Decimal" Name="ProductShippingLength" Nullable="false" Precision="10" Scale="4" />
+    <Property Type="Decimal" Name="ProductShippingWidth" Nullable="false" Precision="10" Scale="4" />
+    <Property Type="Decimal" Name="ProductShippingHeight" Nullable="false" Precision="10" Scale="4" />
+    <Property Type="String" Name="ShipFromAddress" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="ShipFromMode" Nullable="false" />
+    <Property Type="String" Name="ShipFromNotificationId" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="ShipSeparately" Nullable="false" />
+    <Property Type="Decimal" Name="ExtraShipCharge" Nullable="false" Precision="10" Scale="4" />
+    <NavigationProperty Name="bvc_Order" Relationship="EfModels.FK_bvc_LineItem_bvc_LineItem" FromRole="bvc_LineItem" ToRole="bvc_Order" />
+  </EntityType>
+  <EntityType Name="bvc_Promotions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+    <Property Type="Int32" Name="Mode" Nullable="false" />
+    <Property Type="DateTime" Name="LastUpdatedUtc" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="CustomerDescription" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="StartDateUtc" Nullable="false" />
+    <Property Type="DateTime" Name="EndDateUtc" Nullable="false" />
+    <Property Type="Boolean" Name="IsEnabled" Nullable="false" />
+    <Property Type="String" Name="QualificationsXml" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ActionsXml" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="bvc_Order">
+    <Key>
+      <PropertyRef Name="bvin" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="bvin" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="AffiliateId" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="BillingAddress" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="CustomProperties" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Decimal" Name="FraudScore" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="GrandTotal" Nullable="false" Precision="18" Scale="10" />
+    <Property Type="Decimal" Name="HandlingTotal" Nullable="false" Precision="18" Scale="10" />
+    <Property Type="String" Name="Instructions" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="IsPlaced" Nullable="false" />
+    <Property Type="DateTime" Name="LastUpdated" Nullable="false" />
+    <Property Type="Decimal" Name="OrderDiscounts" Nullable="false" Precision="18" Scale="10" />
+    <Property Type="String" Name="OrderDiscountDetails" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="OrderNumber" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="PaymentStatus" Nullable="false" />
+    <Property Type="String" Name="ShippingAddress" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Decimal" Name="ShippingDiscounts" Nullable="false" Precision="18" Scale="10" />
+    <Property Type="String" Name="ShippingMethodId" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ShippingMethodDisplayName" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ShippingProviderId" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ShippingProviderServiceCode" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="ShippingStatus" Nullable="false" />
+    <Property Type="Decimal" Name="ShippingTotal" Nullable="false" Precision="18" Scale="10" />
+    <Property Type="Decimal" Name="SubTotal" Nullable="false" Precision="18" Scale="10" />
+    <Property Type="Decimal" Name="TaxTotal" Nullable="false" Precision="18" Scale="10" />
+    <Property Type="Decimal" Name="TaxTotal2" Nullable="false" Precision="18" Scale="10" />
+    <Property Type="DateTime" Name="TimeOfOrder" Nullable="false" />
+    <Property Type="String" Name="UserEmail" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="UserId" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="StatusCode" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="StatusName" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ThirdPartyOrderId" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+    <NavigationProperty Name="bvc_LineItem" Relationship="EfModels.FK_bvc_LineItem_bvc_LineItem" FromRole="bvc_Order" ToRole="bvc_LineItem" />
+    <NavigationProperty Name="bvc_OrderCoupon" Relationship="EfModels.FK_bvc_OrderCoupon_bvc_Order" FromRole="bvc_Order" ToRole="bvc_OrderCoupon" />
+    <NavigationProperty Name="bvc_OrderNote" Relationship="EfModels.FK_bvc_OrderNote_bvc_Order" FromRole="bvc_Order" ToRole="bvc_OrderNote" />
+    <Property Type="String" Name="ShippingDiscountDetails" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_bvc_LineItem_bvc_LineItem">
+    <End Type="EfModels.bvc_Order" Role="bvc_Order" Multiplicity="1" />
+    <End Type="EfModels.bvc_LineItem" Role="bvc_LineItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="bvc_Order">
+        <PropertyRef Name="bvin" />
+      </Principal>
+      <Dependent Role="bvc_LineItem">
+        <PropertyRef Name="OrderBvin" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_bvc_OrderCoupon_bvc_Order">
+    <End Type="EfModels.bvc_Order" Role="bvc_Order" Multiplicity="1" />
+    <End Type="EfModels.bvc_OrderCoupon" Role="bvc_OrderCoupon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="bvc_Order">
+        <PropertyRef Name="bvin" />
+      </Principal>
+      <Dependent Role="bvc_OrderCoupon">
+        <PropertyRef Name="OrderBvin" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_bvc_OrderNote_bvc_Order">
+    <End Type="EfModels.bvc_Order" Role="bvc_Order" Multiplicity="1" />
+    <End Type="EfModels.bvc_OrderNote" Role="bvc_OrderNote" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="bvc_Order">
+        <PropertyRef Name="bvin" />
+      </Principal>
+      <Dependent Role="bvc_OrderNote">
+        <PropertyRef Name="OrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="QueuedTask">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+    <Property Type="String" Name="FriendlyName" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="TaskProcessorName" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="Guid" Name="TaskProcessorId" Nullable="false" />
+    <Property Type="String" Name="Payload" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="Status" Nullable="false" />
+    <Property Type="String" Name="StatusNotes" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="StartAtUtc" Nullable="false" />
+  </EntityType>
+  <EntityType Name="bvc_ProductFileXProduct">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="ProductFileId" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ProductId" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="AvailableMinutes" Nullable="false" />
+    <Property Type="Int32" Name="MaxDownloads" Nullable="false" />
+    <Property Type="DateTime" Name="LastUpdated" Nullable="false" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+    <NavigationProperty Name="bvc_ProductFile" Relationship="EfModels.FK_bvc_ProductFileXProduct_bvc_ProductFile" FromRole="bvc_ProductFileXProduct" ToRole="bvc_ProductFile" />
+  </EntityType>
+  <Association Name="FK_bvc_ProductFileXProduct_bvc_ProductFile">
+    <End Type="EfModels.bvc_ProductFile" Role="bvc_ProductFile" Multiplicity="1" />
+    <End Type="EfModels.bvc_ProductFileXProduct" Role="bvc_ProductFileXProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="bvc_ProductFile">
+        <PropertyRef Name="bvin" />
+      </Principal>
+      <Dependent Role="bvc_ProductFileXProduct">
+        <PropertyRef Name="ProductFileId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="bvc_ProductTypeXProductProperty">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="ProductTypeBvin" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="Int64" Name="PropertyId" Nullable="false" />
+    <Property Type="Int32" Name="SortOrder" Nullable="false" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+    <NavigationProperty Name="bvc_ProductType" Relationship="EfModels.FK_ProductTypeProperties_ProductType" FromRole="bvc_ProductTypeXProductProperty" ToRole="bvc_ProductType" />
+  </EntityType>
+  <Association Name="FK_ProductTypeProperties_ProductType">
+    <End Type="EfModels.bvc_ProductType" Role="bvc_ProductType" Multiplicity="1" />
+    <End Type="EfModels.bvc_ProductTypeXProductProperty" Role="bvc_ProductTypeXProductProperty" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="bvc_ProductType">
+        <PropertyRef Name="bvin" />
+      </Principal>
+      <Dependent Role="bvc_ProductTypeXProductProperty">
+        <PropertyRef Name="ProductTypeBvin" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="bvc_ProductPropertyValue">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="ProductBvin" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+    <Property Type="Int64" Name="PropertyId" Nullable="false" />
+    <Property Type="String" Name="PropertyValue" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int64" Name="StoreId" Nullable="false" />
+    <NavigationProperty Name="bvc_Product" Relationship="EfModels.FK_bvc_ProductPropertyValue_bvc_Product" FromRole="bvc_ProductPropertyValue" ToRole="bvc_Product" />
+  </EntityType>
+  <Association Name="FK_bvc_ProductPropertyValue_bvc_Product">
+    <End Type="EfModels.bvc_Product" Role="bvc_Product" Multiplicity="1" />
+    <End Type="EfModels.bvc_ProductPropertyValue" Role="bvc_ProductPropertyValue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="bvc_Product">
+        <PropertyRef Name="bvin" />
+      </Principal>
+      <Dependent Role="bvc_ProductPropertyValue">
+        <PropertyRef Name="ProductBvin" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

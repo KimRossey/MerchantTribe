@@ -1,0 +1,2 @@
+﻿<%@ Page Language="C#" AutoEventWireup="True" Inherits="BVCommerce.BVAdmin_Catalog_ProductsEdit_TabsDelete" Codebehind="ProductsEdit_TabsDelete.aspx.cs" %>
+<asp:Literal ID="litOutput" runat="server"></asp:Literal>

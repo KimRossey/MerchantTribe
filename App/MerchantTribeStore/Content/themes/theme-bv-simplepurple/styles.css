@@ -1,0 +1,67 @@
+
+{{commonstyles}}
+
+/* 
+   Main Colors
+
+   #dca9f9 - Light for Background
+   #e3bdef - Super Light Blue for Black Backgrounds
+   #f9ecff - Ultra Light for Cart Column Backgrounds
+   #540c8c - Dark ColorHeaders and Title Bars
+   #a13d9d - Accents
+
+ */
+
+
+/* Body */
+body { background: #dca9f9;}
+
+
+/* Main Color Items */
+#header #logo-area a.logo {color:#540c8c;}
+#links-area a {color:#540c8c;}  
+#header-menu {background-color:#540c8c;}
+#cart-link a {color:#540c8c;}
+#search-form {background-color:#540c8c;}
+#footer {background-color:#540c8c;}
+h1 {color:#540c8c;}
+.Header, .rowheader, th { background: #540c8c;}
+
+
+
+#headersearchlink {text-decoration:none;color:#fff;}
+
+
+/* Homepage */
+#welcome-text, #featured-products {margin:0 9px;}
+#welcome-text {padding:0 0 18px 0;width:677px;}
+
+
+/* Checkout */
+.section-cart {border:solid 1px #a13d9d ;background-color:#f9ecff;}
+
+
+/* Column Blocks */
+.decoratedblock {background: #e3bdef;}
+
+
+/* Product Controls Box */
+#productcontrols { border-top: 1px solid #a13d9d; border-bottom: 1px solid #a13d9d; background: #e3bdef;}
+
+
+/* Tabs */
+ul.tabnavigation li {background-color:#e3bdef;}
+ul.tabnavigation li.selected {background-color:#540c8c;}
+ul.tabnavigation li a {color:#540c8c;}
+.tabs {border-top:solid 5px #540c8c;}
+
+
+/* Cart */
+#cartcontainer tr td {border-bottom:solid 1px #a13d9d;}
+td.productquantitycolumn { background: #e3bdef;}
+td.producttotalcolumn, td.productpricecolumn {background: #f9ecff; }
+
+{{commonupdates}}
+
+
+

@@ -1,0 +1,15 @@
+﻿{{commonstyles}}
+
+/* Homepage */
+#welcome-text, #featured-products {margin:0 9px;}
+#welcome-text {padding:0 0 18px 0;width:677px;}
+
+/* Column Blocks */
+.decoratedblock { background: #f0f0f0;}
+
+#cartcontainer tr td {border-bottom:solid 1px #2D2D73;}
+
+td.productquantitycolumn { background: #e0e0e0;}
+td.producttotalcolumn, td.productpricecolumn {background: #f0f0f0; }
+
+{{commonupdates}}

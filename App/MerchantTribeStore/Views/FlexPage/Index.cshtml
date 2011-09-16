@@ -1,0 +1,16 @@
+﻿@section HeadContent {    
+    @Html.Raw((string)ViewData["EditCss"])
+    @Html.Raw((string)ViewData["EditJs"])
+}
+
+@section OutsideWrapperContent {    
+    @Html.Raw((string)ViewData["EditorPanel"])
+}
+
+@section PreBodyCloseContent {
+    @Html.Raw((string)ViewData["EditPopup"])    
+}
+
+@Html.Raw((string)ViewData["ContentParts"])
+
+

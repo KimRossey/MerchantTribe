@@ -1,0 +1,748 @@
+<BVCommerceCatalogData>
+  <Categories>
+    <Category>
+      <Bvin>ccbc5ed8-708b-4cd8-827a-4bd1fc34fed5</Bvin>
+      <BannerImageUrl />
+      <CustomerChangeableSortOrder>true</CustomerChangeableSortOrder>
+      <CustomPageLayout>0</CustomPageLayout>
+      <Description />
+      <DisplaySortOrder>1</DisplaySortOrder>
+      <Hidden>false</Hidden>
+      <ImageUrl />
+      <Keywords />
+      <MetaDescription>This is a sample category with sample products.</MetaDescription>
+      <MetaKeywords>Sample</MetaKeywords>
+      <MetaTitle>Sample Category of Products</MetaTitle>
+      <Name>Sample Products</Name>
+      <ParentId>0</ParentId>
+      <RewriteUrl>sample-products</RewriteUrl>
+      <ShowTitle>true</ShowTitle>
+      <SortOrder>6</SortOrder>
+      <SourceType>0</SourceType>
+      <TemplateName>BV Grid</TemplateName>
+    </Category>
+    <Category>
+      <Bvin>3f2fd2f7-65e6-4b8e-9aae-c70ff36ababf</Bvin>
+      <BannerImageUrl />
+      <CustomerChangeableSortOrder>true</CustomerChangeableSortOrder>
+      <CustomPageLayout>0</CustomPageLayout>
+      <Description />
+      <DisplaySortOrder>1</DisplaySortOrder>
+      <Hidden>false</Hidden>
+      <ImageUrl />
+      <Keywords />
+      <MetaDescription />
+      <MetaKeywords />
+      <MetaTitle>More Sample Products</MetaTitle>
+      <Name>More Sample</Name>
+      <ParentId>0</ParentId>
+      <RewriteUrl>more-sample</RewriteUrl>
+      <ShowTitle>true</ShowTitle>
+      <SortOrder>7</SortOrder>
+      <SourceType>0</SourceType>
+      <TemplateName>BV Grid</TemplateName>
+    </Category>
+    <Category>
+      <Bvin>db102c66-aabe-4894-acd1-cda5c6673689</Bvin>
+      <BannerImageUrl />
+      <CustomerChangeableSortOrder>true</CustomerChangeableSortOrder>
+      <CustomPageLayout>0</CustomPageLayout>
+      <Description />
+      <DisplaySortOrder>1</DisplaySortOrder>
+      <Hidden>false</Hidden>
+      <ImageUrl />
+      <Keywords />
+      <MetaDescription />
+      <MetaKeywords />
+      <MetaTitle />
+      <Name>Demo Category</Name>
+      <ParentId>0</ParentId>
+      <RewriteUrl>demo-category</RewriteUrl>
+      <ShowTitle>true</ShowTitle>
+      <SortOrder>8</SortOrder>
+      <SourceType>0</SourceType>
+      <TemplateName>BV Grid</TemplateName>
+    </Category>
+    <Category>
+      <Bvin>32efcea4-b225-4066-8a31-e24bab103310</Bvin>
+      <BannerImageUrl />
+      <CustomerChangeableSortOrder>true</CustomerChangeableSortOrder>
+      <CustomPageLayout>0</CustomPageLayout>
+      <Description>&lt;h1&gt;About Us&lt;/h1&gt;
+&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing 
+elit, sed do eiusmod tempor incididunt ut labore et 
+dolore magna aliqua. Ut enim ad minim veniam, quis 
+nostrud exercitation ullamco laboris nisi ut aliquip 
+ex ea commodo consequat. Duis aute irure dolor in 
+reprehenderit in voluptate velit esse cillum dolore 
+eu fugiat nulla pariatur. Excepteur sint occaecat 
+cupidatat non proident, sunt in culpa qui officia 
+deserunt mollit anim id est laborum.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;
+&lt;b&gt;Mailing Address:&lt;/b&gt;&lt;br /&gt;
+{{storeaddress}}
+&lt;p&gt;</Description>
+      <DisplaySortOrder>1</DisplaySortOrder>
+      <Hidden>false</Hidden>
+      <ImageUrl />
+      <Keywords />
+      <MetaDescription />
+      <MetaKeywords />
+      <MetaTitle />
+      <Name>About Us</Name>
+      <ParentId>0</ParentId>
+      <RewriteUrl>about-us</RewriteUrl>
+      <ShowTitle>true</ShowTitle>
+      <SortOrder>9</SortOrder>
+      <SourceType>3</SourceType>
+      <TemplateName>BV Grid</TemplateName>
+    </Category>
+  </Categories>
+  <Products>
+    <Product>
+      <Bvin>64ca93b7-073b-42b5-89c5-98ab5e97e4af</Bvin>
+      <Sku>SAMPLE001</Sku>
+      <Name>Blue Bracelet</Name>
+      <AllowReviews>true</AllowReviews>
+      <CreationDateUtc>2010-02-24T00:29:49.73Z</CreationDateUtc>
+      <Featured>true</Featured>
+      <GiftCertificateCodePattern />
+      <GiftWrapAllowed>false</GiftWrapAllowed>
+      <GiftWrapPrice>0</GiftWrapPrice>
+      <ImageFileMedium />
+      <ImageFileMediumAltText>Blue Bracelet SAMPLE001</ImageFileMediumAltText>
+      <ImageFileSmall>BraceletBlue.png</ImageFileSmall>
+      <ImageFileSmallAlt>Blue Bracelet SAMPLE001</ImageFileSmallAlt>
+      <InventoryReorderPoint>0</InventoryReorderPoint>
+      <InventoryStatus>1</InventoryStatus>
+      <Keywords>Bracelett</Keywords>
+      <LastUpdated>2010-02-23T19:41:53.033</LastUpdated>
+      <ListPrice>0.0000000000</ListPrice>
+      <LongDescription>An incredible blue bracelet sample product. This item is not actually for sale. It is a sample product to demonstrate how your store may look with products loaded.</LongDescription>
+      <ManufacturerId>- No Manufacturer -</ManufacturerId>
+      <MetaDescription>Sample Blue Bracelet for Demonstration</MetaDescription>
+      <MetaKeywords>Blue,Bracelet,Sample,Demo</MetaKeywords>
+      <MetaTitle>Sample Blue Bracelet</MetaTitle>
+      <MinimumQty>0</MinimumQty>
+      <OutOfStockMode>100</OutOfStockMode>
+      <ProductTypeId />
+      <QuantityAvailable>0</QuantityAvailable>
+      <QuantityAvailableForSale>0</QuantityAvailableForSale>
+      <QuantityOutOfStockPoint>0</QuantityOutOfStockPoint>
+      <QuantityReserved>0</QuantityReserved>
+      <ShippingMode>1</ShippingMode>
+      <ShortDescription />
+      <SiteCost>0.0000000000</SiteCost>
+      <SitePrice>42.9500000000</SitePrice>
+      <SitePriceOverrideText />
+      <Status>1</Status>
+      <TaxExempt>false</TaxExempt>
+      <TaxSchedule>4</TaxSchedule>
+      <TrackInventory>false</TrackInventory>
+      <UrlSlug>Blue-Bracelet</UrlSlug>
+      <VendorId>- No Vendor -</VendorId>
+      <DescriptionTabs>
+        <ProductDescriptionTab>
+          <Bvin>7fdc30e9-7985-41ce-8876-2e79530e676d</Bvin>
+          <TabTitle>Sustainability</TabTitle>
+          <HtmlData>&lt;p&gt;All of our jewelry products are recycled and made in sustainable eco-friendly environments&lt;/p&gt;</HtmlData>
+          <SortOrder>1</SortOrder>
+        </ProductDescriptionTab>
+      </DescriptionTabs>
+      <Reviews>
+        <Review>
+          <Bvin>1eb09d06-0e11-4128-b8c9-4eb2faa3db7a</Bvin>
+          <Approved>true</Approved>
+          <Description>This is a great bracelet. I would recommend it to anyone who appreciates sample products. Easy to wear!</Description>
+          <Karma>0</Karma>
+          <Rating>4</Rating>
+          <ReviewDate>2010-02-23T14:32:39.583</ReviewDate>
+          <ProductBvin>64ca93b7-073b-42b5-89c5-98ab5e97e4af</ProductBvin>
+          <UserId />
+        </Review>
+      </Reviews>
+      <ShippableItem>
+        <IsNonShipping>false</IsNonShipping>
+        <ShipSeparately>false</ShipSeparately>
+        <ExtraShipFee>0.0000000000</ExtraShipFee>
+        <Weight>0.0000000000</Weight>
+        <Length>0.0000000000</Length>
+        <Width>0.0000000000</Width>
+        <Height>0.0000000000</Height>
+        <ShippingScheduleId>0</ShippingScheduleId>
+        <ShippingSource>1</ShippingSource>
+        <ShippingSourceId />
+      </ShippableItem>
+      <Options />
+      <Variants />
+      <Categories>
+        <CategoryId>db102c66-aabe-4894-acd1-cda5c6673689</CategoryId>
+        <CategoryId>3f2fd2f7-65e6-4b8e-9aae-c70ff36ababf</CategoryId>
+        <CategoryId>ccbc5ed8-708b-4cd8-827a-4bd1fc34fed5</CategoryId>
+      </Categories>
+    </Product>
+    <Product>
+      <Bvin>66c045a8-905b-4c42-8bba-8ace9bf75f77</Bvin>
+      <Sku>SAMPLE004</Sku>
+      <Name>Brown Fedora</Name>
+      <AllowReviews>true</AllowReviews>
+      <CreationDateUtc>2010-02-24T01:17:05.687Z</CreationDateUtc>
+      <Featured>true</Featured>
+      <GiftCertificateCodePattern />
+      <GiftWrapAllowed>false</GiftWrapAllowed>
+      <GiftWrapPrice>0</GiftWrapPrice>
+      <ImageFileMedium />
+      <ImageFileMediumAltText>Brown Fedora SAMPLE004</ImageFileMediumAltText>
+      <ImageFileSmall>indiana-jones-hat.jpg</ImageFileSmall>
+      <ImageFileSmallAlt>Brown Fedora SAMPLE004</ImageFileSmallAlt>
+      <InventoryReorderPoint>0</InventoryReorderPoint>
+      <InventoryStatus>1</InventoryStatus>
+      <Keywords />
+      <LastUpdated>2010-02-23T20:17:11.983</LastUpdated>
+      <ListPrice>0.0000000000</ListPrice>
+      <LongDescription>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</LongDescription>
+      <ManufacturerId>- No Manufacturer -</ManufacturerId>
+      <MetaDescription />
+      <MetaKeywords />
+      <MetaTitle />
+      <MinimumQty>0</MinimumQty>
+      <OutOfStockMode>100</OutOfStockMode>
+      <ProductTypeId />
+      <QuantityAvailable>0</QuantityAvailable>
+      <QuantityAvailableForSale>0</QuantityAvailableForSale>
+      <QuantityOutOfStockPoint>0</QuantityOutOfStockPoint>
+      <QuantityReserved>0</QuantityReserved>
+      <ShippingMode>1</ShippingMode>
+      <ShortDescription />
+      <SiteCost>0.0000000000</SiteCost>
+      <SitePrice>59.8700000000</SitePrice>
+      <SitePriceOverrideText />
+      <Status>1</Status>
+      <TaxExempt>false</TaxExempt>
+      <TaxSchedule>4</TaxSchedule>
+      <TrackInventory>false</TrackInventory>
+      <UrlSlug>Brown-Fedora</UrlSlug>
+      <VendorId>- No Vendor -</VendorId>
+      <DescriptionTabs />
+      <Reviews />
+      <ShippableItem>
+        <IsNonShipping>false</IsNonShipping>
+        <ShipSeparately>false</ShipSeparately>
+        <ExtraShipFee>0.0000000000</ExtraShipFee>
+        <Weight>0.0000000000</Weight>
+        <Length>0.0000000000</Length>
+        <Width>0.0000000000</Width>
+        <Height>0.0000000000</Height>
+        <ShippingScheduleId>0</ShippingScheduleId>
+        <ShippingSource>1</ShippingSource>
+        <ShippingSourceId />
+      </ShippableItem>
+      <Options />
+      <Variants />
+      <Categories>
+        <CategoryId>db102c66-aabe-4894-acd1-cda5c6673689</CategoryId>
+        <CategoryId>3f2fd2f7-65e6-4b8e-9aae-c70ff36ababf</CategoryId>
+        <CategoryId>ccbc5ed8-708b-4cd8-827a-4bd1fc34fed5</CategoryId>
+      </Categories>
+    </Product>
+    <Product>
+      <Bvin>dc26c259-195a-4e74-b2aa-11c658f875b8</Bvin>
+      <Sku>SAMPLE006</Sku>
+      <Name>Butterfly Earrings</Name>
+      <AllowReviews>true</AllowReviews>
+      <CreationDateUtc>2010-02-24T01:25:20.923Z</CreationDateUtc>
+      <Featured>true</Featured>
+      <GiftCertificateCodePattern />
+      <GiftWrapAllowed>false</GiftWrapAllowed>
+      <GiftWrapPrice>0</GiftWrapPrice>
+      <ImageFileMedium />
+      <ImageFileMediumAltText>Butterfly Earrings SAMPLE006</ImageFileMediumAltText>
+      <ImageFileSmall>Earrings.jpg</ImageFileSmall>
+      <ImageFileSmallAlt>Butterfly Earrings SAMPLE006</ImageFileSmallAlt>
+      <InventoryReorderPoint>0</InventoryReorderPoint>
+      <InventoryStatus>1</InventoryStatus>
+      <Keywords />
+      <LastUpdated>2010-02-23T20:25:21.143</LastUpdated>
+      <ListPrice>0.0000000000</ListPrice>
+      <LongDescription>Sample Butterfly Earrings Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</LongDescription>
+      <ManufacturerId>- No Manufacturer -</ManufacturerId>
+      <MetaDescription />
+      <MetaKeywords />
+      <MetaTitle />
+      <MinimumQty>0</MinimumQty>
+      <OutOfStockMode>100</OutOfStockMode>
+      <ProductTypeId />
+      <QuantityAvailable>0</QuantityAvailable>
+      <QuantityAvailableForSale>0</QuantityAvailableForSale>
+      <QuantityOutOfStockPoint>0</QuantityOutOfStockPoint>
+      <QuantityReserved>0</QuantityReserved>
+      <ShippingMode>1</ShippingMode>
+      <ShortDescription />
+      <SiteCost>0.0000000000</SiteCost>
+      <SitePrice>0.0000000000</SitePrice>
+      <SitePriceOverrideText />
+      <Status>1</Status>
+      <TaxExempt>false</TaxExempt>
+      <TaxSchedule>4</TaxSchedule>
+      <TrackInventory>false</TrackInventory>
+      <UrlSlug>Butterfly-Earrings</UrlSlug>
+      <VendorId>- No Vendor -</VendorId>
+      <DescriptionTabs />
+      <Reviews />
+      <ShippableItem>
+        <IsNonShipping>false</IsNonShipping>
+        <ShipSeparately>false</ShipSeparately>
+        <ExtraShipFee>0.0000000000</ExtraShipFee>
+        <Weight>0.0000000000</Weight>
+        <Length>0.0000000000</Length>
+        <Width>0.0000000000</Width>
+        <Height>0.0000000000</Height>
+        <ShippingScheduleId>0</ShippingScheduleId>
+        <ShippingSource>1</ShippingSource>
+        <ShippingSourceId />
+      </ShippableItem>
+      <Options />
+      <Variants />
+      <Categories>
+        <CategoryId>db102c66-aabe-4894-acd1-cda5c6673689</CategoryId>
+        <CategoryId>3f2fd2f7-65e6-4b8e-9aae-c70ff36ababf</CategoryId>
+        <CategoryId>ccbc5ed8-708b-4cd8-827a-4bd1fc34fed5</CategoryId>
+      </Categories>
+    </Product>
+    <Product>
+      <Bvin>9307bb98-05b3-4b95-9ffe-965016d2d98c</Bvin>
+      <Sku>SAMPLE002</Sku>
+      <Name>Cup Cake Sample</Name>
+      <AllowReviews>false</AllowReviews>
+      <CreationDateUtc>2010-02-24T00:44:33.153Z</CreationDateUtc>
+      <Featured>true</Featured>
+      <GiftCertificateCodePattern />
+      <GiftWrapAllowed>false</GiftWrapAllowed>
+      <GiftWrapPrice>0</GiftWrapPrice>
+      <ImageFileMedium />
+      <ImageFileMediumAltText>Cup Cake Sample SAMPLE002</ImageFileMediumAltText>
+      <ImageFileSmall>CupCake.jpg</ImageFileSmall>
+      <ImageFileSmallAlt>Cup Cake Sample SAMPLE002</ImageFileSmallAlt>
+      <InventoryReorderPoint>0</InventoryReorderPoint>
+      <InventoryStatus>1</InventoryStatus>
+      <Keywords />
+      <LastUpdated>2010-02-23T19:46:27.05</LastUpdated>
+      <ListPrice>0.0000000000</ListPrice>
+      <LongDescription>Savor this sweet treat from our famous collection of sample items. This product is not for sale and is a demonstration of how items could appear in your store.</LongDescription>
+      <ManufacturerId>- No Manufacturer -</ManufacturerId>
+      <MetaDescription>Vanilla Cup Cake with Rich Frosting</MetaDescription>
+      <MetaKeywords>cup,cake,cupcake,valentine,small,treats,baked goods</MetaKeywords>
+      <MetaTitle>Vanilla Cup Cake with Rich Frosting</MetaTitle>
+      <MinimumQty>0</MinimumQty>
+      <OutOfStockMode>100</OutOfStockMode>
+      <ProductTypeId />
+      <QuantityAvailable>0</QuantityAvailable>
+      <QuantityAvailableForSale>0</QuantityAvailableForSale>
+      <QuantityOutOfStockPoint>0</QuantityOutOfStockPoint>
+      <QuantityReserved>0</QuantityReserved>
+      <ShippingMode>1</ShippingMode>
+      <ShortDescription />
+      <SiteCost>0.0000000000</SiteCost>
+      <SitePrice>1.9900000000</SitePrice>
+      <SitePriceOverrideText />
+      <Status>1</Status>
+      <TaxExempt>false</TaxExempt>
+      <TaxSchedule>4</TaxSchedule>
+      <TrackInventory>false</TrackInventory>
+      <UrlSlug>Cup-Cake-Sample</UrlSlug>
+      <VendorId>- No Vendor -</VendorId>
+      <DescriptionTabs />
+      <Reviews />
+      <ShippableItem>
+        <IsNonShipping>false</IsNonShipping>
+        <ShipSeparately>false</ShipSeparately>
+        <ExtraShipFee>0.0000000000</ExtraShipFee>
+        <Weight>0.0000000000</Weight>
+        <Length>0.0000000000</Length>
+        <Width>0.0000000000</Width>
+        <Height>0.0000000000</Height>
+        <ShippingScheduleId>0</ShippingScheduleId>
+        <ShippingSource>1</ShippingSource>
+        <ShippingSourceId />
+      </ShippableItem>
+      <Options />
+      <Variants />
+      <Categories>
+        <CategoryId>db102c66-aabe-4894-acd1-cda5c6673689</CategoryId>
+        <CategoryId>3f2fd2f7-65e6-4b8e-9aae-c70ff36ababf</CategoryId>
+        <CategoryId>ccbc5ed8-708b-4cd8-827a-4bd1fc34fed5</CategoryId>
+      </Categories>
+    </Product>
+    <Product>
+      <Bvin>67ec4550-e987-4aae-9793-37918aa91132</Bvin>
+      <Sku>SAMPLE005</Sku>
+      <Name>Laptop Computer Sample</Name>
+      <AllowReviews>true</AllowReviews>
+      <CreationDateUtc>2010-02-24T01:17:35.087Z</CreationDateUtc>
+      <Featured>true</Featured>
+      <GiftCertificateCodePattern />
+      <GiftWrapAllowed>false</GiftWrapAllowed>
+      <GiftWrapPrice>0</GiftWrapPrice>
+      <ImageFileMedium />
+      <ImageFileMediumAltText>Laptop Computer Sample SAMPLE005</ImageFileMediumAltText>
+      <ImageFileSmall>Laptop.png</ImageFileSmall>
+      <ImageFileSmallAlt>Laptop Computer Sample SAMPLE005</ImageFileSmallAlt>
+      <InventoryReorderPoint>0</InventoryReorderPoint>
+      <InventoryStatus>1</InventoryStatus>
+      <Keywords />
+      <LastUpdated>2010-02-23T20:18:29.12</LastUpdated>
+      <ListPrice>1999.0000000000</ListPrice>
+      <LongDescription>This is a sample laptop computer. It is not for sale and is a demonstration of what products could look like in your store.</LongDescription>
+      <ManufacturerId>- No Manufacturer -</ManufacturerId>
+      <MetaDescription />
+      <MetaKeywords />
+      <MetaTitle>Sample Laptop Computer</MetaTitle>
+      <MinimumQty>0</MinimumQty>
+      <OutOfStockMode>100</OutOfStockMode>
+      <ProductTypeId />
+      <QuantityAvailable>0</QuantityAvailable>
+      <QuantityAvailableForSale>0</QuantityAvailableForSale>
+      <QuantityOutOfStockPoint>0</QuantityOutOfStockPoint>
+      <QuantityReserved>0</QuantityReserved>
+      <ShippingMode>1</ShippingMode>
+      <ShortDescription />
+      <SiteCost>0.0000000000</SiteCost>
+      <SitePrice>1299.0000000000</SitePrice>
+      <SitePriceOverrideText />
+      <Status>1</Status>
+      <TaxExempt>false</TaxExempt>
+      <TaxSchedule>4</TaxSchedule>
+      <TrackInventory>false</TrackInventory>
+      <UrlSlug>Laptop-Computer-Sample</UrlSlug>
+      <VendorId>- No Vendor -</VendorId>
+      <DescriptionTabs />
+      <Reviews />
+      <ShippableItem>
+        <IsNonShipping>false</IsNonShipping>
+        <ShipSeparately>false</ShipSeparately>
+        <ExtraShipFee>0.0000000000</ExtraShipFee>
+        <Weight>0.0000000000</Weight>
+        <Length>0.0000000000</Length>
+        <Width>0.0000000000</Width>
+        <Height>0.0000000000</Height>
+        <ShippingScheduleId>0</ShippingScheduleId>
+        <ShippingSource>1</ShippingSource>
+        <ShippingSourceId />
+      </ShippableItem>
+      <Options>
+        <Option>
+          <Bvin>a598d74d-d117-4016-9679-7c37f77646bd</Bvin>
+          <IsShared>false</IsShared>
+          <IsVariant>true</IsVariant>
+          <Name>Screen Size</Name>
+          <NameIsHidden>false</NameIsHidden>
+          <OptionType>100</OptionType>
+          <Settings>{}</Settings>
+          <OptionItems>
+            <OptionItem>
+              <Bvin>27a1ff0c-f1ec-4de0-b512-c28bd0770382</Bvin>
+              <IsLabel>false</IsLabel>
+              <Name>15 Inch LCD</Name>
+              <OptionBvin>a598d74d-d117-4016-9679-7c37f77646bd</OptionBvin>
+              <PriceAdjustment>0.0000000000</PriceAdjustment>
+              <SortOrder>1</SortOrder>
+              <WeightAdjustment>0.0000000000</WeightAdjustment>
+            </OptionItem>
+            <OptionItem>
+              <Bvin>e24e2028-8d73-42e6-955d-e0009b2ed42b</Bvin>
+              <IsLabel>false</IsLabel>
+              <Name>17 Inch LCD</Name>
+              <OptionBvin>a598d74d-d117-4016-9679-7c37f77646bd</OptionBvin>
+              <PriceAdjustment>0.0000000000</PriceAdjustment>
+              <SortOrder>2</SortOrder>
+              <WeightAdjustment>0.0000000000</WeightAdjustment>
+            </OptionItem>
+          </OptionItems>
+        </Option>
+        <Option>
+          <Bvin>5e3eb1fb-0e98-4878-8993-cc1340c742b2</Bvin>
+          <IsShared>false</IsShared>
+          <IsVariant>true</IsVariant>
+          <Name>Memory (RAM)</Name>
+          <NameIsHidden>false</NameIsHidden>
+          <OptionType>100</OptionType>
+          <Settings>{}</Settings>
+          <OptionItems>
+            <OptionItem>
+              <Bvin>de52197e-df93-4740-a5d6-7981396c6c57</Bvin>
+              <IsLabel>false</IsLabel>
+              <Name>2 GB (Standard)</Name>
+              <OptionBvin>5e3eb1fb-0e98-4878-8993-cc1340c742b2</OptionBvin>
+              <PriceAdjustment>0.0000000000</PriceAdjustment>
+              <SortOrder>1</SortOrder>
+              <WeightAdjustment>0.0000000000</WeightAdjustment>
+            </OptionItem>
+            <OptionItem>
+              <Bvin>280d50ab-fce9-42da-917d-f3da9f4d9cb8</Bvin>
+              <IsLabel>false</IsLabel>
+              <Name>4 GB</Name>
+              <OptionBvin>5e3eb1fb-0e98-4878-8993-cc1340c742b2</OptionBvin>
+              <PriceAdjustment>0.0000000000</PriceAdjustment>
+              <SortOrder>2</SortOrder>
+              <WeightAdjustment>0.0000000000</WeightAdjustment>
+            </OptionItem>
+            <OptionItem>
+              <Bvin>97e64ce2-7916-42ba-90fd-f6dcb91f0adc</Bvin>
+              <IsLabel>false</IsLabel>
+              <Name>8 GB</Name>
+              <OptionBvin>5e3eb1fb-0e98-4878-8993-cc1340c742b2</OptionBvin>
+              <PriceAdjustment>0.0000000000</PriceAdjustment>
+              <SortOrder>3</SortOrder>
+              <WeightAdjustment>0.0000000000</WeightAdjustment>
+            </OptionItem>
+          </OptionItems>
+        </Option>
+        <Option>
+          <Bvin>edfd975f-359e-432b-b4b8-48e491d236bb</Bvin>
+          <IsShared>false</IsShared>
+          <IsVariant>false</IsVariant>
+          <Name>Warranty</Name>
+          <NameIsHidden>false</NameIsHidden>
+          <OptionType>300</OptionType>
+          <Settings>{}</Settings>
+          <OptionItems>
+            <OptionItem>
+              <Bvin>155a53b4-8393-48bd-959d-92e0ee98219d</Bvin>
+              <IsLabel>false</IsLabel>
+              <Name>3 Year Extended Warranty [+$199]</Name>
+              <OptionBvin>edfd975f-359e-432b-b4b8-48e491d236bb</OptionBvin>
+              <PriceAdjustment>199.0000000000</PriceAdjustment>
+              <SortOrder>1</SortOrder>
+              <WeightAdjustment>0.0000000000</WeightAdjustment>
+            </OptionItem>
+          </OptionItems>
+        </Option>
+      </Options>
+      <Variants>
+        <Variant>
+          <Bvin>13bc2383-b6fb-46b8-b489-4755893062db</Bvin>
+          <Price>-1.0000000000</Price>
+          <ProductId>67ec4550-e987-4aae-9793-37918aa91132</ProductId>
+          <Selections>[{"OptionBvin":"a598d74d-d117-4016-9679-7c37f77646bd","SelectionData":"e24e2028-8d73-42e6-955d-e0009b2ed42b"},{"OptionBvin":"5e3eb1fb-0e98-4878-8993-cc1340c742b2","SelectionData":"280d50ab-fce9-42da-917d-f3da9f4d9cb8"}]</Selections>
+          <Sku />
+        </Variant>
+        <Variant>
+          <Bvin>85fa5870-3e59-49c0-84db-edf6162f7abc</Bvin>
+          <Price>-1.0000000000</Price>
+          <ProductId>67ec4550-e987-4aae-9793-37918aa91132</ProductId>
+          <Selections>[{"OptionBvin":"a598d74d-d117-4016-9679-7c37f77646bd","SelectionData":"27a1ff0c-f1ec-4de0-b512-c28bd0770382"},{"OptionBvin":"5e3eb1fb-0e98-4878-8993-cc1340c742b2","SelectionData":"97e64ce2-7916-42ba-90fd-f6dcb91f0adc"}]</Selections>
+          <Sku />
+        </Variant>
+        <Variant>
+          <Bvin>a6ad0ee4-af0a-4e7a-ab08-86b8a6e1bd00</Bvin>
+          <Price>-1.0000000000</Price>
+          <ProductId>67ec4550-e987-4aae-9793-37918aa91132</ProductId>
+          <Selections>[{"OptionBvin":"a598d74d-d117-4016-9679-7c37f77646bd","SelectionData":"e24e2028-8d73-42e6-955d-e0009b2ed42b"},{"OptionBvin":"5e3eb1fb-0e98-4878-8993-cc1340c742b2","SelectionData":"97e64ce2-7916-42ba-90fd-f6dcb91f0adc"}]</Selections>
+          <Sku />
+        </Variant>
+        <Variant>
+          <Bvin>da425abc-6bf8-45e6-87f7-800d7a63b571</Bvin>
+          <Price>-1.0000000000</Price>
+          <ProductId>67ec4550-e987-4aae-9793-37918aa91132</ProductId>
+          <Selections>[{"OptionBvin":"a598d74d-d117-4016-9679-7c37f77646bd","SelectionData":"27a1ff0c-f1ec-4de0-b512-c28bd0770382"},{"OptionBvin":"5e3eb1fb-0e98-4878-8993-cc1340c742b2","SelectionData":"de52197e-df93-4740-a5d6-7981396c6c57"}]</Selections>
+          <Sku />
+        </Variant>
+        <Variant>
+          <Bvin>dac66cf7-0125-49ff-a03b-77903bb1c84c</Bvin>
+          <Price>-1.0000000000</Price>
+          <ProductId>67ec4550-e987-4aae-9793-37918aa91132</ProductId>
+          <Selections>[{"OptionBvin":"a598d74d-d117-4016-9679-7c37f77646bd","SelectionData":"27a1ff0c-f1ec-4de0-b512-c28bd0770382"},{"OptionBvin":"5e3eb1fb-0e98-4878-8993-cc1340c742b2","SelectionData":"280d50ab-fce9-42da-917d-f3da9f4d9cb8"}]</Selections>
+          <Sku />
+        </Variant>
+        <Variant>
+          <Bvin>e3242597-52ea-49a8-b986-2030759c08e2</Bvin>
+          <Price>-1.0000000000</Price>
+          <ProductId>67ec4550-e987-4aae-9793-37918aa91132</ProductId>
+          <Selections>[{"OptionBvin":"a598d74d-d117-4016-9679-7c37f77646bd","SelectionData":"e24e2028-8d73-42e6-955d-e0009b2ed42b"},{"OptionBvin":"5e3eb1fb-0e98-4878-8993-cc1340c742b2","SelectionData":"de52197e-df93-4740-a5d6-7981396c6c57"}]</Selections>
+          <Sku />
+        </Variant>
+      </Variants>
+      <Categories>
+        <CategoryId>db102c66-aabe-4894-acd1-cda5c6673689</CategoryId>
+        <CategoryId>3f2fd2f7-65e6-4b8e-9aae-c70ff36ababf</CategoryId>
+        <CategoryId>ccbc5ed8-708b-4cd8-827a-4bd1fc34fed5</CategoryId>
+      </Categories>
+    </Product>
+    <Product>
+      <Bvin>e10ee254-6733-44e6-b00a-448da59fda09</Bvin>
+      <Sku>SAMPLE003</Sku>
+      <Name>Purple Top</Name>
+      <AllowReviews>true</AllowReviews>
+      <CreationDateUtc>2010-02-24T01:14:29.053Z</CreationDateUtc>
+      <Featured>true</Featured>
+      <GiftCertificateCodePattern />
+      <GiftWrapAllowed>false</GiftWrapAllowed>
+      <GiftWrapPrice>0</GiftWrapPrice>
+      <ImageFileMedium />
+      <ImageFileMediumAltText>Purple Top SAMPLE003</ImageFileMediumAltText>
+      <ImageFileSmall>PurpleTop.jpg</ImageFileSmall>
+      <ImageFileSmallAlt>Purple Top SAMPLE003</ImageFileSmallAlt>
+      <InventoryReorderPoint>0</InventoryReorderPoint>
+      <InventoryStatus>1</InventoryStatus>
+      <Keywords />
+      <LastUpdated>2010-02-23T20:15:26.353</LastUpdated>
+      <ListPrice>0.0000000000</ListPrice>
+      <LongDescription>This sample purple top is made of 100% cotton and is made in the USA. Durable and easy to clean, this versatile top will be one of the best sample items not available for purchase you've ever seen!</LongDescription>
+      <ManufacturerId>- No Manufacturer -</ManufacturerId>
+      <MetaDescription />
+      <MetaKeywords />
+      <MetaTitle />
+      <MinimumQty>0</MinimumQty>
+      <OutOfStockMode>100</OutOfStockMode>
+      <ProductTypeId />
+      <QuantityAvailable>0</QuantityAvailable>
+      <QuantityAvailableForSale>0</QuantityAvailableForSale>
+      <QuantityOutOfStockPoint>0</QuantityOutOfStockPoint>
+      <QuantityReserved>0</QuantityReserved>
+      <ShippingMode>1</ShippingMode>
+      <ShortDescription />
+      <SiteCost>0.0000000000</SiteCost>
+      <SitePrice>29.9500000000</SitePrice>
+      <SitePriceOverrideText />
+      <Status>1</Status>
+      <TaxExempt>false</TaxExempt>
+      <TaxSchedule>4</TaxSchedule>
+      <TrackInventory>false</TrackInventory>
+      <UrlSlug>Purple-Top</UrlSlug>
+      <VendorId>- No Vendor -</VendorId>
+      <DescriptionTabs />
+      <Reviews />
+      <ShippableItem>
+        <IsNonShipping>false</IsNonShipping>
+        <ShipSeparately>false</ShipSeparately>
+        <ExtraShipFee>0.0000000000</ExtraShipFee>
+        <Weight>0.0000000000</Weight>
+        <Length>0.0000000000</Length>
+        <Width>0.0000000000</Width>
+        <Height>0.0000000000</Height>
+        <ShippingScheduleId>0</ShippingScheduleId>
+        <ShippingSource>1</ShippingSource>
+        <ShippingSourceId />
+      </ShippableItem>
+      <Options>
+        <Option>
+          <Bvin>dc35c73e-6dfc-44f2-bff0-fe4050f44220</Bvin>
+          <IsShared>false</IsShared>
+          <IsVariant>true</IsVariant>
+          <Name>Size</Name>
+          <NameIsHidden>false</NameIsHidden>
+          <OptionType>100</OptionType>
+          <Settings>{}</Settings>
+          <OptionItems>
+            <OptionItem>
+              <Bvin>b04b019a-4b55-4fe4-b81a-addfeb0d2e4e</Bvin>
+              <IsLabel>false</IsLabel>
+              <Name>Small</Name>
+              <OptionBvin>dc35c73e-6dfc-44f2-bff0-fe4050f44220</OptionBvin>
+              <PriceAdjustment>0.0000000000</PriceAdjustment>
+              <SortOrder>1</SortOrder>
+              <WeightAdjustment>0.0000000000</WeightAdjustment>
+            </OptionItem>
+            <OptionItem>
+              <Bvin>d8b5b669-c8c0-4907-80d9-95dc7230e51c</Bvin>
+              <IsLabel>false</IsLabel>
+              <Name>Medium</Name>
+              <OptionBvin>dc35c73e-6dfc-44f2-bff0-fe4050f44220</OptionBvin>
+              <PriceAdjustment>0.0000000000</PriceAdjustment>
+              <SortOrder>2</SortOrder>
+              <WeightAdjustment>0.0000000000</WeightAdjustment>
+            </OptionItem>
+            <OptionItem>
+              <Bvin>a6f00c31-c72f-4f09-9b54-34e6dff9c5f5</Bvin>
+              <IsLabel>false</IsLabel>
+              <Name>Large</Name>
+              <OptionBvin>dc35c73e-6dfc-44f2-bff0-fe4050f44220</OptionBvin>
+              <PriceAdjustment>0.0000000000</PriceAdjustment>
+              <SortOrder>3</SortOrder>
+              <WeightAdjustment>0.0000000000</WeightAdjustment>
+            </OptionItem>
+          </OptionItems>
+        </Option>
+        <Option>
+          <Bvin>692051c5-5e41-4cbc-bfc5-361df17a39db</Bvin>
+          <IsShared>false</IsShared>
+          <IsVariant>true</IsVariant>
+          <Name>Sleeve Length</Name>
+          <NameIsHidden>false</NameIsHidden>
+          <OptionType>200</OptionType>
+          <Settings>{}</Settings>
+          <OptionItems>
+            <OptionItem>
+              <Bvin>56f89b88-1f5f-45f9-84a3-1788d221de4f</Bvin>
+              <IsLabel>false</IsLabel>
+              <Name>Short Sleeve</Name>
+              <OptionBvin>692051c5-5e41-4cbc-bfc5-361df17a39db</OptionBvin>
+              <PriceAdjustment>0.0000000000</PriceAdjustment>
+              <SortOrder>1</SortOrder>
+              <WeightAdjustment>0.0000000000</WeightAdjustment>
+            </OptionItem>
+            <OptionItem>
+              <Bvin>39a87940-4f6d-41be-a304-650d1358404c</Bvin>
+              <IsLabel>false</IsLabel>
+              <Name>Long Sleeve</Name>
+              <OptionBvin>692051c5-5e41-4cbc-bfc5-361df17a39db</OptionBvin>
+              <PriceAdjustment>0.0000000000</PriceAdjustment>
+              <SortOrder>2</SortOrder>
+              <WeightAdjustment>0.0000000000</WeightAdjustment>
+            </OptionItem>
+          </OptionItems>
+        </Option>
+      </Options>
+      <Variants>
+        <Variant>
+          <Bvin>1bd1b66d-0965-4e6e-9fd7-dac5aeaf389e</Bvin>
+          <Price>-1.0000000000</Price>
+          <ProductId>e10ee254-6733-44e6-b00a-448da59fda09</ProductId>
+          <Selections>[{"OptionBvin":"dc35c73e-6dfc-44f2-bff0-fe4050f44220","SelectionData":"a6f00c31-c72f-4f09-9b54-34e6dff9c5f5"},{"OptionBvin":"692051c5-5e41-4cbc-bfc5-361df17a39db","SelectionData":"56f89b88-1f5f-45f9-84a3-1788d221de4f"}]</Selections>
+          <Sku />
+        </Variant>
+        <Variant>
+          <Bvin>21e045ff-7b35-4e14-8358-8e7f87ab227f</Bvin>
+          <Price>-1.0000000000</Price>
+          <ProductId>e10ee254-6733-44e6-b00a-448da59fda09</ProductId>
+          <Selections>[{"OptionBvin":"dc35c73e-6dfc-44f2-bff0-fe4050f44220","SelectionData":"d8b5b669-c8c0-4907-80d9-95dc7230e51c"},{"OptionBvin":"692051c5-5e41-4cbc-bfc5-361df17a39db","SelectionData":"56f89b88-1f5f-45f9-84a3-1788d221de4f"}]</Selections>
+          <Sku />
+        </Variant>
+        <Variant>
+          <Bvin>4d65ac10-4ed4-4abe-855b-d1354b744cdc</Bvin>
+          <Price>-1.0000000000</Price>
+          <ProductId>e10ee254-6733-44e6-b00a-448da59fda09</ProductId>
+          <Selections>[{"OptionBvin":"dc35c73e-6dfc-44f2-bff0-fe4050f44220","SelectionData":"b04b019a-4b55-4fe4-b81a-addfeb0d2e4e"},{"OptionBvin":"692051c5-5e41-4cbc-bfc5-361df17a39db","SelectionData":"56f89b88-1f5f-45f9-84a3-1788d221de4f"}]</Selections>
+          <Sku />
+        </Variant>
+        <Variant>
+          <Bvin>63d1a336-834c-471c-96af-0873c6ce3dae</Bvin>
+          <Price>-1.0000000000</Price>
+          <ProductId>e10ee254-6733-44e6-b00a-448da59fda09</ProductId>
+          <Selections>[{"OptionBvin":"dc35c73e-6dfc-44f2-bff0-fe4050f44220","SelectionData":"d8b5b669-c8c0-4907-80d9-95dc7230e51c"},{"OptionBvin":"692051c5-5e41-4cbc-bfc5-361df17a39db","SelectionData":"39a87940-4f6d-41be-a304-650d1358404c"}]</Selections>
+          <Sku />
+        </Variant>
+        <Variant>
+          <Bvin>8f2b4d91-20f8-4e76-950b-6c7ef2aa4da1</Bvin>
+          <Price>-1.0000000000</Price>
+          <ProductId>e10ee254-6733-44e6-b00a-448da59fda09</ProductId>
+          <Selections>[{"OptionBvin":"dc35c73e-6dfc-44f2-bff0-fe4050f44220","SelectionData":"b04b019a-4b55-4fe4-b81a-addfeb0d2e4e"},{"OptionBvin":"692051c5-5e41-4cbc-bfc5-361df17a39db","SelectionData":"39a87940-4f6d-41be-a304-650d1358404c"}]</Selections>
+          <Sku />
+        </Variant>
+        <Variant>
+          <Bvin>f55a548a-0f07-4dcd-9a32-5788a84e2bfc</Bvin>
+          <Price>-1.0000000000</Price>
+          <ProductId>e10ee254-6733-44e6-b00a-448da59fda09</ProductId>
+          <Selections>[{"OptionBvin":"dc35c73e-6dfc-44f2-bff0-fe4050f44220","SelectionData":"a6f00c31-c72f-4f09-9b54-34e6dff9c5f5"},{"OptionBvin":"692051c5-5e41-4cbc-bfc5-361df17a39db","SelectionData":"39a87940-4f6d-41be-a304-650d1358404c"}]</Selections>
+          <Sku />
+        </Variant>
+      </Variants>
+      <Categories>
+        <CategoryId>db102c66-aabe-4894-acd1-cda5c6673689</CategoryId>
+        <CategoryId>3f2fd2f7-65e6-4b8e-9aae-c70ff36ababf</CategoryId>
+        <CategoryId>ccbc5ed8-708b-4cd8-827a-4bd1fc34fed5</CategoryId>
+      </Categories>
+    </Product>
+  </Products>
+</BVCommerceCatalogData>

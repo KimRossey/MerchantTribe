@@ -1,0 +1,1188 @@
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EfModelsStoreContainer" CdmEntityContainer="EntityFrameworkDevConnectionString">
+    <EntitySetMapping Name="bv_SearchLexicon">
+      <EntityTypeMapping TypeName="EfModels.bv_SearchLexicon">
+        <MappingFragment StoreEntitySet="bv_SearchLexicon">
+          <ScalarProperty Name="Word" ColumnName="Word" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bv_SearchObjects">
+      <EntityTypeMapping TypeName="EfModels.bv_SearchObjects">
+        <MappingFragment StoreEntitySet="bv_SearchObjects">
+          <ScalarProperty Name="LastIndexUtc" ColumnName="LastIndexUtc" />
+          <ScalarProperty Name="SiteId" ColumnName="SiteId" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="ObjectId" ColumnName="ObjectId" />
+          <ScalarProperty Name="ObjectType" ColumnName="ObjectType" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bv_SearchObjectWords">
+      <EntityTypeMapping TypeName="EfModels.bv_SearchObjectWords">
+        <MappingFragment StoreEntitySet="bv_SearchObjectWords">
+          <ScalarProperty Name="SiteId" ColumnName="SiteId" />
+          <ScalarProperty Name="Score" ColumnName="Score" />
+          <ScalarProperty Name="WordId" ColumnName="WordId" />
+          <ScalarProperty Name="SearchObjectId" ColumnName="SearchObjectId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bvb_BillingAccounts">
+      <EntityTypeMapping TypeName="EfModels.bvb_BillingAccounts">
+        <MappingFragment StoreEntitySet="bvb_BillingAccounts">
+          <ScalarProperty Name="BillingZipCode" ColumnName="BillingZipCode" />
+          <ScalarProperty Name="CreditCard" ColumnName="CreditCard" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bvc_Address">
+      <EntityTypeMapping TypeName="EfModels.bvc_Address">
+        <MappingFragment StoreEntitySet="bvc_Address">
+          <ScalarProperty Name="AddressType" ColumnName="AddressType" />
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="UserBvin" ColumnName="UserBvin" />
+          <ScalarProperty Name="WebSiteUrl" ColumnName="WebSiteUrl" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="CountyName" ColumnName="CountyName" />
+          <ScalarProperty Name="CountyBvin" ColumnName="CountyBvin" />
+          <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+          <ScalarProperty Name="CountryBvin" ColumnName="CountryBvin" />
+          <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+          <ScalarProperty Name="RegionName" ColumnName="RegionName" />
+          <ScalarProperty Name="RegionBvin" ColumnName="RegionBvin" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Line3" ColumnName="Line3" />
+          <ScalarProperty Name="Line2" ColumnName="Line2" />
+          <ScalarProperty Name="Line1" ColumnName="Line1" />
+          <ScalarProperty Name="Company" ColumnName="Company" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="MiddleInitial" ColumnName="MiddleInitial" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="NickName" ColumnName="NickName" />
+          <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+          <ScalarProperty Name="bvin" ColumnName="bvin" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bvc_Audit">
+      <EntityTypeMapping TypeName="EfModels.bvc_Audit">
+        <MappingFragment StoreEntitySet="bvc_Audit">
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="Severity" ColumnName="Severity" />
+          <ScalarProperty Name="UserIdText" ColumnName="UserIdText" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+          <ScalarProperty Name="SourceModule" ColumnName="SourceModule" />
+          <ScalarProperty Name="TimeStampUtc" ColumnName="TimeStampUtc" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bvc_AuthenticationToken">
+      <EntityTypeMapping TypeName="EfModels.bvc_AuthenticationToken">
+        <MappingFragment StoreEntitySet="bvc_AuthenticationToken">
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+          <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
+          <ScalarProperty Name="UserBvin" ColumnName="UserBvin" />
+          <ScalarProperty Name="bvin" ColumnName="bvin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bvc_Category">
+      <EntityTypeMapping TypeName="EfModels.bvc_Category">
+        <MappingFragment StoreEntitySet="bvc_Category">
+          <ScalarProperty Name="CustomPageLayout" ColumnName="CustomPageLayout" />
+          <ScalarProperty Name="CustomerChangeableSortOrder" ColumnName="CustomerChangeableSortOrder" />
+          <ScalarProperty Name="Keywords" ColumnName="Keywords" />
+          <ScalarProperty Name="PreTransformDescription" ColumnName="PreTransformDescription" />
+          <ScalarProperty Name="CustomPageId" ColumnName="CustomPageId" />
+          <ScalarProperty Name="Criteria" ColumnName="Criteria" />
+          <ScalarProperty Name="ShowTitle" ColumnName="ShowTitle" />
+          <ScalarProperty Name="RewriteUrl" ColumnName="RewriteUrl" />
+          <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+          <ScalarProperty Name="PreContentColumnId" ColumnName="PreContentColumnId" />
+          <ScalarProperty Name="PostContentColumnId" ColumnName="PostContentColumnId" />
+          <ScalarProperty Name="TemplateName" ColumnName="TemplateName" />
+          <ScalarProperty Name="Hidden" ColumnName="Hidden" />
+          <ScalarProperty Name="ShowInTopMenu" ColumnName="ShowInTopMenu" />
+          <ScalarProperty Name="CustomPageNewWindow" ColumnName="CustomPageNewWindow" />
+          <ScalarProperty Name="CustomPageURL" ColumnName="CustomPageURL" />
+          <ScalarProperty Name="LatestProductCount" ColumnName="LatestProductCount" />
+          <ScalarProperty Name="DisplaySortOrder" ColumnName="DisplaySortOrder" />
+          <ScalarProperty Name="SourceType" ColumnName="SourceType" />
+          <ScalarProperty Name="BannerImageURL" ColumnName="BannerImageURL" />
+          <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
+          <ScalarProperty Name="MetaDescription" ColumnName="MetaDescription" />
+          <ScalarProperty Name="MetaKeywords" ColumnName="MetaKeywords" />
+          <ScalarProperty Name="MetaTitle" ColumnName="MetaTitle" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="bvin" ColumnName="bvin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bvc_CategoryXProperty">
+      <EntityTypeMapping TypeName="EfModels.bvc_CategoryXProperty">
+        <MappingFragment StoreEntitySet="bvc_CategoryXProperty">
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="DisplayMode" ColumnName="DisplayMode" />
+          <ScalarProperty Name="FilterName" ColumnName="FilterName" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          <ScalarProperty Name="ParentPropertyId" ColumnName="ParentPropertyId" />
+          <ScalarProperty Name="PropertyId" ColumnName="PropertyId" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bvc_ContentBlock">
+      <EntityTypeMapping TypeName="EfModels.bvc_ContentBlock">
+        <MappingFragment StoreEntitySet="bvc_ContentBlock">
+          <ScalarProperty Name="SerializedLists" ColumnName="SerializedLists" />
+          <ScalarProperty Name="SerializedSettings" ColumnName="SerializedSettings" />
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+          <ScalarProperty Name="ControlName" ColumnName="ControlName" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          <ScalarProperty Name="ColumnID" ColumnName="ColumnID" />
+          <ScalarProperty Name="bvin" ColumnName="bvin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bvc_ContentColumn">
+      <EntityTypeMapping TypeName="EfModels.bvc_ContentColumn">
+        <MappingFragment StoreEntitySet="bvc_ContentColumn">
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+          <ScalarProperty Name="SystemColumn" ColumnName="SystemColumn" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="bvin" ColumnName="bvin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bvc_CustomUrl">
+      <EntityTypeMapping TypeName="EfModels.bvc_CustomUrl">
+        <MappingFragment StoreEntitySet="bvc_CustomUrl">
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+          <ScalarProperty Name="SystemData" ColumnName="SystemData" />
+          <ScalarProperty Name="SystemDataType" ColumnName="SystemDataType" />
+          <ScalarProperty Name="IsPermanentRedirect" ColumnName="IsPermanentRedirect" />
+          <ScalarProperty Name="RedirectToUrl" ColumnName="RedirectToUrl" />
+          <ScalarProperty Name="RequestedUrl" ColumnName="RequestedUrl" />
+          <ScalarProperty Name="bvin" ColumnName="bvin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bvc_EventLog">
+      <EntityTypeMapping TypeName="EfModels.bvc_EventLog">
+        <MappingFragment StoreEntitySet="bvc_EventLog">
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+          <ScalarProperty Name="Severity" ColumnName="Severity" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="Source" ColumnName="Source" />
+          <ScalarProperty Name="EventTime" ColumnName="EventTime" />
+          <ScalarProperty Name="bvin" ColumnName="bvin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bvc_Fraud">
+      <EntityTypeMapping TypeName="EfModels.bvc_Fraud">
+        <MappingFragment StoreEntitySet="bvc_Fraud">
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+          <ScalarProperty Name="RuleValue" ColumnName="RuleValue" />
+          <ScalarProperty Name="RuleType" ColumnName="RuleType" />
+          <ScalarProperty Name="bvin" ColumnName="bvin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bvc_GiftCard">
+      <EntityTypeMapping TypeName="EfModels.bvc_GiftCard">
+        <MappingFragment StoreEntitySet="bvc_GiftCard">
+          <ScalarProperty Name="RedemptionUserId" ColumnName="RedemptionUserId" />
+          <ScalarProperty Name="RedemptionDateUtc" ColumnName="RedemptionDateUtc" />
+          <ScalarProperty Name="IsRedeemed" ColumnName="IsRedeemed" />
+          <ScalarProperty Name="GiftMessage" ColumnName="GiftMessage" />
+          <ScalarProperty Name="RecipientEmail" ColumnName="RecipientEmail" />
+          <ScalarProperty Name="PurchaserEmail" ColumnName="PurchaserEmail" />
+          <ScalarProperty Name="ExpirationDateUtc" ColumnName="ExpirationDateUtc" />
+          <ScalarProperty Name="IssueDateUtc" ColumnName="IssueDateUtc" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bvc_Manufacturer">
+      <EntityTypeMapping TypeName="EfModels.bvc_Manufacturer">
+        <MappingFragment StoreEntitySet="bvc_Manufacturer">
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+          <ScalarProperty Name="DropShipEmailTemplateId" ColumnName="DropShipEmailTemplateId" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="bvin" ColumnName="bvin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bvc_Policy">
+      <EntityTypeMapping TypeName="EfModels.bvc_Policy">
+        <MappingFragment StoreEntitySet="bvc_Policy">
+          <ScalarProperty Name="PolicyType" ColumnName="PolicyType" />
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+          <ScalarProperty Name="SystemPolicy" ColumnName="SystemPolicy" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="bvin" ColumnName="bvin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bvc_PolicyBlock">
+      <EntityTypeMapping TypeName="EfModels.bvc_PolicyBlock">
+        <MappingFragment StoreEntitySet="bvc_PolicyBlock">
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="DescriptionPreTransform" ColumnName="DescriptionPreTransform" />
+          <ScalarProperty Name="PolicyID" ColumnName="PolicyID" />
+          <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="bvin" ColumnName="bvin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bvc_PriceGroup">
+      <EntityTypeMapping TypeName="EfModels.bvc_PriceGroup">
+        <MappingFragment StoreEntitySet="bvc_PriceGroup">
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+          <ScalarProperty Name="AdjustmentAmount" ColumnName="AdjustmentAmount" />
+          <ScalarProperty Name="PricingType" ColumnName="PricingType" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="bvin" ColumnName="bvin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bvc_Product">
+      <EntityTypeMapping TypeName="EfModels.bvc_Product">
+        <MappingFragment StoreEntitySet="bvc_Product">
+          <ScalarProperty Name="IsAvailableForSale" ColumnName="IsAvailableForSale" />
+          <ScalarProperty Name="OutOfStockMode" ColumnName="OutOfStockMode" />
+          <ScalarProperty Name="DescriptionTabs" ColumnName="DescriptionTabs" />
+          <ScalarProperty Name="AllowReviews" ColumnName="AllowReviews" />
+          <ScalarProperty Name="Featured" ColumnName="Featured" />
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="GiftWrapPrice" ColumnName="GiftWrapPrice" />
+          <ScalarProperty Name="CustomProperties" ColumnName="CustomProperties" />
+          <ScalarProperty Name="MediumImageAlternateText" ColumnName="MediumImageAlternateText" />
+          <ScalarProperty Name="SmallImageAlternateText" ColumnName="SmallImageAlternateText" />
+          <ScalarProperty Name="PreTransformLongDescription" ColumnName="PreTransformLongDescription" />
+          <ScalarProperty Name="SitePriceOverrideText" ColumnName="SitePriceOverrideText" />
+          <ScalarProperty Name="RewriteUrl" ColumnName="RewriteUrl" />
+          <ScalarProperty Name="PostContentColumnId" ColumnName="PostContentColumnId" />
+          <ScalarProperty Name="PreContentColumnId" ColumnName="PreContentColumnId" />
+          <ScalarProperty Name="TemplateName" ColumnName="TemplateName" />
+          <ScalarProperty Name="Keywords" ColumnName="Keywords" />
+          <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+          <ScalarProperty Name="ExtraShipFee" ColumnName="ExtraShipFee" />
+          <ScalarProperty Name="GiftWrapAllowed" ColumnName="GiftWrapAllowed" />
+          <ScalarProperty Name="VendorID" ColumnName="VendorID" />
+          <ScalarProperty Name="ManufacturerID" ColumnName="ManufacturerID" />
+          <ScalarProperty Name="LongDescription" ColumnName="LongDescription" />
+          <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+          <ScalarProperty Name="MinimumQty" ColumnName="MinimumQty" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="ImageFileMedium" ColumnName="ImageFileMedium" />
+          <ScalarProperty Name="ImageFileSmall" ColumnName="ImageFileSmall" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="ShippingHeight" ColumnName="ShippingHeight" />
+          <ScalarProperty Name="ShippingWidth" ColumnName="ShippingWidth" />
+          <ScalarProperty Name="ShippingLength" ColumnName="ShippingLength" />
+          <ScalarProperty Name="ShippingWeight" ColumnName="ShippingWeight" />
+          <ScalarProperty Name="ShippingMode" ColumnName="ShippingMode" />
+          <ScalarProperty Name="ShipSeparately" ColumnName="ShipSeparately" />
+          <ScalarProperty Name="NonShipping" ColumnName="NonShipping" />
+          <ScalarProperty Name="TaxClass" ColumnName="TaxClass" />
+          <ScalarProperty Name="TaxExempt" ColumnName="TaxExempt" />
+          <ScalarProperty Name="MetaTitle" ColumnName="MetaTitle" />
+          <ScalarProperty Name="MetaDescription" ColumnName="MetaDescription" />
+          <ScalarProperty Name="MetaKeywords" ColumnName="MetaKeywords" />
+          <ScalarProperty Name="SiteCost" ColumnName="SiteCost" />
+          <ScalarProperty Name="SitePrice" ColumnName="SitePrice" />
+          <ScalarProperty Name="ListPrice" ColumnName="ListPrice" />
+          <ScalarProperty Name="ProductTypeId" ColumnName="ProductTypeId" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="SKU" ColumnName="SKU" />
+          <ScalarProperty Name="bvin" ColumnName="bvin" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bvc_ProductFile">
+      <EntityTypeMapping TypeName="EfModels.bvc_ProductFile">
+        <MappingFragment StoreEntitySet="bvc_ProductFile">
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+          <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="bvin" ColumnName="bvin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bvc_ProductFilter">
+      <EntityTypeMapping TypeName="EfModels.bvc_ProductFilter">
+        <MappingFragment StoreEntitySet="bvc_ProductFilter">
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+          <ScalarProperty Name="Page" ColumnName="Page" />
+          <ScalarProperty Name="Criteria" ColumnName="Criteria" />
+          <ScalarProperty Name="FilterName" ColumnName="FilterName" />
+          <ScalarProperty Name="bvin" ColumnName="bvin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bvc_ProductImage">
+      <EntityTypeMapping TypeName="EfModels.bvc_ProductImage">
+        <MappingFragment StoreEntitySet="bvc_ProductImage">
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          <ScalarProperty Name="AlternateText" ColumnName="AlternateText" />
+          <ScalarProperty Name="Caption" ColumnName="Caption" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="bvin" ColumnName="bvin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bvc_ProductInventory">
+      <EntityTypeMapping TypeName="EfModels.bvc_ProductInventory">
+        <MappingFragment StoreEntitySet="bvc_ProductInventory">
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+          <ScalarProperty Name="LowStockPoint" ColumnName="LowStockPoint" />
+          <ScalarProperty Name="QuantityAvailableForSale" ColumnName="QuantityAvailableForSale" />
+          <ScalarProperty Name="QuantityReserved" ColumnName="QuantityReserved" />
+          <ScalarProperty Name="QuantityOnHand" ColumnName="QuantityOnHand" />
+          <ScalarProperty Name="VariantId" ColumnName="VariantId" />
+          <ScalarProperty Name="ProductBvin" ColumnName="ProductBvin" />
+          <ScalarProperty Name="bvin" ColumnName="bvin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bvc_ProductOptions">
+      <EntityTypeMapping TypeName="EfModels.bvc_ProductOptions">
+        <MappingFragment StoreEntitySet="bvc_ProductOptions">
+          <ScalarProperty Name="Settings" ColumnName="Settings" />
+          <ScalarProperty Name="IsShared" ColumnName="IsShared" />
+          <ScalarProperty Name="IsVariant" ColumnName="IsVariant" />
+          <ScalarProperty Name="NameIsHidden" ColumnName="NameIsHidden" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="OptionType" ColumnName="OptionType" />
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="bvin" ColumnName="bvin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bvc_ProductOptionsItems">
+      <EntityTypeMapping TypeName="EfModels.bvc_ProductOptionsItems">
+        <MappingFragment StoreEntitySet="bvc_ProductOptionsItems">
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          <ScalarProperty Name="IsLabel" ColumnName="IsLabel" />
+          <ScalarProperty Name="WeightAdjustment" ColumnName="WeightAdjustment" />
+          <ScalarProperty Name="PriceAdjustment" ColumnName="PriceAdjustment" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="OptionBvin" ColumnName="OptionBvin" />
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="bvin" ColumnName="bvin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bvc_ProductProperty">
+      <EntityTypeMapping TypeName="EfModels.bvc_ProductProperty">
+        <MappingFragment StoreEntitySet="bvc_ProductProperty">
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+          <ScalarProperty Name="CultureCode" ColumnName="CultureCode" />
+          <ScalarProperty Name="DefaultValue" ColumnName="DefaultValue" />
+          <ScalarProperty Name="TypeCode" ColumnName="TypeCode" />
+          <ScalarProperty Name="DisplayToDropShipper" ColumnName="DisplayToDropShipper" />
+          <ScalarProperty Name="DisplayOnSite" ColumnName="DisplayOnSite" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="PropertyName" ColumnName="PropertyName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bvc_ProductPropertyChoice">
+      <EntityTypeMapping TypeName="EfModels.bvc_ProductPropertyChoice">
+        <MappingFragment StoreEntitySet="bvc_ProductPropertyChoice">
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          <ScalarProperty Name="ChoiceName" ColumnName="ChoiceName" />
+          <ScalarProperty Name="PropertyId" ColumnName="PropertyId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bvc_ProductReview">
+      <EntityTypeMapping TypeName="EfModels.bvc_ProductReview">
+        <MappingFragment StoreEntitySet="bvc_ProductReview">
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="ProductBvin" ColumnName="ProductBvin" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+          <ScalarProperty Name="ReviewDate" ColumnName="ReviewDate" />
+          <ScalarProperty Name="Karma" ColumnName="Karma" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Approved" ColumnName="Approved" />
+          <ScalarProperty Name="bvin" ColumnName="bvin" />
+          <ScalarProperty Name="lastUpdated" ColumnName="lastUpdated" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bvc_ProductType">
+      <EntityTypeMapping TypeName="EfModels.bvc_ProductType">
+        <MappingFragment StoreEntitySet="bvc_ProductType">
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+          <ScalarProperty Name="IsPermanent" ColumnName="IsPermanent" />
+          <ScalarProperty Name="ProductTypeName" ColumnName="ProductTypeName" />
+          <ScalarProperty Name="bvin" ColumnName="bvin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bvc_ProductVolumeDiscounts">
+      <EntityTypeMapping TypeName="EfModels.bvc_ProductVolumeDiscounts">
+        <MappingFragment StoreEntitySet="bvc_ProductVolumeDiscounts">
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="DiscountType" ColumnName="DiscountType" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="bvin" ColumnName="bvin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bvc_ProductXCategory">
+      <EntityTypeMapping TypeName="EfModels.bvc_ProductXCategory">
+        <MappingFragment StoreEntitySet="bvc_ProductXCategory">
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bvc_ProductXOption">
+      <EntityTypeMapping TypeName="EfModels.bvc_ProductXOption">
+        <MappingFragment StoreEntitySet="bvc_ProductXOption">
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          <ScalarProperty Name="OptionBvin" ColumnName="OptionBvin" />
+          <ScalarProperty Name="ProductBvin" ColumnName="ProductBvin" />
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bvc_RewardsPoints">
+      <EntityTypeMapping TypeName="EfModels.bvc_RewardsPoints">
+        <MappingFragment StoreEntitySet="bvc_RewardsPoints">
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="TransactionTime" ColumnName="TransactionTime" />
+          <ScalarProperty Name="PointsHeld" ColumnName="PointsHeld" />
+          <ScalarProperty Name="Points" ColumnName="Points" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bvc_RMA">
+      <EntityTypeMapping TypeName="EfModels.bvc_RMA">
+        <MappingFragment StoreEntitySet="bvc_RMA">
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+          <ScalarProperty Name="DateOfReturn" ColumnName="DateOfReturn" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="OrderBvin" ColumnName="OrderBvin" />
+          <ScalarProperty Name="bvin" ColumnName="bvin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bvc_RMAItem">
+      <EntityTypeMapping TypeName="EfModels.bvc_RMAItem">
+        <MappingFragment StoreEntitySet="bvc_RMAItem">
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+          <ScalarProperty Name="QuantityReturnedToInventory" ColumnName="QuantityReturnedToInventory" />
+          <ScalarProperty Name="QuantityReceived" ColumnName="QuantityReceived" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Replace" ColumnName="Replace" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="ItemDescription" ColumnName="ItemDescription" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="LineItemBvin" ColumnName="LineItemBvin" />
+          <ScalarProperty Name="RMABvin" ColumnName="RMABvin" />
+          <ScalarProperty Name="bvin" ColumnName="bvin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bvc_SearchQuery">
+      <EntityTypeMapping TypeName="EfModels.bvc_SearchQuery">
+        <MappingFragment StoreEntitySet="bvc_SearchQuery">
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+          <ScalarProperty Name="ShopperId" ColumnName="ShopperId" />
+          <ScalarProperty Name="QueryPhrase" ColumnName="QueryPhrase" />
+          <ScalarProperty Name="bvin" ColumnName="bvin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bvc_ShippingMethod">
+      <EntityTypeMapping TypeName="EfModels.bvc_ShippingMethod">
+        <MappingFragment StoreEntitySet="bvc_ShippingMethod">
+          <ScalarProperty Name="Settings" ColumnName="Settings" />
+          <ScalarProperty Name="ZoneId" ColumnName="ZoneId" />
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="ShippingProviderId" ColumnName="ShippingProviderId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="AdjustmentType" ColumnName="AdjustmentType" />
+          <ScalarProperty Name="Adjustment" ColumnName="Adjustment" />
+          <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+          <ScalarProperty Name="bvin" ColumnName="bvin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bvc_User">
+      <EntityTypeMapping TypeName="EfModels.bvc_User">
+        <MappingFragment StoreEntitySet="bvc_User">
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="CustomQuestionAnswers" ColumnName="CustomQuestionAnswers" />
+          <ScalarProperty Name="PricingGroup" ColumnName="PricingGroup" />
+          <ScalarProperty Name="Phones" ColumnName="Phones" />
+          <ScalarProperty Name="FailedLoginCount" ColumnName="FailedLoginCount" />
+          <ScalarProperty Name="LockedUntil" ColumnName="LockedUntil" />
+          <ScalarProperty Name="Locked" ColumnName="Locked" />
+          <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+          <ScalarProperty Name="AddressBook" ColumnName="AddressBook" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="TaxExempt" ColumnName="TaxExempt" />
+          <ScalarProperty Name="Salt" ColumnName="Salt" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="bvin" ColumnName="bvin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bvc_UserQuestions">
+      <EntityTypeMapping TypeName="EfModels.bvc_UserQuestions">
+        <MappingFragment StoreEntitySet="bvc_UserQuestions">
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+          <ScalarProperty Name="Order" ColumnName="Order" />
+          <ScalarProperty Name="Values" ColumnName="Values" />
+          <ScalarProperty Name="QuestionType" ColumnName="QuestionType" />
+          <ScalarProperty Name="QuestionName" ColumnName="QuestionName" />
+          <ScalarProperty Name="bvin" ColumnName="bvin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bvc_USGeoData">
+      <EntityTypeMapping TypeName="EfModels.bvc_USGeoData">
+        <MappingFragment StoreEntitySet="bvc_USGeoData">
+          <ScalarProperty Name="ZipType" ColumnName="ZipType" />
+          <ScalarProperty Name="County" ColumnName="County" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Zip" ColumnName="Zip" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bvc_Variants">
+      <EntityTypeMapping TypeName="EfModels.bvc_Variants">
+        <MappingFragment StoreEntitySet="bvc_Variants">
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="SelectionData" ColumnName="SelectionData" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Sku" ColumnName="Sku" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="bvin" ColumnName="bvin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bvc_Vendor">
+      <EntityTypeMapping TypeName="EfModels.bvc_Vendor">
+        <MappingFragment StoreEntitySet="bvc_Vendor">
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+          <ScalarProperty Name="DropShipEmailTemplateId" ColumnName="DropShipEmailTemplateId" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="bvin" ColumnName="bvin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ecommrc_News">
+      <EntityTypeMapping TypeName="EfModels.ecommrc_News">
+        <MappingFragment StoreEntitySet="ecommrc_News">
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="TimeStampUtc" ColumnName="TimeStampUtc" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ecommrc_OrderTransactions">
+      <EntityTypeMapping TypeName="EfModels.ecommrc_OrderTransactions">
+        <MappingFragment StoreEntitySet="ecommrc_OrderTransactions">
+          <ScalarProperty Name="CompanyAccountNumber" ColumnName="CompanyAccountNumber" />
+          <ScalarProperty Name="GiftCardNumber" ColumnName="GiftCardNumber" />
+          <ScalarProperty Name="PurchaseOrderNumber" ColumnName="PurchaseOrderNumber" />
+          <ScalarProperty Name="CheckNumber" ColumnName="CheckNumber" />
+          <ScalarProperty Name="Messages" ColumnName="Messages" />
+          <ScalarProperty Name="LinkedToTransaction" ColumnName="LinkedToTransaction" />
+          <ScalarProperty Name="RefNum2" ColumnName="RefNum2" />
+          <ScalarProperty Name="RefNum1" ColumnName="RefNum1" />
+          <ScalarProperty Name="Voided" ColumnName="Voided" />
+          <ScalarProperty Name="Success" ColumnName="Success" />
+          <ScalarProperty Name="CreditCard" ColumnName="CreditCard" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Action" ColumnName="Action" />
+          <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+          <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ecommrc_ShippingZones">
+      <EntityTypeMapping TypeName="EfModels.ecommrc_ShippingZones">
+        <MappingFragment StoreEntitySet="ecommrc_ShippingZones">
+          <ScalarProperty Name="Areas" ColumnName="Areas" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ecommrc_Stores">
+      <EntityTypeMapping TypeName="EfModels.ecommrc_Stores">
+        <MappingFragment StoreEntitySet="ecommrc_Stores">
+          <ScalarProperty Name="DateCancelled" ColumnName="DateCancelled" />
+          <ScalarProperty Name="CurrentPlanDayOfMonth" ColumnName="CurrentPlanDayOfMonth" />
+          <ScalarProperty Name="CurrentPlanPercent" ColumnName="CurrentPlanPercent" />
+          <ScalarProperty Name="CurrentPlanRate" ColumnName="CurrentPlanRate" />
+          <ScalarProperty Name="CustomUrl" ColumnName="CustomUrl" />
+          <ScalarProperty Name="PlanId" ColumnName="PlanId" />
+          <ScalarProperty Name="SubscriptionId" ColumnName="SubscriptionId" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="StoreName" ColumnName="StoreName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ecommrc_Taxes">
+      <EntityTypeMapping TypeName="EfModels.ecommrc_Taxes">
+        <MappingFragment StoreEntitySet="ecommrc_Taxes">
+          <ScalarProperty Name="ApplyToShipping" ColumnName="ApplyToShipping" />
+          <ScalarProperty Name="Rate" ColumnName="Rate" />
+          <ScalarProperty Name="TaxScheduleId" ColumnName="TaxScheduleId" />
+          <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+          <ScalarProperty Name="RegionName" ColumnName="RegionName" />
+          <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ecommrc_TaxSchedules">
+      <EntityTypeMapping TypeName="EfModels.ecommrc_TaxSchedules">
+        <MappingFragment StoreEntitySet="ecommrc_TaxSchedules">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ecommrc_UserAccounts">
+      <EntityTypeMapping TypeName="EfModels.ecommrc_UserAccounts">
+        <MappingFragment StoreEntitySet="ecommrc_UserAccounts">
+          <ScalarProperty Name="ResetKey" ColumnName="ResetKey" />
+          <ScalarProperty Name="Salt" ColumnName="Salt" />
+          <ScalarProperty Name="statuscode" ColumnName="statuscode" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PageVersions">
+      <EntityTypeMapping TypeName="EfModels.PageVersion">
+        <MappingFragment StoreEntitySet="PageVersions">
+          <ScalarProperty Name="PublishedStatus" ColumnName="PublishedStatus" />
+          <ScalarProperty Name="SerializedContent" ColumnName="SerializedContent" />
+          <ScalarProperty Name="AvailableEndDateUtc" ColumnName="AvailableEndDateUtc" />
+          <ScalarProperty Name="AvailableStartDateUtc" ColumnName="AvailableStartDateUtc" />
+          <ScalarProperty Name="AvailableScheduleId" ColumnName="AvailableScheduleId" />
+          <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+          <ScalarProperty Name="PageId" ColumnName="PageId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bvc_ProductRelationship">
+      <EntityTypeMapping TypeName="EfModels.bvc_ProductRelationship">
+        <MappingFragment StoreEntitySet="bvc_ProductRelationships">
+          <ScalarProperty Name="IsSubstitute" ColumnName="IsSubstitute" />
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="MarketingDescription" ColumnName="MarketingDescription" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          <ScalarProperty Name="RelatedProductId" ColumnName="RelatedProductId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ecommrc_StoreDomains">
+      <EntityTypeMapping TypeName="EfModels.ecommrc_StoreDomains">
+        <MappingFragment StoreEntitySet="ecommrc_StoreDomains">
+          <ScalarProperty Name="DomainName" ColumnName="DomainName" />
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ToDoItems">
+      <EntityTypeMapping TypeName="EfModels.ToDoItem">
+        <MappingFragment StoreEntitySet="ToDoItems">
+          <ScalarProperty Name="Details" ColumnName="Details" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          <ScalarProperty Name="IsComplete" ColumnName="IsComplete" />
+          <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ConversationAuthors">
+      <EntityTypeMapping TypeName="EfModels.ConversationAuthor">
+        <MappingFragment StoreEntitySet="ConversationAuthors">
+          <ScalarProperty Name="Verified" ColumnName="Verified" />
+          <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+          <ScalarProperty Name="AccessLevel" ColumnName="AccessLevel" />
+          <ScalarProperty Name="AuthenticationKey" ColumnName="AuthenticationKey" />
+          <ScalarProperty Name="AuthenticationType" ColumnName="AuthenticationType" />
+          <ScalarProperty Name="Bio" ColumnName="Bio" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ConversationGroups">
+      <EntityTypeMapping TypeName="EfModels.ConversationGroup">
+        <MappingFragment StoreEntitySet="ConversationGroups">
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          <ScalarProperty Name="Slug" ColumnName="Slug" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ConversationMessages">
+      <EntityTypeMapping TypeName="EfModels.ConversationMessage">
+        <MappingFragment StoreEntitySet="ConversationMessages">
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+          <ScalarProperty Name="ConversationId" ColumnName="ConversationId" />
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Conversations">
+      <EntityTypeMapping TypeName="EfModels.Conversation">
+        <MappingFragment StoreEntitySet="Conversations">
+          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+          <ScalarProperty Name="DateCreatedUtc" ColumnName="DateCreatedUtc" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Topic" ColumnName="Topic" />
+          <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bvc_MailingList">
+      <EntityTypeMapping TypeName="EfModels.bvc_MailingList">
+        <MappingFragment StoreEntitySet="bvc_MailingList">
+          <ScalarProperty Name="LastUpdatedUtc" ColumnName="LastUpdatedUtc" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Private" ColumnName="Private" />
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bvc_MailingListMember">
+      <EntityTypeMapping TypeName="EfModels.bvc_MailingListMember">
+        <MappingFragment StoreEntitySet="bvc_MailingListMember">
+          <ScalarProperty Name="LastUpdatedUtc" ColumnName="LastUpdatedUtc" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="ListID" ColumnName="ListID" />
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ApiKeys">
+      <EntityTypeMapping TypeName="EfModels.ApiKey">
+        <MappingFragment StoreEntitySet="ApiKeys">
+          <ScalarProperty Name="ApiKey1" ColumnName="ApiKey" />
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ecommrc_AuthTokens">
+      <EntityTypeMapping TypeName="EfModels.ecommrc_AuthTokens">
+        <MappingFragment StoreEntitySet="ecommrc_AuthTokens">
+          <ScalarProperty Name="Expires" ColumnName="Expires" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="TokenId" ColumnName="TokenId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ecommrc_StoresXUsers">
+      <EntityTypeMapping TypeName="EfModels.ecommrc_StoresXUsers">
+        <MappingFragment StoreEntitySet="ecommrc_StoresXUsers">
+          <ScalarProperty Name="AccessMode" ColumnName="AccessMode" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ecommrc_StoreSettings">
+      <EntityTypeMapping TypeName="EfModels.ecommrc_StoreSettings">
+        <MappingFragment StoreEntitySet="ecommrc_StoreSettings">
+          <ScalarProperty Name="SettingValue" ColumnName="SettingValue" />
+          <ScalarProperty Name="SettingName" ColumnName="SettingName" />
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="GenerateNewOrderNumber" FunctionName="EfModels.Store.ecommrc_GenerateOrderNumber" />
+    <FunctionImportMapping FunctionImportName="ReportingOrderStatusSummary" FunctionName="EfModels.Store.bvc_Reporting_OrderStatusSummary_s">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EfModels.ReportingOrderStatusSummary_Result">
+          <ScalarProperty Name="StatusCode" ColumnName="StatusCode" />
+          <ScalarProperty Name="OrderCount" ColumnName="OrderCount" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="RewardPointsAvailableForUser" FunctionName="EfModels.Store.bvc_RewardsPoints_AvailableForUser_s" />
+    <FunctionImportMapping FunctionImportName="RewardPointsCapture" FunctionName="EfModels.Store.bvc_RewardsPoints_Capture_u" />
+    <FunctionImportMapping FunctionImportName="RewardPointsDecAmount" FunctionName="EfModels.Store.bvc_RewardsPoints_DecAmt_u" />
+    <FunctionImportMapping FunctionImportName="RewardPointsHeldForUser" FunctionName="EfModels.Store.bvc_RewardsPoints_HeldForUser_s" />
+    <FunctionImportMapping FunctionImportName="RewardPointHold" FunctionName="EfModels.Store.bvc_RewardsPoints_Hold_u" />
+    <FunctionImportMapping FunctionImportName="RewardPointsIncAmount" FunctionName="EfModels.Store.bvc_RewardsPoints_IncAmt_u" />
+    <FunctionImportMapping FunctionImportName="RewardPointsTotalIssued" FunctionName="EfModels.Store.bvc_RewardsPoints_TotalIssued_s" />
+    <FunctionImportMapping FunctionImportName="RewardPointsTotalReserved" FunctionName="EfModels.Store.bvc_RewardsPoints_TotalReserved_s" />
+    <FunctionImportMapping FunctionImportName="RewardPointsUnHold" FunctionName="EfModels.Store.bvc_RewardsPoints_UnHold_u" />
+    <EntitySetMapping Name="bvc_UserXContact">
+      <EntityTypeMapping TypeName="EfModels.bvc_UserXContact">
+        <MappingFragment StoreEntitySet="bvc_UserXContact">
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ContactId" ColumnName="ContactId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bvc_OrderCoupon">
+      <EntityTypeMapping TypeName="EfModels.bvc_OrderCoupon">
+        <MappingFragment StoreEntitySet="bvc_OrderCoupon">
+          <ScalarProperty Name="IsUsed" ColumnName="IsUsed" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="OrderBvin" ColumnName="OrderBvin" />
+          <ScalarProperty Name="CouponCode" ColumnName="CouponCode" />
+          <ScalarProperty Name="LastUpdatedUtc" ColumnName="LastUpdatedUtc" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bvc_OrderNote">
+      <EntityTypeMapping TypeName="EfModels.bvc_OrderNote">
+        <MappingFragment StoreEntitySet="bvc_OrderNote">
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="LastUpdatedUtc" ColumnName="LastUpdatedUtc" />
+          <ScalarProperty Name="IsPublic" ColumnName="IsPublic" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="AuditDate" ColumnName="AuditDate" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bvc_OrderPackage">
+      <EntityTypeMapping TypeName="EfModels.bvc_OrderPackage">
+        <MappingFragment StoreEntitySet="bvc_OrderPackage">
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="CustomProperties" ColumnName="CustomProperties" />
+          <ScalarProperty Name="LastUpdatedUtc" ColumnName="LastUpdatedUtc" />
+          <ScalarProperty Name="Items" ColumnName="Items" />
+          <ScalarProperty Name="EstimatedShippingCost" ColumnName="EstimatedShippingCost" />
+          <ScalarProperty Name="ShipDateUtc" ColumnName="ShipDateUtc" />
+          <ScalarProperty Name="TrackingNumber" ColumnName="TrackingNumber" />
+          <ScalarProperty Name="HasShipped" ColumnName="HasShipped" />
+          <ScalarProperty Name="ShippingProviderServiceCode" ColumnName="ShippingProviderServiceCode" />
+          <ScalarProperty Name="ShippingProviderId" ColumnName="ShippingProviderId" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="WeightUnits" ColumnName="WeightUnits" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="SizeUnits" ColumnName="SizeUnits" />
+          <ScalarProperty Name="Length" ColumnName="Length" />
+          <ScalarProperty Name="Height" ColumnName="Height" />
+          <ScalarProperty Name="Width" ColumnName="Width" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bvc_HtmlTemplates">
+      <EntityTypeMapping TypeName="EfModels.bvc_HtmlTemplates">
+        <MappingFragment StoreEntitySet="bvc_HtmlTemplates">
+          <ScalarProperty Name="TemplateType" ColumnName="TemplateType" />
+          <ScalarProperty Name="RepeatingSection" ColumnName="RepeatingSection" />
+          <ScalarProperty Name="Body" ColumnName="Body" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="FromEmail" ColumnName="FromEmail" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="LastUpdatedUtc" ColumnName="LastUpdatedUtc" />
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bvc_Affiliate">
+      <EntityTypeMapping TypeName="EfModels.bvc_Affiliate">
+        <MappingFragment StoreEntitySet="bvc_Affiliate">
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="StyleSheet" ColumnName="StyleSheet" />
+          <ScalarProperty Name="WebSiteURL" ColumnName="WebSiteURL" />
+          <ScalarProperty Name="DriversLicenseNumber" ColumnName="DriversLicenseNumber" />
+          <ScalarProperty Name="TaxID" ColumnName="TaxID" />
+          <ScalarProperty Name="ReferralDays" ColumnName="ReferralDays" />
+          <ScalarProperty Name="CommissionType" ColumnName="CommissionType" />
+          <ScalarProperty Name="CommissionAmount" ColumnName="CommissionAmount" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+          <ScalarProperty Name="ReferralID" ColumnName="ReferralID" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bvc_AffiliateReferral">
+      <EntityTypeMapping TypeName="EfModels.bvc_AffiliateReferral">
+        <MappingFragment StoreEntitySet="bvc_AffiliateReferral">
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="TimeOfReferralUtc" ColumnName="TimeOfReferralUtc" />
+          <ScalarProperty Name="referrerurl" ColumnName="referrerurl" />
+          <ScalarProperty Name="AffiliateId" ColumnName="AffiliateId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bvc_LineItem">
+      <EntityTypeMapping TypeName="EfModels.bvc_LineItem">
+        <MappingFragment StoreEntitySet="bvc_LineItem">
+          <ScalarProperty Name="ExtraShipCharge" ColumnName="ExtraShipCharge" />
+          <ScalarProperty Name="ShipSeparately" ColumnName="ShipSeparately" />
+          <ScalarProperty Name="ShipFromNotificationId" ColumnName="ShipFromNotificationId" />
+          <ScalarProperty Name="ShipFromMode" ColumnName="ShipFromMode" />
+          <ScalarProperty Name="ShipFromAddress" ColumnName="ShipFromAddress" />
+          <ScalarProperty Name="ProductShippingHeight" ColumnName="ProductShippingHeight" />
+          <ScalarProperty Name="ProductShippingWidth" ColumnName="ProductShippingWidth" />
+          <ScalarProperty Name="ProductShippingLength" ColumnName="ProductShippingLength" />
+          <ScalarProperty Name="ProductShippingWeight" ColumnName="ProductShippingWeight" />
+          <ScalarProperty Name="TaxScheduleId" ColumnName="TaxScheduleId" />
+          <ScalarProperty Name="ShippingScheduleId" ColumnName="ShippingScheduleId" />
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="SelectionData" ColumnName="SelectionData" />
+          <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+          <ScalarProperty Name="StatusCode" ColumnName="StatusCode" />
+          <ScalarProperty Name="ProductSku" ColumnName="ProductSku" />
+          <ScalarProperty Name="ProductShortDescription" ColumnName="ProductShortDescription" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="QuantityShipped" ColumnName="QuantityShipped" />
+          <ScalarProperty Name="QuantityReturned" ColumnName="QuantityReturned" />
+          <ScalarProperty Name="CustomProperties" ColumnName="CustomProperties" />
+          <ScalarProperty Name="LineTotal" ColumnName="LineTotal" />
+          <ScalarProperty Name="TaxPortion" ColumnName="TaxPortion" />
+          <ScalarProperty Name="ShippingPortion" ColumnName="ShippingPortion" />
+          <ScalarProperty Name="AdjustedPrice" ColumnName="AdjustedPrice" />
+          <ScalarProperty Name="DiscountDetails" ColumnName="DiscountDetails" />
+          <ScalarProperty Name="BasePrice" ColumnName="BasePrice" />
+          <ScalarProperty Name="OrderBvin" ColumnName="OrderBvin" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="VariantId" ColumnName="VariantId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bvc_Promotions">
+      <EntityTypeMapping TypeName="EfModels.bvc_Promotions">
+        <MappingFragment StoreEntitySet="bvc_Promotions">
+          <ScalarProperty Name="ActionsXml" ColumnName="ActionsXml" />
+          <ScalarProperty Name="QualificationsXml" ColumnName="QualificationsXml" />
+          <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+          <ScalarProperty Name="EndDateUtc" ColumnName="EndDateUtc" />
+          <ScalarProperty Name="StartDateUtc" ColumnName="StartDateUtc" />
+          <ScalarProperty Name="CustomerDescription" ColumnName="CustomerDescription" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="LastUpdatedUtc" ColumnName="LastUpdatedUtc" />
+          <ScalarProperty Name="Mode" ColumnName="Mode" />
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bvc_Order">
+      <EntityTypeMapping TypeName="EfModels.bvc_Order">
+        <MappingFragment StoreEntitySet="bvc_Order">
+          <ScalarProperty Name="ShippingDiscountDetails" ColumnName="ShippingDiscountDetails" />
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="ThirdPartyOrderId" ColumnName="ThirdPartyOrderId" />
+          <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+          <ScalarProperty Name="StatusCode" ColumnName="StatusCode" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+          <ScalarProperty Name="TimeOfOrder" ColumnName="TimeOfOrder" />
+          <ScalarProperty Name="TaxTotal2" ColumnName="TaxTotal2" />
+          <ScalarProperty Name="TaxTotal" ColumnName="TaxTotal" />
+          <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+          <ScalarProperty Name="ShippingTotal" ColumnName="ShippingTotal" />
+          <ScalarProperty Name="ShippingStatus" ColumnName="ShippingStatus" />
+          <ScalarProperty Name="ShippingProviderServiceCode" ColumnName="ShippingProviderServiceCode" />
+          <ScalarProperty Name="ShippingProviderId" ColumnName="ShippingProviderId" />
+          <ScalarProperty Name="ShippingMethodDisplayName" ColumnName="ShippingMethodDisplayName" />
+          <ScalarProperty Name="ShippingMethodId" ColumnName="ShippingMethodId" />
+          <ScalarProperty Name="ShippingDiscounts" ColumnName="ShippingDiscounts" />
+          <ScalarProperty Name="ShippingAddress" ColumnName="ShippingAddress" />
+          <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
+          <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
+          <ScalarProperty Name="OrderDiscountDetails" ColumnName="OrderDiscountDetails" />
+          <ScalarProperty Name="OrderDiscounts" ColumnName="OrderDiscounts" />
+          <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+          <ScalarProperty Name="IsPlaced" ColumnName="IsPlaced" />
+          <ScalarProperty Name="Instructions" ColumnName="Instructions" />
+          <ScalarProperty Name="HandlingTotal" ColumnName="HandlingTotal" />
+          <ScalarProperty Name="GrandTotal" ColumnName="GrandTotal" />
+          <ScalarProperty Name="FraudScore" ColumnName="FraudScore" />
+          <ScalarProperty Name="CustomProperties" ColumnName="CustomProperties" />
+          <ScalarProperty Name="BillingAddress" ColumnName="BillingAddress" />
+          <ScalarProperty Name="AffiliateId" ColumnName="AffiliateId" />
+          <ScalarProperty Name="bvin" ColumnName="bvin" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QueuedTasks">
+      <EntityTypeMapping TypeName="EfModels.QueuedTask">
+        <MappingFragment StoreEntitySet="QueuedTasks">
+          <ScalarProperty Name="StartAtUtc" ColumnName="StartAtUtc" />
+          <ScalarProperty Name="StatusNotes" ColumnName="StatusNotes" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Payload" ColumnName="Payload" />
+          <ScalarProperty Name="TaskProcessorId" ColumnName="TaskProcessorId" />
+          <ScalarProperty Name="TaskProcessorName" ColumnName="TaskProcessorName" />
+          <ScalarProperty Name="FriendlyName" ColumnName="FriendlyName" />
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bvc_ProductFileXProduct">
+      <EntityTypeMapping TypeName="EfModels.bvc_ProductFileXProduct">
+        <MappingFragment StoreEntitySet="bvc_ProductFileXProduct">
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+          <ScalarProperty Name="MaxDownloads" ColumnName="MaxDownloads" />
+          <ScalarProperty Name="AvailableMinutes" ColumnName="AvailableMinutes" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="ProductFileId" ColumnName="ProductFileId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bvc_ProductTypeXProductProperty">
+      <EntityTypeMapping TypeName="EfModels.bvc_ProductTypeXProductProperty">
+        <MappingFragment StoreEntitySet="bvc_ProductTypeXProductProperty">
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          <ScalarProperty Name="PropertyId" ColumnName="PropertyId" />
+          <ScalarProperty Name="ProductTypeBvin" ColumnName="ProductTypeBvin" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bvc_ProductPropertyValue">
+      <EntityTypeMapping TypeName="EfModels.bvc_ProductPropertyValue">
+        <MappingFragment StoreEntitySet="bvc_ProductPropertyValue">
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="PropertyValue" ColumnName="PropertyValue" />
+          <ScalarProperty Name="PropertyId" ColumnName="PropertyId" />
+          <ScalarProperty Name="ProductBvin" ColumnName="ProductBvin" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

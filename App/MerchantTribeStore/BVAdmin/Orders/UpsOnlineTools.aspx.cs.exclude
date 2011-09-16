@@ -1,0 +1,23 @@
+using System;
+using System.Web;
+using System.Web.UI.WebControls;
+using BVSoftware.Commerce;
+using BVSoftware.Commerce.Orders;
+using BVSoftware.Commerce.Membership;
+using BVSoftware.Commerce.Utilities;
+using BVSoftware.Commerce.Shipping;
+using BVSoftware.Commerce.Payment;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
+
+partial class BVAdmin_Orders_UpsOnlineTools : BaseAdminPage
+{
+
+    protected override void OnPreInit(EventArgs e)
+    {
+        base.OnPreInit(e);
+		this.PageTitle = "Ups Online Tools";
+		this.CurrentTab = AdminTabType.Orders;
+		ValidateCurrentUserHasPermission(SystemPermissions.OrdersView);
+	}
+}

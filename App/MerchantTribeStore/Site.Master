@@ -1,0 +1,39 @@
+<%@ Master Language="C#" Inherits="BVCommerce.Site" Codebehind="Site.master.cs" AutoEventWireup="True" %>
+<%@ Register src="~/JQueryInclude.ascx" tagname="JQueryInclude" tagprefix="uc4" %>
+<%@ Register src="BVModules/Controls/AdminPanel.ascx" tagname="AdminPanel" tagprefix="uc1" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">    
+    <asp:Literal ID="litAdditionalMetaTags" runat="server" EnableViewState="false"></asp:Literal>
+    <asp:Literal ID="litCss" runat="server" EnableViewState="false"></asp:Literal>    
+    <uc4:JQueryInclude ID="JQueryInclude1" runat="server" />
+    <script type="text/javascript" src="<%=SearchFormScriptSource%>"></script>   
+
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server"></asp:ContentPlaceHolder>
+    <asp:Literal ID="litAnaltyicsTop" runat="server" EnableViewState="false"></asp:Literal>
+</head>
+
+<body runat="server" id="pagebody">
+    <!--[if lt IE 7]> <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;'> <a href="http://www.microsoft.com/windows/internet-explorer/default.aspx"><img src="http://www.ie6countdown.com/images/upgrade.jpg" border="0" height="42" width="820" alt="" /></a></div> <![endif]-->
+    <form id="aspnetForm" runat="server">
+    <uc1:AdminPanel ID="AdminPanel1" runat="server" EnableViewState="false" />
+    <div id="site-wrapper">       
+        <div id="header">
+            <asp:Literal ID="litHeader" runat="server" EnableViewState="false"></asp:Literal>
+        </div>        
+        <asp:Literal ID="litMessage" runat="server" EnableViewState="false"></asp:Literal>
+        <div id="main-content">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+        </div>
+        <div id="footer">
+            <asp:Literal ID="litFooter" runat="server" EnableViewState="false"></asp:Literal>
+        </div>        
+    </div>    
+    <asp:ContentPlaceHolder ID="EndOfForm" runat="server">        
+        
+    </asp:ContentPlaceHolder>
+    </form>    
+    <asp:Literal ID="litAnalyticsBottom" runat="server" EnableViewState="false"></asp:Literal>
+</body>
+</html>
+

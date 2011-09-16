@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/css/admin/styles.css")" rel="stylesheet" type="text/css" />    
+    <link href="@Url.Content("~/css/system/styles.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/BVAdmin/StylesPrint.css")" rel="stylesheet" type="text/css" media="print" />    
+    @Html.Raw((string)ViewData["JqueryInclude"])
+    @if (IsSectionDefined("HeadContent"))
+    {
+        @RenderSection("HeadContent", false)
+    }
+</head>
+<body style="background: url('@Html.Raw((string)ViewData["wallpaper"])') top left;">
+    @if (IsSectionDefined("HeaderContent"))
+    {
+        @RenderSection("HeaderContent", false)
+    }
+    else
+    {
+        @Html.Raw((string)ViewData["headerhtml"])
+    }
+    <div id="wrapper">
+        <div id="content">
+            @RenderBody()
+        </div>
+    </div>
+    @if (IsSectionDefined("FooterContent"))
+    {
+        @RenderSection("FooterContent", false)
+    }
+    else
+    {
+        @Html.Raw(BVCommerce.Helpers.Html.AdminFooter())
+    }
+</body>
+</html>
+
