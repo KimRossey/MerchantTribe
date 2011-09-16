@@ -1,0 +1,16 @@
+nbproject
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.suo
+*.user
+*.vspcc
+*.vsp
+[Bb]in/
+[Oo]bj/
+/App/TestResults
+/[Bb]uilds
+*.xap
+[Cc]lientBin/
+*.orig
+
