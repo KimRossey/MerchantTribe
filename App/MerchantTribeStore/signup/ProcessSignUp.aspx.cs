@@ -27,8 +27,8 @@ namespace BVCommerce
             if (String.IsNullOrEmpty(email)) Response.Redirect("/signup");
             if (String.IsNullOrEmpty(storename)) Response.Redirect("/signup");
 
-            email = BVSoftware.Cryptography.Base64.ConvertStringFromBase64(email);
-            storename = BVSoftware.Cryptography.Base64.ConvertStringFromBase64(storename);
+            email = MerchantTribe.Web.Cryptography.Base64.ConvertStringFromBase64(email);
+            storename = MerchantTribe.Web.Cryptography.Base64.ConvertStringFromBase64(storename);
 
             // Encode store name for safety from injections
             storename = System.Web.HttpUtility.HtmlEncode(storename);

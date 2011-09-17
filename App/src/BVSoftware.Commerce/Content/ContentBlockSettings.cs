@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using BVSoftware.Cryptography;
+using MerchantTribe.Web.Cryptography;
 
 namespace BVSoftware.Commerce.Content
 {

@@ -89,10 +89,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EcmaScript.NET.modified, Version=0.1.1.0, Culture=neutral, PublicKeyToken=7d53ba4f537753a5, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\MerchantTribe.Web.1.0.0.0\lib\EcmaScript.NET.modified.dll</HintPath>
+      <HintPath>..\..\packages\YUICompressor.NET.1.6.0.1\lib\net35\EcmaScript.NET.modified.dll</HintPath>
     </Reference>
-    <Reference Include="MerchantTribe.Web">
-      <HintPath>..\..\packages\MerchantTribe.Web.1.0.0.0\lib\MerchantTribe.Web.dll</HintPath>
+    <Reference Include="MerchantTribe.Web, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\MerchantTribe.Web.1.1.0.0\lib\net4\MerchantTribe.Web.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -101,8 +102,9 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="Yahoo.Yui.Compressor, Version=1.2.2.0, Culture=neutral, PublicKeyToken=a8d7c6e9882175a2, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\MerchantTribe.Web.1.0.0.0\lib\Yahoo.Yui.Compressor.dll</HintPath>
+    <Reference Include="Yahoo.Yui.Compressor, Version=1.6.0.1, Culture=neutral, PublicKeyToken=f8b4b81ec75097e2, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\YUICompressor.NET.1.6.0.1\lib\net35\Yahoo.Yui.Compressor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

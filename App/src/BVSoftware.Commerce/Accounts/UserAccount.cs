@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using MerchantTribe.Web;
 using MerchantTribe.Web.Validation;
-using BVSoftware.Cryptography;
+using MerchantTribe.Web.Cryptography;
 
 namespace BVSoftware.Commerce.Accounts
 {

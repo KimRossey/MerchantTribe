@@ -35,18 +35,18 @@ namespace BVSoftware.Billing.Data
             data.Id = model.Id;
             data.BillingZipCode = model.BillingZipCode;
             string json = MerchantTribe.Web.Json.ObjectToJson(model.CreditCard);
-            string key = BVSoftware.Cryptography.KeyManager.GetKey(0);
-            data.CreditCard = BVSoftware.Cryptography.AesEncryption.Encode(json, key);
+            string key = MerchantTribe.Web.Cryptography.KeyManager.GetKey(0);
+            data.CreditCard = MerchantTribe.Web.Cryptography.AesEncryption.Encode(json, key);
         }
         private static void CopyDataToModel(bvb_BillingAccount data, BillingAccount model)
         {
             model.Email = data.Email;
             model.Id = data.Id;
             model.BillingZipCode = data.BillingZipCode;
-            string key = BVSoftware.Cryptography.KeyManager.GetKey(0);
+            string key = MerchantTribe.Web.Cryptography.KeyManager.GetKey(0);
             if (data.CreditCard.Trim().Length > 2)
             {
-                string json = BVSoftware.Cryptography.AesEncryption.Decode(data.CreditCard, key);
+                string json = MerchantTribe.Web.Cryptography.AesEncryption.Decode(data.CreditCard, key);
                 model.CreditCard = MerchantTribe.Web.Json.ObjectFromJson<BVSoftware.Payment.CardData>(json);
             }
         }
