@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using BVSoftware.Commerce;
 using BVSoftware.Commerce.Orders;
 using BVSoftware.Commerce.Payment;
-using BVSoftware.Payment;
+using MerchantTribe.Payment;
 
 namespace BVCommerce
 {

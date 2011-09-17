@@ -6,7 +6,7 @@ using MerchantTribe.Web.Validation;
 using System.Xml;
 using System.Xml.Serialization;
 using System.IO;
-using BVSoftware.Payment;
+using MerchantTribe.Payment;
 
 namespace BVSoftware.Commerce.Accounts
 {

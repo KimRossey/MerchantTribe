@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using BVSoftware.Payment;
+using MerchantTribe.Payment;
 namespace BVSoftware.Billing
 {
     public class Transaction
@@ -40,7 +40,7 @@ namespace BVSoftware.Billing
             LinkedToTransaction = 0;
         }
 
-        public Transaction(BVSoftware.Payment.Transaction t)
+        public Transaction(MerchantTribe.Payment.Transaction t)
         {
             Id = 0;
             AccountId = 0;
@@ -50,7 +50,7 @@ namespace BVSoftware.Billing
             PopulateFromPaymentTransaction(t);
         }
 
-        public void PopulateFromPaymentTransaction(BVSoftware.Payment.Transaction t)
+        public void PopulateFromPaymentTransaction(MerchantTribe.Payment.Transaction t)
         {
             if (t != null)
             {

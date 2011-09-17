@@ -96,9 +96,7 @@ namespace BVCommerce
                 {
                     PopulateFromOrder(o);
                 }
-            }
-
-            this.pnlAcumatica.Visible = BVApp.CurrentStore.Settings.Acumatica.IntegrationEnabled;
+            }            
         }
 
         private void PopulateFromOrder(Order o)
@@ -173,34 +171,6 @@ namespace BVCommerce
             this.PrivateNotesField.DataSource = privateNotes;
             this.PrivateNotesField.DataBind();
 
-            // Acumatica Integration
-            string acumaticaId = o.CustomProperties.GetProperty("bvsoftware", "acumaticaid").Trim();
-            if (acumaticaId != string.Empty)
-            {
-                this.litAcumaticaOrderNumber.Text = "Acumatica # " + acumaticaId;
-                this.btnSendToAcumatica.Text = "<b>Re-Send To Acumatica</b>";                
-            }
-            else
-            {
-                this.litAcumaticaOrderNumber.Text = string.Empty;
-                this.btnSendToAcumatica.Text = "<b>Send To Acumatica</b>";
-            }
-        }
-
-        protected void btnSendToAcumatica_Click(object sender, EventArgs e)
-        {
-            AcumaticaIntegration acumatica = AcumaticaIntegration.Factory(BVApp);
-
-            string bvin = this.BvinField.Value.ToString();
-            Order o = BVApp.OrderServices.Orders.FindForCurrentStore(bvin);
-            if (o != null)
-            {
-                if (o.bvin != string.Empty)
-                {
-                    acumatica.OnOrderReceived(this, o, BVApp);
-                }
-            }
-            LoadOrder();
         }
 
         protected void btnOkay_Click(object sender, System.Web.UI.ImageClickEventArgs e)

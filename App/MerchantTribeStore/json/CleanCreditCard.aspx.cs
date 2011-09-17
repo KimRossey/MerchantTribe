@@ -1,6 +1,6 @@
 
 using System;
-using BVSoftware.Payment;
+using MerchantTribe.Payment;
 
 namespace BVCommerce
 {
@@ -23,7 +23,7 @@ namespace BVCommerce
             JsonResponse result = new JsonResponse();
 
             string notclean = Request.Form["CardNumber"];
-            result.CardNumber = BVSoftware.Payment.CardValidator.CleanCardNumber(notclean);
+            result.CardNumber = MerchantTribe.Payment.CardValidator.CleanCardNumber(notclean);
 
             this.litOutput.Text = MerchantTribe.Web.Json.ObjectToJson(result);
         }

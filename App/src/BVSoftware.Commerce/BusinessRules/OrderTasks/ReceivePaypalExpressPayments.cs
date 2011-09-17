@@ -26,11 +26,11 @@ namespace BVSoftware.Commerce.BusinessRules.OrderTasks
                 {
                     List<OrderTransaction> transactions = context.BVApp.OrderServices.Transactions.FindForOrder(context.Order.bvin);
 
-                    if (p.Action == BVSoftware.Payment.ActionType.PayPalExpressCheckoutInfo)
+                    if (p.Action == MerchantTribe.Payment.ActionType.PayPalExpressCheckoutInfo)
                     {
                         // if we already have an auth or charge on the card, skip
-                        if (p.HasSuccessfulLinkedAction(BVSoftware.Payment.ActionType.PayPalHold, transactions) ||
-                            p.HasSuccessfulLinkedAction(BVSoftware.Payment.ActionType.PayPalCharge, transactions))
+                        if (p.HasSuccessfulLinkedAction(MerchantTribe.Payment.ActionType.PayPalHold, transactions) ||
+                            p.HasSuccessfulLinkedAction(MerchantTribe.Payment.ActionType.PayPalCharge, transactions))
                         {
                             continue;
                         }

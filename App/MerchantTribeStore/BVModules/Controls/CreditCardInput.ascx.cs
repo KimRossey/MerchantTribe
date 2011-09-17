@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using MerchantTribe.Web.Validation;
 using System.Collections.Generic;
 using BVSoftware.Commerce.Orders;
-using BVSoftware.Payment;
+using MerchantTribe.Payment;
 
 namespace BVCommerce
 {
@@ -21,7 +21,7 @@ namespace BVCommerce
                 string result = this.cccardnumber.Text.Trim();
                 if (result.StartsWith("*") == false)
                 {
-                    result = BVSoftware.Payment.CardValidator.CleanCardNumber(result);
+                    result = MerchantTribe.Payment.CardValidator.CleanCardNumber(result);
                 }
                 return result;
             }
@@ -41,26 +41,26 @@ namespace BVCommerce
         {
             get
             {
-                BVSoftware.Payment.CardType result = BVSoftware.Payment.CardValidator.GetCardTypeFromNumber(this.CardNumber);
+                MerchantTribe.Payment.CardType result = MerchantTribe.Payment.CardValidator.GetCardTypeFromNumber(this.CardNumber);
                 switch (result)
                 {
-                    case BVSoftware.Payment.CardType.Amex:
+                    case MerchantTribe.Payment.CardType.Amex:
                         return "A";
-                    case BVSoftware.Payment.CardType.DinersClub:
+                    case MerchantTribe.Payment.CardType.DinersClub:
                         return "C";
-                    case BVSoftware.Payment.CardType.Discover:
+                    case MerchantTribe.Payment.CardType.Discover:
                         return "D";
-                    case BVSoftware.Payment.CardType.JCB:
+                    case MerchantTribe.Payment.CardType.JCB:
                         return "J";
-                    case BVSoftware.Payment.CardType.Maestro:
+                    case MerchantTribe.Payment.CardType.Maestro:
                         return "MAESTRO";
-                    case BVSoftware.Payment.CardType.MasterCard:
+                    case MerchantTribe.Payment.CardType.MasterCard:
                         return "M";
-                    case BVSoftware.Payment.CardType.Solo:
+                    case MerchantTribe.Payment.CardType.Solo:
                         return "SOLO";
-                    case BVSoftware.Payment.CardType.Switch:
+                    case MerchantTribe.Payment.CardType.Switch:
                         return "SWITCH";
-                    case BVSoftware.Payment.CardType.Visa:
+                    case MerchantTribe.Payment.CardType.Visa:
                         return "V";
                     default:
                         return "UNKNOWN";
@@ -192,7 +192,7 @@ namespace BVCommerce
             LoadFromCardData(t.CreditCard);
         }
 
-        public void LoadFromCardData(BVSoftware.Payment.CardData card)
+        public void LoadFromCardData(MerchantTribe.Payment.CardData card)
         {
             ExpirationMonth = card.ExpirationMonth;
             ExpirationYear = card.ExpirationYear;
@@ -222,9 +222,9 @@ namespace BVCommerce
             //}
         }
 
-        public BVSoftware.Payment.CardData GetCardData()
+        public MerchantTribe.Payment.CardData GetCardData()
         {
-            BVSoftware.Payment.CardData result = new BVSoftware.Payment.CardData();
+            MerchantTribe.Payment.CardData result = new MerchantTribe.Payment.CardData();
             result.CardHolderName = CardHolderName;
             if (CardNumber.StartsWith("*"))
             {
@@ -263,16 +263,16 @@ namespace BVCommerce
             //Next
             else
             {
-                CardNumber = BVSoftware.Payment.CardValidator.CleanCardNumber(CardNumber);
+                CardNumber = MerchantTribe.Payment.CardValidator.CleanCardNumber(CardNumber);
             }
 
-            if ((!BVSoftware.Payment.CardValidator.IsCardNumberValid(CardNumber)))
+            if ((!MerchantTribe.Payment.CardValidator.IsCardNumberValid(CardNumber)))
             {
                 violations.Add(new RuleViolation("Credit Card Number", "", "Please enter a valid credit card number", "cccardnumber"));
             }
 
 
-            BVSoftware.Payment.CardType cardTypeCheck = BVSoftware.Payment.CardValidator.GetCardTypeFromNumber(this.CardNumber);
+            MerchantTribe.Payment.CardType cardTypeCheck = MerchantTribe.Payment.CardValidator.GetCardTypeFromNumber(this.CardNumber);
             List<CardType> acceptedCards = MyPage.BVApp.CurrentStore.Settings.PaymentAcceptedCards;
             if (!acceptedCards.Contains(cardTypeCheck))
             {

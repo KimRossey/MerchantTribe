@@ -464,9 +464,9 @@ namespace BVSoftware.Commerce.Orders
         }
 
         // Payments
-        public BVSoftware.Payment.Transaction GetEmptyTransaction()
+        public MerchantTribe.Payment.Transaction GetEmptyTransaction()
         {
-            BVSoftware.Payment.Transaction t = new BVSoftware.Payment.Transaction();
+            MerchantTribe.Payment.Transaction t = new MerchantTribe.Payment.Transaction();
 
             t.Customer.City = this.BillingAddress.City;
             t.Customer.Company = this.BillingAddress.Company;

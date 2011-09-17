@@ -3,7 +3,7 @@ using System.Web.UI.WebControls;
 using BVSoftware.Commerce;
 using BVSoftware.Commerce.Content;
 using BVSoftware.Commerce.Payment;
-using BVSoftware.Payment;
+using MerchantTribe.Payment;
 using System.Collections.Generic;
 
 namespace BVCommerce
@@ -38,11 +38,11 @@ namespace BVCommerce
             BVSoftware.Commerce.Accounts.Store s = MyPage.BVApp.CurrentStore;
             if (s.PlanId == 0)
             {
-                this.lstGateway.DataSource = BVSoftware.Payment.Methods.AvailableMethod.FindAllPayPalOnly();
+                this.lstGateway.DataSource = MerchantTribe.Payment.Methods.AvailableMethod.FindAllPayPalOnly();
             }
             else
             {
-                this.lstGateway.DataSource = BVSoftware.Payment.Methods.AvailableMethod.FindAll();
+                this.lstGateway.DataSource = MerchantTribe.Payment.Methods.AvailableMethod.FindAll();
             }
             this.lstGateway.DataValueField = "Id";
             this.lstGateway.DataTextField = "Name";

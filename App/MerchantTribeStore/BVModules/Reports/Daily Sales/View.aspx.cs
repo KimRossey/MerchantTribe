@@ -172,7 +172,7 @@ namespace BVCommerce
 
                 if (litDescription != null)
                 {
-                    litDescription.Text = BVSoftware.Payment.EnumHelper.ActionTypeToString(t.Action);
+                    litDescription.Text = MerchantTribe.Payment.EnumHelper.ActionTypeToString(t.Action);
                 }
 
                 if (litAmount != null)

@@ -37,14 +37,14 @@ namespace BVSoftware.Commerce.Orders
 
         protected override void CopyDataToModel(Data.EF.ecommrc_OrderTransactions data, OrderTransaction model)
         {
-            model.Action = (BVSoftware.Payment.ActionType)data.Action;
+            model.Action = (MerchantTribe.Payment.ActionType)data.Action;
             model.Amount = data.Amount;
 
             string key = MerchantTribe.Web.Cryptography.KeyManager.GetKey(0);
             if (data.CreditCard.Trim().Length > 2)
             {
                 string json = MerchantTribe.Web.Cryptography.AesEncryption.Decode(data.CreditCard, key);
-                model.CreditCard = MerchantTribe.Web.Json.ObjectFromJson<BVSoftware.Payment.CardData>(json);
+                model.CreditCard = MerchantTribe.Web.Json.ObjectFromJson<MerchantTribe.Payment.CardData>(json);
             }
 
             model.Id = data.Id;
@@ -128,7 +128,7 @@ namespace BVSoftware.Commerce.Orders
             return result;
         }
 
-        public bool RecordPaymentTransaction(BVSoftware.Payment.Transaction t, Orders.Order o)
+        public bool RecordPaymentTransaction(MerchantTribe.Payment.Transaction t, Orders.Order o)
         {
             OrderTransaction ot = new OrderTransaction(t);
             ot.OrderId = o.bvin;
@@ -164,8 +164,8 @@ namespace BVSoftware.Commerce.Orders
             decimal amount = 0;
             foreach (OrderTransaction t in transactions)
             {
-                if (t.Action == BVSoftware.Payment.ActionType.GiftCardInfo ||
-                    t.Action == BVSoftware.Payment.ActionType.RewardPointsInfo)
+                if (t.Action == MerchantTribe.Payment.ActionType.GiftCardInfo ||
+                    t.Action == MerchantTribe.Payment.ActionType.RewardPointsInfo)
                 {
                     amount += t.Amount;
                 }
@@ -187,23 +187,23 @@ namespace BVSoftware.Commerce.Orders
                 int skip = (pageNumber - 1) * pageSize;
 
                 List<int> reportActions = new List<int>();
-                reportActions.Add((int)BVSoftware.Payment.ActionType.CashReceived);
-                reportActions.Add((int)BVSoftware.Payment.ActionType.CashReturned);
-                reportActions.Add((int)BVSoftware.Payment.ActionType.CheckReceived);
-                reportActions.Add((int)BVSoftware.Payment.ActionType.CheckReturned);
-                reportActions.Add((int)BVSoftware.Payment.ActionType.CompanyAccountAccepted);
-                reportActions.Add((int)BVSoftware.Payment.ActionType.CreditCardCapture);
-                reportActions.Add((int)BVSoftware.Payment.ActionType.CreditCardCharge);
-                reportActions.Add((int)BVSoftware.Payment.ActionType.CreditCardRefund);
-                reportActions.Add((int)BVSoftware.Payment.ActionType.GiftCardCapture);
-                reportActions.Add((int)BVSoftware.Payment.ActionType.GiftCardDecrease);
-                reportActions.Add((int)BVSoftware.Payment.ActionType.GiftCardIncrease);
-                reportActions.Add((int)BVSoftware.Payment.ActionType.PayPalCapture);
-                reportActions.Add((int)BVSoftware.Payment.ActionType.PayPalCharge);
-                reportActions.Add((int)BVSoftware.Payment.ActionType.PayPalRefund);
-                reportActions.Add((int)BVSoftware.Payment.ActionType.RewardPointsCapture);
-                reportActions.Add((int)BVSoftware.Payment.ActionType.RewardPointsIncrease);
-                reportActions.Add((int)BVSoftware.Payment.ActionType.RewardPointsDecrease);
+                reportActions.Add((int)MerchantTribe.Payment.ActionType.CashReceived);
+                reportActions.Add((int)MerchantTribe.Payment.ActionType.CashReturned);
+                reportActions.Add((int)MerchantTribe.Payment.ActionType.CheckReceived);
+                reportActions.Add((int)MerchantTribe.Payment.ActionType.CheckReturned);
+                reportActions.Add((int)MerchantTribe.Payment.ActionType.CompanyAccountAccepted);
+                reportActions.Add((int)MerchantTribe.Payment.ActionType.CreditCardCapture);
+                reportActions.Add((int)MerchantTribe.Payment.ActionType.CreditCardCharge);
+                reportActions.Add((int)MerchantTribe.Payment.ActionType.CreditCardRefund);
+                reportActions.Add((int)MerchantTribe.Payment.ActionType.GiftCardCapture);
+                reportActions.Add((int)MerchantTribe.Payment.ActionType.GiftCardDecrease);
+                reportActions.Add((int)MerchantTribe.Payment.ActionType.GiftCardIncrease);
+                reportActions.Add((int)MerchantTribe.Payment.ActionType.PayPalCapture);
+                reportActions.Add((int)MerchantTribe.Payment.ActionType.PayPalCharge);
+                reportActions.Add((int)MerchantTribe.Payment.ActionType.PayPalRefund);
+                reportActions.Add((int)MerchantTribe.Payment.ActionType.RewardPointsCapture);
+                reportActions.Add((int)MerchantTribe.Payment.ActionType.RewardPointsIncrease);
+                reportActions.Add((int)MerchantTribe.Payment.ActionType.RewardPointsDecrease);
 
                 IQueryable<Data.EF.ecommrc_OrderTransactions> items = repository.Find().Where(y => y.StoreId == context.CurrentStore.Id)
                                         .Where(y => y.Timestamp >= startDateUtc && y.Timestamp <= endDateUtc)
@@ -249,21 +249,21 @@ namespace BVSoftware.Commerce.Orders
             try
             {
                 List<long> actioncodes = new List<long>();
-                actioncodes.Add((int)BVSoftware.Payment.ActionType.CreditCardCapture);
-                actioncodes.Add((int)BVSoftware.Payment.ActionType.CreditCardCharge);
-                actioncodes.Add((int)BVSoftware.Payment.ActionType.CreditCardRefund);
-                actioncodes.Add((int)BVSoftware.Payment.ActionType.CashReceived);
-                actioncodes.Add((int)BVSoftware.Payment.ActionType.CashReturned);
-                actioncodes.Add((int)BVSoftware.Payment.ActionType.CheckReceived);
-                actioncodes.Add((int)BVSoftware.Payment.ActionType.CheckReturned);
-                actioncodes.Add((int)BVSoftware.Payment.ActionType.GiftCardCapture);
-                actioncodes.Add((int)BVSoftware.Payment.ActionType.GiftCardDecrease);
-                actioncodes.Add((int)BVSoftware.Payment.ActionType.GiftCardIncrease);
-                actioncodes.Add((int)BVSoftware.Payment.ActionType.PayPalCapture);
-                actioncodes.Add((int)BVSoftware.Payment.ActionType.PayPalCharge);
-                actioncodes.Add((int)BVSoftware.Payment.ActionType.PayPalRefund);
-                actioncodes.Add((int)BVSoftware.Payment.ActionType.PurchaseOrderAccepted);
-                actioncodes.Add((int)BVSoftware.Payment.ActionType.CompanyAccountAccepted);
+                actioncodes.Add((int)MerchantTribe.Payment.ActionType.CreditCardCapture);
+                actioncodes.Add((int)MerchantTribe.Payment.ActionType.CreditCardCharge);
+                actioncodes.Add((int)MerchantTribe.Payment.ActionType.CreditCardRefund);
+                actioncodes.Add((int)MerchantTribe.Payment.ActionType.CashReceived);
+                actioncodes.Add((int)MerchantTribe.Payment.ActionType.CashReturned);
+                actioncodes.Add((int)MerchantTribe.Payment.ActionType.CheckReceived);
+                actioncodes.Add((int)MerchantTribe.Payment.ActionType.CheckReturned);
+                actioncodes.Add((int)MerchantTribe.Payment.ActionType.GiftCardCapture);
+                actioncodes.Add((int)MerchantTribe.Payment.ActionType.GiftCardDecrease);
+                actioncodes.Add((int)MerchantTribe.Payment.ActionType.GiftCardIncrease);
+                actioncodes.Add((int)MerchantTribe.Payment.ActionType.PayPalCapture);
+                actioncodes.Add((int)MerchantTribe.Payment.ActionType.PayPalCharge);
+                actioncodes.Add((int)MerchantTribe.Payment.ActionType.PayPalRefund);
+                actioncodes.Add((int)MerchantTribe.Payment.ActionType.PurchaseOrderAccepted);
+                actioncodes.Add((int)MerchantTribe.Payment.ActionType.CompanyAccountAccepted);
 
                 var x = repository.Find()
                                     .Where(y => y.StoreId == context.CurrentStore.Id)

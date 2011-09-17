@@ -129,7 +129,7 @@ namespace BVCommerce
             BVSoftware.Billing.Service svc = new BVSoftware.Billing.Service(BVSoftware.Commerce.WebAppSettings.ApplicationConnectionString);
             BillingAccount act = svc.Accounts.FindOrCreate(u.Email);
 
-            BVSoftware.Payment.CardData data = this.CreditCardInput1.GetCardData();
+            MerchantTribe.Payment.CardData data = this.CreditCardInput1.GetCardData();
             if (data.CardNumber == "") data.CardNumber = act.CreditCard.CardNumber;
             act.CreditCard = data;
             act.BillingZipCode = this.txtZipCode.Text.Trim();

@@ -99,10 +99,10 @@ namespace BVSoftware.Billing
             return utcDate;
         }
 
-        public Transaction ChargeCardForInvoice(Invoice inv, BVSoftware.Payment.Method method)
+        public Transaction ChargeCardForInvoice(Invoice inv, MerchantTribe.Payment.Method method)
         {
             Transaction t = new Transaction();
-            t.Action = BVSoftware.Payment.ActionType.CreditCardCharge;
+            t.Action = MerchantTribe.Payment.ActionType.CreditCardCharge;
 
             if (inv != null)
             {
@@ -121,8 +121,8 @@ namespace BVSoftware.Billing
                         t.AccountId = inv.AccountId;
                         t.InvoiceReference = inv.Id.ToString();
 
-                        BVSoftware.Payment.Transaction payTrans = new BVSoftware.Payment.Transaction();
-                        payTrans.Action = BVSoftware.Payment.ActionType.CreditCardCharge;
+                        MerchantTribe.Payment.Transaction payTrans = new MerchantTribe.Payment.Transaction();
+                        payTrans.Action = MerchantTribe.Payment.ActionType.CreditCardCharge;
                         payTrans.Amount = inv.TotalGrand();
                         payTrans.Card = account.CreditCard;
                         payTrans.Customer.PostalCode = account.BillingZipCode;

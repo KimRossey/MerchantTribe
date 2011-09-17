@@ -29,11 +29,11 @@ namespace BVSoftware.Commerce.BusinessRules.OrderTasks
                 {
                     List<Orders.OrderTransaction> transactions = context.BVApp.OrderServices.Transactions.FindForOrder(context.Order.bvin);
 
-                    if (p.Action == BVSoftware.Payment.ActionType.RewardPointsInfo)
+                    if (p.Action == MerchantTribe.Payment.ActionType.RewardPointsInfo)
                     {
                         // if we already have an auth or charge on the card, skip
-                        if (p.HasSuccessfulLinkedAction(BVSoftware.Payment.ActionType.RewardPointsDecrease, transactions) ||
-                            p.HasSuccessfulLinkedAction(BVSoftware.Payment.ActionType.RewardPointsHold, transactions))
+                        if (p.HasSuccessfulLinkedAction(MerchantTribe.Payment.ActionType.RewardPointsDecrease, transactions) ||
+                            p.HasSuccessfulLinkedAction(MerchantTribe.Payment.ActionType.RewardPointsHold, transactions))
                         {
                             continue;
                         }

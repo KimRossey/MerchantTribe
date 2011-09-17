@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using BVSoftware.Payment;
+using MerchantTribe.Payment;
 
 namespace BVSoftware.Commerce.Accounts
 {
@@ -480,7 +480,7 @@ namespace BVSoftware.Commerce.Accounts
             get { return GetProp("PaymentCreditCardGateway"); }
             set { SetProp("PaymentCreditCardGateway", value); }
         }
-        public List<BVSoftware.Payment.CardType> PaymentAcceptedCards
+        public List<MerchantTribe.Payment.CardType> PaymentAcceptedCards
         {
             get
             {
@@ -744,37 +744,37 @@ namespace BVSoftware.Commerce.Accounts
         }
 
         // Pay Settings
-        public BVSoftware.Payment.MethodSettings PaymentSettingsGet(string methodId)
+        public MerchantTribe.Payment.MethodSettings PaymentSettingsGet(string methodId)
         {
             string encrypted = GetProp("paysettings" + methodId);
             if (encrypted.Length > 2)
             {
                 string key = MerchantTribe.Web.Cryptography.KeyManager.GetKey(0);
                 string json = MerchantTribe.Web.Cryptography.AesEncryption.Decode(encrypted, key);
-                return MerchantTribe.Web.Json.ObjectFromJson<BVSoftware.Payment.MethodSettings>(json);
+                return MerchantTribe.Web.Json.ObjectFromJson<MerchantTribe.Payment.MethodSettings>(json);
             }
-            return new BVSoftware.Payment.MethodSettings();
+            return new MerchantTribe.Payment.MethodSettings();
         }
-        public void PaymentSettingsSet(string methodId, BVSoftware.Payment.MethodSettings settings)
+        public void PaymentSettingsSet(string methodId, MerchantTribe.Payment.MethodSettings settings)
         {
             string json = MerchantTribe.Web.Json.ObjectToJson(settings);
             string key = MerchantTribe.Web.Cryptography.KeyManager.GetKey(0);
             string encrypted = MerchantTribe.Web.Cryptography.AesEncryption.Encode(json, key);
             SetProp("paysettings" + methodId, encrypted);
         }
-        public BVSoftware.Payment.Method PaymentCurrentCreditCardProcessor()
+        public MerchantTribe.Payment.Method PaymentCurrentCreditCardProcessor()
         {
-            BVSoftware.Payment.Method m = new BVSoftware.Payment.Methods.TestGateway();
+            MerchantTribe.Payment.Method m = new MerchantTribe.Payment.Methods.TestGateway();
             string gatewayId = this.PaymentCreditCardGateway;
-            m = BVSoftware.Payment.Methods.AvailableMethod.Create(gatewayId);
+            m = MerchantTribe.Payment.Methods.AvailableMethod.Create(gatewayId);
             if (m != null)
             {
-                BVSoftware.Payment.MethodSettings settings = this.PaymentSettingsGet(gatewayId);
+                MerchantTribe.Payment.MethodSettings settings = this.PaymentSettingsGet(gatewayId);
                 m.BaseSettings.Merge(settings);
             }
             else
             {
-                m = new BVSoftware.Payment.Methods.TestGateway();
+                m = new MerchantTribe.Payment.Methods.TestGateway();
             }
             return m;
         }
