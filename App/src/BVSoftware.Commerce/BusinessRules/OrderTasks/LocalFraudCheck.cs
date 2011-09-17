@@ -69,8 +69,9 @@ namespace BVSoftware.Commerce.BusinessRules.OrderTasks
             d.PhoneNumber = context.Order.BillingAddress.Phone;
 
             foreach (Orders.OrderTransaction p in context.BVApp.OrderServices.Transactions.FindForOrder(context.Order.bvin))
-            {                
-				if (p.Action == BVSoftware.Payment.ActionType.CreditCardInfo) {
+            {
+                if (p.Action == MerchantTribe.Payment.ActionType.CreditCardInfo)
+                {
 					d.CreditCard = p.CreditCard.CardNumber;
                     break; 
 				}				

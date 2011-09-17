@@ -64,32 +64,32 @@ namespace BVSoftware.Commerce.Orders
                 _TotalCredit += t.AmountAppliedToOrder;
                 switch (t.Action)
                 {
-                    case BVSoftware.Payment.ActionType.CashReceived:
-                    case BVSoftware.Payment.ActionType.CheckReceived:
-                    case BVSoftware.Payment.ActionType.CreditCardCapture:
-                    case BVSoftware.Payment.ActionType.CreditCardCharge:
-                    case BVSoftware.Payment.ActionType.GiftCardCapture:
-                    case BVSoftware.Payment.ActionType.GiftCardDecrease:
-                    case BVSoftware.Payment.ActionType.PayPalCapture:
-                    case BVSoftware.Payment.ActionType.PayPalCharge:
-                    case BVSoftware.Payment.ActionType.PurchaseOrderAccepted:
-                    case BVSoftware.Payment.ActionType.CompanyAccountAccepted:
-                    case BVSoftware.Payment.ActionType.RewardPointsCapture:
-                    case BVSoftware.Payment.ActionType.RewardPointsDecrease:
+                    case MerchantTribe.Payment.ActionType.CashReceived:
+                    case MerchantTribe.Payment.ActionType.CheckReceived:
+                    case MerchantTribe.Payment.ActionType.CreditCardCapture:
+                    case MerchantTribe.Payment.ActionType.CreditCardCharge:
+                    case MerchantTribe.Payment.ActionType.GiftCardCapture:
+                    case MerchantTribe.Payment.ActionType.GiftCardDecrease:
+                    case MerchantTribe.Payment.ActionType.PayPalCapture:
+                    case MerchantTribe.Payment.ActionType.PayPalCharge:
+                    case MerchantTribe.Payment.ActionType.PurchaseOrderAccepted:
+                    case MerchantTribe.Payment.ActionType.CompanyAccountAccepted:
+                    case MerchantTribe.Payment.ActionType.RewardPointsCapture:
+                    case MerchantTribe.Payment.ActionType.RewardPointsDecrease:
                         _AmountCharged += t.AmountAppliedToOrder;
                         break;
-                    case BVSoftware.Payment.ActionType.CreditCardHold:
-                    case BVSoftware.Payment.ActionType.GiftCardHold:
-                    case BVSoftware.Payment.ActionType.PayPalHold:
-                    case BVSoftware.Payment.ActionType.RewardPointsHold:
+                    case MerchantTribe.Payment.ActionType.CreditCardHold:
+                    case MerchantTribe.Payment.ActionType.GiftCardHold:
+                    case MerchantTribe.Payment.ActionType.PayPalHold:
+                    case MerchantTribe.Payment.ActionType.RewardPointsHold:
                         _AmountAuthorized += t.AmountHeldForOrder;
                         break;
-                    case BVSoftware.Payment.ActionType.CashReturned:
-                    case BVSoftware.Payment.ActionType.CheckReturned:
-                    case BVSoftware.Payment.ActionType.CreditCardRefund:
-                    case BVSoftware.Payment.ActionType.GiftCardIncrease:
-                    case BVSoftware.Payment.ActionType.PayPalRefund:
-                    case BVSoftware.Payment.ActionType.RewardPointsIncrease:
+                    case MerchantTribe.Payment.ActionType.CashReturned:
+                    case MerchantTribe.Payment.ActionType.CheckReturned:
+                    case MerchantTribe.Payment.ActionType.CreditCardRefund:
+                    case MerchantTribe.Payment.ActionType.GiftCardIncrease:
+                    case MerchantTribe.Payment.ActionType.PayPalRefund:
+                    case MerchantTribe.Payment.ActionType.RewardPointsIncrease:
                         _AmountRefunded += -1 * t.AmountAppliedToOrder;
                         break;
                 }

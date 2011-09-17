@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using BVSoftware.Payment;
+using MerchantTribe.Payment;
 
 namespace BVSoftware.Commerce.Payment
 {
-    public class RewardPoints: BVSoftware.Payment.Method
+    public class RewardPoints : MerchantTribe.Payment.Method
     {
 
         private RewardPointsSettings _Settings = new RewardPointsSettings();

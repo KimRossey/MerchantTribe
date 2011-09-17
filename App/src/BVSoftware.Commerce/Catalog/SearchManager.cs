@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using BVSoftware.Search;
-using BVSoftware.Search.Data;
+using MerchantTribe.Web.Search;
+using MerchantTribe.Web.Search.Data;
 using System.Collections.ObjectModel;
 
 namespace BVSoftware.Commerce.Catalog
@@ -30,7 +30,7 @@ namespace BVSoftware.Commerce.Catalog
             searcher = new Searcher(lex, provider);
         }
 
-        public List<BVSoftware.Search.SearchObject> DoSearchForAllStores(string query, int pageNumber, int pageSize, ref int totalResults)
+        public List<MerchantTribe.Web.Search.SearchObject> DoSearchForAllStores(string query, int pageNumber, int pageSize, ref int totalResults)
         {
             return searcher.DoSearch(query, pageNumber, pageSize, ref totalResults);
         }
@@ -42,7 +42,7 @@ namespace BVSoftware.Commerce.Catalog
         
         public void RebuildProductSearchIndex(BVApplication bvapp)
         {
-            BVSoftware.Search.Indexers.ComplexIndexer indexer = new Search.Indexers.ComplexIndexer(searcher);
+            MerchantTribe.Web.Search.Indexers.ComplexIndexer indexer = new MerchantTribe.Web.Search.Indexers.ComplexIndexer(searcher);
             int totalProducts = bvapp.CatalogServices.Products.FindAllForAllStoresCount();
             int totalPages = MerchantTribe.Web.Paging.TotalPages(totalProducts, INDEXREBUILDPAGESIZE);
 
@@ -52,7 +52,7 @@ namespace BVSoftware.Commerce.Catalog
             }
         }
 
-        private void IndexAPage(int pageNumber, BVSoftware.Search.Indexers.ComplexIndexer indexer, BVApplication bvapp)
+        private void IndexAPage(int pageNumber, MerchantTribe.Web.Search.Indexers.ComplexIndexer indexer, BVApplication bvapp)
         {            
             int startIndex = MerchantTribe.Web.Paging.StartRowIndex(pageNumber, INDEXREBUILDPAGESIZE);
             List<Product> page = bvapp.CatalogServices.Products.FindAllPagedForAllStores(startIndex, INDEXREBUILDPAGESIZE);
@@ -90,7 +90,7 @@ namespace BVSoftware.Commerce.Catalog
         // Products
         public void IndexSingleProduct(Catalog.Product p)
         {
-            BVSoftware.Search.Indexers.ComplexIndexer indexer = new Search.Indexers.ComplexIndexer(searcher);
+            MerchantTribe.Web.Search.Indexers.ComplexIndexer indexer = new MerchantTribe.Web.Search.Indexers.ComplexIndexer(searcher);
             IndexProduct(p, indexer);
         }
         public void RemoveSingleProduct(long storeId, string bvin)
@@ -105,7 +105,7 @@ namespace BVSoftware.Commerce.Catalog
         //     Product p = Catalog.Product.FindByBvinForAllStores(productBvin);          
         //     IndexProduct(p, indexer);          
         //}
-        private void IndexProduct(Product p, BVSoftware.Search.Indexers.ComplexIndexer indexer)
+        private void IndexProduct(Product p, MerchantTribe.Web.Search.Indexers.ComplexIndexer indexer)
         {
             if (p != null)
             {

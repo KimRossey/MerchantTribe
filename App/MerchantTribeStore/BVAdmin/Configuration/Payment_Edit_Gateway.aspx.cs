@@ -15,7 +15,7 @@ using BVSoftware.Commerce.Payment;
 using BVSoftware.Commerce.Shipping;
 using BVSoftware.Commerce.Taxes;
 using BVSoftware.Commerce.Utilities;
-using BVSoftware.Payment;
+using MerchantTribe.Payment;
 using System.Collections.Generic;
 
 namespace BVCommerce
@@ -24,7 +24,7 @@ namespace BVCommerce
     partial class BVAdmin_Configuration_Payment_Edit_Gateway : BaseAdminPage
     {
 
-        private BVSoftware.Payment.Methods.AvailableMethod g;
+        private MerchantTribe.Payment.Methods.AvailableMethod g;
         private BVModule editor;
 
         protected override void OnPreInit(EventArgs e)
@@ -55,7 +55,7 @@ namespace BVCommerce
             //    g = AvailableGateways.CurrentGateway();
             //}
             //else {
-            List<BVSoftware.Payment.Methods.AvailableMethod> AvailableGateways = BVSoftware.Payment.Methods.AvailableMethod.FindAll();
+            List<MerchantTribe.Payment.Methods.AvailableMethod> AvailableGateways = MerchantTribe.Payment.Methods.AvailableMethod.FindAll();
 
             for (int i = 0; i <= AvailableGateways.Count - 1; i++)
             {

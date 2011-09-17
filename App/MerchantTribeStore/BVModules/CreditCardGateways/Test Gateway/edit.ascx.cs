@@ -3,7 +3,7 @@ using System.Web.UI.WebControls;
 using BVSoftware.Commerce;
 using BVSoftware.Commerce.Content;
 using BVSoftware.Commerce.Payment;
-using BVSoftware.Payment.Methods;
+using MerchantTribe.Payment.Methods;
 
 namespace BVCommerce
 {

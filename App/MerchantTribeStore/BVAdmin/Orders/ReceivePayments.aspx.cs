@@ -139,7 +139,7 @@ namespace BVCommerce
                 sb.Append("VOIDED<br />");
             }
             sb.Append(t.Amount.ToString("c") + " - ");
-            sb.Append(BVSoftware.Payment.EnumHelper.ActionTypeToString(t.Action) + "<br />");
+            sb.Append(MerchantTribe.Payment.EnumHelper.ActionTypeToString(t.Action) + "<br />");
             sb.Append(TimeZoneInfo.ConvertTimeFromUtc(t.TimeStampUtc, timezone).ToString() + "<br />");
             if (t.Success)
             {
@@ -149,20 +149,20 @@ namespace BVCommerce
             {
                 sb.Append("FAILED<br />");
             }
-            if (t.Action == BVSoftware.Payment.ActionType.PurchaseOrderInfo || t.Action == BVSoftware.Payment.ActionType.PurchaseOrderAccepted)
+            if (t.Action == MerchantTribe.Payment.ActionType.PurchaseOrderInfo || t.Action == MerchantTribe.Payment.ActionType.PurchaseOrderAccepted)
             {
                 sb.Append("PO # " + t.PurchaseOrderNumber + "<br />");
             }
-            if (t.Action == BVSoftware.Payment.ActionType.CheckReceived || t.Action == BVSoftware.Payment.ActionType.CheckReturned)
+            if (t.Action == MerchantTribe.Payment.ActionType.CheckReceived || t.Action == MerchantTribe.Payment.ActionType.CheckReturned)
             {
                 sb.Append("Check # " + t.CheckNumber + "<br />");
             }
-            if (t.Action == BVSoftware.Payment.ActionType.CreditCardCapture ||
-                t.Action == BVSoftware.Payment.ActionType.CreditCardCharge ||
-                t.Action == BVSoftware.Payment.ActionType.CreditCardHold ||
-                t.Action == BVSoftware.Payment.ActionType.CreditCardInfo ||
-                t.Action == BVSoftware.Payment.ActionType.CreditCardRefund ||
-                t.Action == BVSoftware.Payment.ActionType.CreditCardVoid)
+            if (t.Action == MerchantTribe.Payment.ActionType.CreditCardCapture ||
+                t.Action == MerchantTribe.Payment.ActionType.CreditCardCharge ||
+                t.Action == MerchantTribe.Payment.ActionType.CreditCardHold ||
+                t.Action == MerchantTribe.Payment.ActionType.CreditCardInfo ||
+                t.Action == MerchantTribe.Payment.ActionType.CreditCardRefund ||
+                t.Action == MerchantTribe.Payment.ActionType.CreditCardVoid)
             {
                 sb.Append(t.CreditCard.CardTypeName + " xxxx-xxxx-xxxx-" + t.CreditCard.CardNumberLast4Digits + "<br />");
                 sb.Append("exp: " + t.CreditCard.ExpirationMonth + "/" + t.CreditCard.ExpirationYear + "<br />");

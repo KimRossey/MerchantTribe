@@ -303,19 +303,19 @@ namespace BVSoftware.Commerce.Orders
             {
                 switch (t.Action)
                 {
-                    case BVSoftware.Payment.ActionType.OfflinePaymentRequest:
+                    case MerchantTribe.Payment.ActionType.OfflinePaymentRequest:
                         found = true;
                         sb.Append(t.Amount.ToString("c") + " | " + t.RefNum1);
                         break;
-                    case BVSoftware.Payment.ActionType.CreditCardInfo:
+                    case MerchantTribe.Payment.ActionType.CreditCardInfo:
                         found = true;
                         sb.Append(t.Amount.ToString("c") + " | Credit Card " + t.CreditCard.CardNumberLast4Digits);
                         break;
-                    case BVSoftware.Payment.ActionType.GiftCardInfo:
+                    case MerchantTribe.Payment.ActionType.GiftCardInfo:
                         found = true;
                         sb.Append(t.Amount.ToString("c") + " | Gift Card ");
                         break;
-                    case BVSoftware.Payment.ActionType.PurchaseOrderInfo:
+                    case MerchantTribe.Payment.ActionType.PurchaseOrderInfo:
                         found = true;
                         sb.Append(t.Amount.ToString("c") + " | PO #" + t.PurchaseOrderNumber);
                         break;
@@ -328,7 +328,7 @@ namespace BVSoftware.Commerce.Orders
             }
             return "No Payment Methods Selected";
         }
-        public bool AddPaymentTransactionToOrder(Order o, BVSoftware.Payment.Transaction t, BVApplication bvapp)
+        public bool AddPaymentTransactionToOrder(Order o, MerchantTribe.Payment.Transaction t, BVApplication bvapp)
         {
             Orders.OrderTransaction ot = new OrderTransaction(t);
             return AddPaymentTransactionToOrder(o, ot, bvapp);

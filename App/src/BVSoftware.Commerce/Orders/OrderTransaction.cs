@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using BVSoftware.Payment;
+using MerchantTribe.Payment;
 using BVSoftware.CommerceDTO.v1.Orders;
 
 namespace BVSoftware.Commerce.Orders
@@ -66,7 +66,7 @@ namespace BVSoftware.Commerce.Orders
             CompanyAccountNumber = string.Empty;
         }
 
-        public OrderTransaction(BVSoftware.Payment.Transaction t)
+        public OrderTransaction(MerchantTribe.Payment.Transaction t)
         {
             Id = System.Guid.NewGuid();
             StoreId = 0;
@@ -75,7 +75,7 @@ namespace BVSoftware.Commerce.Orders
             PopulateFromPaymentTransaction(t);
         }
 
-        public void PopulateFromPaymentTransaction(BVSoftware.Payment.Transaction t)
+        public void PopulateFromPaymentTransaction(MerchantTribe.Payment.Transaction t)
         {
             if (t != null)
             {
@@ -209,7 +209,7 @@ namespace BVSoftware.Commerce.Orders
         //    return null;
         //}
 
-        public bool HasSuccessfulLinkedAction(BVSoftware.Payment.ActionType action, List<OrderTransaction> transactions)
+        public bool HasSuccessfulLinkedAction(MerchantTribe.Payment.ActionType action, List<OrderTransaction> transactions)
         {
             foreach (OrderTransaction t in transactions)
             {

@@ -25,12 +25,8 @@
                 <h1>
                     Order
                     <asp:Label ID="OrderNumberField" runat="server" Text="000000"></asp:Label>
-               </h1><asp:Label ID="TimeOfOrderField" runat="server"></asp:Label><br />
-               
-               Fraud Score: <asp:Label ID="lblFraudScore" runat="server"></asp:Label><br />
-               <asp:Panel id="pnlAcumatica" runat="server">
-               <asp:LinkButton ID="btnSendToAcumatica"  OnClick="btnSendToAcumatica_Click" runat="server" CssClass="btn" Text="<b>Send To Acumatica</b>"></asp:LinkButton><asp:Literal ID="litAcumaticaOrderNumber" runat="server"></asp:Literal>
-               </asp:Panel>
+               </h1><asp:Label ID="TimeOfOrderField" runat="server"></asp:Label><br />               
+               Fraud Score: <asp:Label ID="lblFraudScore" runat="server"></asp:Label>
             </td>
             <td width="33%" align="center" valign="top">
             <uc2:OrderStatusDisplay ID="OrderStatusDisplay1" runat="server" />

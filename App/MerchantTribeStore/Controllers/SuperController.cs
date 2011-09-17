@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using BVSoftware.Commerce;
 using BVSoftware.Commerce.Catalog;
-using BVSoftware.Search;
+using MerchantTribe.Web.Search;
 
 namespace BVCommerce.Controllers
 {

@@ -76,39 +76,10 @@ namespace BVCommerce.Controllers
             try
             {
 
-                // acumatica integration            
-                if (task.TaskProcessorId == AcumaticaIntegration.PullDataTaskProcessorId)
-                {
-                    if (BVApp.CurrentStore.Settings.Acumatica.IntegrationEnabled)
-                    {
-                        AcumaticaIntegration acumatica = AcumaticaIntegration.Factory(BVApp);
-                        QueuedTaskResult result = acumatica.ProcessTaskPullData(BVApp);
-
-                        task.StatusNotes = result.Notes;
-                        if (result.Success)
-                        {
-                            task.Status = QueuedTaskStatus.Completed;
-                            EventLog.LogEvent("Scheduled Tasks", "Acumatica Pull Data Success For Store " + BVApp.CurrentStore.Id, BVSoftware.Commerce.Metrics.EventLogSeverity.Information);
-                        }
-                        else
-                        {
-                            task.Status = QueuedTaskStatus.Failed;
-                            EventLog.LogEvent("Scheduled Tasks", "Acumatic Pull Data Failed For Store " + BVApp.CurrentStore.Id, BVSoftware.Commerce.Metrics.EventLogSeverity.Information);
-                        }
-
-                        BVApp.ScheduleServices.QueuedTasks.Update(task);
-
-                        acumatica.GenerateQueuedTask(BVApp);
-                    }
-                }
-                else
-                {
                     // call task processor here
-
                     task.Status = QueuedTaskStatus.Failed;
                     task.StatusNotes = "Failed to locate the requested processor for this task.";
                     BVApp.ScheduleServices.QueuedTasks.Update(task);
-                }
 
             }
             catch (Exception ex)

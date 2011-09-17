@@ -256,7 +256,7 @@ namespace BVCommerce
 
             // Check credit card number
             bool cardOkay = true;
-            if (!BVSoftware.Payment.CardValidator.IsCardNumberValid(data.cardnumber))
+            if (!MerchantTribe.Payment.CardValidator.IsCardNumberValid(data.cardnumber))
             {
                 cardOkay = false;
                 RenderError("cardnumber", "Please enter a valid credit card number");

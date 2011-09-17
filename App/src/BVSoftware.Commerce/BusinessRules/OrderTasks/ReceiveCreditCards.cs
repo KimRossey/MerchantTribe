@@ -22,11 +22,11 @@ namespace BVSoftware.Commerce.BusinessRules.OrderTasks
                 {
                     List<Orders.OrderTransaction> transactions = context.BVApp.OrderServices.Transactions.FindForOrder(context.Order.bvin);
 
-                    if (p.Action == BVSoftware.Payment.ActionType.CreditCardInfo)
+                    if (p.Action == MerchantTribe.Payment.ActionType.CreditCardInfo)
                     {
                         // if we already have an auth or charge on the card, skip
-                        if (p.HasSuccessfulLinkedAction(BVSoftware.Payment.ActionType.CreditCardCharge, transactions) ||
-                            p.HasSuccessfulLinkedAction(BVSoftware.Payment.ActionType.CreditCardHold, transactions))
+                        if (p.HasSuccessfulLinkedAction(MerchantTribe.Payment.ActionType.CreditCardCharge, transactions) ||
+                            p.HasSuccessfulLinkedAction(MerchantTribe.Payment.ActionType.CreditCardHold, transactions))
                         {
                             Orders.OrderNote note = new Orders.OrderNote();
                             note.IsPublic = false;
@@ -37,20 +37,20 @@ namespace BVSoftware.Commerce.BusinessRules.OrderTasks
 
                         try
                         {
-                            BVSoftware.Payment.Transaction t = context.Order.GetEmptyTransaction();
+                            MerchantTribe.Payment.Transaction t = context.Order.GetEmptyTransaction();
                             t.Card = p.CreditCard;
                             t.Amount = p.Amount;
 
                             if (context.CurrentRequest.CurrentStore.Settings.PaymentCreditCardAuthorizeOnly == true)
                             {
-                                t.Action = BVSoftware.Payment.ActionType.CreditCardHold;
+                                t.Action = MerchantTribe.Payment.ActionType.CreditCardHold;
                             }
                             else
                             {
-                                t.Action = BVSoftware.Payment.ActionType.CreditCardCharge;
+                                t.Action = MerchantTribe.Payment.ActionType.CreditCardCharge;
                             }
 
-                            BVSoftware.Payment.Method proc = context.CurrentRequest.CurrentStore.Settings.PaymentCurrentCreditCardProcessor();
+                            MerchantTribe.Payment.Method proc = context.CurrentRequest.CurrentStore.Settings.PaymentCurrentCreditCardProcessor();
                             proc.ProcessTransaction(t);
 
                             Orders.OrderTransaction ot = new Orders.OrderTransaction(t);

@@ -30,7 +30,7 @@ namespace BVSoftware.Commerce.BusinessRules.OrderTasks
                 bool hasPointsPayment = false;
                 foreach (OrderTransaction t in context.BVApp.OrderServices.Transactions.FindForOrder(context.Order.bvin))
                 {
-                    if (t.Action == BVSoftware.Payment.ActionType.RewardPointsInfo)
+                    if (t.Action == MerchantTribe.Payment.ActionType.RewardPointsInfo)
                     {
                         hasPointsPayment = true;
                         break;

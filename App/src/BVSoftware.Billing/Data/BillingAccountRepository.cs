@@ -47,7 +47,7 @@ namespace BVSoftware.Billing.Data
             if (data.CreditCard.Trim().Length > 2)
             {
                 string json = MerchantTribe.Web.Cryptography.AesEncryption.Decode(data.CreditCard, key);
-                model.CreditCard = MerchantTribe.Web.Json.ObjectFromJson<BVSoftware.Payment.CardData>(json);
+                model.CreditCard = MerchantTribe.Web.Json.ObjectFromJson<MerchantTribe.Payment.CardData>(json);
             }
         }
                     

@@ -110,9 +110,9 @@
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.4.1.10331.0\lib\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="MerchantTribe.Web, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="MerchantTribe.Web, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\MerchantTribe.Web.1.1.0.0\lib\net4\MerchantTribe.Web.dll</HintPath>
+      <HintPath>..\packages\MerchantTribe.Web.1.2.0.0\lib\net4\MerchantTribe.Web.dll</HintPath>
     </Reference>
     <Reference Include="RouteDebugger">
       <HintPath>..\packages\routedebugger.2.0.0.7\lib\net40\RouteDebugger.dll</HintPath>
@@ -242,8 +242,6 @@
     <Content Include="BVAdmin\ChangeEmail.aspx" />
     <Content Include="BVAdmin\ChangePassword.aspx" />
     <Content Include="BVAdmin\ChangePlan.aspx" />
-    <Content Include="BVAdmin\Configuration\Acumatica.aspx" />
-    <Content Include="BVAdmin\Configuration\Acumatica2.aspx" />
     <Content Include="BVAdmin\Configuration\Affiliates.aspx" />
     <Content Include="BVAdmin\Configuration\Analytics.aspx" />
     <Content Include="BVAdmin\Configuration\Api.aspx" />
@@ -715,7 +713,6 @@
     <Content Include="BVModules\Controls\SiteTermsAgreement.ascx" />
     <Content Include="BVModules\Controls\StaticAddressDisplay.ascx" />
     <Content Include="BVModules\Controls\ViewOrder.ascx" />
-    <Content Include="BVModules\Controls\ViewOrderFromAcumatica.ascx" />
     <Content Include="BVModules\Controls\ViewOrderItems.ascx" />
     <Content Include="BVModules\Controls\VolumeDiscounts.ascx" />
     <Content Include="BVModules\CreditCardGateways\Authorize.Net\Edit.ascx" />
@@ -2677,20 +2674,6 @@
     <Compile Include="BVAdmin\ChangePlan.aspx.designer.cs">
       <DependentUpon>ChangePlan.aspx</DependentUpon>
     </Compile>
-    <Compile Include="BVAdmin\Configuration\Acumatica.aspx.cs">
-      <DependentUpon>Acumatica.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="BVAdmin\Configuration\Acumatica.aspx.designer.cs">
-      <DependentUpon>Acumatica.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="BVAdmin\Configuration\Acumatica2.aspx.cs">
-      <DependentUpon>Acumatica2.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="BVAdmin\Configuration\Acumatica2.aspx.designer.cs">
-      <DependentUpon>Acumatica2.aspx</DependentUpon>
-    </Compile>
     <Compile Include="BVAdmin\Configuration\Affiliates.aspx.cs">
       <DependentUpon>Affiliates.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -4308,13 +4291,6 @@
     <Compile Include="BVModules\Controls\ViewOrder.ascx.designer.cs">
       <DependentUpon>ViewOrder.ascx</DependentUpon>
     </Compile>
-    <Compile Include="BVModules\Controls\ViewOrderFromAcumatica.ascx.cs">
-      <DependentUpon>ViewOrderFromAcumatica.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="BVModules\Controls\ViewOrderFromAcumatica.ascx.designer.cs">
-      <DependentUpon>ViewOrderFromAcumatica.ascx</DependentUpon>
-    </Compile>
     <Compile Include="BVModules\Controls\ViewOrderItems.ascx.cs">
       <DependentUpon>ViewOrderItems.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -4574,7 +4550,6 @@
     <Compile Include="CheckoutPayPalExpress.aspx.designer.cs">
       <DependentUpon>CheckoutPayPalExpress.aspx</DependentUpon>
     </Compile>
-    <Compile Include="code\AcumaticaIntegration.cs" />
     <Compile Include="code\AddToCartClickedEventArgs.cs" />
     <Compile Include="code\AddToWishlistClickedEventArgs.cs" />
     <Compile Include="code\AdminTabType.cs" />
@@ -4977,10 +4952,6 @@
     <Content Include="Site.Master" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\src\BVSoftware.AcumaticaTools\BVSoftware.AcumaticaTools.csproj">
-      <Project>{30FABCFA-C2F6-446F-91F1-E22D94078EA3}</Project>
-      <Name>BVSoftware.AcumaticaTools</Name>
-    </ProjectReference>
     <ProjectReference Include="..\src\BVSoftware.Billing\BVSoftware.Billing.csproj">
       <Project>{39CB3B9D-94B5-46B1-9C5F-E1C3348565D9}</Project>
       <Name>BVSoftware.Billing</Name>
@@ -4997,17 +4968,9 @@
       <Project>{EE651FCB-FE6E-4940-B887-60C54369DB6C}</Project>
       <Name>BVSoftware.GoogleCheckout</Name>
     </ProjectReference>
-    <ProjectReference Include="..\src\BVSoftware.Payment\BVSoftware.Payment.csproj">
-      <Project>{4C223AD8-685A-4AAC-8610-1BEC50636203}</Project>
-      <Name>BVSoftware.Payment</Name>
-    </ProjectReference>
     <ProjectReference Include="..\src\BVSoftware.PaypalWebServices\BVSoftware.PaypalWebServices.csproj">
       <Project>{40FCF14A-F903-4BF1-B4E0-FC5CB623BDF2}</Project>
       <Name>BVSoftware.PaypalWebServices</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\src\BVSoftware.Search\BVSoftware.Search.csproj">
-      <Project>{86B61FF0-73DF-4B13-BB92-C4D40B49F0FA}</Project>
-      <Name>BVSoftware.Search</Name>
     </ProjectReference>
     <ProjectReference Include="..\src\BVSoftware.Shipping.FedEx\BVSoftware.Shipping.FedEx.csproj">
       <Project>{9B00258D-45D2-43BD-8178-A6F2AAFF5090}</Project>
@@ -5024,6 +4987,10 @@
     <ProjectReference Include="..\src\BVSoftware.Shipping\BVSoftware.Shipping.csproj">
       <Project>{99A252BB-D844-4581-B924-4E59AE19857F}</Project>
       <Name>BVSoftware.Shipping</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\src\MerchantTribe.Payment\MerchantTribe.Payment.csproj">
+      <Project>{4C223AD8-685A-4AAC-8610-1BEC50636203}</Project>
+      <Name>MerchantTribe.Payment</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

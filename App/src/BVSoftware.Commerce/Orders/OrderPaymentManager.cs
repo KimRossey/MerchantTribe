@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using BVSoftware.Payment;
+using MerchantTribe.Payment;
 using BVSoftware.Commerce.Orders;
 using BVSoftware.Commerce.Payment;
 using BVSoftware.Commerce.Membership;
@@ -586,13 +586,13 @@ namespace BVSoftware.Commerce.Orders
 
                 List<Orders.OrderTransaction> transactions = svc.Transactions.FindForOrder(o.bvin);
 
-                if (p.Action == BVSoftware.Payment.ActionType.CreditCardInfo ||
-                    p.Action == BVSoftware.Payment.ActionType.CreditCardHold)
+                if (p.Action == MerchantTribe.Payment.ActionType.CreditCardInfo ||
+                    p.Action == MerchantTribe.Payment.ActionType.CreditCardHold)
                 {
                     // if we already have an auth or charge on the card, skip
-                    if (p.HasSuccessfulLinkedAction(BVSoftware.Payment.ActionType.CreditCardCharge, transactions) ||
-                        p.HasSuccessfulLinkedAction(BVSoftware.Payment.ActionType.CreditCardHold, transactions) ||
-                        p.HasSuccessfulLinkedAction(BVSoftware.Payment.ActionType.CreditCardCapture, transactions)
+                    if (p.HasSuccessfulLinkedAction(MerchantTribe.Payment.ActionType.CreditCardCharge, transactions) ||
+                        p.HasSuccessfulLinkedAction(MerchantTribe.Payment.ActionType.CreditCardHold, transactions) ||
+                        p.HasSuccessfulLinkedAction(MerchantTribe.Payment.ActionType.CreditCardCapture, transactions)
                         )
                     {
                         continue;
@@ -600,20 +600,20 @@ namespace BVSoftware.Commerce.Orders
 
                     try
                     {
-                        BVSoftware.Payment.Transaction t = o.GetEmptyTransaction();
+                        MerchantTribe.Payment.Transaction t = o.GetEmptyTransaction();
                         t.Card = p.CreditCard;
                         t.Amount = p.Amount;
 
-                        if (p.Action == BVSoftware.Payment.ActionType.CreditCardHold)
+                        if (p.Action == MerchantTribe.Payment.ActionType.CreditCardHold)
                         {
-                            t.Action = BVSoftware.Payment.ActionType.CreditCardCapture;
+                            t.Action = MerchantTribe.Payment.ActionType.CreditCardCapture;
                         }
                         else
                         {
-                            t.Action = BVSoftware.Payment.ActionType.CreditCardCharge;
+                            t.Action = MerchantTribe.Payment.ActionType.CreditCardCharge;
                         }
 
-                        BVSoftware.Payment.Method proc = currentContext.CurrentStore.Settings.PaymentCurrentCreditCardProcessor();
+                        MerchantTribe.Payment.Method proc = currentContext.CurrentStore.Settings.PaymentCurrentCreditCardProcessor();
                         proc.ProcessTransaction(t);
 
                         Orders.OrderTransaction ot = new Orders.OrderTransaction(t);
@@ -911,14 +911,14 @@ namespace BVSoftware.Commerce.Orders
 
                 List<Orders.OrderTransaction> transactions = svc.Transactions.FindForOrder(o.bvin);
 
-                if (p.Action == BVSoftware.Payment.ActionType.PayPalExpressCheckoutInfo ||
-                    p.Action == BVSoftware.Payment.ActionType.PayPalHold)
+                if (p.Action == MerchantTribe.Payment.ActionType.PayPalExpressCheckoutInfo ||
+                    p.Action == MerchantTribe.Payment.ActionType.PayPalHold)
                 {
                     // if we already have an auth or charge on the card, skip
                     if (
-                        p.HasSuccessfulLinkedAction(BVSoftware.Payment.ActionType.PayPalCharge, transactions) ||
-                        p.HasSuccessfulLinkedAction(BVSoftware.Payment.ActionType.PayPalCapture, transactions) ||
-                        p.HasSuccessfulLinkedAction(BVSoftware.Payment.ActionType.PayPalHold, transactions) 
+                        p.HasSuccessfulLinkedAction(MerchantTribe.Payment.ActionType.PayPalCharge, transactions) ||
+                        p.HasSuccessfulLinkedAction(MerchantTribe.Payment.ActionType.PayPalCapture, transactions) ||
+                        p.HasSuccessfulLinkedAction(MerchantTribe.Payment.ActionType.PayPalHold, transactions) 
                         )
                     {
                         continue;
@@ -926,20 +926,20 @@ namespace BVSoftware.Commerce.Orders
 
                     try
                     {
-                        BVSoftware.Payment.Transaction t = o.GetEmptyTransaction();
+                        MerchantTribe.Payment.Transaction t = o.GetEmptyTransaction();
                         t.Card = p.CreditCard;
                         t.Amount = p.Amount;
 
                         Payment.Method.PaypalExpress processor = new Payment.Method.PaypalExpress();
 
-                        if (p.Action == BVSoftware.Payment.ActionType.PayPalHold)
+                        if (p.Action == MerchantTribe.Payment.ActionType.PayPalHold)
                         {
-                            t.Action = BVSoftware.Payment.ActionType.PayPalCapture;
+                            t.Action = MerchantTribe.Payment.ActionType.PayPalCapture;
                             processor.Capture(t);
                         }
                         else
                         {
-                            t.Action = BVSoftware.Payment.ActionType.PayPalCharge;
+                            t.Action = MerchantTribe.Payment.ActionType.PayPalCharge;
                             processor.Charge(t);
                         }
                                                 
@@ -1288,13 +1288,13 @@ namespace BVSoftware.Commerce.Orders
 
                 List<Orders.OrderTransaction> transactions = svc.Transactions.FindForOrder(o.bvin);
 
-                if (p.Action == BVSoftware.Payment.ActionType.RewardPointsInfo ||
-                    p.Action == BVSoftware.Payment.ActionType.RewardPointsHold)
+                if (p.Action == MerchantTribe.Payment.ActionType.RewardPointsInfo ||
+                    p.Action == MerchantTribe.Payment.ActionType.RewardPointsHold)
                 {
                     // if we already have an auth or charge on the card, skip
-                    if (p.HasSuccessfulLinkedAction(BVSoftware.Payment.ActionType.RewardPointsDecrease, transactions) ||
-                        p.HasSuccessfulLinkedAction(BVSoftware.Payment.ActionType.RewardPointsHold, transactions) ||
-                        p.HasSuccessfulLinkedAction(BVSoftware.Payment.ActionType.RewardPointsCapture, transactions)
+                    if (p.HasSuccessfulLinkedAction(MerchantTribe.Payment.ActionType.RewardPointsDecrease, transactions) ||
+                        p.HasSuccessfulLinkedAction(MerchantTribe.Payment.ActionType.RewardPointsHold, transactions) ||
+                        p.HasSuccessfulLinkedAction(MerchantTribe.Payment.ActionType.RewardPointsCapture, transactions)
                         )
                     {
                         continue;
@@ -1302,18 +1302,18 @@ namespace BVSoftware.Commerce.Orders
 
                     try
                     {
-                        BVSoftware.Payment.Transaction t = o.GetEmptyTransaction();
+                        MerchantTribe.Payment.Transaction t = o.GetEmptyTransaction();
                         t.Amount = p.Amount;
                         t.RewardPoints = pointsManager.PointsNeededForPurchaseAmount(p.Amount);
                         t.Customer.UserId = o.UserID;
 
-                        if (p.Action == BVSoftware.Payment.ActionType.RewardPointsHold)
+                        if (p.Action == MerchantTribe.Payment.ActionType.RewardPointsHold)
                         {
-                            t.Action = BVSoftware.Payment.ActionType.RewardPointsCapture;
+                            t.Action = MerchantTribe.Payment.ActionType.RewardPointsCapture;
                         }
                         else
                         {
-                            t.Action = BVSoftware.Payment.ActionType.RewardPointsDecrease;
+                            t.Action = MerchantTribe.Payment.ActionType.RewardPointsDecrease;
                         }
 
                         

@@ -79,7 +79,7 @@ namespace BVCommerce.BVModules.Controls
             // Remove any current points info transactions
             foreach (OrderTransaction t in MyPage.BVApp.OrderServices.Transactions.FindForOrder(o.bvin))
             {
-                if (t.Action == BVSoftware.Payment.ActionType.RewardPointsInfo)
+                if (t.Action == MerchantTribe.Payment.ActionType.RewardPointsInfo)
                 {
                     MyPage.BVApp.OrderServices.Transactions.Delete(t.Id);
                 }

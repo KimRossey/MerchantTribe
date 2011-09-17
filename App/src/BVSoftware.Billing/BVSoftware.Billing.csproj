@@ -113,9 +113,9 @@
     <Reference Include="EcmaScript.NET.modified, Version=0.1.1.0, Culture=neutral, PublicKeyToken=7d53ba4f537753a5, processorArchitecture=MSIL">
       <HintPath>..\..\packages\YUICompressor.NET.1.6.0.1\lib\net35\EcmaScript.NET.modified.dll</HintPath>
     </Reference>
-    <Reference Include="MerchantTribe.Web, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="MerchantTribe.Web, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\MerchantTribe.Web.1.1.0.0\lib\net4\MerchantTribe.Web.dll</HintPath>
+      <HintPath>..\..\packages\MerchantTribe.Web.1.2.0.0\lib\net4\MerchantTribe.Web.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -171,12 +171,6 @@
     <Compile Include="Transaction.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BVSoftware.Payment\BVSoftware.Payment.csproj">
-      <Project>{4C223AD8-685A-4AAC-8610-1BEC50636203}</Project>
-      <Name>BVSoftware.Payment</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="app.config" />
     <None Include="Data\Db.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
@@ -218,6 +212,12 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MerchantTribe.Payment\MerchantTribe.Payment.csproj">
+      <Project>{4C223AD8-685A-4AAC-8610-1BEC50636203}</Project>
+      <Name>MerchantTribe.Payment</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

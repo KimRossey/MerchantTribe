@@ -49,33 +49,6 @@ namespace BVCommerce {
         protected global::System.Web.UI.WebControls.Label lblFraudScore;
         
         /// <summary>
-        /// pnlAcumatica control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlAcumatica;
-        
-        /// <summary>
-        /// btnSendToAcumatica control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnSendToAcumatica;
-        
-        /// <summary>
-        /// litAcumaticaOrderNumber control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litAcumaticaOrderNumber;
-        
-        /// <summary>
         /// OrderStatusDisplay1 control.
         /// </summary>
         /// <remarks>

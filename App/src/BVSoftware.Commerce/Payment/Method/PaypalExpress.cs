@@ -23,7 +23,7 @@ namespace BVSoftware.Commerce.Payment.Method
 
         private Accounts.Store currentStore = RequestContext.GetCurrentRequestContext().CurrentStore;
 
-        public bool Authorize(BVSoftware.Payment.Transaction t)
+        public bool Authorize(MerchantTribe.Payment.Transaction t)
         {
             PayPalAPI ppAPI = Utilities.PaypalExpressUtilities.GetPaypalAPI();
             try
@@ -49,10 +49,10 @@ namespace BVSoftware.Commerce.Payment.Method
                     else
                     {
                         t.Result.Succeeded = false;
-                        t.Result.Messages.Add(new BVSoftware.Payment.Message("PayPal Express Payment Authorization Failed.", "", BVSoftware.Payment.MessageType.Error));
+                        t.Result.Messages.Add(new MerchantTribe.Payment.Message("PayPal Express Payment Authorization Failed.", "", MerchantTribe.Payment.MessageType.Error));
                         foreach (ErrorType ppError in paymentResponse.Errors)
                         {
-                            t.Result.Messages.Add(new BVSoftware.Payment.Message(ppError.LongMessage, ppError.ErrorCode, BVSoftware.Payment.MessageType.Error));
+                            t.Result.Messages.Add(new MerchantTribe.Payment.Message(ppError.LongMessage, ppError.ErrorCode, MerchantTribe.Payment.MessageType.Error));
                         }
                         return false;
                     }
@@ -66,7 +66,7 @@ namespace BVSoftware.Commerce.Payment.Method
             return false;
         }
 
-        public bool Capture(BVSoftware.Payment.Transaction t)
+        public bool Capture(MerchantTribe.Payment.Transaction t)
         {
             PayPalAPI ppAPI = Utilities.PaypalExpressUtilities.GetPaypalAPI();
             try
@@ -88,7 +88,7 @@ namespace BVSoftware.Commerce.Payment.Method
                         t.Result.Succeeded = true;
                         t.Result.ResponseCode = "PENDING";
                         t.Result.ResponseCodeDescription = "PayPal Express Payment PENDING";
-                        t.Result.Messages.Add(new BVSoftware.Payment.Message("Paypal Express Payment PENDING.", "OK", BVSoftware.Payment.MessageType.Information));
+                        t.Result.Messages.Add(new MerchantTribe.Payment.Message("Paypal Express Payment PENDING.", "OK", MerchantTribe.Payment.MessageType.Information));
                         return true;
                     }
                     else if (captureResponse.DoCaptureResponseDetails.PaymentInfo.PaymentStatus == PaymentStatusCodeType.InProgress)
@@ -96,7 +96,7 @@ namespace BVSoftware.Commerce.Payment.Method
                         t.Result.Succeeded = true;
                         t.Result.ResponseCode = "PENDING";
                         t.Result.ResponseCodeDescription = "PayPal Express Payment IN PROGRESS";
-                        t.Result.Messages.Add(new BVSoftware.Payment.Message("Paypal Express Payment PENDING. In Progress.", "OK", BVSoftware.Payment.MessageType.Information));
+                        t.Result.Messages.Add(new MerchantTribe.Payment.Message("Paypal Express Payment PENDING. In Progress.", "OK", MerchantTribe.Payment.MessageType.Information));
                         return true;
                     }
                     else if (captureResponse.DoCaptureResponseDetails.PaymentInfo.PaymentStatus == PaymentStatusCodeType.None)
@@ -104,7 +104,7 @@ namespace BVSoftware.Commerce.Payment.Method
                         t.Result.Succeeded = true;
                         t.Result.ResponseCode = "PENDING";
                         t.Result.ResponseCodeDescription = "PayPal Express Payment: No Status Yet";
-                        t.Result.Messages.Add(new BVSoftware.Payment.Message("Paypal Express Payment PENDING. No Status Yet.", "OK", BVSoftware.Payment.MessageType.Information));
+                        t.Result.Messages.Add(new MerchantTribe.Payment.Message("Paypal Express Payment PENDING. No Status Yet.", "OK", MerchantTribe.Payment.MessageType.Information));
                         return true;
                     }
                     else if (captureResponse.DoCaptureResponseDetails.PaymentInfo.PaymentStatus == PaymentStatusCodeType.Processed)
@@ -112,29 +112,29 @@ namespace BVSoftware.Commerce.Payment.Method
                         t.Result.Succeeded = true;
                         t.Result.ResponseCode = "PENDING";
                         t.Result.ResponseCodeDescription = "PayPal Express Payment PENDING";
-                        t.Result.Messages.Add(new BVSoftware.Payment.Message("Paypal Express Payment PENDING.", "OK", BVSoftware.Payment.MessageType.Information));
+                        t.Result.Messages.Add(new MerchantTribe.Payment.Message("Paypal Express Payment PENDING.", "OK", MerchantTribe.Payment.MessageType.Information));
                         return true;
                     }
                     else if (captureResponse.DoCaptureResponseDetails.PaymentInfo.PaymentStatus == PaymentStatusCodeType.Completed)
                     {
                         t.Result.Succeeded = true;
-                        t.Result.Messages.Add(new BVSoftware.Payment.Message("PayPal Express Payment Captured Successfully.", "OK", BVSoftware.Payment.MessageType.Information));
+                        t.Result.Messages.Add(new MerchantTribe.Payment.Message("PayPal Express Payment Captured Successfully.", "OK", MerchantTribe.Payment.MessageType.Information));
                         return true;
                     }
                     else
                     {
                         t.Result.Succeeded = false;
-                        t.Result.Messages.Add(new BVSoftware.Payment.Message("An error occurred while trying to capture your PayPal payment.", "", BVSoftware.Payment.MessageType.Error));
+                        t.Result.Messages.Add(new MerchantTribe.Payment.Message("An error occurred while trying to capture your PayPal payment.", "", MerchantTribe.Payment.MessageType.Error));
                         return false;
                     }
                 }
                 else
                 {
                     t.Result.Succeeded = false;
-                    t.Result.Messages.Add(new BVSoftware.Payment.Message("Paypal Express Payment Charge Failed.", "", BVSoftware.Payment.MessageType.Error));
+                    t.Result.Messages.Add(new MerchantTribe.Payment.Message("Paypal Express Payment Charge Failed.", "", MerchantTribe.Payment.MessageType.Error));
                     foreach (ErrorType ppError in captureResponse.Errors)
                     {
-                        t.Result.Messages.Add(new BVSoftware.Payment.Message(ppError.LongMessage, ppError.ErrorCode, BVSoftware.Payment.MessageType.Error));
+                        t.Result.Messages.Add(new MerchantTribe.Payment.Message(ppError.LongMessage, ppError.ErrorCode, MerchantTribe.Payment.MessageType.Error));
                     }
                     return false;
                 }
@@ -147,7 +147,7 @@ namespace BVSoftware.Commerce.Payment.Method
             }
 
         }
-        public bool Charge(BVSoftware.Payment.Transaction t)
+        public bool Charge(MerchantTribe.Payment.Transaction t)
         {       
             PayPalAPI ppAPI = Utilities.PaypalExpressUtilities.GetPaypalAPI();
             try {
@@ -169,7 +169,7 @@ namespace BVSoftware.Commerce.Payment.Method
                     if (paymentResponse.DoExpressCheckoutPaymentResponseDetails.PaymentInfo.PaymentStatus == PaymentStatusCodeType.Completed)
                     {
                         t.Result.Succeeded = true;
-                        t.Result.Messages.Add(new BVSoftware.Payment.Message("PayPal Express Payment Charged Successfully.", "OK", BVSoftware.Payment.MessageType.Information));
+                        t.Result.Messages.Add(new MerchantTribe.Payment.Message("PayPal Express Payment Charged Successfully.", "OK", MerchantTribe.Payment.MessageType.Information));
                         return true;
                     }
                     else if (paymentResponse.DoExpressCheckoutPaymentResponseDetails.PaymentInfo.PaymentStatus == PaymentStatusCodeType.Pending)
@@ -177,23 +177,23 @@ namespace BVSoftware.Commerce.Payment.Method
                         t.Result.Succeeded = true;
                         t.Result.ResponseCode = "PENDING";
                         t.Result.ResponseCodeDescription = "PayPal Express Payment PENDING";
-                        t.Result.Messages.Add(new BVSoftware.Payment.Message("Paypal Express Payment PENDING.", "OK", BVSoftware.Payment.MessageType.Information));
+                        t.Result.Messages.Add(new MerchantTribe.Payment.Message("Paypal Express Payment PENDING.", "OK", MerchantTribe.Payment.MessageType.Information));
                         return true;
                     }
                     else
                     {
                         t.Result.Succeeded = false;
-                        t.Result.Messages.Add(new BVSoftware.Payment.Message("An error occurred while trying to charge your PayPal payment.", "", BVSoftware.Payment.MessageType.Error));
+                        t.Result.Messages.Add(new MerchantTribe.Payment.Message("An error occurred while trying to charge your PayPal payment.", "", MerchantTribe.Payment.MessageType.Error));
                         return false;
                     }
                 }
                 else
                 {
                     t.Result.Succeeded = false;
-                    t.Result.Messages.Add(new BVSoftware.Payment.Message("Paypal Express Payment Charge Failed.", "", BVSoftware.Payment.MessageType.Error));
+                    t.Result.Messages.Add(new MerchantTribe.Payment.Message("Paypal Express Payment Charge Failed.", "", MerchantTribe.Payment.MessageType.Error));
                     foreach (ErrorType ppError in paymentResponse.Errors)
                     {
-                        t.Result.Messages.Add(new BVSoftware.Payment.Message(ppError.LongMessage, ppError.ErrorCode, BVSoftware.Payment.MessageType.Error));
+                        t.Result.Messages.Add(new MerchantTribe.Payment.Message(ppError.LongMessage, ppError.ErrorCode, MerchantTribe.Payment.MessageType.Error));
                     }
                     return false;
                 }
@@ -207,7 +207,7 @@ namespace BVSoftware.Commerce.Payment.Method
         }
 
 
-        public bool Refund(BVSoftware.Payment.Transaction t)
+        public bool Refund(MerchantTribe.Payment.Transaction t)
         {
                 PayPalAPI ppAPI = Utilities.PaypalExpressUtilities.GetPaypalAPI();
                 try {
@@ -222,16 +222,16 @@ namespace BVSoftware.Commerce.Payment.Method
                         if ((refundResponse.Ack == AckCodeType.Success) || (refundResponse.Ack == AckCodeType.SuccessWithWarning))
                         {
                             t.Result.Succeeded = true;
-                            t.Result.Messages.Add(new BVSoftware.Payment.Message("PayPal Express Payment Refunded Successfully.", "OK", BVSoftware.Payment.MessageType.Information));
+                            t.Result.Messages.Add(new MerchantTribe.Payment.Message("PayPal Express Payment Refunded Successfully.", "OK", MerchantTribe.Payment.MessageType.Information));
                             return true;
                         }
                         else
                         {
                             t.Result.Succeeded = false;
-                            t.Result.Messages.Add(new BVSoftware.Payment.Message("Paypal Express Payment Refund Failed.", "", BVSoftware.Payment.MessageType.Error));
+                            t.Result.Messages.Add(new MerchantTribe.Payment.Message("Paypal Express Payment Refund Failed.", "", MerchantTribe.Payment.MessageType.Error));
                             foreach (ErrorType ppError in refundResponse.Errors)
                             {
-                                t.Result.Messages.Add(new BVSoftware.Payment.Message(ppError.LongMessage, ppError.ErrorCode, BVSoftware.Payment.MessageType.Error));
+                                t.Result.Messages.Add(new MerchantTribe.Payment.Message(ppError.LongMessage, ppError.ErrorCode, MerchantTribe.Payment.MessageType.Error));
                             }
                             return false;
                        }
@@ -245,7 +245,7 @@ namespace BVSoftware.Commerce.Payment.Method
                 return false;
         }
 
-        public bool Void(BVSoftware.Payment.Transaction t)
+        public bool Void(MerchantTribe.Payment.Transaction t)
         {
             PayPalAPI ppAPI = Utilities.PaypalExpressUtilities.GetPaypalAPI();
             try
@@ -257,16 +257,16 @@ namespace BVSoftware.Commerce.Payment.Method
                     if ((voidResponse.Ack == AckCodeType.Success) || (voidResponse.Ack == AckCodeType.SuccessWithWarning))
                     {
                         t.Result.Succeeded = true;
-                        t.Result.Messages.Add(new BVSoftware.Payment.Message("PayPal Express Payment Voided Successfully.", "OK", BVSoftware.Payment.MessageType.Information));
+                        t.Result.Messages.Add(new MerchantTribe.Payment.Message("PayPal Express Payment Voided Successfully.", "OK", MerchantTribe.Payment.MessageType.Information));
                         return true;
                     }
                     else
                     {
                         t.Result.Succeeded = false;
-                        t.Result.Messages.Add(new BVSoftware.Payment.Message("Paypal Express Payment Void Failed.", "", BVSoftware.Payment.MessageType.Error));
+                        t.Result.Messages.Add(new MerchantTribe.Payment.Message("Paypal Express Payment Void Failed.", "", MerchantTribe.Payment.MessageType.Error));
                         foreach (ErrorType ppError in voidResponse.Errors)
                         {
-                            t.Result.Messages.Add(new BVSoftware.Payment.Message(ppError.LongMessage, ppError.ErrorCode, BVSoftware.Payment.MessageType.Error));
+                            t.Result.Messages.Add(new MerchantTribe.Payment.Message(ppError.LongMessage, ppError.ErrorCode, MerchantTribe.Payment.MessageType.Error));
                         }
                         return false;
                     }

@@ -83,9 +83,9 @@
     <Reference Include="EcmaScript.NET.modified, Version=0.1.1.0, Culture=neutral, PublicKeyToken=7d53ba4f537753a5, processorArchitecture=MSIL">
       <HintPath>..\..\packages\YUICompressor.NET.1.6.0.1\lib\net35\EcmaScript.NET.modified.dll</HintPath>
     </Reference>
-    <Reference Include="MerchantTribe.Web, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="MerchantTribe.Web, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\MerchantTribe.Web.1.1.0.0\lib\net4\MerchantTribe.Web.dll</HintPath>
+      <HintPath>..\..\packages\MerchantTribe.Web.1.2.0.0\lib\net4\MerchantTribe.Web.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
@@ -154,17 +154,13 @@
       <Project>{EE651FCB-FE6E-4940-B887-60C54369DB6C}</Project>
       <Name>BVSoftware.GoogleCheckout</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BVSoftware.Payment\BVSoftware.Payment.csproj">
+    <ProjectReference Include="..\BVSoftware.Payment\MerchantTribe.Payment.csproj">
       <Project>{4C223AD8-685A-4AAC-8610-1BEC50636203}</Project>
-      <Name>BVSoftware.Payment</Name>
+      <Name>MerchantTribe.Payment</Name>
     </ProjectReference>
     <ProjectReference Include="..\BVSoftware.PaypalWebServices\BVSoftware.PaypalWebServices.csproj">
       <Project>{40FCF14A-F903-4BF1-B4E0-FC5CB623BDF2}</Project>
       <Name>BVSoftware.PaypalWebServices</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BVSoftware.Search\BVSoftware.Search.csproj">
-      <Project>{86B61FF0-73DF-4B13-BB92-C4D40B49F0FA}</Project>
-      <Name>BVSoftware.Search</Name>
     </ProjectReference>
     <ProjectReference Include="..\BVSoftware.Shipping.Ups\BVSoftware.Shipping.Ups.csproj">
       <Project>{68FF27BE-6296-4A8B-B20F-6480A491D092}</Project>
