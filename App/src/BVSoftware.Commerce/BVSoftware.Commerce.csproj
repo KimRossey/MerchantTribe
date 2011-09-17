@@ -117,13 +117,14 @@
       <HintPath>..\..\components\BvLicensing.dll</HintPath>
     </Reference>
     <Reference Include="EcmaScript.NET.modified, Version=0.1.1.0, Culture=neutral, PublicKeyToken=7d53ba4f537753a5, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\MerchantTribe.Web.1.0.0.0\lib\EcmaScript.NET.modified.dll</HintPath>
+      <HintPath>..\..\packages\YUICompressor.NET.1.6.0.1\lib\net35\EcmaScript.NET.modified.dll</HintPath>
     </Reference>
     <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
       <HintPath>..\..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
     </Reference>
-    <Reference Include="MerchantTribe.Web, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\MerchantTribe.Web.1.0.0.0\lib\MerchantTribe.Web.dll</HintPath>
+    <Reference Include="MerchantTribe.Web, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\MerchantTribe.Web.1.1.0.0\lib\net4\MerchantTribe.Web.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Data.Entity.CTP, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -161,8 +162,9 @@
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="Yahoo.Yui.Compressor, Version=1.2.2.0, Culture=neutral, PublicKeyToken=a8d7c6e9882175a2, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\MerchantTribe.Web.1.0.0.0\lib\Yahoo.Yui.Compressor.dll</HintPath>
+    <Reference Include="Yahoo.Yui.Compressor, Version=1.6.0.1, Culture=neutral, PublicKeyToken=f8b4b81ec75097e2, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\YUICompressor.NET.1.6.0.1\lib\net35\Yahoo.Yui.Compressor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -685,10 +687,6 @@
     <ProjectReference Include="..\BVSoftware.CommerceDTO\BVSoftware.CommerceDTO.csproj">
       <Project>{C47A3A58-D11F-4D67-92FC-3E95B5DD6221}</Project>
       <Name>BVSoftware.CommerceDTO</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BVSoftware.Cryptography\BVSoftware.Cryptography.csproj">
-      <Project>{D03CF391-8A6B-40E4-AFC8-4732DB58E0A0}</Project>
-      <Name>BVSoftware.Cryptography</Name>
     </ProjectReference>
     <ProjectReference Include="..\BVSoftware.GoogleCheckout\BVSoftware.GoogleCheckout.csproj">
       <Project>{EE651FCB-FE6E-4940-B887-60C54369DB6C}</Project>

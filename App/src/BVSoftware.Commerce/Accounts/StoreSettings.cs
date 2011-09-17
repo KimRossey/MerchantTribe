@@ -36,7 +36,7 @@ namespace BVSoftware.Commerce.Accounts
         internal void SetPropEncrypted(string name, string value)
         {
             string encoded = string.Empty;
-            BVSoftware.Cryptography.TripleDesEncryption crypto = new BVSoftware.Cryptography.TripleDesEncryption();
+            MerchantTribe.Web.Cryptography.TripleDesEncryption crypto = new MerchantTribe.Web.Cryptography.TripleDesEncryption();
             encoded = crypto.Encode(value);
             SetProp(name, encoded);
         }
@@ -100,7 +100,7 @@ namespace BVSoftware.Commerce.Accounts
             StoreSetting s = GetSetting(name);
             string result = string.Empty;
             result = s.SettingValue;
-            BVSoftware.Cryptography.TripleDesEncryption crypto = new BVSoftware.Cryptography.TripleDesEncryption();
+            MerchantTribe.Web.Cryptography.TripleDesEncryption crypto = new MerchantTribe.Web.Cryptography.TripleDesEncryption();
             if (result != string.Empty)
             {
                 result = crypto.Decode(result);
@@ -749,8 +749,8 @@ namespace BVSoftware.Commerce.Accounts
             string encrypted = GetProp("paysettings" + methodId);
             if (encrypted.Length > 2)
             {
-                string key = BVSoftware.Cryptography.KeyManager.GetKey(0);
-                string json = BVSoftware.Cryptography.AesEncryption.Decode(encrypted, key);
+                string key = MerchantTribe.Web.Cryptography.KeyManager.GetKey(0);
+                string json = MerchantTribe.Web.Cryptography.AesEncryption.Decode(encrypted, key);
                 return MerchantTribe.Web.Json.ObjectFromJson<BVSoftware.Payment.MethodSettings>(json);
             }
             return new BVSoftware.Payment.MethodSettings();
@@ -758,8 +758,8 @@ namespace BVSoftware.Commerce.Accounts
         public void PaymentSettingsSet(string methodId, BVSoftware.Payment.MethodSettings settings)
         {
             string json = MerchantTribe.Web.Json.ObjectToJson(settings);
-            string key = BVSoftware.Cryptography.KeyManager.GetKey(0);
-            string encrypted = BVSoftware.Cryptography.AesEncryption.Encode(json, key);
+            string key = MerchantTribe.Web.Cryptography.KeyManager.GetKey(0);
+            string encrypted = MerchantTribe.Web.Cryptography.AesEncryption.Encode(json, key);
             SetProp("paysettings" + methodId, encrypted);
         }
         public BVSoftware.Payment.Method PaymentCurrentCreditCardProcessor()

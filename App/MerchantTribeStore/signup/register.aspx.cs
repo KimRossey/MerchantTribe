@@ -356,8 +356,8 @@ namespace BVCommerce
                             BVApp.AccountServices.Stores.Update(s);
                         }
 
-                        string e = BVSoftware.Cryptography.Base64.ConvertStringToBase64(u.Email);
-                        string st = BVSoftware.Cryptography.Base64.ConvertStringToBase64(s.StoreName);
+                        string e = MerchantTribe.Web.Cryptography.Base64.ConvertStringToBase64(u.Email);
+                        string st = MerchantTribe.Web.Cryptography.Base64.ConvertStringToBase64(s.StoreName);
 
                         Response.Redirect("/signup/ProcessSignUp?e=" + e + "&s=" + st);
 

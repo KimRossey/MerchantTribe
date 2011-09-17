@@ -6,7 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using BVSoftware.Cryptography;
+using MerchantTribe.Web.Cryptography;
 using MerchantTribe.Web;
 using BVSoftware.CommerceDTO.v1.Membership;
 using BVSoftware.CommerceDTO.v1.Contacts;

@@ -1,7 +1,7 @@
 using System;
 using System.Web;
 using System.Collections.Specialized;
-using BVSoftware.Cryptography;
+using MerchantTribe.Web.Cryptography;
 
 namespace BVSoftware.Commerce.Utilities
 {

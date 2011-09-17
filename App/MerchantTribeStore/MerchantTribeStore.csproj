@@ -105,13 +105,14 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EcmaScript.NET.modified, Version=0.1.1.0, Culture=neutral, PublicKeyToken=7d53ba4f537753a5, processorArchitecture=MSIL">
-      <HintPath>..\packages\MerchantTribe.Web.1.0.0.0\lib\EcmaScript.NET.modified.dll</HintPath>
+      <HintPath>..\packages\YUICompressor.NET.1.6.0.1\lib\net35\EcmaScript.NET.modified.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.4.1.10331.0\lib\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="MerchantTribe.Web, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MerchantTribe.Web.1.0.0.0\lib\MerchantTribe.Web.dll</HintPath>
+    <Reference Include="MerchantTribe.Web, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MerchantTribe.Web.1.1.0.0\lib\net4\MerchantTribe.Web.dll</HintPath>
     </Reference>
     <Reference Include="RouteDebugger">
       <HintPath>..\packages\routedebugger.2.0.0.7\lib\net40\RouteDebugger.dll</HintPath>
@@ -157,8 +158,9 @@
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
-    <Reference Include="Yahoo.Yui.Compressor, Version=1.2.2.0, Culture=neutral, PublicKeyToken=a8d7c6e9882175a2, processorArchitecture=MSIL">
-      <HintPath>..\packages\MerchantTribe.Web.1.0.0.0\lib\Yahoo.Yui.Compressor.dll</HintPath>
+    <Reference Include="Yahoo.Yui.Compressor, Version=1.6.0.1, Culture=neutral, PublicKeyToken=f8b4b81ec75097e2, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\YUICompressor.NET.1.6.0.1\lib\net35\Yahoo.Yui.Compressor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -4990,10 +4992,6 @@
     <ProjectReference Include="..\src\BVSoftware.Commerce\BVSoftware.Commerce.csproj">
       <Project>{4EFF0D3E-99D4-4A8D-A672-B88E5E47CBAA}</Project>
       <Name>BVSoftware.Commerce</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\src\BVSoftware.Cryptography\BVSoftware.Cryptography.csproj">
-      <Project>{D03CF391-8A6B-40E4-AFC8-4732DB58E0A0}</Project>
-      <Name>BVSoftware.Cryptography</Name>
     </ProjectReference>
     <ProjectReference Include="..\src\BVSoftware.GoogleCheckout\BVSoftware.GoogleCheckout.csproj">
       <Project>{EE651FCB-FE6E-4940-B887-60C54369DB6C}</Project>

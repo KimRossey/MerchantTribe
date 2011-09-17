@@ -40,10 +40,10 @@ namespace BVSoftware.Commerce.Orders
             model.Action = (BVSoftware.Payment.ActionType)data.Action;
             model.Amount = data.Amount;
 
-            string key = BVSoftware.Cryptography.KeyManager.GetKey(0);
+            string key = MerchantTribe.Web.Cryptography.KeyManager.GetKey(0);
             if (data.CreditCard.Trim().Length > 2)
             {
-                string json = BVSoftware.Cryptography.AesEncryption.Decode(data.CreditCard, key);
+                string json = MerchantTribe.Web.Cryptography.AesEncryption.Decode(data.CreditCard, key);
                 model.CreditCard = MerchantTribe.Web.Json.ObjectFromJson<BVSoftware.Payment.CardData>(json);
             }
 
@@ -69,8 +69,8 @@ namespace BVSoftware.Commerce.Orders
             data.Amount = model.Amount;
 
             string json = MerchantTribe.Web.Json.ObjectToJson(model.CreditCard);
-            string key = BVSoftware.Cryptography.KeyManager.GetKey(0);
-            data.CreditCard = BVSoftware.Cryptography.AesEncryption.Encode(json, key);
+            string key = MerchantTribe.Web.Cryptography.KeyManager.GetKey(0);
+            data.CreditCard = MerchantTribe.Web.Cryptography.AesEncryption.Encode(json, key);
 
             data.Id = model.Id;
             data.LinkedToTransaction = model.LinkedToTransaction;

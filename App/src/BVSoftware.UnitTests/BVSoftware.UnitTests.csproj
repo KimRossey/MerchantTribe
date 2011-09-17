@@ -159,10 +159,6 @@
       <Project>{4EFF0D3E-99D4-4A8D-A672-B88E5E47CBAA}</Project>
       <Name>BVSoftware.Commerce</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BVSoftware.Cryptography\BVSoftware.Cryptography.csproj">
-      <Project>{D03CF391-8A6B-40E4-AFC8-4732DB58E0A0}</Project>
-      <Name>BVSoftware.Cryptography</Name>
-    </ProjectReference>
     <ProjectReference Include="..\BVSoftware.GoogleCheckout\BVSoftware.GoogleCheckout.csproj">
       <Project>{EE651FCB-FE6E-4940-B887-60C54369DB6C}</Project>
       <Name>BVSoftware.GoogleCheckout</Name>
