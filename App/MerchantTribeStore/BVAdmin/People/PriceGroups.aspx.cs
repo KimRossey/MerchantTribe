@@ -19,7 +19,7 @@ namespace BVCommerce
 
         protected void BindGrids()
         {
-            PricingGroupsGridView.DataSource = BVApp.ContactServices.PriceGroups.FindAll();
+            PricingGroupsGridView.DataSource = MTApp.ContactServices.PriceGroups.FindAll();
             PricingGroupsGridView.DataBind();
         }
 
@@ -36,7 +36,7 @@ namespace BVCommerce
             foreach (GridViewRow row in PricingGroupsGridView.Rows)
             {
                 string key = (string)PricingGroupsGridView.DataKeys[row.RowIndex].Value;
-                MerchantTribe.Commerce.Contacts.PriceGroup pricingGroup = BVApp.ContactServices.PriceGroups.Find(key);
+                MerchantTribe.Commerce.Contacts.PriceGroup pricingGroup = MTApp.ContactServices.PriceGroups.Find(key);
 
                 TextBox NameTextBox = (TextBox)row.FindControl("NameTextBox");
                 DropDownList PricingTypeDropDownList = (DropDownList)row.FindControl("PricingTypeDropDownList");
@@ -63,7 +63,7 @@ namespace BVCommerce
 
                 if (needToUpdate)
                 {
-                    BVApp.ContactServices.PriceGroups.Update(pricingGroup);
+                    MTApp.ContactServices.PriceGroups.Update(pricingGroup);
                 }
             }
             MessageBox1.ShowOk("Price groups updated");
@@ -87,7 +87,7 @@ namespace BVCommerce
         {
             MerchantTribe.Commerce.Contacts.PriceGroup pricingGroup = new MerchantTribe.Commerce.Contacts.PriceGroup();
             pricingGroup.Name = "New Pricing Group";
-            if (BVApp.ContactServices.PriceGroups.Create(pricingGroup))
+            if (MTApp.ContactServices.PriceGroups.Create(pricingGroup))
             {
                 MessageBox1.ShowOk("New price group added");
             }
@@ -107,7 +107,7 @@ namespace BVCommerce
         protected void PricingGroupsGridView_RowDeleting(object sender, System.Web.UI.WebControls.GridViewDeleteEventArgs e)
         {
             string key = (string)PricingGroupsGridView.DataKeys[e.RowIndex].Value;
-            if (BVApp.ContactServices.PriceGroups.Delete(key))
+            if (MTApp.ContactServices.PriceGroups.Delete(key))
             {
                 MessageBox1.ShowOk("Pricing group deleted");
             }

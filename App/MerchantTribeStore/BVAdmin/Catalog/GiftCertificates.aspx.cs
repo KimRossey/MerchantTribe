@@ -28,7 +28,7 @@ namespace BVCommerce
             //criteria.SpecialProductTypeOne = SpecialProductTypes.GiftCertificate;
             //criteria.SpecialProductTypeTwo = SpecialProductTypes.ArbitrarilyPricedGiftCertificate;
             criteria.DisplayInactiveProducts = true;
-            GiftCertificatesGridView.DataSource = BVApp.CatalogServices.Products.FindByCriteria(criteria);
+            GiftCertificatesGridView.DataSource = MTApp.CatalogServices.Products.FindByCriteria(criteria);
             GiftCertificatesGridView.DataKeyNames = new string[] { "bvin" };
             GiftCertificatesGridView.DataBind();
         }
@@ -86,7 +86,7 @@ namespace BVCommerce
             string key = (string)GiftCertificatesGridView.DataKeys[e.RowIndex].Value;
             if (key != string.Empty)
             {
-                if (BVApp.DestroyProduct(key))
+                if (MTApp.DestroyProduct(key))
                 {
                     MessageBox1.ShowOk("Gift certificate was deleted successfully");
                     MessageBox2.ShowOk("Gift certificate was deleted successfully");

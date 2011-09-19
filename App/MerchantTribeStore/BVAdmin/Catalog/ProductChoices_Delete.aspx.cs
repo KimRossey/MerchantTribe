@@ -28,10 +28,10 @@ namespace BVCommerce
         {
             bool result = false;
 
-            Product p = BVApp.CatalogServices.Products.Find(bvin);
+            Product p = MTApp.CatalogServices.Products.Find(bvin);
             if ((p != null))
             {
-                result = BVApp.CatalogServices.ProductsRemoveOption(p, id);                
+                result = MTApp.CatalogServices.ProductsRemoveOption(p, id);                
             }
 
             if ((result))

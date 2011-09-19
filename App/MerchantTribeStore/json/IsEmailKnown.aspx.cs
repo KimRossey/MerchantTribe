@@ -28,7 +28,7 @@ namespace BVCommerce.json
             JsonResponse result = new JsonResponse();
 
             string email = Request.Form["email"];
-            CustomerAccount act = BVApp.MembershipServices.Customers.FindByEmail(email);
+            CustomerAccount act = MTApp.MembershipServices.Customers.FindByEmail(email);
             if (act != null)
             {
                 if (act.Bvin != string.Empty)

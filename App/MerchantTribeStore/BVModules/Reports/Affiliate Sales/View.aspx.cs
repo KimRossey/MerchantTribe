@@ -25,7 +25,7 @@ namespace BVCommerce
 
         protected void BindAffiliates()
         {
-            AffiliatesDropDownList.DataSource = BVApp.ContactServices.Affiliates.FindAllPaged(1, int.MaxValue);
+            AffiliatesDropDownList.DataSource = MTApp.ContactServices.Affiliates.FindAllPaged(1, int.MaxValue);
             AffiliatesDropDownList.DataTextField = "DisplayName";
             AffiliatesDropDownList.DataValueField = "Id";
             AffiliatesDropDownList.DataBind();
@@ -45,14 +45,14 @@ namespace BVCommerce
             List<Affiliate> affiliates;
             if (AffiliatesDropDownList.SelectedValue == "-All Affiliates-")
             {
-                affiliates = BVApp.ContactServices.Affiliates.FindAllPaged(1, int.MaxValue);
+                affiliates = MTApp.ContactServices.Affiliates.FindAllPaged(1, int.MaxValue);
             }
             else
             {
                 affiliates = new List<Affiliate>();
                 long temp = 0;
                 long.TryParse(AffiliatesDropDownList.SelectedValue, out temp);
-                Affiliate a = BVApp.ContactServices.Affiliates.Find(temp);
+                Affiliate a = MTApp.ContactServices.Affiliates.Find(temp);
                 if (a != null)
                 {
                     affiliates.Add(a);
@@ -78,7 +78,7 @@ namespace BVCommerce
                     orderCriteria.AffiliateId = affiliate.ReferralId;
 
                     DateTime zonedStart = new DateTime(int.Parse(YearDropDownList.SelectedValue), int.Parse(MonthDropDownList.SelectedValue), 1, 0, 0, 0, 0);
-                    orderCriteria.StartDateUtc = TimeZoneInfo.ConvertTimeToUtc(zonedStart, BVApp.CurrentStore.Settings.TimeZone);
+                    orderCriteria.StartDateUtc = TimeZoneInfo.ConvertTimeToUtc(zonedStart, MTApp.CurrentStore.Settings.TimeZone);
                     orderCriteria.EndDateUtc = orderCriteria.StartDateUtc.AddMonths(1);
                     orderCriteria.EndDateUtc = orderCriteria.EndDateUtc.AddSeconds(-1);
 
@@ -86,11 +86,11 @@ namespace BVCommerce
                     referralCriteria.StartDateUtc = orderCriteria.StartDateUtc;
                     referralCriteria.EndDateUtc = orderCriteria.EndDateUtc;
 
-                    List<OrderSnapshot> affiliateOrders = BVApp.OrderServices.Orders.FindByCriteria(orderCriteria);
+                    List<OrderSnapshot> affiliateOrders = MTApp.OrderServices.Orders.FindByCriteria(orderCriteria);
 
                     Label currLabel = (Label)e.Item.FindControl("ReferralsLabel");
                     int totalCount = 0;
-                    List<AffiliateReferral> referrals = BVApp.ContactServices.AffiliateReferrals.FindByCriteria(referralCriteria, 1, int.MaxValue, ref totalCount);
+                    List<AffiliateReferral> referrals = MTApp.ContactServices.AffiliateReferrals.FindByCriteria(referralCriteria, 1, int.MaxValue, ref totalCount);
                     currLabel.Text = referrals.Count.ToString();
 
                     currLabel = (Label)e.Item.FindControl("SalesLabel");

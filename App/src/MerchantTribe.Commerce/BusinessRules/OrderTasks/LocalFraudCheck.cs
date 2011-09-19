@@ -28,7 +28,7 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
 					Orders.OrderStatusCode s = Orders.OrderStatusCode.FindByBvin(Orders.OrderStatusCode.OnHold);
 					context.Order.StatusCode = s.Bvin;
 					context.Order.StatusName = s.StatusName;
-                    context.BVApp.OrderServices.Orders.Update(context.Order);
+                    context.MTApp.OrderServices.Orders.Update(context.Order);
 				}
 
                 if (d.Messages.Count > 0)
@@ -43,7 +43,7 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
                     context.Order.Notes.Add(n);                    
                 }
 
-                context.BVApp.OrderServices.Orders.Update(context.Order);
+                context.MTApp.OrderServices.Orders.Update(context.Order);
 
 			}
 
@@ -68,7 +68,7 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
 			
             d.PhoneNumber = context.Order.BillingAddress.Phone;
 
-            foreach (Orders.OrderTransaction p in context.BVApp.OrderServices.Transactions.FindForOrder(context.Order.bvin))
+            foreach (Orders.OrderTransaction p in context.MTApp.OrderServices.Transactions.FindForOrder(context.Order.bvin))
             {
                 if (p.Action == MerchantTribe.Payment.ActionType.CreditCardInfo)
                 {

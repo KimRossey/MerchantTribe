@@ -37,13 +37,13 @@ namespace BVCommerce
 
             if (!Page.IsPostBack)
             {
-                this.OrderLimiteQuantityField.Text = BVApp.CurrentStore.Settings.MaxItemsPerOrder.ToString();
-                this.OrderLimitWeightField.Text = BVApp.CurrentStore.Settings.MaxWeightPerOrder.ToString();
-                this.OrderLimitErrorMessage.Text = BVApp.CurrentStore.Settings.MaxOrderMessage;
-                this.ZeroDollarOrdersCheckBox.Checked = BVApp.CurrentStore.Settings.AllowZeroDollarOrders;
-                this.LastOrderNumberField.Text = BVApp.CurrentStore.Settings.LastOrderNumber.ToString();
-                this.ForceSiteTermsCheckBox.Checked = BVApp.CurrentStore.Settings.ForceTermsAgreement;
-                this.chkRejectFailedCC.Checked = BVApp.CurrentStore.Settings.RejectFailedCreditCardOrdersAutomatically;
+                this.OrderLimiteQuantityField.Text = MTApp.CurrentStore.Settings.MaxItemsPerOrder.ToString();
+                this.OrderLimitWeightField.Text = MTApp.CurrentStore.Settings.MaxWeightPerOrder.ToString();
+                this.OrderLimitErrorMessage.Text = MTApp.CurrentStore.Settings.MaxOrderMessage;
+                this.ZeroDollarOrdersCheckBox.Checked = MTApp.CurrentStore.Settings.AllowZeroDollarOrders;
+                this.LastOrderNumberField.Text = MTApp.CurrentStore.Settings.LastOrderNumber.ToString();
+                this.ForceSiteTermsCheckBox.Checked = MTApp.CurrentStore.Settings.ForceTermsAgreement;
+                this.chkRejectFailedCC.Checked = MTApp.CurrentStore.Settings.RejectFailedCreditCardOrdersAutomatically;
             }
         }
 
@@ -63,15 +63,15 @@ namespace BVCommerce
 
         private bool Save()
         {
-            BVApp.CurrentStore.Settings.MaxItemsPerOrder = int.Parse(this.OrderLimiteQuantityField.Text.Trim());
-            BVApp.CurrentStore.Settings.MaxWeightPerOrder = decimal.Parse(this.OrderLimitWeightField.Text.Trim());
-            BVApp.CurrentStore.Settings.MaxOrderMessage = this.OrderLimitErrorMessage.Text.Trim();
-            BVApp.CurrentStore.Settings.AllowZeroDollarOrders = this.ZeroDollarOrdersCheckBox.Checked;
-            BVApp.CurrentStore.Settings.LastOrderNumber = int.Parse(this.LastOrderNumberField.Text.Trim());
-            BVApp.CurrentStore.Settings.ForceTermsAgreement = this.ForceSiteTermsCheckBox.Checked;
-            BVApp.CurrentStore.Settings.RejectFailedCreditCardOrdersAutomatically = this.chkRejectFailedCC.Checked;
+            MTApp.CurrentStore.Settings.MaxItemsPerOrder = int.Parse(this.OrderLimiteQuantityField.Text.Trim());
+            MTApp.CurrentStore.Settings.MaxWeightPerOrder = decimal.Parse(this.OrderLimitWeightField.Text.Trim());
+            MTApp.CurrentStore.Settings.MaxOrderMessage = this.OrderLimitErrorMessage.Text.Trim();
+            MTApp.CurrentStore.Settings.AllowZeroDollarOrders = this.ZeroDollarOrdersCheckBox.Checked;
+            MTApp.CurrentStore.Settings.LastOrderNumber = int.Parse(this.LastOrderNumberField.Text.Trim());
+            MTApp.CurrentStore.Settings.ForceTermsAgreement = this.ForceSiteTermsCheckBox.Checked;
+            MTApp.CurrentStore.Settings.RejectFailedCreditCardOrdersAutomatically = this.chkRejectFailedCC.Checked;
 
-            return BVApp.UpdateCurrentStore();
+            return MTApp.UpdateCurrentStore();
         }
 
     }

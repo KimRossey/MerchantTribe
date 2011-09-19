@@ -12,7 +12,7 @@ namespace BVCommerce.api.rest
 {
     public class ProductInventoryHandler: BaseRestHandler
     {
-        public ProductInventoryHandler(MerchantTribe.Commerce.BVApplication app)
+        public ProductInventoryHandler(MerchantTribe.Commerce.MerchantTribeApplication app)
             : base(app)
         {
 
@@ -27,7 +27,7 @@ namespace BVCommerce.api.rest
                 // Find One Specific Category
             ApiResponse<ProductInventoryDTO> response = new ApiResponse<ProductInventoryDTO>();                                
                 string bvin = FirstParameter(parameters);
-                ProductInventory item = BVApp.CatalogServices.ProductInventories.Find(bvin);
+                ProductInventory item = MTApp.CatalogServices.ProductInventories.Find(bvin);
                 if (item == null)
                 {
                     response.Errors.Add(new ApiError("NULL", "Could not locate that item. Check bvin and try again."));
@@ -67,7 +67,7 @@ namespace BVCommerce.api.rest
                 bool mustCreate = false;
 
                 // see if there is already an inventory object for product
-                List<ProductInventory> existing = BVApp.CatalogServices.ProductInventories.FindByProductId(item.ProductBvin);
+                List<ProductInventory> existing = MTApp.CatalogServices.ProductInventories.FindByProductId(item.ProductBvin);
                 if (existing == null || existing.Count < 1)
                 {
                     mustCreate = true;                    
@@ -84,7 +84,7 @@ namespace BVCommerce.api.rest
                         pi.LowStockPoint = item.LowStockPoint;
                         pi.QuantityOnHand = item.QuantityOnHand;
                         pi.QuantityReserved = item.QuantityReserved;
-                        BVApp.CatalogServices.ProductInventories.Update(pi);
+                        MTApp.CatalogServices.ProductInventories.Update(pi);
                         bvin = pi.Bvin;
                     }
                 }
@@ -92,7 +92,7 @@ namespace BVCommerce.api.rest
                 // if inventory object doesn't exist yet, create one.
                 if (mustCreate)
                 {
-                    if (BVApp.CatalogServices.ProductInventories.Create(item))
+                    if (MTApp.CatalogServices.ProductInventories.Create(item))
                     {
                         bvin = item.Bvin;
                     }
@@ -100,9 +100,9 @@ namespace BVCommerce.api.rest
             }
             else
             {
-                BVApp.CatalogServices.ProductInventories.Update(item);
+                MTApp.CatalogServices.ProductInventories.Update(item);
             }
-            ProductInventory resultItem = BVApp.CatalogServices.ProductInventories.Find(bvin);                    
+            ProductInventory resultItem = MTApp.CatalogServices.ProductInventories.Find(bvin);                    
             if (resultItem != null) response.Content = resultItem.ToDto();
             
             data = MerchantTribe.Web.Json.ObjectToJson(response);            
@@ -116,7 +116,7 @@ namespace BVCommerce.api.rest
             ApiResponse<bool> response = new ApiResponse<bool>();
 
             // Single Item Delete
-            response.Content = BVApp.CatalogServices.ProductInventories.Delete(bvin);
+            response.Content = MTApp.CatalogServices.ProductInventories.Delete(bvin);
 
             data = MerchantTribe.Web.Json.ObjectToJson(response);
             return data;

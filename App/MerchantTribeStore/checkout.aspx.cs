@@ -49,7 +49,7 @@ namespace BVCommerce
 
             
 
-            if (SessionManager.IsUserAuthenticated(this.BVApp))
+            if (SessionManager.IsUserAuthenticated(this.MTApp))
             {
                 this.pnlLoggedIn.Visible = true;
                 this.pnlNotLoggedIn.Visible = false;
@@ -64,18 +64,18 @@ namespace BVCommerce
 
             if (!Page.IsPostBack)
             {
-                ThemeManager themes = BVApp.ThemeManager();
+                ThemeManager themes = MTApp.ThemeManager();
                 this.btnSubmit.ImageUrl = themes.ButtonUrl("PlaceOrder", Request.IsSecureConnection);
                 
                 Order Basket = LoadBasket();
                 CheckForPoints(Basket);
 
                 //set affiliate id
-                string affid = BVApp.ContactServices.GetValidAffiliateId().ToString();
+                string affid = MTApp.ContactServices.GetValidAffiliateId().ToString();
                 if (!string.IsNullOrEmpty(affid))
                 {
                     Basket.AffiliateID = affid;
-                    BVApp.OrderServices.Orders.Update(Basket);
+                    MTApp.OrderServices.Orders.Update(Basket);
                 }
 
             }
@@ -89,13 +89,13 @@ namespace BVCommerce
             this.pnlRewardsPoints.Visible = false;
 
             string uid = SessionManager.GetCurrentUserId();
-            CustomerPointsManager pointsManager = CustomerPointsManager.InstantiateForDatabase(BVApp.CurrentStore.Settings.RewardsPointsIssuedPerDollarSpent,
-                                                                            BVApp.CurrentStore.Settings.RewardsPointsNeededPerDollarCredit,
-                                                                            BVApp.CurrentStore.Id);
-            if (pointsManager.FindAvailablePoints(uid) > 0 && BVApp.CurrentStore.Settings.RewardsPointsOnPurchasesActive)
+            CustomerPointsManager pointsManager = CustomerPointsManager.InstantiateForDatabase(MTApp.CurrentStore.Settings.RewardsPointsIssuedPerDollarSpent,
+                                                                            MTApp.CurrentStore.Settings.RewardsPointsNeededPerDollarCredit,
+                                                                            MTApp.CurrentStore.Id);
+            if (pointsManager.FindAvailablePoints(uid) > 0 && MTApp.CurrentStore.Settings.RewardsPointsOnPurchasesActive)
             {                
                 this.pnlRewardsPoints.Visible = true;
-                this.lblRewardsPointsName.Text = BVApp.CurrentStore.Settings.RewardsPointsName;
+                this.lblRewardsPointsName.Text = MTApp.CurrentStore.Settings.RewardsPointsName;
                 this.PaymentRewardsPoints1.Populate(o);
             }
         }
@@ -105,7 +105,7 @@ namespace BVCommerce
             Order Basket = LoadBasket();
             Basket.UserID = args.UserId;
             Basket.UserEmail = args.UserEmail;
-            BVApp.CalculateOrderAndSave(Basket);            
+            MTApp.CalculateOrderAndSave(Basket);            
             SessionManager.SaveOrderCookies(Basket);
             Response.Redirect(GetRouteUrl("checkout-route", new { }));
         }
@@ -124,7 +124,7 @@ namespace BVCommerce
 
         private Order LoadBasket()
         {
-            Order Basket = SessionManager.CurrentShoppingCart(BVApp.OrderServices);
+            Order Basket = SessionManager.CurrentShoppingCart(MTApp.OrderServices);
             if (Basket != null)
             {
 
@@ -137,9 +137,9 @@ namespace BVCommerce
 
                 // Email
                 this.customeremail.Text = Basket.UserEmail;
-                if (SessionManager.IsUserAuthenticated(this.BVApp))
+                if (SessionManager.IsUserAuthenticated(this.MTApp))
                 {
-                    CustomerAccount currentCustomer = BVApp.CurrentCustomer;
+                    CustomerAccount currentCustomer = MTApp.CurrentCustomer;
                     if (currentCustomer != null) this.customeremail.Text = currentCustomer.Email;
                 }
 
@@ -183,9 +183,9 @@ namespace BVCommerce
         {
             CustomerAccount u = null;
 
-            if (SessionManager.IsUserAuthenticated(this.BVApp) == true)
+            if (SessionManager.IsUserAuthenticated(this.MTApp) == true)
             {
-                u = BVApp.CurrentCustomer;
+                u = MTApp.CurrentCustomer;
                 if (u != null)
                 {
                     this.AddressBilling1.LoadFromAddress(u.GetBillingAddress());
@@ -211,7 +211,7 @@ namespace BVCommerce
 
         protected void btnSubmit_Click(object sender, System.Web.UI.ImageClickEventArgs e)
         {            
-            Order Basket = SessionManager.CurrentShoppingCart(BVApp.OrderServices);
+            Order Basket = SessionManager.CurrentShoppingCart(MTApp.OrderServices);
             if (Basket == null)
             {
                 Response.Redirect("~/cart");
@@ -225,19 +225,19 @@ namespace BVCommerce
 
             // Save Shipping Selection
             string shippingRateKey = Request.Form["shippingrate"];
-            BVApp.OrderServices.OrdersRequestShippingMethodByUniqueKey(shippingRateKey, Basket);
-            BVApp.CalculateOrder(Basket);
+            MTApp.OrderServices.OrdersRequestShippingMethodByUniqueKey(shippingRateKey, Basket);
+            MTApp.CalculateOrder(Basket);
             SessionManager.SaveOrderCookies(Basket);
 
             // Save Payment Information                    
             PaymentRewardsPoints1.ApplyInfoToOrder(Basket);
             Payment.SavePaymentInfo(Basket);
                         
-            Basket.AffiliateID = BVApp.ContactServices.GetValidAffiliateId().ToString();
+            Basket.AffiliateID = MTApp.ContactServices.GetValidAffiliateId().ToString();
             Basket.Instructions = this.SpecialInstructions.Text.Trim();
 
             // Save all the changes to the order
-            BVApp.OrderServices.Orders.Update(Basket);
+            MTApp.OrderServices.Orders.Update(Basket);
 
             if ((!Page.IsValid))
             {
@@ -258,7 +258,7 @@ namespace BVCommerce
             }
 
             // Save as Order
-            OrderTaskContext c = new OrderTaskContext(BVApp);
+            OrderTaskContext c = new OrderTaskContext(MTApp);
             c.UserId = SessionManager.GetCurrentUserId();
             c.Order = Basket;
 
@@ -294,8 +294,8 @@ namespace BVCommerce
                     if (MerchantTribe.Commerce.BusinessRules.Workflow.RunByName(c, MerchantTribe.Commerce.BusinessRules.WorkflowNames.ProcessNewOrderPayments))
                     {
                         MerchantTribe.Commerce.BusinessRules.Workflow.RunByName(c, MerchantTribe.Commerce.BusinessRules.WorkflowNames.ProcessNewOrderAfterPayments);
-                        Order tempOrder = BVApp.OrderServices.Orders.FindForCurrentStore(Basket.bvin);
-                        MerchantTribe.Commerce.Integration.Current().OrderReceived(tempOrder, BVApp);
+                        Order tempOrder = MTApp.OrderServices.Orders.FindForCurrentStore(Basket.bvin);
+                        MerchantTribe.Commerce.Integration.Current().OrderReceived(tempOrder, MTApp);
                         Response.Redirect("~/Receipt.aspx?id=" + Basket.bvin);
                     }
                     else
@@ -363,7 +363,7 @@ namespace BVCommerce
                 violations.AddRange(this.AddressBilling1.GetRuleViolations());
             }
 
-            Order Basket = SessionManager.CurrentShoppingCart(BVApp.OrderServices);
+            Order Basket = SessionManager.CurrentShoppingCart(MTApp.OrderServices);
             //Collection<GiftCertificate> gcs = Basket.GetGiftCertificates();
             //decimal totalValue = 0m;
             //foreach (GiftCertificate item in gcs) {
@@ -403,9 +403,9 @@ namespace BVCommerce
         {
             if (Basket == null)
             {
-                Basket = SessionManager.CurrentShoppingCart(BVApp.OrderServices);
+                Basket = SessionManager.CurrentShoppingCart(MTApp.OrderServices);
             }
-            BVApp.OrderServices.Orders.Update(Basket);
+            MTApp.OrderServices.Orders.Update(Basket);
             this.litTotals.Text = Basket.TotalsAsTable();                       
         }
      

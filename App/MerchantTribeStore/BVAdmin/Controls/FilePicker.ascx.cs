@@ -98,7 +98,7 @@ namespace BVCommerce
 
         protected void InitializeFileLists()
         {
-            if (MyPage.BVApp.CatalogServices.ProductFiles.CountOfAll() > 30)
+            if (MyPage.MTApp.CatalogServices.ProductFiles.CountOfAll() > 30)
             {
                 FilesDropDownList.Visible = false;
                 FileSelectedTextBox.Visible = true;
@@ -106,7 +106,7 @@ namespace BVCommerce
             }
             else
             {
-                List<ProductFile> files = MyPage.BVApp.CatalogServices.ProductFiles.FindAll(1, 1000);
+                List<ProductFile> files = MyPage.MTApp.CatalogServices.ProductFiles.FindAll(1, 1000);
                 FilesDropDownList.Visible = true;
                 FileSelectedTextBox.Visible = false;
                 browseButton.Visible = false;
@@ -191,7 +191,7 @@ namespace BVCommerce
             if (file != null)
             {
                 InitializeProductFile(file, false);
-                List<ProductFile> result = MyPage.BVApp.CatalogServices.ProductFiles.FindByFileNameAndDescription(file.FileName, ShortDescriptionTextBox.Text);
+                List<ProductFile> result = MyPage.MTApp.CatalogServices.ProductFiles.FindByFileNameAndDescription(file.FileName, ShortDescriptionTextBox.Text);
                 if (result.Count > 0)
                 {
                     args.IsValid = false;
@@ -206,13 +206,13 @@ namespace BVCommerce
                 ProductFile otherFile = null;
                 if (_currentMode == Mode.DropDownList)
                 {
-                    otherFile = MyPage.BVApp.CatalogServices.ProductFiles.Find(FilesDropDownList.SelectedValue);
+                    otherFile = MyPage.MTApp.CatalogServices.ProductFiles.Find(FilesDropDownList.SelectedValue);
                     file.Bvin = otherFile.Bvin;
                     file.FileName = otherFile.FileName;
                 }
                 else if (_currentMode == Mode.FileBrowsed)
                 {
-                    otherFile = MyPage.BVApp.CatalogServices.ProductFiles.Find(FileIdHiddenField.Value);
+                    otherFile = MyPage.MTApp.CatalogServices.ProductFiles.Find(FileIdHiddenField.Value);
                     file.Bvin = otherFile.Bvin;
                     file.FileName = otherFile.FileName;
                 }
@@ -261,7 +261,7 @@ namespace BVCommerce
 
         protected void FileIsUniqueToProductCustomValidator_ServerValidate(object source, System.Web.UI.WebControls.ServerValidateEventArgs args)
         {
-            List<ProductFile> files = MyPage.BVApp.CatalogServices.ProductFiles.FindByProductId(this.ProductId);
+            List<ProductFile> files = MyPage.MTApp.CatalogServices.ProductFiles.FindByProductId(this.ProductId);
             args.IsValid = true;
             foreach (ProductFile file in files)
             {
@@ -295,7 +295,7 @@ namespace BVCommerce
 
                 if (Save(file))
                 {
-                    if (ProductFile.SaveFile(MyPage.BVApp.CurrentStore.Id, file.Bvin, file.FileName, NewFileUpload.PostedFile))
+                    if (ProductFile.SaveFile(MyPage.MTApp.CurrentStore.Id, file.Bvin, file.FileName, NewFileUpload.PostedFile))
                     {
                         MessageBox1.ShowOk("File saved to server successfully");
                     }
@@ -353,11 +353,11 @@ namespace BVCommerce
         {
             if (f.Bvin == string.Empty)
             {
-                return MyPage.BVApp.CatalogServices.ProductFiles.Create(f);
+                return MyPage.MTApp.CatalogServices.ProductFiles.Create(f);
             }
             else
             {
-                return MyPage.BVApp.CatalogServices.ProductFiles.Update(f);
+                return MyPage.MTApp.CatalogServices.ProductFiles.Update(f);
             }
         }
     }

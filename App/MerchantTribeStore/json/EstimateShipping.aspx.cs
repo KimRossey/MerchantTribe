@@ -37,7 +37,7 @@ namespace BVCommerce
             string zip = Request.Form["zip"];
             string orderid = Request.Form["orderid"];
 
-            Order o = BVApp.OrderServices.Orders.FindForCurrentStore(orderid);
+            Order o = MTApp.OrderServices.Orders.FindForCurrentStore(orderid);
             o.ShippingAddress.FirstName = firstname;
             o.ShippingAddress.LastName = lastname;
             o.ShippingAddress.Line1 = address;
@@ -58,7 +58,7 @@ namespace BVCommerce
                 }
             }
 
-            SortableCollection<ShippingRateDisplay> rates = BVApp.OrderServices.FindAvailableShippingRates(o);
+            SortableCollection<ShippingRateDisplay> rates = MTApp.OrderServices.FindAvailableShippingRates(o);
 
             string rateKey = o.ShippingMethodUniqueKey;
             bool rateIsAvailable = false;
@@ -71,7 +71,7 @@ namespace BVCommerce
                     if ((r.UniqueKey == rateKey))
                     {
                         rateIsAvailable = true;
-                        BVApp.OrderServices.OrdersRequestShippingMethod(r, o);                        
+                        MTApp.OrderServices.OrdersRequestShippingMethod(r, o);                        
                     }
                 }
             }
@@ -81,7 +81,7 @@ namespace BVCommerce
             {
                 if ((rates.Count > 0))
                 {
-                    BVApp.OrderServices.OrdersRequestShippingMethod(rates[0], o);
+                    MTApp.OrderServices.OrdersRequestShippingMethod(rates[0], o);
                     rateKey = rates[0].UniqueKey;
                 }
                 else
@@ -92,7 +92,7 @@ namespace BVCommerce
 
             result.rates = HtmlRendering.ShippingRatesToRadioButtons(rates, 300, o.ShippingMethodUniqueKey);
 
-            BVApp.CalculateOrderAndSave(o);
+            MTApp.CalculateOrderAndSave(o);
             SessionManager.SaveOrderCookies(o);
 
             result.totalsastable = o.TotalsAsTable();

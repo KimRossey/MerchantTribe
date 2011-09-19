@@ -24,7 +24,7 @@ namespace BVCommerce
 
         private void LoadThemes()
         {
-            ThemeManager tm = BVApp.ThemeManager();
+            ThemeManager tm = MTApp.ThemeManager();
             List<ThemeView> available = tm.FindAvailableThemes();
             this.litThemes.Text = RenderThemes(available);
         }
@@ -55,9 +55,9 @@ namespace BVCommerce
 
         private void LoadSamples()
         {
-            if (BVApp.CatalogServices.Products.FindAllCount() == 0)
+            if (MTApp.CatalogServices.Products.FindAllCount() == 0)
             {
-                BVApp.AddSampleProductsToStore();
+                MTApp.AddSampleProductsToStore();
             }
         }
 

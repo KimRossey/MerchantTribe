@@ -8,10 +8,10 @@ namespace BVCommerce.api.rest
     public class BaseRestHandler: IRestHandler
     {
 
-        public MerchantTribe.Commerce.BVApplication BVApp {get;set;}
-        public BaseRestHandler(MerchantTribe.Commerce.BVApplication app)
+        public MerchantTribe.Commerce.MerchantTribeApplication MTApp {get;set;}
+        public BaseRestHandler(MerchantTribe.Commerce.MerchantTribeApplication app)
         {
-            this.BVApp = app;
+            this.MTApp = app;
         }
 
         public string FirstParameter(string allParams)

@@ -50,11 +50,11 @@ namespace MerchantTribe.Commerce
         private const string _AdminUserSearchCriteriaUserName = "AdminUserSearchCriteriaUserName";
         private const string _AdminUserSearchCriteriaEmail = "AdminUserSearchCriteriaEmail";
 
-        public static bool IsUserAuthenticated(BVApplication bvapp)
+        public static bool IsUserAuthenticated(MerchantTribeApplication app)
         {
                 string uid = GetCurrentUserId();
                 if (uid.Trim() == string.Empty) return false;
-                MerchantTribe.Commerce.Membership.CustomerAccount customer = bvapp.MembershipServices.Customers.Find(uid);
+                MerchantTribe.Commerce.Membership.CustomerAccount customer = app.MembershipServices.Customers.Find(uid);
                 if (customer == null) return false;
                 if (customer.Bvin.Trim() == string.Empty) return false;
                 return true;                

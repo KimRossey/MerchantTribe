@@ -12,7 +12,7 @@ namespace BVCommerce.api.rest
 {
     public class ProductFilesDataHandler: BaseRestHandler
     {
-        public ProductFilesDataHandler(MerchantTribe.Commerce.BVApplication app)
+        public ProductFilesDataHandler(MerchantTribe.Commerce.MerchantTribeApplication app)
             : base(app)
         {
 
@@ -45,14 +45,14 @@ namespace BVCommerce.api.rest
             {
                 if (firstPart == "1")
                 {
-                    ProductFile existing = BVApp.CatalogServices.ProductFiles.Find(bvin);
+                    ProductFile existing = MTApp.CatalogServices.ProductFiles.Find(bvin);
                     if (existing == null || existing.Bvin == string.Empty)
                     {
                         existing.Bvin = bvin;
                         existing.FileName = fileName;
                         existing.ShortDescription = description;
-                        existing.StoreId = BVApp.CurrentStore.Id;
-                        BVApp.CatalogServices.ProductFiles.Create(existing);
+                        existing.StoreId = MTApp.CurrentStore.Id;
+                        MTApp.CatalogServices.ProductFiles.Create(existing);
                     }
                 }
 
@@ -65,11 +65,11 @@ namespace BVCommerce.api.rest
                     {
                         if (firstPart == "1")
                         {
-                            response.Content = MerchantTribe.Commerce.Storage.DiskStorage.FileVaultUploadPartial(BVApp.CurrentStore.Id, diskFileName, postedData, true);
+                            response.Content = MerchantTribe.Commerce.Storage.DiskStorage.FileVaultUploadPartial(MTApp.CurrentStore.Id, diskFileName, postedData, true);
                         }
                         else
                         {
-                            response.Content = MerchantTribe.Commerce.Storage.DiskStorage.FileVaultUploadPartial(BVApp.CurrentStore.Id, diskFileName, postedData, false);
+                            response.Content = MerchantTribe.Commerce.Storage.DiskStorage.FileVaultUploadPartial(MTApp.CurrentStore.Id, diskFileName, postedData, false);
                         }
                     }
                 }

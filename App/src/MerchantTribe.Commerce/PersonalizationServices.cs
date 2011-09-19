@@ -50,7 +50,7 @@ namespace MerchantTribe.Commerce
             }
         }
 
-        public static List<Catalog.Product> GetProductsViewed(BVApplication bvapp)
+        public static List<Catalog.Product> GetProductsViewed(MerchantTribeApplication app)
         {
             string SavedProductIDs = SessionManager.GetCookieString(WebAppSettings.LastProductsViewedCookieName);
             List<Catalog.Product> result = new List<Catalog.Product>();
@@ -62,7 +62,7 @@ namespace MerchantTribe.Commerce
                 {
                     ids.Add(id);
                 }
-                result = bvapp.CatalogServices.Products.FindMany(ids);
+                result = app.CatalogServices.Products.FindMany(ids);
             }
             return result;
         }

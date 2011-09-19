@@ -34,7 +34,7 @@ namespace BVCommerce
         private void LoadData()
         {
             TestGatewaySettings settings = new TestGatewaySettings();
-            settings.Merge(MyPage.BVApp.CurrentStore.Settings.PaymentSettingsGet(this.BlockId));
+            settings.Merge(MyPage.MTApp.CurrentStore.Settings.PaymentSettingsGet(this.BlockId));
 
             this.chkAuthorizeFails.Checked = !settings.ResponseForHold;
             this.chkCaptureFails.Checked = !settings.ResponseForCapture;
@@ -46,7 +46,7 @@ namespace BVCommerce
         private void SaveData()
         {
             TestGatewaySettings settings = new TestGatewaySettings();
-            settings.Merge(MyPage.BVApp.CurrentStore.Settings.PaymentSettingsGet(this.BlockId));
+            settings.Merge(MyPage.MTApp.CurrentStore.Settings.PaymentSettingsGet(this.BlockId));
 
             settings.ResponseForCapture = !this.chkCaptureFails.Checked;
             settings.ResponseForCharge = !this.chkChargeFails.Checked;
@@ -54,9 +54,9 @@ namespace BVCommerce
             settings.ResponseForRefund = !this.chkRefundFails.Checked;
             settings.ResponseForVoid = !this.chkVoidFails.Checked;
 
-            MyPage.BVApp.CurrentStore.Settings.PaymentSettingsSet(this.BlockId, settings);
+            MyPage.MTApp.CurrentStore.Settings.PaymentSettingsSet(this.BlockId, settings);
 
-            MyPage.BVApp.AccountServices.Stores.Update(MyPage.BVApp.CurrentStore);
+            MyPage.MTApp.AccountServices.Stores.Update(MyPage.MTApp.CurrentStore);
         }
 
     }

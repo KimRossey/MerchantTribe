@@ -208,7 +208,7 @@ namespace BVCommerce.Helpers
         private static string LoadVersion(MerchantTribe.Commerce.Accounts.Store currentStore)        
         {            
             string result = "Admin for " + currentStore.Settings.FriendlyName + ": ";
-            result += WebAppSettings.BvcProductName + " " + WebAppSettings.BvcVersionNumber;
+            result += WebAppSettings.SystemProductName + " " + WebAppSettings.SystemVersionNumber;
             return result;
         }
 

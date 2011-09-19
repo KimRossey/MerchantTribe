@@ -13,7 +13,7 @@ namespace BVCommerce.api.rest
 {
     public class OrdersHandler: BaseRestHandler
     {
-        public OrdersHandler(MerchantTribe.Commerce.BVApplication app)
+        public OrdersHandler(MerchantTribe.Commerce.MerchantTribeApplication app)
             : base(app)
         {
 
@@ -29,7 +29,7 @@ namespace BVCommerce.api.rest
                 // List
                 ApiResponse<List<OrderSnapshotDTO>> response = new ApiResponse<List<OrderSnapshotDTO>>();
 
-                List<OrderSnapshot> results = BVApp.OrderServices.Orders.FindAll();
+                List<OrderSnapshot> results = MTApp.OrderServices.Orders.FindAll();
                 List<OrderSnapshotDTO> dto = new List<OrderSnapshotDTO>();
 
                 foreach (OrderSnapshot item in results)
@@ -44,7 +44,7 @@ namespace BVCommerce.api.rest
                 // Find One Specific Category
                 ApiResponse<OrderDTO> response = new ApiResponse<OrderDTO>();
                 string bvin = FirstParameter(parameters);
-                Order item = BVApp.OrderServices.Orders.FindForCurrentStore(bvin);
+                Order item = MTApp.OrderServices.Orders.FindForCurrentStore(bvin);
                 if (item == null)
                 {
                     response.Errors.Add(new ApiError("NULL", "Could not locate that order. Check bvin and try again."));
@@ -80,17 +80,17 @@ namespace BVCommerce.api.rest
             Order item = new Order();            
             item.FromDTO(postedItem);
 
-            Order existing = BVApp.OrderServices.Orders.FindForCurrentStore(item.bvin);
+            Order existing = MTApp.OrderServices.Orders.FindForCurrentStore(item.bvin);
             if (existing == null || existing.bvin == string.Empty)
             {
-                item.StoreId = BVApp.CurrentStore.Id;
-                BVApp.OrderServices.Orders.Create(item);
+                item.StoreId = MTApp.CurrentStore.Id;
+                MTApp.OrderServices.Orders.Create(item);
             }            
             else
             {
-                BVApp.OrderServices.Orders.Update(item);
+                MTApp.OrderServices.Orders.Update(item);
             }
-            Order resultItem = BVApp.OrderServices.Orders.FindForCurrentStore(item.bvin);
+            Order resultItem = MTApp.OrderServices.Orders.FindForCurrentStore(item.bvin);
             if (resultItem != null) response.Content = resultItem.ToDto();
 
             data = MerchantTribe.Web.Json.ObjectToJson(response);
@@ -104,7 +104,7 @@ namespace BVCommerce.api.rest
             ApiResponse<bool> response = new ApiResponse<bool>();
 
             // Single Item Delete
-            response.Content = BVApp.OrderServices.Orders.Delete(bvin);
+            response.Content = MTApp.OrderServices.Orders.Delete(bvin);
 
             data = MerchantTribe.Web.Json.ObjectToJson(response);
             return data;

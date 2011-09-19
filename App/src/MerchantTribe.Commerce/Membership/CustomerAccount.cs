@@ -79,7 +79,7 @@ namespace MerchantTribe.Commerce.Membership
             this.LastLoginDateUtc = DateTime.UtcNow;
 		}	
 					
-        public List<Content.HtmlTemplateTag> GetReplaceableTags(BVApplication bvapp)
+        public List<Content.HtmlTemplateTag> GetReplaceableTags(MerchantTribeApplication app)
         {
             List<Content.HtmlTemplateTag> result = new List<Content.HtmlTemplateTag>();
 

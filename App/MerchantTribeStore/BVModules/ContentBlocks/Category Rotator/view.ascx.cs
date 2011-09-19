@@ -16,7 +16,7 @@ namespace BVCommerce
 
             bool showInOrder = false;
 
-            ContentBlock b = MyPage.BVApp.ContentServices.Columns.FindBlock(this.BlockId);
+            ContentBlock b = MyPage.MTApp.ContentServices.Columns.FindBlock(this.BlockId);
             if (b != null)
             {
                 showInOrder = b.BaseSettings.GetBoolSetting("ShowInOrder");
@@ -67,12 +67,12 @@ namespace BVCommerce
 
         private void LoadCategory(string categoryId)
         {
-            Category c = MyPage.BVApp.CatalogServices.Categories.Find(categoryId);
+            Category c = MyPage.MTApp.CatalogServices.Categories.Find(categoryId);
             if (c != null)
             {
                 if (c.Bvin != string.Empty)
                 {
-                    string destination = UrlRewriter.BuildUrlForCategory(new CategorySnapshot(c), MyPage.BVApp.CurrentRequestContext.RoutingContext);
+                    string destination = UrlRewriter.BuildUrlForCategory(new CategorySnapshot(c), MyPage.MTApp.CurrentRequestContext.RoutingContext);
 
                     if (c.ImageUrl.StartsWith("~") | c.ImageUrl.StartsWith("http://"))
                     {

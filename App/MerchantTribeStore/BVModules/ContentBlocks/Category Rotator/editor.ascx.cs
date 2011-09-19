@@ -42,7 +42,7 @@ namespace BVCommerce
             Collection<Category> categories = new Collection<Category>();
             foreach (ContentBlockSettingListItem item in settings)
             {
-                Category category = MyPage.BVApp.CatalogServices.Categories.Find(item.Setting1);
+                Category category = MyPage.MTApp.CatalogServices.Categories.Find(item.Setting1);
                 if (category != null && category.Bvin != string.Empty)
                 {
                     categories.Add(category);
@@ -54,7 +54,7 @@ namespace BVCommerce
 
         private void LoadData()
         {
-            ContentBlock b = MyPage.BVApp.ContentServices.Columns.FindBlock(this.BlockId);
+            ContentBlock b = MyPage.MTApp.ContentServices.Columns.FindBlock(this.BlockId);
             if (b != null)
             {
                 this.chkShowInOrder.Checked = b.BaseSettings.GetBoolSetting("ShowInOrder");
@@ -64,7 +64,7 @@ namespace BVCommerce
 
         protected void AddImageButton_Click(object sender, System.Web.UI.ImageClickEventArgs e)
         {
-            ContentBlock b = MyPage.BVApp.ContentServices.Columns.FindBlock(this.BlockId);
+            ContentBlock b = MyPage.MTApp.ContentServices.Columns.FindBlock(this.BlockId);
             if (b != null)
             {
 
@@ -87,7 +87,7 @@ namespace BVCommerce
                         c.Setting1 = category;
                         c.ListName = "Categories";
                         b.Lists.AddItem(c);
-                        MyPage.BVApp.ContentServices.Columns.UpdateBlock(b);
+                        MyPage.MTApp.ContentServices.Columns.UpdateBlock(b);
                     }
                 }
                 BindCategoryGridView(b);
@@ -96,18 +96,18 @@ namespace BVCommerce
 
         protected void btnOK_Click(object sender, System.Web.UI.ImageClickEventArgs e)
         {
-            ContentBlock b = MyPage.BVApp.ContentServices.Columns.FindBlock(this.BlockId);
+            ContentBlock b = MyPage.MTApp.ContentServices.Columns.FindBlock(this.BlockId);
             if (b != null)
             {
                 b.BaseSettings.SetBoolSetting("ShowInOrder", this.chkShowInOrder.Checked);
-                MyPage.BVApp.ContentServices.Columns.UpdateBlock(b);
+                MyPage.MTApp.ContentServices.Columns.UpdateBlock(b);
             }
             this.NotifyFinishedEditing();
         }
 
         protected void CategoriesGridView_RowDeleting(object sender, System.Web.UI.WebControls.GridViewDeleteEventArgs e)
         {
-            ContentBlock b = MyPage.BVApp.ContentServices.Columns.FindBlock(this.BlockId);
+            ContentBlock b = MyPage.MTApp.ContentServices.Columns.FindBlock(this.BlockId);
             List<ContentBlockSettingListItem> settings = b.Lists.FindList("Categories");
             foreach (ContentBlockSettingListItem item in settings)
             {
@@ -116,13 +116,13 @@ namespace BVCommerce
                     b.Lists.RemoveItem(item.Id);
                 }
             }
-            MyPage.BVApp.ContentServices.Columns.UpdateBlock(b);
+            MyPage.MTApp.ContentServices.Columns.UpdateBlock(b);
             BindCategoryGridView(b);
         }
 
         protected void CategoriesGridView_RowUpdating(object sender, System.Web.UI.WebControls.GridViewUpdateEventArgs e)
         {
-            ContentBlock b = MyPage.BVApp.ContentServices.Columns.FindBlock(this.BlockId);
+            ContentBlock b = MyPage.MTApp.ContentServices.Columns.FindBlock(this.BlockId);
             List<ContentBlockSettingListItem> settings = b.Lists.FindList("Categories");
 
             string bvin = string.Empty;
@@ -135,13 +135,13 @@ namespace BVCommerce
                     break;
                 }
             }
-            MyPage.BVApp.ContentServices.Columns.UpdateBlock(b);
+            MyPage.MTApp.ContentServices.Columns.UpdateBlock(b);
             BindCategoryGridView(b);
         }
 
         protected void CategoriesGridView_RowCancelingEdit(object sender, System.Web.UI.WebControls.GridViewCancelEditEventArgs e)
         {
-            ContentBlock b = MyPage.BVApp.ContentServices.Columns.FindBlock(this.BlockId);
+            ContentBlock b = MyPage.MTApp.ContentServices.Columns.FindBlock(this.BlockId);
             List<ContentBlockSettingListItem> settings = b.Lists.FindList("Categories");
 
             string bvin = string.Empty;
@@ -153,7 +153,7 @@ namespace BVCommerce
                     b.Lists.MoveItemDown(item.Id, "Categories");
                 }
             }
-            MyPage.BVApp.ContentServices.Columns.UpdateBlock(b);
+            MyPage.MTApp.ContentServices.Columns.UpdateBlock(b);
             BindCategoryGridView(b);
         }
     }

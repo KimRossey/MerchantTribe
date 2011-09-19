@@ -99,7 +99,7 @@ namespace BVCommerce
 
         private void PopulateColumns()
         {
-            List<ContentColumn> columns = BVApp.ContentServices.Columns.FindAll();
+            List<ContentColumn> columns = MTApp.ContentServices.Columns.FindAll();
             foreach (ContentColumn col in columns)
             {
                 this.PreContentColumnIdField.Items.Add(new System.Web.UI.WebControls.ListItem(col.DisplayName, col.Bvin));
@@ -109,7 +109,7 @@ namespace BVCommerce
 
         private Category LoadCategory()
         {
-            Category c = BVApp.CatalogServices.Categories.Find(this.BvinField.Value);
+            Category c = MTApp.CatalogServices.Categories.Find(this.BvinField.Value);
             if (c != null)
             {
 
@@ -179,14 +179,14 @@ namespace BVCommerce
             HyperLink m = new HyperLink();
             m.ImageUrl = "~/BVAdmin/Images/Buttons/ViewInStore.png";
             m.ToolTip = c.MetaTitle;
-            m.NavigateUrl = UrlRewriter.BuildUrlForCategory(new CategorySnapshot(c), BVApp.CurrentRequestContext.RoutingContext);
+            m.NavigateUrl = UrlRewriter.BuildUrlForCategory(new CategorySnapshot(c), MTApp.CurrentRequestContext.RoutingContext);
             m.EnableViewState = false;
             this.inStore.Controls.Add(m);
 
         }
         private void UpdateIconImage(Category c)
         {
-            IconImage = MerchantTribe.Commerce.Storage.DiskStorage.CategoryIconUrl(BVApp.CurrentStore.Id, c.Bvin, c.ImageUrl, true);
+            IconImage = MerchantTribe.Commerce.Storage.DiskStorage.CategoryIconUrl(MTApp.CurrentStore.Id, c.Bvin, c.ImageUrl, true);
             if (IconImage == string.Empty || c.ImageUrl == string.Empty)
             {
                 IconImage = Page.ResolveUrl("~/content/admin/images/MissingImage.png");
@@ -194,7 +194,7 @@ namespace BVCommerce
         }
         private void UpdateBannerImage(Category c)
         {
-            BannerImage = MerchantTribe.Commerce.Storage.DiskStorage.CategoryBannerUrl(BVApp.CurrentStore.Id, c.Bvin, c.BannerImageUrl, true);
+            BannerImage = MerchantTribe.Commerce.Storage.DiskStorage.CategoryBannerUrl(MTApp.CurrentStore.Id, c.Bvin, c.BannerImageUrl, true);
             if (BannerImage == string.Empty || c.BannerImageUrl == string.Empty)
             {
                 BannerImage = Page.ResolveUrl("~/content/admin/images/MissingImage.png");
@@ -204,7 +204,7 @@ namespace BVCommerce
 
         private bool Save()
         {
-            Category c = BVApp.CatalogServices.Categories.Find(this.BvinField.Value);
+            Category c = MTApp.CatalogServices.Categories.Find(this.BvinField.Value);
             if (c == null)
             {
                 c = new Category();
@@ -236,7 +236,7 @@ namespace BVCommerce
                     if (MerchantTribe.Commerce.Storage.DiskStorage.ValidateImageType(ext))
                     {
                         fileName = MerchantTribe.Web.Text.CleanFileName(fileName);
-                        if ((MerchantTribe.Commerce.Storage.DiskStorage.UploadCategoryIcon(BVApp.CurrentStore.Id, c.Bvin, this.iconupload.PostedFile)))
+                        if ((MerchantTribe.Commerce.Storage.DiskStorage.UploadCategoryIcon(MTApp.CurrentStore.Id, c.Bvin, this.iconupload.PostedFile)))
                         {
                             c.ImageUrl = fileName + ext;
                         }
@@ -257,7 +257,7 @@ namespace BVCommerce
                     if (MerchantTribe.Commerce.Storage.DiskStorage.ValidateImageType(ext))
                     {
                         fileName = MerchantTribe.Web.Text.CleanFileName(fileName);
-                        if ((MerchantTribe.Commerce.Storage.DiskStorage.UploadCategoryBanner(BVApp.CurrentStore.Id, c.Bvin, this.bannerupload.PostedFile)))
+                        if ((MerchantTribe.Commerce.Storage.DiskStorage.UploadCategoryBanner(MTApp.CurrentStore.Id, c.Bvin, this.bannerupload.PostedFile)))
                         {
                             c.BannerImageUrl = fileName + ext;
                         }
@@ -303,7 +303,7 @@ namespace BVCommerce
                 }
                 this.RewriteUrlField.Text = c.RewriteUrl;
 
-                if (UrlRewriter.IsCategorySlugInUse(c.RewriteUrl, c.Bvin, BVApp.CurrentRequestContext))
+                if (UrlRewriter.IsCategorySlugInUse(c.RewriteUrl, c.Bvin, MTApp.CurrentRequestContext))
                 {
                     this.MessageBox1.ShowWarning("The requested URL is already in use by another item.");
                     return false;
@@ -318,18 +318,18 @@ namespace BVCommerce
                 if (this.BvinField.Value == string.Empty)
                 {
                     c.ParentId = this.ParentIDField.Value;
-                    result = BVApp.CatalogServices.Categories.Create(c);
+                    result = MTApp.CatalogServices.Categories.Create(c);
                     if (result)
                     {
-                        result = BVApp.CatalogServices.Categories.SubmitChanges();
+                        result = MTApp.CatalogServices.Categories.SubmitChanges();
                     }
                 }
                 else
                 {
-                    result = BVApp.CatalogServices.Categories.Update(c);
+                    result = MTApp.CatalogServices.Categories.Update(c);
                     if (result)
                     {
-                        result = BVApp.CatalogServices.Categories.SubmitChanges();
+                        result = MTApp.CatalogServices.Categories.SubmitChanges();
                     }
                 }
 
@@ -346,8 +346,8 @@ namespace BVCommerce
                     {
                         if (oldUrl != c.RewriteUrl)
                         {
-                            BVApp.ContentServices.CustomUrls.Register301(oldUrl,c.RewriteUrl,
-                                                  c.Bvin, CustomUrlType.Category, BVApp.CurrentRequestContext, BVApp);
+                            MTApp.ContentServices.CustomUrls.Register301(oldUrl,c.RewriteUrl,
+                                                  c.Bvin, CustomUrlType.Category, MTApp.CurrentRequestContext, MTApp);
                             this.UrlsAssociated1.LoadUrls();
                         }
                     }
@@ -391,7 +391,7 @@ namespace BVCommerce
             if (this.Save())
             {
                 MessageBox1.ShowOk("Category Updated Successfully.");
-                Category cat = BVApp.CatalogServices.Categories.Find(this.BvinField.Value);
+                Category cat = MTApp.CatalogServices.Categories.Find(this.BvinField.Value);
                 if (cat != null && cat.Bvin != string.Empty)
                 {
                     PopulateStoreLink(cat);
@@ -407,7 +407,7 @@ namespace BVCommerce
 
         protected void delIcon_Click(object sender, ImageClickEventArgs e)
         {
-            Category c = BVApp.CatalogServices.Categories.Find(this.BvinField.Value);
+            Category c = MTApp.CatalogServices.Categories.Find(this.BvinField.Value);
             if (c != null)
             {
                 c.ImageUrl = string.Empty;
@@ -418,7 +418,7 @@ namespace BVCommerce
 
         protected void delBanner_Click(object sender, ImageClickEventArgs e)
         {
-            Category c = BVApp.CatalogServices.Categories.Find(this.BvinField.Value);
+            Category c = MTApp.CatalogServices.Categories.Find(this.BvinField.Value);
             if (c != null)
             {
                 c.BannerImageUrl = string.Empty;

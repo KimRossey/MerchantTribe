@@ -34,7 +34,7 @@ namespace BVCommerce
         private void LoadColumns()
         {
             List<ContentColumn> cols;
-            cols = BVApp.ContentServices.Columns.FindAll();
+            cols = MTApp.ContentServices.Columns.FindAll();
             this.GridView1.DataSource = cols;
             this.GridView1.DataBind();
             this.lblResults.Text = cols.Count + " columns found";
@@ -45,7 +45,7 @@ namespace BVCommerce
             msg.ClearMessage();
 
             string bvin = (string)GridView1.DataKeys[e.RowIndex].Value;
-            if (BVApp.ContentServices.Columns.Delete(bvin) == false)
+            if (MTApp.ContentServices.Columns.Delete(bvin) == false)
             {
                 this.msg.ShowWarning("Unable to delete this column. System columns can not be deleted.");
             }
@@ -66,7 +66,7 @@ namespace BVCommerce
                 ContentColumn c = new ContentColumn();
                 c.DisplayName = this.NewNameField.Text.Trim();
                 c.SystemColumn = false;
-                if (BVApp.ContentServices.Columns.Create(c) == true)
+                if (MTApp.ContentServices.Columns.Create(c) == true)
                 {
                     Response.Redirect("Columns_Edit.aspx?id=" + c.Bvin);
                 }

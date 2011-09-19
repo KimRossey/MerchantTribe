@@ -17,7 +17,7 @@ namespace BVCommerce
         {
             base.OnLoad(e);
 
-            if (SessionManager.IsUserAuthenticated(MyPage.BVApp))
+            if (SessionManager.IsUserAuthenticated(MyPage.MTApp))
             {
                 this.Visible = false;
             }

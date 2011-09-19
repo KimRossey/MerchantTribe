@@ -17,12 +17,12 @@ namespace BVCommerce.Areas.account.Controllers
         public ActionResult Index()
         {
             ViewBag.Title = "Address Book";
-            ViewBag.MetaDescription = "Address Book | " + BVApp.CurrentStore.Settings.MetaDescription;
-            ViewBag.MetaKeywords = BVApp.CurrentStore.Settings.MetaKeywords;
+            ViewBag.MetaDescription = "Address Book | " + MTApp.CurrentStore.Settings.MetaDescription;
+            ViewBag.MetaKeywords = MTApp.CurrentStore.Settings.MetaKeywords;
             ViewBag.BodyClass = "myaccountaddressbookpage";
-            ViewBag.EditButtonUrl = BVApp.ThemeManager().ButtonUrl("edit", Request.IsSecureConnection);
-            ViewBag.DeleteButtonUrl = BVApp.ThemeManager().ButtonUrl("x", Request.IsSecureConnection);
-            ViewBag.AddNewButtonUrl = BVApp.ThemeManager().ButtonUrl("new", Request.IsSecureConnection);
+            ViewBag.EditButtonUrl = MTApp.ThemeManager().ButtonUrl("edit", Request.IsSecureConnection);
+            ViewBag.DeleteButtonUrl = MTApp.ThemeManager().ButtonUrl("x", Request.IsSecureConnection);
+            ViewBag.AddNewButtonUrl = MTApp.ThemeManager().ButtonUrl("new", Request.IsSecureConnection);
 
             List<Address> addresses = LoadAddresses();
 
@@ -30,7 +30,7 @@ namespace BVCommerce.Areas.account.Controllers
         }
         private List<Address> LoadAddresses()
         {
-            CustomerAccount u = BVApp.CurrentCustomer;
+            CustomerAccount u = MTApp.CurrentCustomer;
             if (u != null)
             {
                 return u.Addresses;
@@ -43,11 +43,11 @@ namespace BVCommerce.Areas.account.Controllers
         [HttpPost]
         public ActionResult Delete(string id)
         {
-            CustomerAccount u = BVApp.CurrentCustomer;
+            CustomerAccount u = MTApp.CurrentCustomer;
             if (u != null)
             {
                 u.DeleteAddress(id);
-                BVApp.MembershipServices.UpdateCustomer(u);
+                MTApp.MembershipServices.UpdateCustomer(u);
             }
 
             return RedirectToAction("Index");
@@ -56,10 +56,10 @@ namespace BVCommerce.Areas.account.Controllers
         private void EditSetup()
         {
             ViewBag.Title = "Edit Address";
-            ViewBag.MetaDescription = "Edit Address | " + BVApp.CurrentStore.Settings.MetaDescription;
-            ViewBag.MetaKeywords = BVApp.CurrentStore.Settings.MetaKeywords;
+            ViewBag.MetaDescription = "Edit Address | " + MTApp.CurrentStore.Settings.MetaDescription;
+            ViewBag.MetaKeywords = MTApp.CurrentStore.Settings.MetaKeywords;
             ViewBag.BodyClass = "myaccountaddresseditpage";
-            ViewBag.SaveButtonUrl = BVApp.ThemeManager().ButtonUrl("savechanges", Request.IsSecureConnection);
+            ViewBag.SaveButtonUrl = MTApp.ThemeManager().ButtonUrl("savechanges", Request.IsSecureConnection);
         }        
         // GET: /account/AddressBook/Edit/{id}
         public ActionResult Edit(string id)
@@ -71,7 +71,7 @@ namespace BVCommerce.Areas.account.Controllers
         }
         private Address LoadAddress(string bvin)
         {
-            CustomerAccount u = BVApp.CurrentCustomer;
+            CustomerAccount u = MTApp.CurrentCustomer;
             if (u != null)
             {
                 switch (bvin.ToLower())
@@ -106,7 +106,7 @@ namespace BVCommerce.Areas.account.Controllers
             AddressViewModel model = new AddressViewModel();
             if (TryUpdateModel(model))
             {
-                CustomerAccount u = BVApp.MembershipServices.Customers.Find(SessionManager.GetCurrentUserId());
+                CustomerAccount u = MTApp.MembershipServices.Customers.Find(SessionManager.GetCurrentUserId());
                 if (u == null) return View(model);
                 
                 Address a = LoadAddress(id);
@@ -116,12 +116,12 @@ namespace BVCommerce.Areas.account.Controllers
                 switch (slug.ToLower())
                 {
                     case "new":
-                        BVApp.MembershipServices.CheckIfNewAddressAndAddWithUpdate(u, a);
-                        BVApp.MembershipServices.UpdateCustomer(u);
+                        MTApp.MembershipServices.CheckIfNewAddressAndAddWithUpdate(u, a);
+                        MTApp.MembershipServices.UpdateCustomer(u);
                         break;
                     default:
                         u.UpdateAddress(a);
-                        BVApp.MembershipServices.UpdateCustomer(u);
+                        MTApp.MembershipServices.UpdateCustomer(u);
                         break;
                 }
                 return RedirectToAction("Index");

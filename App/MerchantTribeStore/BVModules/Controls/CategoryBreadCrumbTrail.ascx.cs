@@ -42,7 +42,7 @@ namespace BVCommerce
                 Product p = ((IProductPage)Page).LocalProduct;
                 if ((p != null))
                 {
-                    List<CategorySnapshot> cats = MyPage.BVApp.CatalogServices.FindCategoriesForProduct(p.Bvin);
+                    List<CategorySnapshot> cats = MyPage.MTApp.CatalogServices.FindCategoriesForProduct(p.Bvin);
                     if ((cats.Count > 0))
                     {
                         categoryId = cats[0].Bvin;
@@ -52,7 +52,7 @@ namespace BVCommerce
             }
             else
             {
-                currentCategory = new CategorySnapshot(MyPage.BVApp.CatalogServices.Categories.Find(categoryId));
+                currentCategory = new CategorySnapshot(MyPage.MTApp.CatalogServices.Categories.Find(categoryId));
             }
 
             LoadTrail(currentCategory);
@@ -67,7 +67,7 @@ namespace BVCommerce
             {
 
 
-                List<CategorySnapshot> allCats = MyPage.BVApp.CatalogServices.Categories.FindAllPaged(1, int.MaxValue);
+                List<CategorySnapshot> allCats = MyPage.MTApp.CatalogServices.Categories.FindAllPaged(1, int.MaxValue);
 
                 if (!category.Hidden)
                 {
@@ -75,7 +75,7 @@ namespace BVCommerce
                     List<CategorySnapshot> trail = new List<CategorySnapshot>();
                     if (category != null && category.Bvin != string.Empty)
                     {
-                        trail = Category.BuildTrailToRoot(category.Bvin, MyPage.BVApp.CurrentRequestContext);
+                        trail = Category.BuildTrailToRoot(category.Bvin, MyPage.MTApp.CurrentRequestContext);
                     }
 
                     HyperLink m = new HyperLink();
@@ -127,7 +127,7 @@ namespace BVCommerce
             m.ToolTip = c.MetaTitle;
             m.Text = c.Name;
 
-            m.NavigateUrl = UrlRewriter.BuildUrlForCategory(c, MyPage.BVApp.CurrentRequestContext.RoutingContext);
+            m.NavigateUrl = UrlRewriter.BuildUrlForCategory(c, MyPage.MTApp.CurrentRequestContext.RoutingContext);
             if (c.SourceType == CategorySourceType.CustomLink)
             {
                 if (c.CustomPageOpenInNewWindow == true)

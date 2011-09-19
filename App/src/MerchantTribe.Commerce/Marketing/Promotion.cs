@@ -240,18 +240,18 @@ namespace MerchantTribe.Commerce.Marketing
             var d = _Actions.Where(y => y.Id == id).SingleOrDefault();
             return d;
         }
-        public bool ApplyToProduct(BVApplication bvapp, 
+        public bool ApplyToProduct(MerchantTribeApplication app, 
                                    Catalog.Product p, 
                                    Catalog.UserSpecificPrice price, 
                                    Membership.CustomerAccount currentCustomer, 
                                    DateTime currentDateTimeUtc)
         {
-            if (bvapp == null) return false;
+            if (app == null) return false;
             if (p == null) return false;
             if (price == null) return false;
             if (currentDateTimeUtc == null) return false;
 
-            PromotionContext context = new PromotionContext(bvapp, p, price, currentCustomer, currentDateTimeUtc);
+            PromotionContext context = new PromotionContext(app, p, price, currentCustomer, currentDateTimeUtc);
             context.CustomerDescription = this.CustomerDescription;
 
             // Make sure we have an active promotion before applying
@@ -275,17 +275,17 @@ namespace MerchantTribe.Commerce.Marketing
 
             return true;
         }
-        public bool ApplyToOrder(BVApplication bvapp,
+        public bool ApplyToOrder(MerchantTribeApplication app,
                                  Orders.Order o,
                                  Membership.CustomerAccount currentCustomer,
                                  DateTime currentDateTimeUtc,
                                  PromotionActionMode mode)
         {
-            if (bvapp == null) return false;
+            if (app == null) return false;
             if (o == null) return false;
             if (currentDateTimeUtc == null) return false;
 
-            PromotionContext context = new PromotionContext(bvapp, o, currentCustomer, currentDateTimeUtc);
+            PromotionContext context = new PromotionContext(app, o, currentCustomer, currentDateTimeUtc);
             context.CustomerDescription = this.CustomerDescription;
 
             // Make sure we have an active promotion before applying

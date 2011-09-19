@@ -32,7 +32,7 @@ namespace MerchantTribe.Commerce.Orders
             }
         }
 
-        public static void CollectPaymentAndShipPendingOrders(BVApplication bvapp)
+        public static void CollectPaymentAndShipPendingOrders(MerchantTribeApplication app)
         {
             OrderSearchCriteria criteria = new OrderSearchCriteria();
             criteria.IsPlaced = true;
@@ -40,13 +40,13 @@ namespace MerchantTribe.Commerce.Orders
             int pageSize = 1000;            
             int totalCount = 0;
 
-            List<OrderSnapshot> orders = bvapp.OrderServices.Orders.FindByCriteriaPaged(criteria, 1, pageSize, ref totalCount);
+            List<OrderSnapshot> orders = app.OrderServices.Orders.FindByCriteriaPaged(criteria, 1, pageSize, ref totalCount);
             if (orders != null)
             {
                 foreach (OrderSnapshot os in orders)
                 {
-                    Order o = bvapp.OrderServices.Orders.FindForCurrentStore(os.bvin);
-                    OrderPaymentManager payManager = new OrderPaymentManager(o, bvapp);
+                    Order o = app.OrderServices.Orders.FindForCurrentStore(os.bvin);
+                    OrderPaymentManager payManager = new OrderPaymentManager(o, app);
                     payManager.CreditCardCompleteAllCreditCards();
                     payManager.PayPalExpressCompleteAllPayments();
                     if (o.PaymentStatus == OrderPaymentStatus.Paid ||
@@ -62,7 +62,7 @@ namespace MerchantTribe.Commerce.Orders
                             o.StatusCode = OrderStatusCode.ReadyForShipping;
                             o.StatusName = "Ready for Shipping";
                         }
-                        bvapp.OrderServices.Orders.Update(o);
+                        app.OrderServices.Orders.Update(o);
                     }
                 }
             }

@@ -23,7 +23,7 @@ namespace BVCommerce.BVAdmin.Catalog
         protected void Page_Load(object sender, EventArgs e)
         {
             string bvin = Request.QueryString["id"];
-            BVApp.CurrentRequestContext.IsEditMode = false;
+            MTApp.CurrentRequestContext.IsEditMode = false;
             Response.Redirect("Categories_EditFlexPage.aspx?id=" + bvin);
         }
     }

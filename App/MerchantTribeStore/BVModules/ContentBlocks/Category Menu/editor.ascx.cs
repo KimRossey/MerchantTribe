@@ -30,7 +30,7 @@ namespace BVCommerce
         private void LoadData()
         {
 
-            ContentBlock b = MyPage.BVApp.ContentServices.Columns.FindBlock(this.BlockId);
+            ContentBlock b = MyPage.MTApp.ContentServices.Columns.FindBlock(this.BlockId);
             if (b != null)
             {
                 this.TitleField.Text = b.BaseSettings.GetSettingOrEmpty("Title");
@@ -53,7 +53,7 @@ namespace BVCommerce
         private void SaveData()
         {
 
-            ContentBlock b = MyPage.BVApp.ContentServices.Columns.FindBlock(this.BlockId);
+            ContentBlock b = MyPage.MTApp.ContentServices.Columns.FindBlock(this.BlockId);
             if (b != null)
             {
 
@@ -73,7 +73,7 @@ namespace BVCommerce
                 int.TryParse(this.MaximumDepth.Text.Trim(), out maxDepth);
                 b.BaseSettings.SetIntegerSetting("MaximumDepth", maxDepth);
 
-                MyPage.BVApp.ContentServices.Columns.UpdateBlock(b);
+                MyPage.MTApp.ContentServices.Columns.UpdateBlock(b);
             }
         }
 

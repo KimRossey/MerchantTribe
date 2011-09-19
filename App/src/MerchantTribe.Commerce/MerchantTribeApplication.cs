@@ -10,7 +10,7 @@ using MerchantTribe.Commerce.Orders;
 
 namespace MerchantTribe.Commerce
 {
-    public class BVApplication
+    public class MerchantTribeApplication
     {
 
         private MerchantTribe.Commerce.RequestContext _CurrentRequestContext = new MerchantTribe.Commerce.RequestContext();
@@ -199,20 +199,20 @@ namespace MerchantTribe.Commerce
             set { _CurrentRequestContext.CurrentStore = value; }
         }
 
-        public static BVApplication InstantiateForMemory(RequestContext c)
+        public static MerchantTribeApplication InstantiateForMemory(RequestContext c)
         {
-            return new BVApplication(c, true);
+            return new MerchantTribeApplication(c, true);
         }
-        public static BVApplication InstantiateForDataBase(RequestContext c)
+        public static MerchantTribeApplication InstantiateForDataBase(RequestContext c)
         {
-            return new BVApplication(c, false);
+            return new MerchantTribeApplication(c, false);
         }
-        public BVApplication(RequestContext c)
+        public MerchantTribeApplication(RequestContext c)
         {
             this._IsForMemoryOnly = false;
             this.CurrentRequestContext = c;
         }
-        public BVApplication(RequestContext c, bool isForMemoryOnly)
+        public MerchantTribeApplication(RequestContext c, bool isForMemoryOnly)
         {
             this.CurrentRequestContext = c;
             this._IsForMemoryOnly = isForMemoryOnly;
@@ -277,7 +277,7 @@ namespace MerchantTribe.Commerce
                 return Bvin + VariantId;
             }
         }
-        public BVOperationResult CheckForStockOnItems(Order o)
+        public SystemOperationResult CheckForStockOnItems(Order o)
         {
 
             // Build a list of product quantities to check
@@ -317,7 +317,7 @@ namespace MerchantTribe.Commerce
                 {
                     if (prod.Status == Catalog.ProductStatus.Disabled)
                     {
-                        return new BVOperationResult(false, Content.SiteTerms.ReplaceTermVariable(Content.SiteTerms.GetTerm(Content.SiteTermIds.ProductNotAvailable), "productName", prod.ProductName));
+                        return new SystemOperationResult(false, Content.SiteTerms.ReplaceTermVariable(Content.SiteTerms.GetTerm(Content.SiteTermIds.ProductNotAvailable), "productName", prod.ProductName));
                     }
 
                     ProductIdCombo checkcombo = products[key];
@@ -333,22 +333,22 @@ namespace MerchantTribe.Commerce
                                 string message = Content.SiteTerms.GetTerm(Content.SiteTermIds.CartNotEnoughQuantity);
                                 message = Content.SiteTerms.ReplaceTermVariable(message, "ProductName", prod.ProductName);
                                 message = Content.SiteTerms.ReplaceTermVariable(message, "Quantity", data.Qty.ToString());
-                                return new BVOperationResult(false, message);
+                                return new SystemOperationResult(false, message);
                             }
                         }
                     }
                     else
                     {
-                        return new BVOperationResult(false, Content.SiteTerms.ReplaceTermVariable(Content.SiteTerms.GetTerm(Content.SiteTermIds.CartOutOfStock), "productName", prod.ProductName));
+                        return new SystemOperationResult(false, Content.SiteTerms.ReplaceTermVariable(Content.SiteTerms.GetTerm(Content.SiteTermIds.CartOutOfStock), "productName", prod.ProductName));
                     }
                 }
                 else
                 {
-                    return new BVOperationResult(false, Content.SiteTerms.ReplaceTermVariable("{productname} is not availble at the moment.", "productName", lineItem.ProductName));
+                    return new SystemOperationResult(false, Content.SiteTerms.ReplaceTermVariable("{productname} is not availble at the moment.", "productName", lineItem.ProductName));
                 }
             }
 
-            return new BVOperationResult(true, string.Empty);
+            return new SystemOperationResult(true, string.Empty);
         }
 
 

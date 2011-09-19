@@ -12,7 +12,7 @@ namespace BVCommerce.api.rest
 {
     public class ProductsHandler: BaseRestHandler
     {
-        public ProductsHandler(MerchantTribe.Commerce.BVApplication app)
+        public ProductsHandler(MerchantTribe.Commerce.MerchantTribeApplication app)
             : base(app)
         {
 
@@ -42,7 +42,7 @@ namespace BVCommerce.api.rest
                     responsePage.Content = new PageOfProducts();
 
                     List<Product> resultItems = new List<Product>();
-                    resultItems = BVApp.CatalogServices.FindProductForCategoryWithSort(categoryBvin, CategorySortOrder.None, false, pageInt, pageSizeInt, ref totalCount);
+                    resultItems = MTApp.CatalogServices.FindProductForCategoryWithSort(categoryBvin, CategorySortOrder.None, false, pageInt, pageSizeInt, ref totalCount);
                     responsePage.Content.TotalProductCount = totalCount;
                     foreach (Product p in resultItems)
                     {
@@ -55,7 +55,7 @@ namespace BVCommerce.api.rest
                     ApiResponse<List<ProductDTO>> response = new ApiResponse<List<ProductDTO>>();
 
                     List<Product> results = new List<Product>();                                      
-                    results = BVApp.CatalogServices.Products.FindAllPaged(1, 1000);                  
+                    results = MTApp.CatalogServices.Products.FindAllPaged(1, 1000);                  
                     List<ProductDTO> dto = new List<ProductDTO>();
                     foreach (Product item in results)
                     {
@@ -77,15 +77,15 @@ namespace BVCommerce.api.rest
                 Product item = null;
                 if (bysku.Trim().Length > 0)
                 {
-                    item = BVApp.CatalogServices.Products.FindBySku(bysku);
+                    item = MTApp.CatalogServices.Products.FindBySku(bysku);
                 }
                 else if (byslug.Trim().Length > 0)
                 {
-                    item = BVApp.CatalogServices.Products.FindBySlug(byslug);
+                    item = MTApp.CatalogServices.Products.FindBySlug(byslug);
                 }
                 else
                 {
-                    item = BVApp.CatalogServices.Products.Find(bvin);
+                    item = MTApp.CatalogServices.Products.Find(bvin);
                 }
 
                 if (item == null)
@@ -123,38 +123,38 @@ namespace BVCommerce.api.rest
             Product item = new Product();
             item.FromDto(postedItem);
 
-            Product existing = BVApp.CatalogServices.Products.Find(item.Bvin);
+            Product existing = MTApp.CatalogServices.Products.Find(item.Bvin);
             if (existing == null || existing.Bvin == string.Empty)
             {
 
-                item.StoreId = BVApp.CurrentStore.Id;
+                item.StoreId = MTApp.CurrentStore.Id;
                 if (item.UrlSlug.Trim().Length < 1)
                 {
                     item.UrlSlug = MerchantTribe.Web.Text.Slugify(item.ProductName, true, true);
                 }
 
                 // Try ten times to append to URL if in use
-                bool rewriteUrlInUse = MerchantTribe.Commerce.Utilities.UrlRewriter.IsProductSlugInUse(item.UrlSlug, string.Empty, BVApp);
+                bool rewriteUrlInUse = MerchantTribe.Commerce.Utilities.UrlRewriter.IsProductSlugInUse(item.UrlSlug, string.Empty, MTApp);
                 for (int i = 0; i < 10; i++)
                 {
                     if (rewriteUrlInUse)
                     {
                         item.UrlSlug = item.UrlSlug + "-2";
-                        rewriteUrlInUse = MerchantTribe.Commerce.Utilities.UrlRewriter.IsProductSlugInUse(item.UrlSlug, string.Empty, BVApp);
+                        rewriteUrlInUse = MerchantTribe.Commerce.Utilities.UrlRewriter.IsProductSlugInUse(item.UrlSlug, string.Empty, MTApp);
                         if (rewriteUrlInUse == false) break;
                     }
                 }
 
-                if (BVApp.CatalogServices.ProductsCreateWithInventory(item, false))
+                if (MTApp.CatalogServices.ProductsCreateWithInventory(item, false))
                 {
                     bvin = item.Bvin;
                 }
             }
             else
             {
-                BVApp.CatalogServices.ProductsUpdateWithSearchRebuild(item);
+                MTApp.CatalogServices.ProductsUpdateWithSearchRebuild(item);
             }
-            Product resultItem = BVApp.CatalogServices.Products.Find(bvin);                    
+            Product resultItem = MTApp.CatalogServices.Products.Find(bvin);                    
             if (resultItem != null) response.Content = resultItem.ToDto();
             
 
@@ -177,14 +177,14 @@ namespace BVCommerce.api.rest
 
                 // Clear All Products Requested
                 ApiResponse<ClearProductsData> response = new ApiResponse<ClearProductsData>();
-                response.Content = BVApp.ClearProducts(howMany);
+                response.Content = MTApp.ClearProducts(howMany);
                 data = MerchantTribe.Web.Json.ObjectToJson(response);
             }
             else
             {
                 // Single Item Delete
                 ApiResponse<bool> response = new ApiResponse<bool>();
-                response.Content = BVApp.DestroyProduct(bvin);
+                response.Content = MTApp.DestroyProduct(bvin);
                 data = MerchantTribe.Web.Json.ObjectToJson(response);
             }
             

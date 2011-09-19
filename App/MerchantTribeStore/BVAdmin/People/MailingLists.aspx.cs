@@ -29,7 +29,7 @@ namespace BVCommerce
         private void LoadMailingLists()
         {
             List<MerchantTribe.Commerce.Contacts.MailingListSnapShot> m;
-            m = BVApp.ContactServices.MailingLists.FindAll();
+            m = MTApp.ContactServices.MailingLists.FindAll();
             this.GridView1.DataSource = m;
             this.GridView1.DataBind();
             if (m.Count == 1)
@@ -45,7 +45,7 @@ namespace BVCommerce
         protected void GridView1_RowDeleting(object sender, System.Web.UI.WebControls.GridViewDeleteEventArgs e)
         {
             long id = (long)GridView1.DataKeys[e.RowIndex].Value;
-            BVApp.ContactServices.MailingLists.Delete(id);
+            MTApp.ContactServices.MailingLists.Delete(id);
 
             LoadMailingLists();
         }

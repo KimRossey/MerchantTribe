@@ -18,7 +18,7 @@ namespace BVCommerce.Controllers
 
         private void CheckFor301(string slug)
         {
-            MerchantTribe.Commerce.Content.CustomUrl url = BVApp.ContentServices.CustomUrls.FindByRequestedUrl(slug);
+            MerchantTribe.Commerce.Content.CustomUrl url = MTApp.ContentServices.CustomUrls.FindByRequestedUrl(slug);
             if (url != null)
             {
                 if (url.Bvin != string.Empty)
@@ -41,7 +41,7 @@ namespace BVCommerce.Controllers
         [HandleError]
         public ActionResult Index(string slug)
         {            
-            Category cat = BVApp.CatalogServices.Categories.FindBySlugForStore(slug, BVApp.CurrentRequestContext.CurrentStore.Id);
+            Category cat = MTApp.CatalogServices.Categories.FindBySlugForStore(slug, MTApp.CurrentRequestContext.CurrentStore.Id);
             if (cat == null) cat = new Category();
             
             if (cat.SourceType != CategorySourceType.FlexPage)
@@ -55,10 +55,10 @@ namespace BVCommerce.Controllers
             ViewBag.MetaDescription = cat.MetaDescription;
             ViewData["basecss"] = Url.Content("~/content/FlexBase.css");
             ViewData["slug"] = slug;
-            BVApp.CurrentRequestContext.FlexPageId = cat.Bvin;
-            BVApp.CurrentRequestContext.UrlHelper = this.Url;
+            MTApp.CurrentRequestContext.FlexPageId = cat.Bvin;
+            MTApp.CurrentRequestContext.UrlHelper = this.Url;
             
-            if (BVApp.CurrentRequestContext.IsEditMode)
+            if (MTApp.CurrentRequestContext.IsEditMode)
             {
                 ViewData["EditCss"] = "<link href=\"" + Url.Content("~/css/flexedit/styles.css") + "\" rel=\"stylesheet\" type=\"text/css\" />";
                 string editJS = "<script type=\"text/javascript\" src=\"" + Url.Content("~/content/FlexEdit.js") + "\"></script>";                
@@ -77,20 +77,20 @@ namespace BVCommerce.Controllers
             // Load Content Parts for Page        
             try
             {
-                if (BVApp.CurrentRequestContext.IsEditMode)
+                if (MTApp.CurrentRequestContext.IsEditMode)
                 {
                     if (Request["preview"] == "1")
                     {
-                        ViewData["ContentParts"] = cat.Versions[0].Root.RenderForDisplay(BVApp.CurrentRequestContext, cat);
+                        ViewData["ContentParts"] = cat.Versions[0].Root.RenderForDisplay(MTApp.CurrentRequestContext, cat);
                     }
                     else
                     {
-                        ViewData["ContentParts"] = cat.Versions[0].Root.RenderForEdit(BVApp.CurrentRequestContext, cat);
+                        ViewData["ContentParts"] = cat.Versions[0].Root.RenderForEdit(MTApp.CurrentRequestContext, cat);
                     }
                 }
                 else
                 {
-                    ViewData["ContentParts"] = cat.Versions[0].Root.RenderForDisplay(BVApp.CurrentRequestContext, cat);
+                    ViewData["ContentParts"] = cat.Versions[0].Root.RenderForDisplay(MTApp.CurrentRequestContext, cat);
                 }
             }
             catch (Exception ex)

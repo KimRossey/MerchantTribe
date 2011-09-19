@@ -16,7 +16,7 @@ namespace BVCommerce
 
             if (!Page.IsPostBack)
             {
-                ContentBlock b = MyPage.BVApp.ContentServices.Columns.FindBlock(this.BlockId);
+                ContentBlock b = MyPage.MTApp.ContentServices.Columns.FindBlock(this.BlockId);
                 LoadItems(b);
             }
         }
@@ -35,14 +35,14 @@ namespace BVCommerce
         protected void btnNew_Click(object sender, System.Web.UI.ImageClickEventArgs e)
         {
 
-            ContentBlock b = MyPage.BVApp.ContentServices.Columns.FindBlock(this.BlockId);
+            ContentBlock b = MyPage.MTApp.ContentServices.Columns.FindBlock(this.BlockId);
 
             //Inserting
             //SettingsManager.GetSettingList("Products");
             foreach (string product in ProductPicker1.SelectedProducts)
             {
                 ContentBlockSettingListItem c = new ContentBlockSettingListItem();
-                Product p = MyPage.BVApp.CatalogServices.Products.Find(product);
+                Product p = MyPage.MTApp.CatalogServices.Products.Find(product);
                 c.Setting1 = product;
                 //c.Setting2 = p.Sku;
                 //c.Setting3 = p.ProductName;
@@ -51,37 +51,37 @@ namespace BVCommerce
                 //c.Setting6 = p.ImageFileSmallAlternateText;
                 c.ListName = "Products";
                 b.Lists.AddItem(c);
-                MyPage.BVApp.ContentServices.Columns.UpdateBlock(b);
+                MyPage.MTApp.ContentServices.Columns.UpdateBlock(b);
             }
             LoadItems(b);
         }
 
         protected void GridView1_RowCancelingEdit(object sender, System.Web.UI.WebControls.GridViewCancelEditEventArgs e)
         {
-            ContentBlock b = MyPage.BVApp.ContentServices.Columns.FindBlock(this.BlockId);
+            ContentBlock b = MyPage.MTApp.ContentServices.Columns.FindBlock(this.BlockId);
             string bvin = string.Empty;
             bvin = ((GridView)sender).DataKeys[e.RowIndex].Value.ToString();
             b.Lists.MoveItemDown(bvin, "Products");
-            MyPage.BVApp.ContentServices.Columns.UpdateBlock(b);
+            MyPage.MTApp.ContentServices.Columns.UpdateBlock(b);
             LoadItems(b);
         }
 
         protected void GridView1_RowDeleting(object sender, System.Web.UI.WebControls.GridViewDeleteEventArgs e)
         {
-            ContentBlock b = MyPage.BVApp.ContentServices.Columns.FindBlock(this.BlockId);
+            ContentBlock b = MyPage.MTApp.ContentServices.Columns.FindBlock(this.BlockId);
             string bvin = (string)this.GridView1.DataKeys[e.RowIndex].Value;
             b.Lists.RemoveItem(bvin);
-            MyPage.BVApp.ContentServices.Columns.UpdateBlock(b);
+            MyPage.MTApp.ContentServices.Columns.UpdateBlock(b);
             LoadItems(b);
         }
 
         protected void GridView1_RowUpdating(object sender, System.Web.UI.WebControls.GridViewUpdateEventArgs e)
         {
-            ContentBlock b = MyPage.BVApp.ContentServices.Columns.FindBlock(this.BlockId);
+            ContentBlock b = MyPage.MTApp.ContentServices.Columns.FindBlock(this.BlockId);
             string bvin = string.Empty;
             bvin = ((GridView)sender).DataKeys[e.RowIndex].Value.ToString();
             b.Lists.MoveItemUp(bvin, "Products");
-            MyPage.BVApp.ContentServices.Columns.UpdateBlock(b);
+            MyPage.MTApp.ContentServices.Columns.UpdateBlock(b);
             LoadItems(b);
         }
 

@@ -42,7 +42,7 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
 			}
 			
 			foreach (string item in manufacturers) {
-                Contacts.VendorManufacturer mfg = context.BVApp.ContactServices.Manufacturers.Find(item);
+                Contacts.VendorManufacturer mfg = context.MTApp.ContactServices.Manufacturers.Find(item);
 				if (mfg != null) {
 					if (mfg.Bvin != string.Empty) {
 						bool success = false;
@@ -51,13 +51,13 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
                         //    success = true;
                         //}
                         //else {
-                        if (!SendEmail(context.BVApp, mfg, context.Order))
+                        if (!SendEmail(context.MTApp, mfg, context.Order))
                         {
 								Orders.OrderNote n = new Orders.OrderNote();
                                 n.IsPublic = false;
 								n.Note = "Drop shipper notices for " + mfg.DisplayName + " were not able to send correctly.";
 								context.Order.Notes.Add(n);
-                                context.BVApp.OrderServices.Orders.Upsert(context.Order);
+                                context.MTApp.OrderServices.Orders.Upsert(context.Order);
 							}
 							else {
 								success = true;
@@ -69,14 +69,14 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
                             n.IsPublic = false;
 							n.Note = "Drop shipper notices for " + mfg.DisplayName + " were sent successfully.";
 							context.Order.Notes.Add(n);
-                            context.BVApp.OrderServices.Orders.Upsert(context.Order);
+                            context.MTApp.OrderServices.Orders.Upsert(context.Order);
 						}
 					}
 				}
 			}
 
 			foreach (string item in vendors) {
-                Contacts.VendorManufacturer vendor = context.BVApp.ContactServices.Vendors.Find(item);
+                Contacts.VendorManufacturer vendor = context.MTApp.ContactServices.Vendors.Find(item);
 				if (vendor != null) {
 					if (vendor.Bvin != string.Empty) {
 						bool success = false;
@@ -85,13 +85,13 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
                         //    success = true;
                         //}
                         //else {
-                        if (!SendEmail(context.BVApp, vendor, context.Order))
+                        if (!SendEmail(context.MTApp, vendor, context.Order))
                         {
 								Orders.OrderNote n = new Orders.OrderNote();
 								n.IsPublic = false;
 								n.Note = "Drop shipper notices for " + vendor.DisplayName + " were not able to send correctly.";
 								context.Order.Notes.Add(n);
-                                context.BVApp.OrderServices.Orders.Upsert(context.Order);
+                                context.MTApp.OrderServices.Orders.Upsert(context.Order);
 							}
 							else {
 								success = true;
@@ -103,7 +103,7 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
 							n.IsPublic = false;
 							n.Note = "Drop shipper notices for " + vendor.DisplayName + " were sent successfully.";
 							context.Order.Notes.Add(n);
-                            context.BVApp.OrderServices.Orders.Upsert(context.Order);
+                            context.MTApp.OrderServices.Orders.Upsert(context.Order);
 						}
 					}
 				}
@@ -130,7 +130,7 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
 			return "Run All Dropship Notifications";
 		}
 
-		private bool SendEmail(BVApplication bvapp, Contacts.VendorManufacturer vendorOrManufacturer, Orders.Order order)
+		private bool SendEmail(MerchantTribeApplication app, Contacts.VendorManufacturer vendorOrManufacturer, Orders.Order order)
 		{
 			string toEmail = vendorOrManufacturer.EmailAddress;
 
@@ -139,11 +139,11 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
 			if (templateBvin != string.Empty) {
                 long templateId = 0;
                 long.TryParse(templateBvin, out templateId);
-                t = bvapp.ContentServices.HtmlTemplates.Find(templateId);
+                t = app.ContentServices.HtmlTemplates.Find(templateId);
 			}
             if (t == null)
             {
-                t = bvapp.ContentServices.GetHtmlTemplateOrDefault(Content.HtmlTemplateType.DropShippingNotice);
+                t = app.ContentServices.GetHtmlTemplateOrDefault(Content.HtmlTemplateType.DropShippingNotice);
             }
 
 			if (toEmail.Trim().Length > 0) {
@@ -151,7 +151,7 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
                 List<Content.IReplaceable> replacers = new List<Content.IReplaceable>();
                 replacers.Add(order);
                 replacers.Add(vendorOrManufacturer);
-                t = t.ReplaceTagsInTemplate(bvapp, replacers, order.ItemsAsReplaceable());
+                t = t.ReplaceTagsInTemplate(app, replacers, order.ItemsAsReplaceable());
 
 				System.Net.Mail.MailMessage m = new System.Net.Mail.MailMessage();
 				if (vendorOrManufacturer != null) {

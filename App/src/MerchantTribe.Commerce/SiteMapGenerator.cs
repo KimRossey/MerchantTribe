@@ -8,7 +8,7 @@ namespace MerchantTribe.Commerce
 {
     public class SiteMapGenerator
     {
-        public static string BuildForStore(BVApplication app)
+        public static string BuildForStore(MerchantTribeApplication app)
         {
             if (app == null) return string.Empty;
 

@@ -35,7 +35,7 @@ namespace BVCommerce
 
         private void LoadZones()
         {
-            List<Zone> zones = BVApp.OrderServices.ShippingZones.FindForStore(BVApp.CurrentStore.Id);
+            List<Zone> zones = MTApp.OrderServices.ShippingZones.FindForStore(MTApp.CurrentStore.Id);
 
             StringBuilder sb = new StringBuilder();
 
@@ -62,10 +62,10 @@ namespace BVCommerce
 
             Zone z = new Zone();
             z.Name = this.NewZoneField.Text.Trim();
-            z.StoreId = BVApp.CurrentStore.Id;
+            z.StoreId = MTApp.CurrentStore.Id;
             if (z.IsValid())
             {
-                if (BVApp.OrderServices.ShippingZones.Create(z))
+                if (MTApp.OrderServices.ShippingZones.Create(z))
                 {
                     this.MessageBox1.ShowOk("Zone Created");
                 }

@@ -35,7 +35,7 @@ namespace BVCommerce
         public void RenderItems()
         {
 
-            Option opt = MyPage.BVApp.CatalogServices.ProductOptions.Find(OptionId);
+            Option opt = MyPage.MTApp.CatalogServices.ProductOptions.Find(OptionId);
             if ((opt != null))
             {
                 //opt.ReloadItems();
@@ -72,11 +72,11 @@ namespace BVCommerce
         {
             if ((OptionId != string.Empty))
             {
-                Option opt = MyPage.BVApp.CatalogServices.ProductOptions.Find(OptionId);
+                Option opt = MyPage.MTApp.CatalogServices.ProductOptions.Find(OptionId);
                 if ((opt != null))
                 {
                     opt.AddItem(this.NewNameField.Text.Trim());
-                    MyPage.BVApp.CatalogServices.ProductOptions.Update(opt);
+                    MyPage.MTApp.CatalogServices.ProductOptions.Update(opt);
                     this.NewNameField.Text = string.Empty;
                     this.NewNameField.Focus();
                 }

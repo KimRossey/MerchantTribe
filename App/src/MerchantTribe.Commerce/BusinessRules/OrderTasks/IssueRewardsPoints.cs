@@ -28,7 +28,7 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
                 if (context.UserId == string.Empty) return true;
 
                 bool hasPointsPayment = false;
-                foreach (OrderTransaction t in context.BVApp.OrderServices.Transactions.FindForOrder(context.Order.bvin))
+                foreach (OrderTransaction t in context.MTApp.OrderServices.Transactions.FindForOrder(context.Order.bvin))
                 {
                     if (t.Action == MerchantTribe.Payment.ActionType.RewardPointsInfo)
                     {
@@ -47,7 +47,7 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
 
                 pointsManager.IssuePoints(context.Order.UserID, pointsToIssue);
                 context.Order.CustomProperties.SetProperty("bvsoftware", "rewardspointsissued", "1");
-                context.BVApp.OrderServices.Orders.Update(context.Order);
+                context.MTApp.OrderServices.Orders.Update(context.Order);
             }
             return true;
         }

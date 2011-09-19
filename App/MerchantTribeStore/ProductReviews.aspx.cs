@@ -24,7 +24,7 @@ namespace BVCommerce
 
             if (slug != string.Empty)
             {
-                _LocalProduct = BVApp.CatalogServices.Products.FindBySlug(slug);
+                _LocalProduct = MTApp.CatalogServices.Products.FindBySlug(slug);
                 if (_LocalProduct == null)
                 {
                     UrlRewriter.RedirectToErrorPage(MerchantTribe.Commerce.ErrorTypes.Product, Response);
@@ -66,7 +66,7 @@ namespace BVCommerce
         private void RenderProductMini()
         {
             StringBuilder sb = new StringBuilder();
-            UserSpecificPrice price = BVApp.PriceProduct(_LocalProduct, BVApp.CurrentCustomer, null);
+            UserSpecificPrice price = MTApp.PriceProduct(_LocalProduct, MTApp.CurrentCustomer, null);
             HtmlRendering.RenderSingleProduct(ref sb, _LocalProduct, false, false, this.Page, price);
             this.litProduct.Text = sb.ToString();
             this.litProductName.Text = _LocalProduct.ProductName;
@@ -113,7 +113,7 @@ namespace BVCommerce
 
             this.lblRating.Text = SiteTerms.GetTerm(SiteTermIds.AverageRating);
 
-            ThemeManager tm = this.BVApp.ThemeManager();
+            ThemeManager tm = this.MTApp.ThemeManager();
 
             switch (AverageRating)
             {
@@ -155,11 +155,11 @@ namespace BVCommerce
                 ratingDescription = (Label)e.Item.FindControl("lblReviewDescription");
                 karmaPanel = (Panel)e.Item.FindControl("pnlKarma");
 
-                ThemeManager tm = this.BVApp.ThemeManager();
+                ThemeManager tm = this.MTApp.ThemeManager();
 
                 if (ratingImage != null)
                 {
-                    if (BVApp.CurrentStore.Settings.ProductReviewShowRating == true)
+                    if (MTApp.CurrentStore.Settings.ProductReviewShowRating == true)
                     {
                         ratingImage.Visible = true;
                         switch ((int)DataBinder.Eval(e.Item.DataItem, "Rating"))
@@ -223,13 +223,13 @@ namespace BVCommerce
         protected void dlReviews_EditCommand(object source, System.Web.UI.WebControls.DataListCommandEventArgs e)
         {
             string reviewID = (string)dlReviews.DataKeys[e.Item.ItemIndex];
-            BVApp.CatalogServices.ProductReviews.UpdateKarma(reviewID, 1);
+            MTApp.CatalogServices.ProductReviews.UpdateKarma(reviewID, 1);
         }
 
         protected void dlReviews_DeleteCommand(object source, System.Web.UI.WebControls.DataListCommandEventArgs e)
         {
             string reviewID = (string)dlReviews.DataKeys[e.Item.ItemIndex];
-            BVApp.CatalogServices.ProductReviews.UpdateKarma(reviewID, -1);
+            MTApp.CatalogServices.ProductReviews.UpdateKarma(reviewID, -1);
         }
 
     }

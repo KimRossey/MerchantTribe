@@ -40,9 +40,9 @@ namespace MerchantTribe.Commerce.Marketing.PromotionQualifications
             SetSetting("itemids", all);
         }
 
-        public override string FriendlyDescription(BVApplication bvapp)
+        public override string FriendlyDescription(MerchantTribeApplication app)
         {
-            List<Shipping.ShippingMethod> methods = bvapp.OrderServices.ShippingMethods.FindAll(bvapp.CurrentStore.Id);
+            List<Shipping.ShippingMethod> methods = app.OrderServices.ShippingMethods.FindAll(app.CurrentStore.Id);
 
             string result = "When Order Has Shipping Method Of:<ul>";
             foreach (string itemid in this.ItemIds())

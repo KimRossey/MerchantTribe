@@ -30,7 +30,7 @@ namespace BVCommerce
             if (Request.QueryString["id"] != null)
             {
                 productBvin = Request.QueryString["id"];
-                localProduct = BVApp.CatalogServices.Products.Find(productBvin);
+                localProduct = MTApp.CatalogServices.Products.Find(productBvin);
 
                 PopulateEditorControls();
             }
@@ -158,7 +158,7 @@ namespace BVCommerce
 
         protected void btnGenerateAll_Click(object sender, System.Web.UI.ImageClickEventArgs e)
         {
-            BVApp.CatalogServices.VariantsGenerateAllPossible(localProduct);
+            MTApp.CatalogServices.VariantsGenerateAllPossible(localProduct);
             Response.Redirect("ProductChoices_Variants.aspx?id=" + productBvin);
         }
 
@@ -188,7 +188,7 @@ namespace BVCommerce
                     Variant v = new Variant();
                     v.ProductId = localProduct.Bvin;
                     v.Selections.AddRange(selections);
-                    BVApp.CatalogServices.ProductVariants.Create(v);
+                    MTApp.CatalogServices.ProductVariants.Create(v);
                 }
             }
 
@@ -198,7 +198,7 @@ namespace BVCommerce
         protected void btnSave_Click(object sender, System.Web.UI.ImageClickEventArgs e)
         {
 
-            Variant item = BVApp.CatalogServices.ProductVariants.Find(this.dialogbvin.Value);
+            Variant item = MTApp.CatalogServices.ProductVariants.Find(this.dialogbvin.Value);
             if ((item != null))
             {
 
@@ -211,9 +211,9 @@ namespace BVCommerce
 
                 if (this.dialognewFile.HasFile)
                 {
-                    MerchantTribe.Commerce.Storage.DiskStorage.UploadProductVariantImage(this.BVApp.CurrentStore.Id, this.productBvin, item.Bvin, this.dialognewFile.PostedFile);
+                    MerchantTribe.Commerce.Storage.DiskStorage.UploadProductVariantImage(this.MTApp.CurrentStore.Id, this.productBvin, item.Bvin, this.dialognewFile.PostedFile);
                 }
-                BVApp.CatalogServices.ProductVariants.Update(item);
+                MTApp.CatalogServices.ProductVariants.Update(item);
 
             }
 

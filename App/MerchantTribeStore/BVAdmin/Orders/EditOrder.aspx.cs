@@ -72,7 +72,7 @@ namespace BVCommerce.BVAdmin.Orders
 
             if (this.AddProductSkuHiddenField.Value != string.Empty)
             {
-                Product p = BVApp.CatalogServices.Products.Find(this.AddProductSkuHiddenField.Value);
+                Product p = MTApp.CatalogServices.Products.Find(this.AddProductSkuHiddenField.Value);
                 if (p != null)
                 {
                     // Render Options
@@ -109,7 +109,7 @@ namespace BVCommerce.BVAdmin.Orders
         private void LoadOrder()
         {
             string bvin = this.BvinField.Value.ToString();
-            Order o = BVApp.OrderServices.Orders.FindForCurrentStore(bvin);
+            Order o = MTApp.OrderServices.Orders.FindForCurrentStore(bvin);
             if (o != null)
             {
                 if (o.bvin != string.Empty)
@@ -123,7 +123,7 @@ namespace BVCommerce.BVAdmin.Orders
         {
             // Header
             this.OrderNumberField.Text = o.OrderNumber;
-            this.TimeOfOrderField.Text = TimeZoneInfo.ConvertTimeFromUtc(o.TimeOfOrderUtc, BVApp.CurrentStore.Settings.TimeZone).ToString();
+            this.TimeOfOrderField.Text = TimeZoneInfo.ConvertTimeFromUtc(o.TimeOfOrderUtc, MTApp.CurrentStore.Settings.TimeZone).ToString();
 
             // Billing
             this.BillingAddressEditor.LoadFromAddress(o.BillingAddress);
@@ -136,7 +136,7 @@ namespace BVCommerce.BVAdmin.Orders
 
 
             // Payment
-            OrderPaymentSummary paySummary = BVApp.OrderServices.PaymentSummary(o);
+            OrderPaymentSummary paySummary = MTApp.OrderServices.PaymentSummary(o);
             this.lblPaymentSummary.Text = paySummary.PaymentsSummary;
             this.PaymentAuthorizedField.Text = string.Format("{0:C}", paySummary.AmountAuthorized);
             this.PaymentChargedField.Text = string.Format("{0:C}", paySummary.AmountCharged);
@@ -173,23 +173,23 @@ namespace BVCommerce.BVAdmin.Orders
         {
             bool success = false;
 
-            Order o = BVApp.OrderServices.Orders.FindForCurrentStore(Request.QueryString["id"]);
+            Order o = MTApp.OrderServices.Orders.FindForCurrentStore(Request.QueryString["id"]);
             switch (o.ShippingStatus)
             {
                 case OrderShippingStatus.FullyShipped:
-                    success = BVApp.OrderServices.Orders.Delete(o.bvin);
+                    success = MTApp.OrderServices.Orders.Delete(o.bvin);
                     break;
                 case OrderShippingStatus.NonShipping:
-                    success = BVApp.OrderServices.Orders.Delete(o.bvin);
+                    success = MTApp.OrderServices.Orders.Delete(o.bvin);
                     break;
                 case OrderShippingStatus.PartiallyShipped:
                     this.MessageBox1.ShowWarning("Partially shipped orders can't be deleted. Either unship or ship all items before deleting.");
                     break;
                 case OrderShippingStatus.Unknown:
-                    success = BVApp.OrderServices.OrdersDeleteWithInventoryReturn(o.bvin, BVApp.CatalogServices);
+                    success = MTApp.OrderServices.OrdersDeleteWithInventoryReturn(o.bvin, MTApp.CatalogServices);
                     break;
                 case OrderShippingStatus.Unshipped:
-                    success = BVApp.OrderServices.OrdersDeleteWithInventoryReturn(o.bvin, BVApp.CatalogServices);
+                    success = MTApp.OrderServices.OrdersDeleteWithInventoryReturn(o.bvin, MTApp.CatalogServices);
                     break;
             }
 
@@ -248,7 +248,7 @@ namespace BVCommerce.BVAdmin.Orders
         protected void btnSaveChanges_Click(object sender, System.Web.UI.ImageClickEventArgs e)
         {
             this.MessageBox1.ClearMessage();
-            BVOperationResult saveResult = SaveOrder();
+            SystemOperationResult saveResult = SaveOrder();
             if (saveResult.Success)
             {
                 RunOrderEditedWorkflow(saveResult);
@@ -260,10 +260,10 @@ namespace BVCommerce.BVAdmin.Orders
             LoadOrder();
         }
 
-        private void RunOrderEditedWorkflow(BVOperationResult saveResult)
+        private void RunOrderEditedWorkflow(SystemOperationResult saveResult)
         {
-            MerchantTribe.Commerce.BusinessRules.OrderTaskContext c = new MerchantTribe.Commerce.BusinessRules.OrderTaskContext(BVApp);
-            c.Order = BVApp.OrderServices.Orders.FindForCurrentStore(this.BvinField.Value);
+            MerchantTribe.Commerce.BusinessRules.OrderTaskContext c = new MerchantTribe.Commerce.BusinessRules.OrderTaskContext(MTApp);
+            c.Order = MTApp.OrderServices.Orders.FindForCurrentStore(this.BvinField.Value);
             c.UserId = c.Order.UserID;
 
             if (!MerchantTribe.Commerce.BusinessRules.Workflow.RunByName(c, MerchantTribe.Commerce.BusinessRules.WorkflowNames.OrderEdited))
@@ -294,11 +294,11 @@ namespace BVCommerce.BVAdmin.Orders
             }
         }
 
-        private BVOperationResult SaveOrder()
+        private SystemOperationResult SaveOrder()
         {
-            BVOperationResult result = new BVOperationResult(false, "");
+            SystemOperationResult result = new SystemOperationResult(false, "");
 
-            Order o = BVApp.OrderServices.Orders.FindForCurrentStore(this.BvinField.Value);
+            Order o = MTApp.OrderServices.Orders.FindForCurrentStore(this.BvinField.Value);
             if (o == null)
             {
                 result.Success = false;
@@ -313,7 +313,7 @@ namespace BVCommerce.BVAdmin.Orders
             o.BillingAddress = this.BillingAddressEditor.GetAsAddress();
             o.ShippingAddress = this.ShippingAddressEditor.GetAsAddress();
 
-            BVOperationResult modifyResult = ModifyQuantities(o);
+            SystemOperationResult modifyResult = ModifyQuantities(o);
             if (!modifyResult.Success)
             {
                 result.Message = modifyResult.Message;
@@ -321,7 +321,7 @@ namespace BVCommerce.BVAdmin.Orders
 
             // Save Shipping Selection
             string shippingRateKey = Request.Form["shippingrate"];
-            BVApp.OrderServices.OrdersRequestShippingMethodByUniqueKey(shippingRateKey, o);
+            MTApp.OrderServices.OrdersRequestShippingMethodByUniqueKey(shippingRateKey, o);
 
             // Shipping Override
             if (this.ShippingOverride.Text.Trim().Length < 1)
@@ -335,14 +335,14 @@ namespace BVCommerce.BVAdmin.Orders
                 o.TotalShippingBeforeDiscountsOverride = shipOverride;
             }
 
-            result.Success = BVApp.CalculateOrderAndSave(o);
+            result.Success = MTApp.CalculateOrderAndSave(o);
 
             return result;
         }
 
-        private BVOperationResult ModifyQuantities(Order o)
+        private SystemOperationResult ModifyQuantities(Order o)
         {
-            BVOperationResult result = new BVOperationResult(true, "");
+            SystemOperationResult result = new SystemOperationResult(true, "");
 
             for (int i = 0; i < this.ItemsGridView.Rows.Count - 1; i++)
             {
@@ -375,7 +375,7 @@ namespace BVCommerce.BVAdmin.Orders
 
         protected void btnDeleteCoupon_Click(object sender, System.Web.UI.ImageClickEventArgs e)
         {
-            Order o = BVApp.OrderServices.Orders.FindForCurrentStore(this.BvinField.Value);
+            Order o = MTApp.OrderServices.Orders.FindForCurrentStore(this.BvinField.Value);
             if (o != null)
             {
                 foreach (System.Web.UI.WebControls.ListItem li in this.lstCoupons.Items)
@@ -386,19 +386,19 @@ namespace BVCommerce.BVAdmin.Orders
                     }
                 }
             }
-            BVApp.OrderServices.Orders.Update(o);
+            MTApp.OrderServices.Orders.Update(o);
             SaveOrder();
             LoadOrder();
         }
 
         protected void btnAddCoupon_Click(object sender, System.Web.UI.ImageClickEventArgs e)
         {
-            Order o = BVApp.OrderServices.Orders.FindForCurrentStore(this.BvinField.Value);
+            Order o = MTApp.OrderServices.Orders.FindForCurrentStore(this.BvinField.Value);
             if (o != null)
             {
                 o.AddCouponCode(this.CouponField.Text.Trim().ToUpper());
             }
-            BVApp.OrderServices.Orders.Update(o);
+            MTApp.OrderServices.Orders.Update(o);
             SaveOrder();
             LoadOrder();
         }
@@ -421,7 +421,7 @@ namespace BVCommerce.BVAdmin.Orders
             {
                 // Shipping Methods
 
-                Rates = BVApp.OrderServices.FindAvailableShippingRates(o);
+                Rates = MTApp.OrderServices.FindAvailableShippingRates(o);
 
                 if ((Rates.Count < 1))
                 {
@@ -441,14 +441,14 @@ namespace BVCommerce.BVAdmin.Orders
         {
             MessageBox1.ClearMessage();
             long Id = (long)ItemsGridView.DataKeys[e.RowIndex].Value;
-            Order o = BVApp.OrderServices.Orders.FindForCurrentStore(this.BvinField.Value);
+            Order o = MTApp.OrderServices.Orders.FindForCurrentStore(this.BvinField.Value);
             if (o != null)
             {
                 var li = o.Items.Where(y => y.Id == Id).SingleOrDefault();
                 if (li != null)
                 {
                     o.Items.Remove(li);
-                    BVApp.OrderServices.Orders.Update(o);
+                    MTApp.OrderServices.Orders.Update(o);
                 }
             }
             SaveOrder();
@@ -487,7 +487,7 @@ namespace BVCommerce.BVAdmin.Orders
             this.MessageBox1.ClearMessage();
             if (this.ProductPicker1.SelectedProducts.Count > 0)
             {
-                Product p = BVApp.CatalogServices.Products.Find(this.ProductPicker1.SelectedProducts[0]);
+                Product p = MTApp.CatalogServices.Products.Find(this.ProductPicker1.SelectedProducts[0]);
                 if (p != null)
                 {
                     this.NewSkuField.Text = p.Sku;
@@ -512,7 +512,7 @@ namespace BVCommerce.BVAdmin.Orders
             }
             else
             {
-                Product p = BVApp.CatalogServices.Products.FindBySku(this.NewSkuField.Text.Trim());
+                Product p = MTApp.CatalogServices.Products.FindBySku(this.NewSkuField.Text.Trim());
 
                 if (p != null && p.Sku.Length > 0)
                 {
@@ -531,18 +531,18 @@ namespace BVCommerce.BVAdmin.Orders
                     }
                     else
                     {
-                        Order o = BVApp.OrderServices.Orders.FindForCurrentStore(this.BvinField.Value);
+                        Order o = MTApp.OrderServices.Orders.FindForCurrentStore(this.BvinField.Value);
                         if (o != null)
                         {
                             int quantity = 1;
                             int.TryParse(this.NewProductQuantity.Text, out quantity);
                             OptionSelectionList selections = new OptionSelectionList();
-                            LineItem li = BVApp.CatalogServices.ConvertProductToLineItem(p,
+                            LineItem li = MTApp.CatalogServices.ConvertProductToLineItem(p,
                                                                                     selections,
                                                                                     quantity,
-                                                                                    BVApp);
+                                                                                    MTApp);
                             o.Items.Add(li);
-                            BVApp.OrderServices.Orders.Update(o);
+                            MTApp.OrderServices.Orders.Update(o);
                             this.MessageBox1.ShowOk("Product Added!");
                         }
                     }
@@ -569,7 +569,7 @@ namespace BVCommerce.BVAdmin.Orders
             this.pnlAddControls.Visible = true;
             this.pnlProductChoices.Visible = false;
 
-            Product product = BVApp.CatalogServices.Products.Find(this.AddProductSkuHiddenField.Value);
+            Product product = MTApp.CatalogServices.Products.Find(this.AddProductSkuHiddenField.Value);
             if (product != null && product.Sku.Trim().Length > 0)
             {
                 
@@ -578,15 +578,15 @@ namespace BVCommerce.BVAdmin.Orders
                 OptionSelectionList selections = ParseSelections(product);
                 if (ValidateSelections(product, selections))
                 {
-                    Order o = BVApp.OrderServices.Orders.FindForCurrentStore(this.BvinField.Value);
+                    Order o = MTApp.OrderServices.Orders.FindForCurrentStore(this.BvinField.Value);
                     if (o != null)
                     {
-                        LineItem li = BVApp.CatalogServices.ConvertProductToLineItem(product,
+                        LineItem li = MTApp.CatalogServices.ConvertProductToLineItem(product,
                                                                                 selections,
                                                                                 quantity,
-                                                                                BVApp);
+                                                                                MTApp);
                         o.Items.Add(li);
-                        BVApp.OrderServices.Orders.Update(o);
+                        MTApp.OrderServices.Orders.Update(o);
                         this.MessageBox1.ShowOk("Product Added!");
                         this.AddProductSkuHiddenField.Value = string.Empty;
                         SaveOrder();

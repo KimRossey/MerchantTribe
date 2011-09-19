@@ -53,7 +53,7 @@ namespace BVCommerce
         private string RenderMenu(int linksPerRow, int maxLinks, int tabIndex)
         {
             // Find Categories to Display in Menu
-            List<CategorySnapshot> categories = MyPage.BVApp.CatalogServices.Categories.FindForMainMenu();
+            List<CategorySnapshot> categories = MyPage.MTApp.CatalogServices.Categories.FindForMainMenu();
 
             // Limit number of links
             int stopCount = categories.Count - 1;

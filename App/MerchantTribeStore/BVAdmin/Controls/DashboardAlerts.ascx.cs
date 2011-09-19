@@ -21,7 +21,7 @@ namespace BVCommerce
 
         private void LoadAlerts()
         {
-            List<ProductReview> reviews = MyPage.BVApp.CatalogServices.ProductReviews.FindNotApproved(1,100);
+            List<ProductReview> reviews = MyPage.MTApp.CatalogServices.ProductReviews.FindNotApproved(1,100);
             if (reviews == null) return;
             if (reviews.Count() < 1) return;
 

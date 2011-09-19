@@ -20,7 +20,7 @@ namespace BVCommerce
         private void SetDefaultControlValues()
         {
             lblTitle.Text = SiteTerms.GetTerm(SiteTermIds.Search);
-            btnSearch.ImageUrl = MyPage.BVApp.ThemeManager().ButtonUrl("gosearch", Request.IsSecureConnection);
+            btnSearch.ImageUrl = MyPage.MTApp.ThemeManager().ButtonUrl("gosearch", Request.IsSecureConnection);
             btnSearch.AlternateText = "Submit Form";
         }
 

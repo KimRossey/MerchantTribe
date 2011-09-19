@@ -24,12 +24,12 @@ namespace BVCommerce
 
         private void Remove(string ids, string optionId)
         {
-            Option opt = BVApp.CatalogServices.ProductOptions.Find(optionId);
+            Option opt = MTApp.CatalogServices.ProductOptions.Find(optionId);
             OptionItem item = opt.Items.Where(y => y.Bvin == ids).FirstOrDefault();
             if (item != null)
             {
                 opt.Items.Remove(item);
-                BVApp.CatalogServices.ProductOptions.Update(opt);
+                MTApp.CatalogServices.ProductOptions.Update(opt);
                 this.litOutput.Text = "{\"result\":true}";
             }
             this.litOutput.Text = "{\"result\":false}";

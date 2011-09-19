@@ -84,7 +84,7 @@ namespace BVCommerce
 
             if (!Page.IsPostBack)
             {
-                ThemeManager themes = MyPage.BVApp.ThemeManager();
+                ThemeManager themes = MyPage.MTApp.ThemeManager();
                 this.AddToWishlist.ImageUrl = themes.ButtonUrl("AddToWishList", Request.IsSecureConnection);
             }
         }

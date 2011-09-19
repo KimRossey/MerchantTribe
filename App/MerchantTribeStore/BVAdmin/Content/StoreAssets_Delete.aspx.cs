@@ -26,7 +26,7 @@ namespace BVCommerce
 
         private void Remove(string asset)
         {
-            if (DiskStorage.RemoveStoreAsset(BVApp.CurrentStore.Id, asset))
+            if (DiskStorage.RemoveStoreAsset(MTApp.CurrentStore.Id, asset))
             {
                 this.litOutput.Text = "{\"result\":true}";
             }

@@ -44,7 +44,7 @@ namespace BVCommerce
             sb.Append("<ul class=\"removablelist\">");
 
             List<MerchantTribe.Commerce.Storage.AssetSnapshot> assets =
-                MerchantTribe.Commerce.Storage.DiskStorage.ListAssetsForTheme(BVApp.CurrentStore.Id, themeid);
+                MerchantTribe.Commerce.Storage.DiskStorage.ListAssetsForTheme(MTApp.CurrentStore.Id, themeid);
             foreach (MerchantTribe.Commerce.Storage.AssetSnapshot snapshot in assets)
             {
                 sb.Append("<li id=\"" + snapshot.FileName + "\">");
@@ -63,7 +63,7 @@ namespace BVCommerce
             string themeId = Request.QueryString["id"];
             if (this.fileupload1.HasFile)
             {
-                MerchantTribe.Commerce.Storage.DiskStorage.UploadAsset(BVApp.CurrentStore.Id, themeId, this.fileupload1.PostedFile);
+                MerchantTribe.Commerce.Storage.DiskStorage.UploadAsset(MTApp.CurrentStore.Id, themeId, this.fileupload1.PostedFile);
                 LoadTheInfo(themeId);
             }
         }

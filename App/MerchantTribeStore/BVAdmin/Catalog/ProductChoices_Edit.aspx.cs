@@ -21,9 +21,9 @@ namespace BVCommerce
 
             choiceid = Request.QueryString["cid"];
             productBvin = Request.QueryString["id"];
-            localProduct = BVApp.CatalogServices.Products.Find(productBvin);
+            localProduct = MTApp.CatalogServices.Products.Find(productBvin);
             choice = (Option)localProduct.Options.Where(y => y.Bvin == choiceid).FirstOrDefault();
-            //choice = BVApp.CatalogServices.ProductOptions.Find(choiceid);
+            //choice = MTApp.CatalogServices.ProductOptions.Find(choiceid);
             if (choice.OptionType == OptionTypes.DropDownList)
             {
                 this.ItemsEditor.AllowLabels = true;
@@ -104,10 +104,10 @@ namespace BVCommerce
                     ti.SetMaxLength(choice,this.MaxLengthField.Text);
                     break;
             }
-            bool success = BVApp.CatalogServices.Products.Update(localProduct);
+            bool success = MTApp.CatalogServices.Products.Update(localProduct);
             if ((success))
             {
-                BVApp.CatalogServices.VariantsValidate(localProduct);                    
+                MTApp.CatalogServices.VariantsValidate(localProduct);                    
                 this.MessageBox1.ShowOk("Changes Saved!");
             }
             else

@@ -35,7 +35,7 @@ namespace BVCommerce.BVAdmin.Catalog
                 l.Add(temp);
             }
                         
-            if ((BVApp.CatalogServices.ProductImages.Resort(productBvin, l)))
+            if ((MTApp.CatalogServices.ProductImages.Resort(productBvin, l)))
             {
                 this.litOutput.Text = "{\"result\":true}";
             }

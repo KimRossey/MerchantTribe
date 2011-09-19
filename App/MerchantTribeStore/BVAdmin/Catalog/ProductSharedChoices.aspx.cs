@@ -29,7 +29,7 @@ namespace BVCommerce
 
         private void LoadItems()
         {
-            List<Option> options = BVApp.CatalogServices.ProductOptions.FindAllShared(1, 1000);
+            List<Option> options = MTApp.CatalogServices.ProductOptions.FindAllShared(1, 1000);
             RenderItems(options);
         }
 
@@ -117,9 +117,9 @@ namespace BVCommerce
                     opt.Name = "New Text Input";
                     break;
             }
-            opt.StoreId = BVApp.CurrentStore.Id;
+            opt.StoreId = MTApp.CurrentStore.Id;
 
-            if ((BVApp.CatalogServices.ProductOptions.Create(opt)))
+            if ((MTApp.CatalogServices.ProductOptions.Create(opt)))
             {
                 Response.Redirect("ProductSharedChoices_Edit.aspx?id=" + opt.Bvin);
             }

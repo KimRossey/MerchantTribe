@@ -38,7 +38,7 @@ namespace BVCommerce
             this.pnlMain.Visible = false;
             this.bvinField.Value = productBvin;
 
-            CatalogService catalogServices = MyPage.BVApp.CatalogServices;
+            CatalogService catalogServices = MyPage.MTApp.CatalogServices;
             
             List<ProductRelationship> relatedItems = catalogServices.ProductRelationships.FindForProduct(productBvin);
 
@@ -56,7 +56,7 @@ namespace BVCommerce
                 {
                     // try to fill in auto suggestions
                     int toAuto = MaxItemsToShow - relatedItems.Count;
-                    List<ProductRelationship> autos = MyPage.BVApp.GetAutoSuggestedRelatedItems(productBvin, toAuto);
+                    List<ProductRelationship> autos = MyPage.MTApp.GetAutoSuggestedRelatedItems(productBvin, toAuto);
                     if (autos != null)
                     {
                         foreach (ProductRelationship r in autos)
@@ -78,7 +78,7 @@ namespace BVCommerce
             for (int i = 0; i < toDisplay; i++)
             {
                 string relatedBvin = relatedItems[i].RelatedProductId;
-                Product related = MyPage.BVApp.CatalogServices.Products.Find(relatedBvin);
+                Product related = MyPage.MTApp.CatalogServices.Products.Find(relatedBvin);
                 if (related != null)
                 {
                     bool isFirst = false;
@@ -87,7 +87,7 @@ namespace BVCommerce
                     bool isLast = false;
                     if (i == (toDisplay - 1)) isLast = true;
 
-                    UserSpecificPrice price = MyPage.BVApp.PriceProduct(related, MyPage.BVApp.CurrentCustomer, null);
+                    UserSpecificPrice price = MyPage.MTApp.PriceProduct(related, MyPage.MTApp.CurrentCustomer, null);
                     MerchantTribe.Commerce.Utilities.HtmlRendering.RenderSingleProduct(ref sb, related, isLast, isFirst, this.Page, price);
                 }
             }

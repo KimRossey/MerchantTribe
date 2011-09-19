@@ -42,7 +42,7 @@ namespace BVCommerce
                 if (u.Status == UserAccountStatus.SuperUser)
                 {
                     // don't use current user, get the owner of the store instead
-                    List<UserAccount> users = BVApp.AccountServices.FindAdminUsersByStoreId(BVApp.CurrentStore.Id);
+                    List<UserAccount> users = MTApp.AccountServices.FindAdminUsersByStoreId(MTApp.CurrentStore.Id);
                     if (users != null)
                     {
                         if (users.Count > 0)
@@ -64,7 +64,7 @@ namespace BVCommerce
 
         private void SetCurrentStore()
         {
-            switch (BVApp.CurrentStore.PlanId)
+            switch (MTApp.CurrentStore.PlanId)
             {
                 case 0:
                     this.btnFree.Text = "Current Plan";
@@ -102,7 +102,7 @@ namespace BVCommerce
         {
             if (CheckMax(0))
             {
-                BVApp.AccountServices.ChangePlan(BVApp.CurrentStore.Id, GetCorrectUser().Id, 0, BVApp);
+                MTApp.AccountServices.ChangePlan(MTApp.CurrentStore.Id, GetCorrectUser().Id, 0, MTApp);
                 Response.Redirect("ChangePlan.aspx?ok=1");
             }
         }
@@ -110,7 +110,7 @@ namespace BVCommerce
         {
             if (CheckMax(1))
             {
-                BVApp.AccountServices.ChangePlan(BVApp.CurrentStore.Id, GetCorrectUser().Id, 1, BVApp);
+                MTApp.AccountServices.ChangePlan(MTApp.CurrentStore.Id, GetCorrectUser().Id, 1, MTApp);
                 Response.Redirect("ChangePlan.aspx?ok=1");
             }
         }
@@ -118,7 +118,7 @@ namespace BVCommerce
         {
             if (CheckMax(2))
             {
-                BVApp.AccountServices.ChangePlan(BVApp.CurrentStore.Id, GetCorrectUser().Id, 2, BVApp);
+                MTApp.AccountServices.ChangePlan(MTApp.CurrentStore.Id, GetCorrectUser().Id, 2, MTApp);
                 Response.Redirect("ChangePlan.aspx?ok=1");
             }
         }
@@ -126,7 +126,7 @@ namespace BVCommerce
         {
             if (CheckMax(3))
             {
-                BVApp.AccountServices.ChangePlan(BVApp.CurrentStore.Id, GetCorrectUser().Id, 3, BVApp);
+                MTApp.AccountServices.ChangePlan(MTApp.CurrentStore.Id, GetCorrectUser().Id, 3, MTApp);
                 Response.Redirect("ChangePlan.aspx?ok=1");
             }
         }
@@ -134,14 +134,14 @@ namespace BVCommerce
         {
             if (CheckMax(99))
             {
-                BVApp.AccountServices.ChangePlan(BVApp.CurrentStore.Id, GetCorrectUser().Id, 99, BVApp);
+                MTApp.AccountServices.ChangePlan(MTApp.CurrentStore.Id, GetCorrectUser().Id, 99, MTApp);
                 Response.Redirect("ChangePlan.aspx?ok=1");
             }
         }
 
         private bool CheckMax(int newPlan)
         {
-            int current = BVApp.CatalogServices.Products.FindAllCount();
+            int current = MTApp.CatalogServices.Products.FindAllCount();
             HostedPlan p = HostedPlan.FindById(newPlan);
             if (current > p.MaxProducts)
             {

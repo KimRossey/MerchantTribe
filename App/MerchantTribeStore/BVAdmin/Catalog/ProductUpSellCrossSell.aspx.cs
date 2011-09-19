@@ -49,7 +49,7 @@ namespace BVCommerce
 
             string productBvin = Request.QueryString["id"];
 
-            List<ProductRelationship> related = BVApp.CatalogServices.ProductRelationships.FindForProduct(productBvin);
+            List<ProductRelationship> related = MTApp.CatalogServices.ProductRelationships.FindForProduct(productBvin);
 
             StringBuilder sb = new StringBuilder();
             sb.Append("<div class=\"related-items-list\">");
@@ -68,10 +68,10 @@ namespace BVCommerce
             StringBuilder sb = new StringBuilder();
 
             string name = r.RelatedProductId;
-            Product p = BVApp.CatalogServices.Products.Find(r.RelatedProductId);
+            Product p = MTApp.CatalogServices.Products.Find(r.RelatedProductId);
             if (p != null) name = p.Sku + "<br />" + p.ProductName;
 
-            string imageUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductImageUrlSmall(BVApp.CurrentStore.Id, p.Bvin, p.ImageFileSmall, true);
+            string imageUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductImageUrlSmall(MTApp.CurrentStore.Id, p.Bvin, p.ImageFileSmall, true);
 
             sb.Append("<div class=\"dragitem\" id=\"item" + r.RelatedProductId.ToString() + "\"><table class=\"formtable\" width=\"100%\"><tr>");
             sb.Append("<td width=\"60\" class=\"imgfield\">");
@@ -180,7 +180,7 @@ namespace BVCommerce
             StringCollection selectedBvins = this.UpSellsProductPicker.SelectedProducts;
             foreach (string s in selectedBvins)
             {
-                BVApp.CatalogServices.ProductRelationships.RelateProducts(productBvin, s, false);
+                MTApp.CatalogServices.ProductRelationships.RelateProducts(productBvin, s, false);
             }
 
             RenderItems();

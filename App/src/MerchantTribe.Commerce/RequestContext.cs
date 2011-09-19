@@ -117,10 +117,10 @@ namespace MerchantTribe.Commerce
                 // we already created this in an MVC controller
                 if (System.Web.HttpContext.Current.Items != null)
                 {
-                    object maybe = System.Web.HttpContext.Current.Items["bvapp"];
+                    object maybe = System.Web.HttpContext.Current.Items["mtapp"];
                     if (maybe != null)
                     {
-                        return ((BVApplication)maybe).CurrentRequestContext;
+                        return ((MerchantTribeApplication)maybe).CurrentRequestContext;
                     }
                 }
                 if (System.Web.HttpContext.Current != null)
@@ -129,7 +129,7 @@ namespace MerchantTribe.Commerce
                     {
                         if (System.Web.HttpContext.Current.Handler is IMultiStorePage)
                         {
-                            return ((IMultiStorePage)System.Web.HttpContext.Current.Handler).BVApp.CurrentRequestContext;
+                            return ((IMultiStorePage)System.Web.HttpContext.Current.Handler).MTApp.CurrentRequestContext;
                         }
                     }
                 }
@@ -167,7 +167,7 @@ namespace MerchantTribe.Commerce
                     {
                         if (System.Web.HttpContext.Current.Handler is IMultiStorePage)
                         {
-                            ((IMultiStorePage)System.Web.HttpContext.Current.Handler).BVApp.CurrentRequestContext = contextToSet;
+                            ((IMultiStorePage)System.Web.HttpContext.Current.Handler).MTApp.CurrentRequestContext = contextToSet;
                         }
                     }
                 }

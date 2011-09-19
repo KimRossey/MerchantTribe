@@ -51,7 +51,7 @@ namespace BVCommerce
         private void LoadCategory()
         {
             Category c;
-            c = BVApp.CatalogServices.Categories.Find(this.BvinField.Value);
+            c = MTApp.CatalogServices.Categories.Find(this.BvinField.Value);
             if (c != null)
             {
                 if (c.Bvin != string.Empty)
@@ -66,7 +66,7 @@ namespace BVCommerce
                     }
 
 
-                    List<Product> allProducts = BVApp.CatalogServices.FindProductForCategoryWithSort(c.Bvin, c.DisplaySortOrder, true);
+                    List<Product> allProducts = MTApp.CatalogServices.FindProductForCategoryWithSort(c.Bvin, c.DisplaySortOrder, true);
 
                     this.litProducts.Text = RenderProductList(allProducts);
 
@@ -89,7 +89,7 @@ namespace BVCommerce
             }
             foreach (string s in this.ProductPicker1.SelectedProducts)
             {
-                BVApp.CatalogServices.CategoriesXProducts.AddProductToCategory(s, this.BvinField.Value);
+                MTApp.CatalogServices.CategoriesXProducts.AddProductToCategory(s, this.BvinField.Value);
             }
             LoadCategory();
             this.ProductPicker1.LoadSearch();

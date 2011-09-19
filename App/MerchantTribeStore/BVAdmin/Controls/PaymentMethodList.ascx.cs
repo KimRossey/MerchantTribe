@@ -68,7 +68,7 @@ namespace BVCommerce
         {
             DisplayPaymentMethod result = new MerchantTribe.Commerce.Payment.Method.NullPayment();
 
-            System.Collections.ObjectModel.Collection<DisplayPaymentMethod> enabled = availablePayments.EnabledMethods(MyPage.BVApp.CurrentStore);
+            System.Collections.ObjectModel.Collection<DisplayPaymentMethod> enabled = availablePayments.EnabledMethods(MyPage.MTApp.CurrentStore);
 
             for (int i = 0; i <= enabled.Count - 1; i++)
             {
@@ -86,7 +86,7 @@ namespace BVCommerce
         {
             this.lstPaymentMethods.Items.Clear();
 
-            System.Collections.ObjectModel.Collection<DisplayPaymentMethod> enabled = availablePayments.EnabledMethods(MyPage.BVApp.CurrentStore);
+            System.Collections.ObjectModel.Collection<DisplayPaymentMethod> enabled = availablePayments.EnabledMethods(MyPage.MTApp.CurrentStore);
             for (int i = 0; i <= enabled.Count - 1; i++)
             {
                 lstPaymentMethods.Items.Add(new System.Web.UI.WebControls.ListItem(enabled[i].MethodId, enabled[i].MethodId));

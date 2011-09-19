@@ -39,13 +39,13 @@ namespace MerchantTribe.Commerce.Marketing.PromotionQualifications
             SetSetting("userids", all);
         }
 
-        public override string FriendlyDescription(BVApplication bvapp)
+        public override string FriendlyDescription(MerchantTribeApplication app)
         {
             string result = "When User Is:<ul>";
             
              foreach (string userid in this.UserIds())
             {
-                Membership.CustomerAccount c = bvapp.MembershipServices.Customers.Find(userid);
+                Membership.CustomerAccount c = app.MembershipServices.Customers.Find(userid);
                 if (c != null)
                 {
                     result += "<li>" + c.Email + "</li>";

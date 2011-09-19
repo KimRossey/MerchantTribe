@@ -14,7 +14,7 @@ namespace BVCommerce
             base.OnLoad(e);
             if (!Page.IsPostBack)
             {
-                ThemeManager themes = MyPage.BVApp.ThemeManager();
+                ThemeManager themes = MyPage.MTApp.ThemeManager();
                 this.imgZoom.ImageUrl = themes.ButtonUrl("MorePictures", Request.IsSecureConnection);
             }
 
@@ -22,10 +22,10 @@ namespace BVCommerce
             this.ZoomLink.Style.Add("CURSOR", "pointer");
             this.ZoomLink.Attributes.Add("onclick", ViewUtilities.GetAdditionalImagesPopupJavascript(id, this.Page));
 
-            Product baseProd = MyPage.BVApp.CatalogServices.Products.Find(id);
+            Product baseProd = MyPage.MTApp.CatalogServices.Products.Find(id);
             if (baseProd != null)
             {
-                List<ProductImage> images = MyPage.BVApp.CatalogServices.ProductImages.FindByProductId(baseProd.Bvin);
+                List<ProductImage> images = MyPage.MTApp.CatalogServices.ProductImages.FindByProductId(baseProd.Bvin);
 
                 if (images.Count <= 0)
                 {

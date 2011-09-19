@@ -50,17 +50,17 @@ namespace MerchantTribe.Commerce.Catalog
             }
         }        
 
-        public static void EmailLowStockReport(object State, BVApplication bvapp)
+        public static void EmailLowStockReport(object State, MerchantTribeApplication app)
         {
             RequestContext context = RequestContext.GetCurrentRequestContext();
             if (context == null) return;
 
-            if (!EmailLowStockReport(context.CurrentStore.Settings.MailServer.EmailForGeneral, context.CurrentStore.StoreName, bvapp))
+            if (!EmailLowStockReport(context.CurrentStore.Settings.MailServer.EmailForGeneral, context.CurrentStore.StoreName, app))
             {
                 EventLog.LogEvent("Low Stock Report", "Low Stock Report Failed", Metrics.EventLogSeverity.Error);
             }
         }
-        public static bool EmailLowStockReport(string recipientEmail, string storeName, BVApplication bvapp)
+        public static bool EmailLowStockReport(string recipientEmail, string storeName, MerchantTribeApplication app)
         {
             bool result = false;
 
@@ -78,7 +78,7 @@ namespace MerchantTribe.Commerce.Catalog
                 sb.AppendLine("The following are low in stock or out of stock:");
                 sb.Append(Environment.NewLine);
 
-                List<Catalog.ProductInventory> inventories = bvapp.CatalogServices.ProductInventories.FindAllLowStock();
+                List<Catalog.ProductInventory> inventories = app.CatalogServices.ProductInventories.FindAllLowStock();
 
                 if (inventories.Count < 1)
                 {
@@ -88,7 +88,7 @@ namespace MerchantTribe.Commerce.Catalog
                 {
                     foreach (Catalog.ProductInventory item in inventories)
                     {
-                        Catalog.Product product = bvapp.CatalogServices.Products.Find(item.ProductBvin);
+                        Catalog.Product product = app.CatalogServices.Products.Find(item.ProductBvin);
                         if (product != null)
                         {
                             sb.Append(WebAppSettings.InventoryLowReportLinePrefix);

@@ -36,12 +36,12 @@ namespace BVCommerce
             try
             {
                 MerchantTribe.Commerce.RequestContext context = new MerchantTribe.Commerce.RequestContext();
-                BVApplication bvapp = MerchantTribe.Commerce.BVApplication.InstantiateForDataBase(context);
+                MerchantTribeApplication app = MerchantTribe.Commerce.MerchantTribeApplication.InstantiateForDataBase(context);
 
-                List<long> storeIds = bvapp.ScheduleServices.QueuedTasks.ListStoresWithTasksToRun();
+                List<long> storeIds = app.ScheduleServices.QueuedTasks.ListStoresWithTasksToRun();
                 if (storeIds != null)
                 {
-                    List<MerchantTribe.Commerce.Accounts.StoreDomainSnapshot> stores = bvapp.AccountServices.Stores.FindDomainSnapshotsByIds(storeIds);
+                    List<MerchantTribe.Commerce.Accounts.StoreDomainSnapshot> stores = app.AccountServices.Stores.FindDomainSnapshotsByIds(storeIds);
                     if (stores != null)
                     {
                         System.Threading.Tasks.Parallel.ForEach(stores, CallTasksOnStore);

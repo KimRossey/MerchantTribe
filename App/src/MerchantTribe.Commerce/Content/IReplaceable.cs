@@ -7,6 +7,6 @@ namespace MerchantTribe.Commerce.Content
 {
     public interface IReplaceable
     {
-        List<HtmlTemplateTag> GetReplaceableTags(BVApplication bvapp);
+        List<HtmlTemplateTag> GetReplaceableTags(MerchantTribeApplication app);
     }
 }

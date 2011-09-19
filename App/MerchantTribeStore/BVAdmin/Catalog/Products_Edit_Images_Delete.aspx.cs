@@ -27,10 +27,10 @@ namespace BVCommerce.BVAdmin.Catalog
         {
             bool result = false;
 
-            ProductImage img = BVApp.CatalogServices.ProductImages.Find(imageBvin);
+            ProductImage img = MTApp.CatalogServices.ProductImages.Find(imageBvin);
             if (img.ProductId == productBvin)
             {
-                result = BVApp.CatalogServices.ProductImages.Delete(imageBvin);
+                result = MTApp.CatalogServices.ProductImages.Delete(imageBvin);
             }
 
             if ((result))

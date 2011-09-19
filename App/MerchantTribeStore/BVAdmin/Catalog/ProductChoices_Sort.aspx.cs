@@ -34,7 +34,7 @@ namespace BVCommerce
                 l.Add(temp);
             }
 
-            if ((BVApp.CatalogServices.ProductsXOptions.ResortOptionsForProduct(productBvin, l)))
+            if ((MTApp.CatalogServices.ProductsXOptions.ResortOptionsForProduct(productBvin, l)))
             {
                 this.litOutput.Text = "{\"result\":true}";
             }

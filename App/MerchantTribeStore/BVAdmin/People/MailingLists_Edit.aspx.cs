@@ -45,7 +45,7 @@ namespace BVCommerce
 
         private void LoadList()
         {
-            MailingList m = BVApp.ContactServices.MailingLists.Find(CurrentId);
+            MailingList m = MTApp.ContactServices.MailingLists.Find(CurrentId);
                 if (m != null)
                 {
                     if (m.Id > 0)
@@ -94,7 +94,7 @@ namespace BVCommerce
         {
             bool result = false;
 
-            MailingList m = BVApp.ContactServices.MailingLists.Find(CurrentId);
+            MailingList m = MTApp.ContactServices.MailingLists.Find(CurrentId);
 
             if (m == null) m = new MailingList();
 
@@ -103,11 +103,11 @@ namespace BVCommerce
 
                 if (m.Id < 1)
                 {
-                    result = BVApp.ContactServices.MailingLists.Create(m);
+                    result = MTApp.ContactServices.MailingLists.Create(m);
                 }
                 else
                 {
-                    result = BVApp.ContactServices.MailingLists.Update(m);
+                    result = MTApp.ContactServices.MailingLists.Update(m);
                 }
 
                 if (result == false)
@@ -125,7 +125,7 @@ namespace BVCommerce
 
         protected void btnExport_Click(object sender, System.Web.UI.ImageClickEventArgs e)
         {
-            MerchantTribe.Commerce.Contacts.MailingList m = BVApp.ContactServices.MailingLists.Find(CurrentId);
+            MerchantTribe.Commerce.Contacts.MailingList m = MTApp.ContactServices.MailingLists.Find(CurrentId);
             this.ImportField.Text = m.ExportToCommaDelimited(this.chkOnlyEmail.Checked);
         }
 
@@ -140,9 +140,9 @@ namespace BVCommerce
         protected void GridView1_RowDeleting(object sender, System.Web.UI.WebControls.GridViewDeleteEventArgs e)
         {
             long id = (long)GridView1.DataKeys[e.RowIndex].Value;
-            MailingList m = BVApp.ContactServices.MailingLists.Find(CurrentId);
+            MailingList m = MTApp.ContactServices.MailingLists.Find(CurrentId);
             if (m != null) m.RemoveMemberById(id);
-            BVApp.ContactServices.MailingLists.Update(m);
+            MTApp.ContactServices.MailingLists.Update(m);
             LoadMembers(m);
         }
 
@@ -161,11 +161,11 @@ namespace BVCommerce
             {
                 if (this.Save() == true)
                 {
-                    MailingList m = BVApp.ContactServices.MailingLists.Find(CurrentId);
+                    MailingList m = MTApp.ContactServices.MailingLists.Find(CurrentId);
                     if (m != null)
                     {
                         m.ImportFromCommaDelimited(this.ImportField.Text);
-                        BVApp.ContactServices.MailingLists.Update(m);
+                        MTApp.ContactServices.MailingLists.Update(m);
                         LoadMembers(m);
                     }
                 }

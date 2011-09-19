@@ -68,7 +68,7 @@ namespace BVCommerce.BVAdmin.Configuration
 
         private void SetTimeZone()
         {
-            TimeZoneInfo t = BVApp.CurrentStore.Settings.TimeZone;
+            TimeZoneInfo t = MTApp.CurrentStore.Settings.TimeZone;
             if (this.lstTimeZone.Items.FindByValue(t.Id) != null)
             {
                 this.lstTimeZone.ClearSelection();
@@ -78,7 +78,7 @@ namespace BVCommerce.BVAdmin.Configuration
 
         private void SetCulture()
         {
-            string cc = BVApp.CurrentStore.Settings.CultureCode;
+            string cc = MTApp.CurrentStore.Settings.CultureCode;
             if (this.lstCulture.Items.FindByValue(cc) != null)
             {
                 this.lstCulture.ClearSelection();
@@ -91,12 +91,12 @@ namespace BVCommerce.BVAdmin.Configuration
             TimeZoneInfo t = TimeZoneInfo.FindSystemTimeZoneById(this.lstTimeZone.SelectedItem.Value);
             if (t != null)
             {
-                BVApp.CurrentStore.Settings.TimeZone = t;
+                MTApp.CurrentStore.Settings.TimeZone = t;
             }
                         
             string cc = this.lstCulture.SelectedItem.Value;
-            BVApp.CurrentStore.Settings.CultureCode = cc;
-            BVApp.AccountServices.Stores.Update(BVApp.CurrentStore);
+            MTApp.CurrentStore.Settings.CultureCode = cc;
+            MTApp.AccountServices.Stores.Update(MTApp.CurrentStore);
 
             this.MessageBox1.ShowOk("Changed Saved!");
         }

@@ -19,7 +19,7 @@ namespace BVCommerce
             if (!Page.IsPostBack)
             {
                 string id = Request.QueryString["id"];
-                Order o = MyPage.BVApp.OrderServices.Orders.FindForCurrentStore(id);
+                Order o = MyPage.MTApp.OrderServices.Orders.FindForCurrentStore(id);
                 LoadStatusForOrder(o);
             }
         }
@@ -44,12 +44,12 @@ namespace BVCommerce
         protected void lstStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
             string id = Request.QueryString["id"];
-            Order o = MyPage.BVApp.OrderServices.Orders.FindForCurrentStore(id);
+            Order o = MyPage.MTApp.OrderServices.Orders.FindForCurrentStore(id);
             if (o != null)
             {
                 o.StatusCode = this.lstStatus.SelectedItem.Value;
                 o.StatusName = this.lstStatus.SelectedItem.Text;
-                MyPage.BVApp.OrderServices.Orders.Update(o);
+                MyPage.MTApp.OrderServices.Orders.Update(o);
             }
         }
     }

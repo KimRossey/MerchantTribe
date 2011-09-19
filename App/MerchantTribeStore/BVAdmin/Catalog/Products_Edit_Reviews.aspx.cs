@@ -35,7 +35,7 @@ namespace BVCommerce
         private void LoadReviews()
         {
             List<ProductReview> reviews = new List<ProductReview>();
-            reviews = BVApp.CatalogServices.ProductReviews.FindByProductId(Request.QueryString["ID"]);
+            reviews = MTApp.CatalogServices.ProductReviews.FindByProductId(Request.QueryString["ID"]);
 
             if (reviews != null)
             {
@@ -49,7 +49,7 @@ namespace BVCommerce
         protected void dlReviews_DeleteCommand(object source, System.Web.UI.WebControls.DataListCommandEventArgs e)
         {
             string reviewID = (string)dlReviews.DataKeys[e.Item.ItemIndex];
-            BVApp.CatalogServices.ProductReviews.Delete(reviewID);
+            MTApp.CatalogServices.ProductReviews.Delete(reviewID);
             LoadReviews();
         }
 
@@ -72,22 +72,22 @@ namespace BVCommerce
                     switch (rating)
                     {
                         case ProductReviewRating.ZeroStars:
-                            imgRating.ImageUrl = this.BVApp.ThemeManager().ButtonUrl("stars0", Request.IsSecureConnection);
+                            imgRating.ImageUrl = this.MTApp.ThemeManager().ButtonUrl("stars0", Request.IsSecureConnection);
                             break;
                         case ProductReviewRating.OneStar:
-                            imgRating.ImageUrl = this.BVApp.ThemeManager().ButtonUrl("stars1", Request.IsSecureConnection);
+                            imgRating.ImageUrl = this.MTApp.ThemeManager().ButtonUrl("stars1", Request.IsSecureConnection);
                             break;
                         case ProductReviewRating.TwoStars:
-                            imgRating.ImageUrl = this.BVApp.ThemeManager().ButtonUrl("stars2", Request.IsSecureConnection);
+                            imgRating.ImageUrl = this.MTApp.ThemeManager().ButtonUrl("stars2", Request.IsSecureConnection);
                             break;
                         case ProductReviewRating.ThreeStars:
-                            imgRating.ImageUrl = this.BVApp.ThemeManager().ButtonUrl("stars3", Request.IsSecureConnection);
+                            imgRating.ImageUrl = this.MTApp.ThemeManager().ButtonUrl("stars3", Request.IsSecureConnection);
                             break;
                         case ProductReviewRating.FourStars:
-                            imgRating.ImageUrl = this.BVApp.ThemeManager().ButtonUrl("stars4", Request.IsSecureConnection);
+                            imgRating.ImageUrl = this.MTApp.ThemeManager().ButtonUrl("stars4", Request.IsSecureConnection);
                             break;
                         case ProductReviewRating.FiveStars:
-                            imgRating.ImageUrl = this.BVApp.ThemeManager().ButtonUrl("stars5", Request.IsSecureConnection);
+                            imgRating.ImageUrl = this.MTApp.ThemeManager().ButtonUrl("stars5", Request.IsSecureConnection);
                             break;
                     }
                 }
@@ -103,7 +103,7 @@ namespace BVCommerce
             pr.ReviewDateUtc = System.DateTime.UtcNow;
             pr.ProductBvin = Request.QueryString["ID"];
             //If Datalayer.ProductReviewMapper.SaveAsNew(pr) = True Then
-            if (BVApp.CatalogServices.ProductReviews.Create(pr) == true)
+            if (MTApp.CatalogServices.ProductReviews.Create(pr) == true)
             {
                 Response.Redirect("Reviews_Edit.aspx?reviewID=" + pr.Bvin + "&DOC=1" + "&pid=" + Request.QueryString["id"]);
             }

@@ -32,7 +32,7 @@ namespace BVCommerce
                 l.Add(id);
             }
                         
-            if ((BVApp.CatalogServices.ProductOptions.ResortOptionItems(optionId, l)))
+            if ((MTApp.CatalogServices.ProductOptions.ResortOptionItems(optionId, l)))
             {
                 this.litOutput.Text = "{\"result\":true}";
             }

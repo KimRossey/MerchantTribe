@@ -18,30 +18,30 @@ namespace BVCommerce.Controllers
         //MerchantTribe.Commerce.RequestContext _BVRequestContext = new RequestContext();
         public MerchantTribe.Commerce.RequestContext CurrentRequestContext
         {
-            get { return BVApp.CurrentRequestContext; }
-            set { BVApp.CurrentRequestContext = value; }
+            get { return MTApp.CurrentRequestContext; }
+            set { MTApp.CurrentRequestContext = value; }
         }
 
-        public BVApplication BVApp { get; set; }
+        public MerchantTribeApplication MTApp { get; set; }
 
         public MerchantTribe.Commerce.Accounts.Store CurrentStore
         {
-            get { return BVApp.CurrentStore; }
-            set { BVApp.CurrentStore = value; }
+            get { return MTApp.CurrentStore; }
+            set { MTApp.CurrentStore = value; }
         }
 
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             base.OnActionExecuting(filterContext);
 
-            BVApp = BVApplication.InstantiateForDataBase(new RequestContext());
+            MTApp = MerchantTribeApplication.InstantiateForDataBase(new RequestContext());
 
             // Store routing context for URL Rewriting            
-            BVApp.CurrentRequestContext.RoutingContext = this.Request.RequestContext;
+            MTApp.CurrentRequestContext.RoutingContext = this.Request.RequestContext;
 
             // Determine store id        
-            BVApp.CurrentStore = MerchantTribe.Commerce.Utilities.UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, BVApp.AccountServices);
-            if (BVApp.CurrentStore == null)
+            MTApp.CurrentStore = MerchantTribe.Commerce.Utilities.UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, MTApp.AccountServices);
+            if (MTApp.CurrentStore == null)
             {
                 Response.Redirect("~/storenotfound");
             }
@@ -55,7 +55,7 @@ namespace BVCommerce.Controllers
         public ActionResult Index(string themename)
         {
             string themeId = themename.Replace("theme-", "");
-            ThemeManager themes = BVApp.ThemeManager();
+            ThemeManager themes = MTApp.ThemeManager();
 
             string css = string.Empty;
             string physicalFile = string.Empty;

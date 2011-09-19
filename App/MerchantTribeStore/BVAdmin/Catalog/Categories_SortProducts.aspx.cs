@@ -31,7 +31,7 @@ namespace BVCommerce
                 l.Add(id);
             }
 
-            if ((this.BVApp.CatalogServices.CategoriesXProducts.ResortProducts(catId, l)))
+            if ((this.MTApp.CatalogServices.CategoriesXProducts.ResortProducts(catId, l)))
             {
                 this.litOutput.Text = "true";
             }

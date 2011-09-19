@@ -36,14 +36,14 @@ namespace BVCommerce
 
         private void LoadProducts()
         {
-            TimeZoneInfo tz = BVApp.CurrentStore.Settings.TimeZone;
+            TimeZoneInfo tz = MTApp.CurrentStore.Settings.TimeZone;
             DateTime localStart = this.DateRangeField.StartDateForZone(tz);
             DateTime localEnd = this.DateRangeField.EndDateForZone(tz);
 
             DateTime utcStart = TimeZoneInfo.ConvertTimeToUtc(localStart, tz);
             DateTime utcEnd = TimeZoneInfo.ConvertTimeToUtc(localEnd, tz);
 
-            List<Product> t = BVApp.ReportingTopSellersByDate(utcStart, utcEnd, 10);
+            List<Product> t = MTApp.ReportingTopSellersByDate(utcStart, utcEnd, 10);
 
             if (t.Count == 0)
             {

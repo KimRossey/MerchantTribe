@@ -51,7 +51,7 @@ namespace BVCommerce
 
         private void LoadData()
         {
-            List<Affiliate> items = BVApp.ContactServices.Affiliates.FindAllWithFilter(this.keyword, currentPage, pageSize, ref rowCount);
+            List<Affiliate> items = MTApp.ContactServices.Affiliates.FindAllWithFilter(this.keyword, currentPage, pageSize, ref rowCount);
             this.lblResults.Text = rowCount.ToString() + " found";
             this.litPager1.Text = MerchantTribe.Web.Paging.RenderPagerWithLimits("Affiliates.aspx?page={0}&keyword=" + System.Web.HttpUtility.UrlEncode(keyword), currentPage, rowCount, pageSize, 20);
             RenderItems(items);

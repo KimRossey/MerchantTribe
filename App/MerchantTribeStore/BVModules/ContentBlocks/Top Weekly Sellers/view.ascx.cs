@@ -77,7 +77,7 @@ namespace BVCommerce
             System.DateTime s = StartDate;
             System.DateTime e = EndDate;
 
-            List<Product> t = MyPage.BVApp.ReportingTopSellersByDate(s, e, 10);
+            List<Product> t = MyPage.MTApp.ReportingTopSellersByDate(s, e, 10);
 
             RenderList(t);
         }

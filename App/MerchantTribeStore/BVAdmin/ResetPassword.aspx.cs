@@ -12,30 +12,30 @@ namespace BVCommerce.BVAdmin
 {
     public partial class ResetPassword : System.Web.UI.Page, IMultiStorePage
     {
-        public BVApplication BVApp { get; set; }
+        public MerchantTribeApplication MTApp { get; set; }
         
         protected override void OnPreInit(System.EventArgs e)
         {
             base.OnPreInit(e);
-            BVApp = BVApplication.InstantiateForDataBase(new RequestContext());
+            MTApp = MerchantTribeApplication.InstantiateForDataBase(new RequestContext());
 
             // Determine store id        
-            BVApp.CurrentStore = MerchantTribe.Commerce.Utilities.UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, BVApp.AccountServices);
-            if (BVApp.CurrentStore == null)
+            MTApp.CurrentStore = MerchantTribe.Commerce.Utilities.UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, MTApp.AccountServices);
+            if (MTApp.CurrentStore == null)
             {
                 Response.Redirect("~/storenotfound");
             }
 
-            if (BVApp.CurrentStore.Status == MerchantTribe.Commerce.Accounts.StoreStatus.Deactivated)
+            if (MTApp.CurrentStore.Status == MerchantTribe.Commerce.Accounts.StoreStatus.Deactivated)
             {
                 Response.Redirect("~/storenotavailable");
             }
 
             // Culture Settings
-            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(BVApp.CurrentStore.Settings.CultureCode);
-            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(BVApp.CurrentStore.Settings.CultureCode);
+            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(MTApp.CurrentStore.Settings.CultureCode);
+            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(MTApp.CurrentStore.Settings.CultureCode);
 
-            IntegrationLoader.AddIntegrations(this.BVApp.CurrentRequestContext.IntegrationEvents, this.BVApp.CurrentStore);
+            IntegrationLoader.AddIntegrations(this.MTApp.CurrentRequestContext.IntegrationEvents, this.MTApp.CurrentStore);
         }
         protected override void OnLoad(System.EventArgs e)
         {
@@ -51,14 +51,14 @@ namespace BVCommerce.BVAdmin
             if (!Request.IsSecureConnection)
             {
                 MerchantTribe.Commerce.Utilities.SSL.SSLRedirect(this,
-                    this.BVApp.CurrentStore,
+                    this.MTApp.CurrentStore,
                     MerchantTribe.Commerce.Utilities.SSL.SSLRedirectTo.SSL);
             }
         }
 
         protected void lnkReset_Click(object sender, EventArgs e)
         {
-            if (BVApp.AccountServices.AdminUserResetRequest(this.UsernameField.Text.Trim(), BVApp.CurrentStore))
+            if (MTApp.AccountServices.AdminUserResetRequest(this.UsernameField.Text.Trim(), MTApp.CurrentStore))
             {
                 this.MessageBox1.ShowOk("Check your email for your reset password link.");
             }

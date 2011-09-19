@@ -43,9 +43,9 @@ namespace BVCommerce
 
         private void LoadHandlingSettings()
         {
-            this.HandlingFeeAmountTextBox.Text = BVApp.CurrentStore.Settings.HandlingAmount.ToString("c");
-            this.HandlingRadioButtonList.SelectedIndex = BVApp.CurrentStore.Settings.HandlingType;
-            this.NonShippingCheckBox.Checked = BVApp.CurrentStore.Settings.HandlingNonShipping;
+            this.HandlingFeeAmountTextBox.Text = MTApp.CurrentStore.Settings.HandlingAmount.ToString("c");
+            this.HandlingRadioButtonList.SelectedIndex = MTApp.CurrentStore.Settings.HandlingType;
+            this.NonShippingCheckBox.Checked = MTApp.CurrentStore.Settings.HandlingNonShipping;
         }
 
         protected void HandlingFeeAmountCustomValidator_ServerValidate(object source, System.Web.UI.WebControls.ServerValidateEventArgs args)
@@ -69,10 +69,10 @@ namespace BVCommerce
 
         protected void SaveImageButton_Click(object sender, System.Web.UI.ImageClickEventArgs e)
         {
-            BVApp.CurrentStore.Settings.HandlingAmount = decimal.Parse(this.HandlingFeeAmountTextBox.Text, System.Globalization.NumberStyles.Currency);
-            BVApp.CurrentStore.Settings.HandlingType = this.HandlingRadioButtonList.SelectedIndex;
-            BVApp.CurrentStore.Settings.HandlingNonShipping = this.NonShippingCheckBox.Checked;
-            BVApp.UpdateCurrentStore();
+            MTApp.CurrentStore.Settings.HandlingAmount = decimal.Parse(this.HandlingFeeAmountTextBox.Text, System.Globalization.NumberStyles.Currency);
+            MTApp.CurrentStore.Settings.HandlingType = this.HandlingRadioButtonList.SelectedIndex;
+            MTApp.CurrentStore.Settings.HandlingNonShipping = this.NonShippingCheckBox.Checked;
+            MTApp.UpdateCurrentStore();
 
             this.MessageBox1.ShowOk("Settings saved successfully.");
         }

@@ -15,7 +15,7 @@ namespace BVCommerce
             base.OnPreInit(e);
             // Reset Last Category Session Variable
             SessionManager.CategoryLastId = string.Empty;
-            this.Page.Title = BVApp.CurrentStore.Settings.FriendlyName;
+            this.Page.Title = MTApp.CurrentStore.Settings.FriendlyName;
 
         }
 
@@ -31,7 +31,7 @@ namespace BVCommerce
 
             if (!WebAppSettings.IsIndividualMode)
             {
-                if (BVApp.CurrentStore.StoreName == "www")
+                if (MTApp.CurrentStore.StoreName == "www")
                 {
                     Server.Transfer("/signup/home.aspx");
                 }

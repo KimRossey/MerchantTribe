@@ -33,7 +33,7 @@ namespace BVCommerce
 
         private void LoadData()
         {
-            ContentBlock b = MyPage.BVApp.ContentServices.Columns.FindBlock(this.BlockId);
+            ContentBlock b = MyPage.MTApp.ContentServices.Columns.FindBlock(this.BlockId);
             if (b != null)
             {
                 this.ImageUrlField.Text = b.BaseSettings.GetSettingOrEmpty("imageurl");
@@ -46,7 +46,7 @@ namespace BVCommerce
 
         private void SaveData()
         {
-            ContentBlock b = MyPage.BVApp.ContentServices.Columns.FindBlock(this.BlockId);
+            ContentBlock b = MyPage.MTApp.ContentServices.Columns.FindBlock(this.BlockId);
             if (b != null)
             {
                 b.BaseSettings.AddOrUpdate("imageurl", this.ImageUrlField.Text.Trim());
@@ -54,7 +54,7 @@ namespace BVCommerce
                 b.BaseSettings.AddOrUpdate("cssclass", this.CssClassField.Text.Trim());
                 b.BaseSettings.AddOrUpdate("cssid", this.CssIdField.Text.Trim());
                 b.BaseSettings.AddOrUpdate("linkurl", this.LinkUrlField.Text.Trim());
-                MyPage.BVApp.ContentServices.Columns.UpdateBlock(b);
+                MyPage.MTApp.ContentServices.Columns.UpdateBlock(b);
             }
         }
     }

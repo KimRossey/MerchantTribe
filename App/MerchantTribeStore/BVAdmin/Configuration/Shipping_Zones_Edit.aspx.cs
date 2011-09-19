@@ -60,8 +60,8 @@ namespace BVCommerce
 
         private void LoadZone(long id)
         {
-            zone = BVApp.OrderServices.ShippingZones.Find(id);
-            if (zone.StoreId == BVApp.CurrentStore.Id)
+            zone = MTApp.OrderServices.ShippingZones.Find(id);
+            if (zone.StoreId == MTApp.CurrentStore.Id)
             {
                 this.ZoneNameField.Text = zone.Name;
                 LoadAreas(zone);
@@ -90,7 +90,7 @@ namespace BVCommerce
         {
             try
             {
-                lstCountry.DataSource = BVApp.CurrentStore.Settings.FindActiveCountries();
+                lstCountry.DataSource = MTApp.CurrentStore.Settings.FindActiveCountries();
                 lstCountry.DataValueField = "IsoAlpha3";
                 lstCountry.DataTextField = "DisplayName";
                 lstCountry.DataBind();
@@ -153,23 +153,23 @@ namespace BVCommerce
         {
             string ids = Request.QueryString["id"];
             long id = long.Parse(ids);
-            zone = BVApp.OrderServices.ShippingZones.Find(id);
+            zone = MTApp.OrderServices.ShippingZones.Find(id);
             zone.Name = this.ZoneNameField.Text;
-            return BVApp.OrderServices.ShippingZones.Update(zone);
+            return MTApp.OrderServices.ShippingZones.Update(zone);
         }
 
         protected void btnNew_Click(object sender, System.Web.UI.ImageClickEventArgs e)
         {
             string zid = Request.QueryString["id"];
             long zoneId = long.Parse(zid);
-            zone = BVApp.OrderServices.ShippingZones.Find(zoneId);
+            zone = MTApp.OrderServices.ShippingZones.Find(zoneId);
 
             ZoneArea a = new ZoneArea();
             a.CountryIsoAlpha3 = this.lstCountry.SelectedItem.Value;
             a.RegionAbbreviation = this.lstState.SelectedItem.Value;
 
             zone.Areas.Add(a);
-            BVApp.OrderServices.ShippingZones.Update(zone);
+            MTApp.OrderServices.ShippingZones.Update(zone);
             LoadZone(zone.Id);
         }
 

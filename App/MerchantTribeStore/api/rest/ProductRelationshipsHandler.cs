@@ -12,7 +12,7 @@ namespace BVCommerce.api.rest
 {
     public class ProductRelationshipsHandler : BaseRestHandler
     {
-        public ProductRelationshipsHandler(MerchantTribe.Commerce.BVApplication app)
+        public ProductRelationshipsHandler(MerchantTribe.Commerce.MerchantTribeApplication app)
             : base(app)
         {
 
@@ -30,7 +30,7 @@ namespace BVCommerce.api.rest
             long id = 0;
             long.TryParse(ids, out id);
 
-            var item = BVApp.CatalogServices.ProductRelationships.Find(id);
+            var item = MTApp.CatalogServices.ProductRelationships.Find(id);
             if (item == null)
             {
                 response.Errors.Add(new ApiError("NULL", "Could not locate that item. Check bvin and try again."));
@@ -71,16 +71,16 @@ namespace BVCommerce.api.rest
 
             if (id < 1)
             {
-                if (BVApp.CatalogServices.ProductRelationships.Create(item))
+                if (MTApp.CatalogServices.ProductRelationships.Create(item))
                 {
                     id = item.Id;
                 }
             }
             else
             {
-                BVApp.CatalogServices.ProductRelationships.Update(item);
+                MTApp.CatalogServices.ProductRelationships.Update(item);
             }
-            ProductRelationship resultItem = BVApp.CatalogServices.ProductRelationships.Find(id);
+            ProductRelationship resultItem = MTApp.CatalogServices.ProductRelationships.Find(id);
             if (resultItem != null) response.Content = resultItem.ToDto();
 
             data = MerchantTribe.Web.Json.ObjectToJson(response);
@@ -95,7 +95,7 @@ namespace BVCommerce.api.rest
             ApiResponse<bool> response = new ApiResponse<bool>();
 
             // Single Item Delete
-            response.Content = BVApp.CatalogServices.ProductRelationships.UnrelateProducts(bvin, otherBvin);
+            response.Content = MTApp.CatalogServices.ProductRelationships.UnrelateProducts(bvin, otherBvin);
 
             data = MerchantTribe.Web.Json.ObjectToJson(response);
             return data;

@@ -19,8 +19,8 @@ namespace BVCommerce
 
         private void LoadSummary()
         {
-            SalesSummary manager = new SalesSummary(MyPage.BVApp.CurrentStore.Id);
-            WeeklySummary summary = manager.GetWeeklySummary(TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, MyPage.BVApp.CurrentStore.Settings.TimeZone), MyPage.BVApp.OrderServices);
+            SalesSummary manager = new SalesSummary(MyPage.MTApp.CurrentStore.Id);
+            WeeklySummary summary = manager.GetWeeklySummary(TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, MyPage.MTApp.CurrentStore.Settings.TimeZone), MyPage.MTApp.OrderServices);
 
             if (summary == null) return;
 

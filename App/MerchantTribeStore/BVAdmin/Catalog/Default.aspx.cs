@@ -68,8 +68,8 @@ namespace BVCommerce
         private void RenderNewButtons()
         {
             string btn = "<a href=\"Products_Edit.aspx\" title=\"Add New Product\" class=\"btn\"><b>+ Add New Product</b></a>";
-            int currentCount = BVApp.CatalogServices.Products.FindAllCount();
-            if (currentCount < BVApp.CurrentStore.MaxProducts)
+            int currentCount = MTApp.CatalogServices.Products.FindAllCount();
+            if (currentCount < MTApp.CurrentStore.MaxProducts)
             {
                 this.litNewButton.Text = btn;
                 this.litNewButton2.Text = btn;
@@ -78,8 +78,8 @@ namespace BVCommerce
             else
             {
                 this.litNewButton.Text = "<div class=\"flash-message-info\">You have reached the maximum of "
-                                        + BVApp.CurrentStore.MaxProducts.ToString() + " products for the "
-                                        + BVApp.CurrentStore.PlanName + " plan. <a href=\"../ChangePlan.aspx\">Upgrade your plan</a> to create more products.</div>";
+                                        + MTApp.CurrentStore.MaxProducts.ToString() + " products for the "
+                                        + MTApp.CurrentStore.PlanName + " plan. <a href=\"../ChangePlan.aspx\">Upgrade your plan</a> to create more products.</div>";
                 this.litNewButton2.Text = this.litNewButton.Text;
                 this.litNewButton3.Text = this.litNewButton.Text;
             }
@@ -107,14 +107,14 @@ namespace BVCommerce
         private void LoadProducts()
         {
             criteria.DisplayInactiveProducts = true;
-            List<Product> products = BVApp.CatalogServices.Products.FindByCriteria(this.criteria, this.currentPage, pageSize, ref rowCount);
+            List<Product> products = MTApp.CatalogServices.Products.FindByCriteria(this.criteria, this.currentPage, pageSize, ref rowCount);
             this.lblResults.Text = rowCount.ToString() + " product found";
             this.litPager1.Text = MerchantTribe.Web.Paging.RenderPagerWithLimits("Default.aspx?page={0}", currentPage, rowCount, pageSize, 20);
             RenderProducts(products);
             this.litPager2.Text = this.litPager1.Text;
 
             // Show sample panel if no products in store
-            int allProducts = BVApp.CatalogServices.Products.FindAllCount();
+            int allProducts = MTApp.CatalogServices.Products.FindAllCount();
             this.pnlSamples.Visible = (allProducts < 1);
         }
 
@@ -135,7 +135,7 @@ namespace BVCommerce
 
             string destinationLink = "Products_Edit.aspx?id=" + p.Bvin;
 
-            string imageUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductImageUrlSmall(((IMultiStorePage)this.Page).BVApp.CurrentStore.Id, p.Bvin, p.ImageFileSmall, Page.Request.IsSecureConnection);
+            string imageUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductImageUrlSmall(((IMultiStorePage)this.Page).MTApp.CurrentStore.Id, p.Bvin, p.ImageFileSmall, Page.Request.IsSecureConnection);
 
             sb.Append("<div class=\"record\"><a href=\"" + destinationLink + "\">");
 
@@ -158,14 +158,14 @@ namespace BVCommerce
 
         protected void lnkAddSamples_Click(object sender, System.EventArgs e)
         {
-            BVApp.AddSampleProductsToStore();
+            MTApp.AddSampleProductsToStore();
             this.ShowMessage("Samples Added!", ErrorTypes.Ok);
             LoadProducts();
         }
 
         protected void btnRemoveSamples_Click(object sender, System.EventArgs e)
         {
-            BVApp.RemoveSampleProductsFromStore();
+            MTApp.RemoveSampleProductsFromStore();
             this.ShowMessage("Samples Removed!", ErrorTypes.Ok);
             LoadProducts();
         }

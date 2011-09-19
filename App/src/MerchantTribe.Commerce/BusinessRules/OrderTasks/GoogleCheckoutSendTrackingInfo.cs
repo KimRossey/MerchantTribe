@@ -66,7 +66,7 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
 						}
 					}
 				}
-                context.BVApp.OrderServices.Orders.Update(context.Order);
+                context.MTApp.OrderServices.Orders.Update(context.Order);
 			}
 			return true;
 		}

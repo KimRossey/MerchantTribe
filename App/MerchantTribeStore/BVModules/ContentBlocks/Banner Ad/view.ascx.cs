@@ -27,7 +27,7 @@ namespace BVCommerce
             string cssclass = string.Empty;
             string linkurl = string.Empty;
 
-            ContentBlock b = MyPage.BVApp.ContentServices.Columns.FindBlock(this.BlockId);
+            ContentBlock b = MyPage.MTApp.ContentServices.Columns.FindBlock(this.BlockId);
             if (b != null)
             {
                 imageurl = b.BaseSettings.GetSettingOrEmpty("imageurl");
@@ -70,7 +70,7 @@ namespace BVCommerce
 
             // Image
             sb.Append("<img src=\"" + MerchantTribe.Commerce.Utilities.TagReplacer.ReplaceContentTags(imageUrl,
-                                                                                                   MyPage.BVApp,
+                                                                                                   MyPage.MTApp,
                                                                                                    "",
                                                                                                    Request.IsSecureConnection)
                                     + "\" alt=\"" + altText + "\" />");

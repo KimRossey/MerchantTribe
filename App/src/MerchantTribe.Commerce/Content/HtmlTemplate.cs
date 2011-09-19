@@ -45,23 +45,23 @@ namespace MerchantTribe.Commerce.Content
             t.TemplateType = HtmlTemplateType.Custom;
             return t;
         }
-        public HtmlTemplate ReplaceTagsInTemplate(BVApplication bvapp, IReplaceable item)
+        public HtmlTemplate ReplaceTagsInTemplate(MerchantTribeApplication app, IReplaceable item)
         {
             List<IReplaceable> items = new List<IReplaceable>();
             items.Add(item);
-            return ReplaceTagsInTemplate(bvapp, items);
+            return ReplaceTagsInTemplate(app, items);
         }
-        public HtmlTemplate ReplaceTagsInTemplate(BVApplication bvapp, IReplaceable item, List<IReplaceable> repeatingItems)
+        public HtmlTemplate ReplaceTagsInTemplate(MerchantTribeApplication app, IReplaceable item, List<IReplaceable> repeatingItems)
         {
             List<IReplaceable> items = new List<IReplaceable>();
             items.Add(item);
-            return ReplaceTagsInTemplate(bvapp, items, repeatingItems);
+            return ReplaceTagsInTemplate(app, items, repeatingItems);
         }
-        public HtmlTemplate ReplaceTagsInTemplate(BVApplication bvapp, List<IReplaceable> items)
+        public HtmlTemplate ReplaceTagsInTemplate(MerchantTribeApplication app, List<IReplaceable> items)
         {
-            return ReplaceTagsInTemplate(bvapp, items, new List<IReplaceable>());
+            return ReplaceTagsInTemplate(app, items, new List<IReplaceable>());
         }
-        public HtmlTemplate ReplaceTagsInTemplate(BVApplication bvapp, List<IReplaceable> items, List<IReplaceable> repeatingItems)
+        public HtmlTemplate ReplaceTagsInTemplate(MerchantTribeApplication app, List<IReplaceable> items, List<IReplaceable> repeatingItems)
         {
             HtmlTemplate copy = this.Clone();            
 
@@ -76,7 +76,7 @@ namespace MerchantTribe.Commerce.Content
             // Replace Tags in Body and Subject
             foreach (IReplaceable item in items)
             {
-                foreach (HtmlTemplateTag tag in item.GetReplaceableTags(bvapp))
+                foreach (HtmlTemplateTag tag in item.GetReplaceableTags(app))
                 {
                     copy.Subject = tag.ReplaceTags(copy.Subject);
                     copy.Body = tag.ReplaceTags(copy.Body);
@@ -89,7 +89,7 @@ namespace MerchantTribe.Commerce.Content
             foreach (IReplaceable repeatingItem in repeatingItems)
             {
                 string temp = copy.RepeatingSection;
-                foreach (HtmlTemplateTag tag in repeatingItem.GetReplaceableTags(bvapp))
+                foreach (HtmlTemplateTag tag in repeatingItem.GetReplaceableTags(app))
                 {                
                     temp = tag.ReplaceTags(temp);                 
                 }

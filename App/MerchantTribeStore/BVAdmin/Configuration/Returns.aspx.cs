@@ -36,7 +36,7 @@ namespace BVCommerce
             if (!Page.IsPostBack)
             {
 
-                if (BVApp.CurrentStore.Settings.AutomaticallyIssueRMANumbers)
+                if (MTApp.CurrentStore.Settings.AutomaticallyIssueRMANumbers)
                 {
                     this.AutomaticallyIssueRMACheckBoxList.SelectedValue = "1";
                 }
@@ -64,8 +64,8 @@ namespace BVCommerce
 
         private bool Save()
         {
-            BVApp.CurrentStore.Settings.AutomaticallyIssueRMANumbers = (AutomaticallyIssueRMACheckBoxList.SelectedValue == "1");
-            return BVApp.UpdateCurrentStore();            
+            MTApp.CurrentStore.Settings.AutomaticallyIssueRMANumbers = (AutomaticallyIssueRMACheckBoxList.SelectedValue == "1");
+            return MTApp.UpdateCurrentStore();            
         }
 
     }

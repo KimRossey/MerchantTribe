@@ -12,7 +12,7 @@ namespace BVCommerce
 
             if (!Page.IsPostBack)
             {
-                this.imgPrint.ImageUrl = MyPage.BVApp.ThemeManager().ButtonUrl("printthispage", Request.IsSecureConnection);
+                this.imgPrint.ImageUrl = MyPage.MTApp.ThemeManager().ButtonUrl("printthispage", Request.IsSecureConnection);
             }
         }
     }

@@ -29,15 +29,15 @@ namespace BVCommerce
             fullSlug = fullSlug.ToLowerInvariant() ?? string.Empty;
 
             // Application Context
-            MerchantTribe.Commerce.BVApplication BVApp = MerchantTribe.Commerce.BVApplication.InstantiateForDataBase(new MerchantTribe.Commerce.RequestContext());
-            BVApp.CurrentRequestContext.RoutingContext = requestContext;
+            MerchantTribe.Commerce.MerchantTribeApplication MTApp = MerchantTribe.Commerce.MerchantTribeApplication.InstantiateForDataBase(new MerchantTribe.Commerce.RequestContext());
+            MTApp.CurrentRequestContext.RoutingContext = requestContext;
 
             // Determine store id        
-            BVApp.CurrentStore = MerchantTribe.Commerce.Utilities.UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, BVApp.AccountServices);
+            MTApp.CurrentStore = MerchantTribe.Commerce.Utilities.UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, MTApp.AccountServices);
             
 
             // Check for Category/Page Match
-            CategoryUrlMatchData categoryMatchData = IsCategoryMatch(fullSlug, BVApp);
+            CategoryUrlMatchData categoryMatchData = IsCategoryMatch(fullSlug, MTApp);
             if (categoryMatchData.IsFound)
             {
                 switch(categoryMatchData.SourceType)
@@ -62,14 +62,14 @@ namespace BVCommerce
             }
 
             // Check for Product URL
-            if (IsProductUrl(fullSlug, BVApp))
+            if (IsProductUrl(fullSlug, MTApp))
             {            
                 var page = System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath("~/product.aspx", typeof(BVCommerce.ProductPage)) as BVCommerce.ProductPage;
                 return page as IHttpHandler;
             }
 
             // no match on product or category so do a 301 check
-            CheckFor301(fullSlug, BVApp);
+            CheckFor301(fullSlug, MTApp);
 
             // If not product, send to FlexPage Controller
             requestContext.RouteData.Values["controller"] = "FlexPage";
@@ -78,30 +78,30 @@ namespace BVCommerce
             return mvcHandler;
         }
 
-        private void CheckFor301(string slug, MerchantTribe.Commerce.BVApplication bvapp)
+        private void CheckFor301(string slug, MerchantTribe.Commerce.MerchantTribeApplication app)
         {
-            MerchantTribe.Commerce.Content.CustomUrl url = bvapp.ContentServices.CustomUrls.FindByRequestedUrl(slug);
+            MerchantTribe.Commerce.Content.CustomUrl url = app.ContentServices.CustomUrls.FindByRequestedUrl(slug);
             if (url != null)
             {
                 if (url.Bvin != string.Empty)
                 {
                     if (url.IsPermanentRedirect)
                     {                        
-                        bvapp.CurrentRequestContext.RoutingContext.HttpContext.Response.RedirectPermanent(url.RedirectToUrl);
+                        app.CurrentRequestContext.RoutingContext.HttpContext.Response.RedirectPermanent(url.RedirectToUrl);
                     }
                     else
                     {
-                        bvapp.CurrentRequestContext.RoutingContext.HttpContext.Response.Redirect(url.RedirectToUrl);
+                        app.CurrentRequestContext.RoutingContext.HttpContext.Response.Redirect(url.RedirectToUrl);
                     }
                 }
             }
         }
 
-        private CategoryUrlMatchData IsCategoryMatch(string fullSlug,MerchantTribe.Commerce.BVApplication BVApp)
+        private CategoryUrlMatchData IsCategoryMatch(string fullSlug,MerchantTribe.Commerce.MerchantTribeApplication app)
         {
  	        CategoryUrlMatchData result =new CategoryUrlMatchData();
 
-            Category cat = BVApp.CatalogServices.Categories.FindBySlugForStore(fullSlug, BVApp.CurrentRequestContext.CurrentStore.Id);
+            Category cat = app.CatalogServices.Categories.FindBySlugForStore(fullSlug, app.CurrentRequestContext.CurrentStore.Id);
             if (cat != null)
             {
                 result.IsFound = true;
@@ -111,10 +111,10 @@ namespace BVCommerce
             return result;
         }
 
-        private bool IsProductUrl(string fullSlug, MerchantTribe.Commerce.BVApplication bvapp)
+        private bool IsProductUrl(string fullSlug, MerchantTribe.Commerce.MerchantTribeApplication app)
         {                        
             // See if we have a matching Product URL
-            MerchantTribe.Commerce.Catalog.Product p = bvapp.CatalogServices.Products.FindBySlug(fullSlug);
+            MerchantTribe.Commerce.Catalog.Product p = app.CatalogServices.Products.FindBySlug(fullSlug);
             if (p != null)
             {
                 if (p.Bvin != string.Empty) return true;

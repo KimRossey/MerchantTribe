@@ -14,30 +14,30 @@ namespace BVCommerce.Controllers
         #region " Store Specific Setup Code"
         // Initialize Store Specific Request Data
         MerchantTribe.Commerce.RequestContext _BVRequestContext = new RequestContext();
-        public BVApplication BVApp { get; set; }
+        public MerchantTribeApplication MTApp { get; set; }
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             base.OnActionExecuting(filterContext);
-            BVApp = BVApplication.InstantiateForDataBase(new RequestContext());
+            MTApp = MerchantTribeApplication.InstantiateForDataBase(new RequestContext());
 
-            BVApp.CurrentRequestContext.RoutingContext = this.Request.RequestContext;
+            MTApp.CurrentRequestContext.RoutingContext = this.Request.RequestContext;
 
             // Determine store id        
-            BVApp.CurrentStore = MerchantTribe.Commerce.Utilities.UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, BVApp.AccountServices);
-            if (BVApp.CurrentStore == null)
+            MTApp.CurrentStore = MerchantTribe.Commerce.Utilities.UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, MTApp.AccountServices);
+            if (MTApp.CurrentStore == null)
             {
                 Response.Redirect("~/storenotfound");
             }
 
-            if (BVApp.CurrentStore.Status == MerchantTribe.Commerce.Accounts.StoreStatus.Deactivated)
+            if (MTApp.CurrentStore.Status == MerchantTribe.Commerce.Accounts.StoreStatus.Deactivated)
             {
                 Response.Redirect("~/storenotavailable");
             }
-            IntegrationLoader.AddIntegrations(this.BVApp.CurrentRequestContext.IntegrationEvents, this.BVApp.CurrentStore);
+            IntegrationLoader.AddIntegrations(this.MTApp.CurrentRequestContext.IntegrationEvents, this.MTApp.CurrentStore);
         }
         private void CheckFor301(string slug)
         {
-            MerchantTribe.Commerce.Content.CustomUrl url = BVApp.ContentServices.CustomUrls.FindByRequestedUrl(slug);
+            MerchantTribe.Commerce.Content.CustomUrl url = MTApp.ContentServices.CustomUrls.FindByRequestedUrl(slug);
             if (url != null)
             {
                 if (url.Bvin != string.Empty)
@@ -61,15 +61,15 @@ namespace BVCommerce.Controllers
             string AcutalKey = WebAppSettings.StoreKey;
             if (AcutalKey != storekey)
             {
-                EventLog.LogEvent("Scheduled Tasks", "Store Key Mismatch on Scheduled Task Call for Store " + BVApp.CurrentStore.Id, MerchantTribe.Commerce.Metrics.EventLogSeverity.Warning);
+                EventLog.LogEvent("Scheduled Tasks", "Store Key Mismatch on Scheduled Task Call for Store " + MTApp.CurrentStore.Id, MerchantTribe.Commerce.Metrics.EventLogSeverity.Warning);
                 return View();
             }
 
             
-            QueuedTask task = BVApp.ScheduleServices.QueuedTasks.PopATaskForRun(BVApp.CurrentStore.Id);
+            QueuedTask task = MTApp.ScheduleServices.QueuedTasks.PopATaskForRun(MTApp.CurrentStore.Id);
             if (task == null)
             {
-                EventLog.LogEvent("Scheduled Tasks", "No Task found on call to store " + BVApp.CurrentStore.Id, MerchantTribe.Commerce.Metrics.EventLogSeverity.Information);
+                EventLog.LogEvent("Scheduled Tasks", "No Task found on call to store " + MTApp.CurrentStore.Id, MerchantTribe.Commerce.Metrics.EventLogSeverity.Information);
                 return View();
             }
 
@@ -79,14 +79,14 @@ namespace BVCommerce.Controllers
                     // call task processor here
                     task.Status = QueuedTaskStatus.Failed;
                     task.StatusNotes = "Failed to locate the requested processor for this task.";
-                    BVApp.ScheduleServices.QueuedTasks.Update(task);
+                    MTApp.ScheduleServices.QueuedTasks.Update(task);
 
             }
             catch (Exception ex)
             {
                 task.Status = QueuedTaskStatus.Failed;
                 task.StatusNotes = ex.Message + " " + ex.StackTrace;
-                BVApp.ScheduleServices.QueuedTasks.Update(task);
+                MTApp.ScheduleServices.QueuedTasks.Update(task);
             }
 
             return View();

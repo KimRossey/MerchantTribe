@@ -32,7 +32,7 @@ namespace BVCommerce
         private void RunReport()
         {
 
-            List<MerchantTribe.Commerce.Metrics.SearchQueryRepository.SearchQueryData> reportData = BVApp.MetricsSerices.SearchQueries.FindQueryCountReport();
+            List<MerchantTribe.Commerce.Metrics.SearchQueryRepository.SearchQueryData> reportData = MTApp.MetricsSerices.SearchQueries.FindQueryCountReport();
 
             AddPercentages(ref reportData);
 
@@ -80,7 +80,7 @@ namespace BVCommerce
 
         protected void btnReset_Click(object sender, System.Web.UI.ImageClickEventArgs e)
         {
-            BVApp.MetricsSerices.SearchQueries.DeleteAll();
+            MTApp.MetricsSerices.SearchQueries.DeleteAll();
             RunReport();
         }
 

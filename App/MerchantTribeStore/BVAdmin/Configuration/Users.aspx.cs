@@ -28,8 +28,8 @@ namespace BVCommerce
 
             if (!Page.IsPostBack)
             {
-                this.chkPrivateStore.Checked = BVApp.CurrentStore.Settings.IsPrivateStore;
-                this.chkRememberUserPasswords.Checked = BVApp.CurrentStore.Settings.RememberUserPasswords;
+                this.chkPrivateStore.Checked = MTApp.CurrentStore.Settings.IsPrivateStore;
+                this.chkRememberUserPasswords.Checked = MTApp.CurrentStore.Settings.RememberUserPasswords;
             }
         }
 
@@ -56,9 +56,9 @@ namespace BVCommerce
 
         private bool Save()
         {
-            BVApp.CurrentStore.Settings.IsPrivateStore = this.chkPrivateStore.Checked;
-            BVApp.CurrentStore.Settings.RememberUserPasswords = this.chkRememberUserPasswords.Checked;
-            return BVApp.UpdateCurrentStore();
+            MTApp.CurrentStore.Settings.IsPrivateStore = this.chkPrivateStore.Checked;
+            MTApp.CurrentStore.Settings.RememberUserPasswords = this.chkRememberUserPasswords.Checked;
+            return MTApp.UpdateCurrentStore();
         }
     }
 }

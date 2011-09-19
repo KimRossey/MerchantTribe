@@ -12,7 +12,7 @@ namespace BVCommerce.api.rest
 {
     public class CategoriesImagesBannerHandler: BaseRestHandler
     {
-        public CategoriesImagesBannerHandler(MerchantTribe.Commerce.BVApplication app)
+        public CategoriesImagesBannerHandler(MerchantTribe.Commerce.MerchantTribeApplication app)
             : base(app)
         {
 
@@ -41,7 +41,7 @@ namespace BVCommerce.api.rest
             try
             {
                 postedData = MerchantTribe.Web.Json.ObjectFromJson<byte[]>(postdata);
-                response.Content = MerchantTribe.Commerce.Storage.DiskStorage.UploadCategoryBanner(BVApp.CurrentStore.Id, bvin, fileName, postedData);
+                response.Content = MerchantTribe.Commerce.Storage.DiskStorage.UploadCategoryBanner(MTApp.CurrentStore.Id, bvin, fileName, postedData);
             }
             catch(Exception ex)
             {

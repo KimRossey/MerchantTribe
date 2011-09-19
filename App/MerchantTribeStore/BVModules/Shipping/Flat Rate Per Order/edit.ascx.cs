@@ -36,7 +36,7 @@ namespace BVCommerce
 
         private void LoadZones()
         {
-            this.lstZones.DataSource = MyPage.BVApp.OrderServices.ShippingZones.FindForStore(MyPage.BVApp.CurrentStore.Id);
+            this.lstZones.DataSource = MyPage.MTApp.OrderServices.ShippingZones.FindForStore(MyPage.MTApp.CurrentStore.Id);
             this.lstZones.DataTextField = "Name";
             this.lstZones.DataValueField = "id";
             this.lstZones.DataBind();

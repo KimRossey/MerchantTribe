@@ -70,7 +70,7 @@ namespace BVCommerce
 
         private void LoadMember()
         {
-            MailingListMember m = BVApp.ContactServices.MailingLists.FindMemberOnlyById(CurrentId);
+            MailingListMember m = MTApp.ContactServices.MailingLists.FindMemberOnlyById(CurrentId);
             
             if (m != null)
             {
@@ -102,7 +102,7 @@ namespace BVCommerce
         {
             bool result = false;
 
-            MailingListMember m = BVApp.ContactServices.MailingLists.FindMemberOnlyById(CurrentId);
+            MailingListMember m = MTApp.ContactServices.MailingLists.FindMemberOnlyById(CurrentId);
 
             if (m == null) m = new MailingListMember();
             
@@ -116,31 +116,31 @@ namespace BVCommerce
 
                 if (m.Id < 1)
                 {
-                    if (BVApp.ContactServices.MailingLists.CheckMembership(m.ListId, m.EmailAddress))
+                    if (MTApp.ContactServices.MailingLists.CheckMembership(m.ListId, m.EmailAddress))
                     {
                         this.lblError.Text = "That email address already belongs to this mailing list. Select another email address";
                     }
                     else
                     {
-                        result = BVApp.ContactServices.MailingLists.CreateMemberOnly(m);
+                        result = MTApp.ContactServices.MailingLists.CreateMemberOnly(m);
                     }
                 }
                 else
                 {
                     if (m.EmailAddress != originalEmail)
                     {
-                        if (BVApp.ContactServices.MailingLists.CheckMembership(m.ListId, m.EmailAddress))
+                        if (MTApp.ContactServices.MailingLists.CheckMembership(m.ListId, m.EmailAddress))
                         {
                             this.lblError.Text = "That email address already belongs to this mailing list. Select another email address";
                         }
                         else
                         {
-                            result = BVApp.ContactServices.MailingLists.UpdateMemberOnly(m);
+                            result = MTApp.ContactServices.MailingLists.UpdateMemberOnly(m);
                         }
                     }
                     else
                     {
-                        result = BVApp.ContactServices.MailingLists.UpdateMemberOnly(m);
+                        result = MTApp.ContactServices.MailingLists.UpdateMemberOnly(m);
                     }
                 }
 

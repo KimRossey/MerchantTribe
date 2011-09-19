@@ -24,7 +24,7 @@ namespace BVCommerce
         private void Update(string bvin, string sku, string price)
         {
 
-            Variant item = BVApp.CatalogServices.ProductVariants.Find(bvin);
+            Variant item = MTApp.CatalogServices.ProductVariants.Find(bvin);
             if ((item != null))
             {
 
@@ -35,7 +35,7 @@ namespace BVCommerce
                     item.Price = p;
                 }
 
-                if (BVApp.CatalogServices.ProductVariants.Update(item))
+                if (MTApp.CatalogServices.ProductVariants.Update(item))
                 {
                     this.litOutput.Text = "{\"result\":true}";
                 }

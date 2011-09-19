@@ -15,12 +15,12 @@ namespace BVCommerce
     public class BaseSignupPage : System.Web.UI.Page
     {
         protected ViewDataDictionary ViewData { get; set; }
-        public BVApplication BVApp { get; set; }
+        public MerchantTribeApplication MTApp { get; set; }
 
         protected override void OnPreInit(EventArgs e)
         {
             base.OnPreInit(e);
-            BVApp = BVApplication.InstantiateForDataBase(new RequestContext());
+            MTApp = MerchantTribeApplication.InstantiateForDataBase(new RequestContext());
         }
         protected override void OnInit(EventArgs e)
         {

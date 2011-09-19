@@ -74,7 +74,7 @@ namespace BVCommerce.BVAdmin.Marketing
             }        
             long pid = 0;
             long.TryParse(promoid, out pid);
-            Promotion p = BVApp.MarketingServices.Promotions.Find(pid);
+            Promotion p = MTApp.MarketingServices.Promotions.Find(pid);
             return p;            
         }
 
@@ -106,7 +106,7 @@ namespace BVCommerce.BVAdmin.Marketing
 
                 sb.Append("<table width=\"100%\"><tr>");
                 sb.Append("<td>");
-                sb.Append(q.FriendlyDescription(BVApp));
+                sb.Append(q.FriendlyDescription(MTApp));
                 if (q.ProcessingCost == RelativeProcessingCost.Higher || q.ProcessingCost == RelativeProcessingCost.Highest)
                 {
                     sb.Append("<br /><span class=\"smallwarning\"><img src=\"" + Page.ResolveUrl("~/bvadmin/images/WarningSymbol.png") + "\" alt=\"possible slow qualifier\" /> May run slowly!</span>");
@@ -217,7 +217,7 @@ namespace BVCommerce.BVAdmin.Marketing
             PromotionQualificationBase pq = PromotionQualificationBase.Factory(newid);
             p.AddQualification(pq);
 
-            BVApp.MarketingServices.Promotions.Update(p);
+            MTApp.MarketingServices.Promotions.Update(p);
             LoadItem();
         }
         protected void btnNewAction_Click(object sender, ImageClickEventArgs e)
@@ -229,7 +229,7 @@ namespace BVCommerce.BVAdmin.Marketing
             PromotionActionBase pa = PromotionActionBase.Factory(newid);            
             p.AddAction(pa);
             
-            BVApp.MarketingServices.Promotions.Update(p);
+            MTApp.MarketingServices.Promotions.Update(p);
             LoadItem();
         }
 
@@ -255,7 +255,7 @@ namespace BVCommerce.BVAdmin.Marketing
             p.StartDateUtc = this.DateStartField.SelectedDate.ToUniversalTime();
             p.EndDateUtc = this.DateEndField.SelectedDate.ToUniversalTime();
 
-            result = BVApp.MarketingServices.Promotions.Update(p);
+            result = MTApp.MarketingServices.Promotions.Update(p);
            
             if (result == false)
             {
@@ -323,7 +323,7 @@ namespace BVCommerce.BVAdmin.Marketing
                 long.TryParse(trimmed, out temp);
                 if (p.RemoveAction(temp))
                 {
-                    BVApp.MarketingServices.Promotions.Update(p);
+                    MTApp.MarketingServices.Promotions.Update(p);
                 }
             }
             LoadItem();     
@@ -338,7 +338,7 @@ namespace BVCommerce.BVAdmin.Marketing
                 long.TryParse(trimmed, out temp);
                 if (p.RemoveQualification(temp))
                 {
-                    BVApp.MarketingServices.Promotions.Update(p);
+                    MTApp.MarketingServices.Promotions.Update(p);
                 }
             }
             LoadItem();            

@@ -28,8 +28,8 @@ namespace BVCommerce
             OutputContentType = "image/png";
             ETag = string.Empty;
 
-            SalesSummary summary = new SalesSummary(BVApp.CurrentStore.Id);
-            GenerateChart(summary.GetWeeklySummary(TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, BVApp.CurrentStore.Settings.TimeZone), BVApp.OrderServices), 
+            SalesSummary summary = new SalesSummary(MTApp.CurrentStore.Id);
+            GenerateChart(summary.GetWeeklySummary(TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, MTApp.CurrentStore.Settings.TimeZone), MTApp.OrderServices), 
                 "Sales This Week", 600, 200);
             RenderChart();
         }

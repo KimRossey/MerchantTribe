@@ -17,9 +17,9 @@ namespace BVCommerce.BVModules.Controls
         protected override void OnInit(EventArgs e)
         {
             base.OnInit(e);
-            pointsManager = CustomerPointsManager.InstantiateForDatabase(MyPage.BVApp.CurrentStore.Settings.RewardsPointsIssuedPerDollarSpent,
-                                                      MyPage.BVApp.CurrentStore.Settings.RewardsPointsNeededPerDollarCredit,
-                                                      MyPage.BVApp.CurrentStore.Id);
+            pointsManager = CustomerPointsManager.InstantiateForDatabase(MyPage.MTApp.CurrentStore.Settings.RewardsPointsIssuedPerDollarSpent,
+                                                      MyPage.MTApp.CurrentStore.Settings.RewardsPointsNeededPerDollarCredit,
+                                                      MyPage.MTApp.CurrentStore.Id);
         }
 
         protected override void OnLoad(EventArgs e)
@@ -46,7 +46,7 @@ namespace BVCommerce.BVModules.Controls
                 amountToUse = points;
             }
 
-            string rewardsName = MyPage.BVApp.CurrentStore.Settings.RewardsPointsName;
+            string rewardsName = MyPage.MTApp.CurrentStore.Settings.RewardsPointsName;
 
             this.lblPointsAvailable.Text = "You have " + points.ToString() + " " + rewardsName + " available.";
             this.rbUsePoints.Text = "Use " + amountToUse.ToString() + " " + rewardsName;
@@ -77,11 +77,11 @@ namespace BVCommerce.BVModules.Controls
         public void ApplyInfoToOrder(Order o)
         {            
             // Remove any current points info transactions
-            foreach (OrderTransaction t in MyPage.BVApp.OrderServices.Transactions.FindForOrder(o.bvin))
+            foreach (OrderTransaction t in MyPage.MTApp.OrderServices.Transactions.FindForOrder(o.bvin))
             {
                 if (t.Action == MerchantTribe.Payment.ActionType.RewardPointsInfo)
                 {
-                    MyPage.BVApp.OrderServices.Transactions.Delete(t.Id);
+                    MyPage.MTApp.OrderServices.Transactions.Delete(t.Id);
                 }
             }
 
@@ -89,7 +89,7 @@ namespace BVCommerce.BVModules.Controls
             if (rbNoPoints.Checked) return;
 
             // Apply Info to Order
-            OrderPaymentManager payManager = new OrderPaymentManager(o, MyPage.BVApp);
+            OrderPaymentManager payManager = new OrderPaymentManager(o, MyPage.MTApp);
             payManager.RewardsPointsAddInfo(PotentialCredit(o));
         }
     }

@@ -51,7 +51,7 @@ namespace BVCommerce
 
             if (slug != string.Empty)
             {
-                _LocalProduct = BVApp.CatalogServices.Products.FindBySlug(slug);
+                _LocalProduct = MTApp.CatalogServices.Products.FindBySlug(slug);
                 bool possibleError = false;
                 if (_LocalProduct == null)
                 {
@@ -66,7 +66,7 @@ namespace BVCommerce
                 {
                     // Check for custom URL
                     string potentialCustom = GetRouteUrl("bvroute", new { slug = slug });
-                    CustomUrl url = BVApp.ContentServices.CustomUrls.FindByRequestedUrl(potentialCustom);
+                    CustomUrl url = MTApp.ContentServices.CustomUrls.FindByRequestedUrl(potentialCustom);
                     if (url != null)
                     {
                         if (url.Bvin != string.Empty)
@@ -161,7 +161,7 @@ namespace BVCommerce
                 }
             }
 
-            this.btnAddToCart.ImageUrl = this.BVApp.ThemeManager().ButtonUrl("addtocart", Request.IsSecureConnection);
+            this.btnAddToCart.ImageUrl = this.MTApp.ThemeManager().ButtonUrl("addtocart", Request.IsSecureConnection);
 
             CheckForBackOrder();
 
@@ -181,7 +181,7 @@ namespace BVCommerce
                         long lineItemId = 0;
                         long.TryParse(lineItemString, out lineItemId);
 
-                        Order o = SessionManager.CurrentShoppingCart(BVApp.OrderServices);
+                        Order o = SessionManager.CurrentShoppingCart(MTApp.OrderServices);
                         if (o != null)
                         {
                             var li = o.Items.Where(y => y.Id == lineItemId).SingleOrDefault();
@@ -390,7 +390,7 @@ namespace BVCommerce
 
             sb.Append("<div class=\"prices\">");
 
-            UserSpecificPrice productDisplay = BVApp.PriceProduct(LocalProduct,BVApp.CurrentCustomer, null);
+            UserSpecificPrice productDisplay = MTApp.PriceProduct(LocalProduct,MTApp.CurrentCustomer, null);
             if (productDisplay.ListPriceGreaterThanCurrentPrice)
             {
                 sb.Append("<label>" + SiteTerms.GetTerm(SiteTermIds.ListPrice) + "</label>");
@@ -418,7 +418,7 @@ namespace BVCommerce
         }
         public void CheckForBackOrder()
         {
-            InventoryCheckData data = BVApp.CatalogServices.InventoryCheck(LocalProduct, string.Empty);
+            InventoryCheckData data = MTApp.CatalogServices.InventoryCheck(LocalProduct, string.Empty);
             this.litStockDisplay.Text = data.InventoryMessage;
             this.QuantityField.Enabled = data.IsAvailableForSale;
             this.btnAddToCart.Visible = data.IsAvailableForSale;
@@ -426,7 +426,7 @@ namespace BVCommerce
 
         private void RenderAdditionalImages(string productBvin)
         {
-            List<ProductImage> images = BVApp.CatalogServices.ProductImages.FindByProductId(productBvin);
+            List<ProductImage> images = MTApp.CatalogServices.ProductImages.FindByProductId(productBvin);
 
             if (images.Count < 1) return;
 
@@ -441,19 +441,19 @@ namespace BVCommerce
         }
         private void RenderSingleAdditionalImage(StringBuilder sb, ProductImage img)
         {
-            string mediumUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductAdditionalImageUrlMedium(BVApp.CurrentStore.Id,
+            string mediumUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductAdditionalImageUrlMedium(MTApp.CurrentStore.Id,
                                                                                                        img.ProductId,
                                                                                                        img.Bvin,
                                                                                                        img.FileName,
                                                                                                        false);
-            string largeUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductAdditionalImageUrlOriginal(BVApp.CurrentStore.Id,
+            string largeUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductAdditionalImageUrlOriginal(MTApp.CurrentStore.Id,
                                                                                                        img.ProductId,
                                                                                                        img.Bvin,
                                                                                                        img.FileName,
                                                                                                        false);
             sb.Append("<a href=\"" + largeUrl + "\" alt=\"" + mediumUrl + "\" class=\"popover\">");
             sb.Append("<img src=\"");
-            sb.Append(MerchantTribe.Commerce.Storage.DiskStorage.ProductAdditionalImageUrlTiny(BVApp.CurrentStore.Id,
+            sb.Append(MerchantTribe.Commerce.Storage.DiskStorage.ProductAdditionalImageUrlTiny(MTApp.CurrentStore.Id,
                                                                                                       img.ProductId,
                                                                                                       img.Bvin,
                                                                                                       img.FileName,
@@ -469,7 +469,7 @@ namespace BVCommerce
             this.lblSku.Text = this.LocalProduct.Sku;
             this.lblDescription.Text = this.LocalProduct.LongDescription;
 
-            this.imgMain.ImageUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductImageUrlMedium(BVApp.CurrentStore.Id, LocalProduct.Bvin, LocalProduct.ImageFileSmall, Request.IsSecureConnection);
+            this.imgMain.ImageUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductImageUrlMedium(MTApp.CurrentStore.Id, LocalProduct.Bvin, LocalProduct.ImageFileSmall, Request.IsSecureConnection);
             this.imgMain.AlternateText = LocalProduct.ImageFileSmallAlternateText;
 
             // Cross Sell
@@ -591,12 +591,12 @@ namespace BVCommerce
                 int quantity = DetermineQuantityToAdd();
                 if (quantity < 1) return;
 
-                LineItem li = BVApp.CatalogServices.ConvertProductToLineItem(LocalProduct, 
+                LineItem li = MTApp.CatalogServices.ConvertProductToLineItem(LocalProduct, 
                                                                                 selections, 
                                                                                 quantity, 
-                                                                                BVApp);
+                                                                                MTApp);
 
-                Order Basket = SessionManager.CurrentShoppingCart(BVApp.OrderServices);
+                Order Basket = SessionManager.CurrentShoppingCart(MTApp.OrderServices);
                 if (Basket.UserID != SessionManager.GetCurrentUserId())
                 {
                     Basket.UserID = SessionManager.GetCurrentUserId();
@@ -611,7 +611,7 @@ namespace BVCommerce
                     if (toRemove != null) Basket.Items.Remove(toRemove);
                 }
 
-                BVApp.AddToOrderWithCalculateAndSave(Basket, li);
+                MTApp.AddToOrderWithCalculateAndSave(Basket, li);
                 SessionManager.SaveOrderCookies(Basket);
 
                 destination = LocalProduct.GetCartDestinationUrl(Basket.Items.Last());                

@@ -4,19 +4,19 @@ namespace MerchantTribe.Commerce
     public partial class WebAppSettings
     {
 
-        const string BVADMINEMAIL = "marcus@bvsoftware.com";
-        const string APPLICATION_NAME = "BV Commerce";
-const string APPLICATION_VERSION = "6.0.65.125";
+        const string SUPERADMINEMAIL = "noreply@merchanttribe.com";
+        const string APPLICATION_NAME = "MerchantTribe";
+        const string APPLICATION_VERSION = "1.0.0.125";
 
-        public static string BvAdminEmail
+        public static string SuperAdminEmail
         {
-            get { return BVADMINEMAIL; }
+            get { return SUPERADMINEMAIL; }
         }
-        public static string BvcProductName
+        public static string SystemProductName
         {
             get { return APPLICATION_NAME; }
         }
-        public static string BvcVersionNumber
+        public static string SystemVersionNumber
         {
             get { return APPLICATION_VERSION; }
         }
@@ -35,7 +35,7 @@ const string APPLICATION_VERSION = "6.0.65.125";
 
         public static string ApplicationEmail
         {
-            get { return "no-reply@bvcommerce.com"; }
+            get { return "noreply@merchanttribe.com"; }
         }
         public static string BaseApplicationUrl
         {
@@ -75,27 +75,27 @@ const string APPLICATION_VERSION = "6.0.65.125";
 
         public static string CookieNameCartId(long storeId)
         {
-            return "ecommrc-cartid-" + storeId.ToString();
+            return "merchanttribe-cartid-" + storeId.ToString();
         }
         public static string CookieNameCartItemCount(long storeId)
         {
-            return "ecommrc-cartitemcount-" + storeId.ToString();
+            return "merchanttribe-cartitemcount-" + storeId.ToString();
         }
         public static string CookieNameCartSubTotal(long storeId)
         {
-            return "ecommrc-cartsubtotal-" + storeId.ToString();
+            return "merchanttribe-cartsubtotal-" + storeId.ToString();
         }
         public static string CookieNameAuthenticationTokenAdmin()
         {
-            return "ecommrc-authtoken";
+            return "merchanttribe-authtoken";
         }
         public static string CookieNameAuthenticationTokenCustomer()
         {
-            return "ecommrc-authtokencustomer";
+            return "merchanttribe-authtokencustomer";
         }
         public static string CookieNameLastCategory(long storeId)
         {
-            return "ecommrc-lastcategory-" + storeId.ToString();
+            return "merchanttribe-lastcategory-" + storeId.ToString();
         }
 
         public static int AuthenticationTokenValidForDays()

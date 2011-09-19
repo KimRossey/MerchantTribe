@@ -34,7 +34,7 @@ namespace BVCommerce
             if (Request.QueryString["id"] != null)
             {
                 productBvin = Request.QueryString["id"];
-                localProduct = BVApp.CatalogServices.Products.Find(productBvin);
+                localProduct = MTApp.CatalogServices.Products.Find(productBvin);
             }
             Page.ClientScript.RegisterClientScriptBlock(typeof(System.Web.UI.Page), "optionsort", RenderJQuery(productBvin), true);
 
@@ -100,7 +100,7 @@ namespace BVCommerce
 
         private void PopulateSharedChoices()
         {
-            List<Option> items = BVApp.CatalogServices.ProductOptions.FindAllShared(1, 1000);
+            List<Option> items = MTApp.CatalogServices.ProductOptions.FindAllShared(1, 1000);
             if ((items.Count > 0))
             {
                 this.ChoiceTypes.Items.Add(new System.Web.UI.WebControls.ListItem("", ""));
@@ -210,7 +210,7 @@ namespace BVCommerce
                     opt.Name = "New Text Input";
                     break;
             }
-            opt.StoreId = BVApp.CurrentStore.Id;
+            opt.StoreId = MTApp.CurrentStore.Id;
 
             // Trick the new option to be an already existing option if shared
             if ((this.ChoiceTypes.SelectedItem.Value.Trim().Length > 30))
@@ -230,7 +230,7 @@ namespace BVCommerce
             else
             {
                 localProduct.Options.Add(opt);
-                BVApp.CatalogServices.Products.Update(localProduct);
+                MTApp.CatalogServices.Products.Update(localProduct);
                 created = true;
             }
 
@@ -239,7 +239,7 @@ namespace BVCommerce
             {
                 if ((localProduct != null))
                 {
-                    BVApp.CatalogServices.ProductsAddOption(localProduct, opt.Bvin);                    
+                    MTApp.CatalogServices.ProductsAddOption(localProduct, opt.Bvin);                    
                     if ((opt.IsShared == false))
                     {
                         Response.Redirect("ProductChoices_Edit.aspx?cid=" + opt.Bvin + "&id=" + localProduct.Bvin);
@@ -252,7 +252,7 @@ namespace BVCommerce
                 }
             }
 
-            BVApp.CatalogServices.ProductsReloadOptions(localProduct);            
+            MTApp.CatalogServices.ProductsReloadOptions(localProduct);            
             LoadItems();
         }
 

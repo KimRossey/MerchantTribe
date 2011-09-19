@@ -20,7 +20,7 @@ namespace BVCommerce.BVAdmin.Marketing
             string promoid = this.promotionid.Value;
             long pid = 0;
             long.TryParse(promoid, out pid);
-            Promotion p = MyPage.BVApp.MarketingServices.Promotions.Find(pid);
+            Promotion p = MyPage.MTApp.MarketingServices.Promotions.Find(pid);
             return p;            
         }
         private IPromotionQualification GetCurrentQualification(Promotion p)
@@ -141,7 +141,7 @@ namespace BVCommerce.BVAdmin.Marketing
                         ototal = parsedototal;
                     }
                     ((OrderSubTotalIs)q).Amount = ototal;                    
-                    return MyPage.BVApp.MarketingServices.Promotions.Update(p);                      
+                    return MyPage.MTApp.MarketingServices.Promotions.Update(p);                      
                 case PromotionQualificationBase.TypeIdOrderHasProducts:
                     int qty1 = ((OrderHasProducts)q).Quantity;
                     int parsedqty1 = 1;
@@ -157,7 +157,7 @@ namespace BVCommerce.BVAdmin.Marketing
                     }
                     ((OrderHasProducts)q).Quantity = qty1;
                     ((OrderHasProducts)q).SetMode = setmode;
-                    return MyPage.BVApp.MarketingServices.Promotions.Update(p);                    
+                    return MyPage.MTApp.MarketingServices.Promotions.Update(p);                    
             }
 
             return false;
@@ -172,7 +172,7 @@ namespace BVCommerce.BVAdmin.Marketing
          // Product Type Editor        
         private void LoadProductTypeEditor(ProductType q)
         {
-            List<MerchantTribe.Commerce.Catalog.ProductType> allTypes = MyPage.BVApp.CatalogServices.ProductTypes.FindAll();
+            List<MerchantTribe.Commerce.Catalog.ProductType> allTypes = MyPage.MTApp.CatalogServices.ProductTypes.FindAll();
             allTypes.Insert(0, new MerchantTribe.Commerce.Catalog.ProductType() { Bvin = "0", ProductTypeName = "Generic" });
 
             List<FriendlyBvinDisplay> displayData = new List<FriendlyBvinDisplay>();
@@ -206,7 +206,7 @@ namespace BVCommerce.BVAdmin.Marketing
             ProductType q = (ProductType)GetCurrentQualification(p);
             if (q == null) return;
             q.AddProductType(this.lstProductTypes.SelectedValue);
-            MyPage.BVApp.MarketingServices.Promotions.Update(p);
+            MyPage.MTApp.MarketingServices.Promotions.Update(p);
             LoadProductTypeEditor(q);
         }
         protected void gvProductTypes_RowDeleting(object sender, GridViewDeleteEventArgs e)
@@ -216,7 +216,7 @@ namespace BVCommerce.BVAdmin.Marketing
             if (q == null) return;
             string bvin = (string)e.Keys[0];
             q.RemoveProductType(bvin);            
-            MyPage.BVApp.MarketingServices.Promotions.Update(p);
+            MyPage.MTApp.MarketingServices.Promotions.Update(p);
             LoadProductTypeEditor(q);
         }
 
@@ -224,7 +224,7 @@ namespace BVCommerce.BVAdmin.Marketing
         private void LoadProductCategoryEditor(ProductCategory q)
         {
 
-            List<MerchantTribe.Commerce.Catalog.CategorySnapshot> allCats = MyPage.BVApp.CatalogServices.Categories.FindAll();
+            List<MerchantTribe.Commerce.Catalog.CategorySnapshot> allCats = MyPage.MTApp.CatalogServices.Categories.FindAll();
             Collection<System.Web.UI.WebControls.ListItem> available = MerchantTribe.Commerce.Catalog.Category.ListFullTreeWithIndents(allCats, true);
 
             List<FriendlyBvinDisplay> displayData = new List<FriendlyBvinDisplay>();
@@ -259,7 +259,7 @@ namespace BVCommerce.BVAdmin.Marketing
             ProductCategory q = (ProductCategory)GetCurrentQualification(p);
             if (q == null) return;
             q.AddCategoryId(this.lstProductCategories.SelectedValue);
-            MyPage.BVApp.MarketingServices.Promotions.Update(p);
+            MyPage.MTApp.MarketingServices.Promotions.Update(p);
             LoadProductCategoryEditor(q);
         }
         protected void gvProductCategories_RowDeleting(object sender, GridViewDeleteEventArgs e)
@@ -269,7 +269,7 @@ namespace BVCommerce.BVAdmin.Marketing
             if (q == null) return;
             string bvin = (string)e.Keys[0];
             q.RemoveCategoryId(bvin);
-            MyPage.BVApp.MarketingServices.Promotions.Update(p);
+            MyPage.MTApp.MarketingServices.Promotions.Update(p);
             LoadProductCategoryEditor(q);
         }
 
@@ -286,7 +286,7 @@ namespace BVCommerce.BVAdmin.Marketing
                 item.bvin = bvin;
                 item.DisplayName = bvin;
 
-                MerchantTribe.Commerce.Catalog.Product p = MyPage.BVApp.CatalogServices.Products.Find(item.bvin);
+                MerchantTribe.Commerce.Catalog.Product p = MyPage.MTApp.CatalogServices.Products.Find(item.bvin);
                 if (p != null)
                 {
                     item.DisplayName = "[" + p.Sku + "] " + p.ProductName;                    
@@ -304,7 +304,7 @@ namespace BVCommerce.BVAdmin.Marketing
             if (q == null) return;
             string bvin = (string)e.Keys[0];
             q.RemoveProductBvin(bvin);
-            MyPage.BVApp.MarketingServices.Promotions.Update(p);
+            MyPage.MTApp.MarketingServices.Promotions.Update(p);
             LoadProductBvinEditor(q);
         }        
         protected void btnAddProductBvins_Click(object sender, ImageClickEventArgs e)
@@ -316,7 +316,7 @@ namespace BVCommerce.BVAdmin.Marketing
             {
                 q.AddProductBvin(bvin);
             }            
-            MyPage.BVApp.MarketingServices.Promotions.Update(p);
+            MyPage.MTApp.MarketingServices.Promotions.Update(p);
             LoadProductBvinEditor(q);
         }
                 
@@ -344,7 +344,7 @@ namespace BVCommerce.BVAdmin.Marketing
             if (q == null) return;
 
             q.AddCoupon(code);            
-            MyPage.BVApp.MarketingServices.Promotions.Update(p);
+            MyPage.MTApp.MarketingServices.Promotions.Update(p);
             LoadOrderHasCouponEditor(q);
         }
         protected void gvOrderCoupons_RowDeleting(object sender, GridViewDeleteEventArgs e)
@@ -354,7 +354,7 @@ namespace BVCommerce.BVAdmin.Marketing
             if (q == null) return;
             string coupon = (string)e.Keys[0];
             q.RemoveCoupon(coupon);
-            MyPage.BVApp.MarketingServices.Promotions.Update(p);
+            MyPage.MTApp.MarketingServices.Promotions.Update(p);
             LoadOrderHasCouponEditor(q);
         }
 
@@ -371,7 +371,7 @@ namespace BVCommerce.BVAdmin.Marketing
                 item.bvin = bvin;
                 item.DisplayName = bvin;
 
-                MerchantTribe.Commerce.Catalog.Product p = MyPage.BVApp.CatalogServices.Products.Find(item.bvin);
+                MerchantTribe.Commerce.Catalog.Product p = MyPage.MTApp.CatalogServices.Products.Find(item.bvin);
                 if (p != null)
                 {
                     item.DisplayName = "[" + p.Sku + "] " + p.ProductName;
@@ -389,7 +389,7 @@ namespace BVCommerce.BVAdmin.Marketing
             if (q == null) return;
             string bvin = (string)e.Keys[0];
             q.RemoveProductBvin(bvin);
-            MyPage.BVApp.MarketingServices.Promotions.Update(p);
+            MyPage.MTApp.MarketingServices.Promotions.Update(p);
             LoadOrderProductEditor(q);
         }
         protected void btnAddOrderProduct_Click(object sender, ImageClickEventArgs e)
@@ -401,7 +401,7 @@ namespace BVCommerce.BVAdmin.Marketing
             {
                 q.AddProductBvin(bvin);
             }
-            MyPage.BVApp.MarketingServices.Promotions.Update(p);
+            MyPage.MTApp.MarketingServices.Promotions.Update(p);
             LoadOrderProductEditor(q);
         }
 
@@ -422,7 +422,7 @@ namespace BVCommerce.BVAdmin.Marketing
                 item.bvin = bvin;
                 item.DisplayName = bvin;
 
-                MerchantTribe.Commerce.Membership.CustomerAccount c = MyPage.BVApp.MembershipServices.Customers.Find(item.bvin);
+                MerchantTribe.Commerce.Membership.CustomerAccount c = MyPage.MTApp.MembershipServices.Customers.Find(item.bvin);
                 if (c != null)
                 {
                     item.DisplayName = c.Email;
@@ -440,7 +440,7 @@ namespace BVCommerce.BVAdmin.Marketing
             if (q == null) return;
             string bvin = (string)e.Keys[0];
             q.RemoveUserId(bvin);
-            MyPage.BVApp.MarketingServices.Promotions.Update(p);
+            MyPage.MTApp.MarketingServices.Promotions.Update(p);
             LoadUserIsEditor(q);
         }        
         void UserPicker1_UserSelected(MerchantTribe.Commerce.Controls.UserSelectedEventArgs e)
@@ -449,14 +449,14 @@ namespace BVCommerce.BVAdmin.Marketing
             UserIs q = (UserIs)GetCurrentQualification(p);
             if (q == null) return;            
             q.AddUserId(e.UserAccount.Bvin);
-            MyPage.BVApp.MarketingServices.Promotions.Update(p);
+            MyPage.MTApp.MarketingServices.Promotions.Update(p);
             LoadUserIsEditor(q);
         }
 
         // User Is in Group
         private void LoadUserIsInGroupEditor(UserIsInGroup q)
         {
-            List<MerchantTribe.Commerce.Contacts.PriceGroup> allGroups = MyPage.BVApp.ContactServices.PriceGroups.FindAll();
+            List<MerchantTribe.Commerce.Contacts.PriceGroup> allGroups = MyPage.MTApp.ContactServices.PriceGroups.FindAll();
 
             List<FriendlyBvinDisplay> displayData = new List<FriendlyBvinDisplay>();
 
@@ -489,7 +489,7 @@ namespace BVCommerce.BVAdmin.Marketing
             UserIsInGroup q = (UserIsInGroup)GetCurrentQualification(p);
             if (q == null) return;
             q.AddGroup(this.lstUserIsInGroup.SelectedValue);
-            MyPage.BVApp.MarketingServices.Promotions.Update(p);
+            MyPage.MTApp.MarketingServices.Promotions.Update(p);
             LoadUserIsInGroupEditor(q);
         }
         protected void gvUserIsInGroup_RowDeleting(object sender, GridViewDeleteEventArgs e)
@@ -499,14 +499,14 @@ namespace BVCommerce.BVAdmin.Marketing
             if (q == null) return;
             string bvin = (string)e.Keys[0];
             q.RemoveGroup(bvin);
-            MyPage.BVApp.MarketingServices.Promotions.Update(p);
+            MyPage.MTApp.MarketingServices.Promotions.Update(p);
             LoadUserIsInGroupEditor(q);
         }
 
         // Shipping Method Is
         private void LoadShippingMethodIsEditor(ShippingMethodIs q)
         {
-            List<ShippingMethod> available = MyPage.BVApp.OrderServices.ShippingMethods.FindAll(MyPage.BVApp.CurrentStore.Id);
+            List<ShippingMethod> available = MyPage.MTApp.OrderServices.ShippingMethods.FindAll(MyPage.MTApp.CurrentStore.Id);
             
             List<FriendlyBvinDisplay> displayData = new List<FriendlyBvinDisplay>();
 
@@ -540,7 +540,7 @@ namespace BVCommerce.BVAdmin.Marketing
             ShippingMethodIs q = (ShippingMethodIs)GetCurrentQualification(p);
             if (q == null) return;
             q.AddItemId(this.lstShippingMethodIs.SelectedValue);
-            MyPage.BVApp.MarketingServices.Promotions.Update(p);
+            MyPage.MTApp.MarketingServices.Promotions.Update(p);
             LoadShippingMethodIsEditor(q);
         }
         protected void gvShippingMethodIs_RowDeleting(object sender, GridViewDeleteEventArgs e)
@@ -550,7 +550,7 @@ namespace BVCommerce.BVAdmin.Marketing
             if (q == null) return;
             string bvin = (string)e.Keys[0];
             q.RemoveItemId(bvin);
-            MyPage.BVApp.MarketingServices.Promotions.Update(p);
+            MyPage.MTApp.MarketingServices.Promotions.Update(p);
             LoadShippingMethodIsEditor(q);
         }
 

@@ -42,7 +42,7 @@ namespace BVCommerce
 
         private void LoadZones()
         {
-            this.lstZones.DataSource = MyPage.BVApp.OrderServices.ShippingZones.FindForStore(MyPage.BVApp.CurrentStore.Id);
+            this.lstZones.DataSource = MyPage.MTApp.OrderServices.ShippingZones.FindForStore(MyPage.MTApp.CurrentStore.Id);
             this.lstZones.DataTextField = "Name";
             this.lstZones.DataValueField = "id";
             this.lstZones.DataBind();
@@ -85,7 +85,7 @@ namespace BVCommerce
             }
 
             // Global
-            this.Diagnostics.Checked = MyPage.BVApp.CurrentStore.Settings.ShippingUSPostalDiagnostics;
+            this.Diagnostics.Checked = MyPage.MTApp.CurrentStore.Settings.ShippingUSPostalDiagnostics;
 
             USPostalServiceSettings settings = new USPostalServiceSettings();
             settings.Merge(ShippingMethod.Settings);
@@ -118,8 +118,8 @@ namespace BVCommerce
             ShippingMethod.Adjustment = decimal.Parse(AdjustmentTextBox.Text, System.Globalization.NumberStyles.Currency);
 
             // Global Settings
-            MyPage.BVApp.CurrentStore.Settings.ShippingUSPostalDiagnostics = this.Diagnostics.Checked;
-            MyPage.BVApp.AccountServices.Stores.Update(MyPage.BVApp.CurrentStore);
+            MyPage.MTApp.CurrentStore.Settings.ShippingUSPostalDiagnostics = this.Diagnostics.Checked;
+            MyPage.MTApp.AccountServices.Stores.Update(MyPage.MTApp.CurrentStore);
             
             // Method Settings
             USPostalServiceSettings Settings = new USPostalServiceSettings();

@@ -90,7 +90,7 @@ namespace BVCommerce
 
         private void LoadImages()
         {
-            List<ProductImage> images = BVApp.CatalogServices.ProductImages.FindByProductId(this.ProductIdField.Value);
+            List<ProductImage> images = MTApp.CatalogServices.ProductImages.FindByProductId(this.ProductIdField.Value);
 
             RenderImages(images);
         }
@@ -121,7 +121,7 @@ namespace BVCommerce
             sb.Append("<div class=\"dragitem\" id=\"img" + img.Bvin + "\"><table class=\"formtable\" width=\"100%\"><tr>");
             sb.Append("<td width=\"25%\"><a href=\"" + destinationLink + "\">");            
             sb.Append("<img src=\"");
-            sb.Append(MerchantTribe.Commerce.Storage.DiskStorage.ProductAdditionalImageUrlTiny(BVApp.CurrentStore.Id,
+            sb.Append(MerchantTribe.Commerce.Storage.DiskStorage.ProductAdditionalImageUrlTiny(MTApp.CurrentStore.Id,
                                                                                                       img.ProductId,
                                                                                                       img.Bvin,
                                                                                                       img.FileName,
@@ -297,13 +297,13 @@ namespace BVCommerce
                     ProductImage img = new ProductImage();
                     img.Bvin = System.Guid.NewGuid().ToString();
 
-                    if (MerchantTribe.Commerce.Storage.DiskStorage.UploadAdditionalProductImage(BVApp.CurrentStore.Id, this.ProductIdField.Value, img.Bvin, this.imgupload.PostedFile))
+                    if (MerchantTribe.Commerce.Storage.DiskStorage.UploadAdditionalProductImage(MTApp.CurrentStore.Id, this.ProductIdField.Value, img.Bvin, this.imgupload.PostedFile))
                     {
                         img.AlternateText = fileName + ext;
                         img.FileName = fileName + ext;
                         img.Caption = string.Empty;
                         img.ProductId = this.ProductIdField.Value;                        
-                        if (BVApp.CatalogServices.ProductImages.Create(img))
+                        if (MTApp.CatalogServices.ProductImages.Create(img))
                         {
                             this.MessageBox1.ShowOk("New Image Added at " + DateTime.Now.ToString() + ".");
                         }

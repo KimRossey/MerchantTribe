@@ -14,7 +14,7 @@ namespace MerchantTribe.Commerce.Orders
 
         private Order o = null;
 
-        private BVApplication BVApp = null;
+        private MerchantTribeApplication MTApp = null;
 
         private OrderService svc = null;
         private Contacts.ContactService contacts = null;
@@ -23,13 +23,13 @@ namespace MerchantTribe.Commerce.Orders
         private CustomerPointsManager pointsManager = null;
         
 
-        public OrderPaymentManager(Order ord, BVApplication bvapp)
+        public OrderPaymentManager(Order ord, MerchantTribeApplication app)
         {
             o = ord;
-            this.BVApp = bvapp;
-            svc = BVApp.OrderServices;
-            this.contacts = this.BVApp.ContactServices;
-            this.content = this.BVApp.ContentServices;
+            this.MTApp = app;
+            svc = MTApp.OrderServices;
+            this.contacts = this.MTApp.ContactServices;
+            this.content = this.MTApp.ContentServices;
 
             Accounts.Store CurrentStore = RequestContext.GetCurrentRequestContext().CurrentStore;
 
@@ -111,7 +111,7 @@ namespace MerchantTribe.Commerce.Orders
         {
             Orders.OrderPaymentStatus previousPaymentStatus = o.PaymentStatus;
             svc.EvaluatePaymentStatus(o);
-            BusinessRules.OrderTaskContext context = new BusinessRules.OrderTaskContext(this.BVApp);
+            BusinessRules.OrderTaskContext context = new BusinessRules.OrderTaskContext(this.MTApp);
             context.Order = o;
             context.UserId = o.UserID;
             context.Inputs.Add("bvsoftware", "PreviousPaymentStatus", previousPaymentStatus.ToString());
@@ -127,7 +127,7 @@ namespace MerchantTribe.Commerce.Orders
             OrderTransaction ot = new OrderTransaction(t);
             ot.Messages = description;
             ot.Success = true;
-            return svc.AddPaymentTransactionToOrder(o, ot, this.BVApp);
+            return svc.AddPaymentTransactionToOrder(o, ot, this.MTApp);
         }
 
         // Cash
@@ -138,7 +138,7 @@ namespace MerchantTribe.Commerce.Orders
             t.Action = ActionType.CashReceived;
             OrderTransaction ot = new OrderTransaction(t);
             ot.Success = true;            
-            return svc.AddPaymentTransactionToOrder(o, ot, this.BVApp);
+            return svc.AddPaymentTransactionToOrder(o, ot, this.MTApp);
         }
         public bool CashRefund(decimal amount)
         {            
@@ -147,7 +147,7 @@ namespace MerchantTribe.Commerce.Orders
             t.Action = ActionType.CashReturned;
             OrderTransaction ot = new OrderTransaction(t);
             ot.Success = true;
-            return svc.AddPaymentTransactionToOrder(o, ot, this.BVApp);
+            return svc.AddPaymentTransactionToOrder(o, ot, this.MTApp);
         }
 
         // Checks
@@ -159,7 +159,7 @@ namespace MerchantTribe.Commerce.Orders
             t.Action = ActionType.CheckReceived;
             OrderTransaction ot = new OrderTransaction(t);
             ot.Success = true;
-            return svc.AddPaymentTransactionToOrder(o, ot, this.BVApp);
+            return svc.AddPaymentTransactionToOrder(o, ot, this.MTApp);
         }
         public bool CheckReturn(decimal amount, string checkNumber)
         {
@@ -169,7 +169,7 @@ namespace MerchantTribe.Commerce.Orders
             t.Action = ActionType.CheckReturned;
             OrderTransaction ot = new OrderTransaction(t);
             ot.Success = true;
-            return svc.AddPaymentTransactionToOrder(o, ot, this.BVApp);
+            return svc.AddPaymentTransactionToOrder(o, ot, this.MTApp);
         }      
              
         // Purchase Order
@@ -201,7 +201,7 @@ namespace MerchantTribe.Commerce.Orders
                 ot.LinkedToTransaction = existing.IdAsString;
                 ot.Success = true;                
             }
-            return svc.AddPaymentTransactionToOrder(o, ot, this.BVApp);
+            return svc.AddPaymentTransactionToOrder(o, ot, this.MTApp);
         }
         private OrderTransaction LocateExistingPurchaseOrder(string poNumber)
         {
@@ -241,7 +241,7 @@ namespace MerchantTribe.Commerce.Orders
             t.Action = ActionType.PurchaseOrderInfo;
             OrderTransaction ot = new OrderTransaction(t);
             ot.Success = true;
-            return svc.AddPaymentTransactionToOrder(o, ot, this.BVApp);
+            return svc.AddPaymentTransactionToOrder(o, ot, this.MTApp);
         }
 
         // CompanyAccount
@@ -273,7 +273,7 @@ namespace MerchantTribe.Commerce.Orders
                 ot.LinkedToTransaction = existing.IdAsString;
                 ot.Success = true;
             }
-            return svc.AddPaymentTransactionToOrder(o, ot, this.BVApp);
+            return svc.AddPaymentTransactionToOrder(o, ot, this.MTApp);
         }
         private OrderTransaction LocateExistingCompanyAccount(string accountNumber)
         {
@@ -313,7 +313,7 @@ namespace MerchantTribe.Commerce.Orders
             t.Action = ActionType.CompanyAccountInfo;
             OrderTransaction ot = new OrderTransaction(t);
             ot.Success = true;
-            return svc.AddPaymentTransactionToOrder(o, ot, this.BVApp);
+            return svc.AddPaymentTransactionToOrder(o, ot, this.MTApp);
         }
 
         // Credit Cards
@@ -325,7 +325,7 @@ namespace MerchantTribe.Commerce.Orders
             t.Action = ActionType.CreditCardInfo;
             OrderTransaction ot = new OrderTransaction(t);
             ot.Success = true;
-            return svc.AddPaymentTransactionToOrder(o, ot, this.BVApp);
+            return svc.AddPaymentTransactionToOrder(o, ot, this.MTApp);
         }
         public bool CreditCardHold(string infoTransactionId, decimal amount)
         {
@@ -346,7 +346,7 @@ namespace MerchantTribe.Commerce.Orders
             {
                 ot.Success = false;
                 ot.Messages = "Transaction must be CC info type to process.";
-                return svc.AddPaymentTransactionToOrder(o, ot, this.BVApp);
+                return svc.AddPaymentTransactionToOrder(o, ot, this.MTApp);
             }
             
             RequestContext context = RequestContext.GetCurrentRequestContext();
@@ -358,7 +358,7 @@ namespace MerchantTribe.Commerce.Orders
                 ot.LinkedToTransaction = infoTransaction.IdAsString;
             }
 
-            return svc.AddPaymentTransactionToOrder(o, ot, this.BVApp);         
+            return svc.AddPaymentTransactionToOrder(o, ot, this.MTApp);         
         }
         public List<OrderTransaction> CreditCardInfoListAll()
         {
@@ -452,7 +452,7 @@ namespace MerchantTribe.Commerce.Orders
             {
                 ot.Success = false;
                 ot.Messages = "Transaction must be CC hold type to process.";
-                return svc.AddPaymentTransactionToOrder(o, ot, this.BVApp);
+                return svc.AddPaymentTransactionToOrder(o, ot, this.MTApp);
             }
 
             RequestContext context = RequestContext.GetCurrentRequestContext();
@@ -463,7 +463,7 @@ namespace MerchantTribe.Commerce.Orders
                 ot = new OrderTransaction(t);
                 ot.LinkedToTransaction = holdTransaction.IdAsString;
             }
-            return svc.AddPaymentTransactionToOrder(o, ot, this.BVApp);
+            return svc.AddPaymentTransactionToOrder(o, ot, this.MTApp);
         }
         public bool CreditCardCharge(string infoTransactionId, decimal amount)
         {
@@ -484,7 +484,7 @@ namespace MerchantTribe.Commerce.Orders
             {
                 ot.Success = false;
                 ot.Messages = "Transaction must be CC info type to process.";
-                return svc.AddPaymentTransactionToOrder(o, ot, this.BVApp);
+                return svc.AddPaymentTransactionToOrder(o, ot, this.MTApp);
             }
 
             RequestContext context = RequestContext.GetCurrentRequestContext();
@@ -496,7 +496,7 @@ namespace MerchantTribe.Commerce.Orders
                 ot.LinkedToTransaction = infoTransaction.IdAsString;
             }
 
-            return svc.AddPaymentTransactionToOrder(o, ot, this.BVApp);
+            return svc.AddPaymentTransactionToOrder(o, ot, this.MTApp);
         }
         public bool CreditCardRefund(string previousTransaction, decimal amount)
         {
@@ -521,7 +521,7 @@ namespace MerchantTribe.Commerce.Orders
             {
                 ot.Success = false;
                 ot.Messages = "Transaction must be CC capture or charge type to refund.";
-                return svc.AddPaymentTransactionToOrder(o, ot, this.BVApp);
+                return svc.AddPaymentTransactionToOrder(o, ot, this.MTApp);
             }
 
             RequestContext context = RequestContext.GetCurrentRequestContext();
@@ -532,7 +532,7 @@ namespace MerchantTribe.Commerce.Orders
                 ot = new OrderTransaction(t);
                 ot.LinkedToTransaction = previousTransaction.IdAsString;
             }
-            return svc.AddPaymentTransactionToOrder(o, ot, this.BVApp);
+            return svc.AddPaymentTransactionToOrder(o, ot, this.MTApp);
         }
         public bool CreditCardVoid(string previousTransaction, decimal amount)
         {
@@ -555,7 +555,7 @@ namespace MerchantTribe.Commerce.Orders
             {
                 ot.Success = false;
                 ot.Messages = "Transaction can not be voided.";
-                return svc.AddPaymentTransactionToOrder(o, ot, this.BVApp);
+                return svc.AddPaymentTransactionToOrder(o, ot, this.MTApp);
             }
 
             RequestContext context = RequestContext.GetCurrentRequestContext();
@@ -573,7 +573,7 @@ namespace MerchantTribe.Commerce.Orders
                     svc.Transactions.Update(previousTransaction);
                 }
             }
-            return svc.AddPaymentTransactionToOrder(o, ot, this.BVApp);
+            return svc.AddPaymentTransactionToOrder(o, ot, this.MTApp);
         }
         public bool CreditCardCompleteAllCreditCards()
         {
@@ -618,7 +618,7 @@ namespace MerchantTribe.Commerce.Orders
 
                         Orders.OrderTransaction ot = new Orders.OrderTransaction(t);
                         ot.LinkedToTransaction = p.IdAsString;
-                        svc.AddPaymentTransactionToOrder(o, ot, this.BVApp);
+                        svc.AddPaymentTransactionToOrder(o, ot, this.MTApp);
 
                         if (t.Result.Succeeded == false) result = false;
 
@@ -631,7 +631,7 @@ namespace MerchantTribe.Commerce.Orders
 
                 Orders.OrderPaymentStatus previousPaymentStatus = o.PaymentStatus;
                 svc.EvaluatePaymentStatus(o);
-                BusinessRules.OrderTaskContext context = new BusinessRules.OrderTaskContext(this.BVApp);
+                BusinessRules.OrderTaskContext context = new BusinessRules.OrderTaskContext(this.MTApp);
                 context.Order = o;
                 context.UserId = o.UserID;
                 context.Inputs.Add("bvsoftware", "PreviousPaymentStatus", previousPaymentStatus.ToString());
@@ -651,7 +651,7 @@ namespace MerchantTribe.Commerce.Orders
             ot.Success = true;
             ot.RefNum1 = token;
             ot.RefNum2 = payerId;
-            return svc.AddPaymentTransactionToOrder(o, ot, this.BVApp);
+            return svc.AddPaymentTransactionToOrder(o, ot, this.MTApp);
         }
         public bool PayPalExpressHasInfo()
         {
@@ -751,7 +751,7 @@ namespace MerchantTribe.Commerce.Orders
             {
                 ot.Success = false;
                 ot.Messages = "Transaction must be PayPal info type to process.";
-                return svc.AddPaymentTransactionToOrder(o, ot, this.BVApp);
+                return svc.AddPaymentTransactionToOrder(o, ot, this.MTApp);
             }
 
             Payment.Method.PaypalExpress processor = new Payment.Method.PaypalExpress();
@@ -762,7 +762,7 @@ namespace MerchantTribe.Commerce.Orders
                 ot.LinkedToTransaction = infoTransaction.IdAsString;
             }
 
-            return svc.AddPaymentTransactionToOrder(o, ot, this.BVApp);
+            return svc.AddPaymentTransactionToOrder(o, ot, this.MTApp);
         }
         public bool PayPalExpressCapture(string holdTransactionId, decimal amount)
         {
@@ -784,7 +784,7 @@ namespace MerchantTribe.Commerce.Orders
             {
                 ot.Success = false;
                 ot.Messages = "Transaction must be PayPal hold type to process.";
-                return svc.AddPaymentTransactionToOrder(o, ot, this.BVApp);
+                return svc.AddPaymentTransactionToOrder(o, ot, this.MTApp);
             }
 
             Payment.Method.PaypalExpress processor = new Payment.Method.PaypalExpress();
@@ -794,7 +794,7 @@ namespace MerchantTribe.Commerce.Orders
                 ot = new OrderTransaction(t);
                 ot.LinkedToTransaction = holdTransaction.IdAsString;
             }
-            return svc.AddPaymentTransactionToOrder(o, ot, this.BVApp);
+            return svc.AddPaymentTransactionToOrder(o, ot, this.MTApp);
         }
         public bool PayPalExpressCharge(string infoTransactionId, decimal amount)
         {
@@ -816,7 +816,7 @@ namespace MerchantTribe.Commerce.Orders
             {
                 ot.Success = false;
                 ot.Messages = "Transaction must be PayPal info type to process.";
-                return svc.AddPaymentTransactionToOrder(o, ot, this.BVApp);
+                return svc.AddPaymentTransactionToOrder(o, ot, this.MTApp);
             }
 
             Payment.Method.PaypalExpress processor = new Payment.Method.PaypalExpress();
@@ -827,7 +827,7 @@ namespace MerchantTribe.Commerce.Orders
                 ot.LinkedToTransaction = infoTransaction.IdAsString;
             }
 
-            return svc.AddPaymentTransactionToOrder(o, ot, this.BVApp);
+            return svc.AddPaymentTransactionToOrder(o, ot, this.MTApp);
         }
         public bool PayPalExpressRefund(string previousTransaction, decimal amount)
         {
@@ -851,7 +851,7 @@ namespace MerchantTribe.Commerce.Orders
             {
                 ot.Success = false;
                 ot.Messages = "Transaction must be PayPal capture or charge type to refund.";
-                return svc.AddPaymentTransactionToOrder(o, ot, this.BVApp);
+                return svc.AddPaymentTransactionToOrder(o, ot, this.MTApp);
             }
 
             Payment.Method.PaypalExpress processor = new Payment.Method.PaypalExpress();
@@ -861,7 +861,7 @@ namespace MerchantTribe.Commerce.Orders
                 ot = new OrderTransaction(t);
                 ot.LinkedToTransaction = previousTransaction.IdAsString;
             }
-            return svc.AddPaymentTransactionToOrder(o, ot, this.BVApp);
+            return svc.AddPaymentTransactionToOrder(o, ot, this.MTApp);
         }
         public bool PayPalExpressVoid(string previousTransaction, decimal amount)
         {
@@ -883,7 +883,7 @@ namespace MerchantTribe.Commerce.Orders
             {
                 ot.Success = false;
                 ot.Messages = "Transaction can not be voided.";
-                return svc.AddPaymentTransactionToOrder(o, ot, this.BVApp);
+                return svc.AddPaymentTransactionToOrder(o, ot, this.MTApp);
             }
 
             Payment.Method.PaypalExpress processor = new Payment.Method.PaypalExpress();  
@@ -900,7 +900,7 @@ namespace MerchantTribe.Commerce.Orders
                     svc.Transactions.Update(previousTransaction);
                 }
             }
-            return svc.AddPaymentTransactionToOrder(o, ot, this.BVApp);
+            return svc.AddPaymentTransactionToOrder(o, ot, this.MTApp);
         }
         public bool PayPalExpressCompleteAllPayments()
         {
@@ -945,7 +945,7 @@ namespace MerchantTribe.Commerce.Orders
                                                 
                         Orders.OrderTransaction ot = new Orders.OrderTransaction(t);
                         ot.LinkedToTransaction = p.IdAsString;
-                        svc.AddPaymentTransactionToOrder(o, ot, this.BVApp);
+                        svc.AddPaymentTransactionToOrder(o, ot, this.MTApp);
 
                         if (t.Result.Succeeded == false) result = false;
 
@@ -958,7 +958,7 @@ namespace MerchantTribe.Commerce.Orders
 
                 Orders.OrderPaymentStatus previousPaymentStatus = o.PaymentStatus;
                 svc.EvaluatePaymentStatus(o);
-                BusinessRules.OrderTaskContext context = new BusinessRules.OrderTaskContext(this.BVApp);
+                BusinessRules.OrderTaskContext context = new BusinessRules.OrderTaskContext(this.MTApp);
                 context.Order = o;
                 context.UserId = o.UserID;
                 context.Inputs.Add("bvsoftware", "PreviousPaymentStatus", previousPaymentStatus.ToString());
@@ -992,7 +992,7 @@ namespace MerchantTribe.Commerce.Orders
             t.Action = ActionType.RewardPointsInfo;
             OrderTransaction ot = new OrderTransaction(t);
             ot.Success = true;
-            return svc.AddPaymentTransactionToOrder(o, ot, this.BVApp);
+            return svc.AddPaymentTransactionToOrder(o, ot, this.MTApp);
         }
         private OrderTransaction FindOrCreateRewardsInfo(string infoTransactionId)
         {
@@ -1035,7 +1035,7 @@ namespace MerchantTribe.Commerce.Orders
             {
                 ot.Success = false;
                 ot.Messages = "Transaction must be Rewards Points info type to process.";
-                return svc.AddPaymentTransactionToOrder(o, ot, this.BVApp);
+                return svc.AddPaymentTransactionToOrder(o, ot, this.MTApp);
             }
 
 
@@ -1053,7 +1053,7 @@ namespace MerchantTribe.Commerce.Orders
                 ot.LinkedToTransaction = infoTransaction.IdAsString;
             }
 
-            return svc.AddPaymentTransactionToOrder(o, ot, this.BVApp);
+            return svc.AddPaymentTransactionToOrder(o, ot, this.MTApp);
         }
         public bool RewardsPointsUnHold(string holdTransactionId, decimal amount)
         {
@@ -1076,7 +1076,7 @@ namespace MerchantTribe.Commerce.Orders
             {
                 ot.Success = false;
                 ot.Messages = "Transaction must be Rewards Points Hold type to process.";
-                return svc.AddPaymentTransactionToOrder(o, ot, this.BVApp);
+                return svc.AddPaymentTransactionToOrder(o, ot, this.MTApp);
             }
             
             Payment.RewardPoints processor = new RewardPoints();
@@ -1099,7 +1099,7 @@ namespace MerchantTribe.Commerce.Orders
                 }
             }
 
-            return svc.AddPaymentTransactionToOrder(o, ot, this.BVApp);
+            return svc.AddPaymentTransactionToOrder(o, ot, this.MTApp);
         }
         public List<OrderTransaction> RewardsPointsInfoListAll()
         {
@@ -1177,7 +1177,7 @@ namespace MerchantTribe.Commerce.Orders
             {
                 ot.Success = false;
                 ot.Messages = "Transaction must be Rewards Points hold type to process.";
-                return svc.AddPaymentTransactionToOrder(o, ot, this.BVApp);
+                return svc.AddPaymentTransactionToOrder(o, ot, this.MTApp);
             }
 
             Payment.RewardPoints processor = new RewardPoints();
@@ -1193,7 +1193,7 @@ namespace MerchantTribe.Commerce.Orders
                 ot = new OrderTransaction(t);
                 ot.LinkedToTransaction = holdTransaction.IdAsString;
             }
-            return svc.AddPaymentTransactionToOrder(o, ot, this.BVApp);
+            return svc.AddPaymentTransactionToOrder(o, ot, this.MTApp);
         }
         public bool RewardsPointsCharge(string infoTransactionId, decimal amount)
         {
@@ -1215,7 +1215,7 @@ namespace MerchantTribe.Commerce.Orders
             {
                 ot.Success = false;
                 ot.Messages = "Transaction must be Rewards Points info type to process.";
-                return svc.AddPaymentTransactionToOrder(o, ot, this.BVApp);
+                return svc.AddPaymentTransactionToOrder(o, ot, this.MTApp);
             }
 
             Payment.RewardPoints processor = new RewardPoints();
@@ -1231,7 +1231,7 @@ namespace MerchantTribe.Commerce.Orders
                 ot.LinkedToTransaction = infoTransaction.IdAsString;
             }
 
-            return svc.AddPaymentTransactionToOrder(o, ot, this.BVApp);
+            return svc.AddPaymentTransactionToOrder(o, ot, this.MTApp);
         }
         public bool RewardsPointsRefund(string previousTransaction, decimal amount)
         {
@@ -1255,7 +1255,7 @@ namespace MerchantTribe.Commerce.Orders
             {
                 ot.Success = false;
                 ot.Messages = "Transaction must be Rewards Points capture or charge type to refund.";
-                return svc.AddPaymentTransactionToOrder(o, ot, this.BVApp);
+                return svc.AddPaymentTransactionToOrder(o, ot, this.MTApp);
             }
 
             Payment.RewardPoints processor = new RewardPoints();
@@ -1270,7 +1270,7 @@ namespace MerchantTribe.Commerce.Orders
                 ot = new OrderTransaction(t);
                 ot.LinkedToTransaction = previousTransaction.IdAsString;
             }
-            return svc.AddPaymentTransactionToOrder(o, ot, this.BVApp);
+            return svc.AddPaymentTransactionToOrder(o, ot, this.MTApp);
         }
         public bool RewardsPointsAcceptAll()
         {
@@ -1321,7 +1321,7 @@ namespace MerchantTribe.Commerce.Orders
 
                         Orders.OrderTransaction ot = new Orders.OrderTransaction(t);
                         ot.LinkedToTransaction = p.IdAsString;
-                        svc.AddPaymentTransactionToOrder(o, ot, this.BVApp);
+                        svc.AddPaymentTransactionToOrder(o, ot, this.MTApp);
 
                         if (t.Result.Succeeded == false) result = false;
 
@@ -1334,7 +1334,7 @@ namespace MerchantTribe.Commerce.Orders
 
                 Orders.OrderPaymentStatus previousPaymentStatus = o.PaymentStatus;
                 svc.EvaluatePaymentStatus(o);
-                BusinessRules.OrderTaskContext context = new BusinessRules.OrderTaskContext(this.BVApp);
+                BusinessRules.OrderTaskContext context = new BusinessRules.OrderTaskContext(this.MTApp);
                 context.Order = o;
                 context.UserId = o.UserID;
                 context.Inputs.Add("bvsoftware", "PreviousPaymentStatus", previousPaymentStatus.ToString());

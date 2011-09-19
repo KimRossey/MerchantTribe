@@ -27,9 +27,9 @@ namespace BVCommerce
         protected override void OnLoad(System.EventArgs e)
         {
             base.OnLoad(e);
-            themes = MyPage.BVApp.ThemeManager();
+            themes = MyPage.MTApp.ThemeManager();
 
-            if (!SessionManager.IsUserAuthenticated(MyPage.BVApp))
+            if (!SessionManager.IsUserAuthenticated(MyPage.MTApp))
             {
                 this.Visible = false;
             }
@@ -41,7 +41,7 @@ namespace BVCommerce
                     this.AddressBookImageButton.ImageUrl = themes.ButtonUrl("AddressBook", Request.IsSecureConnection);
                     if (SessionManager.GetCurrentUserId() != string.Empty)
                     {
-                        CustomerAccount user = MyPage.BVApp.CurrentCustomer;
+                        CustomerAccount user = MyPage.MTApp.CurrentCustomer;
                         if (user.Bvin != string.Empty)
                         {
                             if (user.Addresses.Count > 0)
@@ -133,7 +133,7 @@ namespace BVCommerce
 
         protected void AddressGridView_RowCommand(object sender, System.Web.UI.WebControls.GridViewCommandEventArgs e)
         {
-            CustomerAccount user = MyPage.BVApp.MembershipServices.Customers.Find(SessionManager.GetCurrentUserId());
+            CustomerAccount user = MyPage.MTApp.MembershipServices.Customers.Find(SessionManager.GetCurrentUserId());
 
             if (user != null && user.Bvin != string.Empty)
             {

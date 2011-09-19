@@ -18,7 +18,7 @@ namespace BVCommerce
 
         private void LoadProductGrid()
         {
-            ContentBlock b = MyPage.BVApp.ContentServices.Columns.FindBlock(this.BlockId);
+            ContentBlock b = MyPage.MTApp.ContentServices.Columns.FindBlock(this.BlockId);
             List<ContentBlockSettingListItem> myProducts = b.Lists.FindList("ProductGrid");
             if (myProducts != null)
             {
@@ -34,7 +34,7 @@ namespace BVCommerce
                     foreach (ContentBlockSettingListItem sett in myProducts)
                     {
                         string bvin = sett.Setting1;
-                        Product p = MyPage.BVApp.CatalogServices.Products.Find(bvin);
+                        Product p = MyPage.MTApp.CatalogServices.Products.Find(bvin);
                         if (p != null)
                         {
                             bool isLastInRow = false;
@@ -53,7 +53,7 @@ namespace BVCommerce
                             {
                                 column += 1;
                             }
-                            UserSpecificPrice price = MyPage.BVApp.PriceProduct(p, MyPage.BVApp.CurrentCustomer, null);
+                            UserSpecificPrice price = MyPage.MTApp.PriceProduct(p, MyPage.MTApp.CurrentCustomer, null);
                             MerchantTribe.Commerce.Utilities.HtmlRendering.RenderSingleProduct(ref sb, p, isLastInRow, isFirstInRow, this.Page, price);
                         }
 

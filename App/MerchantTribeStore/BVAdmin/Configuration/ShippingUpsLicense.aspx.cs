@@ -46,7 +46,7 @@ namespace BVCommerce.BVAdmin.Configuration
                 {
                     LoadStates();
 
-                    Address contactAddress = BVApp.ContactServices.Addresses.FindStoreContactAddress();
+                    Address contactAddress = MTApp.ContactServices.Addresses.FindStoreContactAddress();
 
                     Country c = Country.FindByBvin(contactAddress.CountryBvin);
                     if (c != null)
@@ -61,7 +61,7 @@ namespace BVCommerce.BVAdmin.Configuration
                     {
                         inState.SelectedValue = r.Abbreviation;
                     }
-                    inEmail.Text = BVApp.CurrentStore.Settings.MailServer.EmailForGeneral;
+                    inEmail.Text = MTApp.CurrentStore.Settings.MailServer.EmailForGeneral;
                     inPhone.Text = contactAddress.Phone;
                     inZip.Text = contactAddress.PostalCode;
 
@@ -160,7 +160,7 @@ namespace BVCommerce.BVAdmin.Configuration
                     if (UPSReg.AcceptLicense(WebAppSettings.ShippingUpsServer) == true)
                     {
 
-                        BVApp.CurrentStore.Settings.ShippingUpsLicense = UPSReg.LicenseNumber;
+                        MTApp.CurrentStore.Settings.ShippingUpsLicense = UPSReg.LicenseNumber;
 
                         // Complete Registration process here...
 
@@ -169,7 +169,7 @@ namespace BVCommerce.BVAdmin.Configuration
                         {
                             tempUsername += this.inPhone.Text.Trim().Substring(inPhone.Text.Trim().Length - 4, 4);
                         }
-                        UPSReg.Password = BVApp.MembershipServices.GeneratePasswordForCustomer(10);
+                        UPSReg.Password = MTApp.MembershipServices.GeneratePasswordForCustomer(10);
                         if (UPSReg.Password.Length > 10)
                         {
                             UPSReg.Password = UPSReg.Password.Substring(0, 10);
@@ -201,9 +201,9 @@ namespace BVCommerce.BVAdmin.Configuration
                                     UPSReg.RequestSuggestedUsername = false;
                                     if (UPSReg.Register(WebAppSettings.ShippingUpsServer) == true)
                                     {
-                                        BVApp.CurrentStore.Settings.ShippingUpsUsername = UPSReg.Username;
-                                        BVApp.CurrentStore.Settings.ShippingUpsPassword = UPSReg.Password;
-                                        BVApp.AccountServices.Stores.Update(BVApp.CurrentStore);
+                                        MTApp.CurrentStore.Settings.ShippingUpsUsername = UPSReg.Username;
+                                        MTApp.CurrentStore.Settings.ShippingUpsPassword = UPSReg.Password;
+                                        MTApp.AccountServices.Stores.Update(MTApp.CurrentStore);
                                         RegistrationComplete = true;
                                         break;
                                     }
@@ -236,7 +236,7 @@ namespace BVCommerce.BVAdmin.Configuration
             }
             Trace.Write("Ending btnAccept_OnClick");
 
-            BVApp.UpdateCurrentStore();
+            MTApp.UpdateCurrentStore();
         }
 
         void LoadStates()
@@ -268,7 +268,7 @@ namespace BVCommerce.BVAdmin.Configuration
 
         void LoadCountries()
         {
-            inCountry.DataSource = BVApp.CurrentStore.Settings.FindActiveCountries();
+            inCountry.DataSource = MTApp.CurrentStore.Settings.FindActiveCountries();
             inCountry.DataTextField = "DisplayName";
             inCountry.DataValueField = "Bvin";
             inCountry.DataBind();

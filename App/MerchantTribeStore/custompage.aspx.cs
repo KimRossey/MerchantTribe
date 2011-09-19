@@ -80,7 +80,7 @@ namespace BVCommerce
             }
 
             this.litMain.Text = MerchantTribe.Commerce.Utilities.TagReplacer.ReplaceContentTags(LocalCategory.Description,
-                                                                                            this.BVApp,
+                                                                                            this.MTApp,
                                                                                             "", Request.IsSecureConnection);
 
         }

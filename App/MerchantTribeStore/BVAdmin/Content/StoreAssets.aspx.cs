@@ -41,7 +41,7 @@ namespace BVCommerce
             sb.Append("<ul class=\"removablelist\">");
 
             List<MerchantTribe.Commerce.Storage.StoreAssetSnapshot> assets =
-                MerchantTribe.Commerce.Storage.DiskStorage.ListStoreAssets(BVApp.CurrentStore.Id);
+                MerchantTribe.Commerce.Storage.DiskStorage.ListStoreAssets(MTApp.CurrentStore.Id);
             foreach (MerchantTribe.Commerce.Storage.StoreAssetSnapshot snapshot in assets)
             {
                 sb.Append("<li id=\"" + snapshot.FileName + "\">");
@@ -59,7 +59,7 @@ namespace BVCommerce
         {
             if (this.fileupload1.HasFile)
             {
-                MerchantTribe.Commerce.Storage.DiskStorage.UploadStoreAsset(BVApp.CurrentStore.Id, this.fileupload1.PostedFile);
+                MerchantTribe.Commerce.Storage.DiskStorage.UploadStoreAsset(MTApp.CurrentStore.Id, this.fileupload1.PostedFile);
                 LoadTheInfo();
             }
         }

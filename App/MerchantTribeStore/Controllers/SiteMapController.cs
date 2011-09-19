@@ -18,7 +18,7 @@ namespace BVCommerce.Controllers
         // GET: /SiteMap/        
         public ActionResult Index()
         {
-            List<CategorySnapshot> allCats = BVApp.CatalogServices.Categories.FindAllPaged(1, 5000);
+            List<CategorySnapshot> allCats = MTApp.CatalogServices.Categories.FindAllPaged(1, 5000);
             ViewBag.Title = SiteTerms.GetTerm(SiteTermIds.SiteMap);            
             return View(allCats);
         }
@@ -26,7 +26,7 @@ namespace BVCommerce.Controllers
         [OutputCache(VaryByHeader = "Host", VaryByParam = "none", VaryByCustom = "disablecsscaching", Duration = 150)]
         public ActionResult Xml()
         {
-            string sitemap = SiteMapGenerator.BuildForStore(this.BVApp);
+            string sitemap = SiteMapGenerator.BuildForStore(this.MTApp);
             return Content(sitemap, "text/xml");             
         }
      

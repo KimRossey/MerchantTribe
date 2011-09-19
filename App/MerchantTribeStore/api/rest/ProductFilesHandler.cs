@@ -12,7 +12,7 @@ namespace BVCommerce.api.rest
 {
     public class ProductFilesHandler: BaseRestHandler
     {
-        public ProductFilesHandler(MerchantTribe.Commerce.BVApplication app)
+        public ProductFilesHandler(MerchantTribe.Commerce.MerchantTribeApplication app)
             : base(app)
         {
 
@@ -27,7 +27,7 @@ namespace BVCommerce.api.rest
                 // Find One Specific Category
                 ApiResponse<ProductFileDTO> response = new ApiResponse<ProductFileDTO>();                                
                 string bvin = FirstParameter(parameters);
-                ProductFile item = BVApp.CatalogServices.ProductFiles.Find(bvin);
+                ProductFile item = MTApp.CatalogServices.ProductFiles.Find(bvin);
                 if (item == null)
                 {
                     response.Errors.Add(new ApiError("NULL", "Could not locate that item. Check bvin and try again."));
@@ -65,16 +65,16 @@ namespace BVCommerce.api.rest
 
             if (bvin == string.Empty)
             {
-                if (BVApp.CatalogServices.ProductFiles.Create(item))
+                if (MTApp.CatalogServices.ProductFiles.Create(item))
                 {
                     bvin = item.Bvin;
                 }
             }
             else
             {
-                BVApp.CatalogServices.ProductFiles.Update(item);
+                MTApp.CatalogServices.ProductFiles.Update(item);
             }
-            ProductFile resultItem = BVApp.CatalogServices.ProductFiles.Find(bvin);                    
+            ProductFile resultItem = MTApp.CatalogServices.ProductFiles.Find(bvin);                    
             if (resultItem != null) response.Content = resultItem.ToDto();
             
             data = MerchantTribe.Web.Json.ObjectToJson(response);            
@@ -88,7 +88,7 @@ namespace BVCommerce.api.rest
             ApiResponse<bool> response = new ApiResponse<bool>();
 
             // Single Item Delete
-            response.Content = BVApp.CatalogServices.ProductFiles.Delete(bvin);
+            response.Content = MTApp.CatalogServices.ProductFiles.Delete(bvin);
 
             data = MerchantTribe.Web.Json.ObjectToJson(response);
             return data;

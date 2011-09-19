@@ -58,7 +58,7 @@ namespace BVCommerce.BVAdmin.Marketing
 
         private void LoadData()
         {
-            List<Promotion> items = BVApp.MarketingServices.Promotions.FindAllWithFilter(this.keyword,
+            List<Promotion> items = MTApp.MarketingServices.Promotions.FindAllWithFilter(this.keyword,
                                                                                         this.chkShowDisabled.Checked,
                                                                                         currentPage, pageSize, ref rowCount);
             this.lblResults.Text = rowCount.ToString() + " found";
@@ -135,9 +135,9 @@ namespace BVCommerce.BVAdmin.Marketing
             if (temp >= 0)
             {
                 PreDefinedPromotion promo = (PreDefinedPromotion)temp;
-                Promotion predefined = BVApp.MarketingServices.GetPredefinedPromotion(promo);
+                Promotion predefined = MTApp.MarketingServices.GetPredefinedPromotion(promo);
                 if (predefined == null) return;
-                BVApp.MarketingServices.Promotions.Create(predefined);
+                MTApp.MarketingServices.Promotions.Create(predefined);
                 newId = predefined.Id;
             }
             else
@@ -147,7 +147,7 @@ namespace BVCommerce.BVAdmin.Marketing
                     Promotion sale = new Promotion();
                     sale.Mode = PromotionType.Sale;
                     sale.Name = "New Custom Sale";
-                    BVApp.MarketingServices.Promotions.Create(sale);
+                    MTApp.MarketingServices.Promotions.Create(sale);
                     newId = sale.Id;
                 }
                 else
@@ -155,7 +155,7 @@ namespace BVCommerce.BVAdmin.Marketing
                     Promotion offer = new Promotion();
                     offer.Mode = PromotionType.Offer;
                     offer.Name = "New Custom Offer";
-                    BVApp.MarketingServices.Promotions.Create(offer);
+                    MTApp.MarketingServices.Promotions.Create(offer);
                     newId = offer.Id;
                 }
             }

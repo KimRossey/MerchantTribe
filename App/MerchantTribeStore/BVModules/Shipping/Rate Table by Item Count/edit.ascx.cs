@@ -40,7 +40,7 @@ namespace BVCommerce
 
         private void LoadZones()
         {
-            this.lstZones.DataSource = MyPage.BVApp.OrderServices.ShippingZones.FindForStore(MyPage.BVApp.CurrentStore.Id);
+            this.lstZones.DataSource = MyPage.MTApp.OrderServices.ShippingZones.FindForStore(MyPage.MTApp.CurrentStore.Id);
             this.lstZones.DataTextField = "Name";
             this.lstZones.DataValueField = "id";
             this.lstZones.DataBind();
@@ -106,7 +106,7 @@ namespace BVCommerce
             settings.AddLevel(r);
 
             ShippingMethod.Settings = settings;
-            MyPage.BVApp.OrderServices.ShippingMethods.Update(ShippingMethod);
+            MyPage.MTApp.OrderServices.ShippingMethods.Update(ShippingMethod);
             LoadLevels();
         }
 
@@ -123,7 +123,7 @@ namespace BVCommerce
             settings.RemoveLevel(r);
 
             ShippingMethod.Settings = settings;
-            MyPage.BVApp.OrderServices.ShippingMethods.Update(ShippingMethod);
+            MyPage.MTApp.OrderServices.ShippingMethods.Update(ShippingMethod);
             LoadLevels();
         }
 

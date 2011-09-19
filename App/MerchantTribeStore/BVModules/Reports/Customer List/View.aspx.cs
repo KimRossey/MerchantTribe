@@ -41,7 +41,7 @@ namespace BVCommerce
 
             RenderHeader();
 
-            List<CustomerAccount> users = BVApp.MembershipServices.Customers.FindAll();
+            List<CustomerAccount> users = MTApp.MembershipServices.Customers.FindAll();
 
             if (users != null)
             {
@@ -67,7 +67,7 @@ namespace BVCommerce
             {
                 for (int i = 0; i <= s.Length - 1; i++)
                 {
-                    Product p = BVApp.CatalogServices.Products.FindBySku(CleanInputForSQL(s[i]));
+                    Product p = MTApp.CatalogServices.Products.FindBySku(CleanInputForSQL(s[i]));
                     if (p != null)
                     {
                         _SelectedProducts.Add(p);
@@ -103,7 +103,7 @@ namespace BVCommerce
         {
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
             int totalCount = 0;
-            List<OrderSnapshot> orders = BVApp.OrderServices.Orders.FindByUserId(u.Bvin, 1, int.MaxValue, ref totalCount);
+            List<OrderSnapshot> orders = MTApp.OrderServices.Orders.FindByUserId(u.Bvin, 1, int.MaxValue, ref totalCount);
             if (orders == null)
             {
                 orders = new List<OrderSnapshot>();
@@ -289,7 +289,7 @@ namespace BVCommerce
             {
                 if (o.IsPlaced)
                 {
-                    Order fullOrder = BVApp.OrderServices.Orders.FindForCurrentStore(o.bvin);
+                    Order fullOrder = MTApp.OrderServices.Orders.FindForCurrentStore(o.bvin);
 
                     foreach (LineItem li in fullOrder.Items)
                     {

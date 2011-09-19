@@ -26,7 +26,7 @@ namespace BVCommerce
 
         private void Remove(string themeid, string buttonname)
         {
-            if (MerchantTribe.Commerce.Storage.DiskStorage.RemoveThemeButton(BVApp.CurrentStore.Id, themeid, buttonname))
+            if (MerchantTribe.Commerce.Storage.DiskStorage.RemoveThemeButton(MTApp.CurrentStore.Id, themeid, buttonname))
             {
                 this.litOutput.Text = "{\"result\":true}";
             }

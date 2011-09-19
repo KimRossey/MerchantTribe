@@ -7,12 +7,12 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
 		public override bool Execute(OrderTaskContext context)
 		{
 			if (context.UserId != string.Empty) {
-				Membership.CustomerAccount user = context.BVApp.MembershipServices.Customers.Find(context.UserId);
+				Membership.CustomerAccount user = context.MTApp.MembershipServices.Customers.Find(context.UserId);
                 if (user == null) return true;
 
-                context.BVApp.MembershipServices.CustomerSetShippingAddress(user,context.Order.ShippingAddress);
-                context.BVApp.MembershipServices.CustomerSetBillingAddress(user,context.Order.BillingAddress);
-				context.BVApp.MembershipServices.UpdateCustomer(user);
+                context.MTApp.MembershipServices.CustomerSetShippingAddress(user,context.Order.ShippingAddress);
+                context.MTApp.MembershipServices.CustomerSetBillingAddress(user,context.Order.BillingAddress);
+				context.MTApp.MembershipServices.UpdateCustomer(user);
 			}
 			return true;
 		}

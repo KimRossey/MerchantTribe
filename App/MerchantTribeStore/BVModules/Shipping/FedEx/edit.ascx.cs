@@ -43,12 +43,12 @@ namespace BVCommerce
 
         //private void LoadSharedSettingsManager()
         //{
-        //    ShippingMethod m = MyPage.BVApp.OrderServices.ShippingMethods.Find(this.BlockId);
+        //    ShippingMethod m = MyPage.MTApp.OrderServices.ShippingMethods.Find(this.BlockId);
         //}
 
         private void LoadZones()
         {
-            this.lstZones.DataSource = MyPage.BVApp.OrderServices.ShippingZones.FindForStore(MyPage.BVApp.CurrentStore.Id);
+            this.lstZones.DataSource = MyPage.MTApp.OrderServices.ShippingZones.FindForStore(MyPage.MTApp.CurrentStore.Id);
             this.lstZones.DataTextField = "Name";
             this.lstZones.DataValueField = "id";
             this.lstZones.DataBind();
@@ -103,10 +103,10 @@ namespace BVCommerce
 
 
             //Globals
-            if (this.lstPackaging.Items.FindByValue(MyPage.BVApp.CurrentStore.Settings.ShippingFedExDefaultPackaging.ToString()) != null)
+            if (this.lstPackaging.Items.FindByValue(MyPage.MTApp.CurrentStore.Settings.ShippingFedExDefaultPackaging.ToString()) != null)
             {
                 this.lstPackaging.ClearSelection();
-                this.lstPackaging.Items.FindByValue(MyPage.BVApp.CurrentStore.Settings.ShippingFedExDefaultPackaging.ToString()).Selected = true;
+                this.lstPackaging.Items.FindByValue(MyPage.MTApp.CurrentStore.Settings.ShippingFedExDefaultPackaging.ToString()).Selected = true;
             }
             if (this.lstPackaging.Items.FindByValue(Settings.Packaging.ToString()) != null)
             {
@@ -114,22 +114,22 @@ namespace BVCommerce
                 this.lstPackaging.Items.FindByValue(Settings.Packaging.ToString()).Selected = true;
             }
 
-            this.AccountNumberField.Text = MyPage.BVApp.CurrentStore.Settings.ShippingFedExAccountNumber;
-            this.MeterNumberField.Text = MyPage.BVApp.CurrentStore.Settings.ShippingFedExMeterNumber;
-            if (this.lstDefaultPackaging.Items.FindByValue(MyPage.BVApp.CurrentStore.Settings.ShippingFedExDefaultPackaging.ToString()) != null)
+            this.AccountNumberField.Text = MyPage.MTApp.CurrentStore.Settings.ShippingFedExAccountNumber;
+            this.MeterNumberField.Text = MyPage.MTApp.CurrentStore.Settings.ShippingFedExMeterNumber;
+            if (this.lstDefaultPackaging.Items.FindByValue(MyPage.MTApp.CurrentStore.Settings.ShippingFedExDefaultPackaging.ToString()) != null)
             {
                 this.lstDefaultPackaging.ClearSelection();
-                this.lstDefaultPackaging.Items.FindByValue(MyPage.BVApp.CurrentStore.Settings.ShippingFedExDefaultPackaging.ToString()).Selected = true;
+                this.lstDefaultPackaging.Items.FindByValue(MyPage.MTApp.CurrentStore.Settings.ShippingFedExDefaultPackaging.ToString()).Selected = true;
             }
-            this.chkListRates.Checked = MyPage.BVApp.CurrentStore.Settings.ShippingFedExUseListRates;
-            if (this.lstDropOffType.Items.FindByValue(MyPage.BVApp.CurrentStore.Settings.ShippingFedExDropOffType.ToString()) != null)
+            this.chkListRates.Checked = MyPage.MTApp.CurrentStore.Settings.ShippingFedExUseListRates;
+            if (this.lstDropOffType.Items.FindByValue(MyPage.MTApp.CurrentStore.Settings.ShippingFedExDropOffType.ToString()) != null)
             {
                 this.lstDropOffType.ClearSelection();
-                this.lstDropOffType.Items.FindByValue(MyPage.BVApp.CurrentStore.Settings.ShippingFedExDropOffType.ToString()).Selected = true;
+                this.lstDropOffType.Items.FindByValue(MyPage.MTApp.CurrentStore.Settings.ShippingFedExDropOffType.ToString()).Selected = true;
             }
-            this.chkResidential.Checked = MyPage.BVApp.CurrentStore.Settings.ShippingFedExForceResidentialRates;
+            this.chkResidential.Checked = MyPage.MTApp.CurrentStore.Settings.ShippingFedExForceResidentialRates;
 
-            this.chkDiagnostics.Checked = MyPage.BVApp.CurrentStore.Settings.ShippingFedExDiagnostics;
+            this.chkDiagnostics.Checked = MyPage.MTApp.CurrentStore.Settings.ShippingFedExDiagnostics;
 
             
         }
@@ -149,13 +149,13 @@ namespace BVCommerce
             ShippingMethod.Settings.Merge(Settings);
 
             // Globals
-            MyPage.BVApp.CurrentStore.Settings.ShippingFedExAccountNumber = this.AccountNumberField.Text.Trim();
-            MyPage.BVApp.CurrentStore.Settings.ShippingFedExMeterNumber = this.MeterNumberField.Text.Trim();
-            MyPage.BVApp.CurrentStore.Settings.ShippingFedExDefaultPackaging = int.Parse(this.lstDefaultPackaging.SelectedValue);
-            MyPage.BVApp.CurrentStore.Settings.ShippingFedExDropOffType = int.Parse(this.lstDropOffType.SelectedValue);
-            MyPage.BVApp.CurrentStore.Settings.ShippingFedExForceResidentialRates = this.chkResidential.Checked;
-            MyPage.BVApp.CurrentStore.Settings.ShippingFedExUseListRates = this.chkListRates.Checked;
-            MyPage.BVApp.CurrentStore.Settings.ShippingFedExDiagnostics = this.chkDiagnostics.Checked;            
+            MyPage.MTApp.CurrentStore.Settings.ShippingFedExAccountNumber = this.AccountNumberField.Text.Trim();
+            MyPage.MTApp.CurrentStore.Settings.ShippingFedExMeterNumber = this.MeterNumberField.Text.Trim();
+            MyPage.MTApp.CurrentStore.Settings.ShippingFedExDefaultPackaging = int.Parse(this.lstDefaultPackaging.SelectedValue);
+            MyPage.MTApp.CurrentStore.Settings.ShippingFedExDropOffType = int.Parse(this.lstDropOffType.SelectedValue);
+            MyPage.MTApp.CurrentStore.Settings.ShippingFedExForceResidentialRates = this.chkResidential.Checked;
+            MyPage.MTApp.CurrentStore.Settings.ShippingFedExUseListRates = this.chkListRates.Checked;
+            MyPage.MTApp.CurrentStore.Settings.ShippingFedExDiagnostics = this.chkDiagnostics.Checked;            
         }
 
         protected void CustomValidator1_ServerValidate(object source, System.Web.UI.WebControls.ServerValidateEventArgs args)

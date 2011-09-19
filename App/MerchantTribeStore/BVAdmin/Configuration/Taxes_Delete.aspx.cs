@@ -16,7 +16,7 @@ namespace BVCommerce
             string taxid = Request.QueryString["id"];
             string scheduleId = Request.QueryString["sid"];
 
-            BVApp.OrderServices.Taxes.Delete(long.Parse(taxid));
+            MTApp.OrderServices.Taxes.Delete(long.Parse(taxid));
 
             Response.Redirect("Taxes_Edit.aspx?id=" + scheduleId);
         }

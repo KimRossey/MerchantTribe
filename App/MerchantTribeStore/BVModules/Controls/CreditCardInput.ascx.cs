@@ -125,7 +125,7 @@ namespace BVCommerce
 
         private void DisplayAcceptedCards()
         {
-            foreach (CardType t in MyPage.BVApp.CurrentStore.Settings.PaymentAcceptedCards)
+            foreach (CardType t in MyPage.MTApp.CurrentStore.Settings.PaymentAcceptedCards)
             {
                 switch (t)
                 {
@@ -273,7 +273,7 @@ namespace BVCommerce
 
 
             MerchantTribe.Payment.CardType cardTypeCheck = MerchantTribe.Payment.CardValidator.GetCardTypeFromNumber(this.CardNumber);
-            List<CardType> acceptedCards = MyPage.BVApp.CurrentStore.Settings.PaymentAcceptedCards;
+            List<CardType> acceptedCards = MyPage.MTApp.CurrentStore.Settings.PaymentAcceptedCards;
             if (!acceptedCards.Contains(cardTypeCheck))
             {
                 violations.Add(new RuleViolation("Card Type Not Accepted", "", "That card type is not accepted by this store. Please use a different card.", "cccardnumber"));
@@ -283,7 +283,7 @@ namespace BVCommerce
             ValidationHelper.RequiredMinimum(1, "Card Expiration Month", ExpirationMonth, violations, "ccexpmonth");
             ValidationHelper.Required("Name on Card", CardHolderName, violations, "cccardholder");
 
-            if (MyPage.BVApp.CurrentStore.Settings.PaymentCreditCardRequireCVV == true)
+            if (MyPage.MTApp.CurrentStore.Settings.PaymentCreditCardRequireCVV == true)
             {
                 ValidationHelper.RequiredMinimum(3, "Card Security Code", SecurityCode.Length, violations, "ccsecuritycode");
             }

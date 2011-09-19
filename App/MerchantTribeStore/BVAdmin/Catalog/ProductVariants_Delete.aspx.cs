@@ -21,7 +21,7 @@ namespace BVCommerce
 
         private void Remove(string ids)
         {
-            if ((BVApp.CatalogServices.ProductVariants.Delete(ids)))
+            if ((MTApp.CatalogServices.ProductVariants.Delete(ids)))
             {
                 this.litOutput.Text = "{\"result\":true}";
             }

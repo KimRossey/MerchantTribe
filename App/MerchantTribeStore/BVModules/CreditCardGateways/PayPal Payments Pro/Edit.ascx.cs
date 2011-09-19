@@ -34,7 +34,7 @@ namespace BVCommerce
         private void LoadData()
         {
             PayPalPaymentsProSettings settings = new PayPalPaymentsProSettings();
-            settings.Merge(MyPage.BVApp.CurrentStore.Settings.PaymentSettingsGet(this.BlockId));
+            settings.Merge(MyPage.MTApp.CurrentStore.Settings.PaymentSettingsGet(this.BlockId));
 
             this.UsernameTextBox.Text = settings.PayPalUserName;
             if (settings.PayPalPassword.Length > 0)
@@ -55,7 +55,7 @@ namespace BVCommerce
         private void SaveData()
         {
             PayPalPaymentsProSettings settings = new PayPalPaymentsProSettings();
-            settings.Merge(MyPage.BVApp.CurrentStore.Settings.PaymentSettingsGet(this.BlockId));
+            settings.Merge(MyPage.MTApp.CurrentStore.Settings.PaymentSettingsGet(this.BlockId));
 
             settings.PayPalUserName = this.UsernameTextBox.Text;
             if (this.PasswordTextBox.Text != "**********")
@@ -71,9 +71,9 @@ namespace BVCommerce
             //MyPage.Services.CurrentStore.PaypalMode = this.ModeRadioButtonList.SelectedValue;
             settings.DebugMode = this.chkDebugMode.Checked;
 
-            MyPage.BVApp.CurrentStore.Settings.PaymentSettingsSet(this.BlockId, settings);
+            MyPage.MTApp.CurrentStore.Settings.PaymentSettingsSet(this.BlockId, settings);
 
-            MyPage.BVApp.AccountServices.Stores.Update(MyPage.BVApp.CurrentStore);
+            MyPage.MTApp.AccountServices.Stores.Update(MyPage.MTApp.CurrentStore);
         }
 
     }

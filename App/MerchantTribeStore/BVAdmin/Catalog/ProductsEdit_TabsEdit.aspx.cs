@@ -43,7 +43,7 @@ namespace BVCommerce
 
         private void LoadItem()
         {
-            Product p = BVApp.CatalogServices.Products.Find(productBvin);
+            Product p = MTApp.CatalogServices.Products.Find(productBvin);
             if (p == null) return;
             if (p.Tabs.Count < 1) return;
 
@@ -64,7 +64,7 @@ namespace BVCommerce
             bool success = true;
 
 
-            Product p = BVApp.CatalogServices.Products.Find(productBvin);
+            Product p = MTApp.CatalogServices.Products.Find(productBvin);
             if (p == null) return false;
             if (p.Tabs.Count < 1) return false;
 
@@ -74,7 +74,7 @@ namespace BVCommerce
                 {
                     t.TabTitle = this.TabTitleField.Text.Trim();
                     t.HtmlData = this.HtmlDataField.Text.Trim();
-                    success = BVApp.CatalogServices.ProductsUpdateWithSearchRebuild(p);
+                    success = MTApp.CatalogServices.ProductsUpdateWithSearchRebuild(p);
                 }
             }
 

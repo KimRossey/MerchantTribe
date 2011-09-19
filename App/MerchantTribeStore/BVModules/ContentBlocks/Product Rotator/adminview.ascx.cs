@@ -19,7 +19,7 @@ namespace BVCommerce
 
         private void LoadProduct()
         {
-            ContentBlock b = MyPage.BVApp.ContentServices.Columns.FindBlock(this.BlockId);
+            ContentBlock b = MyPage.MTApp.ContentServices.Columns.FindBlock(this.BlockId);
             List<ContentBlockSettingListItem> myProducts = b.Lists.FindList("Products");
             if (myProducts != null)
             {
@@ -34,9 +34,9 @@ namespace BVCommerce
         private void SetProducts(ContentBlockSettingListItem data)
         {
             string bvin = data.Setting1;
-            Product p = MyPage.BVApp.CatalogServices.Products.Find(bvin);
+            Product p = MyPage.MTApp.CatalogServices.Products.Find(bvin);
             StringBuilder sb = new StringBuilder();
-            UserSpecificPrice price = MyPage.BVApp.PriceProduct(p, MyPage.BVApp.CurrentCustomer, null);
+            UserSpecificPrice price = MyPage.MTApp.PriceProduct(p, MyPage.MTApp.CurrentCustomer, null);
             HtmlRendering.RenderSingleProduct(ref sb, p, false, false, this.Page, price);
             this.litMain.Text = sb.ToString();
         }

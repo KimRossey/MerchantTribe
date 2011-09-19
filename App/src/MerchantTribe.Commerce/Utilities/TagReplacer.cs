@@ -8,9 +8,9 @@ namespace MerchantTribe.Commerce.Utilities
 {
     public class TagReplacer
     {
-        public static string ReplaceContentTags(string source, BVApplication bvapp, string itemCount, bool isSecureRequest)            
+        public static string ReplaceContentTags(string source, MerchantTribeApplication app, string itemCount, bool isSecureRequest)            
         {
-            Accounts.Store currentStore = bvapp.CurrentStore;
+            Accounts.Store currentStore = app.CurrentStore;
             string currentUserId = SessionManager.GetCurrentUserId();
 
             string output = source;
@@ -21,15 +21,15 @@ namespace MerchantTribe.Commerce.Utilities
             output = output.Replace("{{homelink}}", currentStore.RootUrl());
             output = output.Replace("{{logo}}", HtmlRendering.Logo(currentStore, isSecureRequest));
             output = output.Replace("{{logotext}}", HtmlRendering.LogoText(currentStore));
-            output = output.Replace("{{headermenu}}", HtmlRendering.HeaderMenu(bvapp.CurrentRequestContext.RoutingContext, bvapp.CurrentRequestContext));
+            output = output.Replace("{{headermenu}}", HtmlRendering.HeaderMenu(app.CurrentRequestContext.RoutingContext, app.CurrentRequestContext));
             output = output.Replace("{{cartlink}}", HtmlRendering.CartLink(currentStore, itemCount));
             output = output.Replace("{{copyright}}", "<span class=\"copyright\">Copyright &copy;" + DateTime.Now.Year.ToString() + "</span>");
-            output = output.Replace("{{headerlinks}}", HtmlRendering.HeaderLinks(bvapp, currentUserId));
+            output = output.Replace("{{headerlinks}}", HtmlRendering.HeaderLinks(app, currentUserId));
             output = output.Replace("{{searchform}}", HtmlRendering.SearchForm(currentStore));
             output = output.Replace("{{assets}}", MerchantTribe.Commerce.Storage.DiskStorage.BaseStoreThemeUrl(currentStore.Id, currentStore.Settings.ThemeId, isSecureRequest) + "assets/");
             output = output.Replace("{{img}}", MerchantTribe.Commerce.Storage.DiskStorage.BaseStoreUrl(currentStore.Id, isSecureRequest) + "storeassets/");
 
-            output = output.Replace("{{storeaddress}}", bvapp.ContactServices.Addresses.FindStoreContactAddress().ToHtmlString());
+            output = output.Replace("{{storeaddress}}", app.ContactServices.Addresses.FindStoreContactAddress().ToHtmlString());
 
             return output;
         }

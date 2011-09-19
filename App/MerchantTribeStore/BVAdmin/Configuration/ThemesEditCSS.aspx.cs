@@ -38,7 +38,7 @@ namespace BVCommerce
         private void LoadTheInfo(string themeId)
         {
             this.litEditor.Text = "<textarea id=\"EditForm\" name=\"EditForm\" style=\"width:700px;height:400px;overflow:auto;\" wrap=\"off\">";
-            this.litEditor.Text += BVApp.ThemeManager().CurrentStyleSheetContent(themeId);
+            this.litEditor.Text += MTApp.ThemeManager().CurrentStyleSheetContent(themeId);
             this.litEditor.Text += "</textarea>";
         }
 
@@ -52,7 +52,7 @@ namespace BVCommerce
         {
             string themeid = Request.QueryString["id"];
             string css = Request.Form["EditForm"];
-            bool result = BVApp.ThemeManager().UpdateStyleSheet(themeid, css);
+            bool result = MTApp.ThemeManager().UpdateStyleSheet(themeid, css);
             if (result)
             {
                 this.MessageBox1.ShowOk("Changes Saved!");

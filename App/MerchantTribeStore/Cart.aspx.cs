@@ -39,7 +39,7 @@ namespace BVCommerce
             base.OnLoad(e);
             WebForms.MakePageNonCacheable(this);
 
-            tm = BVApp.ThemeManager();
+            tm = MTApp.ThemeManager();
 
             this.btnContinueShopping.ImageUrl = tm.ButtonUrl("keepshopping", Request.IsSecureConnection);
             this.btnUpdateQuantities.ImageUrl = tm.ButtonUrl("update", Request.IsSecureConnection);
@@ -61,7 +61,7 @@ namespace BVCommerce
             if (this.Request.QueryString["quickaddid"] != null)
             {
                 string bvin = Request.QueryString["quickaddid"];
-                Product prod = BVApp.CatalogServices.Products.Find(bvin);
+                Product prod = MTApp.CatalogServices.Products.Find(bvin);
                 if (prod != null)
                 {
                     int quantity = 1;
@@ -73,16 +73,16 @@ namespace BVCommerce
                             quantity = val;
                         }
                     }
-                    Order o = SessionManager.CurrentShoppingCart(BVApp.OrderServices);
-                    LineItem li = BVApp.CatalogServices.ConvertProductToLineItem(prod, new OptionSelectionList(), quantity, BVApp);
-                    BVApp.AddToOrderWithCalculateAndSave(o, li);
+                    Order o = SessionManager.CurrentShoppingCart(MTApp.OrderServices);
+                    LineItem li = MTApp.CatalogServices.ConvertProductToLineItem(prod, new OptionSelectionList(), quantity, MTApp);
+                    MTApp.AddToOrderWithCalculateAndSave(o, li);
                     SessionManager.SaveOrderCookies(o);
                 }
             }
             else if (this.Request.QueryString["quickaddsku"] != null)
             {
                 string sku = Request.QueryString["quickaddsku"];
-                Product prod = BVApp.CatalogServices.Products.FindBySku(sku);
+                Product prod = MTApp.CatalogServices.Products.FindBySku(sku);
                 if (prod != null)
                 {
                     int quantity = 1;
@@ -94,17 +94,17 @@ namespace BVCommerce
                             quantity = val;
                         }
                     }
-                    Order o = SessionManager.CurrentShoppingCart(BVApp.OrderServices);
-                    LineItem li = BVApp.CatalogServices.ConvertProductToLineItem(prod, new OptionSelectionList(), quantity, BVApp);
+                    Order o = SessionManager.CurrentShoppingCart(MTApp.OrderServices);
+                    LineItem li = MTApp.CatalogServices.ConvertProductToLineItem(prod, new OptionSelectionList(), quantity, MTApp);
                     li.Quantity = quantity;
-                    BVApp.AddToOrderWithCalculateAndSave(o, li);
+                    MTApp.AddToOrderWithCalculateAndSave(o, li);
                     SessionManager.SaveOrderCookies(o);
                 }
             }
             else if (this.Request.QueryString["multi"] != null)
             {
                 string[] skus = Request.QueryString["multi"].Split(';');
-                Order Basket = SessionManager.CurrentShoppingCart(BVApp.OrderServices);
+                Order Basket = SessionManager.CurrentShoppingCart(MTApp.OrderServices);
                 bool addedParts = false;
 
                 foreach (string s in skus)
@@ -112,7 +112,7 @@ namespace BVCommerce
                     string[] skuparts = s.Split(':');
                     string newsku = skuparts[0];
                     string bvin = string.Empty;
-                    Product p = BVApp.CatalogServices.Products.FindBySku(newsku);
+                    Product p = MTApp.CatalogServices.Products.FindBySku(newsku);
                     if (p != null)
                     {
                         if (p.Bvin.Trim().Length > 0)
@@ -126,7 +126,7 @@ namespace BVCommerce
                                 {
                                     qty = 1;
                                 }
-                                LineItem li = BVApp.CatalogServices.ConvertProductToLineItem(p, new OptionSelectionList(), qty, BVApp);
+                                LineItem li = MTApp.CatalogServices.ConvertProductToLineItem(p, new OptionSelectionList(), qty, MTApp);
                                 li.Quantity = qty;
                                 Basket.Items.Add(li);
                                 addedParts = true;                            
@@ -135,7 +135,7 @@ namespace BVCommerce
                 }
                 if (addedParts)
                 {
-                    BVApp.CalculateOrderAndSave(Basket);
+                    MTApp.CalculateOrderAndSave(Basket);
                     SessionManager.SaveOrderCookies(Basket);
                 }
             }
@@ -143,7 +143,7 @@ namespace BVCommerce
 
         private void LoadCart()
         {
-            Order Basket = SessionManager.CurrentShoppingCart(BVApp.OrderServices);
+            Order Basket = SessionManager.CurrentShoppingCart(MTApp.OrderServices);
 
             if (Basket != null)
             {
@@ -232,12 +232,12 @@ namespace BVCommerce
             string result = "~";
             if (SessionManager.CategoryLastId != string.Empty)
             {
-                Category c = this.BVApp.CatalogServices.Categories.Find(SessionManager.CategoryLastId);
+                Category c = this.MTApp.CatalogServices.Categories.Find(SessionManager.CategoryLastId);
                 if (c != null)
                 {
                     if (c.Bvin != string.Empty)
                     {
-                        result = UrlRewriter.BuildUrlForCategory(new CategorySnapshot(c), BVApp.CurrentRequestContext.RoutingContext);
+                        result = UrlRewriter.BuildUrlForCategory(new CategorySnapshot(c), MTApp.CurrentRequestContext.RoutingContext);
                     }
                 }
             }
@@ -255,11 +255,11 @@ namespace BVCommerce
                     System.Web.UI.WebControls.Image img = (System.Web.UI.WebControls.Image)e.Row.FindControl("imgProduct");
                     if (img != null)
                     {
-                        Product associatedProduct = lineItem.GetAssociatedProduct(BVApp);
+                        Product associatedProduct = lineItem.GetAssociatedProduct(MTApp);
                         if (associatedProduct != null)
                         {
                             img.Visible = true;
-                            img.ImageUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductVariantImageUrlMedium(BVApp.CurrentStore.Id, lineItem.ProductId, associatedProduct.ImageFileSmall, lineItem.VariantId, Request.IsSecureConnection);
+                            img.ImageUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductVariantImageUrlMedium(MTApp.CurrentStore.Id, lineItem.ProductId, associatedProduct.ImageFileSmall, lineItem.VariantId, Request.IsSecureConnection);
                             img.AlternateText = lineItem.ProductName;
                         }
                     }
@@ -271,7 +271,7 @@ namespace BVCommerce
                         description.Text += lineItem.ProductShortDescription;
                         description.NavigateUrl = "#";
 
-                        Product product = BVApp.CatalogServices.Products.Find(lineItem.ProductId);
+                        Product product = MTApp.CatalogServices.Products.Find(lineItem.ProductId);
                         if (product != null)
                         {
                             description.NavigateUrl = UrlRewriter.BuildUrlForProduct(product, this, "OrderBvin=" + lineItem.OrderBvin + "&LineItemId=" + lineItem.Id);
@@ -348,14 +348,14 @@ namespace BVCommerce
         {
             MessageBox1.ClearMessage();
             long Id = (long)ItemGridView.DataKeys[e.RowIndex].Value;
-            Order Basket = SessionManager.CurrentShoppingCart(BVApp.OrderServices);
+            Order Basket = SessionManager.CurrentShoppingCart(MTApp.OrderServices);
             if (Basket != null)
             {
                 var li = Basket.Items.Where(y => y.Id == Id).SingleOrDefault();
                 if (li != null)
                 {
                     Basket.Items.Remove(li);
-                    BVApp.CalculateOrderAndSave(Basket);
+                    MTApp.CalculateOrderAndSave(Basket);
                     SessionManager.SaveOrderCookies(Basket);
                 }
                 LoadCart();
@@ -374,7 +374,7 @@ namespace BVCommerce
 
         public bool GetCurrentLineItemQuantities()
         {
-            Order Basket = SessionManager.CurrentShoppingCart(BVApp.OrderServices);
+            Order Basket = SessionManager.CurrentShoppingCart(MTApp.OrderServices);
             if (Basket != null)
             {
                 for (int i = 0; i <= ItemGridView.Rows.Count - 1; i++)
@@ -385,7 +385,7 @@ namespace BVCommerce
                         if (qty != null)
                         {
                             long itemId = (long)ItemGridView.DataKeys[ItemGridView.Rows[i].RowIndex].Value;
-                            BVOperationResult opResult = BVApp.OrderServices.OrdersUpdateItemQuantity(itemId, int.Parse(qty.Text), Basket);                            
+                            SystemOperationResult opResult = MTApp.OrderServices.OrdersUpdateItemQuantity(itemId, int.Parse(qty.Text), Basket);                            
                             if (opResult.Message != string.Empty)
                             {
                                 MessageBox1.ShowInformation(opResult.Message);
@@ -414,7 +414,7 @@ namespace BVCommerce
                 //if this product is a child product, then we need to compare the minimum quantity against its parent
                 foreach (LineItem item in Basket.Items)
                 {
-                    Product associatedProduct = item.GetAssociatedProduct(BVApp);
+                    Product associatedProduct = item.GetAssociatedProduct(MTApp);
                     if (associatedProduct != null)
                     {
                         Product itemToCompare = null;
@@ -434,19 +434,19 @@ namespace BVCommerce
                 }
             }
 
-            BVApp.CalculateOrderAndSave(Basket);
+            MTApp.CalculateOrderAndSave(Basket);
             SessionManager.SaveOrderCookies(Basket);
             return true;
         }
 
         void ForwardToCheckout()
         {
-            OrderTaskContext c = new OrderTaskContext(BVApp);
+            OrderTaskContext c = new OrderTaskContext(MTApp);
             c.UserId = SessionManager.GetCurrentUserId();
-            c.Order = SessionManager.CurrentShoppingCart(BVApp.OrderServices);
+            c.Order = SessionManager.CurrentShoppingCart(MTApp.OrderServices);
             if (Workflow.RunByName(c, WorkflowNames.CheckoutSelected))
             {
-                Response.Redirect(BVApp.CurrentStore.RootUrlSecure() + "checkout");
+                Response.Redirect(MTApp.CurrentStore.RootUrlSecure() + "checkout");
             }
             else
             {
@@ -490,8 +490,8 @@ namespace BVCommerce
         protected bool CheckForStockOnItems()
         {
             
-                Order Basket = SessionManager.CurrentShoppingCart(BVApp.OrderServices);
-                BVOperationResult result = BVApp.CheckForStockOnItems(Basket);
+                Order Basket = SessionManager.CurrentShoppingCart(MTApp.OrderServices);
+                SystemOperationResult result = MTApp.CheckForStockOnItems(Basket);
                 if (result.Success)
                 {
                     return true;
@@ -506,9 +506,9 @@ namespace BVCommerce
         protected void btnAddCoupon_Click(object sender, System.Web.UI.ImageClickEventArgs e)
         {
             MessageBox1.ClearMessage();
-            Order Basket = SessionManager.CurrentShoppingCart(BVApp.OrderServices);
+            Order Basket = SessionManager.CurrentShoppingCart(MTApp.OrderServices);
             Basket.AddCouponCode(this.CouponField.Text.Trim());
-            BVApp.CalculateOrderAndSave(Basket);
+            MTApp.CalculateOrderAndSave(Basket);
             SessionManager.SaveOrderCookies(Basket);
             LoadCart();
         }
@@ -530,9 +530,9 @@ namespace BVCommerce
             this.MessageBox1.ClearMessage();
             long tempid = (long)e.Keys[0];
             
-                Order Basket = SessionManager.CurrentShoppingCart(BVApp.OrderServices);
+                Order Basket = SessionManager.CurrentShoppingCart(MTApp.OrderServices);
                 Basket.RemoveCouponCode(tempid);
-                BVApp.CalculateOrderAndSave(Basket);
+                MTApp.CalculateOrderAndSave(Basket);
                 SessionManager.SaveOrderCookies(Basket);
             
             LoadCart();

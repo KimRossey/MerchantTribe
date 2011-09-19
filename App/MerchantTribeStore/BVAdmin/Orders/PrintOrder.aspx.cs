@@ -37,7 +37,7 @@ namespace BVCommerce
         }
         private void LoadTemplates()
         {
-            this.TemplateField.DataSource = BVApp.ContentServices.GetAllTemplatesForStoreOrDefaults();
+            this.TemplateField.DataSource = MTApp.ContentServices.GetAllTemplatesForStoreOrDefaults();
             this.TemplateField.DataTextField = "DisplayName";
             this.TemplateField.DataValueField = "Id";
             this.TemplateField.DataBind();
@@ -135,15 +135,15 @@ namespace BVCommerce
             {
                 long templateId = 0;
                 long.TryParse(this.TemplateField.SelectedValue, out templateId);
-                HtmlTemplate t = BVApp.ContentServices.HtmlTemplates.Find(templateId);                
+                HtmlTemplate t = MTApp.ContentServices.HtmlTemplates.Find(templateId);                
                 if (t != null)
                 {
                     string orderId = (string)e.Item.DataItem;
-                    Order o = BVApp.OrderServices.Orders.FindForCurrentStore(orderId);
+                    Order o = MTApp.OrderServices.Orders.FindForCurrentStore(orderId);
                     Literal litTemplate = (Literal)e.Item.FindControl("litTemplate");
                     if (litTemplate != null)
                     {
-                        t = t.ReplaceTagsInTemplate(BVApp, o, o.ItemsAsReplaceable());
+                        t = t.ReplaceTagsInTemplate(MTApp, o, o.ItemsAsReplaceable());
                         litTemplate.Text = t.Body;
                     }
                 }

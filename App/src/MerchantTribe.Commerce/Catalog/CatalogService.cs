@@ -164,13 +164,13 @@ namespace MerchantTribe.Commerce.Catalog
         }
 
         // Products and Line Items
-        public Orders.LineItem ConvertProductToLineItem(Orders.IPurchasable p, OptionSelectionList selections, int quantity, BVApplication bvapp)
+        public Orders.LineItem ConvertProductToLineItem(Orders.IPurchasable p, OptionSelectionList selections, int quantity, MerchantTribeApplication app)
         {
             Orders.LineItem li = new Orders.LineItem();
             
             if (p != null)
             {
-                Orders.PurchasableSnapshot snapshot = p.AsPurchasable(selections, bvapp, true);
+                Orders.PurchasableSnapshot snapshot = p.AsPurchasable(selections, app, true);
                 if (snapshot != null)
                 {
                     li.BasePricePerItem = snapshot.BasePrice;

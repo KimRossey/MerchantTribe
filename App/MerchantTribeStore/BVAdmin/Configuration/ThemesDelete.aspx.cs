@@ -28,7 +28,7 @@ namespace BVCommerce
         {
             base.OnLoad(e);
             string themeId = Request.QueryString["id"];
-            this.BVApp.ThemeManager().DeleteTheme(themeId);
+            this.MTApp.ThemeManager().DeleteTheme(themeId);
             Response.Redirect("Themes.aspx");
         }
 

@@ -39,13 +39,13 @@ namespace MerchantTribe.Commerce.Marketing.PromotionQualifications
             SetSetting("groupids", all);
         }
 
-        public override string FriendlyDescription(BVApplication bvapp)
+        public override string FriendlyDescription(MerchantTribeApplication app)
         {
             string result = "When Current User Is In Group:<ul>";
             
             foreach (string gid in this.CurrentGroupIds())
             {                
-                Contacts.PriceGroup g = bvapp.ContactServices.PriceGroups.Find(gid);
+                Contacts.PriceGroup g = app.ContactServices.PriceGroups.Find(gid);
                 if (g != null)
                 {
                     result += "<li>" + g.Name + "</li>";

@@ -40,22 +40,22 @@ namespace MerchantTribe.Commerce.Catalog
         }
 
         
-        public void RebuildProductSearchIndex(BVApplication bvapp)
+        public void RebuildProductSearchIndex(MerchantTribeApplication app)
         {
             MerchantTribe.Web.Search.Indexers.ComplexIndexer indexer = new MerchantTribe.Web.Search.Indexers.ComplexIndexer(searcher);
-            int totalProducts = bvapp.CatalogServices.Products.FindAllForAllStoresCount();
+            int totalProducts = app.CatalogServices.Products.FindAllForAllStoresCount();
             int totalPages = MerchantTribe.Web.Paging.TotalPages(totalProducts, INDEXREBUILDPAGESIZE);
 
             for (int i = 1; i <= totalPages; i++)
             {
-                IndexAPage(i, indexer, bvapp);
+                IndexAPage(i, indexer, app);
             }
         }
 
-        private void IndexAPage(int pageNumber, MerchantTribe.Web.Search.Indexers.ComplexIndexer indexer, BVApplication bvapp)
+        private void IndexAPage(int pageNumber, MerchantTribe.Web.Search.Indexers.ComplexIndexer indexer, MerchantTribeApplication app)
         {            
             int startIndex = MerchantTribe.Web.Paging.StartRowIndex(pageNumber, INDEXREBUILDPAGESIZE);
-            List<Product> page = bvapp.CatalogServices.Products.FindAllPagedForAllStores(startIndex, INDEXREBUILDPAGESIZE);
+            List<Product> page = app.CatalogServices.Products.FindAllPagedForAllStores(startIndex, INDEXREBUILDPAGESIZE);
             if (page != null)
             {
                 foreach (Product p in page)

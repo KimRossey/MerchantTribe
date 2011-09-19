@@ -23,10 +23,10 @@ namespace BVCommerce
             if (!Page.IsPostBack)
             {
                 string ids = Request["id"];
-                Variant result = BVApp.CatalogServices.ProductVariants.Find(ids);
+                Variant result = MTApp.CatalogServices.ProductVariants.Find(ids);
                 if (result != null)
                 {
-                    Product p = BVApp.CatalogServices.Products.Find(result.ProductId);
+                    Product p = MTApp.CatalogServices.Products.Find(result.ProductId);
                     VariantInfo output = new VariantInfo();
                     output.Bvin = result.Bvin;
                     output.Sku = result.Sku;
@@ -39,7 +39,7 @@ namespace BVCommerce
                     {
                         output.Price = p.SitePrice;
                     }
-                    output.ImageUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductVariantImageUrlMedium(this.BVApp.CurrentStore.Id, p.Bvin, p.ImageFileSmall, result.Bvin, true);
+                    output.ImageUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductVariantImageUrlMedium(this.MTApp.CurrentStore.Id, p.Bvin, p.ImageFileSmall, result.Bvin, true);
 
                     foreach (string s in result.SelectionNames(p.Options.VariantsOnly()))
                     {

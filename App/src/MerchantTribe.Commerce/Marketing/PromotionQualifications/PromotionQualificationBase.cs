@@ -69,7 +69,7 @@ namespace MerchantTribe.Commerce.Marketing.PromotionQualifications
             }
         }
 
-        public abstract string FriendlyDescription(BVApplication bvapp);
+        public abstract string FriendlyDescription(MerchantTribeApplication app);
         
         public PromotionQualificationBase()
         {

@@ -24,7 +24,7 @@ namespace BVCommerce
 
         private Store FindValidStoreForUser(UserAccount u, long storeId)
         {
-            return BVApp.AccountServices.FindStoreByIdForUser(storeId, u.Id);
+            return MTApp.AccountServices.FindStoreByIdForUser(storeId, u.Id);
         }
 
         private UserAccount GetCorrectUser()
@@ -36,7 +36,7 @@ namespace BVCommerce
                 if (u.Status == UserAccountStatus.SuperUser)
                 {
                     // don't use current user, get the owner of the store instead
-                    List<UserAccount> users = BVApp.AccountServices.FindAdminUsersByStoreId(BVApp.CurrentStore.Id);
+                    List<UserAccount> users = MTApp.AccountServices.FindAdminUsersByStoreId(MTApp.CurrentStore.Id);
                     if (users != null)
                     {
                         if (users.Count > 0)
@@ -55,7 +55,7 @@ namespace BVCommerce
             UserAccount u = GetCorrectUser();
             long storeId = 0;
             storeId = long.Parse(Request.QueryString["id"]);
-            BVApp.AccountServices.CancelStore(storeId, u.Id);
+            MTApp.AccountServices.CancelStore(storeId, u.Id);
             Response.Redirect("/bvadmin/account.aspx");
         }
     }

@@ -17,17 +17,17 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
         public override bool Execute(OrderTaskContext context)
         {
             bool result = true;
-            if (context.BVApp.OrderServices.PaymentSummary(context.Order).AmountDue > 0)
+            if (context.MTApp.OrderServices.PaymentSummary(context.Order).AmountDue > 0)
             {
                 CustomerPointsManager pointsManager = CustomerPointsManager.InstantiateForDatabase(context.CurrentRequest.CurrentStore.Settings.RewardsPointsIssuedPerDollarSpent,
                                                                                 context.CurrentRequest.CurrentStore.Settings.RewardsPointsNeededPerDollarCredit,
                                                                                 context.CurrentRequest.CurrentStore.Id);
                 Orders.OrderPaymentManager payManager = new Orders.OrderPaymentManager(context.Order,
-                                                                                       context.BVApp);
+                                                                                       context.MTApp);
 
-                foreach (Orders.OrderTransaction p in context.BVApp.OrderServices.Transactions.FindForOrder(context.Order.bvin))
+                foreach (Orders.OrderTransaction p in context.MTApp.OrderServices.Transactions.FindForOrder(context.Order.bvin))
                 {
-                    List<Orders.OrderTransaction> transactions = context.BVApp.OrderServices.Transactions.FindForOrder(context.Order.bvin);
+                    List<Orders.OrderTransaction> transactions = context.MTApp.OrderServices.Transactions.FindForOrder(context.Order.bvin);
 
                     if (p.Action == MerchantTribe.Payment.ActionType.RewardPointsInfo)
                     {
@@ -52,7 +52,7 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
 
                 // Evaluate Payment Status After Receiving Payments
                 Orders.OrderPaymentStatus previousPaymentStatus = context.Order.PaymentStatus;
-                context.BVApp.OrderServices.EvaluatePaymentStatus(context.Order);
+                context.MTApp.OrderServices.EvaluatePaymentStatus(context.Order);
                 context.Inputs.Add("bvsoftware", "PreviousPaymentStatus", previousPaymentStatus.ToString());
                 BusinessRules.Workflow.RunByName(context, WorkflowNames.PaymentChanged);
             }

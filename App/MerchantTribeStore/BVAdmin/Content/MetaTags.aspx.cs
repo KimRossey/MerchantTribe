@@ -19,8 +19,8 @@ namespace BVCommerce
 
             if (!Page.IsPostBack)
             {
-                this.MetaKeywordsField.Text = BVApp.CurrentStore.Settings.MetaKeywords;
-                this.MetaDescriptionField.Text = BVApp.CurrentStore.Settings.MetaDescription;
+                this.MetaKeywordsField.Text = MTApp.CurrentStore.Settings.MetaKeywords;
+                this.MetaDescriptionField.Text = MTApp.CurrentStore.Settings.MetaDescription;
             }
         }
 
@@ -52,10 +52,10 @@ namespace BVCommerce
         private bool Save()
         {
 
-            BVApp.CurrentStore.Settings.MetaKeywords = this.MetaKeywordsField.Text.Trim();
-            BVApp.CurrentStore.Settings.MetaDescription = this.MetaDescriptionField.Text.Trim();
+            MTApp.CurrentStore.Settings.MetaKeywords = this.MetaKeywordsField.Text.Trim();
+            MTApp.CurrentStore.Settings.MetaDescription = this.MetaDescriptionField.Text.Trim();
 
-            return BVApp.UpdateCurrentStore();
+            return MTApp.UpdateCurrentStore();
         }
 
     }

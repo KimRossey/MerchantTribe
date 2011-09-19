@@ -25,7 +25,7 @@ namespace MerchantTribe.Commerce.Content
             Tags.Add(t);
         }
 
-        public List<HtmlTemplateTag> GetReplaceableTags(BVApplication bvapp)
+        public List<HtmlTemplateTag> GetReplaceableTags(MerchantTribeApplication app)
         {
             return Tags;
         }

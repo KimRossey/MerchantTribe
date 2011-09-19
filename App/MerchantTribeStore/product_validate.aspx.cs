@@ -27,7 +27,7 @@ namespace BVCommerce
             ProductValidateResponse result = new ProductValidateResponse();
 
             string bvin = Request.Form["productbvin"];
-            Product p = BVApp.CatalogServices.Products.Find(bvin);
+            Product p = MTApp.CatalogServices.Products.Find(bvin);
             if ((p != null))
             {
 
@@ -35,11 +35,11 @@ namespace BVCommerce
 
                
 
-                UserSpecificPrice price = BVApp.PriceProduct(p, BVApp.CurrentCustomer, selections);
+                UserSpecificPrice price = MTApp.PriceProduct(p, MTApp.CurrentCustomer, selections);
 
                 result.Price = MerchantTribe.Commerce.Utilities.HtmlRendering.UserSpecificPriceForDisplay(price);
                 result.Sku = price.Sku;
-                result.ImageUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductImageUrlMedium(BVApp.CurrentStore.Id, p.Bvin, p.ImageFileSmall, false);
+                result.ImageUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductImageUrlMedium(MTApp.CurrentStore.Id, p.Bvin, p.ImageFileSmall, false);
                 result.IsValid = price.IsValid;
                 if (result.IsValid)
                 {
@@ -51,11 +51,11 @@ namespace BVCommerce
                 }
                 if (price.VariantId.Length > 0)
                 {
-                    result.ImageUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductVariantImageUrlMedium(BVApp.CurrentStore.Id, p.Bvin, p.ImageFileSmall, price.VariantId, false);
+                    result.ImageUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductVariantImageUrlMedium(MTApp.CurrentStore.Id, p.Bvin, p.ImageFileSmall, price.VariantId, false);
                 }
 
                 // Make sure we have stock on the product or variant
-                InventoryCheckData data = BVApp.CatalogServices.InventoryCheck(p, price.VariantId);
+                InventoryCheckData data = MTApp.CatalogServices.InventoryCheck(p, price.VariantId);
                 result.StockMessage = data.InventoryMessage;
                 if (result.IsValid)
                 {

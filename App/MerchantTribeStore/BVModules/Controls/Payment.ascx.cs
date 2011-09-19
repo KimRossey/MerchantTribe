@@ -26,9 +26,9 @@ namespace BVCommerce
         {
             MerchantTribe.Commerce.Payment.AvailablePayments availablePayments = new MerchantTribe.Commerce.Payment.AvailablePayments();
             Collection<DisplayPaymentMethod> enabledMethods;
-            enabledMethods = availablePayments.EnabledMethods(MyPage.BVApp.CurrentStore);
+            enabledMethods = availablePayments.EnabledMethods(MyPage.MTApp.CurrentStore);
 
-            if ((orderCost > 0) || (!MyPage.BVApp.CurrentStore.Settings.AllowZeroDollarOrders))
+            if ((orderCost > 0) || (!MyPage.MTApp.CurrentStore.Settings.AllowZeroDollarOrders))
             {
                 this.rowNoPaymentNeeded.Visible = false;
                 foreach (DisplayPaymentMethod m in enabledMethods)
@@ -161,7 +161,7 @@ namespace BVCommerce
 
         public void SavePaymentInfo(Order o)
         {
-            OrderPaymentManager payManager = new OrderPaymentManager(o, MyPage.BVApp);
+            OrderPaymentManager payManager = new OrderPaymentManager(o, MyPage.MTApp);
 
             payManager.ClearAllNonStoreCreditTransactions();
 
@@ -170,36 +170,36 @@ namespace BVCommerce
             if (this.rbCreditCard.Checked == true)
             {
                 found = true;
-                payManager.CreditCardAddInfo(this.CreditCardInput1.GetCardData(), o.TotalGrandAfterStoreCredits(MyPage.BVApp.OrderServices));
+                payManager.CreditCardAddInfo(this.CreditCardInput1.GetCardData(), o.TotalGrandAfterStoreCredits(MyPage.MTApp.OrderServices));
             }
 
             if ((found == false) && (this.rbCheck.Checked == true))
             {
                 found = true;
-                payManager.OfflinePaymentAddInfo(o.TotalGrandAfterStoreCredits(MyPage.BVApp.OrderServices), "Customer will pay by check.");
+                payManager.OfflinePaymentAddInfo(o.TotalGrandAfterStoreCredits(MyPage.MTApp.OrderServices), "Customer will pay by check.");
             }
 
             if ((found == false) && (this.rbTelephone.Checked == true))
             {
                 found = true;
-                payManager.OfflinePaymentAddInfo(o.TotalGrandAfterStoreCredits(MyPage.BVApp.OrderServices), "Customer will call with payment info.");
+                payManager.OfflinePaymentAddInfo(o.TotalGrandAfterStoreCredits(MyPage.MTApp.OrderServices), "Customer will call with payment info.");
             }
 
             if ((found == false) && (this.rbPurchaseOrder.Checked == true))
             {
                 found = true;
-                payManager.PurchaseOrderAddInfo(this.ponumber.Text.Trim(), o.TotalGrandAfterStoreCredits(MyPage.BVApp.OrderServices));
+                payManager.PurchaseOrderAddInfo(this.ponumber.Text.Trim(), o.TotalGrandAfterStoreCredits(MyPage.MTApp.OrderServices));
             }
             if ((found == false) && (this.rbCompanyAccount.Checked == true))
             {
                 found = true;
-                payManager.CompanyAccountAddInfo(this.accountnumber.Text.Trim(), o.TotalGrandAfterStoreCredits(MyPage.BVApp.OrderServices));
+                payManager.CompanyAccountAddInfo(this.accountnumber.Text.Trim(), o.TotalGrandAfterStoreCredits(MyPage.MTApp.OrderServices));
             }
 
             if ((found == false) && (this.rbCOD.Checked == true))
             {
                 found = true;
-                payManager.OfflinePaymentAddInfo(o.TotalGrandAfterStoreCredits(MyPage.BVApp.OrderServices), "Customer will pay cash on delivery.");
+                payManager.OfflinePaymentAddInfo(o.TotalGrandAfterStoreCredits(MyPage.MTApp.OrderServices), "Customer will pay cash on delivery.");
             }
 
             if ((found == false) && (this.rbPaypal.Checked == true))

@@ -28,13 +28,13 @@ namespace BVCommerce
 
         private void LoadReviews()
         {
-            if (this.BVApp.CatalogServices.ProductReviews.FindNotApproved(1,1).Count == 0)
+            if (this.MTApp.CatalogServices.ProductReviews.FindNotApproved(1,1).Count == 0)
             {
                 lblNoReviews.Visible = true;
             }
             else
             {
-                this.dlReviews.DataSource = this.BVApp.CatalogServices.ProductReviews.FindNotApproved(1,100);
+                this.dlReviews.DataSource = this.MTApp.CatalogServices.ProductReviews.FindNotApproved(1,100);
                 this.dlReviews.DataBind();
             }
 
@@ -43,7 +43,7 @@ namespace BVCommerce
         protected void dlReviews_DeleteCommand(object source, System.Web.UI.WebControls.DataListCommandEventArgs e)
         {
             string reviewID = (string)dlReviews.DataKeys[e.Item.ItemIndex];
-            this.BVApp.CatalogServices.ProductReviews.Delete(reviewID);
+            this.MTApp.CatalogServices.ProductReviews.Delete(reviewID);
             Response.Redirect("ReviewsToModerate.aspx");
             //LoadReviews()
         }
@@ -59,9 +59,9 @@ namespace BVCommerce
         {
             string reviewID = (string)dlReviews.DataKeys[e.Item.ItemIndex];
             ProductReview r;
-            r = this.BVApp.CatalogServices.ProductReviews.Find(reviewID);
+            r = this.MTApp.CatalogServices.ProductReviews.Find(reviewID);
             r.Approved = true;
-            this.BVApp.CatalogServices.ProductReviews.Update(r);
+            this.MTApp.CatalogServices.ProductReviews.Update(r);
             //LoadReviews()
             Response.Redirect("ReviewsToModerate.aspx");
         }
@@ -78,22 +78,22 @@ namespace BVCommerce
                     switch (rating)
                     {
                         case ProductReviewRating.ZeroStars:
-                            imgRating.ImageUrl = this.BVApp.ThemeManager().ButtonUrl("stars0", Request.IsSecureConnection);
+                            imgRating.ImageUrl = this.MTApp.ThemeManager().ButtonUrl("stars0", Request.IsSecureConnection);
                             break;
                         case ProductReviewRating.OneStar:
-                            imgRating.ImageUrl = this.BVApp.ThemeManager().ButtonUrl("stars1", Request.IsSecureConnection);
+                            imgRating.ImageUrl = this.MTApp.ThemeManager().ButtonUrl("stars1", Request.IsSecureConnection);
                             break;
                         case ProductReviewRating.TwoStars:
-                            imgRating.ImageUrl = this.BVApp.ThemeManager().ButtonUrl("stars2", Request.IsSecureConnection);
+                            imgRating.ImageUrl = this.MTApp.ThemeManager().ButtonUrl("stars2", Request.IsSecureConnection);
                             break;
                         case ProductReviewRating.ThreeStars:
-                            imgRating.ImageUrl = this.BVApp.ThemeManager().ButtonUrl("stars3", Request.IsSecureConnection);
+                            imgRating.ImageUrl = this.MTApp.ThemeManager().ButtonUrl("stars3", Request.IsSecureConnection);
                             break;
                         case ProductReviewRating.FourStars:
-                            imgRating.ImageUrl = this.BVApp.ThemeManager().ButtonUrl("stars4", Request.IsSecureConnection);
+                            imgRating.ImageUrl = this.MTApp.ThemeManager().ButtonUrl("stars4", Request.IsSecureConnection);
                             break;
                         case ProductReviewRating.FiveStars:
-                            imgRating.ImageUrl = this.BVApp.ThemeManager().ButtonUrl("stars5", Request.IsSecureConnection);
+                            imgRating.ImageUrl = this.MTApp.ThemeManager().ButtonUrl("stars5", Request.IsSecureConnection);
                             break;
                     }
                 }

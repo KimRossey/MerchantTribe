@@ -18,7 +18,7 @@ namespace BVCommerce.BVAdmin.Marketing
             string promoid = this.promotionid.Value;
             long pid = 0;
             long.TryParse(promoid, out pid);
-            Promotion p = MyPage.BVApp.MarketingServices.Promotions.Find(pid);
+            Promotion p = MyPage.MTApp.MarketingServices.Promotions.Find(pid);
             return p;
         }
         private IPromotionAction GetCurrentAction(Promotion p)
@@ -128,7 +128,7 @@ namespace BVCommerce.BVAdmin.Marketing
                     {
                         ((ProductPriceAdjustment)a).AdjustmentType = AmountTypes.MonetaryAmount;
                     }
-                    return MyPage.BVApp.MarketingServices.Promotions.Update(p);
+                    return MyPage.MTApp.MarketingServices.Promotions.Update(p);
                 case PromotionActionBase.TypeIdOrderTotalAdjustment:
                     decimal adjustmentTemp2 = ((OrderTotalAdjustment)a).Amount;
                     decimal parsedAdjustment2 = 0;
@@ -145,7 +145,7 @@ namespace BVCommerce.BVAdmin.Marketing
                     {
                         ((OrderTotalAdjustment)a).AdjustmentType = AmountTypes.MonetaryAmount;
                     }
-                    return MyPage.BVApp.MarketingServices.Promotions.Update(p);
+                    return MyPage.MTApp.MarketingServices.Promotions.Update(p);
                 case PromotionActionBase.TypeIdOrderShippingAdjustment:
                     decimal adjustmentOrderShipping = ((OrderShippingAdjustment)a).Amount;
                     decimal parsedAdjustmentOrderShipping = 0;
@@ -162,7 +162,7 @@ namespace BVCommerce.BVAdmin.Marketing
                     {
                         ((OrderShippingAdjustment)a).AdjustmentType = AmountTypes.MonetaryAmount;
                     }
-                    return MyPage.BVApp.MarketingServices.Promotions.Update(p);       
+                    return MyPage.MTApp.MarketingServices.Promotions.Update(p);       
             }
 
             return false;

@@ -18,7 +18,7 @@ namespace BVCommerce
 
         private void LoadMenu()
         {
-            ContentBlock b = MyPage.BVApp.ContentServices.Columns.FindBlock(this.BlockId);
+            ContentBlock b = MyPage.MTApp.ContentServices.Columns.FindBlock(this.BlockId);
             if (b != null)
             {
                 this.TitlePlaceHolder.Controls.Clear();

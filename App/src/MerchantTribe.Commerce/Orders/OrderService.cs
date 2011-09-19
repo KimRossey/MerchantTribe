@@ -165,9 +165,9 @@ namespace MerchantTribe.Commerce.Orders
         }
 
         //Orders and Items                           
-        public BVOperationResult OrdersUpdateItemQuantity(long itemId, int quantity, Order o)
+        public SystemOperationResult OrdersUpdateItemQuantity(long itemId, int quantity, Order o)
         {
-            BVOperationResult result = new BVOperationResult();
+            SystemOperationResult result = new SystemOperationResult();
             result.Success = true;
 
             LineItem item = o.Items.Where(y => y.Id == itemId).SingleOrDefault();
@@ -328,12 +328,12 @@ namespace MerchantTribe.Commerce.Orders
             }
             return "No Payment Methods Selected";
         }
-        public bool AddPaymentTransactionToOrder(Order o, MerchantTribe.Payment.Transaction t, BVApplication bvapp)
+        public bool AddPaymentTransactionToOrder(Order o, MerchantTribe.Payment.Transaction t, MerchantTribeApplication app)
         {
             Orders.OrderTransaction ot = new OrderTransaction(t);
-            return AddPaymentTransactionToOrder(o, ot, bvapp);
+            return AddPaymentTransactionToOrder(o, ot, app);
         }
-        public bool AddPaymentTransactionToOrder(Order o, OrderTransaction t, BVApplication bvapp)
+        public bool AddPaymentTransactionToOrder(Order o, OrderTransaction t, MerchantTribeApplication app)
         {
             // Save Order First if no bvin
             Orders.Upsert(o);            
@@ -346,7 +346,7 @@ namespace MerchantTribe.Commerce.Orders
             {
                 OrderPaymentStatus previous = o.PaymentStatus;
                 EvaluatePaymentStatus(o);
-                OnPaymentChanged(previous, o, bvapp);
+                OnPaymentChanged(previous, o, app);
                 return Orders.Update(o);
             }
 
@@ -399,9 +399,9 @@ namespace MerchantTribe.Commerce.Orders
             o.PaymentStatus = result;
             return result;
         }
-        private void OnPaymentChanged(OrderPaymentStatus previousPaymentStatus, Order o, BVApplication bvapp)
+        private void OnPaymentChanged(OrderPaymentStatus previousPaymentStatus, Order o, MerchantTribeApplication app)
         {
-            BusinessRules.OrderTaskContext context = new BusinessRules.OrderTaskContext(bvapp);
+            BusinessRules.OrderTaskContext context = new BusinessRules.OrderTaskContext(app);
             context.Order = o;
             context.UserId = o.UserID;
             context.Inputs.Add("bvsoftware", "PreviousPaymentStatus", previousPaymentStatus.ToString());

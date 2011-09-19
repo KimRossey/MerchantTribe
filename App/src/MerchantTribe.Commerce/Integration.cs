@@ -21,7 +21,7 @@ namespace MerchantTribe.Commerce
         public delegate void CustomerAccountEmailChangedHandler(object sender, string oldEmail, string newEmail);
         public event CustomerAccountEmailChangedHandler OnCustomerAccountEmailChanged;
 
-        public delegate void OrderEventHandler(object sender, Orders.Order order, BVApplication bvapp);
+        public delegate void OrderEventHandler(object sender, Orders.Order order, MerchantTribeApplication app);
         public event OrderEventHandler OnOrderReceived;
 
         public void CustomerAccountUpdated(Membership.CustomerAccount account)
@@ -53,11 +53,11 @@ namespace MerchantTribe.Commerce
             }
         }
 
-        public void OrderReceived(Orders.Order order, BVApplication bvapp)
+        public void OrderReceived(Orders.Order order, MerchantTribeApplication app)
         {
             if (OnOrderReceived != null)
             {
-                OnOrderReceived(this, order, bvapp);
+                OnOrderReceived(this, order, app);
             }
         }
     }

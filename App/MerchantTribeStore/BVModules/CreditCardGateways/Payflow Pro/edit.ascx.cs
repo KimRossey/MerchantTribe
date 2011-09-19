@@ -34,7 +34,7 @@ namespace BVCommerce
         private void LoadData()
         {
             PayFlowProSettings settings = new PayFlowProSettings();
-            settings.Merge(MyPage.BVApp.CurrentStore.Settings.PaymentSettingsGet(this.BlockId));
+            settings.Merge(MyPage.MTApp.CurrentStore.Settings.PaymentSettingsGet(this.BlockId));
 
             this.txtMerchantVendor.Text = settings.MerchantPartner;
             this.txtMerchantLogin.Text = settings.MerchantLogin;
@@ -52,7 +52,7 @@ namespace BVCommerce
         private void SaveData()
         {
             PayFlowProSettings settings = new PayFlowProSettings();
-            settings.Merge(MyPage.BVApp.CurrentStore.Settings.PaymentSettingsGet(this.BlockId));
+            settings.Merge(MyPage.MTApp.CurrentStore.Settings.PaymentSettingsGet(this.BlockId));
 
             settings.MerchantPartner = this.txtMerchantVendor.Text.Trim();
             settings.MerchantLogin = this.txtMerchantLogin.Text.Trim();
@@ -65,9 +65,9 @@ namespace BVCommerce
             settings.DeveloperMode = this.chkDebugMode.Checked;
             settings.CurrencyCode = this.CurrencyCodeDropDownList.SelectedValue;
 
-            MyPage.BVApp.CurrentStore.Settings.PaymentSettingsSet(this.BlockId, settings);
+            MyPage.MTApp.CurrentStore.Settings.PaymentSettingsSet(this.BlockId, settings);
 
-            MyPage.BVApp.AccountServices.Stores.Update(MyPage.BVApp.CurrentStore);
+            MyPage.MTApp.AccountServices.Stores.Update(MyPage.MTApp.CurrentStore);
         }
 
     }

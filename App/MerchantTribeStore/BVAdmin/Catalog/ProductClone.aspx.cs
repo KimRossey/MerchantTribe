@@ -20,7 +20,7 @@ namespace BVCommerce
                 ViewState["id"] = Request.QueryString["id"];
                 if (!Page.IsPostBack)
                 {
-                    Product product = BVApp.CatalogServices.Products.Find((string)ViewState["id"]);
+                    Product product = MTApp.CatalogServices.Products.Find((string)ViewState["id"]);
                     if (product != null)
                     {
                         this.ProductChoicesCheckBox.Checked = true;
@@ -51,7 +51,7 @@ namespace BVCommerce
 
         protected override bool Save()
         {
-            Product product = BVApp.CatalogServices.Products.Find((string)ViewState["id"]);
+            Product product = MTApp.CatalogServices.Products.Find((string)ViewState["id"]);
             if (product != null)
             {
                 if (product.Bvin != string.Empty)
@@ -63,15 +63,15 @@ namespace BVCommerce
                     }
                     newProduct.ProductName = NameTextBox.Text;
                     newProduct.Sku = SkuTextBox.Text;
-                    if (BVApp.CatalogServices.ProductsCreateWithInventory(newProduct, true))
+                    if (MTApp.CatalogServices.ProductsCreateWithInventory(newProduct, true))
                     {
                         if (product.ProductTypeId != string.Empty)
                         {
-                            List<ProductProperty> productTypes = BVApp.CatalogServices.ProductPropertiesFindForType(product.ProductTypeId);
+                            List<ProductProperty> productTypes = MTApp.CatalogServices.ProductPropertiesFindForType(product.ProductTypeId);
                             foreach (ProductProperty item in productTypes)
                             {
-                                string value = BVApp.CatalogServices.ProductPropertyValues.GetPropertyValue(product.Bvin, item.Id);
-                                BVApp.CatalogServices.ProductPropertyValues.SetPropertyValue(newProduct.Bvin, item.Id, value);
+                                string value = MTApp.CatalogServices.ProductPropertyValues.GetPropertyValue(product.Bvin, item.Id);
+                                MTApp.CatalogServices.ProductPropertyValues.SetPropertyValue(newProduct.Bvin, item.Id, value);
                             }
                         }
 

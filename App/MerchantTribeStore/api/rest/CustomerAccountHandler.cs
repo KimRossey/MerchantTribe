@@ -14,7 +14,7 @@ namespace BVCommerce.api.rest
 {
     public class CustomerAccountHandler: BaseRestHandler
     {
-        public CustomerAccountHandler(MerchantTribe.Commerce.BVApplication app)
+        public CustomerAccountHandler(MerchantTribe.Commerce.MerchantTribeApplication app)
             : base(app)
         {
 
@@ -31,7 +31,7 @@ namespace BVCommerce.api.rest
                 // List
                 ApiResponse<List<CustomerAccountDTO>> response = new ApiResponse<List<CustomerAccountDTO>>();
 
-                List<CustomerAccount> results = BVApp.MembershipServices.Customers.FindAll();
+                List<CustomerAccount> results = MTApp.MembershipServices.Customers.FindAll();
                 List<CustomerAccountDTO> dto = new List<CustomerAccountDTO>();
 
                 foreach (CustomerAccount item in results)
@@ -50,11 +50,11 @@ namespace BVCommerce.api.rest
                 CustomerAccount item;
                 if (email.Trim().Length > 0)
                 {
-                    item = BVApp.MembershipServices.Customers.FindByEmail(email);
+                    item = MTApp.MembershipServices.Customers.FindByEmail(email);
                 }
                 else
                 {
-                    item = BVApp.MembershipServices.Customers.Find(bvin);
+                    item = MTApp.MembershipServices.Customers.Find(bvin);
                 }
                 if (item == null)
                 {
@@ -93,7 +93,7 @@ namespace BVCommerce.api.rest
 
             if (bvin == string.Empty)
             {
-                CustomerAccount existing = BVApp.MembershipServices.Customers.FindByEmail(item.Email);
+                CustomerAccount existing = MTApp.MembershipServices.Customers.FindByEmail(item.Email);
                 if (existing == null || existing.Bvin == string.Empty)
                 {
                     string clearPassword = querystring["pwd"];
@@ -102,7 +102,7 @@ namespace BVCommerce.api.rest
                         clearPassword = MerchantTribe.Web.PasswordGenerator.GeneratePassword(10);
                     }
                     // Create
-                    bool result = BVApp.MembershipServices.CreateCustomer(item, clearPassword);
+                    bool result = MTApp.MembershipServices.CreateCustomer(item, clearPassword);
                     bvin = item.Bvin;
                 }
                 else
@@ -112,9 +112,9 @@ namespace BVCommerce.api.rest
             }
             else
             {
-                BVApp.MembershipServices.UpdateCustomer(item);
+                MTApp.MembershipServices.UpdateCustomer(item);
             }
-            CustomerAccount resultItem = BVApp.MembershipServices.Customers.Find(bvin);
+            CustomerAccount resultItem = MTApp.MembershipServices.Customers.Find(bvin);
             if (resultItem != null)
             {
                 response.Content = resultItem.ToDto();
@@ -123,7 +123,7 @@ namespace BVCommerce.api.rest
                 {
                     Address addr = new Address();
                     addr.FromDto(a);
-                    BVApp.MembershipServices.CheckIfNewAddressAndAddWithUpdate(resultItem,addr);
+                    MTApp.MembershipServices.CheckIfNewAddressAndAddWithUpdate(resultItem,addr);
                 }
             }
             
@@ -140,12 +140,12 @@ namespace BVCommerce.api.rest
             if (bvin == string.Empty)
             {
                 // Clear All Requested
-                response.Content = BVApp.MembershipServices.DestroyAllCustomers(BVApp);
+                response.Content = MTApp.MembershipServices.DestroyAllCustomers(MTApp);
             }
             else
             {
                 // Delete Single Customer
-                response.Content = BVApp.DestroyCustomerAccount(bvin);
+                response.Content = MTApp.DestroyCustomerAccount(bvin);
             }
 
             data = MerchantTribe.Web.Json.ObjectToJson(response);

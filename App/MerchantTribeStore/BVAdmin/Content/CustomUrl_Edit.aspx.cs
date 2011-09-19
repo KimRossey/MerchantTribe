@@ -45,7 +45,7 @@ namespace BVCommerce
         private void LoadUrl()
         {
             CustomUrl c;
-            c = BVApp.ContentServices.CustomUrls.Find(this.BvinField.Value);
+            c = MTApp.ContentServices.CustomUrls.Find(this.BvinField.Value);
             if (c != null)
             {
                 if (c.Bvin != string.Empty)
@@ -74,14 +74,14 @@ namespace BVCommerce
         {
             bool result = false;
 
-            if (UrlRewriter.IsUrlInUse(this.RequestedUrlField.Text.Trim(), this.BvinField.Value, BVApp.CurrentRequestContext, BVApp))
+            if (UrlRewriter.IsUrlInUse(this.RequestedUrlField.Text.Trim(), this.BvinField.Value, MTApp.CurrentRequestContext, MTApp))
             {
                 this.MessageBox1.ShowWarning("Another item already uses this URL. Please choose another one");
                 return false;
             }
             
             CustomUrl c;
-            c = BVApp.ContentServices.CustomUrls.Find(this.BvinField.Value);
+            c = MTApp.ContentServices.CustomUrls.Find(this.BvinField.Value);
             if (c != null)
             {
                 c.RequestedUrl = this.RequestedUrlField.Text.Trim();
@@ -90,11 +90,11 @@ namespace BVCommerce
 
                 if (this.BvinField.Value == string.Empty)
                 {
-                    result = BVApp.ContentServices.CustomUrls.Create(c);
+                    result = MTApp.ContentServices.CustomUrls.Create(c);
                 }
                 else
                 {
-                    result = BVApp.ContentServices.CustomUrls.Update(c);
+                    result = MTApp.ContentServices.CustomUrls.Update(c);
                 }
 
                 if (result == true)

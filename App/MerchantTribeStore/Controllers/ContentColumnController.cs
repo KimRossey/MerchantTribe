@@ -15,10 +15,10 @@ namespace BVCommerce.Controllers
         public ActionResult Index(string id)
         {                                    
             ContentColumn col = null;            
-            col = BVApp.ContentServices.Columns.Find(id);            
+            col = MTApp.ContentServices.Columns.Find(id);            
             if (col == null)
             {
-                col = BVApp.ContentServices.Columns.FindByDisplayName(id);
+                col = MTApp.ContentServices.Columns.FindByDisplayName(id);
             }
             if (col == null) return Content("Column Not Found");
             

@@ -37,7 +37,7 @@ namespace BVCommerce
         {
             this.MessageBox1.ClearMessage();
             string themeId = Request.QueryString["id"];
-            if (BVApp.ThemeManager().CopyCurrentContentColumnsToTheme(themeId))
+            if (MTApp.ThemeManager().CopyCurrentContentColumnsToTheme(themeId))
             {
                 this.MessageBox1.ShowOk("Columns Copied to this Theme");
             }
@@ -50,7 +50,7 @@ namespace BVCommerce
         {
             this.MessageBox1.ClearMessage();
             string themeId = Request.QueryString["id"];
-            if (BVApp.ThemeManager().ClearContentColumnDataFromTheme(themeId))
+            if (MTApp.ThemeManager().ClearContentColumnDataFromTheme(themeId))
             {
                 this.MessageBox1.ShowOk("Columns Removed from this Theme");
             }
@@ -64,7 +64,7 @@ namespace BVCommerce
         {
             this.MessageBox1.ClearMessage();
             string themeId = Request.QueryString["id"];
-            if (BVApp.ThemeManager().CopyColumnsFromThemeToStore(themeId))
+            if (MTApp.ThemeManager().CopyColumnsFromThemeToStore(themeId))
             {
                 this.MessageBox1.ShowOk("Columns Copied to Store");
             }

@@ -24,7 +24,7 @@ namespace BVCommerce.BVAdmin
                 if (u.Status == UserAccountStatus.SuperUser)
                 {
                     // don't use current user, get the owner of the store instead
-                    List<UserAccount> users = BVApp.AccountServices.FindAdminUsersByStoreId(BVApp.CurrentStore.Id);
+                    List<UserAccount> users = MTApp.AccountServices.FindAdminUsersByStoreId(MTApp.CurrentStore.Id);
                     if (users != null)
                     {
                         if (users.Count > 0)
@@ -56,7 +56,7 @@ namespace BVCommerce.BVAdmin
             }
 
             u.HashedPassword = this.NewPasswordField.Text.Trim();
-            BVApp.AccountServices.AdminUsers.Update(u);
+            MTApp.AccountServices.AdminUsers.Update(u);
             this.MessageBox1.ShowOk("Password was changed!");            
         }
 

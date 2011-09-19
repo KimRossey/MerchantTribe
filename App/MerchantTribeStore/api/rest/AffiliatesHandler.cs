@@ -14,7 +14,7 @@ namespace BVCommerce.api.rest
 {
     public class AffiliatesHandler: BaseRestHandler
     {
-        public AffiliatesHandler(MerchantTribe.Commerce.BVApplication app)
+        public AffiliatesHandler(MerchantTribe.Commerce.MerchantTribeApplication app)
             : base(app)
         {
 
@@ -30,7 +30,7 @@ namespace BVCommerce.api.rest
                 // List all
                 ApiResponse<List<AffiliateDTO>> response = new ApiResponse<List<AffiliateDTO>>();
 
-                List<Affiliate> results = BVApp.ContactServices.Affiliates.FindAllPaged(1, int.MaxValue);
+                List<Affiliate> results = MTApp.ContactServices.Affiliates.FindAllPaged(1, int.MaxValue);
                 List<AffiliateDTO> dto = new List<AffiliateDTO>();
 
                 foreach (Affiliate item in results)
@@ -53,7 +53,7 @@ namespace BVCommerce.api.rest
                 {
                     // Referrals handler
                     int totalCount = 0;
-                    List<AffiliateReferral> refs = BVApp.ContactServices.AffiliateReferrals.FindByCriteria(new AffiliateReferralSearchCriteria(){ AffiliateId=id}, 1, int.MaxValue, ref totalCount);
+                    List<AffiliateReferral> refs = MTApp.ContactServices.AffiliateReferrals.FindByCriteria(new AffiliateReferralSearchCriteria(){ AffiliateId=id}, 1, int.MaxValue, ref totalCount);
                     List<AffiliateReferralDTO> resultRefs = new List<AffiliateReferralDTO>();
                     foreach (AffiliateReferral r in refs)
                     {
@@ -68,7 +68,7 @@ namespace BVCommerce.api.rest
                     // Affiliate Handler
                     ApiResponse<AffiliateDTO> response = new ApiResponse<AffiliateDTO>();
                     Affiliate item;
-                    item = BVApp.ContactServices.Affiliates.Find(id);
+                    item = MTApp.ContactServices.Affiliates.Find(id);
                     if (item == null)
                     {
                         response.Errors.Add(new ApiError("NULL", "Could not locate that item. Check id and try again."));
@@ -109,7 +109,7 @@ namespace BVCommerce.api.rest
                 }
                 AffiliateReferral itemA = new AffiliateReferral();
                 itemA.FromDto(postedItemA);
-                BVApp.ContactServices.AffiliateReferrals.Create2(itemA, true);
+                MTApp.ContactServices.AffiliateReferrals.Create2(itemA, true);
                 responseA.Content = itemA.ToDto();
                 data = MerchantTribe.Web.Json.ObjectToJson(responseA);
             }
@@ -133,12 +133,12 @@ namespace BVCommerce.api.rest
 
                 if (id < 1)
                 {
-                    Affiliate existing = BVApp.ContactServices.Affiliates.FindByReferralId(item.ReferralId);
+                    Affiliate existing = MTApp.ContactServices.Affiliates.FindByReferralId(item.ReferralId);
                     if (existing == null || existing.Id < 1)
                     {
 
                         // Create
-                        bool result = BVApp.ContactServices.Affiliates.Create(item);
+                        bool result = MTApp.ContactServices.Affiliates.Create(item);
                         responseB.Content = item.ToDto();
                         id = item.Id;                       
                     }
@@ -150,7 +150,7 @@ namespace BVCommerce.api.rest
                 }
                 else
                 {
-                    BVApp.ContactServices.Affiliates.Update(item);
+                    MTApp.ContactServices.Affiliates.Update(item);
                     id = item.Id;
                     responseB.Content = item.ToDto();                    
                 }
@@ -167,7 +167,7 @@ namespace BVCommerce.api.rest
             long id = 0;
             long.TryParse(ids, out id);
             ApiResponse<bool> response = new ApiResponse<bool>();
-            response.Content = BVApp.ContactServices.Affiliates.Delete(id);
+            response.Content = MTApp.ContactServices.Affiliates.Delete(id);
 
             data = MerchantTribe.Web.Json.ObjectToJson(response);
             return data;

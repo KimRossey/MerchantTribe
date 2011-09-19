@@ -16,10 +16,10 @@ namespace BVCommerce.Areas.account.Controllers
         private void PasswordSetup()
         {
             ViewBag.Title = "Change Password";
-            ViewBag.MetaDescription = "Change Password | " + BVApp.CurrentStore.Settings.MetaDescription;
-            ViewBag.MetaKeywords = BVApp.CurrentStore.Settings.MetaKeywords;
+            ViewBag.MetaDescription = "Change Password | " + MTApp.CurrentStore.Settings.MetaDescription;
+            ViewBag.MetaKeywords = MTApp.CurrentStore.Settings.MetaKeywords;
             ViewBag.BodyClass = "myaccountchangepasswordpage";
-            ViewBag.SaveButtonUrl = BVApp.ThemeManager().ButtonUrl("submit", Request.IsSecureConnection);
+            ViewBag.SaveButtonUrl = MTApp.ThemeManager().ButtonUrl("submit", Request.IsSecureConnection);
         }
         // GET: /account/management/changepassword
         public ActionResult ChangePassword()
@@ -38,10 +38,10 @@ namespace BVCommerce.Areas.account.Controllers
             string currentpassword = posted["currentpasswordfield"];
             string newpassword = posted["newpasswordfield"];
 
-            CustomerAccount current = BVApp.MembershipServices.Customers.Find(SessionManager.GetCurrentUserId());
+            CustomerAccount current = MTApp.MembershipServices.Customers.Find(SessionManager.GetCurrentUserId());
             if (current == null) return View();
 
-            if (!BVApp.MembershipServices.DoPasswordsMatchForCustomer(currentpassword.Trim(), current))
+            if (!MTApp.MembershipServices.DoPasswordsMatchForCustomer(currentpassword.Trim(), current))
             {
                 FlashWarning("Check your current password and try again.");
                 return View();                
@@ -55,7 +55,7 @@ namespace BVCommerce.Areas.account.Controllers
                 }
                 else
                 {
-                    if (BVApp.MembershipServices.ChangePasswordForCustomer(current.Email, currentpassword.Trim(),
+                    if (MTApp.MembershipServices.ChangePasswordForCustomer(current.Email, currentpassword.Trim(),
                                                         newpassword.Trim()))
                     {
                         FlashSuccess("Password Updated.");
@@ -66,7 +66,7 @@ namespace BVCommerce.Areas.account.Controllers
                     }
                 }
             }
-            catch (BVMembershipUserException cex)
+            catch (SystemMembershipUserException cex)
             {
                 switch (cex.Status)
                 {
@@ -89,10 +89,10 @@ namespace BVCommerce.Areas.account.Controllers
         private void ChangeEmailSetup()
         {
             ViewBag.Title = "Change Email";
-            ViewBag.MetaDescription = "Change Email | " + BVApp.CurrentStore.Settings.MetaDescription;
-            ViewBag.MetaKeywords = BVApp.CurrentStore.Settings.MetaKeywords;
+            ViewBag.MetaDescription = "Change Email | " + MTApp.CurrentStore.Settings.MetaDescription;
+            ViewBag.MetaKeywords = MTApp.CurrentStore.Settings.MetaKeywords;
             ViewBag.BodyClass = "myaccountchangeemailpage";
-            ViewBag.SaveButtonUrl = BVApp.ThemeManager().ButtonUrl("submit", Request.IsSecureConnection);
+            ViewBag.SaveButtonUrl = MTApp.ThemeManager().ButtonUrl("submit", Request.IsSecureConnection);
         }        
         // GET: /account/management/changeemail
         public ActionResult ChangeEmail()
@@ -114,10 +114,10 @@ namespace BVCommerce.Areas.account.Controllers
             string newemail = posted["newemailfield"];
             ViewBag.NewEmail = newemail;
 
-            CustomerAccount current = BVApp.MembershipServices.Customers.Find(SessionManager.GetCurrentUserId());
+            CustomerAccount current = MTApp.MembershipServices.Customers.Find(SessionManager.GetCurrentUserId());
             if (current == null) return View();
 
-            if (!BVApp.MembershipServices.DoPasswordsMatchForCustomer(currentpassword.Trim(), current))
+            if (!MTApp.MembershipServices.DoPasswordsMatchForCustomer(currentpassword.Trim(), current))
             {
                 FlashWarning("Your password was incorrect. Try Again.");
                 return View();
@@ -132,21 +132,21 @@ namespace BVCommerce.Areas.account.Controllers
                 }
                 
                 string oldEmail = current.Email;
-                BVApp.MembershipServices.UpdateCustomerEmail(current, newemail.Trim());
+                MTApp.MembershipServices.UpdateCustomerEmail(current, newemail.Trim());
 
-                List<MailingListSnapShot> lists = BVApp.ContactServices.MailingLists.FindAllPublicPaged(1, 1000);
+                List<MailingListSnapShot> lists = MTApp.ContactServices.MailingLists.FindAllPublicPaged(1, 1000);
                 foreach (MailingListSnapShot m in lists)
                 {
-                    if (BVApp.ContactServices.MailingLists.CheckMembership(m.Id, oldEmail))
+                    if (MTApp.ContactServices.MailingLists.CheckMembership(m.Id, oldEmail))
                     {
-                        MailingList l = BVApp.ContactServices.MailingLists.Find(m.Id);
+                        MailingList l = MTApp.ContactServices.MailingLists.Find(m.Id);
                         l.UpdateMemberEmail(oldEmail,newemail.Trim());
                     }
                 }
 
                 FlashSuccess("Email Address Changed");   
             }
-            catch (BVMembershipUserException CreateEx)
+            catch (SystemMembershipUserException CreateEx)
             {
                 switch (CreateEx.Status)
                 {

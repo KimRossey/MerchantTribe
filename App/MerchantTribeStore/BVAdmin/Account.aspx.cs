@@ -25,7 +25,7 @@ namespace BVCommerce
 
             if (!Page.IsPostBack)
             {
-                Store s = BVApp.CurrentStore;
+                Store s = MTApp.CurrentStore;
                 UserAccount u = GetCorrectUser();
                 PopulatePage(u);
             }
@@ -41,7 +41,7 @@ namespace BVCommerce
                 if (u.Status == UserAccountStatus.SuperUser)
                 {
                     // don't use current user, get the owner of the store instead
-                    List<UserAccount> users = BVApp.AccountServices.FindAdminUsersByStoreId(BVApp.CurrentStore.Id);
+                    List<UserAccount> users = MTApp.AccountServices.FindAdminUsersByStoreId(MTApp.CurrentStore.Id);
                     if (users != null)
                     {
                         if (users.Count > 0)
@@ -67,7 +67,7 @@ namespace BVCommerce
 
         private void LoadStores(UserAccount u)
         {
-            List<Store> stores = BVApp.AccountServices.FindStoresForUserId(u.Id);
+            List<Store> stores = MTApp.AccountServices.FindStoresForUserId(u.Id);
 
             StringBuilder sb = new StringBuilder();
 

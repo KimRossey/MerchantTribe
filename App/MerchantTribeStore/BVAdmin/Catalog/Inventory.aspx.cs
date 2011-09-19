@@ -79,7 +79,7 @@ namespace BVCommerce
             }
             foreach (ProductInventory item in inventories)
             {
-                BVApp.CatalogServices.ProductInventories.Update(item);
+                MTApp.CatalogServices.ProductInventories.Update(item);
             }
         }
 

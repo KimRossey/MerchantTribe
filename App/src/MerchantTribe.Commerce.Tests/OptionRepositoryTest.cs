@@ -75,7 +75,7 @@ namespace MerchantTribe.Commerce.Tests
             c.CurrentStore = new Accounts.Store();
             c.CurrentStore.Id = 342;
 
-            BVApplication bvapp = BVApplication.InstantiateForMemory(c);
+            MerchantTribeApplication app = MerchantTribeApplication.InstantiateForMemory(c);
 
             Product p = new Product();
             p.Sku = "TESTABC";
@@ -118,9 +118,9 @@ namespace MerchantTribe.Commerce.Tests
             p.Options.Add(opt6);
             p.Options.Add(opt7);            
 
-            Assert.IsTrue(bvapp.CatalogServices.Products.Create(p));
+            Assert.IsTrue(app.CatalogServices.Products.Create(p));
 
-            Product actual = bvapp.CatalogServices.Products.Find(p.Bvin);
+            Product actual = app.CatalogServices.Products.Find(p.Bvin);
             Assert.IsNotNull(actual, "Actual product should not be null");
 
             Assert.AreEqual(7, actual.Options.Count, "There should be one option on the product");
@@ -144,7 +144,7 @@ namespace MerchantTribe.Commerce.Tests
             c.CurrentStore = new Accounts.Store();
             c.CurrentStore.Id = 342;
 
-            BVApplication bvapp = BVApplication.InstantiateForMemory(c);
+            MerchantTribeApplication app = MerchantTribeApplication.InstantiateForMemory(c);
 
             Product p = new Product();
             p.Sku = "TESTABC";
@@ -160,9 +160,9 @@ namespace MerchantTribe.Commerce.Tests
             // Add the option
             p.Options.Add(opt);
 
-            Assert.IsTrue(bvapp.CatalogServices.Products.Create(p));
+            Assert.IsTrue(app.CatalogServices.Products.Create(p));
 
-            Product actual = bvapp.CatalogServices.Products.Find(p.Bvin);
+            Product actual = app.CatalogServices.Products.Find(p.Bvin);
             Assert.IsNotNull(actual, "Actual product should not be null");
             
             Assert.AreEqual(1, actual.Options.Count, "There should be one option on the product");

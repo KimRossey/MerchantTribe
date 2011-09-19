@@ -28,15 +28,15 @@ namespace BVCommerce
             base.OnLoad(e);
 
             orderId = Request.QueryString["id"];
-            o = MyPage.BVApp.OrderServices.Orders.FindForCurrentStore(orderId);
-            payManager = new OrderPaymentManager(o, MyPage.BVApp);
+            o = MyPage.MTApp.OrderServices.Orders.FindForCurrentStore(orderId);
+            payManager = new OrderPaymentManager(o, MyPage.MTApp);
 
             if (!Page.IsPostBack)
             {
                 this.mvPayments.SetActiveView(this.viewCreditCards);
                 LoadCreditCardLists();
 
-                if (MyPage.BVApp.CurrentStore.PlanId < 2)
+                if (MyPage.MTApp.CurrentStore.PlanId < 2)
                 {
                     //this.lnkCash.Visible = false;
                     this.lnkCheck.Visible = false;

@@ -20,8 +20,8 @@ namespace BVCommerce
             base.OnLoad(e);
             if (!Page.IsPostBack)
             {
-                this.PayPalFastSignupEmail.Text = BVApp.CurrentStore.Settings.MailServer.EmailForNewOrder;
-                if (BVApp.CurrentStore.Settings.IsPayPalLead || BVApp.CurrentStore.PlanId == 0)
+                this.PayPalFastSignupEmail.Text = MTApp.CurrentStore.Settings.MailServer.EmailForNewOrder;
+                if (MTApp.CurrentStore.Settings.IsPayPalLead || MTApp.CurrentStore.PlanId == 0)
                 {
                     this.pnlMain.Visible = false;
                     this.pnlPayPay.Visible = true;
@@ -55,25 +55,25 @@ namespace BVCommerce
             if (chkPayPalExpress.Checked) newList.Add(WebAppSettings.PaymentIdPaypalExpress, string.Empty);
 
 
-            BVApp.CurrentStore.Settings.PaymentMethodsEnabled = newList;
+            MTApp.CurrentStore.Settings.PaymentMethodsEnabled = newList;
             SavePayPalInfo();
-            BVApp.UpdateCurrentStore();
+            MTApp.UpdateCurrentStore();
             Response.Redirect("WizardComplete.aspx");
         }
 
         private void SavePayPalInfo()
         {
-            BVApp.CurrentStore.Settings.PayPal.FastSignupEmail = this.PayPalFastSignupEmail.Text.Trim();
+            MTApp.CurrentStore.Settings.PayPal.FastSignupEmail = this.PayPalFastSignupEmail.Text.Trim();
             if (this.btnSlowSignup.Checked)
             {
-                BVApp.CurrentStore.Settings.PayPal.UserName = this.APIUsername.Text;
-                BVApp.CurrentStore.Settings.PayPal.Password = this.APIPassword.Text;
-                BVApp.CurrentStore.Settings.PayPal.Signature = this.APISignature.Text;
+                MTApp.CurrentStore.Settings.PayPal.UserName = this.APIUsername.Text;
+                MTApp.CurrentStore.Settings.PayPal.Password = this.APIPassword.Text;
+                MTApp.CurrentStore.Settings.PayPal.Signature = this.APISignature.Text;
             }
-            BVApp.CurrentStore.Settings.PayPal.Mode = this.ModeRadioButtonList.SelectedValue;
-            BVApp.CurrentStore.Settings.PayPal.ExpressAuthorizeOnly = false;
-            BVApp.CurrentStore.Settings.PayPal.AllowUnconfirmedAddresses = true;
-            BVApp.CurrentStore.Settings.PayPal.Currency = "USD";
+            MTApp.CurrentStore.Settings.PayPal.Mode = this.ModeRadioButtonList.SelectedValue;
+            MTApp.CurrentStore.Settings.PayPal.ExpressAuthorizeOnly = false;
+            MTApp.CurrentStore.Settings.PayPal.AllowUnconfirmedAddresses = true;
+            MTApp.CurrentStore.Settings.PayPal.Currency = "USD";
         }
 
         protected void btnFastSignup_CheckedChanged(object sender, EventArgs e)

@@ -20,7 +20,7 @@ namespace BVCommerce
                     IProductPage prodPage = (IProductPage)this.Page;
                     List<ProductVolumeDiscount> volumeDiscounts;
 
-                    volumeDiscounts = MyPage.BVApp.CatalogServices.VolumeDiscounts.FindByProductId(prodPage.LocalProduct.Bvin);
+                    volumeDiscounts = MyPage.MTApp.CatalogServices.VolumeDiscounts.FindByProductId(prodPage.LocalProduct.Bvin);
 
                     if (volumeDiscounts.Count > 0)
                     {

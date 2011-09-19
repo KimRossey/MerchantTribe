@@ -42,7 +42,7 @@ namespace BVCommerce
 
         public void LoadColumn()
         {
-            ContentColumn c = MyPage.BVApp.ContentServices.Columns.Find(this.ColumnId);
+            ContentColumn c = MyPage.MTApp.ContentServices.Columns.Find(this.ColumnId);
             this.lblTitle.Text = c.DisplayName;
             this.GridView1.DataSource = c.Blocks;
             this.GridView1.DataBind();
@@ -51,14 +51,14 @@ namespace BVCommerce
         protected void btnNew_Click(object sender, System.Web.UI.ImageClickEventArgs e)
         {
 
-            ContentColumn col = MyPage.BVApp.ContentServices.Columns.Find(this.ColumnId);
+            ContentColumn col = MyPage.MTApp.ContentServices.Columns.Find(this.ColumnId);
             if (col != null)
             {
                 ContentBlock b = new ContentBlock();
                 b.ControlName = this.lstBlocks.SelectedValue;
                 b.ColumnId = this.ColumnId;
                 col.Blocks.Add(b);
-                MyPage.BVApp.ContentServices.Columns.Update(col);
+                MyPage.MTApp.ContentServices.Columns.Update(col);
             }
             LoadColumn();
         }
@@ -68,7 +68,7 @@ namespace BVCommerce
             string bvin = string.Empty;
             //this.GridView1.UpdateAfterCallBack = true;
             bvin = ((GridView)sender).DataKeys[e.RowIndex].Value.ToString();
-            MyPage.BVApp.ContentServices.Columns.MoveBlockDown(bvin, this.ColumnId, this.MyPage.BVApp.CurrentStore.Id);
+            MyPage.MTApp.ContentServices.Columns.MoveBlockDown(bvin, this.ColumnId, this.MyPage.MTApp.CurrentStore.Id);
             LoadColumn();
         }
 
@@ -77,7 +77,7 @@ namespace BVCommerce
             string bvin = string.Empty;
             //this.GridView1.UpdateAfterCallBack = true;
             bvin = ((GridView)sender).DataKeys[e.RowIndex].Value.ToString();
-            MyPage.BVApp.ContentServices.Columns.MoveBlockUp(bvin, this.ColumnId, this.MyPage.BVApp.CurrentStore.Id);
+            MyPage.MTApp.ContentServices.Columns.MoveBlockUp(bvin, this.ColumnId, this.MyPage.MTApp.CurrentStore.Id);
             LoadColumn();
         }
 
@@ -132,7 +132,7 @@ namespace BVCommerce
             string bvin = string.Empty;
             //this.GridView1.UpdateAfterCallBack = true;
             bvin = ((GridView)sender).DataKeys[e.RowIndex].Value.ToString();
-            MyPage.BVApp.ContentServices.Columns.DeleteBlock(bvin);
+            MyPage.MTApp.ContentServices.Columns.DeleteBlock(bvin);
             LoadColumn();
         }
 

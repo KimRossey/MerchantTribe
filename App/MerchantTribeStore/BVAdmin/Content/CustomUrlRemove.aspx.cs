@@ -25,7 +25,7 @@ namespace BVCommerce.BVAdmin.Content
         private void Delete(string id)
         {
             bool result = false;
-            result = BVApp.ContentServices.CustomUrls.Delete(id);
+            result = MTApp.ContentServices.CustomUrls.Delete(id);
             if ((result))
             {
                 this.litOutput.Text = "{\"result\":true}";

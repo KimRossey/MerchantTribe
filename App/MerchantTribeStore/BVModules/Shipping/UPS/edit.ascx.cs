@@ -39,7 +39,7 @@ namespace BVCommerce
 
         private void LoadZones()
         {
-            this.lstZones.DataSource = MyPage.BVApp.OrderServices.ShippingZones.FindForStore(MyPage.BVApp.CurrentStore.Id);
+            this.lstZones.DataSource = MyPage.MTApp.OrderServices.ShippingZones.FindForStore(MyPage.MTApp.CurrentStore.Id);
             this.lstZones.DataTextField = "Name";
             this.lstZones.DataValueField = "id";
             this.lstZones.DataBind();
@@ -83,13 +83,13 @@ namespace BVCommerce
             }
 
             // Global Settings
-            this.AccountNumberField.Text = MyPage.BVApp.CurrentStore.Settings.ShippingUpsAccountNumber;
-            this.ResidentialAddressCheckBox.Checked = MyPage.BVApp.CurrentStore.Settings.ShippingUpsForceResidential;
-            this.PickupTypeRadioButtonList.SelectedValue = MyPage.BVApp.CurrentStore.Settings.ShippingUpsPickupType.ToString();
-            this.DefaultPackagingField.SelectedValue = MyPage.BVApp.CurrentStore.Settings.ShippingUpsDefaultPackaging.ToString();
+            this.AccountNumberField.Text = MyPage.MTApp.CurrentStore.Settings.ShippingUpsAccountNumber;
+            this.ResidentialAddressCheckBox.Checked = MyPage.MTApp.CurrentStore.Settings.ShippingUpsForceResidential;
+            this.PickupTypeRadioButtonList.SelectedValue = MyPage.MTApp.CurrentStore.Settings.ShippingUpsPickupType.ToString();
+            this.DefaultPackagingField.SelectedValue = MyPage.MTApp.CurrentStore.Settings.ShippingUpsDefaultPackaging.ToString();
             //this.DefaultPaymentField.SelectedValue = MyPage.Services.CurrentStore.ShippingUpsDefaultPayment.ToString();
-            this.DefaultServiceField.SelectedValue = MyPage.BVApp.CurrentStore.Settings.ShippingUpsDefaultService.ToString();
-            if (MyPage.BVApp.CurrentStore.Settings.ShippingUpsLicense.Trim().Length > 0)
+            this.DefaultServiceField.SelectedValue = MyPage.MTApp.CurrentStore.Settings.ShippingUpsDefaultService.ToString();
+            if (MyPage.MTApp.CurrentStore.Settings.ShippingUpsLicense.Trim().Length > 0)
             {
                 this.lnkRegister.Text = "Already Registered with UPS (click to register again)";
             }
@@ -97,8 +97,8 @@ namespace BVCommerce
             {
                 this.lnkRegister.Text = "Register with UPS to use Online Tools";
             }
-            this.SkipDimensionsCheckBox.Checked = MyPage.BVApp.CurrentStore.Settings.ShippingUpsSkipDimensions;
-            this.chkDiagnostics.Checked = MyPage.BVApp.CurrentStore.Settings.ShippingUPSDiagnostics;
+            this.SkipDimensionsCheckBox.Checked = MyPage.MTApp.CurrentStore.Settings.ShippingUpsSkipDimensions;
+            this.chkDiagnostics.Checked = MyPage.MTApp.CurrentStore.Settings.ShippingUPSDiagnostics;
 
 
             // Method Settings
@@ -153,14 +153,14 @@ namespace BVCommerce
             ShippingMethod.Adjustment = decimal.Parse(AdjustmentTextBox.Text, System.Globalization.NumberStyles.Currency);
 
             // Global Settings
-            MyPage.BVApp.CurrentStore.Settings.ShippingUpsAccountNumber = this.AccountNumberField.Text.Trim();
-            MyPage.BVApp.CurrentStore.Settings.ShippingUpsForceResidential = this.ResidentialAddressCheckBox.Checked;
-            MyPage.BVApp.CurrentStore.Settings.ShippingUpsPickupType = int.Parse(this.PickupTypeRadioButtonList.SelectedValue);
-            MyPage.BVApp.CurrentStore.Settings.ShippingUpsDefaultService = int.Parse(this.DefaultServiceField.SelectedValue);
-            MyPage.BVApp.CurrentStore.Settings.ShippingUpsDefaultPackaging = int.Parse(this.DefaultPackagingField.SelectedValue);
+            MyPage.MTApp.CurrentStore.Settings.ShippingUpsAccountNumber = this.AccountNumberField.Text.Trim();
+            MyPage.MTApp.CurrentStore.Settings.ShippingUpsForceResidential = this.ResidentialAddressCheckBox.Checked;
+            MyPage.MTApp.CurrentStore.Settings.ShippingUpsPickupType = int.Parse(this.PickupTypeRadioButtonList.SelectedValue);
+            MyPage.MTApp.CurrentStore.Settings.ShippingUpsDefaultService = int.Parse(this.DefaultServiceField.SelectedValue);
+            MyPage.MTApp.CurrentStore.Settings.ShippingUpsDefaultPackaging = int.Parse(this.DefaultPackagingField.SelectedValue);
             //MyPage.Services.CurrentStore.Settings.ShippingUpsDefaultPayment = int.Parse(this.DefaultPaymentField.SelectedValue);
-            MyPage.BVApp.CurrentStore.Settings.ShippingUpsSkipDimensions = this.SkipDimensionsCheckBox.Checked;
-            MyPage.BVApp.CurrentStore.Settings.ShippingUPSDiagnostics = this.chkDiagnostics.Checked;
+            MyPage.MTApp.CurrentStore.Settings.ShippingUpsSkipDimensions = this.SkipDimensionsCheckBox.Checked;
+            MyPage.MTApp.CurrentStore.Settings.ShippingUPSDiagnostics = this.chkDiagnostics.Checked;
             
 
 
@@ -191,7 +191,7 @@ namespace BVCommerce
             Settings.ServiceCodeFilter = filter;
             ShippingMethod.Settings.Merge(Settings);
 
-            MyPage.BVApp.AccountServices.Stores.Update(MyPage.BVApp.CurrentStore);
+            MyPage.MTApp.AccountServices.Stores.Update(MyPage.MTApp.CurrentStore);
         }
      
         protected void CustomValidator1_ServerValidate(object source, System.Web.UI.WebControls.ServerValidateEventArgs args)

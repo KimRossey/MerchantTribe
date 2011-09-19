@@ -9,7 +9,7 @@ namespace BVCommerce
         {
             base.OnLoad(e);
 
-            ContentBlock b = MyPage.BVApp.ContentServices.Columns.FindBlock(this.BlockId);
+            ContentBlock b = MyPage.MTApp.ContentServices.Columns.FindBlock(this.BlockId);
             if (b != null)
             {
                 this.lblHtml.Text = Server.HtmlEncode(b.BaseSettings.GetSettingOrEmpty("HtmlData"));

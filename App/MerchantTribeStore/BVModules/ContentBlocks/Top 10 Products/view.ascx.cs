@@ -22,7 +22,7 @@ namespace BVCommerce
         {
             System.DateTime s = new System.DateTime(1900, 1, 1);
             System.DateTime e = new System.DateTime(3000, 12, 31);
-            List<Product> products = MyPage.BVApp.ReportingTopSellersByDate(s, e, 10);            
+            List<Product> products = MyPage.MTApp.ReportingTopSellersByDate(s, e, 10);            
 
             RenderList(products);
         }

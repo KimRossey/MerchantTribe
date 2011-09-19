@@ -28,7 +28,7 @@ namespace BVCommerce
         {
             base.OnLoad(e);
             string themeId = Request.QueryString["id"];
-            this.BVApp.ThemeManager().DuplicateTheme(themeId);
+            this.MTApp.ThemeManager().DuplicateTheme(themeId);
             Response.Redirect("Themes.aspx");
         }
 

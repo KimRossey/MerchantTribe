@@ -19,12 +19,12 @@ namespace BVCommerce
 
         private void LoadNews()
         {
-            BVNewsMessageManager manager = BVNewsMessageManager.InstantiateForDatabase(MyPage.BVApp.CurrentRequestContext);
+            BVNewsMessageManager manager = BVNewsMessageManager.InstantiateForDatabase(MyPage.MTApp.CurrentRequestContext);
             List<BVNewsMessage> messages = manager.GetLatestNews(10);
             foreach (BVNewsMessage m in messages)
             {
                 this.litNews.Text += "<div class=\"flash-message-minor\"><b>";
-                this.litNews.Text += TimeZoneInfo.ConvertTimeFromUtc(m.TimeStampUtc, MyPage.BVApp.CurrentStore.Settings.TimeZone).ToShortDateString();
+                this.litNews.Text += TimeZoneInfo.ConvertTimeFromUtc(m.TimeStampUtc, MyPage.MTApp.CurrentStore.Settings.TimeZone).ToShortDateString();
                 this.litNews.Text += "</b><br />" + m.Message + "</div>";
             }
         }

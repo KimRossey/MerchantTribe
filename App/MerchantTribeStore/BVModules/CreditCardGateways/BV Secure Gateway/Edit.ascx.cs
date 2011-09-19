@@ -33,7 +33,7 @@ namespace BVCommerce
         private void LoadData()
         {
             PayLeapSettings settings = new PayLeapSettings();
-            settings.Merge(MyPage.BVApp.CurrentStore.Settings.PaymentSettingsGet(this.BlockId));
+            settings.Merge(MyPage.MTApp.CurrentStore.Settings.PaymentSettingsGet(this.BlockId));
 
             this.UsernameField.Text = settings.Username;
 
@@ -51,7 +51,7 @@ namespace BVCommerce
         private void SaveData()
         {
             PayLeapSettings settings = new PayLeapSettings();
-            settings.Merge(MyPage.BVApp.CurrentStore.Settings.PaymentSettingsGet(this.BlockId));
+            settings.Merge(MyPage.MTApp.CurrentStore.Settings.PaymentSettingsGet(this.BlockId));
 
             settings.Username = this.UsernameField.Text.Trim();
             if (this.PasswordField.Text != "************")
@@ -62,9 +62,9 @@ namespace BVCommerce
             settings.EnableDebugTracing = this.chkEnableTracing.Checked;
             settings.DeveloperMode = this.chkDebugMode.Checked;
 
-            MyPage.BVApp.CurrentStore.Settings.PaymentSettingsSet(this.BlockId, settings);
+            MyPage.MTApp.CurrentStore.Settings.PaymentSettingsSet(this.BlockId, settings);
 
-            MyPage.BVApp.AccountServices.Stores.Update(MyPage.BVApp.CurrentStore);
+            MyPage.MTApp.AccountServices.Stores.Update(MyPage.MTApp.CurrentStore);
         }
 
     }

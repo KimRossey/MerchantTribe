@@ -618,7 +618,7 @@ namespace MerchantTribe.Commerce.Accounts
             return false;
         }
 
-        public bool ChangePlan(long storeId, long userId, int newPlanId, BVApplication bvapp)
+        public bool ChangePlan(long storeId, long userId, int newPlanId, MerchantTribeApplication app)
         {
 
             Store s = Stores.FindById(storeId);
@@ -639,7 +639,7 @@ namespace MerchantTribe.Commerce.Accounts
             }
             if (newPlanId < s.PlanId)
             {
-                return DowngradePlan(s, a, newPlan, bvapp);
+                return DowngradePlan(s, a, newPlan, app);
             }
 
             // no chanes to plan
@@ -662,9 +662,9 @@ namespace MerchantTribe.Commerce.Accounts
             }
             return result;
         }
-        private bool DowngradePlan(Store s, UserAccount a, HostedPlan newPlan, BVApplication bvapp)
+        private bool DowngradePlan(Store s, UserAccount a, HostedPlan newPlan, MerchantTribeApplication app)
         {
-            int currentProductCount = bvapp.CatalogServices.Products.FindAllCount(s.Id);
+            int currentProductCount = app.CatalogServices.Products.FindAllCount(s.Id);
             if (currentProductCount > newPlan.MaxProducts) return false;
 
             s.CurrentPlanRate = newPlan.Rate;

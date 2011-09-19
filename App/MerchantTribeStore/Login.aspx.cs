@@ -32,7 +32,7 @@ namespace BVCommerce
             if (!Page.IsPostBack)
             {
 
-                if (BVApp.CurrentStore.Settings.IsPrivateStore)
+                if (MTApp.CurrentStore.Settings.IsPrivateStore)
                 {
                     this.pnlNewUser.Visible = false;
                     this.ContactUsHyperLink.Text = SiteTerms.GetTerm(SiteTermIds.PrivateStoreNewUser);

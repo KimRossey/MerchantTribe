@@ -42,7 +42,7 @@ namespace BVCommerce
         private void LoadType()
         {
             ProductType prodType = new ProductType();
-            prodType = BVApp.CatalogServices.ProductTypes.Find((string)ViewState["ID"]);
+            prodType = MTApp.CatalogServices.ProductTypes.Find((string)ViewState["ID"]);
             if (prodType != null)
             {
 
@@ -50,7 +50,7 @@ namespace BVCommerce
 
                 LoadPropertyLists();
 
-                if (BVApp.CatalogServices.Products.FindCountByProductType(prodType.Bvin) > 0)
+                if (MTApp.CatalogServices.Products.FindCountByProductType(prodType.Bvin) > 0)
                 {
                     msg.ShowWarning("Editing this type will affect all existing products of this type. Any default values you set here will NOT overwrite existing products but any properties that you add or remove will affect existing products.");
                 }
@@ -66,7 +66,7 @@ namespace BVCommerce
             // Delete newly created item if user cancels so we don't leave a bunch of "new property"
             if (Request["newmode"] == "1")
             {
-                BVApp.CatalogServices.ProductTypeDestroy((string)ViewState["ID"]);
+                MTApp.CatalogServices.ProductTypeDestroy((string)ViewState["ID"]);
             }
             Response.Redirect("ProductTypes.aspx");
         }
@@ -75,13 +75,13 @@ namespace BVCommerce
         {
             msg.ClearMessage();
             ProductType prodType = new ProductType();
-            prodType = BVApp.CatalogServices.ProductTypes.Find((string)ViewState["ID"]);
+            prodType = MTApp.CatalogServices.ProductTypes.Find((string)ViewState["ID"]);
             if (prodType != null)
             {
 
                 prodType.ProductTypeName = this.ProductTypeNameField.Text;
 
-                if (BVApp.CatalogServices.ProductTypes.Update(prodType) == true)
+                if (MTApp.CatalogServices.ProductTypes.Update(prodType) == true)
                 {
                     prodType = null;
                     Response.Redirect("ProductTypes.aspx");
@@ -102,12 +102,12 @@ namespace BVCommerce
         private void LoadPropertyLists()
         {
 
-            this.lstProperties.DataSource = BVApp.CatalogServices.ProductPropertiesFindForType((string)ViewState["ID"]);
+            this.lstProperties.DataSource = MTApp.CatalogServices.ProductPropertiesFindForType((string)ViewState["ID"]);
             this.lstProperties.DataTextField = "PropertyName";
             this.lstProperties.DataValueField = "id";
             this.lstProperties.DataBind();
 
-            this.lstAvailableProperties.DataSource = BVApp.CatalogServices.ProductPropertiesFindNotAssignedToType((string)ViewState["ID"]);
+            this.lstAvailableProperties.DataSource = MTApp.CatalogServices.ProductPropertiesFindNotAssignedToType((string)ViewState["ID"]);
             this.lstAvailableProperties.DataTextField = "PropertyName";
             this.lstAvailableProperties.DataValueField = "id";
             this.lstAvailableProperties.DataBind();
@@ -117,7 +117,7 @@ namespace BVCommerce
         {            
             string typeBvin = (string)ViewState["ID"];
             long propertyId = long.Parse(lstAvailableProperties.SelectedValue);
-            BVApp.CatalogServices.ProductTypeAddProperty(typeBvin, propertyId);
+            MTApp.CatalogServices.ProductTypeAddProperty(typeBvin, propertyId);
             this.LoadPropertyLists();
         }
 
@@ -125,7 +125,7 @@ namespace BVCommerce
         {
             string typeBvin = (string)ViewState["ID"];
             long propertyId = long.Parse(lstAvailableProperties.SelectedValue);
-            BVApp.CatalogServices.ProductTypeRemoveProperty(typeBvin, propertyId);            
+            MTApp.CatalogServices.ProductTypeRemoveProperty(typeBvin, propertyId);            
             this.LoadPropertyLists();
         }
 
@@ -133,7 +133,7 @@ namespace BVCommerce
         {
             string typeBvin = (string)ViewState["ID"];
             long selected = long.Parse(this.lstProperties.SelectedValue);
-            BVApp.CatalogServices.ProductTypeMovePropertyUp(typeBvin, selected);            
+            MTApp.CatalogServices.ProductTypeMovePropertyUp(typeBvin, selected);            
             this.LoadPropertyLists();
             foreach (System.Web.UI.WebControls.ListItem li in this.lstProperties.Items)
             {
@@ -149,7 +149,7 @@ namespace BVCommerce
         {
             string typeBvin = (string)ViewState["ID"];
             long selected = long.Parse(this.lstProperties.SelectedValue);
-            BVApp.CatalogServices.ProductTypeMovePropertyDown(typeBvin, selected);            
+            MTApp.CatalogServices.ProductTypeMovePropertyDown(typeBvin, selected);            
             this.LoadPropertyLists();
             foreach (System.Web.UI.WebControls.ListItem li in this.lstProperties.Items)
             {

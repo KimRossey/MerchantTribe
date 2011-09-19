@@ -20,23 +20,23 @@ namespace BVCommerce
                 this.pnlMain.Visible = true;
              
                 this.litAdminLink.Text = "<a href=\""
-                    + MyPage.BVApp.CurrentStore.RootUrlSecure() 
+                    + MyPage.MTApp.CurrentStore.RootUrlSecure() 
                     + "bvadmin\" style=\"display:block;float:left;font-size:13px;line-height:24px;padding:6px 0 0 0;margin:-6px 0 0 0;color:#333;text-decoration:none;\"><img src=\"" 
                     + Page.ResolveUrl("~/images/system/AdminPanelLogo.png") 
                     + "\" alt=\"bvcommerce\" /></a>";
 
 
-                if (MyPage.BVApp.CurrentStore.Settings.StoreClosed)
+                if (MyPage.MTApp.CurrentStore.Settings.StoreClosed)
                 {
 
                     this.litAdminLink.Text += "<a href=\""
-                    + MyPage.BVApp.CurrentStore.RootUrlSecure()
+                    + MyPage.MTApp.CurrentStore.RootUrlSecure()
                     + "bvadmin/configuration/general.aspx\" style=\"display:block;float:left;font-size:13px;line-height:24px;padding:6px 0 0 0;margin:-6px 0 0 0;color:#900;text-decoration:none;\">"
                     + "*** STORE IS CLOSED, SHOPPERS CAN'T SEE THIS PAGE ***</a>";                    
                 }
 
                 this.litAdminLink.Text += "<a href=\""
-                    + MyPage.BVApp.CurrentStore.RootUrlSecure()
+                    + MyPage.MTApp.CurrentStore.RootUrlSecure()
                     + "bvadmin\" style=\"display:block;float:right;font-size:13px;line-height:24px;padding:6px 0 0 0;margin:-6px 0 0 0;color:#333;text-decoration:none;\">Go To Admin Dashboard</a>";
             }         
         }
@@ -50,7 +50,7 @@ namespace BVCommerce
             // no token, return
             if (!tokenId.HasValue) return false;
 
-            if (MyPage.BVApp.AccountServices.IsTokenValidForStore(MyPage.BVApp.CurrentStore.Id, tokenId.Value))
+            if (MyPage.MTApp.AccountServices.IsTokenValidForStore(MyPage.MTApp.CurrentStore.Id, tokenId.Value))
             {
                 return true;
             }

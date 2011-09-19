@@ -45,7 +45,7 @@ namespace BVCommerce.BVAdmin.People
                     string itemId = Request.QueryString["id"];
                     long temp = 0;
                     long.TryParse(itemId, out temp);
-                    BVApp.ContactServices.Affiliates.Delete(temp);
+                    MTApp.ContactServices.Affiliates.Delete(temp);
                 }
 
                 Response.Redirect("Affiliates.aspx?page=" + currentPage.ToString() + "&keyword=" + System.Web.HttpUtility.UrlEncode(keyword));

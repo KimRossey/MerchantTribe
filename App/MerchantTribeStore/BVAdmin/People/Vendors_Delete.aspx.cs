@@ -43,7 +43,7 @@ namespace BVCommerce.BVAdmin.People
                 if (Request.QueryString["id"] != null)
                 {
                     string itemId = Request.QueryString["id"];
-                    BVApp.ContactServices.Vendors.Delete(itemId);
+                    MTApp.ContactServices.Vendors.Delete(itemId);
                 }
 
                 Response.Redirect("Vendors.aspx?page=" + currentPage.ToString() + "&keyword=" + System.Web.HttpUtility.UrlEncode(keyword));

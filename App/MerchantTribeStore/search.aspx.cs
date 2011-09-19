@@ -40,7 +40,7 @@ namespace BVCommerce
             }
             if (!Page.IsPostBack)
             {
-                this.btnGo.ImageUrl = BVApp.ThemeManager().ButtonUrl("Go", Request.IsSecureConnection);
+                this.btnGo.ImageUrl = MTApp.ThemeManager().ButtonUrl("Go", Request.IsSecureConnection);
                 this.q.Text = query;
             }
 
@@ -62,7 +62,7 @@ namespace BVCommerce
             int totalResults = 0;
 
             SearchManager manager = new SearchManager();
-            List<SearchObject> objects = manager.DoSearch(BVApp.CurrentStore.Id, query, pageNumber, itemsPerPage, ref totalResults);
+            List<SearchObject> objects = manager.DoSearch(MTApp.CurrentStore.Id, query, pageNumber, itemsPerPage, ref totalResults);
 
             List<string> ids = new List<string>();            
             foreach (SearchObject o in objects)
@@ -74,7 +74,7 @@ namespace BVCommerce
                         break;
                 }
             }
-            List<Product> products = BVApp.CatalogServices.Products.FindMany(ids);
+            List<Product> products = MTApp.CatalogServices.Products.FindMany(ids);
 
             if ((products != null))
             {
@@ -112,7 +112,7 @@ namespace BVCommerce
                 {
                     columnCount += 1;
                 }
-                UserSpecificPrice price = BVApp.PriceProduct(p, BVApp.CurrentCustomer, null);
+                UserSpecificPrice price = MTApp.PriceProduct(p, MTApp.CurrentCustomer, null);
                 MerchantTribe.Commerce.Utilities.HtmlRendering.RenderSingleProduct(ref sb, p, isLastInRow, isFirstInRow, this.Page, price);
             }
 

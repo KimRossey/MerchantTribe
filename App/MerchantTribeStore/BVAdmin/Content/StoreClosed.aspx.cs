@@ -36,14 +36,14 @@ namespace BVCommerce
 
         private void LoadData()
         {
-            this.ContentField.PreTransformText = BVApp.CurrentStore.Settings.StoreClosedDescriptionPreTransform;
+            this.ContentField.PreTransformText = MTApp.CurrentStore.Settings.StoreClosedDescriptionPreTransform;
 
-            this.ContentField.Text = BVApp.CurrentStore.Settings.StoreClosedDescription;
+            this.ContentField.Text = MTApp.CurrentStore.Settings.StoreClosedDescription;
             if (this.ContentField.SupportsTransform)
             {
-                if (BVApp.CurrentStore.Settings.StoreClosedDescriptionPreTransform.Length > 0)
+                if (MTApp.CurrentStore.Settings.StoreClosedDescriptionPreTransform.Length > 0)
                 {
-                    this.ContentField.Text = BVApp.CurrentStore.Settings.StoreClosedDescriptionPreTransform;
+                    this.ContentField.Text = MTApp.CurrentStore.Settings.StoreClosedDescriptionPreTransform;
                 }
             }
         }
@@ -63,9 +63,9 @@ namespace BVCommerce
 
         private bool Save()
         {
-            BVApp.CurrentStore.Settings.StoreClosedDescription = this.ContentField.Text;
-            BVApp.CurrentStore.Settings.StoreClosedDescriptionPreTransform = this.ContentField.PreTransformText;
-            return BVApp.UpdateCurrentStore();
+            MTApp.CurrentStore.Settings.StoreClosedDescription = this.ContentField.Text;
+            MTApp.CurrentStore.Settings.StoreClosedDescriptionPreTransform = this.ContentField.PreTransformText;
+            return MTApp.UpdateCurrentStore();
         }
 
 

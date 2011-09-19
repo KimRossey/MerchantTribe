@@ -69,7 +69,7 @@ namespace BVCommerce
 
         private void PopulateColumns()
         {
-            List<ContentColumn> columns = BVApp.ContentServices.Columns.FindAll();
+            List<ContentColumn> columns = MTApp.ContentServices.Columns.FindAll();
             foreach (ContentColumn col in columns)
             {
                 this.PreContentColumnIdField.Items.Add(new System.Web.UI.WebControls.ListItem(col.DisplayName, col.Bvin));
@@ -80,7 +80,7 @@ namespace BVCommerce
         private void LoadProduct()
         {
             Product p;
-            p = BVApp.CatalogServices.Products.Find(this.BvinField.Value);
+            p = MTApp.CatalogServices.Products.Find(this.BvinField.Value);
             if (p != null)
             {
                 if (p.Bvin != string.Empty)
@@ -257,7 +257,7 @@ namespace BVCommerce
             bool result = false;
 
             Product p;
-            p = BVApp.CatalogServices.Products.Find(this.BvinField.Value);
+            p = MTApp.CatalogServices.Products.Find(this.BvinField.Value);
             if (p == null)
             {
                 //if it is nothing then create a new product
@@ -303,11 +303,11 @@ namespace BVCommerce
                 p.ShippingDetails.IsNonShipping = true;
                 if ((p.Bvin == string.Empty))
                 {
-                    result = BVApp.CatalogServices.ProductsCreateWithInventory(p, true);
+                    result = MTApp.CatalogServices.ProductsCreateWithInventory(p, true);
                 }
                 else
                 {
-                    result = BVApp.CatalogServices.ProductsUpdateWithSearchRebuild(p);
+                    result = MTApp.CatalogServices.ProductsUpdateWithSearchRebuild(p);
                 }
 
                 if (result == false)

@@ -15,12 +15,12 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
 		public override bool Execute(OrderTaskContext context)
 		{
 			bool result = true;
-            if (context.BVApp.OrderServices.PaymentSummary(context.Order).AmountDue > 0)
+            if (context.MTApp.OrderServices.PaymentSummary(context.Order).AmountDue > 0)
             {
 
-                foreach (Orders.OrderTransaction p in context.BVApp.OrderServices.Transactions.FindForOrder(context.Order.bvin))
+                foreach (Orders.OrderTransaction p in context.MTApp.OrderServices.Transactions.FindForOrder(context.Order.bvin))
                 {
-                    List<Orders.OrderTransaction> transactions = context.BVApp.OrderServices.Transactions.FindForOrder(context.Order.bvin);
+                    List<Orders.OrderTransaction> transactions = context.MTApp.OrderServices.Transactions.FindForOrder(context.Order.bvin);
 
                     if (p.Action == MerchantTribe.Payment.ActionType.CreditCardInfo)
                     {
@@ -55,7 +55,7 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
 
                             Orders.OrderTransaction ot = new Orders.OrderTransaction(t);
                             ot.LinkedToTransaction = p.IdAsString;
-                            context.BVApp.OrderServices.AddPaymentTransactionToOrder(context.Order, ot, context.BVApp);
+                            context.MTApp.OrderServices.AddPaymentTransactionToOrder(context.Order, ot, context.MTApp);
 
                             if (t.Result.Succeeded == false) result = false;
 
@@ -74,7 +74,7 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
 
                 // Evaluate Payment Status After Receiving Payments
                 Orders.OrderPaymentStatus previousPaymentStatus = context.Order.PaymentStatus;
-                context.BVApp.OrderServices.EvaluatePaymentStatus(context.Order);
+                context.MTApp.OrderServices.EvaluatePaymentStatus(context.Order);
                 context.Inputs.Add("bvsoftware", "PreviousPaymentStatus", previousPaymentStatus.ToString());
                 BusinessRules.Workflow.RunByName(context, WorkflowNames.PaymentChanged);
             }

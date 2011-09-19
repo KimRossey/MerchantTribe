@@ -18,7 +18,7 @@ namespace BVCommerce.BVAdmin.Marketing
         protected override void OnPreInit(EventArgs e)
         {
             base.OnPreInit(e);
-            this.PageTitle = BVApp.CurrentStore.Settings.RewardsPointsName;
+            this.PageTitle = MTApp.CurrentStore.Settings.RewardsPointsName;
             this.CurrentTab = AdminTabType.Marketing;
             ValidateCurrentUserHasPermission(SystemPermissions.MarketingView);
         }        
@@ -46,34 +46,34 @@ namespace BVCommerce.BVAdmin.Marketing
 
         private void LoadInfo()
         {
-            CustomerPointsManager manager = CustomerPointsManager.InstantiateForDatabase(BVApp.CurrentStore.Settings.RewardsPointsIssuedPerDollarSpent,
-                                                                      BVApp.CurrentStore.Settings.RewardsPointsNeededPerDollarCredit,
-                                                                      BVApp.CurrentStore.Id);
+            CustomerPointsManager manager = CustomerPointsManager.InstantiateForDatabase(MTApp.CurrentStore.Settings.RewardsPointsIssuedPerDollarSpent,
+                                                                      MTApp.CurrentStore.Settings.RewardsPointsNeededPerDollarCredit,
+                                                                      MTApp.CurrentStore.Id);
 
-            int pointsIssued = manager.TotalPointsIssuedForStore(BVApp.CurrentStore.Id);
+            int pointsIssued = manager.TotalPointsIssuedForStore(MTApp.CurrentStore.Id);
             this.lblPointsIssued.Text = pointsIssued.ToString();
             this.lblPointsIssuedValue.Text = manager.DollarCreditForPoints(pointsIssued).ToString("c");
 
-            int pointsReserverd = manager.TotalPointsReservedForStore(BVApp.CurrentStore.Id);
+            int pointsReserverd = manager.TotalPointsReservedForStore(MTApp.CurrentStore.Id);
             this.lblPointsReserved.Text = pointsReserverd.ToString();
             this.lblPointsReservedValue.Text = manager.DollarCreditForPoints(pointsReserverd).ToString("c");
 
-            this.RewardsNameField.Text = BVApp.CurrentStore.Settings.RewardsPointsName;
-            this.chkPointForDollars.Checked = BVApp.CurrentStore.Settings.RewardsPointsOnPurchasesActive;
-            this.chkPointsForProducts.Checked = BVApp.CurrentStore.Settings.RewardsPointsOnProductsActive;
-            this.PointsCreditField.Text = BVApp.CurrentStore.Settings.RewardsPointsNeededPerDollarCredit.ToString();
-            this.PointsPerDollarField.Text = BVApp.CurrentStore.Settings.RewardsPointsIssuedPerDollarSpent.ToString();
+            this.RewardsNameField.Text = MTApp.CurrentStore.Settings.RewardsPointsName;
+            this.chkPointForDollars.Checked = MTApp.CurrentStore.Settings.RewardsPointsOnPurchasesActive;
+            this.chkPointsForProducts.Checked = MTApp.CurrentStore.Settings.RewardsPointsOnProductsActive;
+            this.PointsCreditField.Text = MTApp.CurrentStore.Settings.RewardsPointsNeededPerDollarCredit.ToString();
+            this.PointsPerDollarField.Text = MTApp.CurrentStore.Settings.RewardsPointsIssuedPerDollarSpent.ToString();
         }
 
         private bool SaveInfo()
         {
-            BVApp.CurrentStore.Settings.RewardsPointsName = this.RewardsNameField.Text.Trim();
-            BVApp.CurrentStore.Settings.RewardsPointsOnProductsActive = this.chkPointsForProducts.Checked;
-            BVApp.CurrentStore.Settings.RewardsPointsOnPurchasesActive = this.chkPointForDollars.Checked;
+            MTApp.CurrentStore.Settings.RewardsPointsName = this.RewardsNameField.Text.Trim();
+            MTApp.CurrentStore.Settings.RewardsPointsOnProductsActive = this.chkPointsForProducts.Checked;
+            MTApp.CurrentStore.Settings.RewardsPointsOnPurchasesActive = this.chkPointForDollars.Checked;
             int pointPerDollar = 1;
             if (int.TryParse(this.PointsPerDollarField.Text, out pointPerDollar))
             {
-                BVApp.CurrentStore.Settings.RewardsPointsIssuedPerDollarSpent = pointPerDollar;
+                MTApp.CurrentStore.Settings.RewardsPointsIssuedPerDollarSpent = pointPerDollar;
             }
             else
             {
@@ -83,7 +83,7 @@ namespace BVCommerce.BVAdmin.Marketing
             int pointsPerCredit = 100;
             if (int.TryParse(this.PointsCreditField.Text, out pointsPerCredit))
             {
-                BVApp.CurrentStore.Settings.RewardsPointsNeededPerDollarCredit = pointsPerCredit;
+                MTApp.CurrentStore.Settings.RewardsPointsNeededPerDollarCredit = pointsPerCredit;
             }
             else
             {
@@ -91,7 +91,7 @@ namespace BVCommerce.BVAdmin.Marketing
                 return false;
             }
 
-            return BVApp.UpdateCurrentStore();            
+            return MTApp.UpdateCurrentStore();            
         }
     }
 }

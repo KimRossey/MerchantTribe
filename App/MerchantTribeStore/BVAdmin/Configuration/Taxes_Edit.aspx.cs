@@ -57,7 +57,7 @@ namespace BVCommerce
 
         private void LoadSchedule(long id)
         {
-            ts = BVApp.OrderServices.TaxSchedules.FindForThisStore(id);            
+            ts = MTApp.OrderServices.TaxSchedules.FindForThisStore(id);            
             this.ScheduleNameField.Text = ts.Name;
             LoadRates(ts);            
         }
@@ -80,7 +80,7 @@ namespace BVCommerce
         {
             try
             {
-                lstCountry.DataSource = BVApp.CurrentStore.Settings.FindActiveCountries();
+                lstCountry.DataSource = MTApp.CurrentStore.Settings.FindActiveCountries();
                 lstCountry.DataValueField = "Bvin";
                 lstCountry.DataTextField = "DisplayName";
                 lstCountry.DataBind();
@@ -143,9 +143,9 @@ namespace BVCommerce
         {
             string ids = Request.QueryString["id"];
             long id = long.Parse(ids);
-            ts = BVApp.OrderServices.TaxSchedules.FindForThisStore(id);
+            ts = MTApp.OrderServices.TaxSchedules.FindForThisStore(id);
             ts.Name = this.ScheduleNameField.Text;
-            return BVApp.OrderServices.TaxSchedules.Update(ts);
+            return MTApp.OrderServices.TaxSchedules.Update(ts);
         }
 
         protected void btnNew_Click(object sender, System.Web.UI.ImageClickEventArgs e)
@@ -159,17 +159,17 @@ namespace BVCommerce
             t.PostalCode = this.postalCode.Text.Trim();
             t.Rate = decimal.Parse(this.Rate.Text.Trim());
             t.RegionAbbreviation = this.lstState.SelectedItem.Value;
-            t.StoreId = BVApp.CurrentStore.Id;
+            t.StoreId = MTApp.CurrentStore.Id;
             t.TaxScheduleId = scheduleId;
 
-            BVApp.OrderServices.Taxes.Create(t);
+            MTApp.OrderServices.Taxes.Create(t);
             LoadSchedule(scheduleId);
         }
 
         private void LoadRates(TaxSchedule ts)
         {
             this.litRates.Text = string.Empty;
-            foreach (Tax t in BVApp.OrderServices.Taxes.GetRates(BVApp.CurrentStore.Id, ts.Id))
+            foreach (Tax t in MTApp.OrderServices.Taxes.GetRates(MTApp.CurrentStore.Id, ts.Id))
             {
                 RenderTax(t);
             }

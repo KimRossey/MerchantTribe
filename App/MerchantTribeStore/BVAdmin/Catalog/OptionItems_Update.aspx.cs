@@ -28,7 +28,7 @@ namespace BVCommerce
         private void Update(string bvin, string name, string isLabel, string price, string weight)
         {
 
-            OptionItem item = BVApp.CatalogServices.ProductOptions.OptionItemFind(bvin);
+            OptionItem item = MTApp.CatalogServices.ProductOptions.OptionItemFind(bvin);
             if ((item != null))
             {
 
@@ -55,7 +55,7 @@ namespace BVCommerce
                     item.WeightAdjustment = w;
                 }
 
-                if (BVApp.CatalogServices.ProductOptions.OptionItemUpdate(item))
+                if (MTApp.CatalogServices.ProductOptions.OptionItemUpdate(item))
                 {
                     this.litOutput.Text = "{\"result\":true}";
                 }

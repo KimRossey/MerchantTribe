@@ -18,7 +18,7 @@ namespace BVCommerce
                 this.Page.Form.DefaultButton = CancelImageButton.UniqueID;
                 if (Request.QueryString["id"] != null)
                 {
-                    UserQuestion question = BVApp.MembershipServices.UserQuestions.Find(Request.QueryString["id"]);
+                    UserQuestion question = MTApp.MembershipServices.UserQuestions.Find(Request.QueryString["id"]);
                     ViewState["Question"] = question;
                     if (question.Type == UserQuestionType.MultipleChoice)
                     {
@@ -160,11 +160,11 @@ namespace BVCommerce
 
             if (question.Bvin == string.Empty)
             {
-                BVApp.MembershipServices.UserQuestions.Create(question);
+                MTApp.MembershipServices.UserQuestions.Create(question);
             }
             else
             {
-                BVApp.MembershipServices.UserQuestions.Update(question);
+                MTApp.MembershipServices.UserQuestions.Update(question);
             }
             Response.Redirect("~/BVAdmin/People/UserSignupConfig.aspx");
         }

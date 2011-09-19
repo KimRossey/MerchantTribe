@@ -12,7 +12,7 @@ namespace BVCommerce
 
             if (!Page.IsPostBack)
             {
-                this.imgGetRates.ImageUrl = MyPage.BVApp.ThemeManager().ButtonUrl("estimateshipping", Request.IsSecureConnection);
+                this.imgGetRates.ImageUrl = MyPage.MTApp.ThemeManager().ButtonUrl("estimateshipping", Request.IsSecureConnection);
             }
 
             int w = 400;

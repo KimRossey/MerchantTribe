@@ -13,7 +13,7 @@ namespace BVCommerce
 
             if (!Page.IsPostBack)
             {
-                this.imgEmail.ImageUrl = MyPage.BVApp.ThemeManager().ButtonUrl("emailthispage", Request.IsSecureConnection);
+                this.imgEmail.ImageUrl = MyPage.MTApp.ThemeManager().ButtonUrl("emailthispage", Request.IsSecureConnection);
             }
 
             int w = 400;

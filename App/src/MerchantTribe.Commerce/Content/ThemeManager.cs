@@ -10,11 +10,11 @@ namespace MerchantTribe.Commerce.Content
     public class ThemeManager
     {
 
-        private BVApplication BVApp = null;
+        private MerchantTribeApplication MTApp = null;
 
-        public ThemeManager(BVApplication bvapp)        
+        public ThemeManager(MerchantTribeApplication app)        
         {
-            BVApp = bvapp;           
+            MTApp = app;           
         }
 
         public static string DefaultThemeGuid = "bv-simplegray";
@@ -72,7 +72,7 @@ namespace MerchantTribe.Commerce.Content
         {
             List<ThemeView> result = new List<ThemeView>();
             
-            string[] installedPaths = Storage.DiskStorage.ListInstalledThemePaths(BVApp.CurrentStore.Id);
+            string[] installedPaths = Storage.DiskStorage.ListInstalledThemePaths(MTApp.CurrentStore.Id);
             if (installedPaths == null) return result;
             if (installedPaths.Length < 1) return result;
 
@@ -81,7 +81,7 @@ namespace MerchantTribe.Commerce.Content
                 string themeId = System.IO.Path.GetFileName(themePath);
                 themeId = themeId.Replace("theme-", "");
                 ThemeView v = new ThemeView();
-                v.LoadInstalledTheme(BVApp.CurrentStore.Id, themeId);
+                v.LoadInstalledTheme(MTApp.CurrentStore.Id, themeId);
                 result.Add(v);
             }
 
@@ -134,13 +134,13 @@ namespace MerchantTribe.Commerce.Content
         {
             string defaultCss = "/content/themes/theme-" + DefaultThemeGuid + "/styles.css";
 
-            if (BVApp.CurrentStore == null) return defaultCss;                        
+            if (MTApp.CurrentStore == null) return defaultCss;                        
             return FullCss(isSecure);
         }
 
         public ThemeInfo GetThemeInfo(string themeId)
         {
-            string newInfoXml = Storage.DiskStorage.ReadThemeFile(BVApp.CurrentStore.Id, themeId, "bvtheme.xml");
+            string newInfoXml = Storage.DiskStorage.ReadThemeFile(MTApp.CurrentStore.Id, themeId, "bvtheme.xml");
             ThemeInfo newInfo = new ThemeInfo();
             newInfo.LoadFromString(newInfoXml);
             return newInfo;            
@@ -148,18 +148,18 @@ namespace MerchantTribe.Commerce.Content
 
         public bool SaveThemeInfo(string themeId, ThemeInfo info)
         {
-            Storage.DiskStorage.WriteThemeFile(BVApp.CurrentStore.Id, themeId, "bvtheme.xml", info.WriteToXmlString());
+            Storage.DiskStorage.WriteThemeFile(MTApp.CurrentStore.Id, themeId, "bvtheme.xml", info.WriteToXmlString());
             return true;
         }
      
         public string FullCss(bool isSecure)
         {            
             string defaultCss = "/content/themes/theme-" + DefaultThemeGuid + "/styles.css";                                    
-            if (BVApp.CurrentStore == null) return defaultCss;
+            if (MTApp.CurrentStore == null) return defaultCss;
 
-            string result = BVApp.CurrentStore.RootUrl();
-            if (isSecure) result = BVApp.CurrentStore.RootUrlSecure();
-            result += "css/theme-" + BVApp.CurrentStore.Settings.ThemeId + "/styles.css";            
+            string result = MTApp.CurrentStore.RootUrl();
+            if (isSecure) result = MTApp.CurrentStore.RootUrlSecure();
+            result += "css/theme-" + MTApp.CurrentStore.Settings.ThemeId + "/styles.css";            
 
             return result;                                    
         }
@@ -167,17 +167,17 @@ namespace MerchantTribe.Commerce.Content
         public string ButtonUrl(string buttonName, bool isSecure)
         {
             string fileName = buttonName + ".png";
-            return Storage.DiskStorage.ThemeButtonUrl(BVApp.CurrentStore.Id, BVApp.CurrentStore.Settings.ThemeId, fileName, isSecure);
+            return Storage.DiskStorage.ThemeButtonUrl(MTApp.CurrentStore.Id, MTApp.CurrentStore.Settings.ThemeId, fileName, isSecure);
         }
 
         public bool InstallTheme(string themeId)
         {
             bool result = false;
 
-            result = Storage.DiskStorage.InstallTheme(BVApp.CurrentStore.Id, themeId);
+            result = Storage.DiskStorage.InstallTheme(MTApp.CurrentStore.Id, themeId);
             if (result)
             {
-                BVApp.SwitchTheme(themeId);
+                MTApp.SwitchTheme(themeId);
                 CopyColumnsFromThemeToStore(themeId);                
             }
             return result;
@@ -187,14 +187,14 @@ namespace MerchantTribe.Commerce.Content
         {
             bool result = false;
 
-            result = Storage.DiskStorage.DeleteThemeFolder(BVApp.CurrentStore.Id,themeId);
+            result = Storage.DiskStorage.DeleteThemeFolder(MTApp.CurrentStore.Id,themeId);
             if (result)
             {
                 // If we're deleting the current theme, reset the store theme id
-                if (BVApp.CurrentStore.Settings.ThemeId.ToLower() == themeId)
+                if (MTApp.CurrentStore.Settings.ThemeId.ToLower() == themeId)
                 {
-                    BVApp.CurrentStore.Settings.SetProp("ThemeId", string.Empty);
-                    BVApp.AccountServices.Stores.Update(BVApp.CurrentStore);                    
+                    MTApp.CurrentStore.Settings.SetProp("ThemeId", string.Empty);
+                    MTApp.AccountServices.Stores.Update(MTApp.CurrentStore);                    
                 }
             }
 
@@ -207,10 +207,10 @@ namespace MerchantTribe.Commerce.Content
             string newThemeId = System.Guid.NewGuid().ToString().ToLower();
             
             // Create the new folder
-            Storage.FileHelper.CreateAndCheckDirectory(Storage.DiskStorage.BaseStoreThemePhysicalPath(BVApp.CurrentStore.Id, newThemeId));
+            Storage.FileHelper.CreateAndCheckDirectory(Storage.DiskStorage.BaseStoreThemePhysicalPath(MTApp.CurrentStore.Id, newThemeId));
 
-            if (Storage.FileHelper.CopyAllFiles(Storage.DiskStorage.BaseStoreThemePhysicalPath(BVApp.CurrentStore.Id, themeId),
-                                            Storage.DiskStorage.BaseStoreThemePhysicalPath(BVApp.CurrentStore.Id, newThemeId)))
+            if (Storage.FileHelper.CopyAllFiles(Storage.DiskStorage.BaseStoreThemePhysicalPath(MTApp.CurrentStore.Id, themeId),
+                                            Storage.DiskStorage.BaseStoreThemePhysicalPath(MTApp.CurrentStore.Id, newThemeId)))
             {                
                 ThemeInfo newInfo = GetThemeInfo(newThemeId);                
                 newInfo.Title = "Copy of " + newInfo.Title;
@@ -234,13 +234,13 @@ namespace MerchantTribe.Commerce.Content
         public string CurrentStyleSheetContent(string themeId)
         {
             string result = string.Empty;
-            result = Storage.DiskStorage.ReadStyleSheet(BVApp.CurrentStore.Id, themeId);
+            result = Storage.DiskStorage.ReadStyleSheet(MTApp.CurrentStore.Id, themeId);
             return result;
         }
 
         public string CurrentStyleSheetContentMinifiedAndReplaced(string themeId)
         {
-            return Storage.DiskStorage.GetMinifiedStyleSheet(BVApp.CurrentStore.Id, themeId);            
+            return Storage.DiskStorage.GetMinifiedStyleSheet(MTApp.CurrentStore.Id, themeId);            
         }
 
         public string AdminStyleSheetContentMinifiedAndReplaced(string physicalFile, string baseUrl)
@@ -250,7 +250,7 @@ namespace MerchantTribe.Commerce.Content
 
         public bool UpdateStyleSheet(string themeId, string updatedCSS)
         {
-            return Storage.DiskStorage.WriteStyleSheet(BVApp.CurrentStore.Id, themeId, updatedCSS);
+            return Storage.DiskStorage.WriteStyleSheet(MTApp.CurrentStore.Id, themeId, updatedCSS);
         }
 
         public bool CopyCurrentContentColumnsToTheme(string themeId)
@@ -280,14 +280,14 @@ namespace MerchantTribe.Commerce.Content
             xw.Close();
             data = sb.ToString();
         
-            result = Storage.DiskStorage.WriteThemeFile(BVApp.CurrentStore.Id, themeId, "ColumnData.xml", data);
+            result = Storage.DiskStorage.WriteThemeFile(MTApp.CurrentStore.Id, themeId, "ColumnData.xml", data);
 
             return result;
         }
 
         private void AddColumn(string columnbvin, ref XmlWriter xw)
         {
-            ContentColumn col = BVApp.ContentServices.Columns.Find(columnbvin);
+            ContentColumn col = MTApp.ContentServices.Columns.Find(columnbvin);
             if (col != null)
             {
                 col.ToXmlWriter(ref xw);
@@ -296,12 +296,12 @@ namespace MerchantTribe.Commerce.Content
 
         public bool ClearContentColumnDataFromTheme(string themeId)
         {
-            return Storage.DiskStorage.WriteThemeFile(this.BVApp.CurrentStore.Id, themeId, "ColumnData.xml", string.Empty);
+            return Storage.DiskStorage.WriteThemeFile(this.MTApp.CurrentStore.Id, themeId, "ColumnData.xml", string.Empty);
         }
 
         public bool CopyColumnsFromThemeToStore(string themeId)
         {            
-            string columnData = Storage.DiskStorage.ReadThemeFile(this.BVApp.CurrentStore.Id, themeId, "ColumnData.xml");
+            string columnData = Storage.DiskStorage.ReadThemeFile(this.MTApp.CurrentStore.Id, themeId, "ColumnData.xml");
 
             if (columnData == string.Empty) return false;
 
@@ -346,13 +346,13 @@ namespace MerchantTribe.Commerce.Content
             if (bvinNode == null) return;
             string columnBvin = bvinNode.InnerText;
 
-            ContentColumn col = BVApp.ContentServices.Columns.Find(columnBvin);
+            ContentColumn col = MTApp.ContentServices.Columns.Find(columnBvin);
             if (col == null) return;
             if (col.SystemColumn == false) return;
 
             // remove existing blocks
             col.Blocks.Clear();
-            BVApp.ContentServices.Columns.Update(col);
+            MTApp.ContentServices.Columns.Update(col);
 
             // add blocks from xml
             XmlNodeList blockNodes;
@@ -369,7 +369,7 @@ namespace MerchantTribe.Commerce.Content
                     col.Blocks.Add(b);
                 }
             }
-            BVApp.ContentServices.Columns.Update(col);
+            MTApp.ContentServices.Columns.Update(col);
 
         }
         

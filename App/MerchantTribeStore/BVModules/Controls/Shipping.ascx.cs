@@ -35,7 +35,7 @@ namespace BVCommerce
             {
                 // Shipping Methods
 
-                Rates = MyPage.BVApp.OrderServices.FindAvailableShippingRates(o);
+                Rates = MyPage.MTApp.OrderServices.FindAvailableShippingRates(o);
 
                 if ((Rates.Count < 1))
                 {

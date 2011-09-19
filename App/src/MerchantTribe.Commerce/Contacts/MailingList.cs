@@ -31,12 +31,12 @@ namespace MerchantTribe.Commerce.Contacts
 		}
        
         // Mailing List Send Functions
-		public void SendToList(Content.HtmlTemplate t, bool sendAsync, BVApplication bvapp)
+		public void SendToList(Content.HtmlTemplate t, bool sendAsync, MerchantTribeApplication app)
 		{			
 			if (t != null) {				
 					foreach (MailingListMember m in this.Members) {
 						try {
-                            Content.HtmlTemplate copy = t.ReplaceTagsInTemplate(bvapp, m);
+                            Content.HtmlTemplate copy = t.ReplaceTagsInTemplate(app, m);
 							System.Net.Mail.MailMessage msg = new System.Net.Mail.MailMessage();
 							msg = copy.ConvertToMailMessage(m.EmailAddress);
 							if (msg != null) {
@@ -49,13 +49,13 @@ namespace MerchantTribe.Commerce.Contacts
 					}				
 			}
 		}
-		public System.Net.Mail.MailMessage PreviewMessage(Content.HtmlTemplate t, BVApplication bvapp)
+		public System.Net.Mail.MailMessage PreviewMessage(Content.HtmlTemplate t, MerchantTribeApplication app)
 		{
 			System.Net.Mail.MailMessage result = new System.Net.Mail.MailMessage();
 
 			if (this.Members.Count > 0) {
 				if (t != null) {
-                    Content.HtmlTemplate copy = t.ReplaceTagsInTemplate(bvapp, this.Members[0]);
+                    Content.HtmlTemplate copy = t.ReplaceTagsInTemplate(app, this.Members[0]);
                     result = copy.ConvertToMailMessage(this.Members[0].EmailAddress);
 				}
 			}

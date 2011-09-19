@@ -49,7 +49,7 @@ namespace BVCommerce
                 LoadOrder();
 
                 // Acumatica Warning
-                if (BVApp.CurrentStore.Settings.Acumatica.IntegrationEnabled)
+                if (MTApp.CurrentStore.Settings.Acumatica.IntegrationEnabled)
                 {
                     this.MessageBox1.ShowWarning(MerchantTribe.Commerce.Content.SiteTerms.GetTerm(MerchantTribe.Commerce.Content.SiteTermIds.AcumaticaWarning));
                 }
@@ -60,7 +60,7 @@ namespace BVCommerce
         private void LoadTemplates()
         {
             this.lstEmailTemplate.Items.Clear();
-            List<HtmlTemplate> templates = BVApp.ContentServices.GetAllTemplatesForStoreOrDefaults();
+            List<HtmlTemplate> templates = MTApp.ContentServices.GetAllTemplatesForStoreOrDefaults();
             if (templates != null)
             {
                 foreach (HtmlTemplate t in templates)
@@ -89,7 +89,7 @@ namespace BVCommerce
         private void LoadOrder()
         {
             string bvin = this.BvinField.Value.ToString();
-            Order o = BVApp.OrderServices.Orders.FindForCurrentStore(bvin);
+            Order o = MTApp.OrderServices.Orders.FindForCurrentStore(bvin);
             if (o != null)
             {
                 if (o.bvin != string.Empty)
@@ -104,7 +104,7 @@ namespace BVCommerce
 
             // Header
             this.OrderNumberField.Text = o.OrderNumber;
-            this.TimeOfOrderField.Text = TimeZoneInfo.ConvertTimeFromUtc(o.TimeOfOrderUtc, BVApp.CurrentStore.Settings.TimeZone).ToString();
+            this.TimeOfOrderField.Text = TimeZoneInfo.ConvertTimeFromUtc(o.TimeOfOrderUtc, MTApp.CurrentStore.Settings.TimeZone).ToString();
 
             // Fraud Score Display            
             if (o.FraudScore < 0) this.lblFraudScore.Text = "No Fraud Score Data";
@@ -124,7 +124,7 @@ namespace BVCommerce
 
 
             // Payment
-            OrderPaymentSummary paySummary = BVApp.OrderServices.PaymentSummary(o);
+            OrderPaymentSummary paySummary = MTApp.OrderServices.PaymentSummary(o);
             this.lblPaymentSummary.Text = paySummary.PaymentsSummary;
             this.PaymentAuthorizedField.Text = string.Format("{0:C}", paySummary.AmountAuthorized);
             this.PaymentChargedField.Text = string.Format("{0:C}", paySummary.AmountCharged);
@@ -271,13 +271,13 @@ namespace BVCommerce
 
         private void AddNote(string message, bool isPublic)
         {
-            Order o = BVApp.OrderServices.Orders.FindForCurrentStore(this.BvinField.Value);
+            Order o = MTApp.OrderServices.Orders.FindForCurrentStore(this.BvinField.Value);
             OrderNote n = new OrderNote();
             n.OrderID = this.BvinField.Value;
             n.IsPublic = isPublic;
             n.Note = message;
             o.Notes.Add(n);
-            BVApp.OrderServices.Orders.Update(o);
+            MTApp.OrderServices.Orders.Update(o);
             LoadOrder();
         }
 
@@ -295,12 +295,12 @@ namespace BVCommerce
         {
             this.MessageBox1.ClearMessage();
             long Id = (long)PublicNotesField.DataKeys[e.RowIndex].Value;
-            Order o = BVApp.OrderServices.Orders.FindForCurrentStore(this.BvinField.Value);
+            Order o = MTApp.OrderServices.Orders.FindForCurrentStore(this.BvinField.Value);
             var n = o.Notes.Where(y => y.Id == Id).SingleOrDefault();
             if (n != null)
             {
                 o.Notes.Remove(n);
-                BVApp.OrderServices.Orders.Update(o);
+                MTApp.OrderServices.Orders.Update(o);
             }            
             LoadOrder();
         }
@@ -309,12 +309,12 @@ namespace BVCommerce
         {            
             this.MessageBox1.ClearMessage();
             long Id = (long)PrivateNotesField.DataKeys[e.RowIndex].Value;
-            Order o = BVApp.OrderServices.Orders.FindForCurrentStore(this.BvinField.Value);
+            Order o = MTApp.OrderServices.Orders.FindForCurrentStore(this.BvinField.Value);
             var n = o.Notes.Where(y => y.Id == Id).SingleOrDefault();
             if (n != null)
             {
                 o.Notes.Remove(n);
-                BVApp.OrderServices.Orders.Update(o);
+                MTApp.OrderServices.Orders.Update(o);
             }
             LoadOrder();
         }
@@ -347,14 +347,14 @@ namespace BVCommerce
         protected void btnSendStatusEmail_Click(object sender, System.Web.UI.ImageClickEventArgs e)
         {
             this.MessageBox1.ClearMessage();
-            Order o = BVApp.OrderServices.Orders.FindForCurrentStore(this.BvinField.Value);
+            Order o = MTApp.OrderServices.Orders.FindForCurrentStore(this.BvinField.Value);
             if (o != null)
             {
                 if (o.bvin != string.Empty)
                 {
                     long templateId = 0;
                     long.TryParse(this.lstEmailTemplate.SelectedValue, out templateId);
-                    HtmlTemplate t = BVApp.ContentServices.HtmlTemplates.Find(templateId);
+                    HtmlTemplate t = MTApp.ContentServices.HtmlTemplates.Find(templateId);
 
                     if (t == null) return;
                                        
@@ -362,7 +362,7 @@ namespace BVCommerce
                         if (toEmail.Trim().Length > 0)
                         {
                             System.Net.Mail.MailMessage m = new System.Net.Mail.MailMessage();
-                            t = t.ReplaceTagsInTemplate(BVApp, o, o.ItemsAsReplaceable());
+                            t = t.ReplaceTagsInTemplate(MTApp, o, o.ItemsAsReplaceable());
                             m = t.ConvertToMailMessage(toEmail);
                             if (m != null)
                             {
@@ -388,23 +388,23 @@ namespace BVCommerce
         {
             bool success = false;
 
-            Order o = BVApp.OrderServices.Orders.FindForCurrentStore(Request.QueryString["id"]);
+            Order o = MTApp.OrderServices.Orders.FindForCurrentStore(Request.QueryString["id"]);
             switch (o.ShippingStatus)
             {
                 case OrderShippingStatus.FullyShipped:
-                    success = BVApp.OrderServices.Orders.Delete(o.bvin);
+                    success = MTApp.OrderServices.Orders.Delete(o.bvin);
                     break;
                 case OrderShippingStatus.NonShipping:
-                    success = BVApp.OrderServices.Orders.Delete(o.bvin);
+                    success = MTApp.OrderServices.Orders.Delete(o.bvin);
                     break;
                 case OrderShippingStatus.PartiallyShipped:
                     this.MessageBox1.ShowWarning("Partially shipped orders can't be deleted. Either unship or ship all items before deleting.");
                     break;
                 case OrderShippingStatus.Unknown:
-                    success = BVApp.OrderServices.OrdersDeleteWithInventoryReturn(o.bvin, BVApp.CatalogServices);
+                    success = MTApp.OrderServices.OrdersDeleteWithInventoryReturn(o.bvin, MTApp.CatalogServices);
                     break;
                 case OrderShippingStatus.Unshipped:
-                    success = BVApp.OrderServices.OrdersDeleteWithInventoryReturn(o.bvin, BVApp.CatalogServices);
+                    success = MTApp.OrderServices.OrdersDeleteWithInventoryReturn(o.bvin, MTApp.CatalogServices);
                     break;
             }
 

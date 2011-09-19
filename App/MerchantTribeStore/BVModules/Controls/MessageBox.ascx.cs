@@ -72,17 +72,17 @@ namespace BVCommerce
             switch (msgType)
             {
                 case MerchantTribe.Commerce.Content.DisplayMessageType.Error:
-                    return MyPage.BVApp.ThemeManager().ButtonUrl("messageerror", Request.IsSecureConnection);
+                    return MyPage.MTApp.ThemeManager().ButtonUrl("messageerror", Request.IsSecureConnection);
                 case MerchantTribe.Commerce.Content.DisplayMessageType.Exception:
-                    return MyPage.BVApp.ThemeManager().ButtonUrl("messageexception", Request.IsSecureConnection);
+                    return MyPage.MTApp.ThemeManager().ButtonUrl("messageexception", Request.IsSecureConnection);
                 case MerchantTribe.Commerce.Content.DisplayMessageType.Information:
-                    return MyPage.BVApp.ThemeManager().ButtonUrl("messageinformation", Request.IsSecureConnection);
+                    return MyPage.MTApp.ThemeManager().ButtonUrl("messageinformation", Request.IsSecureConnection);
                 case MerchantTribe.Commerce.Content.DisplayMessageType.Question:
-                    return MyPage.BVApp.ThemeManager().ButtonUrl("messagequestion", Request.IsSecureConnection);
+                    return MyPage.MTApp.ThemeManager().ButtonUrl("messagequestion", Request.IsSecureConnection);
                 case MerchantTribe.Commerce.Content.DisplayMessageType.Success:
-                    return MyPage.BVApp.ThemeManager().ButtonUrl("messageok", Request.IsSecureConnection);
+                    return MyPage.MTApp.ThemeManager().ButtonUrl("messageok", Request.IsSecureConnection);
                 case MerchantTribe.Commerce.Content.DisplayMessageType.Warning:
-                    return MyPage.BVApp.ThemeManager().ButtonUrl("messagewarning", Request.IsSecureConnection);
+                    return MyPage.MTApp.ThemeManager().ButtonUrl("messagewarning", Request.IsSecureConnection);
             }
             return string.Empty;
         }

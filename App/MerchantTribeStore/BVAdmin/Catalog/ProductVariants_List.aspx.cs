@@ -16,7 +16,7 @@ namespace BVCommerce
             if (!Page.IsPostBack)
             {
                 string productId = Request["id"];
-                Product p = BVApp.CatalogServices.Products.Find(productId);
+                Product p = MTApp.CatalogServices.Products.Find(productId);
                 RenderVariants(p);
             }
         }
@@ -26,7 +26,7 @@ namespace BVCommerce
             StringBuilder sb = new StringBuilder();
             int renderedCount = 0;
 
-            List<OptionSelectionList> possibleVariants = BVApp.CatalogServices.VariantsGenerateAllPossibleSelections(p.Options);
+            List<OptionSelectionList> possibleVariants = MTApp.CatalogServices.VariantsGenerateAllPossibleSelections(p.Options);
 
             foreach (OptionSelectionList possible in possibleVariants)
             {
@@ -65,7 +65,7 @@ namespace BVCommerce
             // Image
             sb.Append("<td width=\"75\">");
             sb.Append("<img width=\"50\" src=\"");
-            sb.Append(MerchantTribe.Commerce.Storage.DiskStorage.ProductVariantImageUrlMedium(this.BVApp.CurrentStore.Id, p.Bvin, p.ImageFileSmall, v.Bvin, true));
+            sb.Append(MerchantTribe.Commerce.Storage.DiskStorage.ProductVariantImageUrlMedium(this.MTApp.CurrentStore.Id, p.Bvin, p.ImageFileSmall, v.Bvin, true));
             sb.Append("\" border=\"0\" />");
             sb.Append("</td>");
 

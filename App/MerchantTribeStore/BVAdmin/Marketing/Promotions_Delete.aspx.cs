@@ -50,7 +50,7 @@ namespace BVCommerce.BVAdmin.Marketing
                     string itemId = Request.QueryString["id"];
                     long temp = 0;
                     long.TryParse(itemId,out temp);
-                    BVApp.MarketingServices.Promotions.Delete(temp);
+                    MTApp.MarketingServices.Promotions.Delete(temp);
                 }
 
                 Response.Redirect("Promotions.aspx?page=" + currentPage.ToString() 

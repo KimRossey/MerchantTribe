@@ -21,7 +21,7 @@ namespace BVCommerce
 
         protected void BindCategoriesGridView()
         {
-            CategoriesGridView.DataSource = Category.ListFullTreeWithIndents(MyPage.BVApp.CurrentRequestContext);
+            CategoriesGridView.DataSource = Category.ListFullTreeWithIndents(MyPage.MTApp.CurrentRequestContext);
             CategoriesGridView.DataKeyNames = new string[] { "value" };
             CategoriesGridView.DataBind();
         }

@@ -37,22 +37,22 @@ namespace BVCommerce
             {
 
                 // Loading
-                this.chkGoogleAdwords.Checked = BVApp.CurrentStore.Settings.Analytics.UseGoogleAdWords;
-                this.GoogleAdwordsConversionIdField.Text = BVApp.CurrentStore.Settings.Analytics.GoogleAdWordsId;
-                this.GoogleAdwordsLabelField.Text = BVApp.CurrentStore.Settings.Analytics.GoogleAdWordsLabel;
-                this.GoogleAdwordsBackgroundColorField.Text = BVApp.CurrentStore.Settings.Analytics.GoogleAdWordsBgColor;
+                this.chkGoogleAdwords.Checked = MTApp.CurrentStore.Settings.Analytics.UseGoogleAdWords;
+                this.GoogleAdwordsConversionIdField.Text = MTApp.CurrentStore.Settings.Analytics.GoogleAdWordsId;
+                this.GoogleAdwordsLabelField.Text = MTApp.CurrentStore.Settings.Analytics.GoogleAdWordsLabel;
+                this.GoogleAdwordsBackgroundColorField.Text = MTApp.CurrentStore.Settings.Analytics.GoogleAdWordsBgColor;
 
-                this.chkGoogleEcommerce.Checked = BVApp.CurrentStore.Settings.Analytics.UseGoogleEcommerce;
-                this.GoogleEcommerceCategoryNameField.Text = BVApp.CurrentStore.Settings.Analytics.GoogleEcommerceCategory;
-                this.GoogleEcommerceStoreNameField.Text = BVApp.CurrentStore.Settings.Analytics.GoogleEcommerceStoreName;
+                this.chkGoogleEcommerce.Checked = MTApp.CurrentStore.Settings.Analytics.UseGoogleEcommerce;
+                this.GoogleEcommerceCategoryNameField.Text = MTApp.CurrentStore.Settings.Analytics.GoogleEcommerceCategory;
+                this.GoogleEcommerceStoreNameField.Text = MTApp.CurrentStore.Settings.Analytics.GoogleEcommerceStoreName;
 
-                this.chkGoogleTracker.Checked = BVApp.CurrentStore.Settings.Analytics.UseGoogleTracker;
-                this.GoogleTrackingIdField.Text = BVApp.CurrentStore.Settings.Analytics.GoogleTrackerId;
+                this.chkGoogleTracker.Checked = MTApp.CurrentStore.Settings.Analytics.UseGoogleTracker;
+                this.GoogleTrackingIdField.Text = MTApp.CurrentStore.Settings.Analytics.GoogleTrackerId;
 
-                this.chkYahoo.Checked = BVApp.CurrentStore.Settings.Analytics.UseYahooTracker;
-                this.YahooAccountIdField.Text = BVApp.CurrentStore.Settings.Analytics.YahooAccountId;
+                this.chkYahoo.Checked = MTApp.CurrentStore.Settings.Analytics.UseYahooTracker;
+                this.YahooAccountIdField.Text = MTApp.CurrentStore.Settings.Analytics.YahooAccountId;
 
-                this.AdditionalMetaTagsField.Text = BVApp.CurrentStore.Settings.Analytics.AdditionalMetaTags;
+                this.AdditionalMetaTagsField.Text = MTApp.CurrentStore.Settings.Analytics.AdditionalMetaTags;
 
             }
         }
@@ -60,24 +60,24 @@ namespace BVCommerce
         protected void btnSave_Click(object sender, System.Web.UI.ImageClickEventArgs e)
         {
 
-            BVApp.CurrentStore.Settings.Analytics.UseGoogleAdWords = this.chkGoogleAdwords.Checked;
-            BVApp.CurrentStore.Settings.Analytics.GoogleAdWordsId = this.GoogleAdwordsConversionIdField.Text;
-            BVApp.CurrentStore.Settings.Analytics.GoogleAdWordsLabel = this.GoogleAdwordsLabelField.Text;
-            BVApp.CurrentStore.Settings.Analytics.GoogleAdWordsBgColor = this.GoogleAdwordsBackgroundColorField.Text;
+            MTApp.CurrentStore.Settings.Analytics.UseGoogleAdWords = this.chkGoogleAdwords.Checked;
+            MTApp.CurrentStore.Settings.Analytics.GoogleAdWordsId = this.GoogleAdwordsConversionIdField.Text;
+            MTApp.CurrentStore.Settings.Analytics.GoogleAdWordsLabel = this.GoogleAdwordsLabelField.Text;
+            MTApp.CurrentStore.Settings.Analytics.GoogleAdWordsBgColor = this.GoogleAdwordsBackgroundColorField.Text;
 
-            BVApp.CurrentStore.Settings.Analytics.UseGoogleEcommerce = this.chkGoogleEcommerce.Checked;
-            BVApp.CurrentStore.Settings.Analytics.GoogleEcommerceCategory = this.GoogleEcommerceCategoryNameField.Text;
-            BVApp.CurrentStore.Settings.Analytics.GoogleEcommerceStoreName = this.GoogleEcommerceStoreNameField.Text;
+            MTApp.CurrentStore.Settings.Analytics.UseGoogleEcommerce = this.chkGoogleEcommerce.Checked;
+            MTApp.CurrentStore.Settings.Analytics.GoogleEcommerceCategory = this.GoogleEcommerceCategoryNameField.Text;
+            MTApp.CurrentStore.Settings.Analytics.GoogleEcommerceStoreName = this.GoogleEcommerceStoreNameField.Text;
 
-            BVApp.CurrentStore.Settings.Analytics.UseGoogleTracker = this.chkGoogleTracker.Checked;
-            BVApp.CurrentStore.Settings.Analytics.GoogleTrackerId = this.GoogleTrackingIdField.Text;
+            MTApp.CurrentStore.Settings.Analytics.UseGoogleTracker = this.chkGoogleTracker.Checked;
+            MTApp.CurrentStore.Settings.Analytics.GoogleTrackerId = this.GoogleTrackingIdField.Text;
 
-            BVApp.CurrentStore.Settings.Analytics.UseYahooTracker = this.chkYahoo.Checked;
-            BVApp.CurrentStore.Settings.Analytics.YahooAccountId = this.YahooAccountIdField.Text;
+            MTApp.CurrentStore.Settings.Analytics.UseYahooTracker = this.chkYahoo.Checked;
+            MTApp.CurrentStore.Settings.Analytics.YahooAccountId = this.YahooAccountIdField.Text;
 
-            BVApp.CurrentStore.Settings.Analytics.AdditionalMetaTags = this.AdditionalMetaTagsField.Text;
+            MTApp.CurrentStore.Settings.Analytics.AdditionalMetaTags = this.AdditionalMetaTagsField.Text;
 
-            BVApp.UpdateCurrentStore();
+            MTApp.UpdateCurrentStore();
 
             this.MessageBox1.ShowOk("Settings Saved!");
 

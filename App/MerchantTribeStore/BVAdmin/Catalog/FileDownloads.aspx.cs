@@ -27,7 +27,7 @@ namespace BVCommerce.BVAdmin.Catalog
             if (Request.QueryString["id"] != null)
             {
                 string productBvin = Request.QueryString["id"];
-                localProduct = BVApp.CatalogServices.Products.Find(productBvin);
+                localProduct = MTApp.CatalogServices.Products.Find(productBvin);
                 FilePicker1.ProductId = localProduct.Bvin;
             }
         }
@@ -47,13 +47,13 @@ namespace BVCommerce.BVAdmin.Catalog
 
         protected void InitializeFileGrid()
         {
-            FileGrid.DataSource = BVApp.CatalogServices.ProductFiles.FindByProductId(localProduct.Bvin);            
+            FileGrid.DataSource = MTApp.CatalogServices.ProductFiles.FindByProductId(localProduct.Bvin);            
             FileGrid.DataBind();
         }
 
         protected void FileGrid_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            if (!BVApp.CatalogServices.ProductFiles.RemoveAssociatedProduct((string)FileGrid.DataKeys[e.RowIndex].Value, localProduct.Bvin))
+            if (!MTApp.CatalogServices.ProductFiles.RemoveAssociatedProduct((string)FileGrid.DataKeys[e.RowIndex].Value, localProduct.Bvin))
             {
                 MessageBox1.ShowError("An error occurred while trying to delete your file from the database.");
             }
@@ -63,7 +63,7 @@ namespace BVCommerce.BVAdmin.Catalog
         protected void FileGrid_RowEditing(object sender, GridViewEditEventArgs e)
         {            
                 string primaryKey = (string)(FileGrid.DataKeys[e.NewEditIndex].Value);
-                ProductFile file = BVApp.CatalogServices.ProductFiles.Find(primaryKey);
+                ProductFile file = MTApp.CatalogServices.ProductFiles.Find(primaryKey);
                 if (!ViewUtilities.DownloadFile(file))
                 {
                     MessageBox1.ShowWarning("The file to download could not be found.");

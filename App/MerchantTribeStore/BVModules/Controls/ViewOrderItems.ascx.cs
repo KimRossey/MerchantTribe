@@ -25,7 +25,7 @@ namespace BVCommerce
             base.OnLoad(e);
             if (!Page.IsPostBack)
             {
-                this.ReturnItemsImageButton.ImageUrl = MyPage.BVApp.ThemeManager().ButtonUrl("returnitems", Request.IsSecureConnection);
+                this.ReturnItemsImageButton.ImageUrl = MyPage.MTApp.ThemeManager().ButtonUrl("returnitems", Request.IsSecureConnection);
             }
         }
 

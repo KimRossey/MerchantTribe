@@ -42,7 +42,7 @@ namespace BVCommerce
             if (!Page.IsPostBack)
             {
 
-                PopulateTags(this.BVApp);
+                PopulateTags(this.MTApp);
 
                 if (Request.QueryString["id"] != null)
                 {
@@ -78,7 +78,7 @@ namespace BVCommerce
             Page.ClientScript.RegisterClientScriptBlock(typeof(System.Web.UI.Page), "WindowScripts", sb.ToString(), true);
         }
 
-        private void PopulateTags(BVApplication bvapp)
+        private void PopulateTags(MerchantTribeApplication app)
         {
             List<IReplaceable> items = new List<IReplaceable>();
 
@@ -100,7 +100,7 @@ namespace BVCommerce
             List<HtmlTemplateTag> t = new List<HtmlTemplateTag>();
             foreach (IReplaceable r in items)
             {
-                t.AddRange(r.GetReplaceableTags(bvapp));
+                t.AddRange(r.GetReplaceableTags(app));
             }
 
             this.Tags.DataSource = t;
@@ -111,7 +111,7 @@ namespace BVCommerce
 
         private void LoadEmailTemplate()
         {
-            HtmlTemplate e = BVApp.ContentServices.HtmlTemplates.Find(CurrentTemplateId());
+            HtmlTemplate e = MTApp.ContentServices.HtmlTemplates.Find(CurrentTemplateId());
             if (e == null) return;
 
             this.FromField.Text = e.From;
@@ -143,7 +143,7 @@ namespace BVCommerce
         {
             bool result = false;
 
-            HtmlTemplate e = BVApp.ContentServices.HtmlTemplates.Find(CurrentTemplateId());
+            HtmlTemplate e = MTApp.ContentServices.HtmlTemplates.Find(CurrentTemplateId());
             if (CurrentTemplateId() == 0) e = new HtmlTemplate();
             if (e == null) return false;
 
@@ -161,11 +161,11 @@ namespace BVCommerce
 
             if (e.Id == 0)
             {
-                result = BVApp.ContentServices.HtmlTemplates.Create(e);
+                result = MTApp.ContentServices.HtmlTemplates.Create(e);
             }
             else
             {
-                result = BVApp.ContentServices.HtmlTemplates.Update(e);
+                result = MTApp.ContentServices.HtmlTemplates.Update(e);
             }
 
             if (result == true)

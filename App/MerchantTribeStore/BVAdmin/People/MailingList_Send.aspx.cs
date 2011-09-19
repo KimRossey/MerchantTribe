@@ -54,7 +54,7 @@ namespace BVCommerce
         
         private void PopulateTemplates()
         {
-            List<HtmlTemplate> templates = BVApp.ContentServices.GetAllTemplatesForStoreOrDefaults();
+            List<HtmlTemplate> templates = MTApp.ContentServices.GetAllTemplatesForStoreOrDefaults();
             this.EmailTemplateField.DataSource = templates;
             this.EmailTemplateField.DataTextField = "DisplayName";
             this.EmailTemplateField.DataValueField = "Id";
@@ -63,7 +63,7 @@ namespace BVCommerce
 
         private void LoadList()
         {
-            MailingList m = BVApp.ContactServices.MailingLists.Find(CurrentId);
+            MailingList m = MTApp.ContactServices.MailingLists.Find(CurrentId);
             if (m != null)
             {
                 if (m.Id > 0)
@@ -87,15 +87,15 @@ namespace BVCommerce
 
         private void Preview()
         {
-            MailingList m = BVApp.ContactServices.MailingLists.Find(CurrentId);
+            MailingList m = MTApp.ContactServices.MailingLists.Find(CurrentId);
             if (m != null)
             {
                 long templateId = 0;
                 long.TryParse(this.EmailTemplateField.SelectedValue, out templateId);
-                HtmlTemplate t = BVApp.ContentServices.HtmlTemplates.Find(templateId);
+                HtmlTemplate t = MTApp.ContentServices.HtmlTemplates.Find(templateId);
                 if (t != null)
                 {
-                    System.Net.Mail.MailMessage p = m.PreviewMessage(t,BVApp);
+                    System.Net.Mail.MailMessage p = m.PreviewMessage(t,MTApp);
                     if (p != null)
                     {
                         this.PreviewSubjectField.Text = p.Subject;
@@ -118,13 +118,13 @@ namespace BVCommerce
 
             long templateId = 0;
             long.TryParse(this.EmailTemplateField.SelectedValue, out templateId);
-            HtmlTemplate t = BVApp.ContentServices.HtmlTemplates.Find(templateId);
-            MailingList m = BVApp.ContactServices.MailingLists.Find(CurrentId);
+            HtmlTemplate t = MTApp.ContentServices.HtmlTemplates.Find(templateId);
+            MailingList m = MTApp.ContactServices.MailingLists.Find(CurrentId);
             if (m != null)
             {
                 if (t != null)
                 {
-                    m.SendToList(t, false, BVApp);
+                    m.SendToList(t, false, MTApp);
                 }
             }
         }

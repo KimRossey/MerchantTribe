@@ -32,7 +32,7 @@ namespace BVCommerce
                     this.inUsername.Text = email;
                 }
 
-                btnSend.ImageUrl = this.BVApp.ThemeManager().ButtonUrl("Submit", Request.IsSecureConnection);
+                btnSend.ImageUrl = this.MTApp.ThemeManager().ButtonUrl("Submit", Request.IsSecureConnection);
                 this.lblUsername.Text = "Email:";
                 val2Username.ErrorMessage = "Please enter am email address";
             }
@@ -56,16 +56,16 @@ namespace BVCommerce
                         return;
                     }
 
-                    CustomerAccount thisUser = BVApp.MembershipServices.Customers.FindByEmail(inUsername.Text);
+                    CustomerAccount thisUser = MTApp.MembershipServices.Customers.FindByEmail(inUsername.Text);
                     string newPassword = string.Empty;
 
                     if ((thisUser != null) && (thisUser.Bvin != string.Empty))
                     {                       
-                        newPassword = BVApp.MembershipServices.GeneratePasswordForCustomer(WebAppSettings.PasswordMinimumLength + 2);
+                        newPassword = MTApp.MembershipServices.GeneratePasswordForCustomer(WebAppSettings.PasswordMinimumLength + 2);
                         thisUser.Password = thisUser.EncryptPassword(newPassword);
-                        if (BVApp.MembershipServices.UpdateCustomer(thisUser))
+                        if (MTApp.MembershipServices.UpdateCustomer(thisUser))
                         {
-                            HtmlTemplate t = BVApp.ContentServices.GetHtmlTemplateOrDefault(HtmlTemplateType.ForgotPassword);                            
+                            HtmlTemplate t = MTApp.ContentServices.GetHtmlTemplateOrDefault(HtmlTemplateType.ForgotPassword);                            
                             if (t != null)
                             {
                                 System.Net.Mail.MailMessage m;
@@ -73,7 +73,7 @@ namespace BVCommerce
                                 tempList.Add(thisUser);
                                 tempList.Add(new Replaceable("[[NewPassword]]", newPassword));
 
-                                t = t.ReplaceTagsInTemplate(BVApp, tempList);
+                                t = t.ReplaceTagsInTemplate(MTApp, tempList);
 
                                 m = t.ConvertToMailMessage(thisUser.Email);
 
@@ -98,7 +98,7 @@ namespace BVCommerce
                 }
 
 
-                catch (BVMembershipUserException CreateEx)
+                catch (SystemMembershipUserException CreateEx)
                 {
                     switch (CreateEx.Status)
                     {

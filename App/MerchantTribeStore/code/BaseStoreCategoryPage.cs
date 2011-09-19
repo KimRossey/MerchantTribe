@@ -63,7 +63,7 @@ namespace BVCommerce
         {
             base.OnInit(e);
 
-            _CategoryRepository = base.BVApp.CatalogServices.Categories;
+            _CategoryRepository = base.MTApp.CatalogServices.Categories;
 
             string slug = (string)Page.RouteData.Values["slug"];
 
@@ -75,7 +75,7 @@ namespace BVCommerce
                 {
                     // Check for custom URL
                     string potentialCustom = GetRouteUrl("category-route", new { slug = slug });
-                    CustomUrl url = BVApp.ContentServices.CustomUrls.FindByRequestedUrl(potentialCustom);
+                    CustomUrl url = MTApp.ContentServices.CustomUrls.FindByRequestedUrl(potentialCustom);
                     if (url != null)
                     {
                         if (url.Bvin != string.Empty)
@@ -93,7 +93,7 @@ namespace BVCommerce
 
                     // Check for custom page URL
                     string pageCustom = GetRouteUrl("custompage-route", new { slug = slug });
-                    CustomUrl pageurl = BVApp.ContentServices.CustomUrls.FindByRequestedUrl(pageCustom);
+                    CustomUrl pageurl = MTApp.ContentServices.CustomUrls.FindByRequestedUrl(pageCustom);
                     if (pageurl != null)
                     {
                         if (pageurl.Bvin != string.Empty)

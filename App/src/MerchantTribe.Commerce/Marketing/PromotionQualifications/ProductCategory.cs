@@ -39,12 +39,12 @@ namespace MerchantTribe.Commerce.Marketing.PromotionQualifications
             SetSetting("CategoryIds", all);
         }
 
-        public override string FriendlyDescription(BVApplication bvapp)
+        public override string FriendlyDescription(MerchantTribeApplication app)
         {
             string result = "When Product is in Category:<ul>";
             foreach (string bvin in this.CurrentCategoryIds())
             {
-                Catalog.Category c = bvapp.CatalogServices.Categories.Find(bvin);
+                Catalog.Category c = app.CatalogServices.Categories.Find(bvin);
                 if (c != null)
                 {
                     result += "<li>" + c.Name + "<br />";
@@ -91,12 +91,12 @@ namespace MerchantTribe.Commerce.Marketing.PromotionQualifications
             if (context.Mode != PromotionType.Sale) return false;
             if (context.Product == null) return false;
             if (context.UserPrice == null) return false;
-            if (context.BVApp == null) return false;
+            if (context.MTApp == null) return false;
 
             // Note: this only checks the first 100 categories. You're pretty much insane if you're
             // running a promotion on a product by category and it's in more than 100 categories.
             List<Catalog.CategoryProductAssociation> assignments
-                = context.BVApp.CatalogServices.CategoriesXProducts.FindForProduct(context.Product.Bvin, 1, 100);
+                = context.MTApp.CatalogServices.CategoriesXProducts.FindForProduct(context.Product.Bvin, 1, 100);
 
             foreach (Catalog.CategoryProductAssociation cross in assignments)
             {
