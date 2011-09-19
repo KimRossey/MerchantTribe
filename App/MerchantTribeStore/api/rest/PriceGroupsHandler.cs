@@ -11,7 +11,7 @@ namespace BVCommerce.api.rest
 {
     public class PriceGroupsHandler: BaseRestHandler
     {
-        public PriceGroupsHandler(MerchantTribe.Commerce.BVApplication app)
+        public PriceGroupsHandler(MerchantTribe.Commerce.MerchantTribeApplication app)
             : base(app)
         {
 
@@ -27,7 +27,7 @@ namespace BVCommerce.api.rest
                 // List
                 ApiResponse<List<PriceGroupDTO>> response = new ApiResponse<List<PriceGroupDTO>>();
 
-                List<PriceGroup> results = BVApp.ContactServices.PriceGroups.FindAll();
+                List<PriceGroup> results = MTApp.ContactServices.PriceGroups.FindAll();
                 List<PriceGroupDTO> dto = new List<PriceGroupDTO>();
 
                 foreach (PriceGroup item in results)
@@ -42,7 +42,7 @@ namespace BVCommerce.api.rest
                 // Find One Specific Category
                 ApiResponse<PriceGroupDTO> response = new ApiResponse<PriceGroupDTO>();                                
                 string bvin = FirstParameter(parameters);
-                PriceGroup item = BVApp.ContactServices.PriceGroups.Find(bvin);
+                PriceGroup item = MTApp.ContactServices.PriceGroups.Find(bvin);
                 if (item == null)
                 {
                     response.Errors.Add(new ApiError("NULL", "Could not locate that item. Check bvin and try again."));
@@ -80,16 +80,16 @@ namespace BVCommerce.api.rest
 
             if (bvin == string.Empty)
             {
-                if (BVApp.ContactServices.PriceGroups.Create(item))
+                if (MTApp.ContactServices.PriceGroups.Create(item))
                 {
                     bvin = item.Bvin;
                 }
             }
             else
             {
-                BVApp.ContactServices.PriceGroups.Update(item);
+                MTApp.ContactServices.PriceGroups.Update(item);
             }
-            PriceGroup resultItem = BVApp.ContactServices.PriceGroups.Find(bvin);                    
+            PriceGroup resultItem = MTApp.ContactServices.PriceGroups.Find(bvin);                    
             if (resultItem != null) response.Content = resultItem.ToDto();
             
             data = MerchantTribe.Web.Json.ObjectToJson(response);            
@@ -101,7 +101,7 @@ namespace BVCommerce.api.rest
             string data = string.Empty;
             string bvin = FirstParameter(parameters);
             ApiResponse<bool> response = new ApiResponse<bool>();
-            response.Content = BVApp.ContactServices.PriceGroups.Delete(bvin);
+            response.Content = MTApp.ContactServices.PriceGroups.Delete(bvin);
 
             data = MerchantTribe.Web.Json.ObjectToJson(response);
             return data;

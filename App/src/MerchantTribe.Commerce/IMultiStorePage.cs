@@ -9,6 +9,6 @@ namespace MerchantTribe.Commerce
 {
     public interface IMultiStorePage
     {
-        BVApplication BVApp { get; set; }        
+        MerchantTribeApplication MTApp { get; set; }        
     }
 }

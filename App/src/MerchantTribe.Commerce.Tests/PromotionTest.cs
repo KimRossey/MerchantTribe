@@ -277,9 +277,9 @@ namespace MerchantTribe.Commerce.Tests
             Catalog.UserSpecificPrice userPrice = new Catalog.UserSpecificPrice(prod, null);
 
             RequestContext c = new RequestContext();
-            BVApplication bvapp = BVApplication.InstantiateForMemory(c);
+            MerchantTribeApplication app = MerchantTribeApplication.InstantiateForMemory(c);
 
-            bool actual = p.ApplyToProduct(bvapp, prod, userPrice, null, DateTime.UtcNow);
+            bool actual = p.ApplyToProduct(app, prod, userPrice, null, DateTime.UtcNow);
 
             Assert.IsTrue(actual, "Promotion should have applied with return value of true");
             Assert.AreEqual(39.99m, userPrice.PriceWithAdjustments(), "Price should have been reduced by $20.00");
@@ -290,9 +290,9 @@ namespace MerchantTribe.Commerce.Tests
         public void CanPutAProductOnSalePricedByApp()
         {
             RequestContext c = new RequestContext();            
-            BVApplication bvapp = BVApplication.InstantiateForMemory(c);
-            bvapp.CurrentStore = new Accounts.Store();
-            bvapp.CurrentStore.Id = 1;
+            MerchantTribeApplication app = MerchantTribeApplication.InstantiateForMemory(c);
+            app.CurrentStore = new Accounts.Store();
+            app.CurrentStore.Id = 1;
 
             // Create a Promotion to Test
             Promotion p = new Promotion();
@@ -306,7 +306,7 @@ namespace MerchantTribe.Commerce.Tests
             p.Id = 0;
             p.AddQualification(new ProductBvin("bvin1234"));
             p.AddAction(new ProductPriceAdjustment(AmountTypes.MonetaryAmount, -10m));
-            bvapp.MarketingServices.Promotions.Create(p);
+            app.MarketingServices.Promotions.Create(p);
 
             // Create a test Product
             Catalog.Product prod = new Catalog.Product();
@@ -314,7 +314,7 @@ namespace MerchantTribe.Commerce.Tests
             prod.SitePrice = 59.99m;
             prod.StoreId = 1;
             
-            Catalog.UserSpecificPrice actualPrice = bvapp.PriceProduct(prod, null, null);
+            Catalog.UserSpecificPrice actualPrice = app.PriceProduct(prod, null, null);
 
             Assert.IsNotNull(actualPrice, "Price should not be null");
             Assert.AreEqual(49.99m, actualPrice.PriceWithAdjustments(), "Price should be $49.99");
@@ -336,9 +336,9 @@ namespace MerchantTribe.Commerce.Tests
             Assert.IsTrue(p.AddAction(new ProductPriceAdjustment(AmountTypes.MonetaryAmount, -20m)), "Add Action Failed");
 
             RequestContext c = new RequestContext();
-            BVApplication bvapp = BVApplication.InstantiateForMemory(c);
+            MerchantTribeApplication app = MerchantTribeApplication.InstantiateForMemory(c);
 
-            bool actual = p.ApplyToProduct(bvapp, null, null, null, DateTime.UtcNow);
+            bool actual = p.ApplyToProduct(app, null, null, null, DateTime.UtcNow);
 
             Assert.IsFalse(actual, "Promotion should not have applied");
         }
@@ -491,9 +491,9 @@ namespace MerchantTribe.Commerce.Tests
         public void CanDiscountAnOrderByCoupon()
         {
             RequestContext c = new RequestContext();
-            BVApplication bvapp = BVApplication.InstantiateForMemory(c);
-            bvapp.CurrentStore = new Accounts.Store();
-            bvapp.CurrentStore.Id = 1;
+            MerchantTribeApplication app = MerchantTribeApplication.InstantiateForMemory(c);
+            app.CurrentStore = new Accounts.Store();
+            app.CurrentStore.Id = 1;
 
             // Create a Promotion to Test
             Promotion p = new Promotion();
@@ -509,17 +509,17 @@ namespace MerchantTribe.Commerce.Tests
             q.AddCoupon("COUPON");
             p.AddQualification(q);
             p.AddAction(new OrderTotalAdjustment(AmountTypes.MonetaryAmount, -20m));
-            bvapp.MarketingServices.Promotions.Create(p);
+            app.MarketingServices.Promotions.Create(p);
 
             // Create a test Order
             Order o = new Order();
             o.Items.Add(new LineItem() { BasePricePerItem = 59.99m, ProductName = "Sample Product", ProductSku = "ABC123" });
-            bvapp.CalculateOrderAndSave(o);
+            app.CalculateOrderAndSave(o);
 
             Assert.AreEqual(59.99m, o.TotalOrderAfterDiscounts, "Order total should be $59.99 before discounts");
 
             o.AddCouponCode("COUPON");
-            bvapp.CalculateOrderAndSave(o);
+            app.CalculateOrderAndSave(o);
 
             Assert.AreEqual(39.99m, o.TotalOrderAfterDiscounts, "Order total after discounts should be $39.99");
             Assert.AreEqual(-20m, o.TotalOrderDiscounts, "Discount should be -20");
@@ -530,9 +530,9 @@ namespace MerchantTribe.Commerce.Tests
         //public void CanDiscountShipping()
         //{
         //    RequestContext c = new RequestContext();
-        //    BVApplication bvapp = BVApplication.InstantiateForMemory(c);
-        //    bvapp.CurrentStore = new Accounts.Store();
-        //    bvapp.CurrentStore.Id = 1;            
+        //    MerchantTribeApplication app = MerchantTribeApplication.InstantiateForMemory(c);
+        //    app.CurrentStore = new Accounts.Store();
+        //    app.CurrentStore.Id = 1;            
 
         //    // Create a Promotion to Test
         //    Promotion p = new Promotion();
@@ -548,19 +548,19 @@ namespace MerchantTribe.Commerce.Tests
         //    q.AddCoupon("COUPON");
         //    p.AddQualification(q);
         //    p.AddAction(new OrderShippingAdjustment(AmountTypes.Percent,-10m));
-        //    bvapp.MarketingServices.Promotions.Create(p);
+        //    app.MarketingServices.Promotions.Create(p);
 
         //    // Create a test Order
         //    Order o = new Order();
         //    o.TotalShippingBeforeDiscounts = 100m;
         //    o.Items.Add(new LineItem() { BasePricePerItem = 50.00m, ProductName = "Sample Product", ProductSku = "ABC123" });
-        //    bvapp.CalculateOrderAndSave(o);
+        //    app.CalculateOrderAndSave(o);
             
         //    Assert.AreEqual(100.00, o.TotalShippingAfterDiscounts, "Shipping should be $100 before discounts");
         //    Assert.AreEqual(150.00, o.TotalGrand, "Grand Total should be $150");
 
         //    o.AddCouponCode("COUPON");
-        //    bvapp.CalculateOrderAndSave(o);
+        //    app.CalculateOrderAndSave(o);
 
         //    Assert.AreEqual(90.00m, o.TotalShippingAfterDiscounts, "Shipping After Discount should be $90.00");
         //    Assert.AreEqual(-10m, o.TotalShippingDiscounts, "Discount should be -10");

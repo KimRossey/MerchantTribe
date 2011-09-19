@@ -119,7 +119,7 @@ namespace BVCommerce
 
         private void PopulateCategories()
         {
-            Collection<System.Web.UI.WebControls.ListItem> tree = Category.ListFullTreeWithIndents(MyPage.BVApp.CurrentRequestContext);
+            Collection<System.Web.UI.WebControls.ListItem> tree = Category.ListFullTreeWithIndents(MyPage.MTApp.CurrentRequestContext);
             this.CategoryFilter.Items.Clear();
             foreach (System.Web.UI.WebControls.ListItem li in tree)
             {
@@ -130,7 +130,7 @@ namespace BVCommerce
 
         private void PopulateManufacturers()
         {
-            this.ManufacturerFilter.DataSource = MyPage.BVApp.ContactServices.Manufacturers.FindAll();
+            this.ManufacturerFilter.DataSource = MyPage.MTApp.ContactServices.Manufacturers.FindAll();
             this.ManufacturerFilter.DataTextField = "DisplayName";
             this.ManufacturerFilter.DataValueField = "Bvin";
             this.ManufacturerFilter.DataBind();
@@ -139,7 +139,7 @@ namespace BVCommerce
 
         private void PopulateVendors()
         {
-            this.VendorFilter.DataSource = MyPage.BVApp.ContactServices.Vendors.FindAll();
+            this.VendorFilter.DataSource = MyPage.MTApp.ContactServices.Vendors.FindAll();
             this.VendorFilter.DataTextField = "DisplayName";
             this.VendorFilter.DataValueField = "Bvin";
             this.VendorFilter.DataBind();
@@ -165,7 +165,7 @@ namespace BVCommerce
         private void PopulateProductTypes()
         {
             this.ProductTypeFilter.Items.Clear();
-            this.ProductTypeFilter.DataSource = MyPage.BVApp.CatalogServices.ProductTypes.FindAll();
+            this.ProductTypeFilter.DataSource = MyPage.MTApp.CatalogServices.ProductTypes.FindAll();
             this.ProductTypeFilter.DataTextField = "ProductTypeName";
             this.ProductTypeFilter.DataValueField = "bvin";
             this.ProductTypeFilter.DataBind();

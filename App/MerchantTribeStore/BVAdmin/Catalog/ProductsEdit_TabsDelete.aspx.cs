@@ -33,7 +33,7 @@ namespace BVCommerce
         {
             bool result = false;
 
-            Product p = BVApp.CatalogServices.Products.Find(bvin);
+            Product p = MTApp.CatalogServices.Products.Find(bvin);
             if ((p != null))
             {
                 List<ProductDescriptionTab> newTabs = new List<ProductDescriptionTab>();
@@ -49,7 +49,7 @@ namespace BVCommerce
                     }
                 }
                 p.Tabs = newTabs;
-                result = BVApp.CatalogServices.ProductsUpdateWithSearchRebuild(p);
+                result = MTApp.CatalogServices.ProductsUpdateWithSearchRebuild(p);
             }
 
             if ((result))

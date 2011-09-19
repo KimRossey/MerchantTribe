@@ -29,7 +29,7 @@ namespace BVCommerce
 
             if (!Page.IsPostBack)
             {
-                this.EmailReportToTextBox.Text = BVApp.CurrentStore.Settings.MailServer.EmailForGeneral;
+                this.EmailReportToTextBox.Text = MTApp.CurrentStore.Settings.MailServer.EmailForGeneral;
                 this.LowStockHoursTextBox.Text = WebAppSettings.InventoryLowHours.ToString();
                 this.LinePrefixTextBox.Text = WebAppSettings.InventoryLowReportLinePrefix;
                 
@@ -69,7 +69,7 @@ namespace BVCommerce
         private bool Save()
         {
             bool result = false;
-            BVApp.CurrentStore.Settings.MailServer.EmailForGeneral = this.EmailReportToTextBox.Text;
+            MTApp.CurrentStore.Settings.MailServer.EmailForGeneral = this.EmailReportToTextBox.Text;
             //WebAppSettings.InventoryLowHours = int.Parse(this.LowStockHoursTextBox.Text);
             //WebAppSettings.InventoryLowReportLinePrefix = this.LinePrefixTextBox.Text;
             //WebAppSettings.DisableInventory = this.chkDisableInventory.Checked;
@@ -88,7 +88,7 @@ namespace BVCommerce
             if (this.EmailReportToTextBox.Text.Length > 0)
             {
 
-                if (ProductInventory.EmailLowStockReport(this.EmailReportToTextBox.Text, BVApp.CurrentStore.StoreName, BVApp))
+                if (ProductInventory.EmailLowStockReport(this.EmailReportToTextBox.Text, MTApp.CurrentStore.StoreName, MTApp))
                 {
                     MessageBox1.ShowOk("Report sent!");
                 }

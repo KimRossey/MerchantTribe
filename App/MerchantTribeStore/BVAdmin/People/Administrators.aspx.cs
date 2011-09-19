@@ -18,14 +18,14 @@ namespace BVCommerce.BVAdmin.People
 
         private void LoadAdmins()
         {
-            bool isOwner = BVApp.AccountServices.IsUserStoreOwner(BVApp.CurrentStore.Id, CurrentUser.Id);
+            bool isOwner = MTApp.AccountServices.IsUserStoreOwner(MTApp.CurrentStore.Id, CurrentUser.Id);
 
             StringBuilder sb = new StringBuilder();
             sb.Append("<table width=\"100%\">");
 
-            foreach (StoreUserRelationship rel in BVApp.AccountServices.AdminUsersXStores.FindByStoreId(BVApp.CurrentStore.Id))
+            foreach (StoreUserRelationship rel in MTApp.AccountServices.AdminUsersXStores.FindByStoreId(MTApp.CurrentStore.Id))
             {
-                UserAccount u = BVApp.AccountServices.AdminUsers.FindById(rel.UserId);
+                UserAccount u = MTApp.AccountServices.AdminUsers.FindById(rel.UserId);
 
 
                 string destinationLink = "AdministratorsRemove.aspx?id=" + u.Id;
@@ -68,7 +68,7 @@ namespace BVCommerce.BVAdmin.People
         protected void btnGo_Click(object sender, ImageClickEventArgs e)
         {
             this.MessageBox1.ClearMessage();
-            bool isOwner = BVApp.AccountServices.IsUserStoreOwner(BVApp.CurrentStore.Id, CurrentUser.Id);
+            bool isOwner = MTApp.AccountServices.IsUserStoreOwner(MTApp.CurrentStore.Id, CurrentUser.Id);
             if (isOwner)
             {
                 if (!ValidateEmail(NewAdminField.Text))
@@ -77,7 +77,7 @@ namespace BVCommerce.BVAdmin.People
                 }
                 else
                 {
-                    if (BVApp.AccountServices.AddUserToStoreByEmail(BVApp.CurrentStore.Id, NewAdminField.Text.Trim(), StoreAccessMode.Manager))
+                    if (MTApp.AccountServices.AddUserToStoreByEmail(MTApp.CurrentStore.Id, NewAdminField.Text.Trim(), StoreAccessMode.Manager))
                     {
                         this.MessageBox1.ShowOk("Added New Admin");
                     }

@@ -32,7 +32,7 @@ namespace BVCommerce
             this.TrailPlaceholder.Controls.Clear();
 
             List<CategorySnapshot> trail = new List<CategorySnapshot>();
-            trail = Category.BuildTrailToRoot(categoryId, MyPage.BVApp.CurrentRequestContext);
+            trail = Category.BuildTrailToRoot(categoryId, MyPage.MTApp.CurrentRequestContext);
 
             if (_DisplayLinks)
             {
@@ -86,7 +86,7 @@ namespace BVCommerce
             m.ToolTip = c.MetaTitle;
             m.Text = c.Name;
 
-            m.NavigateUrl = MerchantTribe.Commerce.Utilities.UrlRewriter.BuildUrlForCategory(c, MyPage.BVApp.CurrentRequestContext.RoutingContext);
+            m.NavigateUrl = MerchantTribe.Commerce.Utilities.UrlRewriter.BuildUrlForCategory(c, MyPage.MTApp.CurrentRequestContext.RoutingContext);
             if (c.SourceType == CategorySourceType.CustomLink)
             {
                 if (c.CustomPageOpenInNewWindow == true)

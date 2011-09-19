@@ -119,7 +119,7 @@ namespace BVCommerce
             StringBuilder sb = new StringBuilder();
             WriteHeaders(ref sb);
 
-            List<MerchantTribe.Commerce.Catalog.Product> prods = BVApp.CatalogServices.Products.FindAllPaged(1,3000);
+            List<MerchantTribe.Commerce.Catalog.Product> prods = MTApp.CatalogServices.Products.FindAllPaged(1,3000);
             foreach (MerchantTribe.Commerce.Catalog.Product p in prods)
             {
                 if (p.Status == MerchantTribe.Commerce.Catalog.ProductStatus.Active)
@@ -201,7 +201,7 @@ namespace BVCommerce
             // payment_notes
             sb.Append("\t");
 
-            List<MerchantTribe.Commerce.Catalog.ProductProperty> props = BVApp.CatalogServices.ProductPropertiesFindForType(p.ProductTypeId);
+            List<MerchantTribe.Commerce.Catalog.ProductProperty> props = MTApp.CatalogServices.ProductPropertiesFindForType(p.ProductTypeId);
 
             sb.Append(SafeString(PropertyMatcher("shipping", props, p.Bvin)));
             sb.Append("\t");
@@ -255,7 +255,7 @@ namespace BVCommerce
             string temp = localImage.Replace("\\", "/");
             if (temp.ToLower().StartsWith("http://") == false)
             {
-                return System.IO.Path.Combine(BVApp.CurrentStore.RootUrl(), temp.TrimStart('/'));
+                return System.IO.Path.Combine(MTApp.CurrentStore.RootUrl(), temp.TrimStart('/'));
             }
             else
             {
@@ -271,7 +271,7 @@ namespace BVCommerce
 
             if (temp.ToLower().StartsWith("http://") == false)
             {
-                return System.IO.Path.Combine(BVApp.CurrentStore.RootUrl(), temp.TrimStart('/'));
+                return System.IO.Path.Combine(MTApp.CurrentStore.RootUrl(), temp.TrimStart('/'));
             }
             else
             {
@@ -289,7 +289,7 @@ namespace BVCommerce
                 {
                     if (props[i].PropertyName.Trim().ToLower() == googleBaseName.Trim().ToLower())
                     {
-                        result = BVApp.CatalogServices.ProductPropertyValues.GetPropertyValue(productId, props[i].Id);
+                        result = MTApp.CatalogServices.ProductPropertyValues.GetPropertyValue(productId, props[i].Id);
                         break;
                     }
                 }

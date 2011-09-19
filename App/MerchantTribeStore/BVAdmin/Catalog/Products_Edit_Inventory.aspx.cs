@@ -32,7 +32,7 @@ namespace BVCommerce
             if (Request.QueryString["id"] != null)
             {
                 this.bvinfield.Value = Request.QueryString["id"];
-                localProduct = BVApp.CatalogServices.Products.Find(this.bvinfield.Value);
+                localProduct = MTApp.CatalogServices.Products.Find(this.bvinfield.Value);
             }
         }
 
@@ -61,12 +61,12 @@ namespace BVCommerce
 
         private void LoadInventory()
         {
-            List<ProductInventory> inventory = BVApp.CatalogServices.ProductInventories.FindByProductId(this.bvinfield.Value);
+            List<ProductInventory> inventory = MTApp.CatalogServices.ProductInventories.FindByProductId(this.bvinfield.Value);
             if (inventory.Count < 1)
             {
-                BVApp.CatalogServices.InventoryGenerateForProduct(localProduct);
-                BVApp.CatalogServices.UpdateProductVisibleStatusAndSave(localProduct);
-                inventory = BVApp.CatalogServices.ProductInventories.FindByProductId(this.bvinfield.Value);
+                MTApp.CatalogServices.InventoryGenerateForProduct(localProduct);
+                MTApp.CatalogServices.UpdateProductVisibleStatusAndSave(localProduct);
+                inventory = MTApp.CatalogServices.ProductInventories.FindByProductId(this.bvinfield.Value);
             }
 
             if (localProduct.IsAvailableForSale)
@@ -102,7 +102,7 @@ namespace BVCommerce
             bool result = false;
 
             localProduct.InventoryMode = (ProductInventoryMode)int.Parse(this.OutOfStockModeField.SelectedValue);
-            BVApp.CatalogServices.ProductsUpdateWithSearchRebuild(localProduct);
+            MTApp.CatalogServices.ProductsUpdateWithSearchRebuild(localProduct);
 
             // Process each variant/product row
             foreach (GridViewRow row in this.EditsGridView.Rows)
@@ -113,7 +113,7 @@ namespace BVCommerce
                 }
             }
 
-            BVApp.CatalogServices.UpdateProductVisibleStatusAndSave(localProduct);            
+            MTApp.CatalogServices.UpdateProductVisibleStatusAndSave(localProduct);            
             result = true;
             return result;
         }
@@ -121,7 +121,7 @@ namespace BVCommerce
         private void ProcessRow(GridViewRow row)
         {
             string inventoryBvin = (string)this.EditsGridView.DataKeys[row.RowIndex].Value;
-            ProductInventory localInventory = BVApp.CatalogServices.ProductInventories.Find(inventoryBvin);
+            ProductInventory localInventory = MTApp.CatalogServices.ProductInventories.Find(inventoryBvin);
 
             TextBox AdjustmentField = (TextBox)row.FindControl("AdjustmentField");
             DropDownList AdjustmentModeField = (DropDownList)row.FindControl("AdjustmentModeField");
@@ -164,7 +164,7 @@ namespace BVCommerce
                 }
             }
 
-            BVApp.CatalogServices.ProductInventories.Update(localInventory);            
+            MTApp.CatalogServices.ProductInventories.Update(localInventory);            
         }
 
         protected void EditsGridView_RowDataBound(object sender, System.Web.UI.WebControls.GridViewRowEventArgs e)

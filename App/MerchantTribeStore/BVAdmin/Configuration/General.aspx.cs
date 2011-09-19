@@ -47,15 +47,15 @@ namespace BVCommerce
                 {
                     this.MessageBox1.ShowOk("Changes Saved");
                 }
-                this.CustomDomainField.Text = BVApp.CurrentStore.CustomUrl;
-                this.SiteNameField.Text = BVApp.CurrentStore.Settings.FriendlyName;
-                this.LogoTextField.Text = BVApp.CurrentStore.Settings.LogoText;
-                this.uselogoimage.Checked = BVApp.CurrentStore.Settings.UseLogoImage;
-                this.chkHideGettingStarted.Checked = BVApp.CurrentStore.Settings.HideGettingStarted;
-                CNameRoot = BVApp.CurrentStore.StoreName + ".bvcommerce.com";
-                this.chkClosed.Checked = BVApp.CurrentStore.Settings.StoreClosed;
-                this.ClosedMessageField.Text = BVApp.CurrentStore.Settings.StoreClosedDescription;
-                this.GuestPassword.Text = BVApp.CurrentStore.Settings.StoreClosedGuestPassword;
+                this.CustomDomainField.Text = MTApp.CurrentStore.CustomUrl;
+                this.SiteNameField.Text = MTApp.CurrentStore.Settings.FriendlyName;
+                this.LogoTextField.Text = MTApp.CurrentStore.Settings.LogoText;
+                this.uselogoimage.Checked = MTApp.CurrentStore.Settings.UseLogoImage;
+                this.chkHideGettingStarted.Checked = MTApp.CurrentStore.Settings.HideGettingStarted;
+                CNameRoot = MTApp.CurrentStore.StoreName + ".bvcommerce.com";
+                this.chkClosed.Checked = MTApp.CurrentStore.Settings.StoreClosed;
+                this.ClosedMessageField.Text = MTApp.CurrentStore.Settings.StoreClosedDescription;
+                this.GuestPassword.Text = MTApp.CurrentStore.Settings.StoreClosedGuestPassword;
             }
             UpdateLogoImage();
             LoadAlternateDomains();
@@ -63,12 +63,12 @@ namespace BVCommerce
 
         private void UpdateLogoImage()
         {
-            LogoImage = BVApp.CurrentStore.Settings.LogoImageFullUrl(Page.Request.IsSecureConnection);
-            if (BVApp.CurrentStore.Settings.LogoImage.Trim() == string.Empty)
+            LogoImage = MTApp.CurrentStore.Settings.LogoImageFullUrl(Page.Request.IsSecureConnection);
+            if (MTApp.CurrentStore.Settings.LogoImage.Trim() == string.Empty)
             {
                 LogoImage = "../../content/admin/images/MissingImage.png";
             }
-            BVApp.UpdateCurrentStore();
+            MTApp.UpdateCurrentStore();
         }
 
         protected void btnSave_Click(object sender, System.Web.UI.ImageClickEventArgs e)
@@ -83,10 +83,10 @@ namespace BVCommerce
         private bool Save()
         {
             bool result = false;
-            BVApp.CurrentStore.Settings.HideGettingStarted = this.chkHideGettingStarted.Checked;
-            BVApp.CurrentStore.Settings.UseLogoImage = this.uselogoimage.Checked;
-            BVApp.CurrentStore.Settings.FriendlyName = this.SiteNameField.Text.Trim();
-            BVApp.CurrentStore.Settings.LogoText = this.LogoTextField.Text.Trim();
+            MTApp.CurrentStore.Settings.HideGettingStarted = this.chkHideGettingStarted.Checked;
+            MTApp.CurrentStore.Settings.UseLogoImage = this.uselogoimage.Checked;
+            MTApp.CurrentStore.Settings.FriendlyName = this.SiteNameField.Text.Trim();
+            MTApp.CurrentStore.Settings.LogoText = this.LogoTextField.Text.Trim();
             result = true;
 
             if ((imgupload.HasFile))
@@ -97,9 +97,9 @@ namespace BVCommerce
                 if (MerchantTribe.Commerce.Storage.DiskStorage.ValidateImageType(ext))
                 {
                     fileName = MerchantTribe.Web.Text.CleanFileName(fileName);
-                    if ((MerchantTribe.Commerce.Storage.DiskStorage.UploadStoreImage(BVApp.CurrentStore, this.imgupload.PostedFile)))
+                    if ((MerchantTribe.Commerce.Storage.DiskStorage.UploadStoreImage(MTApp.CurrentStore, this.imgupload.PostedFile)))
                     {
-                        BVApp.CurrentStore.Settings.LogoImage = fileName + ext;
+                        MTApp.CurrentStore.Settings.LogoImage = fileName + ext;
                     }
                 }
                 else
@@ -108,11 +108,11 @@ namespace BVCommerce
                     this.MessageBox1.ShowError("Only .PNG, .JPG, .GIF file types are allowed for logo images");
                 }
             }
-            BVApp.CurrentStore.Settings.StoreClosed = this.chkClosed.Checked;
-            BVApp.CurrentStore.Settings.StoreClosedDescription = this.ClosedMessageField.Text.Trim();
-            BVApp.CurrentStore.Settings.StoreClosedGuestPassword = this.GuestPassword.Text.Trim();
+            MTApp.CurrentStore.Settings.StoreClosed = this.chkClosed.Checked;
+            MTApp.CurrentStore.Settings.StoreClosedDescription = this.ClosedMessageField.Text.Trim();
+            MTApp.CurrentStore.Settings.StoreClosedGuestPassword = this.GuestPassword.Text.Trim();
 
-            BVApp.UpdateCurrentStore();
+            MTApp.UpdateCurrentStore();
             return result;
         }
         protected void btnSend_Click(object sender, System.Web.UI.ImageClickEventArgs e)
@@ -131,8 +131,8 @@ namespace BVCommerce
         protected void btnUpdateCustomDomain_Click(object sender, System.Web.UI.ImageClickEventArgs e)
         {
             this.MessageBox1.ClearMessage();
-            BVApp.CurrentStore.CustomUrl = this.CustomDomainField.Text.Trim();
-            if (BVApp.UpdateCurrentStore())
+            MTApp.CurrentStore.CustomUrl = this.CustomDomainField.Text.Trim();
+            if (MTApp.UpdateCurrentStore())
             {
                 this.MessageBox1.ShowOk("Custom Domain Name Updated");
             }
@@ -147,10 +147,10 @@ namespace BVCommerce
             this.MessageBox1.ClearMessage();
 
             StoreDomain d = new StoreDomain();
-            d.StoreId = BVApp.CurrentStore.Id;
+            d.StoreId = MTApp.CurrentStore.Id;
             d.DomainName = this.NewCustomDomain.Text.Trim();
 
-            StoreDomainRepository repo = new StoreDomainRepository(this.BVApp.CurrentRequestContext);
+            StoreDomainRepository repo = new StoreDomainRepository(this.MTApp.CurrentRequestContext);
             if (repo.Create(d))
             {
                 this.MessageBox1.ShowOk("Added alternate domain");
@@ -165,8 +165,8 @@ namespace BVCommerce
 
         private void LoadAlternateDomains()
         {
-            StoreDomainRepository repo = new StoreDomainRepository(this.BVApp.CurrentRequestContext);
-            List<StoreDomain> domains = repo.FindForStore(BVApp.CurrentStore.Id);
+            StoreDomainRepository repo = new StoreDomainRepository(this.MTApp.CurrentRequestContext);
+            List<StoreDomain> domains = repo.FindForStore(MTApp.CurrentStore.Id);
 
             StringBuilder sb = new StringBuilder();
             sb.Append("<ul class=\"redirects301\">");

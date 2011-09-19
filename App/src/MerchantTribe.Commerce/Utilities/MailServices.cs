@@ -382,7 +382,7 @@ namespace MerchantTribe.Commerce.Utilities
 
         public static void SendCustomDomainRequest(string name, string email, string phone, string domain, string ownsDomain, string hasSsl)
         {            
-            MailMessage m = new MailMessage(email, WebAppSettings.BvAdminEmail);
+            MailMessage m = new MailMessage(email, WebAppSettings.SuperAdminEmail);
             m.Subject = "BV Hosted Custom Domain Request | Contact Form";
 
             StringBuilder sb = new StringBuilder();
@@ -416,7 +416,7 @@ namespace MerchantTribe.Commerce.Utilities
             if (u == null || s == null) return;
 
 
-            MailMessage m = new MailMessage(WebAppSettings.ApplicationEmail, WebAppSettings.BvAdminEmail);
+            MailMessage m = new MailMessage(WebAppSettings.ApplicationEmail, WebAppSettings.SuperAdminEmail);
             
 
             if (s.PlanId == 0)
@@ -464,7 +464,7 @@ namespace MerchantTribe.Commerce.Utilities
             if (u == null || s == null) return;
 
 
-            MailMessage m = new MailMessage(WebAppSettings.ApplicationEmail, WebAppSettings.BvAdminEmail);
+            MailMessage m = new MailMessage(WebAppSettings.ApplicationEmail, WebAppSettings.SuperAdminEmail);
 
             m.Subject = "BV Hosted | Plan Upgrade to " + s.PlanName;
 
@@ -508,7 +508,7 @@ namespace MerchantTribe.Commerce.Utilities
             if (u == null || s == null) return;
 
 
-            MailMessage m = new MailMessage(WebAppSettings.ApplicationEmail, WebAppSettings.BvAdminEmail);
+            MailMessage m = new MailMessage(WebAppSettings.ApplicationEmail, WebAppSettings.SuperAdminEmail);
 
             m.Subject = "BV Hosted | Plan Downgrade to " + s.PlanName;
 

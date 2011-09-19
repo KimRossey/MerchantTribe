@@ -76,7 +76,7 @@ namespace BVCommerce
 
         private Category LoadCategory()
         {
-            Category c = BVApp.CatalogServices.Categories.Find(this.BvinField.Value);
+            Category c = MTApp.CatalogServices.Categories.Find(this.BvinField.Value);
             if (c != null)
             {
 
@@ -113,7 +113,7 @@ namespace BVCommerce
             HyperLink m = new HyperLink();
             m.ImageUrl = "~/BVAdmin/Images/Buttons/ViewInStore.png";
             m.ToolTip = c.MetaTitle;
-            m.NavigateUrl = UrlRewriter.BuildUrlForCategory(new CategorySnapshot(c), BVApp.CurrentRequestContext.RoutingContext);
+            m.NavigateUrl = UrlRewriter.BuildUrlForCategory(new CategorySnapshot(c), MTApp.CurrentRequestContext.RoutingContext);
             m.EnableViewState = false;
             this.inStore.Controls.Add(m);
 
@@ -123,7 +123,7 @@ namespace BVCommerce
         {
             bool result = false;
 
-            Category c = BVApp.CatalogServices.Categories.Find(this.BvinField.Value);
+            Category c = MTApp.CatalogServices.Categories.Find(this.BvinField.Value);
             if (c == null)
             {
                 c = new Category();
@@ -152,7 +152,7 @@ namespace BVCommerce
                 }
                 this.RewriteUrlField.Text = c.RewriteUrl;
 
-                if (UrlRewriter.IsCategorySlugInUse(c.RewriteUrl, c.Bvin, BVApp.CurrentRequestContext))
+                if (UrlRewriter.IsCategorySlugInUse(c.RewriteUrl, c.Bvin, MTApp.CurrentRequestContext))
                 {
                     this.MessageBox1.ShowWarning("The requested URL is already in use by another item.");
                     return false;
@@ -172,18 +172,18 @@ namespace BVCommerce
                 if (this.BvinField.Value == string.Empty)
                 {
                     c.ParentId = this.ParentIDField.Value;
-                    result = BVApp.CatalogServices.Categories.Create(c);
+                    result = MTApp.CatalogServices.Categories.Create(c);
                     if (result)
                     {
-                        result = BVApp.CatalogServices.Categories.SubmitChanges();
+                        result = MTApp.CatalogServices.Categories.SubmitChanges();
                     }
                 }
                 else
                 {
-                    result = BVApp.CatalogServices.Categories.Update(c);
+                    result = MTApp.CatalogServices.Categories.Update(c);
                     if (result)
                     {
-                        result = BVApp.CatalogServices.Categories.SubmitChanges();
+                        result = MTApp.CatalogServices.Categories.SubmitChanges();
                     }
                 }
 
@@ -200,10 +200,10 @@ namespace BVCommerce
                     {
                         if (oldUrl != c.RewriteUrl)
                         {
-                            BVApp.ContentServices.CustomUrls.Register301(oldUrl,
+                            MTApp.ContentServices.CustomUrls.Register301(oldUrl,
                                                   c.RewriteUrl,
-                                                  c.Bvin, CustomUrlType.Category, BVApp.CurrentRequestContext,
-                                                  BVApp);
+                                                  c.Bvin, CustomUrlType.Category, MTApp.CurrentRequestContext,
+                                                  MTApp);
                             this.UrlsAssociated1.LoadUrls();
                         }
                     }
@@ -242,7 +242,7 @@ namespace BVCommerce
             if (this.Save())
             {
                 MessageBox1.ShowOk("Category Updated Successfully.");
-                Category cat = BVApp.CatalogServices.Categories.Find(this.BvinField.Value);
+                Category cat = MTApp.CatalogServices.Categories.Find(this.BvinField.Value);
                 if (cat != null && cat.Bvin != string.Empty)
                 {
                     PopulateStoreLink(cat);

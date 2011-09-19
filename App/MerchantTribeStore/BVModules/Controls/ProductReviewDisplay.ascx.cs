@@ -15,11 +15,11 @@ namespace BVCommerce
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            this.btnSubmitReview.ImageUrl = MyPage.BVApp.ThemeManager().ButtonUrl("submit", Request.IsSecureConnection);
+            this.btnSubmitReview.ImageUrl = MyPage.MTApp.ThemeManager().ButtonUrl("submit", Request.IsSecureConnection);
         }
         public void LoadReviews(string productBvin)
         {
-            Product p = MyPage.BVApp.CatalogServices.Products.Find(productBvin);
+            Product p = MyPage.MTApp.CatalogServices.Products.Find(productBvin);
             LoadReviews(p);
         }
 
@@ -71,27 +71,27 @@ namespace BVCommerce
             switch (AverageRating)
             {
                 case 1:
-                    this.imgAverageRating.ImageUrl = MyPage.BVApp.ThemeManager().ButtonUrl("stars1", Request.IsSecureConnection);
+                    this.imgAverageRating.ImageUrl = MyPage.MTApp.ThemeManager().ButtonUrl("stars1", Request.IsSecureConnection);
                     break;
                 case 2:
-                    this.imgAverageRating.ImageUrl = MyPage.BVApp.ThemeManager().ButtonUrl("stars2", Request.IsSecureConnection);
+                    this.imgAverageRating.ImageUrl = MyPage.MTApp.ThemeManager().ButtonUrl("stars2", Request.IsSecureConnection);
                     break;
                 case 3:
-                    this.imgAverageRating.ImageUrl = MyPage.BVApp.ThemeManager().ButtonUrl("stars3", Request.IsSecureConnection);
+                    this.imgAverageRating.ImageUrl = MyPage.MTApp.ThemeManager().ButtonUrl("stars3", Request.IsSecureConnection);
                     break;
                 case 4:
-                    this.imgAverageRating.ImageUrl = MyPage.BVApp.ThemeManager().ButtonUrl("stars4", Request.IsSecureConnection);
+                    this.imgAverageRating.ImageUrl = MyPage.MTApp.ThemeManager().ButtonUrl("stars4", Request.IsSecureConnection);
                     break;
                 case 5:
-                    this.imgAverageRating.ImageUrl = MyPage.BVApp.ThemeManager().ButtonUrl("stars5", Request.IsSecureConnection);
+                    this.imgAverageRating.ImageUrl = MyPage.MTApp.ThemeManager().ButtonUrl("stars5", Request.IsSecureConnection);
                     break;
             }
             this.imgAverageRating.ImageUrl = this.imgAverageRating.ImageUrl;
 
             // Trim Reviews if more than count and display
-            if (MyPage.BVApp.CurrentStore.Settings.ProductReviewCount < reviews.Count)
+            if (MyPage.MTApp.CurrentStore.Settings.ProductReviewCount < reviews.Count)
             {
-                this.dlReviews.DataSource = TrimReviewList(reviews, MyPage.BVApp.CurrentStore.Settings.ProductReviewCount);
+                this.dlReviews.DataSource = TrimReviewList(reviews, MyPage.MTApp.CurrentStore.Settings.ProductReviewCount);
             }
             else
             {
@@ -132,25 +132,25 @@ namespace BVCommerce
 
                 if (ratingImage != null)
                 {
-                    if (MyPage.BVApp.CurrentStore.Settings.ProductReviewShowRating == true)
+                    if (MyPage.MTApp.CurrentStore.Settings.ProductReviewShowRating == true)
                     {
                         ratingImage.Visible = true;
                         switch ((int)DataBinder.Eval(e.Item.DataItem, "Rating"))
                         {
                             case 1:
-                                ratingImage.ImageUrl = MyPage.BVApp.ThemeManager().ButtonUrl("stars1", Request.IsSecureConnection);
+                                ratingImage.ImageUrl = MyPage.MTApp.ThemeManager().ButtonUrl("stars1", Request.IsSecureConnection);
                                 break;
                             case 2:
-                                ratingImage.ImageUrl = MyPage.BVApp.ThemeManager().ButtonUrl("stars2", Request.IsSecureConnection);
+                                ratingImage.ImageUrl = MyPage.MTApp.ThemeManager().ButtonUrl("stars2", Request.IsSecureConnection);
                                 break;
                             case 3:
-                                ratingImage.ImageUrl = MyPage.BVApp.ThemeManager().ButtonUrl("stars3", Request.IsSecureConnection);
+                                ratingImage.ImageUrl = MyPage.MTApp.ThemeManager().ButtonUrl("stars3", Request.IsSecureConnection);
                                 break;
                             case 4:
-                                ratingImage.ImageUrl = MyPage.BVApp.ThemeManager().ButtonUrl("stars4", Request.IsSecureConnection);
+                                ratingImage.ImageUrl = MyPage.MTApp.ThemeManager().ButtonUrl("stars4", Request.IsSecureConnection);
                                 break;
                             case 5:
-                                ratingImage.ImageUrl = MyPage.BVApp.ThemeManager().ButtonUrl("stars5", Request.IsSecureConnection);
+                                ratingImage.ImageUrl = MyPage.MTApp.ThemeManager().ButtonUrl("stars5", Request.IsSecureConnection);
                                 break;
                         }
                     }
@@ -182,11 +182,11 @@ namespace BVCommerce
                     }
                     if (karmaYes != null)
                     {
-                        karmaYes.ImageUrl = MyPage.BVApp.ThemeManager().ButtonUrl("yes", Request.IsSecureConnection);
+                        karmaYes.ImageUrl = MyPage.MTApp.ThemeManager().ButtonUrl("yes", Request.IsSecureConnection);
                     }
                     if (karmaNo != null)
                     {
-                        karmaNo.ImageUrl = MyPage.BVApp.ThemeManager().ButtonUrl("no", Request.IsSecureConnection);
+                        karmaNo.ImageUrl = MyPage.MTApp.ThemeManager().ButtonUrl("no", Request.IsSecureConnection);
                     }
 
                 }
@@ -196,13 +196,13 @@ namespace BVCommerce
         protected void dlReviews_EditCommand(object source, System.Web.UI.WebControls.DataListCommandEventArgs e)
         {
             string reviewID = (string)dlReviews.DataKeys[e.Item.ItemIndex];
-            MyPage.BVApp.CatalogServices.ProductReviews.UpdateKarma(reviewID, 1);
+            MyPage.MTApp.CatalogServices.ProductReviews.UpdateKarma(reviewID, 1);
         }
 
         protected void dlReviews_DeleteCommand(object source, System.Web.UI.WebControls.DataListCommandEventArgs e)
         {
             string reviewID = (string)dlReviews.DataKeys[e.Item.ItemIndex];
-            MyPage.BVApp.CatalogServices.ProductReviews.UpdateKarma(reviewID, -1);
+            MyPage.MTApp.CatalogServices.ProductReviews.UpdateKarma(reviewID, -1);
         }
 
         protected void btnSubmitReview_Click(object sender, System.Web.UI.ImageClickEventArgs e)
@@ -219,7 +219,7 @@ namespace BVCommerce
                     ProductReview rev = new ProductReview();
                     rev.ProductBvin = this.bvinField.Value;
                     rev.Karma = 0;
-                    if (SessionManager.IsUserAuthenticated(MyPage.BVApp) == true)
+                    if (SessionManager.IsUserAuthenticated(MyPage.MTApp) == true)
                     {
                         rev.UserID = SessionManager.GetCurrentUserId();
                     }
@@ -232,7 +232,7 @@ namespace BVCommerce
                     rev.ReviewDate = System.DateTime.Now;
                     rev.Rating = (ProductReviewRating)int.Parse(this.lstNewReviewRating.SelectedValue);
 
-                    if (MyPage.BVApp.CurrentStore.Settings.ProductReviewModerate == false)
+                    if (MyPage.MTApp.CurrentStore.Settings.ProductReviewModerate == false)
                     {
                         rev.Approved = true;
                     }
@@ -241,7 +241,7 @@ namespace BVCommerce
                         rev.Approved = false;
                     }
 
-                    MyPage.BVApp.CatalogServices.ProductReviews.Create(rev);
+                    MyPage.MTApp.CatalogServices.ProductReviews.Create(rev);
 
                     this.litReviewMessage.Text = "<div class=\"flash-message-success\">Thank you for your review!</div>";
                     this.pnlNewReview.Visible = false;

@@ -92,10 +92,10 @@ namespace BVCommerce.BVAdmin.Configuration
 
         private void LoadData()
         {
-            this.AccountNumberField.Text = BVApp.CurrentStore.Settings.ShippingFedExAccountNumber;
-            if (BVApp.CurrentStore.Settings.ShippingFedExMeterNumber.Length > 0)
+            this.AccountNumberField.Text = MTApp.CurrentStore.Settings.ShippingFedExAccountNumber;
+            if (MTApp.CurrentStore.Settings.ShippingFedExMeterNumber.Length > 0)
             {
-                this.lblCurrentMeterNumber.Text = BVApp.CurrentStore.Settings.ShippingFedExMeterNumber;
+                this.lblCurrentMeterNumber.Text = MTApp.CurrentStore.Settings.ShippingFedExMeterNumber;
             }
             else
             {
@@ -111,7 +111,7 @@ namespace BVCommerce.BVAdmin.Configuration
         protected void btnSubmit_Click(object sender, System.Web.UI.ImageClickEventArgs e)
         {
 
-            BVApp.CurrentStore.Settings.ShippingFedExAccountNumber = this.AccountNumberField.Text.Trim();
+            MTApp.CurrentStore.Settings.ShippingFedExAccountNumber = this.AccountNumberField.Text.Trim();
 
 
 
@@ -127,12 +127,12 @@ namespace BVCommerce.BVAdmin.Configuration
             else
             {
                 this.MessageBox1.ShowOk("Your meter number is: " + res.ReplyHeader.MeterNumber);
-                BVApp.CurrentStore.Settings.ShippingFedExMeterNumber = res.ReplyHeader.MeterNumber;                
+                MTApp.CurrentStore.Settings.ShippingFedExMeterNumber = res.ReplyHeader.MeterNumber;                
                 this.lblCurrentMeterNumber.Text = res.ReplyHeader.MeterNumber;
             }
 
             // Save Changes
-            BVApp.AccountServices.Stores.Update(BVApp.CurrentStore);
+            MTApp.AccountServices.Stores.Update(MTApp.CurrentStore);
         }
 
         private void LoadRequest(MerchantTribe.Shipping.FedEx.SubscriptionRequest req)

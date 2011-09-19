@@ -30,7 +30,7 @@ namespace BVCommerce
 
             StringBuilder s = new StringBuilder();
 
-            if (SessionManager.IsUserAuthenticated(MyPage.BVApp) == true)
+            if (SessionManager.IsUserAuthenticated(MyPage.MTApp) == true)
             {
                 if (this.TabIndex != -1)
                 {
@@ -43,7 +43,7 @@ namespace BVCommerce
 
                 if (_ShowUserName == true)
                 {
-                    CustomerAccount u = MyPage.BVApp.CurrentCustomer;
+                    CustomerAccount u = MyPage.MTApp.CurrentCustomer;
                     s.Append("Sign Out (" + u.FirstName + " " + u.LastName + ")");
                 }
                 else

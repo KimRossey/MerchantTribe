@@ -28,8 +28,8 @@ namespace BVCommerce
         {
             base.OnLoad(e);
             string themeId = Request.QueryString["id"];
-            this.BVApp.SwitchTheme(themeId);
-            BVApp.UpdateCurrentStore();
+            this.MTApp.SwitchTheme(themeId);
+            MTApp.UpdateCurrentStore();
             Response.Redirect("Themes.aspx");
         }
 

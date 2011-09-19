@@ -41,7 +41,7 @@ namespace BVCommerce
                     Product p = ((IProductPage)this.Page).LocalProduct;
                     if (p != null)
                     {
-                        CatalogService CatalogServices = MyPage.BVApp.CatalogServices;
+                        CatalogService CatalogServices = MyPage.MTApp.CatalogServices;
                         List<CategorySnapshot> categories = CatalogServices.FindCategoriesForProduct(p.Bvin);
                         if (categories != null)
                         {
@@ -88,7 +88,7 @@ namespace BVCommerce
         private void LoadMenu()
         {
             currentId = LocateCurrentCategory();
-            ContentBlock b = MyPage.BVApp.ContentServices.Columns.FindBlock(this.BlockId);
+            ContentBlock b = MyPage.MTApp.ContentServices.Columns.FindBlock(this.BlockId);
 
             if (b != null)
             {
@@ -142,7 +142,7 @@ namespace BVCommerce
 
         private void LoadRoots()
         {
-            List<CategorySnapshot> cats = MyPage.BVApp.CatalogServices.Categories.FindVisibleChildren("0");
+            List<CategorySnapshot> cats = MyPage.MTApp.CatalogServices.Categories.FindVisibleChildren("0");
             AddCategoryCollection(cats, cats, 1, 1);
         }
 
@@ -188,7 +188,7 @@ namespace BVCommerce
             int childCount = 0;
             if (this._showProductCounts)
             {
-                childCount += (MyPage.BVApp.CatalogServices.CategoriesXProducts.FindForCategory(c.Bvin, 1, int.MaxValue).Count);
+                childCount += (MyPage.MTApp.CatalogServices.CategoriesXProducts.FindForCategory(c.Bvin, 1, int.MaxValue).Count);
             }
 
             if (this._showCategoryCounts)
@@ -201,7 +201,7 @@ namespace BVCommerce
                 m.Text = m.Text + " (" + childCount.ToString() + ")";
             }
 
-            m.NavigateUrl = UrlRewriter.BuildUrlForCategory(c, MyPage.BVApp.CurrentRequestContext.RoutingContext);
+            m.NavigateUrl = UrlRewriter.BuildUrlForCategory(c, MyPage.MTApp.CurrentRequestContext.RoutingContext);
             if (c.SourceType == CategorySourceType.CustomLink)
             {
                 if (c.CustomPageOpenInNewWindow == true)
@@ -216,7 +216,7 @@ namespace BVCommerce
 
         private void LoadRootPlusExpandedChildren()
         {
-            List<CategorySnapshot> allCats = MyPage.BVApp.CatalogServices.Categories.FindAll();
+            List<CategorySnapshot> allCats = MyPage.MTApp.CatalogServices.Categories.FindAll();
 
             // Get Current Category
             CategorySnapshot currentCategory = Category.FindInList(allCats, currentId);
@@ -338,7 +338,7 @@ namespace BVCommerce
 
         private void LoadAllCategories(int maxDepth)
         {
-            List<CategorySnapshot> allCats = MyPage.BVApp.CatalogServices.Categories.FindAll();                    
+            List<CategorySnapshot> allCats = MyPage.MTApp.CatalogServices.Categories.FindAll();                    
             List<CategorySnapshot> children = Category.FindChildrenInList(allCats, "0", false);
             AddCategoryCollection(allCats, children, 0, maxDepth);
         }
@@ -357,7 +357,7 @@ namespace BVCommerce
 
                         if ((maxDepth == 0) | (currentDepth + 1 < maxDepth))
                         {
-                            List<CategorySnapshot> children = MyPage.BVApp.CatalogServices.Categories.FindVisibleChildren(c.Bvin);
+                            List<CategorySnapshot> children = MyPage.MTApp.CatalogServices.Categories.FindVisibleChildren(c.Bvin);
                             if (children != null)
                             {
                                 if (children.Count > 0)
@@ -420,7 +420,7 @@ namespace BVCommerce
 
         private void LoadPeersAndChildren()
         {
-            List<CategorySnapshot> allCats = MyPage.BVApp.CatalogServices.Categories.FindAll();
+            List<CategorySnapshot> allCats = MyPage.MTApp.CatalogServices.Categories.FindAll();
 
             // Get Current Category
             CategorySnapshot currentCategory = Category.FindInList(allCats, currentId);

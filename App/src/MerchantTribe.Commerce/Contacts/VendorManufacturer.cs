@@ -33,7 +33,7 @@ namespace MerchantTribe.Commerce.Contacts
             this.ContactType = VendorManufacturerType.Unknown;
         }
 
-        public List<Content.HtmlTemplateTag> GetReplaceableTags(BVApplication bvapp)
+        public List<Content.HtmlTemplateTag> GetReplaceableTags(MerchantTribeApplication app)
         {
 			List<Content.HtmlTemplateTag> result = new List<Content.HtmlTemplateTag>();
 			result.Add(new Content.HtmlTemplateTag("[[VendorManufacturer.EmailAddress]]", this.EmailAddress));

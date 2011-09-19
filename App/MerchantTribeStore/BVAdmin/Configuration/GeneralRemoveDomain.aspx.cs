@@ -25,7 +25,7 @@ namespace BVCommerce.BVAdmin.Configuration
         {
             bool result = false;
 
-            StoreDomainRepository repo = new StoreDomainRepository(BVApp.CurrentRequestContext);
+            StoreDomainRepository repo = new StoreDomainRepository(MTApp.CurrentRequestContext);
 
             long lid = 0;
             long.TryParse(id, out lid);

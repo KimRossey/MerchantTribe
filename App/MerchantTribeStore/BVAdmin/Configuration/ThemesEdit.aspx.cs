@@ -39,7 +39,7 @@ namespace BVCommerce
                 return;
             }
 
-            ThemeInfo info = BVApp.ThemeManager().GetThemeInfo(themeId);
+            ThemeInfo info = MTApp.ThemeManager().GetThemeInfo(themeId);
             if ((info != null))
             {
                 this.ThemeNameField.Text = info.Title;
@@ -50,7 +50,7 @@ namespace BVCommerce
                 this.VersionUrlField.Text = info.VersionUrl;
 
                 ThemeView tv = new ThemeView();
-                tv.LoadInstalledTheme(BVApp.CurrentStore.Id, themeId);
+                tv.LoadInstalledTheme(MTApp.CurrentStore.Id, themeId);
                 this.imgPreview.ImageUrl = tv.PreviewImageUrl + "?uid=" + System.Guid.NewGuid().ToString();
             }
 
@@ -60,7 +60,7 @@ namespace BVCommerce
         {
             this.MessageBox1.ClearMessage();
 
-            ThemeInfo info = BVApp.ThemeManager().GetThemeInfo(Request.QueryString["id"]);
+            ThemeInfo info = MTApp.ThemeManager().GetThemeInfo(Request.QueryString["id"]);
             if ((info != null))
             {
                 info.Title = this.ThemeNameField.Text.Trim();
@@ -69,7 +69,7 @@ namespace BVCommerce
                 info.AuthorUrl = this.AuthorUrlField.Text.Trim();
                 info.Version = this.VersionField.Text.Trim();
                 info.VersionUrl = this.VersionUrlField.Text.Trim();
-                BVApp.ThemeManager().SaveThemeInfo(info.UniqueIdAsString, info);
+                MTApp.ThemeManager().SaveThemeInfo(info.UniqueIdAsString, info);
                 this.MessageBox1.ShowOk("Changes Saved!");
             }
             else
@@ -89,7 +89,7 @@ namespace BVCommerce
             if (this.fileupload1.HasFile)
             {
                 string themeId = Request.QueryString["id"];
-                MerchantTribe.Commerce.Storage.DiskStorage.UploadThemePreview(BVApp.CurrentStore.Id, themeId, this.fileupload1.PostedFile, false);
+                MerchantTribe.Commerce.Storage.DiskStorage.UploadThemePreview(MTApp.CurrentStore.Id, themeId, this.fileupload1.PostedFile, false);
                 LoadTheInfo(themeId);
             }
         }

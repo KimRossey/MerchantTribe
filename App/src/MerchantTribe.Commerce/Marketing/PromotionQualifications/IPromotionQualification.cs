@@ -12,7 +12,7 @@ namespace MerchantTribe.Commerce.Marketing.PromotionQualifications
         RelativeProcessingCost ProcessingCost { get; set; }
         Dictionary<string, string> Settings { get; set; }
 
-        string FriendlyDescription(BVApplication bvapp);
+        string FriendlyDescription(MerchantTribeApplication app);
 
         bool MeetsQualification(PromotionContext context);
     }

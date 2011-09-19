@@ -73,7 +73,7 @@ namespace BVCommerce
                 }
             }
 
-            if (BVApp.CurrentStore.Id == WebAppSettings.BillingStoreId)
+            if (MTApp.CurrentStore.Id == WebAppSettings.BillingStoreId)
             {
                 this.lnkGenerateBVBills.Visible = true;
             }
@@ -86,7 +86,7 @@ namespace BVCommerce
             FindOrders(pageNumber);
 
             // Acumatica Warning
-            if (BVApp.CurrentStore.Settings.Acumatica.IntegrationEnabled)
+            if (MTApp.CurrentStore.Settings.Acumatica.IntegrationEnabled)
             {
                 this.MessageBox1.ShowWarning(MerchantTribe.Commerce.Content.SiteTerms.GetTerm(MerchantTribe.Commerce.Content.SiteTermIds.AcumaticaWarning));
             }
@@ -94,7 +94,7 @@ namespace BVCommerce
 
         private void LoadTemplates()
         {
-            this.lstPrintTemplate.DataSource = BVApp.ContentServices.GetAllTemplatesForStoreOrDefaults();
+            this.lstPrintTemplate.DataSource = MTApp.ContentServices.GetAllTemplatesForStoreOrDefaults();
             this.lstPrintTemplate.DataTextField = "DisplayName";
             this.lstPrintTemplate.DataValueField = "Id";
             this.lstPrintTemplate.DataBind();
@@ -122,7 +122,7 @@ namespace BVCommerce
             int pageSize = 20;
             int totalCount = 0;
 
-            List<OrderSnapshot> orders = BVApp.OrderServices.Orders.FindByCriteriaPaged(criteria, pageNumber, pageSize, ref totalCount);
+            List<OrderSnapshot> orders = MTApp.OrderServices.Orders.FindByCriteriaPaged(criteria, pageNumber, pageSize, ref totalCount);
 
             RenderOrders(orders);
 
@@ -188,7 +188,7 @@ namespace BVCommerce
             sb.Append("</tr></thead>");
 
             bool altRow = false;
-            TimeZoneInfo tz = BVApp.CurrentStore.Settings.TimeZone;
+            TimeZoneInfo tz = MTApp.CurrentStore.Settings.TimeZone;
             foreach (OrderSnapshot o in orders)
             {
                 RenderSingleOrder(o, sb, altRow, tz);
@@ -394,15 +394,15 @@ namespace BVCommerce
         }
         protected void lnkAcceptAll_Click(object sender, EventArgs e)
         {
-            OrderBatchProcessor.AcceptAllNewOrders(BVApp.OrderServices);
+            OrderBatchProcessor.AcceptAllNewOrders(MTApp.OrderServices);
             FindOrders(1);
         }
         protected void lnkGenerateBVBills_Click(object sender, EventArgs e)
         {
             // only process if we're the billing store
-            if (BVApp.CurrentStore.Id == WebAppSettings.BillingStoreId)
+            if (MTApp.CurrentStore.Id == WebAppSettings.BillingStoreId)
             {
-                MerchantTribe.Commerce.Accounts.BillingManager.GenerateInvoicesForLastWeek(BVApp);
+                MerchantTribe.Commerce.Accounts.BillingManager.GenerateInvoicesForLastWeek(MTApp);
             }
             FindOrders(1);
         }
@@ -416,7 +416,7 @@ namespace BVCommerce
         }
         protected void lnkChargeAll_Click(object sender, EventArgs e)
         {
-            OrderBatchProcessor.CollectPaymentAndShipPendingOrders(BVApp);
+            OrderBatchProcessor.CollectPaymentAndShipPendingOrders(MTApp);
             FindOrders(1);
         }
 

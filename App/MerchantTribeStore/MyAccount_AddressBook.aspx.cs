@@ -16,15 +16,15 @@ namespace BVCommerce
     {       
         //protected void AddressList_ItemCommand(object source, DataListCommandEventArgs e)
         //{
-        //    CustomerAccount u = BVApp.CurrentCustomer;
+        //    CustomerAccount u = MTApp.CurrentCustomer;
         //    string editId = (string)AddressList.DataKeys[e.Item.ItemIndex];
 
         //    if (e.CommandName.ToUpper() == "BILLTO") 
         //    {
         //        if (u != null)
         //        {
-        //            BVApp.MembershipServices.CustomerMakeAddressBilling(u,editId);
-        //            BVApp.MembershipServices.UpdateCustomer(u);
+        //            MTApp.MembershipServices.CustomerMakeAddressBilling(u,editId);
+        //            MTApp.MembershipServices.UpdateCustomer(u);
         //        }                                
                 
         //    }
@@ -32,8 +32,8 @@ namespace BVCommerce
         //    {
         //        if (u != null)
         //        {
-        //            BVApp.MembershipServices.CustomerMakeAddressShipping(u,editId);
-        //            BVApp.MembershipServices.UpdateCustomer(u);
+        //            MTApp.MembershipServices.CustomerMakeAddressShipping(u,editId);
+        //            MTApp.MembershipServices.UpdateCustomer(u);
         //        }             
         //    }
         //    LoadAddresses();

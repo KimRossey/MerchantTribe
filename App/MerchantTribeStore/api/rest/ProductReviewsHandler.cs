@@ -12,7 +12,7 @@ namespace BVCommerce.api.rest
 {
     public class ProductReviewsHandler: BaseRestHandler
     {
-        public ProductReviewsHandler(MerchantTribe.Commerce.BVApplication app)
+        public ProductReviewsHandler(MerchantTribe.Commerce.MerchantTribeApplication app)
             : base(app)
         {
 
@@ -26,7 +26,7 @@ namespace BVCommerce.api.rest
             // Find One Specific Category
             ApiResponse<ProductReviewDTO> response = new ApiResponse<ProductReviewDTO>();
             string bvin = FirstParameter(parameters);
-            ProductReview item = BVApp.CatalogServices.ProductReviews.Find(bvin);
+            ProductReview item = MTApp.CatalogServices.ProductReviews.Find(bvin);
             if (item == null)
             {
                 response.Errors.Add(new ApiError("NULL", "Could not locate that item. Check bvin and try again."));
@@ -63,16 +63,16 @@ namespace BVCommerce.api.rest
 
             if (bvin == string.Empty)
             {
-                if (BVApp.CatalogServices.ProductReviews.Create(item))
+                if (MTApp.CatalogServices.ProductReviews.Create(item))
                 {
                     bvin = item.Bvin;
                 }
             }
             else
             {
-                BVApp.CatalogServices.ProductReviews.Update(item);
+                MTApp.CatalogServices.ProductReviews.Update(item);
             }
-            ProductReview resultItem = BVApp.CatalogServices.ProductReviews.Find(bvin);
+            ProductReview resultItem = MTApp.CatalogServices.ProductReviews.Find(bvin);
             if (resultItem != null) response.Content = resultItem.ToDto();
 
             data = MerchantTribe.Web.Json.ObjectToJson(response);
@@ -86,7 +86,7 @@ namespace BVCommerce.api.rest
             ApiResponse<bool> response = new ApiResponse<bool>();
 
             // Single Item Delete
-            response.Content = BVApp.CatalogServices.ProductReviews.Delete(bvin);
+            response.Content = MTApp.CatalogServices.ProductReviews.Delete(bvin);
 
             data = MerchantTribe.Web.Json.ObjectToJson(response);
             return data;

@@ -17,7 +17,7 @@ namespace BVCommerce
             string countryIso = Request.QueryString["country"];
             string region = Request.QueryString["region"];
 
-            BVApp.OrderServices.ShippingZoneRemoveArea(long.Parse(zoneid),countryIso, region);
+            MTApp.OrderServices.ShippingZoneRemoveArea(long.Parse(zoneid),countryIso, region);
             Response.Redirect("Shipping_Zones_Edit.aspx?id=" + zoneid);
         }
     }

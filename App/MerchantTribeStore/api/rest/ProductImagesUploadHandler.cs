@@ -12,7 +12,7 @@ namespace BVCommerce.api.rest
 {
     public class ProductImagesUploadHandler: BaseRestHandler
     {
-        public ProductImagesUploadHandler(MerchantTribe.Commerce.BVApplication app)
+        public ProductImagesUploadHandler(MerchantTribe.Commerce.MerchantTribeApplication app)
             : base(app)
         {
 
@@ -42,7 +42,7 @@ namespace BVCommerce.api.rest
             try
             {
                 postedData = MerchantTribe.Web.Json.ObjectFromJson<byte[]>(postdata);
-                response.Content = MerchantTribe.Commerce.Storage.DiskStorage.UploadProductAdditionalImage(BVApp.CurrentStore.Id, productBvin, imageBvin, fileName, postedData);
+                response.Content = MerchantTribe.Commerce.Storage.DiskStorage.UploadProductAdditionalImage(MTApp.CurrentStore.Id, productBvin, imageBvin, fileName, postedData);
             }
             catch(Exception ex)
             {

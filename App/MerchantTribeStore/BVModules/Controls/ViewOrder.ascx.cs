@@ -69,7 +69,7 @@ namespace BVCommerce
         {
             string bvin = this.OrderBvin;
 
-            Order o = MyPage.BVApp.OrderServices.Orders.FindForCurrentStore(bvin);
+            Order o = MyPage.MTApp.OrderServices.Orders.FindForCurrentStore(bvin);
 
             if (o != null)
             {
@@ -123,7 +123,7 @@ namespace BVCommerce
             //}
 
             // Payment
-            OrderPaymentSummary paySummary = MyPage.BVApp.OrderServices.PaymentSummary(o);
+            OrderPaymentSummary paySummary = MyPage.MTApp.OrderServices.PaymentSummary(o);
             this.lblPaymentSummary.Text = paySummary.PaymentsSummary;
             this.PaymentTotalField.Text = string.Format("{0:C}", paySummary.AmountCharged);
             this.PaymentChargedField.Text = string.Format("{0:C}", paySummary.AmountCharged - paySummary.GiftCardAmount);
@@ -212,7 +212,7 @@ namespace BVCommerce
                     ((Label)e.Row.FindControl("ShippedDateLabel")).Text = val.ShipDateUtc.ToLocalTime().ToString("d");
                     if (val.TrackingNumber.Trim() != string.Empty)
                     {
-                        foreach (MerchantTribe.Shipping.IShippingService item in MerchantTribe.Commerce.Shipping.AvailableServices.FindAll(MyPage.BVApp.CurrentStore))
+                        foreach (MerchantTribe.Shipping.IShippingService item in MerchantTribe.Commerce.Shipping.AvailableServices.FindAll(MyPage.MTApp.CurrentStore))
                         {
                             if (item.Id == val.ShippingProviderId)
                             {

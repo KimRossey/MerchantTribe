@@ -19,14 +19,14 @@ namespace BVCommerce
             base.OnLoad(e);
             this.Visible = false;
             MerchantTribe.Commerce.Payment.AvailablePayments availablePayments = new MerchantTribe.Commerce.Payment.AvailablePayments();
-            Collection<DisplayPaymentMethod> enabledMethods = availablePayments.EnabledMethods(MyPage.BVApp.CurrentStore);
+            Collection<DisplayPaymentMethod> enabledMethods = availablePayments.EnabledMethods(MyPage.MTApp.CurrentStore);
             foreach (DisplayPaymentMethod m in enabledMethods)
             {
                 switch (m.MethodId)
                 {
                     case WebAppSettings.PaymentIdGoogleCheckout:
                         string url = string.Empty;
-                        if (string.Compare(MyPage.BVApp.CurrentStore.Settings.GoogleCheckout.Mode, "Production", true) == 0)
+                        if (string.Compare(MyPage.MTApp.CurrentStore.Settings.GoogleCheckout.Mode, "Production", true) == 0)
                         {
                             url = "http://checkout.google.com/buttons/checkout.gif?variant=text&";
                         }
@@ -37,7 +37,7 @@ namespace BVCommerce
 
 
                         this.Visible = true;
-                        switch (MyPage.BVApp.CurrentStore.Settings.GoogleCheckout.ButtonSize.ToUpper())
+                        switch (MyPage.MTApp.CurrentStore.Settings.GoogleCheckout.ButtonSize.ToUpper())
                         {
                             case "SMALL":
                                 url += "w=160&h=43";
@@ -53,7 +53,7 @@ namespace BVCommerce
                                 break;
                         }
 
-                        switch (MyPage.BVApp.CurrentStore.Settings.GoogleCheckout.ButtonBackground.ToUpper())
+                        switch (MyPage.MTApp.CurrentStore.Settings.GoogleCheckout.ButtonBackground.ToUpper())
                         {
                             case "WHITE":
                                 url += "&style=white";
@@ -84,10 +84,10 @@ namespace BVCommerce
             }
             if (!args.Failed)
             {
-                Order Basket = SessionManager.CurrentShoppingCart(MyPage.BVApp.OrderServices);
+                Order Basket = SessionManager.CurrentShoppingCart(MyPage.MTApp.OrderServices);
                 // Save as Order
                 MerchantTribe.Commerce.BusinessRules.OrderTaskContext c 
-                    = new MerchantTribe.Commerce.BusinessRules.OrderTaskContext(MyPage.BVApp);
+                    = new MerchantTribe.Commerce.BusinessRules.OrderTaskContext(MyPage.MTApp);
                 c.UserId = SessionManager.GetCurrentUserId();
                 c.Order = Basket;
                 bool checkoutFailed = false;

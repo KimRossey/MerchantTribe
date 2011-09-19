@@ -42,22 +42,22 @@ namespace BVCommerce
                 }
                 else
                 {
-                    Order Basket = SessionManager.CurrentShoppingCart(BVApp.OrderServices);
+                    Order Basket = SessionManager.CurrentShoppingCart(MTApp.OrderServices);
 
                     // Save Shipping Selection
                     MerchantTribe.Commerce.Shipping.ShippingRateDisplay r = FindSelectedRate(this.ShippingRatesList.SelectedValue, Basket);
-                    BVApp.OrderServices.OrdersRequestShippingMethod(r, Basket);
-                    BVApp.CalculateOrder(Basket);
+                    MTApp.OrderServices.OrdersRequestShippingMethod(r, Basket);
+                    MTApp.CalculateOrder(Basket);
                     SessionManager.SaveOrderCookies(Basket);
                     
                     // Save Payment Information
                     SavePaymentInfo(Basket);
 
-                    BVApp.OrderServices.Orders.Update(Basket);
+                    MTApp.OrderServices.Orders.Update(Basket);
 
                     // Save as Order
                     MerchantTribe.Commerce.BusinessRules.OrderTaskContext c 
-                        = new MerchantTribe.Commerce.BusinessRules.OrderTaskContext(BVApp);
+                        = new MerchantTribe.Commerce.BusinessRules.OrderTaskContext(MTApp);
                     c.UserId = SessionManager.GetCurrentUserId();
                     c.Order = Basket;
 
@@ -70,8 +70,8 @@ namespace BVCommerce
                         if (MerchantTribe.Commerce.BusinessRules.Workflow.RunByName(c, MerchantTribe.Commerce.BusinessRules.WorkflowNames.ProcessNewOrderPayments))
                         {                            
                             MerchantTribe.Commerce.BusinessRules.Workflow.RunByName(c, MerchantTribe.Commerce.BusinessRules.WorkflowNames.ProcessNewOrderAfterPayments);
-                            Order tempOrder = BVApp.OrderServices.Orders.FindForCurrentStore(Basket.bvin);
-                            MerchantTribe.Commerce.Integration.Current().OrderReceived(tempOrder, BVApp);                            
+                            Order tempOrder = MTApp.OrderServices.Orders.FindForCurrentStore(Basket.bvin);
+                            MerchantTribe.Commerce.Integration.Current().OrderReceived(tempOrder, MTApp);                            
                             Response.Redirect("~/Receipt.aspx?id=" + Basket.bvin);
                         }
                         else
@@ -119,7 +119,7 @@ namespace BVCommerce
                 }
                 finally
                 {
-                    Order o = SessionManager.CurrentShoppingCart(BVApp.OrderServices);
+                    Order o = SessionManager.CurrentShoppingCart(MTApp.OrderServices);
                     EditAddressLinkButton.Visible = true;
                     if (o.CustomProperties["PaypalAddressOverride"] != null)
                     {
@@ -141,13 +141,13 @@ namespace BVCommerce
                             }
                         }
                     }
-                    BVApp.OrderServices.Orders.Update(o);
+                    MTApp.OrderServices.Orders.Update(o);
                     ppAPI = null;
                 }
             }
             else
             {
-                Response.Redirect(BVApp.CurrentStore.RootUrl());
+                Response.Redirect(MTApp.CurrentStore.RootUrl());
             }
 
         }
@@ -201,7 +201,7 @@ namespace BVCommerce
             this.CheckoutImageButton.Visible = true;
             if (!Page.IsPostBack)
             {
-                ThemeManager themes = BVApp.ThemeManager();
+                ThemeManager themes = MTApp.ThemeManager();
                 CheckoutImageButton.ImageUrl = themes.ButtonUrl("PlaceOrder", Request.IsSecureConnection);
                 this.btnKeepShopping.ImageUrl = themes.ButtonUrl("keepshopping", Request.IsSecureConnection);
                 DisplayPaypalExpressMode();
@@ -211,14 +211,14 @@ namespace BVCommerce
 
         private void LoadShippingMethodsForOrder()
         {
-            Order o = SessionManager.CurrentShoppingCart(BVApp.OrderServices);
+            Order o = SessionManager.CurrentShoppingCart(MTApp.OrderServices);
 
             MerchantTribe.Commerce.Contacts.Address address = GetAddress();
             if ((address != null))
             {
                 o.ShippingAddress = address;
                 o.BillingAddress = address;
-                BVApp.CalculateOrderAndSave(o);
+                MTApp.CalculateOrderAndSave(o);
                 SessionManager.SaveOrderCookies(o);
             }
 
@@ -243,7 +243,7 @@ namespace BVCommerce
             {
                 // Shipping Methods
 
-                Rates = BVApp.OrderServices.FindAvailableShippingRates(o);
+                Rates = MTApp.OrderServices.FindAvailableShippingRates(o);
 
                 if ((Rates.Count < 1))
                 {
@@ -326,7 +326,7 @@ namespace BVCommerce
             MerchantTribe.Commerce.Utilities.SortableCollection<MerchantTribe.Commerce.Shipping.ShippingRateDisplay> rates = SessionManager.LastShippingRates;
             if ((rates == null) | (rates.Count < 1))
             {
-                rates = BVApp.OrderServices.FindAvailableShippingRates(o);
+                rates = MTApp.OrderServices.FindAvailableShippingRates(o);
             }
 
             foreach (MerchantTribe.Commerce.Shipping.ShippingRateDisplay r in rates)
@@ -343,7 +343,7 @@ namespace BVCommerce
 
         private void SavePaymentInfo(Order o)
         {
-            OrderPaymentManager payManager = new OrderPaymentManager(o, BVApp);
+            OrderPaymentManager payManager = new OrderPaymentManager(o, MTApp);
             payManager.ClearAllTransactions();
 
             string token = Request.QueryString["Token"];
@@ -359,7 +359,7 @@ namespace BVCommerce
 
         protected void CustomValidator1_ServerValidate(object source, System.Web.UI.WebControls.ServerValidateEventArgs args)
         {
-            if (!BVApp.CurrentStore.Settings.PayPal.AllowUnconfirmedAddresses)
+            if (!MTApp.CurrentStore.Settings.PayPal.AllowUnconfirmedAddresses)
             {
                 if (string.Compare(AddressStatusLabel.Text, "Unconfirmed", true) == 0)
                 {
@@ -378,12 +378,12 @@ namespace BVCommerce
 
             if (SessionManager.CategoryLastId != string.Empty)
             {
-                MerchantTribe.Commerce.Catalog.Category c = BVApp.CatalogServices.Categories.Find(SessionManager.CategoryLastId);
+                MerchantTribe.Commerce.Catalog.Category c = MTApp.CatalogServices.Categories.Find(SessionManager.CategoryLastId);
                 if (c != null)
                 {
                     if (c.Bvin != string.Empty)
                     {
-                        destination = MerchantTribe.Commerce.Utilities.UrlRewriter.BuildUrlForCategory(new CategorySnapshot(c), BVApp.CurrentRequestContext.RoutingContext);
+                        destination = MerchantTribe.Commerce.Utilities.UrlRewriter.BuildUrlForCategory(new CategorySnapshot(c), MTApp.CurrentRequestContext.RoutingContext);
                     }
                 }
             }
@@ -393,30 +393,30 @@ namespace BVCommerce
 
         protected void EditAddressLinkButton_Click(object sender, System.EventArgs e)
         {
-            Order o = SessionManager.CurrentShoppingCart(BVApp.OrderServices);
+            Order o = SessionManager.CurrentShoppingCart(MTApp.OrderServices);
 
             PayPalAPI ppAPI = MerchantTribe.Commerce.Utilities.PaypalExpressUtilities.GetPaypalAPI();
             try
             {
-                string cartReturnUrl = BVApp.CurrentStore.RootUrlSecure() + "paypalexpresscheckout";
-                string cartCancelUrl = BVApp.CurrentStore.RootUrlSecure() + "checkout";
+                string cartReturnUrl = MTApp.CurrentStore.RootUrlSecure() + "paypalexpresscheckout";
+                string cartCancelUrl = MTApp.CurrentStore.RootUrlSecure() + "checkout";
 
                 SetExpressCheckoutResponseType expressResponse;
-                if (BVApp.CurrentStore.Settings.PayPal.ExpressAuthorizeOnly)
+                if (MTApp.CurrentStore.Settings.PayPal.ExpressAuthorizeOnly)
                 {
-                    expressResponse = ppAPI.SetExpressCheckout(string.Format("{0:N}", o.TotalOrderBeforeDiscounts), cartReturnUrl, cartCancelUrl, PaymentActionCodeType.Order, PayPalAPI.GetCurrencyCodeType(BVApp.CurrentStore.Settings.PayPal.Currency), o.OrderNumber);
+                    expressResponse = ppAPI.SetExpressCheckout(string.Format("{0:N}", o.TotalOrderBeforeDiscounts), cartReturnUrl, cartCancelUrl, PaymentActionCodeType.Order, PayPalAPI.GetCurrencyCodeType(MTApp.CurrentStore.Settings.PayPal.Currency), o.OrderNumber);
                 }
                 else
                 {
-                    expressResponse = ppAPI.SetExpressCheckout(string.Format("{0:N}", o.TotalOrderBeforeDiscounts), cartReturnUrl, cartCancelUrl, PaymentActionCodeType.Sale, PayPalAPI.GetCurrencyCodeType(BVApp.CurrentStore.Settings.PayPal.Currency), o.OrderNumber);
+                    expressResponse = ppAPI.SetExpressCheckout(string.Format("{0:N}", o.TotalOrderBeforeDiscounts), cartReturnUrl, cartCancelUrl, PaymentActionCodeType.Sale, PayPalAPI.GetCurrencyCodeType(MTApp.CurrentStore.Settings.PayPal.Currency), o.OrderNumber);
                 }
 
                 if (expressResponse.Ack == AckCodeType.Success || expressResponse.Ack == AckCodeType.SuccessWithWarning)
                 {
                     o.ThirdPartyOrderId = expressResponse.Token;
-                    if (BVApp.OrderServices.Orders.Update(o))
+                    if (MTApp.OrderServices.Orders.Update(o))
                     {
-                        if (string.Compare(BVApp.CurrentStore.Settings.PayPal.Mode, "Live", true) == 0)
+                        if (string.Compare(MTApp.CurrentStore.Settings.PayPal.Mode, "Live", true) == 0)
                         {
                             System.Web.HttpContext.Current.Response.Redirect("https://www.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=" + expressResponse.Token, false);
                         }

@@ -31,13 +31,13 @@ namespace BVCommerce
             {
                 if (AuthTokenGuid.HasValue)
                 {
-                    return BVApp.AccountServices.FindAdminUserByAuthTokenId(AuthTokenGuid.Value);
+                    return MTApp.AccountServices.FindAdminUserByAuthTokenId(AuthTokenGuid.Value);
                 }
                 return null;
             }
         }
 
-        public BVApplication BVApp { get; set; }
+        public MerchantTribeApplication MTApp { get; set; }
         public bool RequiresSSL
         {
             get { return true; }
@@ -51,11 +51,11 @@ namespace BVCommerce
         protected override void OnPreInit(EventArgs e)
         {
             base.OnPreInit(e);
-            BVApp = BVApplication.InstantiateForDataBase(new RequestContext());
+            MTApp = MerchantTribeApplication.InstantiateForDataBase(new RequestContext());
 
             // Determine store id        
-            BVApp.CurrentStore = UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, BVApp.AccountServices);
-            if (BVApp.CurrentStore == null)
+            MTApp.CurrentStore = UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, MTApp.AccountServices);
+            if (MTApp.CurrentStore == null)
             {
                 Response.Redirect("~/storenotfound");
             }
@@ -69,7 +69,7 @@ namespace BVCommerce
 
             if (!Request.IsSecureConnection)
             {
-                SSL.SSLRedirect(this, this.BVApp.CurrentStore, SSL.SSLRedirectTo.SSL);
+                SSL.SSLRedirect(this, this.MTApp.CurrentStore, SSL.SSLRedirectTo.SSL);
             }
         }
 
@@ -89,7 +89,7 @@ namespace BVCommerce
 
             if (tokenId.HasValue)
             {
-                if (BVApp.AccountServices.IsTokenValidForSuperUser(tokenId.Value))
+                if (MTApp.AccountServices.IsTokenValidForSuperUser(tokenId.Value))
                 {
                     validLogin = true;
                 }

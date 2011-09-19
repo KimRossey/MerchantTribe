@@ -15,7 +15,7 @@ namespace BVCommerce
 
         private void LoadData()
         {
-            ContentBlock b = MyPage.BVApp.ContentServices.Columns.FindBlock(this.BlockId);
+            ContentBlock b = MyPage.MTApp.ContentServices.Columns.FindBlock(this.BlockId);
             if (b != null)
             {
                 string feed = b.BaseSettings.GetSettingOrEmpty("FeedUrl");

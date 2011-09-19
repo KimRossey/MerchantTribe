@@ -45,8 +45,8 @@ namespace BVCommerce
 
         private void LoadCountries()
         {
-            List<Country> disabled = Country.FindAllInList(BVApp.CurrentStore.Settings.DisabledCountryIso3Codes);
-            List<Country> active = BVApp.CurrentStore.Settings.FindActiveCountries();
+            List<Country> disabled = Country.FindAllInList(MTApp.CurrentStore.Settings.DisabledCountryIso3Codes);
+            List<Country> active = MTApp.CurrentStore.Settings.FindActiveCountries();
 
             this.lstActive.DataSource = active;
             this.lstActive.DataTextField = "DisplayName";
@@ -67,11 +67,11 @@ namespace BVCommerce
             if (this.lstActive.SelectedItem != null)
             {
                 string iso = this.lstActive.SelectedItem.Value;
-                BVApp.CurrentStore.Settings.DisableCountry(iso);
+                MTApp.CurrentStore.Settings.DisableCountry(iso);
                 MessageBox1.ShowOk("Country Disabled");
             }
 
-            BVApp.UpdateCurrentStore();
+            MTApp.UpdateCurrentStore();
 
             LoadCountries();
         }
@@ -87,11 +87,11 @@ namespace BVCommerce
             else
             {
                 string iso = this.lstDisabled.SelectedItem.Value;
-                BVApp.CurrentStore.Settings.EnableCountry(iso);
+                MTApp.CurrentStore.Settings.EnableCountry(iso);
                 MessageBox1.ShowOk("Country enabled");
             }
 
-            BVApp.UpdateCurrentStore();
+            MTApp.UpdateCurrentStore();
 
             LoadCountries();
         }

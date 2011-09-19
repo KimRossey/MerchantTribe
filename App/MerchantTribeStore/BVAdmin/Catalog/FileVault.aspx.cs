@@ -34,7 +34,7 @@ namespace BVCommerce
 
         protected void BindFileGridView()
         {
-            List<ProductFile> files = BVApp.CatalogServices.ProductFiles.FindAll(1, int.MaxValue);
+            List<ProductFile> files = MTApp.CatalogServices.ProductFiles.FindAll(1, int.MaxValue);
             RenderFiles(files);
         }
 
@@ -44,7 +44,7 @@ namespace BVCommerce
 
             foreach (ProductFile f in files)
             {
-                int productCount = BVApp.CatalogServices.ProductFiles.CountOfProductsUsingFile(f.Bvin);
+                int productCount = MTApp.CatalogServices.ProductFiles.CountOfProductsUsingFile(f.Bvin);
                 sb.Append("<tr>");
                 sb.Append("<td>" + HttpUtility.HtmlEncode(f.FileName) + "</td>");
                 sb.Append("<td>" + HttpUtility.HtmlEncode(f.ShortDescription) + "</td>");
@@ -85,14 +85,14 @@ namespace BVCommerce
                     ProductFile file = new ProductFile();
                     file.FileName = System.IO.Path.GetFileName(fileName);
                     file.ShortDescription = file.FileName;
-                    if (BVApp.CatalogServices.ProductFiles.Create(file))
+                    if (MTApp.CatalogServices.ProductFiles.Create(file))
                     {
                         try
                         {
                             System.IO.FileStream fileStream = new System.IO.FileStream(fileName, FileMode.Open);
                             try
                             {
-                                if (ProductFile.SaveFile(BVApp.CurrentStore.Id, file.Bvin, file.FileName, fileStream))
+                                if (ProductFile.SaveFile(MTApp.CurrentStore.Id, file.Bvin, file.FileName, fileStream))
                                 {
                                     fileStream.Close();
                                     try

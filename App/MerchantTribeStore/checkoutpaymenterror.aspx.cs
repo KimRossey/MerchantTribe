@@ -43,7 +43,7 @@ namespace BVCommerce
             
             if (!Page.IsPostBack)
             {
-                ThemeManager themes = BVApp.ThemeManager();
+                ThemeManager themes = MTApp.ThemeManager();
                 this.btnSubmit.ImageUrl = themes.ButtonUrl("PlaceOrder", Request.IsSecureConnection);
                 Order Basket = LoadBasket();             
             }
@@ -62,7 +62,7 @@ namespace BVCommerce
             string bvin = SessionManager.CurrentPaymentPendingCartId;
             if (bvin.Trim().Length < 1) Response.Redirect("~/cart");
 
-            Order Basket = BVApp.OrderServices.Orders.FindForCurrentStore(bvin);
+            Order Basket = MTApp.OrderServices.Orders.FindForCurrentStore(bvin);
             if (Basket != null)
             {
                 if (Basket.Items.Count == 0)
@@ -80,7 +80,7 @@ namespace BVCommerce
         protected void btnSubmit_Click(object sender, System.Web.UI.ImageClickEventArgs e)
         {
             string bvin = SessionManager.CurrentPaymentPendingCartId;
-            Order Basket = BVApp.OrderServices.Orders.FindForCurrentStore(bvin);
+            Order Basket = MTApp.OrderServices.Orders.FindForCurrentStore(bvin);
             if (Basket == null)
             {
                 Response.Redirect("~/cart");
@@ -89,7 +89,7 @@ namespace BVCommerce
             // Update Order Info
             Basket.BillingAddress = GetBillingAddress();            
             Payment.SavePaymentInfo(Basket);
-            BVApp.OrderServices.Orders.Update(Basket);
+            MTApp.OrderServices.Orders.Update(Basket);
 
             if ((!Page.IsValid))
             {
@@ -102,7 +102,7 @@ namespace BVCommerce
             }
 
             // Save as Order
-            OrderTaskContext c = new OrderTaskContext(BVApp);
+            OrderTaskContext c = new OrderTaskContext(MTApp);
             c.UserId = SessionManager.GetCurrentUserId();
             c.Order = Basket;
            
@@ -114,8 +114,8 @@ namespace BVCommerce
 
                     // Process Post Payment Stuff                    
                     MerchantTribe.Commerce.BusinessRules.Workflow.RunByName(c, MerchantTribe.Commerce.BusinessRules.WorkflowNames.ProcessNewOrderAfterPayments);
-                    Order tempOrder = BVApp.OrderServices.Orders.FindForCurrentStore(Basket.bvin);
-                    MerchantTribe.Commerce.Integration.Current().OrderReceived(tempOrder, BVApp);
+                    Order tempOrder = MTApp.OrderServices.Orders.FindForCurrentStore(Basket.bvin);
+                    MerchantTribe.Commerce.Integration.Current().OrderReceived(tempOrder, MTApp);
                     Response.Redirect("~/Receipt.aspx?id=" + Basket.bvin);                    
                 }
                 else
@@ -174,7 +174,7 @@ namespace BVCommerce
             string bvin = SessionManager.CurrentPaymentPendingCartId;
             if (bvin.Trim().Length < 1) Response.Redirect("~/cart");
 
-            Order Basket = BVApp.OrderServices.Orders.FindForCurrentStore(bvin);
+            Order Basket = MTApp.OrderServices.Orders.FindForCurrentStore(bvin);
             if (Basket != null)
             {
                 Basket.StatusCode = OrderStatusCode.Cancelled;
@@ -185,7 +185,7 @@ namespace BVCommerce
                 n.Note = "Cancelled by Customer";
                 Basket.Notes.Add(n);
 
-                BVApp.OrderServices.Orders.Update(Basket);
+                MTApp.OrderServices.Orders.Update(Basket);
                 SessionManager.CurrentPaymentPendingCartId = string.Empty;
                 Response.Redirect("~/cart");                
             }            

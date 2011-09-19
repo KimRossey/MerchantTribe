@@ -24,14 +24,14 @@ namespace BVCommerce.Controllers
             // TODO - Change this to return the signup view instead
             if (!WebAppSettings.IsIndividualMode)
             {
-                if (BVApp.CurrentStore.StoreName == "www")
+                if (MTApp.CurrentStore.StoreName == "www")
                 {
                     return Redirect("/signup/home.aspx");
                 }
             }
 
             SessionManager.CategoryLastId = string.Empty;
-            ViewBag.Title = BVApp.CurrentStore.Settings.FriendlyName;
+            ViewBag.Title = MTApp.CurrentStore.Settings.FriendlyName;
             ViewBag.BodyClass = "store-home-page";
 
             return View();

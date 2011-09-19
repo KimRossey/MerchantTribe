@@ -36,10 +36,10 @@ namespace BVCommerce
             if (!Page.IsPostBack)
             {
 
-                this.AffiliateCommissionAmountField.Text = BVApp.CurrentStore.Settings.AffiliateCommissionAmount.ToString();
-                this.AffiliateReferralDays.Text = BVApp.CurrentStore.Settings.AffiliateReferralDays.ToString();
+                this.AffiliateCommissionAmountField.Text = MTApp.CurrentStore.Settings.AffiliateCommissionAmount.ToString();
+                this.AffiliateReferralDays.Text = MTApp.CurrentStore.Settings.AffiliateReferralDays.ToString();
                 this.lstCommissionType.ClearSelection();
-                switch (BVApp.CurrentStore.Settings.AffiliateCommissionType)
+                switch (MTApp.CurrentStore.Settings.AffiliateCommissionType)
                 {
                     case AffiliateCommissionType.PercentageCommission:
                     case AffiliateCommissionType.None:
@@ -53,7 +53,7 @@ namespace BVCommerce
                         break;
                 }
                 this.AffiliateConflictModeField.ClearSelection();
-                switch (BVApp.CurrentStore.Settings.AffiliateConflictMode)
+                switch (MTApp.CurrentStore.Settings.AffiliateConflictMode)
                 {
                     case AffiliateConflictMode.FavorOldAffiliate:
                     case AffiliateConflictMode.None:
@@ -85,14 +85,14 @@ namespace BVCommerce
 
         private bool Save()
         {
-            BVApp.CurrentStore.Settings.AffiliateCommissionAmount = decimal.Parse(this.AffiliateCommissionAmountField.Text);
-            BVApp.CurrentStore.Settings.AffiliateReferralDays = int.Parse(this.AffiliateReferralDays.Text);
+            MTApp.CurrentStore.Settings.AffiliateCommissionAmount = decimal.Parse(this.AffiliateCommissionAmountField.Text);
+            MTApp.CurrentStore.Settings.AffiliateReferralDays = int.Parse(this.AffiliateReferralDays.Text);
             int typeSelection = int.Parse(this.lstCommissionType.SelectedValue);
-            BVApp.CurrentStore.Settings.AffiliateCommissionType = (AffiliateCommissionType)typeSelection;
+            MTApp.CurrentStore.Settings.AffiliateCommissionType = (AffiliateCommissionType)typeSelection;
             int conflictSelection = int.Parse(this.AffiliateConflictModeField.SelectedValue);
-            BVApp.CurrentStore.Settings.AffiliateConflictMode = (AffiliateConflictMode)conflictSelection;
+            MTApp.CurrentStore.Settings.AffiliateConflictMode = (AffiliateConflictMode)conflictSelection;
 
-            return BVApp.UpdateCurrentStore();
+            return MTApp.UpdateCurrentStore();
         }
 
     }

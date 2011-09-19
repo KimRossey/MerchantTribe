@@ -35,7 +35,7 @@ namespace BVCommerce
 
         private void PopulateGatewaylist()
         {
-            MerchantTribe.Commerce.Accounts.Store s = MyPage.BVApp.CurrentStore;
+            MerchantTribe.Commerce.Accounts.Store s = MyPage.MTApp.CurrentStore;
             if (s.PlanId == 0)
             {
                 this.lstGateway.DataSource = MerchantTribe.Payment.Methods.AvailableMethod.FindAllPayPalOnly();
@@ -52,7 +52,7 @@ namespace BVCommerce
         private void LoadData()
         {
             this.lstCaptureMode.ClearSelection();
-            if (MyPage.BVApp.CurrentStore.Settings.PaymentCreditCardAuthorizeOnly == true)
+            if (MyPage.MTApp.CurrentStore.Settings.PaymentCreditCardAuthorizeOnly == true)
             {
                 this.lstCaptureMode.SelectedValue = "1";
             }
@@ -61,12 +61,12 @@ namespace BVCommerce
                 this.lstCaptureMode.SelectedValue = "0";
             }
 
-            this.chkRequireCreditCardSecurityCode.Checked = MyPage.BVApp.CurrentStore.Settings.PaymentCreditCardRequireCVV;
+            this.chkRequireCreditCardSecurityCode.Checked = MyPage.MTApp.CurrentStore.Settings.PaymentCreditCardRequireCVV;
 
             this.lstGateway.ClearSelection();
-            this.lstGateway.SelectedValue = MyPage.BVApp.CurrentStore.Settings.PaymentCreditCardGateway;
+            this.lstGateway.SelectedValue = MyPage.MTApp.CurrentStore.Settings.PaymentCreditCardGateway;
 
-            List<CardType> acceptedCards = MyPage.BVApp.CurrentStore.Settings.PaymentAcceptedCards;
+            List<CardType> acceptedCards = MyPage.MTApp.CurrentStore.Settings.PaymentAcceptedCards;
             foreach (CardType t in acceptedCards)
             {
                 switch (t)
@@ -97,14 +97,14 @@ namespace BVCommerce
         {
             if (this.lstCaptureMode.SelectedValue == "1")
             {
-                MyPage.BVApp.CurrentStore.Settings.PaymentCreditCardAuthorizeOnly = true;
+                MyPage.MTApp.CurrentStore.Settings.PaymentCreditCardAuthorizeOnly = true;
             }
             else
             {
-                MyPage.BVApp.CurrentStore.Settings.PaymentCreditCardAuthorizeOnly = false;
+                MyPage.MTApp.CurrentStore.Settings.PaymentCreditCardAuthorizeOnly = false;
             }
-            MyPage.BVApp.CurrentStore.Settings.PaymentCreditCardRequireCVV = this.chkRequireCreditCardSecurityCode.Checked;
-            MyPage.BVApp.CurrentStore.Settings.PaymentCreditCardGateway = this.lstGateway.SelectedValue;
+            MyPage.MTApp.CurrentStore.Settings.PaymentCreditCardRequireCVV = this.chkRequireCreditCardSecurityCode.Checked;
+            MyPage.MTApp.CurrentStore.Settings.PaymentCreditCardGateway = this.lstGateway.SelectedValue;
 
             // Save Credit Card Types
             List<CardType> acceptedCards = new List<CardType>();
@@ -114,8 +114,8 @@ namespace BVCommerce
             if (chkCardDiscover.Checked) acceptedCards.Add(CardType.Discover);
             if (chkCardDiners.Checked) acceptedCards.Add(CardType.DinersClub);
             if (chkCardJCB.Checked) acceptedCards.Add(CardType.JCB);
-            MyPage.BVApp.CurrentStore.Settings.PaymentAcceptedCards = acceptedCards;
-            MyPage.BVApp.AccountServices.Stores.Update(MyPage.BVApp.CurrentStore);
+            MyPage.MTApp.CurrentStore.Settings.PaymentAcceptedCards = acceptedCards;
+            MyPage.MTApp.AccountServices.Stores.Update(MyPage.MTApp.CurrentStore);
 
         }
 

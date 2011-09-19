@@ -41,7 +41,7 @@ namespace BVCommerce
         private void LoadThemes()
         {
 
-            ThemeManager tm = BVApp.ThemeManager();
+            ThemeManager tm = MTApp.ThemeManager();
 
             List<ThemeView> installed = tm.FindInstalledThemes();
             List<ThemeView> available = tm.FindAvailableThemes();
@@ -69,7 +69,7 @@ namespace BVCommerce
         {
             StringBuilder sb = new StringBuilder();
 
-            string currentId = BVApp.CurrentRequestContext.CurrentStore.Settings.ThemeId;
+            string currentId = MTApp.CurrentRequestContext.CurrentStore.Settings.ThemeId;
             bool isFirst = true;
 
             sb.Append("<div class=\"themelist\">");
@@ -110,7 +110,7 @@ namespace BVCommerce
         {
             StringBuilder sb = new StringBuilder();
 
-            string currentId = BVApp.CurrentRequestContext.CurrentStore.Settings.ThemeId;
+            string currentId = MTApp.CurrentRequestContext.CurrentStore.Settings.ThemeId;
             bool isFirst = true;
 
             sb.Append("<div class=\"themelist\">");

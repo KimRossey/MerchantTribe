@@ -13,7 +13,7 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
 
         public override bool Execute(OrderTaskContext context)
         {
-            CustomerAccount u = context.BVApp.MembershipServices.Customers.FindByEmail(context.Order.UserEmail);
+            CustomerAccount u = context.MTApp.MembershipServices.Customers.FindByEmail(context.Order.UserEmail);
             if (u != null)
             {
                 if (u.Bvin != string.Empty)
@@ -31,15 +31,15 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
             n.FirstName = context.Order.ShippingAddress.FirstName;
             n.LastName = context.Order.ShippingAddress.LastName;
                         
-            if (context.BVApp.MembershipServices.CreateCustomer(n, n.Password))
+            if (context.MTApp.MembershipServices.CreateCustomer(n, n.Password))
             {
                 // Update Addresses for Customer
-                context.BVApp.MembershipServices.CustomerSetBillingAddress(n, context.Order.BillingAddress);
-                context.BVApp.MembershipServices.CustomerSetShippingAddress(n, context.Order.ShippingAddress);
-                context.BVApp.MembershipServices.UpdateCustomer(n);
+                context.MTApp.MembershipServices.CustomerSetBillingAddress(n, context.Order.BillingAddress);
+                context.MTApp.MembershipServices.CustomerSetShippingAddress(n, context.Order.ShippingAddress);
+                context.MTApp.MembershipServices.UpdateCustomer(n);
 
                 // Email Password to Customer
-                HtmlTemplate t = context.BVApp.ContentServices.GetHtmlTemplateOrDefault(HtmlTemplateType.ForgotPassword);                
+                HtmlTemplate t = context.MTApp.ContentServices.GetHtmlTemplateOrDefault(HtmlTemplateType.ForgotPassword);                
                 if (t != null)
                 {
                     System.Net.Mail.MailMessage m;
@@ -47,7 +47,7 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
                     List<IReplaceable> replacers = new List<IReplaceable>();
                     replacers.Add(n);
                     replacers.Add(new Replaceable("[[NewPassword]]", newPassword));
-                    t = t.ReplaceTagsInTemplate(context.BVApp, replacers);
+                    t = t.ReplaceTagsInTemplate(context.MTApp, replacers);
 
                     m = t.ConvertToMailMessage(n.Email);
                     

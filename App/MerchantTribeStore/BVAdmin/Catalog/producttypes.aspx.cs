@@ -28,14 +28,14 @@ namespace BVCommerce
 
         private void FillList()
         {
-            this.dgList.DataSource = BVApp.CatalogServices.ProductTypes.FindAll();
+            this.dgList.DataSource = MTApp.CatalogServices.ProductTypes.FindAll();
             this.dgList.DataBind();
         }
 
         protected void btnNew_Click(System.Object sender, System.Web.UI.ImageClickEventArgs e)
         {
             ProductType pt = new ProductType();
-            if (BVApp.CatalogServices.ProductTypes.CreateAsNew(pt))
+            if (MTApp.CatalogServices.ProductTypes.CreateAsNew(pt))
             {
                 Response.Redirect("~/BVAdmin/Catalog/ProductTypesEdit.aspx?newmode=1&id=" + pt.Bvin);
             }
@@ -54,7 +54,7 @@ namespace BVCommerce
         protected void dgList_DeleteCommand(object source, System.Web.UI.WebControls.DataGridCommandEventArgs e)
         {
             string deleteID = (string)dgList.DataKeys[e.Item.ItemIndex];
-            BVApp.CatalogServices.ProductTypeDestroy(deleteID);
+            MTApp.CatalogServices.ProductTypeDestroy(deleteID);
             FillList();
         }
 
@@ -66,7 +66,7 @@ namespace BVCommerce
                 deleteButton = (ImageButton)e.Item.FindControl("DeleteButton");
                 if (deleteButton != null)
                 {
-                    deleteButton.Visible = BVApp.CatalogServices.Products.FindCountByProductType((string)dgList.DataKeys[e.Item.ItemIndex]) <= 0;
+                    deleteButton.Visible = MTApp.CatalogServices.Products.FindCountByProductType((string)dgList.DataKeys[e.Item.ItemIndex]) <= 0;
                 }
             }
         }

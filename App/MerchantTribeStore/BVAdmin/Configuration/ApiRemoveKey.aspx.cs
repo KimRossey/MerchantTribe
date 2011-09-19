@@ -27,7 +27,7 @@ namespace BVCommerce.BVAdmin.Configuration
            
             long lid = 0;
             long.TryParse(id, out lid);
-            result = BVApp.AccountServices.ApiKeys.Delete(lid);
+            result = MTApp.AccountServices.ApiKeys.Delete(lid);
 
             if ((result))
             {

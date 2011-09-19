@@ -9,9 +9,9 @@ namespace MerchantTribe.Commerce.Utilities
 {
 	public class UrlRewriter
 	{    
-        public static bool IsProductSlugInUse(string slug, string bvin, BVApplication bvapp)
+        public static bool IsProductSlugInUse(string slug, string bvin, MerchantTribeApplication app)
         {
-            Catalog.Product p = bvapp.CatalogServices.Products.FindBySlug(slug);
+            Catalog.Product p = app.CatalogServices.Products.FindBySlug(slug);
             if (p != null)
             {
                 if (p.Bvin != string.Empty)
@@ -44,7 +44,7 @@ namespace MerchantTribe.Commerce.Utilities
             }
             return false;
         }
-        public static bool IsUrlInUse(string requestedUrl, string thisCustomUrlBvin, RequestContext context, BVApplication bvapp)
+        public static bool IsUrlInUse(string requestedUrl, string thisCustomUrlBvin, RequestContext context, MerchantTribeApplication app)
         {
             bool result = false;            
             string working = requestedUrl.ToLowerInvariant();
@@ -53,10 +53,10 @@ namespace MerchantTribe.Commerce.Utilities
             if (IsCategorySlugInUse(working, thisCustomUrlBvin, context)) return true;
 
             // Check for Products
-            if (IsProductSlugInUse(working, thisCustomUrlBvin, bvapp)) return true;
+            if (IsProductSlugInUse(working, thisCustomUrlBvin, app)) return true;
 
             // Check Custom Urls
-            Content.CustomUrl url = bvapp.ContentServices.CustomUrls.FindByRequestedUrl(requestedUrl);
+            Content.CustomUrl url = app.ContentServices.CustomUrls.FindByRequestedUrl(requestedUrl);
             if (url != null)
             {
                 if (url.Bvin != string.Empty)

@@ -12,30 +12,30 @@ namespace BVCommerce.BVAdmin
 {
     public partial class ResetPassword2 : System.Web.UI.Page, IMultiStorePage
     {
-        public BVApplication BVApp { get; set; }
+        public MerchantTribeApplication MTApp { get; set; }
 
         protected override void OnPreInit(System.EventArgs e)
         {
             base.OnPreInit(e);
-            BVApp = BVApplication.InstantiateForDataBase(new RequestContext());
+            MTApp = MerchantTribeApplication.InstantiateForDataBase(new RequestContext());
 
             // Determine store id        
-            BVApp.CurrentStore = MerchantTribe.Commerce.Utilities.UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, BVApp.AccountServices);
-            if (BVApp.CurrentStore == null)
+            MTApp.CurrentStore = MerchantTribe.Commerce.Utilities.UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, MTApp.AccountServices);
+            if (MTApp.CurrentStore == null)
             {
                 Response.Redirect("~/storenotfound");
             }
 
-            if (BVApp.CurrentStore.Status == MerchantTribe.Commerce.Accounts.StoreStatus.Deactivated)
+            if (MTApp.CurrentStore.Status == MerchantTribe.Commerce.Accounts.StoreStatus.Deactivated)
             {
                 Response.Redirect("~/storenotavailable");
             }
 
             // Culture Settings
-            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(BVApp.CurrentStore.Settings.CultureCode);
-            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(BVApp.CurrentStore.Settings.CultureCode);
+            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(MTApp.CurrentStore.Settings.CultureCode);
+            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(MTApp.CurrentStore.Settings.CultureCode);
 
-            IntegrationLoader.AddIntegrations(this.BVApp.CurrentRequestContext.IntegrationEvents, this.BVApp.CurrentStore);
+            IntegrationLoader.AddIntegrations(this.MTApp.CurrentRequestContext.IntegrationEvents, this.MTApp.CurrentStore);
         }
         protected override void OnLoad(System.EventArgs e)
         {
@@ -53,14 +53,14 @@ namespace BVCommerce.BVAdmin
             if (!Request.IsSecureConnection)
             {
                 MerchantTribe.Commerce.Utilities.SSL.SSLRedirect(this,
-                    this.BVApp.CurrentStore,
+                    this.MTApp.CurrentStore,
                     MerchantTribe.Commerce.Utilities.SSL.SSLRedirectTo.SSL);
             }
         }
 
         protected void lnkReset_Click(object sender, EventArgs e)
         {
-            UserAccount u = BVApp.AccountServices.AdminUsers.FindByEmail(this.UsernameField.Text.Trim());
+            UserAccount u = MTApp.AccountServices.AdminUsers.FindByEmail(this.UsernameField.Text.Trim());
             if (u == null)
             {
                 this.MessageBox1.ShowWarning("Check your email address and try again.");
@@ -75,7 +75,7 @@ namespace BVCommerce.BVAdmin
             if (u.ResetPassword(this.ResetKeyField.Text.Trim(), this.PasswordField.Text.Trim()))
             {
                 u.ResetKey = string.Empty; // Disable the key once it's been used.
-                BVApp.AccountServices.AdminUsers.Update(u);
+                MTApp.AccountServices.AdminUsers.Update(u);
                 Response.Redirect("~/account/login?reset=1");
             }
             else

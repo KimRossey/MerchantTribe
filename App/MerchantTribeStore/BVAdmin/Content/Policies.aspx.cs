@@ -34,7 +34,7 @@ namespace BVCommerce
         private void LoadPolicies()
         {
             List<Policy> p;
-            p = BVApp.ContentServices.Policies.FindAll();
+            p = MTApp.ContentServices.Policies.FindAll();
             this.GridView1.DataSource = p;
             this.GridView1.DataBind();
             if (p.Count == 1)
@@ -50,7 +50,7 @@ namespace BVCommerce
         protected void GridView1_RowDeleting(object sender, System.Web.UI.WebControls.GridViewDeleteEventArgs e)
         {
             string bvin = (string)GridView1.DataKeys[e.RowIndex].Value;
-            if (BVApp.ContentServices.Policies.Delete(bvin) == false)
+            if (MTApp.ContentServices.Policies.Delete(bvin) == false)
             {
                 this.msg.ShowWarning("Unable to delete this policy. System policies can not be deleted.");
             }
@@ -71,7 +71,7 @@ namespace BVCommerce
                 Policy p = new Policy();
                 p.Title = this.NewNameField.Text.Trim();
                 p.SystemPolicy = false;
-                if (BVApp.ContentServices.Policies.Create(p) == true)
+                if (MTApp.ContentServices.Policies.Create(p) == true)
                 {
                     Response.Redirect("Policies_Edit.aspx?id=" + p.Bvin);
                 }

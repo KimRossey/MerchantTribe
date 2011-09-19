@@ -69,7 +69,7 @@ namespace MerchantTribe.Commerce.Tests
         public void CanCreateShippingMethod()
         {
             RequestContext c = new RequestContext();
-            BVApplication bvapp = BVApplication.InstantiateForMemory(c);
+            MerchantTribeApplication app = MerchantTribeApplication.InstantiateForMemory(c);
             c.CurrentStore = new Accounts.Store();
             c.CurrentStore.Id = 230;
 
@@ -83,7 +83,7 @@ namespace MerchantTribe.Commerce.Tests
             target.ShippingProviderId = "123456";
             target.ZoneId = -101;
 
-            Assert.IsTrue(bvapp.OrderServices.ShippingMethods.Create(target));
+            Assert.IsTrue(app.OrderServices.ShippingMethods.Create(target));
             Assert.AreNotEqual(string.Empty, target.Bvin, "Bvin should not be empty");
         }
 
@@ -91,7 +91,7 @@ namespace MerchantTribe.Commerce.Tests
         public void CanRetrieveShippingMethod()
         {
             RequestContext c = new RequestContext();
-            BVApplication bvapp = BVApplication.InstantiateForMemory(c);
+            MerchantTribeApplication app = MerchantTribeApplication.InstantiateForMemory(c);
             c.CurrentStore = new Accounts.Store();
             c.CurrentStore.Id = 230;
 
@@ -105,10 +105,10 @@ namespace MerchantTribe.Commerce.Tests
             target.ShippingProviderId = "123456";
             target.ZoneId = -101;
 
-            bvapp.OrderServices.ShippingMethods.Create(target);
+            app.OrderServices.ShippingMethods.Create(target);
             Assert.AreNotEqual(string.Empty, target.Bvin, "Bvin should not be empty");
 
-            Shipping.ShippingMethod actual = bvapp.OrderServices.ShippingMethods.Find(target.Bvin);
+            Shipping.ShippingMethod actual = app.OrderServices.ShippingMethods.Find(target.Bvin);
             Assert.IsNotNull(actual, "Actual should not be null");
 
             Assert.AreEqual(actual.Adjustment,target.Adjustment);
@@ -126,7 +126,7 @@ namespace MerchantTribe.Commerce.Tests
         public void CanUpdateShippingMethod()
         {
             RequestContext c = new RequestContext();
-            BVApplication bvapp = BVApplication.InstantiateForMemory(c);
+            MerchantTribeApplication app = MerchantTribeApplication.InstantiateForMemory(c);
             c.CurrentStore = new Accounts.Store();
             c.CurrentStore.Id = 230;
 
@@ -140,7 +140,7 @@ namespace MerchantTribe.Commerce.Tests
             target.ShippingProviderId = "123456";
             target.ZoneId = -101;
 
-            bvapp.OrderServices.ShippingMethods.Create(target);
+            app.OrderServices.ShippingMethods.Create(target);
             Assert.AreNotEqual(string.Empty, target.Bvin, "Bvin should not be empty");
 
             target.Adjustment = 1.95m;
@@ -149,9 +149,9 @@ namespace MerchantTribe.Commerce.Tests
             target.Settings.AddOrUpdate("MySetting", "MySetVal 2");
             target.ShippingProviderId = "1Update";
             target.ZoneId = -100;
-            Assert.IsTrue(bvapp.OrderServices.ShippingMethods.Update(target));
+            Assert.IsTrue(app.OrderServices.ShippingMethods.Update(target));
 
-            Shipping.ShippingMethod actual = bvapp.OrderServices.ShippingMethods.Find(target.Bvin);
+            Shipping.ShippingMethod actual = app.OrderServices.ShippingMethods.Find(target.Bvin);
             Assert.IsNotNull(actual, "Actual should not be null");
 
             Assert.AreEqual(actual.Adjustment, target.Adjustment);
@@ -169,7 +169,7 @@ namespace MerchantTribe.Commerce.Tests
         public void CanDeleteShippingMethod()
         {
             RequestContext c = new RequestContext();
-            BVApplication bvapp = BVApplication.InstantiateForMemory(c);
+            MerchantTribeApplication app = MerchantTribeApplication.InstantiateForMemory(c);
             c.CurrentStore = new Accounts.Store();
             c.CurrentStore.Id = 230;
 
@@ -183,11 +183,11 @@ namespace MerchantTribe.Commerce.Tests
             target.ShippingProviderId = "123456";
             target.ZoneId = -101;
 
-            Assert.IsTrue(bvapp.OrderServices.ShippingMethods.Create(target));
+            Assert.IsTrue(app.OrderServices.ShippingMethods.Create(target));
             Assert.AreNotEqual(string.Empty, target.Bvin, "Bvin should not be empty");
 
-            Assert.IsTrue(bvapp.OrderServices.ShippingMethods.Delete(target.Bvin), "Delete should be true");
-            Shipping.ShippingMethod actual = bvapp.OrderServices.ShippingMethods.Find(target.Bvin);
+            Assert.IsTrue(app.OrderServices.ShippingMethods.Delete(target.Bvin), "Delete should be true");
+            Shipping.ShippingMethod actual = app.OrderServices.ShippingMethods.Find(target.Bvin);
             Assert.IsNull(actual, "Actual should be null after delete");
         }
     }

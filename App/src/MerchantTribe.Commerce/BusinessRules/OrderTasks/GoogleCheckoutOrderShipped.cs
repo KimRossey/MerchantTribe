@@ -53,7 +53,7 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
 						note.IsPublic = false;
 						note.Note = response.ErrorMessage;
 						context.Order.Notes.Add(note);
-                        context.BVApp.OrderServices.Orders.Update(context.Order);
+                        context.MTApp.OrderServices.Orders.Update(context.Order);
 					}
 				}
 			}

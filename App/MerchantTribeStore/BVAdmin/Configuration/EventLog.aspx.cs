@@ -37,7 +37,7 @@ namespace BVCommerce
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            _Repository = new EventLogRepository(BVApp.CurrentRequestContext);
+            _Repository = new EventLogRepository(MTApp.CurrentRequestContext);
 
             if (!Page.IsPostBack)
             {
@@ -104,7 +104,7 @@ namespace BVCommerce
 
         protected void ClearEventsButton_Click(System.Object sender, System.Web.UI.ImageClickEventArgs e)
         {
-            _Repository.DeleteAllForStore(BVApp.CurrentStore.Id);            
+            _Repository.DeleteAllForStore(MTApp.CurrentStore.Id);            
             LoadEvents(EventLogSeverity.None);
         }
 

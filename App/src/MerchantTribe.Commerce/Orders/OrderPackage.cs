@@ -70,7 +70,7 @@ namespace MerchantTribe.Commerce.Orders
         }
 
 
-        public List<Content.HtmlTemplateTag> GetReplaceableTags(BVApplication bvapp)
+        public List<Content.HtmlTemplateTag> GetReplaceableTags(MerchantTribeApplication app)
         {
             List<Content.HtmlTemplateTag> result = new List<Content.HtmlTemplateTag>();
             result.Add(new Content.HtmlTemplateTag("[[Package.ShipDate]]", this.ShipDateUtc.ToString("d")));
@@ -151,7 +151,7 @@ namespace MerchantTribe.Commerce.Orders
                         }
 
                         //sb.Append("<li>")
-                        Catalog.Product prod = bvapp.CatalogServices.Products.Find(item.ProductBvin);
+                        Catalog.Product prod = app.CatalogServices.Products.Find(item.ProductBvin);
                         if (prod != null)
                         {
                             sb.Append("<td class=\"itemname\">");

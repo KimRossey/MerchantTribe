@@ -11,7 +11,7 @@ namespace BVCommerce.api.rest
 {
     public class TaxesHandler: BaseRestHandler
     {
-        public TaxesHandler(MerchantTribe.Commerce.BVApplication app)
+        public TaxesHandler(MerchantTribe.Commerce.MerchantTribeApplication app)
             : base(app)
         {
 
@@ -27,7 +27,7 @@ namespace BVCommerce.api.rest
                 // List
                 ApiResponse<List<TaxDTO>> response = new ApiResponse<List<TaxDTO>>();
 
-                List<Tax> results = BVApp.OrderServices.Taxes.FindByStoreId(BVApp.CurrentStore.Id);
+                List<Tax> results = MTApp.OrderServices.Taxes.FindByStoreId(MTApp.CurrentStore.Id);
                 List<TaxDTO> dto = new List<TaxDTO>();
 
                 foreach (Tax item in results)
@@ -44,7 +44,7 @@ namespace BVCommerce.api.rest
                 string ids = FirstParameter(parameters);
                 long id = 0;
                 long.TryParse(ids, out id);
-                Tax item = BVApp.OrderServices.Taxes.Find(id);
+                Tax item = MTApp.OrderServices.Taxes.Find(id);
                 if (item == null)
                 {
                     response.Errors.Add(new ApiError("NULL", "Could not locate that Tax. Check id and try again."));
@@ -84,9 +84,9 @@ namespace BVCommerce.api.rest
 
             if (id < 1)
             {
-                if (!BVApp.OrderServices.Taxes.ExactMatchExists(item))
+                if (!MTApp.OrderServices.Taxes.ExactMatchExists(item))
                 {
-                    if (BVApp.OrderServices.Taxes.Create(item))
+                    if (MTApp.OrderServices.Taxes.Create(item))
                     {
                         id = item.Id;
                     }
@@ -94,7 +94,7 @@ namespace BVCommerce.api.rest
             }
             else
             {
-                BVApp.OrderServices.Taxes.Update(item);
+                MTApp.OrderServices.Taxes.Update(item);
             }                               
             response.Content = item.ToDto();            
             data = MerchantTribe.Web.Json.ObjectToJson(response);            
@@ -110,7 +110,7 @@ namespace BVCommerce.api.rest
             ApiResponse<bool> response = new ApiResponse<bool>();
 
             // Single Item Delete
-            response.Content = BVApp.OrderServices.Taxes.Delete(id);
+            response.Content = MTApp.OrderServices.Taxes.Delete(id);
             
             data = MerchantTribe.Web.Json.ObjectToJson(response);
             return data;

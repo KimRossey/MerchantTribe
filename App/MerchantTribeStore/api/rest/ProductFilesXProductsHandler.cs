@@ -11,7 +11,7 @@ namespace BVCommerce.api.rest
 {
     public class ProductFilesXProductsHandler: BaseRestHandler
     {
-        public ProductFilesXProductsHandler(MerchantTribe.Commerce.BVApplication app)
+        public ProductFilesXProductsHandler(MerchantTribe.Commerce.MerchantTribeApplication app)
             : base(app)
         {
 
@@ -29,7 +29,7 @@ namespace BVCommerce.api.rest
                 // List
                 ApiResponse<List<ProductFileDTO>> response = new ApiResponse<List<ProductFileDTO>>();
 
-                var items = BVApp.CatalogServices.ProductFiles.FindByProductId(productBvin);                
+                var items = MTApp.CatalogServices.ProductFiles.FindByProductId(productBvin);                
                 foreach (var item in items)
                 {
                     response.Content.Add(item.ToDto());
@@ -58,7 +58,7 @@ namespace BVCommerce.api.rest
             ApiResponse<bool> response = new ApiResponse<bool>();
 
             // Single Item Delete
-            response.Content = BVApp.CatalogServices.ProductFiles.AddAssociatedProduct(bvin, productBvin, availableMinutes, maxDownloads);
+            response.Content = MTApp.CatalogServices.ProductFiles.AddAssociatedProduct(bvin, productBvin, availableMinutes, maxDownloads);
 
             data = MerchantTribe.Web.Json.ObjectToJson(response);
             return data;            
@@ -72,7 +72,7 @@ namespace BVCommerce.api.rest
             ApiResponse<bool> response = new ApiResponse<bool>();
 
             // Single Item Delete
-            response.Content = BVApp.CatalogServices.ProductFiles.RemoveAssociatedProduct(bvin, productBvin);
+            response.Content = MTApp.CatalogServices.ProductFiles.RemoveAssociatedProduct(bvin, productBvin);
 
             data = MerchantTribe.Web.Json.ObjectToJson(response);
             return data;

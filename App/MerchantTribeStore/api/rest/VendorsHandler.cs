@@ -11,7 +11,7 @@ namespace BVCommerce.api.rest
 {
     public class VendorsHandler: BaseRestHandler
     {
-        public VendorsHandler(MerchantTribe.Commerce.BVApplication app)
+        public VendorsHandler(MerchantTribe.Commerce.MerchantTribeApplication app)
             : base(app)
         {
 
@@ -27,7 +27,7 @@ namespace BVCommerce.api.rest
                 // List
                 ApiResponse<List<VendorManufacturerDTO>> response = new ApiResponse<List<VendorManufacturerDTO>>();
 
-                List<VendorManufacturer> results = BVApp.ContactServices.Vendors.FindAll();
+                List<VendorManufacturer> results = MTApp.ContactServices.Vendors.FindAll();
                 List<VendorManufacturerDTO> dto = new List<VendorManufacturerDTO>();
 
                 foreach (VendorManufacturer cat in results)
@@ -42,7 +42,7 @@ namespace BVCommerce.api.rest
                 // Find One Specific Category
                 ApiResponse<VendorManufacturerDTO> response = new ApiResponse<VendorManufacturerDTO>();                                
                 string bvin = FirstParameter(parameters);
-                VendorManufacturer item = BVApp.ContactServices.Vendors.Find(bvin);
+                VendorManufacturer item = MTApp.ContactServices.Vendors.Find(bvin);
                 if (item == null)
                 {
                     response.Errors.Add(new ApiError("NULL", "Could not locate that item. Check bvin and try again."));
@@ -80,16 +80,16 @@ namespace BVCommerce.api.rest
 
             if (bvin == string.Empty)
             {
-                if (BVApp.ContactServices.Vendors.Create(item))
+                if (MTApp.ContactServices.Vendors.Create(item))
                 {
                     bvin = item.Bvin;
                 }
             }
             else
             {
-                BVApp.ContactServices.Vendors.Update(item);
+                MTApp.ContactServices.Vendors.Update(item);
             }
-            VendorManufacturer resultCategory = BVApp.ContactServices.Vendors.Find(bvin);                    
+            VendorManufacturer resultCategory = MTApp.ContactServices.Vendors.Find(bvin);                    
             if (resultCategory != null) response.Content = resultCategory.ToDto();
             
             data = MerchantTribe.Web.Json.ObjectToJson(response);            
@@ -103,7 +103,7 @@ namespace BVCommerce.api.rest
             ApiResponse<bool> response = new ApiResponse<bool>();
 
                 // Single Item Delete
-                response.Content = BVApp.ContactServices.Vendors.Delete(bvin);
+                response.Content = MTApp.ContactServices.Vendors.Delete(bvin);
 
             data = MerchantTribe.Web.Json.ObjectToJson(response);
             return data;

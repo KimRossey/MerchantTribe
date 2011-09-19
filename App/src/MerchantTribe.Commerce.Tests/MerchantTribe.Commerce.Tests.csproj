@@ -124,7 +124,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AddressRepositoryTest.cs" />
-    <Compile Include="BVApplicationTest.cs" />
+    <Compile Include="MerchantTribeApplicationTest.cs" />
     <Compile Include="CategoryTest.cs" />
     <Compile Include="DiscountDetailTest.cs" />
     <Compile Include="LineItemTest.cs" />

@@ -41,7 +41,7 @@ namespace BVCommerce
         {
             if (Request.Params["id"] != null)
             {
-                Order o = BVApp.OrderServices.Orders.FindForCurrentStore(Request.Params["id"]);
+                Order o = MTApp.OrderServices.Orders.FindForCurrentStore(Request.Params["id"]);
                 if (o != null)
                 {
                     this.ViewOrder1.OrderBvin = o.bvin;
@@ -63,21 +63,21 @@ namespace BVCommerce
             this.ViewData["analyticstop"] = string.Empty;
 
             // Add Tracker and Maybe Ecommerce Tracker to Top
-            if (BVApp.CurrentStore.Settings.Analytics.UseGoogleTracker)
+            if (MTApp.CurrentStore.Settings.Analytics.UseGoogleTracker)
             {
-                if (BVApp.CurrentStore.Settings.Analytics.UseGoogleEcommerce)
+                if (MTApp.CurrentStore.Settings.Analytics.UseGoogleEcommerce)
                 {
                     // Ecommerce + Page Tracker
                     this.ViewData["analyticstop"] = MerchantTribe.Commerce.Metrics.GoogleAnalytics.RenderLatestTrackerAndTransaction(
-                        BVApp.CurrentStore.Settings.Analytics.GoogleTrackerId,
+                        MTApp.CurrentStore.Settings.Analytics.GoogleTrackerId,
                         o,
-                        BVApp.CurrentStore.Settings.Analytics.GoogleEcommerceStoreName,
-                        BVApp.CurrentStore.Settings.Analytics.GoogleEcommerceCategory);
+                        MTApp.CurrentStore.Settings.Analytics.GoogleEcommerceStoreName,
+                        MTApp.CurrentStore.Settings.Analytics.GoogleEcommerceCategory);
                 }
                 else
                 {
                     // Page Tracker Only
-                    this.ViewData["analyticstop"] = MerchantTribe.Commerce.Metrics.GoogleAnalytics.RenderLatestTracker(BVApp.CurrentStore.Settings.Analytics.GoogleTrackerId);
+                    this.ViewData["analyticstop"] = MerchantTribe.Commerce.Metrics.GoogleAnalytics.RenderLatestTracker(MTApp.CurrentStore.Settings.Analytics.GoogleTrackerId);
                 }
             }
 
@@ -86,21 +86,21 @@ namespace BVCommerce
             this.ViewData["analyticsbottom"] = string.Empty;
 
             // Adwords Tracker at bottom if needed
-            if (BVApp.CurrentStore.Settings.Analytics.UseGoogleAdWords)
+            if (MTApp.CurrentStore.Settings.Analytics.UseGoogleAdWords)
             {
                 this.ViewData["analyticsbottom"] = MerchantTribe.Commerce.Metrics.GoogleAnalytics.RenderGoogleAdwordTracker(
                                                         o.TotalGrand,
-                                                        BVApp.CurrentStore.Settings.Analytics.GoogleAdWordsId,
-                                                        BVApp.CurrentStore.Settings.Analytics.GoogleAdWordsLabel,
-                                                        BVApp.CurrentStore.Settings.Analytics.GoogleAdWordsBgColor,
+                                                        MTApp.CurrentStore.Settings.Analytics.GoogleAdWordsId,
+                                                        MTApp.CurrentStore.Settings.Analytics.GoogleAdWordsLabel,
+                                                        MTApp.CurrentStore.Settings.Analytics.GoogleAdWordsBgColor,
                                                         Request.IsSecureConnection);
             }
 
             // Add Yahoo Tracker to Bottom if Needed
-            if (BVApp.CurrentStore.Settings.Analytics.UseYahooTracker)
+            if (MTApp.CurrentStore.Settings.Analytics.UseYahooTracker)
             {
                 this.ViewData["analyticsbottom"] += MerchantTribe.Commerce.Metrics.YahooAnalytics.RenderYahooTracker(
-                    o, BVApp.CurrentStore.Settings.Analytics.YahooAccountId);
+                    o, MTApp.CurrentStore.Settings.Analytics.YahooAccountId);
             }
         }
 
@@ -108,7 +108,7 @@ namespace BVCommerce
         {
 
             Order o;
-            o = BVApp.OrderServices.Orders.FindForCurrentStore(Request.QueryString["id"]);
+            o = MTApp.OrderServices.Orders.FindForCurrentStore(Request.QueryString["id"]);
 
             if ((o.PaymentStatus == OrderPaymentStatus.Paid) && (o.StatusCode != OrderStatusCode.OnHold))
             {
@@ -117,7 +117,7 @@ namespace BVCommerce
                 {
                     if (item.ProductId != string.Empty)
                     {
-                        List<ProductFile> productFiles = BVApp.CatalogServices.ProductFiles.FindByProductId(item.ProductId);
+                        List<ProductFile> productFiles = MTApp.CatalogServices.ProductFiles.FindByProductId(item.ProductId);
                         foreach (ProductFile file in productFiles)
                         {
                             files.Add(file);
@@ -147,7 +147,7 @@ namespace BVCommerce
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 ImageButton DownloadImageButton = (ImageButton)e.Row.FindControl("DownloadImageButton");
-                DownloadImageButton.ImageUrl = this.BVApp.ThemeManager().ButtonUrl("Download", Request.IsSecureConnection);
+                DownloadImageButton.ImageUrl = this.MTApp.ThemeManager().ButtonUrl("Download", Request.IsSecureConnection);
                 DownloadImageButton.CommandArgument = e.Row.RowIndex.ToString();
             }
         }
@@ -155,10 +155,10 @@ namespace BVCommerce
         protected void FilesGridView_RowEditing(object sender, GridViewEditEventArgs e)
         {
             Order o;
-            o = BVApp.OrderServices.Orders.FindForCurrentStore(Request.QueryString["id"]);
+            o = MTApp.OrderServices.Orders.FindForCurrentStore(Request.QueryString["id"]);
 
             string primaryKey = (string)((GridView)sender).DataKeys[e.NewEditIndex].Value;
-            ProductFile file = BVApp.CatalogServices.ProductFiles.Find(primaryKey);
+            ProductFile file = MTApp.CatalogServices.ProductFiles.Find(primaryKey);
 
             int count = 0;
             string propertyKey = "file" + file.Bvin;
@@ -182,7 +182,7 @@ namespace BVCommerce
                     o.CustomProperties.Add("bvsoftware", propertyKey, count.ToString());
                 }
             }
-            BVApp.OrderServices.Orders.Update(o);
+            MTApp.OrderServices.Orders.Update(o);
 
             // Hack
             if ((file.MaxDownloads == 0))

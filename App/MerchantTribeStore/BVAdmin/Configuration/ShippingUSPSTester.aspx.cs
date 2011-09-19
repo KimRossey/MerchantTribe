@@ -29,13 +29,13 @@ namespace BVCommerce.BVAdmin.Configuration
             if (!Page.IsPostBack)
             {
                 LoadServices();
-                this.FromZipField.Text = BVApp.ContactServices.Addresses.FindStoreContactAddress().PostalCode;
+                this.FromZipField.Text = MTApp.ContactServices.Addresses.FindStoreContactAddress().PostalCode;
             }
         }
 
         private void LoadServices()
         {
-            MerchantTribe.Shipping.IShippingService uspostal = AvailableServices.FindById(WebAppSettings.ShippingUSPostalDomesticId, BVApp.CurrentStore);
+            MerchantTribe.Shipping.IShippingService uspostal = AvailableServices.FindById(WebAppSettings.ShippingUSPostalDomesticId, MTApp.CurrentStore);
             this.lstServiceTypes.DataSource = uspostal.ListAllServiceCodes();
             this.lstServiceTypes.DataTextField = "DisplayName";
             this.lstServiceTypes.DataValueField = "Code";

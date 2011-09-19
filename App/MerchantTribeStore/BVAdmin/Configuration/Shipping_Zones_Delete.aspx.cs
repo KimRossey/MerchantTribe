@@ -14,7 +14,7 @@ namespace BVCommerce
         protected void Page_Load(object sender, EventArgs e)
         {
             string zoneid = Request.QueryString["id"];
-            BVApp.OrderServices.ShippingZones.Delete(long.Parse(zoneid));
+            MTApp.OrderServices.ShippingZones.Delete(long.Parse(zoneid));
             Response.Redirect("Shipping_Zones.aspx");
         }
     }

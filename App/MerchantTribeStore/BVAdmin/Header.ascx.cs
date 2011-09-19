@@ -36,7 +36,7 @@ namespace BVCommerce
             
             if (!HideMenu)
             {
-                this.output.Text = Helpers.Html.AdminHeader(MyPage.BVApp.CurrentStore, SelectedTab);                
+                this.output.Text = Helpers.Html.AdminHeader(MyPage.MTApp.CurrentStore, SelectedTab);                
             }            
 
         }

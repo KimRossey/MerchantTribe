@@ -4,7 +4,7 @@ using System;
 namespace MerchantTribe.Commerce
 {
 
-    public class BVOperationResult
+    public class SystemOperationResult
     {
 
         private bool _Success = false;
@@ -21,12 +21,12 @@ namespace MerchantTribe.Commerce
             set { _Message = value; }
         }
 
-        public BVOperationResult()
+        public SystemOperationResult()
         {
 
         }
 
-        public BVOperationResult(bool resultSuccess, string resultMessage)
+        public SystemOperationResult(bool resultSuccess, string resultMessage)
         {
             _Success = resultSuccess;
             _Message = resultMessage;

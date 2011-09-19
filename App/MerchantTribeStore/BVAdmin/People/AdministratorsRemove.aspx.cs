@@ -13,11 +13,11 @@ namespace BVCommerce.BVAdmin.People
         {
             string userId = Request.QueryString["id"];
 
-            bool isOwner = BVApp.AccountServices.IsUserStoreOwner(BVApp.CurrentStore.Id, CurrentUser.Id);
+            bool isOwner = MTApp.AccountServices.IsUserStoreOwner(MTApp.CurrentStore.Id, CurrentUser.Id);
 
             if (isOwner)
             {
-                BVApp.AccountServices.RemoveUserFromStore(BVApp.CurrentStore.Id, long.Parse(userId));
+                MTApp.AccountServices.RemoveUserFromStore(MTApp.CurrentStore.Id, long.Parse(userId));
             }
 
             Response.Redirect("Administrators.aspx");

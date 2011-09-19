@@ -49,7 +49,7 @@ namespace BVCommerce
             {
                 MerchantTribe.Commerce.Taxes.TaxSchedule t = new TaxSchedule();
                 t.Name = this.DisplayNameField.Text.Trim();
-                BVApp.OrderServices.TaxSchedules.Create(t);
+                MTApp.OrderServices.TaxSchedules.Create(t);
                 msg.ShowOk("Added: " + t.Name);
                 LoadSchedules();
                 DisplayNameField.Text = "";
@@ -64,7 +64,7 @@ namespace BVCommerce
         {
             try
             {
-                dgTaxClasses.DataSource = BVApp.OrderServices.TaxSchedules.FindAllAndCreateDefault(BVApp.CurrentStore.Id);
+                dgTaxClasses.DataSource = MTApp.OrderServices.TaxSchedules.FindAllAndCreateDefault(MTApp.CurrentStore.Id);
                 dgTaxClasses.DataBind();
             }
             catch (Exception Ex)
@@ -76,7 +76,7 @@ namespace BVCommerce
         public void dgTaxClasses_Delete(System.Object sender, System.Web.UI.WebControls.DataGridCommandEventArgs e)
         {
             long editID = (long)dgTaxClasses.DataKeys[e.Item.ItemIndex];
-            BVApp.OrderServices.TaxSchedulesDestroy(editID);
+            MTApp.OrderServices.TaxSchedulesDestroy(editID);
             LoadSchedules();
         }
 

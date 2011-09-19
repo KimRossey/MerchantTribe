@@ -19,10 +19,10 @@ namespace BVCommerce.Areas.account.Controllers
         // GET: /account/OrderHistory/
         public ActionResult Index()
         {            
-            ViewBag.MetaDescription = "Order History | " + BVApp.CurrentStore.Settings.MetaDescription;
-            ViewBag.MetaKeywords = BVApp.CurrentStore.Settings.MetaKeywords;
+            ViewBag.MetaDescription = "Order History | " + MTApp.CurrentStore.Settings.MetaDescription;
+            ViewBag.MetaKeywords = MTApp.CurrentStore.Settings.MetaKeywords;
             ViewBag.BodyClass = "myaccountpage";
-            ViewBag.ViewButtonImageUrl = BVApp.ThemeManager().ButtonUrl("view", Request.IsSecureConnection); ;
+            ViewBag.ViewButtonImageUrl = MTApp.ThemeManager().ButtonUrl("view", Request.IsSecureConnection); ;
 
             List<OrderSnapshot> orders = LoadOrders();
             return View(orders);
@@ -35,7 +35,7 @@ namespace BVCommerce.Areas.account.Controllers
             List<OrderSnapshot> orders = new List<OrderSnapshot>();
 
             // pull all BV Orders
-            orders = BVApp.OrderServices.Orders.FindByUserId(SessionManager.GetCurrentUserId(), 1, 100, ref totalCount);
+            orders = MTApp.OrderServices.Orders.FindByUserId(SessionManager.GetCurrentUserId(), 1, 100, ref totalCount);
 
             if (orders == null) return new List<OrderSnapshot>();
 
@@ -47,8 +47,8 @@ namespace BVCommerce.Areas.account.Controllers
         public ActionResult Details(string id)
         {
             ViewBag.Title = "View Order";
-            ViewBag.MetaDescription = "View Order | " + BVApp.CurrentStore.Settings.MetaDescription;
-            ViewBag.MetaKeywords = BVApp.CurrentStore.Settings.MetaKeywords;
+            ViewBag.MetaDescription = "View Order | " + MTApp.CurrentStore.Settings.MetaDescription;
+            ViewBag.MetaKeywords = MTApp.CurrentStore.Settings.MetaKeywords;
             ViewBag.BodyClass = "myaccountorderdetailspage";
             
             PrepBVOrder(id);
@@ -58,11 +58,11 @@ namespace BVCommerce.Areas.account.Controllers
         
         private void PrepBVOrder(string bvin)
         {                        
-            Order o = BVApp.OrderServices.Orders.FindForCurrentStore(bvin);
+            Order o = MTApp.OrderServices.Orders.FindForCurrentStore(bvin);
             ViewBag.Order = o;
             ViewBag.AcumaticaOrder = null;
             
-            OrderPaymentSummary paySummary = BVApp.OrderServices.PaymentSummary(o);
+            OrderPaymentSummary paySummary = MTApp.OrderServices.PaymentSummary(o);
             ViewBag.OrderPaymentSummary = paySummary;
 
             // File Downloads
@@ -73,7 +73,7 @@ namespace BVCommerce.Areas.account.Controllers
                 {
                     if (item.ProductId != string.Empty)
                     {
-                        List<ProductFile> productFiles = BVApp.CatalogServices.ProductFiles.FindByProductId(item.ProductId);
+                        List<ProductFile> productFiles = MTApp.CatalogServices.ProductFiles.FindByProductId(item.ProductId);
                         foreach (ProductFile file in productFiles)
                         {
                             fileDownloads.Add(file);
@@ -82,7 +82,7 @@ namespace BVCommerce.Areas.account.Controllers
                 }            
             }
             ViewBag.FileDownloads = fileDownloads;
-            ViewBag.FileDownloadsButtonUrl = BVApp.ThemeManager().ButtonUrl("download", Request.IsSecureConnection);
+            ViewBag.FileDownloadsButtonUrl = MTApp.ThemeManager().ButtonUrl("download", Request.IsSecureConnection);
         }
 
     }

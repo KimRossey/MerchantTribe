@@ -41,13 +41,13 @@ namespace BVCommerce
 
         protected void BindProductsGrid()
         {
-            ProductsGridView.DataSource = BVApp.CatalogServices.FindProductsForFile((string)ViewState["id"]);
+            ProductsGridView.DataSource = MTApp.CatalogServices.FindProductsForFile((string)ViewState["id"]);
             ProductsGridView.DataBind();
         }
 
         protected void PopulateFileInfo()
         {
-            ProductFile file = BVApp.CatalogServices.ProductFiles.Find((string)ViewState["id"]);
+            ProductFile file = MTApp.CatalogServices.ProductFiles.Find((string)ViewState["id"]);
             NameLabel.Text = file.FileName;
             DescriptionTextBox.Text = file.ShortDescription;
         }
@@ -55,8 +55,8 @@ namespace BVCommerce
         protected void ProductsGridView_RowDeleting(object sender, System.Web.UI.WebControls.GridViewDeleteEventArgs e)
         {
             string key = (string)ProductsGridView.DataKeys[e.RowIndex].Value;
-            ProductFile file = BVApp.CatalogServices.ProductFiles.Find((string)ViewState["id"]);
-            BVApp.CatalogServices.ProductFiles.RemoveAssociatedProduct(file.Bvin, key);
+            ProductFile file = MTApp.CatalogServices.ProductFiles.Find((string)ViewState["id"]);
+            MTApp.CatalogServices.ProductFiles.RemoveAssociatedProduct(file.Bvin, key);
             BindProductsGrid();
         }
 
@@ -82,7 +82,7 @@ namespace BVCommerce
             }
             else
             {
-                Product p = BVApp.CatalogServices.Products.FindBySku(this.NewSkuField.Text.Trim());
+                Product p = MTApp.CatalogServices.Products.FindBySku(this.NewSkuField.Text.Trim());
                 if (p != null)
                 {
                     if ((p.Sku == string.Empty))
@@ -91,10 +91,10 @@ namespace BVCommerce
                     }
                     else
                     {
-                        ProductFile file = BVApp.CatalogServices.ProductFiles.Find((string)ViewState["id"]);
+                        ProductFile file = MTApp.CatalogServices.ProductFiles.Find((string)ViewState["id"]);
                         if (file != null)
                         {
-                            if (BVApp.CatalogServices.ProductFiles.AddAssociatedProduct(file.Bvin, p.Bvin, 0, 0))
+                            if (MTApp.CatalogServices.ProductFiles.AddAssociatedProduct(file.Bvin, p.Bvin, 0, 0))
                             {
                                 this.MessageBox1.ShowOk("Product Added!");
                             }
@@ -125,7 +125,7 @@ namespace BVCommerce
             this.MessageBox1.ClearMessage();
             if (this.ProductPicker1.SelectedProducts.Count > 0)
             {
-                Product p = BVApp.CatalogServices.Products.Find(this.ProductPicker1.SelectedProducts[0]);
+                Product p = MTApp.CatalogServices.Products.Find(this.ProductPicker1.SelectedProducts[0]);
                 if (p != null)
                 {
                     this.NewSkuField.Text = p.Sku;
@@ -144,7 +144,7 @@ namespace BVCommerce
             if (Page.IsValid)
             {
                 string key = (string)ProductsGridView.DataKeys[e.RowIndex].Value;
-                ProductFile file = BVApp.CatalogServices.ProductFiles.FindByBvinAndProductBvin((string)ViewState["id"], key);
+                ProductFile file = MTApp.CatalogServices.ProductFiles.FindByBvinAndProductBvin((string)ViewState["id"], key);
 
                 GridViewRow row = ProductsGridView.Rows[e.RowIndex];
                 TextBox tb = (TextBox)row.FindControl("MaxDownloadsTextBox");
@@ -168,7 +168,7 @@ namespace BVCommerce
                     file.SetMinutes(tp.Months, tp.Days, tp.Hours, tp.Minutes);
                 }
 
-                if (BVApp.CatalogServices.ProductFiles.Update(file))
+                if (MTApp.CatalogServices.ProductFiles.Update(file))
                 {
                     MessageBox1.ShowOk("File was successfully updated!");
                 }
@@ -185,7 +185,7 @@ namespace BVCommerce
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 string key = (string)ProductsGridView.DataKeys[e.Row.RowIndex].Value;
-                ProductFile file = BVApp.CatalogServices.ProductFiles.FindByBvinAndProductBvin((string)ViewState["id"], key);
+                ProductFile file = MTApp.CatalogServices.ProductFiles.FindByBvinAndProductBvin((string)ViewState["id"], key);
 
                 TextBox tb = (TextBox)e.Row.FindControl("MaxDownloadsTextBox");
                 BVAdmin_Controls_TimespanPicker tp = (BVAdmin_Controls_TimespanPicker)e.Row.FindControl("TimespanPicker");
@@ -211,11 +211,11 @@ namespace BVCommerce
 
         protected void SaveImageButton_Click(object sender, System.Web.UI.ImageClickEventArgs e)
         {
-            ProductFile file = BVApp.CatalogServices.ProductFiles.Find((string)ViewState["id"]);
+            ProductFile file = MTApp.CatalogServices.ProductFiles.Find((string)ViewState["id"]);
             if (file != null)
             {
                 file.ShortDescription = DescriptionTextBox.Text;
-                if (BVApp.CatalogServices.ProductFiles.Update(file))
+                if (MTApp.CatalogServices.ProductFiles.Update(file))
                 {
                     MessageBox1.ShowOk("File updated!");
                 }
@@ -239,7 +239,7 @@ namespace BVCommerce
 
         protected void FileReplaceSaveImageButton_Click(object sender, System.Web.UI.ImageClickEventArgs e)
         {
-            ProductFile file = BVApp.CatalogServices.ProductFiles.Find((string)ViewState["id"]);
+            ProductFile file = MTApp.CatalogServices.ProductFiles.Find((string)ViewState["id"]);
             if (file != null)
             {
                 FilePicker1.DownloadOrLinkFile(file, MessageBox1);

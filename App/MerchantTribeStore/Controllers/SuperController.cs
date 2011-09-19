@@ -16,11 +16,11 @@ namespace BVCommerce.Controllers
         public ActionResult Index()
         {
 
-            ViewData["ActiveStores"] = BVApp.AccountServices.Stores.CountOfActive().ToString();
-            ViewData["FreeStores"] = BVApp.AccountServices.Stores.CountOfFree().ToString();
-            ViewData["PaidStores"] = BVApp.AccountServices.Stores.CountOfPaid().ToString();
-            ViewData["Products"] = BVApp.CatalogServices.Products.FindAllForAllStoresCount().ToString();
-            ViewData["SalesVolume"] = BVApp.OrderServices.Transactions.FindTotalTransactionsForever().ToString("C");
+            ViewData["ActiveStores"] = MTApp.AccountServices.Stores.CountOfActive().ToString();
+            ViewData["FreeStores"] = MTApp.AccountServices.Stores.CountOfFree().ToString();
+            ViewData["PaidStores"] = MTApp.AccountServices.Stores.CountOfPaid().ToString();
+            ViewData["Products"] = MTApp.CatalogServices.Products.FindAllForAllStoresCount().ToString();
+            ViewData["SalesVolume"] = MTApp.OrderServices.Transactions.FindTotalTransactionsForever().ToString("C");
 
             return View();
         }
@@ -73,7 +73,7 @@ namespace BVCommerce.Controllers
         public ActionResult RebuildSearchPost()
         {
             SearchManager manager = new SearchManager();
-            manager.RebuildProductSearchIndex(BVApp);
+            manager.RebuildProductSearchIndex(MTApp);
             TempData["message"] = "Finished rebuild at " + DateTime.Now.ToLocalTime();                        
             return View();
         }

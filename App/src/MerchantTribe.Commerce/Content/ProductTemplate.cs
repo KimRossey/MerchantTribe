@@ -25,7 +25,7 @@ namespace MerchantTribe.Commerce.Content
 		{
 			if (WebAppSettings.RedirectToCartAfterAddProduct) {
 
-                Catalog.CatalogService catalogServices = Catalog.CatalogService.InstantiateForDatabase(MyPage.BVApp.CurrentRequestContext);
+                Catalog.CatalogService catalogServices = Catalog.CatalogService.InstantiateForDatabase(MyPage.MTApp.CurrentRequestContext);
                 int relatedCount = catalogServices.ProductRelationships.FindForProduct(this.ModuleProduct.Bvin).Count;
 
                 // Todo verify for cross-sells and up-sells

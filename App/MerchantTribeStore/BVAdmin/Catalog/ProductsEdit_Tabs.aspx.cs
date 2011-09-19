@@ -37,7 +37,7 @@ namespace BVCommerce
             if (Request.QueryString["id"] != null)
             {
                 productBvin = Request.QueryString["id"];
-                localProduct = BVApp.CatalogServices.Products.Find(productBvin);
+                localProduct = MTApp.CatalogServices.Products.Find(productBvin);
             }
 
             Page.ClientScript.RegisterClientScriptBlock(typeof(System.Web.UI.Page), "tabsort", RenderJQuery(productBvin), true);
@@ -154,7 +154,7 @@ namespace BVCommerce
             }
 
             localProduct.Tabs.Add(t);
-            if (BVApp.CatalogServices.ProductsUpdateWithSearchRebuild(localProduct))
+            if (MTApp.CatalogServices.ProductsUpdateWithSearchRebuild(localProduct))
             {
                 Response.Redirect("ProductsEdit_TabsEdit.aspx?tid=" + t.Bvin + "&id=" + localProduct.Bvin);
             }
@@ -163,7 +163,7 @@ namespace BVCommerce
                 this.MessageBox1.ShowError("Unable to update product tabs.");
             }
 
-            localProduct = BVApp.CatalogServices.Products.Find(localProduct.Bvin);
+            localProduct = MTApp.CatalogServices.Products.Find(localProduct.Bvin);
             LoadItems();
         }
     }

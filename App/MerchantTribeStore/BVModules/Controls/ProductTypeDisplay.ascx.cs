@@ -26,10 +26,10 @@ namespace BVCommerce
                     Collection<string> productTypePropertiesValues = new Collection<string>();
                     if (productTypeId.Trim() != string.Empty)
                     {
-                        List<ProductProperty> props = MyPage.BVApp.CatalogServices.ProductPropertiesFindForType(productTypeId);
+                        List<ProductProperty> props = MyPage.MTApp.CatalogServices.ProductPropertiesFindForType(productTypeId);
                         foreach (ProductProperty prop in props)
                         {
-                            productTypePropertiesValues.Add(MyPage.BVApp.CatalogServices.ProductPropertyValues.GetPropertyValue(productId, prop.Id));
+                            productTypePropertiesValues.Add(MyPage.MTApp.CatalogServices.ProductPropertyValues.GetPropertyValue(productId, prop.Id));
                         }
                         StringBuilder sb = new StringBuilder();
                         bool initialized = false;
@@ -37,7 +37,7 @@ namespace BVCommerce
                         {
                             if (props[i].DisplayOnSite)
                             {
-                                string currentValue = MyPage.BVApp.CatalogServices.FormatProductPropertyChoiceValue(props[i], productTypePropertiesValues[i]);
+                                string currentValue = MyPage.MTApp.CatalogServices.FormatProductPropertyChoiceValue(props[i], productTypePropertiesValues[i]);
 
                                 //If text property is empty, do not display                            
                                 if (!WebAppSettings.TypePropertiesDisplayEmptyProperties)

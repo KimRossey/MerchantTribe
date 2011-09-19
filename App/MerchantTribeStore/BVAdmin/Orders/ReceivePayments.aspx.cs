@@ -37,7 +37,7 @@ namespace BVCommerce
 
         protected void TransactionHappened()
         {
-            o = BVApp.OrderServices.Orders.FindForCurrentStore(o.bvin);
+            o = MTApp.OrderServices.Orders.FindForCurrentStore(o.bvin);
             this.OrderStatusDisplay1.LoadStatusForOrder(o);
             this.LoadTransactions();
             this.PopulateFromOrder(o);
@@ -61,12 +61,12 @@ namespace BVCommerce
                 PaymentDueField.Text = val.ToString("c");
             }
 
-            o = BVApp.OrderServices.Orders.FindForCurrentStore(this.BvinField.Value);
+            o = MTApp.OrderServices.Orders.FindForCurrentStore(this.BvinField.Value);
             LoadTransactions();
             PopulateFromOrder(o);
 
             // Acumatica Warning
-            if (BVApp.CurrentStore.Settings.Acumatica.IntegrationEnabled)
+            if (MTApp.CurrentStore.Settings.Acumatica.IntegrationEnabled)
             {
                 this.MessageBox1.ShowWarning(MerchantTribe.Commerce.Content.SiteTerms.GetTerm(MerchantTribe.Commerce.Content.SiteTermIds.AcumaticaWarning));
             }
@@ -77,7 +77,7 @@ namespace BVCommerce
         {
             
             if (o == null) return;
-            List<OrderTransaction> transactions = BVApp.OrderServices.Transactions.FindForOrder(o.bvin);
+            List<OrderTransaction> transactions = MTApp.OrderServices.Transactions.FindForOrder(o.bvin);
             if (transactions == null) return;
             if (transactions.Count < 1)
             {
@@ -91,7 +91,7 @@ namespace BVCommerce
 
             if (transactions == null) return;
 
-            TimeZoneInfo tz = BVApp.CurrentStore.Settings.TimeZone;
+            TimeZoneInfo tz = MTApp.CurrentStore.Settings.TimeZone;
             foreach (OrderTransaction t in transactions)
             {
                 RenderTransaction(t, sb, tz);
@@ -106,7 +106,7 @@ namespace BVCommerce
             this.OrderNumberField.Text = o.OrderNumber;
 
             // Payment
-            OrderPaymentSummary paySummary = BVApp.OrderServices.PaymentSummary(o);
+            OrderPaymentSummary paySummary = MTApp.OrderServices.PaymentSummary(o);
             //Me.lblPaymentSummary.Text = paySummary.PaymentsSummary
             this.PaymentAuthorizedField.Text = string.Format("{0:C}", paySummary.AmountAuthorized);
             this.PaymentChargedField.Text = string.Format("{0:C}", paySummary.AmountCharged);

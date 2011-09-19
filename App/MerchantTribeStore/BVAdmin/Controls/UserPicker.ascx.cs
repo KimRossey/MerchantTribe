@@ -116,7 +116,7 @@ namespace BVCommerce
         {
             List<MerchantTribe.Commerce.Membership.CustomerAccount> users;
             int count = 0;
-            users = MyPage.BVApp.MembershipServices.Customers.FindByFilter(this.FilterField.Text.Trim(), 0, 50, ref count);
+            users = MyPage.MTApp.MembershipServices.Customers.FindByFilter(this.FilterField.Text.Trim(), 0, 50, ref count);
             this.GridView1.DataSource = users;
             this.GridView1.DataBind();
         }
@@ -129,10 +129,10 @@ namespace BVCommerce
             u.Email = this.NewUserEmailField.Text.Trim();
             u.FirstName = this.NewUserFirstNameField.Text.Trim();
             u.LastName = this.NewUserLastNameField.Text.Trim();
-            u.Password = MyPage.BVApp.MembershipServices.GeneratePasswordForCustomer(12);
+            u.Password = MyPage.MTApp.MembershipServices.GeneratePasswordForCustomer(12);
             u.TaxExempt = this.NewUserTaxExemptField.Checked;
             MerchantTribe.Commerce.Membership.CreateUserStatus createResult = new MerchantTribe.Commerce.Membership.CreateUserStatus();
-            if (MyPage.BVApp.MembershipServices.CreateCustomer(u, ref createResult, u.Password) == true)
+            if (MyPage.MTApp.MembershipServices.CreateCustomer(u, ref createResult, u.Password) == true)
             {
                 this.UserNameField.Text = u.Email;
                 ValidateUser();
@@ -160,7 +160,7 @@ namespace BVCommerce
         {
             if (MessageBox != null) MessageBox.ClearMessage();
             string bvin = (string)GridView1.DataKeys[e.NewEditIndex].Value;
-            MerchantTribe.Commerce.Membership.CustomerAccount u = MyPage.BVApp.MembershipServices.Customers.Find(bvin);
+            MerchantTribe.Commerce.Membership.CustomerAccount u = MyPage.MTApp.MembershipServices.Customers.Find(bvin);
             if (u != null)
             {
                 this.UserNameField.Text = u.Email;
@@ -179,7 +179,7 @@ namespace BVCommerce
         private void ValidateUser()
         {
             MerchantTribe.Commerce.Membership.CustomerAccount u
-                = MyPage.BVApp.MembershipServices.Customers.FindByEmail(this.UserNameField.Text.Trim());
+                = MyPage.MTApp.MembershipServices.Customers.FindByEmail(this.UserNameField.Text.Trim());
             if (u != null)
             {
                 if (u.Bvin != string.Empty)

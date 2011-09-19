@@ -24,14 +24,14 @@ namespace BVCommerce.Controllers
 
         public ActionResult Closed()
         {
-            string message = BVApp.CurrentRequestContext.CurrentStore.Settings.StoreClosedDescription;
+            string message = MTApp.CurrentRequestContext.CurrentStore.Settings.StoreClosedDescription;
             if (string.IsNullOrEmpty(message))
             {
                 message = "Our store is currently closed while we perform updates. We appreciate your patience.";
             }
 
             ViewBag.ClosedMessage = message;
-            ViewBag.Title = BVApp.CurrentStore.StoreName;
+            ViewBag.Title = MTApp.CurrentStore.StoreName;
 
             return View();
         }

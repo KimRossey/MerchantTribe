@@ -35,8 +35,8 @@ namespace BVCommerce
 
             if (!Page.IsPostBack)
             {
-                this.ContactEmailField.Text = BVApp.CurrentStore.Settings.MailServer.EmailForGeneral;
-                this.OrderNotificationEmailField.Text = BVApp.CurrentStore.Settings.MailServer.EmailForNewOrder;
+                this.ContactEmailField.Text = MTApp.CurrentStore.Settings.MailServer.EmailForGeneral;
+                this.OrderNotificationEmailField.Text = MTApp.CurrentStore.Settings.MailServer.EmailForNewOrder;
             }
         }
 
@@ -50,9 +50,9 @@ namespace BVCommerce
 
         private bool Save()
         {
-            BVApp.CurrentStore.Settings.MailServer.EmailForGeneral = this.ContactEmailField.Text.Trim();
-            BVApp.CurrentStore.Settings.MailServer.EmailForNewOrder = this.OrderNotificationEmailField.Text.Trim();
-            return BVApp.UpdateCurrentStore();            
+            MTApp.CurrentStore.Settings.MailServer.EmailForGeneral = this.ContactEmailField.Text.Trim();
+            MTApp.CurrentStore.Settings.MailServer.EmailForNewOrder = this.OrderNotificationEmailField.Text.Trim();
+            return MTApp.UpdateCurrentStore();            
         }
     }
 

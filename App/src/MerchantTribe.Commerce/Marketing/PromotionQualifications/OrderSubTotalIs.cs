@@ -18,7 +18,7 @@ namespace MerchantTribe.Commerce.Marketing.PromotionQualifications
             set {SetSetting("Amount", value);}
         }
 
-        public override string FriendlyDescription(BVApplication bvapp)
+        public override string FriendlyDescription(MerchantTribeApplication app)
         {
             string result = "When Order Sub Total >= " + this.Amount.ToString("C");            
             return result;

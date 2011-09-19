@@ -43,7 +43,7 @@ namespace BVCommerce
             base.OnLoad(e);            
             if (!Page.IsPostBack)
             {
-                this.btnSaveChanges.ImageUrl = MyPage.BVApp.ThemeManager().ButtonUrl("createaccount", Request.IsSecureConnection);
+                this.btnSaveChanges.ImageUrl = MyPage.MTApp.ThemeManager().ButtonUrl("createaccount", Request.IsSecureConnection);
             }
             //PasswordReminder.InnerText = "Password must be at least " + WebAppSettings.PasswordMinimumLength + " characters long.";
             //AddDynamicQuestions();
@@ -139,7 +139,7 @@ namespace BVCommerce
                 else
                 {
                     CustomerAccount u = new CustomerAccount();
-                    //u = MyPage.BVApp.MembershipServices.Customers.Find(this.BvinField.Value);
+                    //u = MyPage.MTApp.MembershipServices.Customers.Find(this.BvinField.Value);
 
                     if (u != null)
                     {
@@ -177,7 +177,7 @@ namespace BVCommerce
                         CreateUserStatus s = CreateUserStatus.None;
 
                         // Create new user
-                        result = MyPage.BVApp.MembershipServices.CreateCustomer(u, ref s, this.PasswordField.Text.Trim());
+                        result = MyPage.MTApp.MembershipServices.CreateCustomer(u, ref s, this.PasswordField.Text.Trim());
                                                 
 
                         if (result == false)

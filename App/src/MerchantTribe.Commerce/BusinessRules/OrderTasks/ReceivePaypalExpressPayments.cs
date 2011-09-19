@@ -19,12 +19,12 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
 		{
 			bool result = true;
 
-            if (context.BVApp.OrderServices.PaymentSummary(context.Order).AmountDue > 0)
+            if (context.MTApp.OrderServices.PaymentSummary(context.Order).AmountDue > 0)
             {
 
-                foreach (OrderTransaction p in context.BVApp.OrderServices.Transactions.FindForOrder(context.Order.bvin))
+                foreach (OrderTransaction p in context.MTApp.OrderServices.Transactions.FindForOrder(context.Order.bvin))
                 {
-                    List<OrderTransaction> transactions = context.BVApp.OrderServices.Transactions.FindForOrder(context.Order.bvin);
+                    List<OrderTransaction> transactions = context.MTApp.OrderServices.Transactions.FindForOrder(context.Order.bvin);
 
                     if (p.Action == MerchantTribe.Payment.ActionType.PayPalExpressCheckoutInfo)
                     {
@@ -38,17 +38,17 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
                         try
                         {
                             Orders.OrderPaymentManager payManager = new OrderPaymentManager(context.Order,
-                                                                                            context.BVApp);
+                                                                                            context.MTApp);
 
                             bool transactionSuccess = false;
 
                             if (context.CurrentRequest.CurrentStore.Settings.PayPal.ExpressAuthorizeOnly)
                             {
-                                transactionSuccess = payManager.PayPalExpressHold(p, context.BVApp.OrderServices.PaymentSummary(context.Order).AmountDue);
+                                transactionSuccess = payManager.PayPalExpressHold(p, context.MTApp.OrderServices.PaymentSummary(context.Order).AmountDue);
                             }
                             else
                             {
-                                transactionSuccess = payManager.PayPalExpressCharge(p, context.BVApp.OrderServices.PaymentSummary(context.Order).AmountDue);
+                                transactionSuccess = payManager.PayPalExpressCharge(p, context.MTApp.OrderServices.PaymentSummary(context.Order).AmountDue);
                             }
 
                             if (transactionSuccess == false) result = false;
@@ -60,7 +60,7 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
                         finally
                         {
                             Orders.OrderPaymentStatus previousPaymentStatus = context.Order.PaymentStatus;
-                            context.BVApp.OrderServices.EvaluatePaymentStatus(context.Order);
+                            context.MTApp.OrderServices.EvaluatePaymentStatus(context.Order);
                             context.Inputs.Add("bvsoftware", "PreviousPaymentStatus", previousPaymentStatus.ToString());
                             BusinessRules.Workflow.RunByName(context, WorkflowNames.PaymentChanged);
                         }

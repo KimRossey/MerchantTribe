@@ -29,14 +29,14 @@ namespace BVCommerce.Controllers.Shared
             get { return _CurrentRequestContext.CurrentStore; }
             set { _CurrentRequestContext.CurrentStore = value; }
         }
-        public BVApplication BVApp { get; set; }
+        public MerchantTribeApplication MTApp { get; set; }
         public UserAccount CurrentSuperUser
         {
             get
             {
                 if (AuthTokenGuid.HasValue)
                 {
-                    return BVApp.AccountServices.FindAdminUserByAuthTokenId(AuthTokenGuid.Value);
+                    return MTApp.AccountServices.FindAdminUserByAuthTokenId(AuthTokenGuid.Value);
                 }
                 return null;
             }
@@ -47,10 +47,10 @@ namespace BVCommerce.Controllers.Shared
             base.OnActionExecuting(filterContext);
                         
             CurrentRequestContext.RoutingContext = this.Request.RequestContext;
-            BVApp = new BVApplication(CurrentRequestContext);
+            MTApp = new MerchantTribeApplication(CurrentRequestContext);
 
             // Determine store id        
-            CurrentStore = MerchantTribe.Commerce.Utilities.UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, BVApp.AccountServices);
+            CurrentStore = MerchantTribe.Commerce.Utilities.UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, MTApp.AccountServices);
             if (CurrentStore == null)
             {
                 Response.Redirect("~/storenotfound");
@@ -92,7 +92,7 @@ namespace BVCommerce.Controllers.Shared
 
             if (tokenId.HasValue)
             {
-                if (BVApp.AccountServices.IsTokenValidForSuperUser(tokenId.Value))
+                if (MTApp.AccountServices.IsTokenValidForSuperUser(tokenId.Value))
                 {
                     validLogin = true;
                 }

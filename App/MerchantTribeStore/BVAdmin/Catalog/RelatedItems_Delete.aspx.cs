@@ -24,7 +24,7 @@ namespace BVCommerce.BVAdmin.Catalog
 
         private void Remove(string relatedId, string productId)
         {
-            if (BVApp.CatalogServices.ProductRelationships.UnrelateProducts(productId, relatedId))
+            if (MTApp.CatalogServices.ProductRelationships.UnrelateProducts(productId, relatedId))
             {
                 this.litOutput.Text = "{\"result\":true}";
                 return;

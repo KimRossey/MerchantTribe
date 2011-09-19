@@ -24,7 +24,7 @@ namespace BVCommerce
             {
                 this.BlockIDField.Value = Request.QueryString["id"];
             }
-            b = BVApp.ContentServices.Columns.FindBlock(this.BlockIDField.Value);
+            b = MTApp.ContentServices.Columns.FindBlock(this.BlockIDField.Value);
             LoadEditor();
         }
 
@@ -48,7 +48,7 @@ namespace BVCommerce
 
         private void PopulateAdvancedOptions()
         {
-            List<ContentColumn> columns = BVApp.ContentServices.Columns.FindAll();
+            List<ContentColumn> columns = MTApp.ContentServices.Columns.FindAll();
 
             this.CopyToList.DataSource = columns;
             this.CopyToList.DataTextField = "DisplayName";
@@ -92,7 +92,7 @@ namespace BVCommerce
         protected void btnGoCopy_Click(object sender, System.Web.UI.ImageClickEventArgs e)
         {
             this.msg.ClearMessage();
-            if (BVApp.ContentServices.Columns.CopyBlockToColumn(b.Bvin,CopyToList.SelectedValue) == true)
+            if (MTApp.ContentServices.Columns.CopyBlockToColumn(b.Bvin,CopyToList.SelectedValue) == true)
             {
                 this.msg.ShowOk("Block Copied");
             }
@@ -105,7 +105,7 @@ namespace BVCommerce
         protected void btnGoMove_Click(object sender, System.Web.UI.ImageClickEventArgs e)
         {
             this.msg.ClearMessage();
-            if (BVApp.ContentServices.Columns.MoveBlockToColumn(b.Bvin,MoveToList.SelectedValue) == true)
+            if (MTApp.ContentServices.Columns.MoveBlockToColumn(b.Bvin,MoveToList.SelectedValue) == true)
             {
                 this.msg.ShowOk("Block Moved");
             }

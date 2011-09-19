@@ -37,7 +37,7 @@ namespace BVCommerce
 
         private void PopulateAdvancedOptions()
         {
-            this.CopyToList.DataSource = BVApp.ContentServices.Columns.FindAll();
+            this.CopyToList.DataSource = MTApp.ContentServices.Columns.FindAll();
             this.CopyToList.DataTextField = "DisplayName";
             this.CopyToList.DataValueField = "bvin";
             this.CopyToList.DataBind();
@@ -52,13 +52,13 @@ namespace BVCommerce
         {
             this.msg.ClearMessage();
 
-            ContentColumn c = BVApp.ContentServices.Columns.Find(ContentColumnEditor.ColumnId);
+            ContentColumn c = MTApp.ContentServices.Columns.Find(ContentColumnEditor.ColumnId);
             if (c != null)
             {
                 string destinationColumnId = this.CopyToList.SelectedValue;
                 foreach (ContentBlock b in c.Blocks)
                 {
-                    BVApp.ContentServices.Columns.CopyBlockToColumn(b.Bvin, destinationColumnId);
+                    MTApp.ContentServices.Columns.CopyBlockToColumn(b.Bvin, destinationColumnId);
                 }                
                 this.msg.ShowOk("Column Copied");
             }
@@ -79,7 +79,7 @@ namespace BVCommerce
             }
             else
             {
-                ContentColumn clone = BVApp.ContentServices.Columns.Clone(ContentColumnEditor.ColumnId, this.CloneNameField.Text.Trim());
+                ContentColumn clone = MTApp.ContentServices.Columns.Clone(ContentColumnEditor.ColumnId, this.CloneNameField.Text.Trim());
                 this.msg.ShowOk("Column Copied");                
             }
             ContentColumnEditor.LoadColumn();

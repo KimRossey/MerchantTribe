@@ -11,7 +11,7 @@ namespace BVCommerce.api.rest
 {
     public class TaxSchedulesHandler: BaseRestHandler
     {
-        public TaxSchedulesHandler(MerchantTribe.Commerce.BVApplication app)
+        public TaxSchedulesHandler(MerchantTribe.Commerce.MerchantTribeApplication app)
             : base(app)
         {
 
@@ -27,7 +27,7 @@ namespace BVCommerce.api.rest
                 // List
                 ApiResponse<List<TaxScheduleDTO>> response = new ApiResponse<List<TaxScheduleDTO>>();
 
-                List<TaxSchedule> results = BVApp.OrderServices.TaxSchedules.FindAll(BVApp.CurrentStore.Id);
+                List<TaxSchedule> results = MTApp.OrderServices.TaxSchedules.FindAll(MTApp.CurrentStore.Id);
                 List<TaxScheduleDTO> dto = new List<TaxScheduleDTO>();
 
                 foreach (TaxSchedule item in results)
@@ -44,7 +44,7 @@ namespace BVCommerce.api.rest
                 string ids = FirstParameter(parameters);
                 long id = 0;
                 long.TryParse(ids, out id);
-                TaxSchedule item = BVApp.OrderServices.TaxSchedules.Find(id);
+                TaxSchedule item = MTApp.OrderServices.TaxSchedules.Find(id);
                 if (item == null)
                 {
                     response.Errors.Add(new ApiError("NULL", "Could not locate that item. Check id and try again."));
@@ -84,11 +84,11 @@ namespace BVCommerce.api.rest
 
             if (id < 1)
             {
-                TaxSchedule existing = BVApp.OrderServices.TaxSchedules.FindByName(item.Name);
+                TaxSchedule existing = MTApp.OrderServices.TaxSchedules.FindByName(item.Name);
                 if (existing == null)
                 {
                     // Create
-                    BVApp.OrderServices.TaxSchedules.Create(item);
+                    MTApp.OrderServices.TaxSchedules.Create(item);
                 }
                 else
                 {
@@ -97,7 +97,7 @@ namespace BVCommerce.api.rest
             }
             else
             {
-                BVApp.OrderServices.TaxSchedules.Update(item);
+                MTApp.OrderServices.TaxSchedules.Update(item);
             }            
             response.Content = item.ToDto();
             
@@ -115,7 +115,7 @@ namespace BVCommerce.api.rest
 
           
                 // Single Item Delete
-                response.Content = BVApp.OrderServices.TaxSchedules.Delete(id);
+                response.Content = MTApp.OrderServices.TaxSchedules.Delete(id);
             
 
             data = MerchantTribe.Web.Json.ObjectToJson(response);

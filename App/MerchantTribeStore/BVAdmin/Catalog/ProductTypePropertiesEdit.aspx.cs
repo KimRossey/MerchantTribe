@@ -30,7 +30,7 @@ namespace BVCommerce
             {
                 propertyId = long.Parse(Request.QueryString["id"]);
             }
-            localProperty = BVApp.CatalogServices.ProductProperties.Find(propertyId);
+            localProperty = MTApp.CatalogServices.ProductProperties.Find(propertyId);
         }
 
         protected override void OnLoad(EventArgs e)
@@ -52,7 +52,7 @@ namespace BVCommerce
 
         private void PopulateCultureCodeList()
         {
-            lstCultureCode.DataSource = BVApp.CurrentStore.Settings.FindActiveCountries();
+            lstCultureCode.DataSource = MTApp.CurrentStore.Settings.FindActiveCountries();
             lstCultureCode.DataValueField = "CultureCode";
             lstCultureCode.DataTextField = "SampleNameAndCurrency";
             lstCultureCode.DataBind();
@@ -146,7 +146,7 @@ namespace BVCommerce
         private void PopulateVendors()
         {
 
-            this.lstDefaultValue.DataSource = BVApp.ContactServices.Vendors.FindAll();
+            this.lstDefaultValue.DataSource = MTApp.ContactServices.Vendors.FindAll();
             this.lstDefaultValue.DataTextField = "DisplayName";
             this.lstDefaultValue.DataValueField = "bvin";
             this.lstDefaultValue.DataBind();
@@ -163,7 +163,7 @@ namespace BVCommerce
 
         private void PopulateManufacturers()
         {
-            this.lstDefaultValue.DataSource = BVApp.ContactServices.Manufacturers.FindAll();
+            this.lstDefaultValue.DataSource = MTApp.ContactServices.Manufacturers.FindAll();
             this.lstDefaultValue.DataTextField = "DisplayName";
             this.lstDefaultValue.DataValueField = "bvin";
             this.lstDefaultValue.DataBind();
@@ -200,7 +200,7 @@ namespace BVCommerce
             // Delete newly created item if user cancels so we don't leave a bunch of "new property"
             if (Request.QueryString["newmode"] == "1")
             {
-                BVApp.CatalogServices.ProductPropertiesDestroy((long)ViewState["ID"]);
+                MTApp.CatalogServices.ProductPropertiesDestroy((long)ViewState["ID"]);
             }
             Response.Redirect("~/BVAdmin/Catalog/ProductTypeProperties.aspx");
         }
@@ -209,7 +209,7 @@ namespace BVCommerce
         {
             msg.ClearMessage();
             ProductProperty prop = new ProductProperty();
-            prop = BVApp.CatalogServices.ProductProperties.Find((long)ViewState["ID"]);
+            prop = MTApp.CatalogServices.ProductProperties.Find((long)ViewState["ID"]);
             if (prop != null)
             {
                 prop.PropertyName = PropertyNameField.Text;
@@ -232,7 +232,7 @@ namespace BVCommerce
                         prop.DefaultValue = DefaultValueField.Text.Trim();
                         break;
                 }
-                if (BVApp.CatalogServices.ProductProperties.Update(prop) == true)
+                if (MTApp.CatalogServices.ProductProperties.Update(prop) == true)
                 {
                     prop = null;
                     Response.Redirect("~/BVAdmin/Catalog/ProductTypeProperties.aspx");
@@ -256,7 +256,7 @@ namespace BVCommerce
             {
 
                 ProductProperty prop = new ProductProperty();
-                prop = BVApp.CatalogServices.ProductProperties.Find((long)ViewState["ID"]);
+                prop = MTApp.CatalogServices.ProductProperties.Find((long)ViewState["ID"]);
                 if (prop != null)
                 {
                     long choiceId = long.Parse(lstDefaultValue.SelectedValue);
@@ -264,7 +264,7 @@ namespace BVCommerce
                     if (c != null)
                     {
                         prop.Choices.Remove(c);
-                        BVApp.CatalogServices.ProductProperties.Update(prop);
+                        MTApp.CatalogServices.ProductProperties.Update(prop);
                         localProperty = prop;
                     }                    
                     PopulateMultipleChoice(prop);
@@ -277,14 +277,14 @@ namespace BVCommerce
             msg.ClearMessage();
 
             ProductProperty prop = new ProductProperty();
-            prop = BVApp.CatalogServices.ProductProperties.Find((long)ViewState["ID"]);
+            prop = MTApp.CatalogServices.ProductProperties.Find((long)ViewState["ID"]);
             if (prop != null)
             {
                 ProductPropertyChoice ppc = new ProductPropertyChoice();
                 ppc.ChoiceName = this.NewChoiceField.Text.Trim();
                 ppc.PropertyId = (long)ViewState["ID"];
                 prop.Choices.Add(ppc);
-                if (BVApp.CatalogServices.ProductProperties.Update(prop))
+                if (MTApp.CatalogServices.ProductProperties.Update(prop))
                 {                
                         PopulateMultipleChoice(prop);
                     }
@@ -302,9 +302,9 @@ namespace BVCommerce
             this.DefaultValueField.Text = this.lstDefaultValue.SelectedValue;
             long propId = (long)ViewState["ID"];
             long choiceId = long.Parse(lstDefaultValue.SelectedValue);
-            BVApp.CatalogServices.ProductProperties.MoveChoiceUp(propId, choiceId);
+            MTApp.CatalogServices.ProductProperties.MoveChoiceUp(propId, choiceId);
             
-            ProductProperty prop = BVApp.CatalogServices.ProductProperties.Find((long)ViewState["ID"]);
+            ProductProperty prop = MTApp.CatalogServices.ProductProperties.Find((long)ViewState["ID"]);
             if (prop != null) PopulateMultipleChoice(prop);
         }
 
@@ -314,9 +314,9 @@ namespace BVCommerce
             this.DefaultValueField.Text = this.lstDefaultValue.SelectedValue;
             long propId = (long)ViewState["ID"];
             long choiceId = long.Parse(lstDefaultValue.SelectedValue);
-            BVApp.CatalogServices.ProductProperties.MoveChoiceDown(propId, choiceId);
+            MTApp.CatalogServices.ProductProperties.MoveChoiceDown(propId, choiceId);
 
-            ProductProperty prop = BVApp.CatalogServices.ProductProperties.Find((long)ViewState["ID"]);
+            ProductProperty prop = MTApp.CatalogServices.ProductProperties.Find((long)ViewState["ID"]);
             if (prop != null) PopulateMultipleChoice(prop);
         }
 

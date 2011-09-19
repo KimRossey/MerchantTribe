@@ -16,7 +16,7 @@ namespace BVCommerce
         private bool _useTabIndexes = false;
         private bool _AvailableWhenInactive = false;
 
-        public BVApplication BVApp { get; set; }
+        public MerchantTribeApplication MTApp { get; set; }
 
         public bool AvailableWhenInactive
         {
@@ -72,8 +72,8 @@ namespace BVCommerce
             if (!Page.IsPostBack)
             {
 
-                this.MetaKeywords = BVApp.CurrentStore.Settings.MetaKeywords;
-                this.MetaDescription = BVApp.CurrentStore.Settings.MetaDescription;
+                this.MetaKeywords = MTApp.CurrentStore.Settings.MetaKeywords;
+                this.MetaDescription = MTApp.CurrentStore.Settings.MetaDescription;
             }
 
             StoreClosedCheck();
@@ -82,14 +82,14 @@ namespace BVCommerce
             {
                 if ((!Request.IsSecureConnection))
                 {
-                    MerchantTribe.Commerce.Utilities.SSL.SSLRedirect(this, this.BVApp.CurrentStore, MerchantTribe.Commerce.Utilities.SSL.SSLRedirectTo.SSL);
+                    MerchantTribe.Commerce.Utilities.SSL.SSLRedirect(this, this.MTApp.CurrentStore, MerchantTribe.Commerce.Utilities.SSL.SSLRedirectTo.SSL);
                 }
             }
             else
             {
                 if ((Request.IsSecureConnection))
                 {
-                    MerchantTribe.Commerce.Utilities.SSL.SSLRedirect(this, this.BVApp.CurrentStore, MerchantTribe.Commerce.Utilities.SSL.SSLRedirectTo.NonSSL);
+                    MerchantTribe.Commerce.Utilities.SSL.SSLRedirect(this, this.MTApp.CurrentStore, MerchantTribe.Commerce.Utilities.SSL.SSLRedirectTo.NonSSL);
                 }
             }
         }
@@ -97,22 +97,22 @@ namespace BVCommerce
         protected override void OnPreInit(EventArgs e)
         {
             base.OnPreInit(e);
-            BVApp = BVApplication.InstantiateForDataBase(new RequestContext());
+            MTApp = MerchantTribeApplication.InstantiateForDataBase(new RequestContext());
 
             // Check for non-www url and redirect if needed
             RedirectBVCommerceCom(System.Web.HttpContext.Current);
 
             // Store routing context for URL Rewriting
-            BVApp.CurrentRequestContext.RoutingContext = this.Request.RequestContext;
+            MTApp.CurrentRequestContext.RoutingContext = this.Request.RequestContext;
 
             // Determine store id        
-            BVApp.CurrentStore = MerchantTribe.Commerce.Utilities.UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, BVApp.AccountServices);
-            if (BVApp.CurrentStore == null)
+            MTApp.CurrentStore = MerchantTribe.Commerce.Utilities.UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, MTApp.AccountServices);
+            if (MTApp.CurrentStore == null)
             {
                 Response.Redirect("~/storenotfound");
             }
 
-            if (BVApp.CurrentStore.Status == MerchantTribe.Commerce.Accounts.StoreStatus.Deactivated)
+            if (MTApp.CurrentStore.Status == MerchantTribe.Commerce.Accounts.StoreStatus.Deactivated)
             {
                 if ((AvailableWhenInactive == false))
                 {
@@ -121,8 +121,8 @@ namespace BVCommerce
             }
 
             // Culture Settings
-            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(BVApp.CurrentStore.Settings.CultureCode);
-            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(BVApp.CurrentStore.Settings.CultureCode);
+            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(MTApp.CurrentStore.Settings.CultureCode);
+            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(MTApp.CurrentStore.Settings.CultureCode);
 
             //Cart Count
 
@@ -131,8 +131,8 @@ namespace BVCommerce
 
             if (SessionManager.CurrentUserHasCart())
             {
-                itemCount = SessionManager.GetCookieString(WebAppSettings.CookieNameCartItemCount(BVApp.CurrentStore.Id));
-                subTotal = SessionManager.GetCookieString(WebAppSettings.CookieNameCartSubTotal(BVApp.CurrentStore.Id));
+                itemCount = SessionManager.GetCookieString(WebAppSettings.CookieNameCartItemCount(MTApp.CurrentStore.Id));
+                subTotal = SessionManager.GetCookieString(WebAppSettings.CookieNameCartSubTotal(MTApp.CurrentStore.Id));
                 if (itemCount.Trim().Length < 1) itemCount = "0";
                 if (subTotal.Trim().Length < 1) subTotal = "$0.00";
             }
@@ -140,33 +140,33 @@ namespace BVCommerce
             ViewData["CurrentCartSubTotal"] = subTotal;
 
             // style sheet
-            ThemeManager themes = BVApp.ThemeManager();
+            ThemeManager themes = MTApp.ThemeManager();
             ViewData["css"] = themes.CurrentStyleSheet(System.Web.HttpContext.Current.Request.IsSecureConnection);
 
             // Additional Meta Tags
-            ViewData["AdditionalMetaTags"] = MerchantTribe.Web.HtmlSanitizer.MakeHtmlSafe(BVApp.CurrentStore.Settings.Analytics.AdditionalMetaTags);
+            ViewData["AdditionalMetaTags"] = MerchantTribe.Web.HtmlSanitizer.MakeHtmlSafe(MTApp.CurrentStore.Settings.Analytics.AdditionalMetaTags);
 
             // Add Google Tracker to Page
-            if (BVApp.CurrentStore.Settings.Analytics.UseGoogleTracker)
+            if (MTApp.CurrentStore.Settings.Analytics.UseGoogleTracker)
             {
-                ViewData["analyticstop"] = MerchantTribe.Commerce.Metrics.GoogleAnalytics.RenderLatestTracker(BVApp.CurrentStore.Settings.Analytics.GoogleTrackerId);
+                ViewData["analyticstop"] = MerchantTribe.Commerce.Metrics.GoogleAnalytics.RenderLatestTracker(MTApp.CurrentStore.Settings.Analytics.GoogleTrackerId);
             }
 
             // header and footer
-            string header = MerchantTribe.Commerce.Storage.DiskStorage.ReadCustomHeader(BVApp.CurrentStore.Id, BVApp.CurrentStore.Settings.ThemeId);
-            string footer = MerchantTribe.Commerce.Storage.DiskStorage.ReadCustomFooter(BVApp.CurrentStore.Id, BVApp.CurrentStore.Settings.ThemeId);
+            string header = MerchantTribe.Commerce.Storage.DiskStorage.ReadCustomHeader(MTApp.CurrentStore.Id, MTApp.CurrentStore.Settings.ThemeId);
+            string footer = MerchantTribe.Commerce.Storage.DiskStorage.ReadCustomFooter(MTApp.CurrentStore.Id, MTApp.CurrentStore.Settings.ThemeId);
 
             if ((header.Trim().Length < 1))
             {
                 header = MerchantTribe.Commerce.Utilities.HtmlRendering.StandardHeader();
             }
-            ViewData["header"] = MerchantTribe.Commerce.Utilities.TagReplacer.ReplaceContentTags(header, BVApp, itemCount, Page.Request.IsSecureConnection);
+            ViewData["header"] = MerchantTribe.Commerce.Utilities.TagReplacer.ReplaceContentTags(header, MTApp, itemCount, Page.Request.IsSecureConnection);
             if ((footer.Trim().Length < 1))
             {
-                footer = MerchantTribe.Commerce.Utilities.HtmlRendering.StandardFooter(BVApp.CurrentStore);
+                footer = MerchantTribe.Commerce.Utilities.HtmlRendering.StandardFooter(MTApp.CurrentStore);
             }
             footer = footer + MerchantTribe.Commerce.Utilities.HtmlRendering.PromoTag();
-            ViewData["footer"] = MerchantTribe.Commerce.Utilities.TagReplacer.ReplaceContentTags(footer, BVApp, itemCount, Page.Request.IsSecureConnection);
+            ViewData["footer"] = MerchantTribe.Commerce.Utilities.TagReplacer.ReplaceContentTags(footer, MTApp, itemCount, Page.Request.IsSecureConnection);
 
 
             //log affiliate request
@@ -179,7 +179,7 @@ namespace BVCommerce
 
                     string referrerURL = HttpContext.Current.Request.UrlReferrer.AbsoluteUri;
                     if (referrerURL == null) referrerURL = string.Empty;
-                    BVApp.ContactServices.RecordAffiliateReferral(affid, referrerURL);
+                    MTApp.ContactServices.RecordAffiliateReferral(affid, referrerURL);
                 }
                 catch (System.Exception ex)
                 {
@@ -194,9 +194,9 @@ namespace BVCommerce
             }
 
             //If this is a private store, force login before showing anything.
-            if (BVApp.CurrentStore.Settings.IsPrivateStore == true)
+            if (MTApp.CurrentStore.Settings.IsPrivateStore == true)
             {
-                if (SessionManager.IsUserAuthenticated(this.BVApp) == false)
+                if (SessionManager.IsUserAuthenticated(this.MTApp) == false)
                 {
                     string nameOfPage = Request.AppRelativeCurrentExecutionFilePath;
                     // Check to make sure we're not going to end up in an endless loop of redirects
@@ -209,7 +209,7 @@ namespace BVCommerce
                 }
             }
 
-            IntegrationLoader.AddIntegrations(this.BVApp.CurrentRequestContext.IntegrationEvents, this.BVApp.CurrentStore);
+            IntegrationLoader.AddIntegrations(this.MTApp.CurrentRequestContext.IntegrationEvents, this.MTApp.CurrentStore);
         }      
 
         public virtual bool RequiresSSL
@@ -219,18 +219,18 @@ namespace BVCommerce
 
         protected virtual void StoreClosedCheck()
         {
-            if (BVApp.CurrentStore.Settings.StoreClosed == true)
+            if (MTApp.CurrentStore.Settings.StoreClosed == true)
             {
                 bool hasPass = false;
                 string guestPass = SessionManager.StoreClosedGuestPasswordForCurrentUser;
                 if (guestPass.Trim().Length > 0)
                 {
-                    if (guestPass == BVApp.CurrentStore.Settings.StoreClosedGuestPassword)
+                    if (guestPass == MTApp.CurrentStore.Settings.StoreClosedGuestPassword)
                     {
                         hasPass = true;
                     }
                 }
-                if (BVApp.CurrentRequestContext.IsAdmin() == false && hasPass == false)
+                if (MTApp.CurrentRequestContext.IsAdmin() == false && hasPass == false)
                 {
                     Response.Redirect("~/storeclosed");
                 }

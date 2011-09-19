@@ -43,7 +43,7 @@ namespace BVCommerce.BVAdmin.Configuration
 
         private void LoadData()
         {
-            List<QueuedTask> items = BVApp.ScheduleServices.QueuedTasks.FindAllPaged(currentPage, pageSize);
+            List<QueuedTask> items = MTApp.ScheduleServices.QueuedTasks.FindAllPaged(currentPage, pageSize);
             //this.lblResults.Text = rowCount.ToString() + " found";
             //this.litPager1.Text = MerchantTribe.Web.Paging.RenderPagerWithLimits("Promotions.aspx?page={0}&showdisabled=" + (this.chkShowDisabled.Checked ? "1" : "0") + "&keyword=" + System.Web.HttpUtility.UrlEncode(keyword), currentPage, rowCount, pageSize, 20);
             RenderItems(items);
@@ -81,7 +81,7 @@ namespace BVCommerce.BVAdmin.Configuration
             sb.Append("<td>" + t.FriendlyName + "<br />");
             sb.Append(t.TaskProcessorName + "</td>");
 
-            DateTime startTime = TimeZoneInfo.ConvertTimeFromUtc(t.StartAtUtc, BVApp.CurrentStore.Settings.TimeZone);
+            DateTime startTime = TimeZoneInfo.ConvertTimeFromUtc(t.StartAtUtc, MTApp.CurrentStore.Settings.TimeZone);
             sb.Append("<td>" + startTime.ToString() + " </td>");
             sb.Append("<td>");
             switch (t.Status)

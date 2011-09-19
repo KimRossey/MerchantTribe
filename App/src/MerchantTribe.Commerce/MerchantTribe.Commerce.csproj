@@ -448,15 +448,8 @@
     <Compile Include="PaypalExpressCheckoutArgs.cs" />
     <Compile Include="Controls\UserSelectedEventArgs.cs" />
     <Compile Include="Marketing\AmountTypes.cs" />
-    <Compile Include="Marketing\OLD Promotions for Refernce\BuyOneGetOneOfferTaskProcessor.cs" />
-    <Compile Include="Marketing\OLD Promotions for Refernce\OLD_BuyXGetYByCategory.cs" />
-    <Compile Include="Marketing\OLD Promotions for Refernce\BuyXGetYOfferTaskProcessor.cs" />
-    <Compile Include="Marketing\OLD Promotions for Refernce\OLD_FreePromoItem.cs" />
-    <Compile Include="Marketing\OLD Promotions for Refernce\FreePromoItemByAmount.cs" />
-    <Compile Include="Marketing\OLD Promotions for Refernce\OLD_FreeShippingByCategory.cs" />
-    <Compile Include="Marketing\OLD Promotions for Refernce\FreeShippingOfferTaskProcessor.cs" />
     <Compile Include="Membership\AuthenticationToken.cs" />
-    <Compile Include="Membership\BVMembershipUserException.cs" />
+    <Compile Include="Membership\SystemMembershipUserException.cs" />
     <Compile Include="Membership\UserQuestion.cs" />
     <Compile Include="Membership\UserQuestionOption.cs" />
     <Compile Include="Membership\UserQuestionType.cs" />
@@ -477,7 +470,7 @@
     <Compile Include="BusinessRules\WorkflowMessage.cs" />
     <Compile Include="BusinessRules\WorkFlowStep.cs" />
     <Compile Include="BusinessRules\WorkFlowType.cs" />
-    <Compile Include="BVOperationResult.cs" />
+    <Compile Include="SystemOperationResult.cs" />
     <Compile Include="Catalog\Category.cs" />
     <Compile Include="Catalog\CategoryPeerSet.cs" />
     <Compile Include="Catalog\CategoryProductAssociation.cs" />
@@ -546,7 +539,6 @@
     <Compile Include="CustomPropertyCollection.cs" />
     <Compile Include="Datalayer\CacheManager.cs" />
     <Compile Include="EventLog.cs" />
-    <Compile Include="Marketing\OLD Promotions for Refernce\OfferUseTypes.cs" />
     <Compile Include="Membership\CreateUserStatus.cs" />
     <Compile Include="Membership\SystemPermissions.cs" />
     <Compile Include="Membership\CustomerAccount.cs" />
@@ -594,7 +586,7 @@
     <Compile Include="Security\FraudRuleRepository.cs" />
     <Compile Include="Security\FraudRuleType.cs" />
     <Compile Include="Security\FraudScorer.cs" />
-    <Compile Include="BVApplication.cs" />
+    <Compile Include="MerchantTribeApplication.cs" />
     <Compile Include="SessionManager.cs" />
     <Compile Include="Shipping\AvailableServices.cs" />
     <Compile Include="Shipping\AvailableShippingMethod.cs" />
@@ -667,7 +659,7 @@
     <Compile Include="Utilities\Versions.cs" />
     <Compile Include="Utilities\WebForms.cs" />
     <Compile Include="XmlHelper.cs" />
-    <Compile Include="WebAppSettings.BV.cs" />
+    <Compile Include="WebAppSettings.System.cs" />
     <Compile Include="WebAppSettings.cs" />
   </ItemGroup>
   <ItemGroup>

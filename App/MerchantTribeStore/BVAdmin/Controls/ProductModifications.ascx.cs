@@ -78,7 +78,7 @@ namespace BVCommerce
 
         protected void BindEnumeratedFields()
         {
-            ManufacturerEnumeratedValueModifierField.Datasource = MyPage.BVApp.ContactServices.Manufacturers.FindAll();
+            ManufacturerEnumeratedValueModifierField.Datasource = MyPage.MTApp.ContactServices.Manufacturers.FindAll();
             ManufacturerEnumeratedValueModifierField.DataTextField = "DisplayName";
             ManufacturerEnumeratedValueModifierField.DataValueField = "bvin";
             ManufacturerEnumeratedValueModifierField.DataBind();
@@ -87,22 +87,22 @@ namespace BVCommerce
             ProductTemplateEnumeratedValueModifierField.Datasource = MerchantTribe.Commerce.Content.ModuleController.FindProductTemplates();
             ProductTemplateEnumeratedValueModifierField.DataBind();
 
-            PreContentColumnEnumeratedValueModifierField.Datasource = MyPage.BVApp.ContentServices.Columns.FindAll();
+            PreContentColumnEnumeratedValueModifierField.Datasource = MyPage.MTApp.ContentServices.Columns.FindAll();
             PreContentColumnEnumeratedValueModifierField.DataTextField = "DisplayName";
             PreContentColumnEnumeratedValueModifierField.DataValueField = "bvin";
             PreContentColumnEnumeratedValueModifierField.DataBind();
 
-            PostContentColumnEnumeratedValueModifierField.Datasource = MyPage.BVApp.ContentServices.Columns.FindAll();
+            PostContentColumnEnumeratedValueModifierField.Datasource = MyPage.MTApp.ContentServices.Columns.FindAll();
             PostContentColumnEnumeratedValueModifierField.DataTextField = "DisplayName";
             PostContentColumnEnumeratedValueModifierField.DataValueField = "bvin";
             PostContentColumnEnumeratedValueModifierField.DataBind();
 
-            TaxClassEnumeratedValueModifierField.Datasource = MyPage.BVApp.OrderServices.TaxSchedules.FindAllAndCreateDefault(MyPage.BVApp.CurrentStore.Id);
+            TaxClassEnumeratedValueModifierField.Datasource = MyPage.MTApp.OrderServices.TaxSchedules.FindAllAndCreateDefault(MyPage.MTApp.CurrentStore.Id);
             TaxClassEnumeratedValueModifierField.DataTextField = "Name";
             TaxClassEnumeratedValueModifierField.DataValueField = "Id";
             TaxClassEnumeratedValueModifierField.DataBind();
 
-            VendorEnumeratedValueModifierField.Datasource = MyPage.BVApp.ContactServices.Vendors.FindAll();
+            VendorEnumeratedValueModifierField.Datasource = MyPage.MTApp.ContactServices.Vendors.FindAll();
             VendorEnumeratedValueModifierField.DataTextField = "DisplayName";
             VendorEnumeratedValueModifierField.DataValueField = "bvin";
             VendorEnumeratedValueModifierField.DataBind();

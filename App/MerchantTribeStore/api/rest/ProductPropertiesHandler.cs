@@ -12,7 +12,7 @@ namespace BVCommerce.api.rest
 {
     public class ProductPropertiesHandler: BaseRestHandler
     {
-        public ProductPropertiesHandler(MerchantTribe.Commerce.BVApplication app)
+        public ProductPropertiesHandler(MerchantTribe.Commerce.MerchantTribeApplication app)
             : base(app)
         {
 
@@ -28,7 +28,7 @@ namespace BVCommerce.api.rest
                 // List
                 ApiResponse<List<ProductPropertyDTO>> response = new ApiResponse<List<ProductPropertyDTO>>();
 
-                List<ProductProperty> results = BVApp.CatalogServices.ProductProperties.FindAll();
+                List<ProductProperty> results = MTApp.CatalogServices.ProductProperties.FindAll();
                 List<ProductPropertyDTO> dto = new List<ProductPropertyDTO>();
 
                 foreach (ProductProperty item in results)
@@ -45,7 +45,7 @@ namespace BVCommerce.api.rest
                 string ids = FirstParameter(parameters);
                 long id = 0;
                 long.TryParse(ids, out id);
-                ProductProperty item = BVApp.CatalogServices.ProductProperties.Find(id);
+                ProductProperty item = MTApp.CatalogServices.ProductProperties.Find(id);
                 if (item == null)
                 {
                     response.Errors.Add(new ApiError("NULL", "Could not locate that item. Check id and try again."));
@@ -78,7 +78,7 @@ namespace BVCommerce.api.rest
 
                 string productBvin = GetParameterByIndex(2, parameters);
                 string propertyValue = GetParameterByIndex(3, parameters);
-                response.Content = BVApp.CatalogServices.ProductPropertyValues.SetPropertyValue(productBvin, id, propertyValue);
+                response.Content = MTApp.CatalogServices.ProductPropertyValues.SetPropertyValue(productBvin, id, propertyValue);
 
                 data = MerchantTribe.Web.Json.ObjectToJson(response);
             }
@@ -103,11 +103,11 @@ namespace BVCommerce.api.rest
 
 
                 // Check for existing and create base property
-                ProductProperty existing = BVApp.CatalogServices.ProductProperties.FindByName(item.DisplayName);
+                ProductProperty existing = MTApp.CatalogServices.ProductProperties.FindByName(item.DisplayName);
                 if (existing == null)
                 {
                     // Create
-                    BVApp.CatalogServices.ProductProperties.Create(item);
+                    MTApp.CatalogServices.ProductProperties.Create(item);
                     id = item.Id;
 
                     //// Merge Properties
@@ -120,7 +120,7 @@ namespace BVCommerce.api.rest
                 else
                 {
                     // Update
-                    BVApp.CatalogServices.ProductProperties.Update(item);
+                    MTApp.CatalogServices.ProductProperties.Update(item);
                     id = existing.Id;
 
                     //// Merge Properties
@@ -143,7 +143,7 @@ namespace BVCommerce.api.rest
                     //}
                 }
 
-                ProductProperty resultItem = BVApp.CatalogServices.ProductProperties.Find(id);
+                ProductProperty resultItem = MTApp.CatalogServices.ProductProperties.Find(id);
                 if (resultItem != null) response.Content = resultItem.ToDto();
 
                 data = MerchantTribe.Web.Json.ObjectToJson(response);            
@@ -162,7 +162,7 @@ namespace BVCommerce.api.rest
             ApiResponse<bool> response = new ApiResponse<bool>();
 
                 // Single Item Delete
-                response.Content = BVApp.CatalogServices.ProductPropertiesDestroy(id);
+                response.Content = MTApp.CatalogServices.ProductPropertiesDestroy(id);
 
             data = MerchantTribe.Web.Json.ObjectToJson(response);
             return data;

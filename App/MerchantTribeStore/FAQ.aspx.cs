@@ -27,7 +27,7 @@ namespace BVCommerce
         {
             try
             {
-                Policy p = BVApp.ContentServices.Policies.FindOrCreateByType(PolicyType.Faq);
+                Policy p = MTApp.ContentServices.Policies.FindOrCreateByType(PolicyType.Faq);
                 if (p != null)
                 {
                     dlPolicy.DataSource = p.Blocks;

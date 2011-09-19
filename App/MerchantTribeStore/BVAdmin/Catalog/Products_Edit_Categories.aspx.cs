@@ -34,7 +34,7 @@ namespace BVCommerce
                 else
                 {
                     Product p = new Product();
-                    p = BVApp.CatalogServices.Products.Find(EditID);
+                    p = MTApp.CatalogServices.Products.Find(EditID);
                     if (p != null)
                     {
                         ViewState["ID"] = EditID;
@@ -55,8 +55,8 @@ namespace BVCommerce
 
             chkCategories.Items.Clear();
 
-            List<CategorySnapshot> t = BVApp.CatalogServices.FindCategoriesForProduct((string)Request.QueryString["ID"]);
-            Collection<System.Web.UI.WebControls.ListItem> tree = Category.ListFullTreeWithIndents(BVApp.CurrentRequestContext);
+            List<CategorySnapshot> t = MTApp.CatalogServices.FindCategoriesForProduct((string)Request.QueryString["ID"]);
+            Collection<System.Web.UI.WebControls.ListItem> tree = Category.ListFullTreeWithIndents(MTApp.CurrentRequestContext);
 
             foreach (System.Web.UI.WebControls.ListItem li in tree)
             {
@@ -81,17 +81,17 @@ namespace BVCommerce
         private void SaveSettings()
         {
 
-            BVApp.CatalogServices.CategoriesXProducts.DeleteAllForProduct(Request.QueryString["id"].ToString());
+            MTApp.CatalogServices.CategoriesXProducts.DeleteAllForProduct(Request.QueryString["id"].ToString());
             //Category.RemoveProductFromAll(Request.QueryString["id"].ToString());
             foreach (System.Web.UI.WebControls.ListItem li in chkCategories.Items)
             {
                 if (li.Selected == true)
                 {
-                    BVApp.CatalogServices.CategoriesXProducts.AddProductToCategory(Request.QueryString["id"].ToString(), li.Value);
+                    MTApp.CatalogServices.CategoriesXProducts.AddProductToCategory(Request.QueryString["id"].ToString(), li.Value);
                 }
                 else
                 {
-                    BVApp.CatalogServices.CategoriesXProducts.RemoveProductFromCategory(Request.QueryString["id"].ToString(), li.Value);
+                    MTApp.CatalogServices.CategoriesXProducts.RemoveProductFromCategory(Request.QueryString["id"].ToString(), li.Value);
                 }
             }
         }

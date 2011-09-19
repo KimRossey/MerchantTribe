@@ -111,7 +111,7 @@ namespace BVCommerce
 
         private void RenderSelections(string key, Category category)
         {
-            CategoryFacetManager manager = CategoryFacetManager.InstantiateForDatabase(BVApp.CurrentRequestContext);
+            CategoryFacetManager manager = CategoryFacetManager.InstantiateForDatabase(MTApp.CurrentRequestContext);
             List<CategoryFacet> facets = manager.FindByCategory(category.Bvin);
             List<ProductProperty> properties = LoadProperties(facets);
 
@@ -177,7 +177,7 @@ namespace BVCommerce
             }
 
             // Get unsorted
-            List<ProductProperty> unsorted = BVApp.CatalogServices.ProductProperties.FindMany(ids);
+            List<ProductProperty> unsorted = MTApp.CatalogServices.ProductProperties.FindMany(ids);
 
             // sort
             foreach(CategoryFacet facet in facets)
@@ -253,7 +253,7 @@ namespace BVCommerce
             
             int rowCount = 0;
 
-            List<Product> displayProducts = BVApp.CatalogServices.FindProductsMatchingKey(key, 
+            List<Product> displayProducts = MTApp.CatalogServices.FindProductsMatchingKey(key, 
                                                                             Pager1.CurrentRow, 
                                                                             Pager1.ItemsPerPage, 
                                                                             ref rowCount);
@@ -290,7 +290,7 @@ namespace BVCommerce
                 {
                     columnCount += 1;
                 }
-                UserSpecificPrice price = BVApp.PriceProduct(p, BVApp.CurrentCustomer, null);
+                UserSpecificPrice price = MTApp.PriceProduct(p, MTApp.CurrentCustomer, null);
                 MerchantTribe.Commerce.Utilities.HtmlRendering.RenderSingleProduct(ref sb, p, isLastInRow, isFirstInRow, this.Page, price);
             }
 

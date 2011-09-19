@@ -18,7 +18,7 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
 		public override bool Execute(OrderTaskContext context)
 		{
 
-            Content.HtmlTemplate t = context.BVApp.ContentServices.GetHtmlTemplateOrDefault(Content.HtmlTemplateType.NewOrder);
+            Content.HtmlTemplate t = context.MTApp.ContentServices.GetHtmlTemplateOrDefault(Content.HtmlTemplateType.NewOrder);
 
             string EmailSelection = _ToEmail;
             string toEmail = context.Order.UserEmail;
@@ -35,7 +35,7 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
 			try {
 				if (toEmail.Trim().Length > 0) {
                     
-                    t = t.ReplaceTagsInTemplate(context.BVApp,context.Order, context.Order.ItemsAsReplaceable());
+                    t = t.ReplaceTagsInTemplate(context.MTApp,context.Order, context.Order.ItemsAsReplaceable());
 					
 					System.Net.Mail.MailMessage m = new System.Net.Mail.MailMessage();
 					m = t.ConvertToMailMessage(toEmail);

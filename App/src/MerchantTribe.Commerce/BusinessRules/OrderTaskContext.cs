@@ -5,9 +5,9 @@ namespace MerchantTribe.Commerce.BusinessRules
 	public class OrderTaskContext : TaskContext
 	{
 
-        public OrderTaskContext(BVApplication bvapp)
+        public OrderTaskContext(MerchantTribeApplication app)
         {
-            this.BVApp = bvapp;
+            this.MTApp = app;
         }
 
 		private Orders.Order _Order = new Orders.Order();
@@ -17,7 +17,7 @@ namespace MerchantTribe.Commerce.BusinessRules
 			set { _Order = value; }
 		}
 
-        public BVApplication BVApp { get; set; }
+        public MerchantTribeApplication MTApp { get; set; }
         
 	}
 }

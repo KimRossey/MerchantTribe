@@ -7,7 +7,7 @@ namespace BVCommerce.api.rest
 {
     public interface IRestHandler
     {
-        MerchantTribe.Commerce.BVApplication BVApp { get; set; }
+        MerchantTribe.Commerce.MerchantTribeApplication MTApp { get; set; }
 
         string GetAction(string parameters, System.Collections.Specialized.NameValueCollection querystring);
         string PostAction(string parameters, System.Collections.Specialized.NameValueCollection querystring, string postdata);

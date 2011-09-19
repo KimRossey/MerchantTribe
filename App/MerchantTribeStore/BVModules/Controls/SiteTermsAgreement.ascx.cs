@@ -12,7 +12,7 @@ namespace BVCommerce
         {
             get
             {
-                if (MyPage.BVApp.CurrentStore.Settings.ForceTermsAgreement)
+                if (MyPage.MTApp.CurrentStore.Settings.ForceTermsAgreement)
                 {
                     return AgreeToTermsCheckBox.Checked;
                 }
@@ -28,7 +28,7 @@ namespace BVCommerce
         {
             base.OnInit(e);
 
-            if (MyPage.BVApp.CurrentStore.Settings.ForceTermsAgreement)
+            if (MyPage.MTApp.CurrentStore.Settings.ForceTermsAgreement)
             {
                 this.Visible = true;
                 AgreeLiteral.Text = SiteTerms.GetTerm(SiteTermIds.TermsAndConditionsAgreement);

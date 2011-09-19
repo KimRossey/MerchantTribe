@@ -15,14 +15,14 @@ namespace BVCommerce
         private void LoadText()
         {
             string result = string.Empty;
-            ContentBlock b = MyPage.BVApp.ContentServices.Columns.FindBlock(this.BlockId);
+            ContentBlock b = MyPage.MTApp.ContentServices.Columns.FindBlock(this.BlockId);
             if (b != null)
             {
                 result = b.BaseSettings.GetSettingOrEmpty("HtmlData");
             }
 
             result = MerchantTribe.Commerce.Utilities.TagReplacer.ReplaceContentTags(result,
-                                                                                    MyPage.BVApp,
+                                                                                    MyPage.MTApp,
                                                                                     "",
                                                                                     Request.IsSecureConnection);
             this.HtmlContent.Text = result;

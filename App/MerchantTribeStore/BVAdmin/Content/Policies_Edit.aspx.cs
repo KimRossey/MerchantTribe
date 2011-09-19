@@ -36,7 +36,7 @@ namespace BVCommerce
 
         private void LoadPolicy()
         {
-            Policy p = BVApp.ContentServices.Policies.Find(this.PolicyIDField.Value);
+            Policy p = MTApp.ContentServices.Policies.Find(this.PolicyIDField.Value);
             this.lblTitle.Text = p.Title;
             this.GridView1.DataSource = p.Blocks;
             this.GridView1.DataBind();
@@ -52,11 +52,11 @@ namespace BVCommerce
             this.msg.ClearMessage();
             string bvin = string.Empty;
             bvin = ((GridView)sender).DataKeys[e.RowIndex].Value.ToString();
-            Policy p = BVApp.ContentServices.Policies.Find(this.PolicyIDField.Value);
+            Policy p = MTApp.ContentServices.Policies.Find(this.PolicyIDField.Value);
             if (p != null)
             {
                 p.MoveBlockDown(bvin);
-                BVApp.ContentServices.Policies.Update(p);
+                MTApp.ContentServices.Policies.Update(p);
             }            
             LoadPolicy();
         }
@@ -66,11 +66,11 @@ namespace BVCommerce
             this.msg.ClearMessage();
             string bvin = string.Empty;
             bvin = ((GridView)sender).DataKeys[e.RowIndex].Value.ToString();
-            Policy p = BVApp.ContentServices.Policies.Find(this.PolicyIDField.Value);
+            Policy p = MTApp.ContentServices.Policies.Find(this.PolicyIDField.Value);
             if (p != null)
             {
                 p.MoveBlockUp(bvin);
-                BVApp.ContentServices.Policies.Update(p);
+                MTApp.ContentServices.Policies.Update(p);
             }            
             LoadPolicy();
         }
@@ -106,7 +106,7 @@ namespace BVCommerce
             this.msg.ClearMessage();
             string bvin = string.Empty;
             bvin = ((GridView)sender).DataKeys[e.RowIndex].Value.ToString();
-            BVApp.ContentServices.Policies.DeleteBlock(bvin);
+            MTApp.ContentServices.Policies.DeleteBlock(bvin);
             LoadPolicy();
         }
 

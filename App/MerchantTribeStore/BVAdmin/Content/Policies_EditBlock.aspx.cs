@@ -48,7 +48,7 @@ namespace BVCommerce
         {
             if (this.BvinField.Value.Trim().Length > 0)
             {
-                PolicyBlock b = BVApp.ContentServices.Policies.FindBlock(this.BvinField.Value);
+                PolicyBlock b = MTApp.ContentServices.Policies.FindBlock(this.BvinField.Value);
                 if (b != null)
                 {
                     this.NameField.Text = b.Name;
@@ -99,14 +99,14 @@ namespace BVCommerce
             bool result = false;
 
             PolicyBlock b;
-            b = BVApp.ContentServices.Policies.FindBlock(this.BvinField.Value);
+            b = MTApp.ContentServices.Policies.FindBlock(this.BvinField.Value);
             if (b != null)
             {
                 b.Name = this.NameField.Text.Trim();
                 b.Description = this.DescriptionField.Text.Trim();
                 b.DescriptionPreTransform = this.DescriptionField.PreTransformText;
 
-                Policy p = BVApp.ContentServices.Policies.Find(this.PolicyIdField.Value);
+                Policy p = MTApp.ContentServices.Policies.Find(this.PolicyIdField.Value);
                 
                 if (this.BvinField.Value == string.Empty)
                 {
@@ -114,12 +114,12 @@ namespace BVCommerce
                     if (p != null)
                     {
                         p.Blocks.Add(b);
-                        BVApp.ContentServices.Policies.Update(p);
+                        MTApp.ContentServices.Policies.Update(p);
                     }                    
                 }
                 else
                 {
-                    result = BVApp.ContentServices.Policies.UpdateBlock(b);
+                    result = MTApp.ContentServices.Policies.UpdateBlock(b);
                 }
 
                 if (result == true)

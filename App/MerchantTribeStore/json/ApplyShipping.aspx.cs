@@ -35,9 +35,9 @@ namespace BVCommerce
             }
 
             
-            Order o = BVApp.OrderServices.Orders.FindForCurrentStore(orderid);
-            BVApp.OrderServices.OrdersRequestShippingMethodByUniqueKey(rateKey, o);
-            BVApp.CalculateOrderAndSave(o);
+            Order o = MTApp.OrderServices.Orders.FindForCurrentStore(orderid);
+            MTApp.OrderServices.OrdersRequestShippingMethodByUniqueKey(rateKey, o);
+            MTApp.CalculateOrderAndSave(o);
             SessionManager.SaveOrderCookies(o);
 
             result.totalsastable = o.TotalsAsTable();

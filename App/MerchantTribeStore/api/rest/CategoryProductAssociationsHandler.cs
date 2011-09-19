@@ -12,7 +12,7 @@ namespace BVCommerce.api.rest
 {
     public class CategoryProductAssociationsHandler: BaseRestHandler
     {
-        public CategoryProductAssociationsHandler(MerchantTribe.Commerce.BVApplication app)
+        public CategoryProductAssociationsHandler(MerchantTribe.Commerce.MerchantTribeApplication app)
             : base(app)
         {
 
@@ -30,7 +30,7 @@ namespace BVCommerce.api.rest
             long id = 0;
             long.TryParse(ids, out id);
 
-            var item = BVApp.CatalogServices.CategoriesXProducts.Find(id);
+            var item = MTApp.CatalogServices.CategoriesXProducts.Find(id);
             if (item == null)
             {
                 response.Errors.Add(new ApiError("NULL", "Could not locate that item. Check bvin and try again."));
@@ -71,17 +71,17 @@ namespace BVCommerce.api.rest
 
             if (id < 1)
             {
-                BVApp.CatalogServices.CategoriesXProducts.AddProductToCategory(item.ProductId, item.CategoryId);
-                //if (BVApp.CatalogServices.CategoriesXProducts.Create(item))
+                MTApp.CatalogServices.CategoriesXProducts.AddProductToCategory(item.ProductId, item.CategoryId);
+                //if (MTApp.CatalogServices.CategoriesXProducts.Create(item))
                 //{
                 //    id = item.Id;
                 //}
             }
             else
             {
-                BVApp.CatalogServices.CategoriesXProducts.Update(item);
+                MTApp.CatalogServices.CategoriesXProducts.Update(item);
             }
-            CategoryProductAssociation resultItem = BVApp.CatalogServices.CategoriesXProducts.Find(id);
+            CategoryProductAssociation resultItem = MTApp.CatalogServices.CategoriesXProducts.Find(id);
             if (resultItem != null) response.Content = resultItem.ToDto();
 
             data = MerchantTribe.Web.Json.ObjectToJson(response);
@@ -96,7 +96,7 @@ namespace BVCommerce.api.rest
             ApiResponse<bool> response = new ApiResponse<bool>();
 
             // Single Item Delete
-            response.Content = BVApp.CatalogServices.CategoriesXProducts.RemoveProductFromCategory(bvin, categoryBvin);
+            response.Content = MTApp.CatalogServices.CategoriesXProducts.RemoveProductFromCategory(bvin, categoryBvin);
 
             data = MerchantTribe.Web.Json.ObjectToJson(response);
             return data;

@@ -8,8 +8,8 @@ namespace BVCommerce
         {
             base.OnLoad(e);
             string themeId = Request.QueryString["id"];
-            this.BVApp.ThemeManager().InstallTheme(themeId);
-            BVApp.UpdateCurrentStore();
+            this.MTApp.ThemeManager().InstallTheme(themeId);
+            MTApp.UpdateCurrentStore();
             Response.Redirect("WizardPayment.aspx");
         }
     }

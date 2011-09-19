@@ -65,7 +65,7 @@ namespace BVCommerce
 
         private void LoadData()
         {
-            this.ShipFromAddressField.LoadFromAddress(BVApp.ContactServices.Addresses.FindStoreContactAddress());
+            this.ShipFromAddressField.LoadFromAddress(MTApp.ContactServices.Addresses.FindStoreContactAddress());
         }
 
         private bool Save()
@@ -76,13 +76,13 @@ namespace BVCommerce
             toUpdate.AddressType = AddressTypes.StoreContact;
             if (toUpdate.Bvin == string.Empty)
             {
-                result = BVApp.ContactServices.Addresses.Create(toUpdate);
+                result = MTApp.ContactServices.Addresses.Create(toUpdate);
             }
             else
             {
-                result = BVApp.ContactServices.Addresses.Update(toUpdate);                
+                result = MTApp.ContactServices.Addresses.Update(toUpdate);                
             }
-            BVApp.ContactServices.Addresses.SubmitChanges();
+            MTApp.ContactServices.Addresses.SubmitChanges();
 
             return result;
 

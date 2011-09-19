@@ -72,10 +72,10 @@ namespace BVCommerce
                 TotalDiscounts = 0;
                 TotalShipDiscounts = 0;
                 
-                DateTime startDateUtc = TimeZoneInfo.ConvertTimeToUtc(MerchantTribe.Web.Dates.ZeroOutTime(this.DatePicker.SelectedDate), BVApp.CurrentStore.Settings.TimeZone);
-                DateTime endDateUtc = TimeZoneInfo.ConvertTimeToUtc(MerchantTribe.Web.Dates.MaxOutTime(this.DatePicker.SelectedDate), BVApp.CurrentStore.Settings.TimeZone);
+                DateTime startDateUtc = TimeZoneInfo.ConvertTimeToUtc(MerchantTribe.Web.Dates.ZeroOutTime(this.DatePicker.SelectedDate), MTApp.CurrentStore.Settings.TimeZone);
+                DateTime endDateUtc = TimeZoneInfo.ConvertTimeToUtc(MerchantTribe.Web.Dates.MaxOutTime(this.DatePicker.SelectedDate), MTApp.CurrentStore.Settings.TimeZone);
                 int totalItems = 0;
-                List<OrderTransaction> transactions = BVApp.OrderServices.Transactions.FindForReportByDateRange(startDateUtc, endDateUtc, BVApp.CurrentStore.Id, int.MaxValue, 1, ref totalItems);
+                List<OrderTransaction> transactions = MTApp.OrderServices.Transactions.FindForReportByDateRange(startDateUtc, endDateUtc, MTApp.CurrentStore.Id, int.MaxValue, 1, ref totalItems);
                 ProcessOrderPortions(transactions);                                           
 
                 dgList.DataSource = transactions;
@@ -96,7 +96,7 @@ namespace BVCommerce
             if (transactions == null) return;
 
             List<string> orderIds = (from t in transactions select t.OrderId).Distinct().ToList();
-            List<OrderSnapshot> orderSnaps = BVApp.OrderServices.Orders.FindManySnapshots(orderIds);
+            List<OrderSnapshot> orderSnaps = MTApp.OrderServices.Orders.FindManySnapshots(orderIds);
 
             foreach (OrderTransaction t in transactions)
             {
@@ -128,7 +128,7 @@ namespace BVCommerce
             }
             else
             {
-                this.DatePicker.SelectedDate = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, BVApp.CurrentStore.Settings.TimeZone);
+                this.DatePicker.SelectedDate = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, MTApp.CurrentStore.Settings.TimeZone);
             }
 
         }
@@ -162,7 +162,7 @@ namespace BVCommerce
 
                 if (litTimeStamp != null)
                 {
-                    litTimeStamp.Text = TimeZoneInfo.ConvertTimeFromUtc(t.TimeStampUtc, BVApp.CurrentStore.Settings.TimeZone).ToShortTimeString();
+                    litTimeStamp.Text = TimeZoneInfo.ConvertTimeFromUtc(t.TimeStampUtc, MTApp.CurrentStore.Settings.TimeZone).ToShortTimeString();
                 }
 
                 if (litOrderNumber != null)

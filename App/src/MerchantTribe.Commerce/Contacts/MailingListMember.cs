@@ -27,7 +27,7 @@ namespace MerchantTribe.Commerce.Contacts
             this.StoreId = 0;
 		}
 
-        public List<Content.HtmlTemplateTag> GetReplaceableTags(BVApplication bvapp)
+        public List<Content.HtmlTemplateTag> GetReplaceableTags(MerchantTribeApplication app)
         {
             List<Content.HtmlTemplateTag> result = new List<Content.HtmlTemplateTag>();
 

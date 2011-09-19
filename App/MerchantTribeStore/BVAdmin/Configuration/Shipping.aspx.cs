@@ -47,7 +47,7 @@ namespace BVCommerce
         private void LoadMethods()
         {
             List<ShippingMethod> methods;
-            methods = BVApp.OrderServices.ShippingMethods.FindAll(BVApp.CurrentStore.Id);
+            methods = MTApp.OrderServices.ShippingMethods.FindAll(MTApp.CurrentStore.Id);
             this.GridView1.DataSource = methods;
             this.GridView1.DataBind();
         }
@@ -55,7 +55,7 @@ namespace BVCommerce
         private void LoadProviders()
         {
             this.lstProviders.ClearSelection();
-            foreach (MerchantTribe.Shipping.IShippingService p in MerchantTribe.Commerce.Shipping.AvailableServices.FindAll(this.BVApp.CurrentStore))
+            foreach (MerchantTribe.Shipping.IShippingService p in MerchantTribe.Commerce.Shipping.AvailableServices.FindAll(this.MTApp.CurrentStore))
             {
                 this.lstProviders.Items.Add(new System.Web.UI.WebControls.ListItem(p.Name, p.Id));
             }
@@ -66,7 +66,7 @@ namespace BVCommerce
             ShippingMethod m = new ShippingMethod();
             m.ShippingProviderId = this.lstProviders.SelectedValue;
             m.Name = "New Shipping Method";
-            if (BVApp.OrderServices.ShippingMethods.Create(m) == true)
+            if (MTApp.OrderServices.ShippingMethods.Create(m) == true)
             {
                 Response.Redirect("Shipping_EditMethod.aspx?id=" + m.Bvin + "&doc=1");
             }
@@ -75,7 +75,7 @@ namespace BVCommerce
         protected void GridView1_RowDeleting(object sender, System.Web.UI.WebControls.GridViewDeleteEventArgs e)
         {
             string bvin = (string)GridView1.DataKeys[e.RowIndex].Value;
-            BVApp.OrderServices.ShippingMethods.Delete(bvin);
+            MTApp.OrderServices.ShippingMethods.Delete(bvin);
             LoadMethods();
         }
 

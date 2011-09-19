@@ -11,15 +11,15 @@ namespace BVCommerce.Filters
     {
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            // do base action first to ensure we have our context objects like bvapp
+            // do base action first to ensure we have our context objects like mtapp
             base.OnActionExecuting(filterContext);
 
             if (filterContext.Controller is Controllers.Shared.BaseStoreController)
             {
-                BVApplication bvapp = ((Controllers.Shared.BaseStoreController)filterContext.Controller).BVApp;
-                if (bvapp != null)
+                MerchantTribeApplication app = ((Controllers.Shared.BaseStoreController)filterContext.Controller).MTApp;
+                if (app != null)
                 {
-                    if (!SessionManager.IsUserAuthenticated(bvapp))
+                    if (!SessionManager.IsUserAuthenticated(app))
                     {
                         filterContext.HttpContext.Response.Redirect("~/signin");
                     }

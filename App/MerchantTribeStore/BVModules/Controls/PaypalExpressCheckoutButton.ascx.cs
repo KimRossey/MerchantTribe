@@ -42,10 +42,10 @@ namespace BVCommerce
             }
             if (!args.Failed)
             {
-                Order Basket = SessionManager.CurrentShoppingCart(MyPage.BVApp.OrderServices);
+                Order Basket = SessionManager.CurrentShoppingCart(MyPage.MTApp.OrderServices);
                 // Save as Order
                 MerchantTribe.Commerce.BusinessRules.OrderTaskContext c 
-                    = new MerchantTribe.Commerce.BusinessRules.OrderTaskContext(MyPage.BVApp);
+                    = new MerchantTribe.Commerce.BusinessRules.OrderTaskContext(MyPage.MTApp);
                 c.UserId = SessionManager.GetCurrentUserId();
                 c.Order = Basket;
                 bool checkoutFailed = false;
@@ -114,7 +114,7 @@ namespace BVCommerce
             {
                 MerchantTribe.Commerce.Payment.AvailablePayments availablePayments = new MerchantTribe.Commerce.Payment.AvailablePayments();
                 Collection<DisplayPaymentMethod> enabledMethods;
-                enabledMethods = availablePayments.EnabledMethods(MyPage.BVApp.CurrentStore);
+                enabledMethods = availablePayments.EnabledMethods(MyPage.MTApp.CurrentStore);
 
                 this.Visible = false;
                 foreach (DisplayPaymentMethod m in enabledMethods)

@@ -28,7 +28,7 @@ namespace BVCommerce.BVAdmin.Catalog
             long facetId = 0;
             long.TryParse(id, out facetId);
 
-            CategoryFacetManager manager = CategoryFacetManager.InstantiateForDatabase(BVApp.CurrentRequestContext);
+            CategoryFacetManager manager = CategoryFacetManager.InstantiateForDatabase(MTApp.CurrentRequestContext);
             result = manager.Delete(facetId);
             if ((result))
             {

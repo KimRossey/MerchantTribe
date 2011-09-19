@@ -26,13 +26,13 @@ namespace BVCommerce.BVAdmin.Configuration
             if (!Page.IsPostBack)
             {
                 LoadApiKeys();
-                this.litTimeLimit.Text = BVApp.CurrentStore.Settings.AllowApiToClearUntil.ToString("u");
+                this.litTimeLimit.Text = MTApp.CurrentStore.Settings.AllowApiToClearUntil.ToString("u");
             }
         }
       
         private void LoadApiKeys()
         {
-            List<ApiKey> keys = BVApp.AccountServices.ApiKeys.FindByStoreId(BVApp.CurrentStore.Id);
+            List<ApiKey> keys = MTApp.AccountServices.ApiKeys.FindByStoreId(MTApp.CurrentStore.Id);
             
             StringBuilder sb = new StringBuilder();
             sb.Append("<ul class=\"apikeys\">");
@@ -55,12 +55,12 @@ namespace BVCommerce.BVAdmin.Configuration
             this.MessageBox1.ClearMessage();
 
             ApiKey key = new ApiKey();
-            key.StoreId = BVApp.CurrentStore.Id;
+            key.StoreId = MTApp.CurrentStore.Id;
             string k = System.Guid.NewGuid().ToString();
             k = key.StoreId.ToString() + "-" + k;
             key.Key = k;
 
-            if (BVApp.AccountServices.ApiKeys.Create(key))
+            if (MTApp.AccountServices.ApiKeys.Create(key))
             {
                 this.MessageBox1.ShowOk("New API key created!");
             }
@@ -74,9 +74,9 @@ namespace BVCommerce.BVAdmin.Configuration
 
         protected void btnResetClearTime_Click(object sender, EventArgs e)
         {
-            BVApp.CurrentStore.Settings.AllowApiToClearUntil = DateTime.UtcNow.AddHours(1);            
-            BVApp.AccountServices.Stores.Update(BVApp.CurrentStore);
-            this.litTimeLimit.Text = BVApp.CurrentStore.Settings.AllowApiToClearUntil.ToString("u");
+            MTApp.CurrentStore.Settings.AllowApiToClearUntil = DateTime.UtcNow.AddHours(1);            
+            MTApp.AccountServices.Stores.Update(MTApp.CurrentStore);
+            this.litTimeLimit.Text = MTApp.CurrentStore.Settings.AllowApiToClearUntil.ToString("u");
             this.LoadApiKeys();
         }
     }

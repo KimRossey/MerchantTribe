@@ -15,7 +15,7 @@ namespace BVCommerce.BVAdmin.Catalog
             if (!Page.IsPostBack)
             {
                 string bvin = Request.QueryString["id"];
-                bool result = BVApp.CatalogServices.ProductFiles.Delete(bvin);
+                bool result = MTApp.CatalogServices.ProductFiles.Delete(bvin);
                 if (result)
                 {
                     Response.Redirect("FileVault.aspx", false);

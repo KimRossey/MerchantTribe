@@ -42,7 +42,7 @@ namespace BVCommerce.Controllers
 
         private Policy LoadPolicy(PolicyType type)
         {
-            Policy p = BVApp.ContentServices.Policies.FindOrCreateByType(type);
+            Policy p = MTApp.ContentServices.Policies.FindOrCreateByType(type);
             if (p == null) p = new Policy();
             return p;            
         }

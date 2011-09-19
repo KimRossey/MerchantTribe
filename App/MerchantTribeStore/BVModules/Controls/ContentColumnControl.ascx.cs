@@ -38,11 +38,11 @@ namespace BVCommerce
 
             if (_ColumnID != string.Empty)
             {
-                c = MyPage.BVApp.ContentServices.Columns.Find(_ColumnID);
+                c = MyPage.MTApp.ContentServices.Columns.Find(_ColumnID);
             }
             else
             {
-                c = MyPage.BVApp.ContentServices.Columns.FindByDisplayName(_ColumnName);
+                c = MyPage.MTApp.ContentServices.Columns.FindByDisplayName(_ColumnName);
             }
 
             if (c != null)

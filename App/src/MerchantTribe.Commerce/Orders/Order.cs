@@ -832,7 +832,7 @@ namespace MerchantTribe.Commerce.Orders
             ShippingProviderServiceCode = string.Empty;
         }
 
-        public List<Content.HtmlTemplateTag> GetReplaceableTags(BVApplication bvapp)
+        public List<Content.HtmlTemplateTag> GetReplaceableTags(MerchantTribeApplication app)
         {
             Accounts.Store currentStore = RequestContext.GetCurrentRequestContext().CurrentStore;
 

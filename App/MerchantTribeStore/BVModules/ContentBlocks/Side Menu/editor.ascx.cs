@@ -16,7 +16,7 @@ namespace BVCommerce
 
             if (!Page.IsPostBack)
             {
-                ContentBlock b = MyPage.BVApp.ContentServices.Columns.FindBlock(this.BlockId);
+                ContentBlock b = MyPage.MTApp.ContentServices.Columns.FindBlock(this.BlockId);
                 if (b != null)
                 {
                     LoadItems(b);
@@ -34,18 +34,18 @@ namespace BVCommerce
 
         protected void btnOkay_Click(object sender, System.Web.UI.ImageClickEventArgs e)
         {
-            ContentBlock b = MyPage.BVApp.ContentServices.Columns.FindBlock(this.BlockId);
+            ContentBlock b = MyPage.MTApp.ContentServices.Columns.FindBlock(this.BlockId);
             if (b != null)
             {
                 b.BaseSettings.AddOrUpdate("Title", this.TitleField.Text.Trim());
-                MyPage.BVApp.ContentServices.Columns.UpdateBlock(b);
+                MyPage.MTApp.ContentServices.Columns.UpdateBlock(b);
             }
             this.NotifyFinishedEditing();
         }
 
         protected void btnNew_Click(object sender, System.Web.UI.ImageClickEventArgs e)
         {
-            ContentBlock b = MyPage.BVApp.ContentServices.Columns.FindBlock(this.BlockId);
+            ContentBlock b = MyPage.MTApp.ContentServices.Columns.FindBlock(this.BlockId);
 
             ContentBlockSettingListItem c = new ContentBlockSettingListItem();
 
@@ -65,7 +65,7 @@ namespace BVCommerce
                 }
                 c.Setting4 = this.AltTextField.Text.Trim();
                 c.Setting5 = this.CssClassField.Text.Trim();
-                MyPage.BVApp.ContentServices.Columns.UpdateBlock(b);
+                MyPage.MTApp.ContentServices.Columns.UpdateBlock(b);
                 ClearEditor();
             }
             else
@@ -85,7 +85,7 @@ namespace BVCommerce
                 c.Setting5 = this.CssClassField.Text.Trim();
                 c.ListName = SettingListName;
                 b.Lists.AddItem(c);
-                MyPage.BVApp.ContentServices.Columns.UpdateBlock(b);
+                MyPage.MTApp.ContentServices.Columns.UpdateBlock(b);
             }
             LoadItems(b);
         }
@@ -103,26 +103,26 @@ namespace BVCommerce
 
         protected void GridView1_RowCancelingEdit(object sender, System.Web.UI.WebControls.GridViewCancelEditEventArgs e)
         {
-            ContentBlock b = MyPage.BVApp.ContentServices.Columns.FindBlock(this.BlockId);
+            ContentBlock b = MyPage.MTApp.ContentServices.Columns.FindBlock(this.BlockId);
             string bvin = string.Empty;
             bvin = ((GridView)sender).DataKeys[e.RowIndex].Value.ToString();
             b.Lists.MoveItemDown(bvin, SettingListName);
-            MyPage.BVApp.ContentServices.Columns.UpdateBlock(b);
+            MyPage.MTApp.ContentServices.Columns.UpdateBlock(b);
             LoadItems(b);
         }
 
         protected void GridView1_RowDeleting(object sender, System.Web.UI.WebControls.GridViewDeleteEventArgs e)
         {
-            ContentBlock b = MyPage.BVApp.ContentServices.Columns.FindBlock(this.BlockId);
+            ContentBlock b = MyPage.MTApp.ContentServices.Columns.FindBlock(this.BlockId);
             string bvin = (string)this.GridView1.DataKeys[e.RowIndex].Value;
             b.Lists.RemoveItem(bvin);
-            MyPage.BVApp.ContentServices.Columns.UpdateBlock(b);
+            MyPage.MTApp.ContentServices.Columns.UpdateBlock(b);
             LoadItems(b);
         }
 
         protected void GridView1_RowEditing(object sender, System.Web.UI.WebControls.GridViewEditEventArgs e)
         {
-            ContentBlock b = MyPage.BVApp.ContentServices.Columns.FindBlock(this.BlockId);
+            ContentBlock b = MyPage.MTApp.ContentServices.Columns.FindBlock(this.BlockId);
             string bvin = (string)GridView1.DataKeys[e.NewEditIndex].Value;
             ContentBlockSettingListItem c = b.Lists.FindSingleItem(bvin);
             if (c != null)
@@ -146,11 +146,11 @@ namespace BVCommerce
 
         protected void GridView1_RowUpdating(object sender, System.Web.UI.WebControls.GridViewUpdateEventArgs e)
         {
-            ContentBlock b = MyPage.BVApp.ContentServices.Columns.FindBlock(this.BlockId);
+            ContentBlock b = MyPage.MTApp.ContentServices.Columns.FindBlock(this.BlockId);
             string bvin = string.Empty;
             bvin = ((GridView)sender).DataKeys[e.RowIndex].Value.ToString();
             b.Lists.MoveItemUp(bvin, SettingListName);
-            MyPage.BVApp.ContentServices.Columns.UpdateBlock(b);
+            MyPage.MTApp.ContentServices.Columns.UpdateBlock(b);
             LoadItems(b);
         }
 

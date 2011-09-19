@@ -25,15 +25,15 @@ namespace BVCommerce
 
         private void Delete(string id)
         {
-            Option opt = BVApp.CatalogServices.ProductOptions.Find(id);
+            Option opt = MTApp.CatalogServices.ProductOptions.Find(id);
             if ((opt != null))
             {
 
                 // Make sure we update any products that have this assigned so that
                 // variants make sense.
-                BVApp.CatalogServices.ValidateVariantsForSharedOption(opt);
+                MTApp.CatalogServices.ValidateVariantsForSharedOption(opt);
 
-                if ((BVApp.CatalogServices.ProductOptions.Delete(id)))
+                if ((MTApp.CatalogServices.ProductOptions.Delete(id)))
                 {
                     this.litOutput.Text = "{\"result\":true}";
                 }

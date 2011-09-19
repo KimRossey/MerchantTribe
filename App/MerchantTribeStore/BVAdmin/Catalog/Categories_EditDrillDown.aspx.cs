@@ -72,7 +72,7 @@ namespace BVCommerce.BVAdmin.Catalog
         private void PopulatePropertyList()
         {
             this.lstProperty.Items.Clear();
-            foreach (ProductProperty p in BVApp.CatalogServices.ProductProperties.FindAll())
+            foreach (ProductProperty p in MTApp.CatalogServices.ProductProperties.FindAll())
             {
                 this.lstProperty.Items.Add(new System.Web.UI.WebControls.ListItem(p.PropertyName, p.Id.ToString()));
             }
@@ -88,7 +88,7 @@ namespace BVCommerce.BVAdmin.Catalog
 
         private Category LoadCategory()
         {
-            Category c = BVApp.CatalogServices.Categories.Find(this.BvinField.Value);
+            Category c = MTApp.CatalogServices.Categories.Find(this.BvinField.Value);
             if (c != null)
             {
 
@@ -113,7 +113,7 @@ namespace BVCommerce.BVAdmin.Catalog
             HyperLink m = new HyperLink();
             m.ImageUrl = "~/BVAdmin/Images/Buttons/ViewInStore.png";
             m.ToolTip = c.MetaTitle;
-            m.NavigateUrl = UrlRewriter.BuildUrlForCategory(new CategorySnapshot(c), BVApp.CurrentRequestContext.RoutingContext);
+            m.NavigateUrl = UrlRewriter.BuildUrlForCategory(new CategorySnapshot(c), MTApp.CurrentRequestContext.RoutingContext);
             m.EnableViewState = false;
             this.inStore.Controls.Add(m);
 
@@ -123,7 +123,7 @@ namespace BVCommerce.BVAdmin.Catalog
         {
             bool result = false;
 
-            Category c = BVApp.CatalogServices.Categories.Find(this.BvinField.Value);
+            Category c = MTApp.CatalogServices.Categories.Find(this.BvinField.Value);
             if (c == null)
             {
                 c = new Category();
@@ -154,11 +154,11 @@ namespace BVCommerce.BVAdmin.Catalog
                 if (this.BvinField.Value == string.Empty)
                 {
                     c.ParentId = this.ParentIDField.Value;
-                    result = BVApp.CatalogServices.Categories.Create(c);
+                    result = MTApp.CatalogServices.Categories.Create(c);
                 }
                 else
                 {
-                    result = BVApp.CatalogServices.Categories.Update(c);
+                    result = MTApp.CatalogServices.Categories.Update(c);
                 }
 
                 if (result == false)
@@ -206,7 +206,7 @@ namespace BVCommerce.BVAdmin.Catalog
             if (this.Save())
             {
                 MessageBox1.ShowOk("Category Updated Successfully.");
-                Category cat = BVApp.CatalogServices.Categories.Find(this.BvinField.Value);
+                Category cat = MTApp.CatalogServices.Categories.Find(this.BvinField.Value);
                 if (cat != null && cat.Bvin != string.Empty)
                 {
                     PopulateStoreLink(cat);
@@ -226,7 +226,7 @@ namespace BVCommerce.BVAdmin.Catalog
         {
             StringBuilder sb = new StringBuilder();
 
-            CategoryFacetManager manager = CategoryFacetManager.InstantiateForDatabase(BVApp.CurrentRequestContext);
+            CategoryFacetManager manager = CategoryFacetManager.InstantiateForDatabase(MTApp.CurrentRequestContext);
 
             List<CategoryFacet> allFacets = manager.FindByCategory(this.BvinField.Value);
 
@@ -290,7 +290,7 @@ namespace BVCommerce.BVAdmin.Catalog
         {
             this.Save();
 
-            CategoryFacetManager manager = CategoryFacetManager.InstantiateForDatabase(BVApp.CurrentRequestContext);
+            CategoryFacetManager manager = CategoryFacetManager.InstantiateForDatabase(MTApp.CurrentRequestContext);
             CategoryFacet f = new CategoryFacet();
             f.CategoryId = this.BvinField.Value;
             f.PropertyId = long.Parse(this.lstProperty.SelectedItem.Value);

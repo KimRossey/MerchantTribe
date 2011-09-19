@@ -21,7 +21,7 @@ namespace BVCommerce
                 BindQuestionsGrid();
 
                 //update questions with an order
-                List<UserQuestion> questions = BVApp.MembershipServices.UserQuestions.FindAll();
+                List<UserQuestion> questions = MTApp.MembershipServices.UserQuestions.FindAll();
                 int count = 1;
                 foreach (UserQuestion question in questions)
                 {
@@ -34,14 +34,14 @@ namespace BVCommerce
                     }
                     question.Order = count;
                     count += 1;
-                    BVApp.MembershipServices.UserQuestions.Update(question);
+                    MTApp.MembershipServices.UserQuestions.Update(question);
                 }
             }
         }
 
         protected void BindQuestionsGrid()
         {
-            QuestionsGridView.DataSource = BVApp.MembershipServices.UserQuestions.FindAll();
+            QuestionsGridView.DataSource = MTApp.MembershipServices.UserQuestions.FindAll();
             QuestionsGridView.DataKeyNames = new string[] { "bvin" };
             QuestionsGridView.DataBind();
         }
@@ -61,7 +61,7 @@ namespace BVCommerce
 
         protected void QuestionsGridView_RowDeleting(object sender, System.Web.UI.WebControls.GridViewDeleteEventArgs e)
         {
-            BVApp.MembershipServices.UserQuestions.Delete((string)QuestionsGridView.DataKeys[e.RowIndex].Value);
+            MTApp.MembershipServices.UserQuestions.Delete((string)QuestionsGridView.DataKeys[e.RowIndex].Value);
             BindQuestionsGrid();
         }
 
@@ -81,11 +81,11 @@ namespace BVCommerce
                     //the down arrow actually moves items up the list
                     if ((string)e.CommandArgument == "Down")
                     {
-                        BVApp.MembershipServices.UserQuestions.MoveUp(_primaryKey);
+                        MTApp.MembershipServices.UserQuestions.MoveUp(_primaryKey);
                     }
                     else if ((string)e.CommandArgument == "Up")
                     {
-                        BVApp.MembershipServices.UserQuestions.MoveDown(_primaryKey);
+                        MTApp.MembershipServices.UserQuestions.MoveDown(_primaryKey);
                     }
                     BindQuestionsGrid();
                 }

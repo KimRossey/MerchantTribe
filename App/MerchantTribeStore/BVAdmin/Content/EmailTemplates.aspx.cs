@@ -33,7 +33,7 @@ namespace BVCommerce
 
         private void LoadTemplates()
         {
-            List<HtmlTemplate> templates = BVApp.ContentServices.GetAllTemplatesForStoreOrDefaults();
+            List<HtmlTemplate> templates = MTApp.ContentServices.GetAllTemplatesForStoreOrDefaults();
             this.GridView1.DataSource = templates;
             this.GridView1.DataBind();
             this.lblResults.Text = templates.Count + " Templates Found";
@@ -43,7 +43,7 @@ namespace BVCommerce
         {
             msg.ClearMessage();
             long templateId = (long)GridView1.DataKeys[e.RowIndex].Value;
-            if (BVApp.ContentServices.HtmlTemplates.Delete(templateId) == false)
+            if (MTApp.ContentServices.HtmlTemplates.Delete(templateId) == false)
             {
                 this.msg.ShowWarning("Unable to delete this template.");
             }

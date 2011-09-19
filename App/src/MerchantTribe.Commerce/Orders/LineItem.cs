@@ -91,9 +91,9 @@ namespace MerchantTribe.Commerce.Orders
             Init();
         }
 
-        public Catalog.Product GetAssociatedProduct(BVApplication bvapp)
+        public Catalog.Product GetAssociatedProduct(MerchantTribeApplication app)
         {
-            return bvapp.CatalogServices.Products.Find(this.ProductId);
+            return app.CatalogServices.Products.Find(this.ProductId);
         }
 
         // Custom Property Helpers
@@ -296,7 +296,7 @@ namespace MerchantTribe.Commerce.Orders
             return sb.ToString();
         }
 
-        public List<Content.HtmlTemplateTag> GetReplaceableTags(BVApplication bvapp)
+        public List<Content.HtmlTemplateTag> GetReplaceableTags(MerchantTribeApplication app)
         {
             List<Content.HtmlTemplateTag> result = new List<Content.HtmlTemplateTag>();
 

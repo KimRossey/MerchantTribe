@@ -11,7 +11,7 @@ namespace BVCommerce.api.rest
 {
     public class CategoriesHandler : BaseRestHandler
     {
-        public CategoriesHandler(MerchantTribe.Commerce.BVApplication app)
+        public CategoriesHandler(MerchantTribe.Commerce.MerchantTribeApplication app)
             : base(app)
         {
 
@@ -32,11 +32,11 @@ namespace BVCommerce.api.rest
 
                 if (byproduct.Trim().Length > 0)
                 {
-                    results = BVApp.CatalogServices.FindCategoriesForProduct(byproduct);
+                    results = MTApp.CatalogServices.FindCategoriesForProduct(byproduct);
                 }
                 else
                 {
-                    results = BVApp.CatalogServices.Categories.FindAll();
+                    results = MTApp.CatalogServices.Categories.FindAll();
                 }
 
                 List<CategorySnapshotDTO> dto = new List<CategorySnapshotDTO>();
@@ -59,11 +59,11 @@ namespace BVCommerce.api.rest
 
                 if (byslug.Trim().Length > 0)
                 {
-                    c = BVApp.CatalogServices.Categories.FindBySlug(byslug);
+                    c = MTApp.CatalogServices.Categories.FindBySlug(byslug);
                 }
                 else
                 {
-                    c = BVApp.CatalogServices.Categories.Find(bvin);
+                    c = MTApp.CatalogServices.Categories.Find(bvin);
                 }
 
                 if (c == null)
@@ -103,16 +103,16 @@ namespace BVCommerce.api.rest
 
             if (bvin == string.Empty)
             {
-                if (BVApp.CatalogServices.Categories.Create(c))
+                if (MTApp.CatalogServices.Categories.Create(c))
                 {
                     bvin = c.Bvin;
                 }
             }
             else
             {
-                BVApp.CatalogServices.Categories.Update(c);
+                MTApp.CatalogServices.Categories.Update(c);
             }
-            Category resultCategory = BVApp.CatalogServices.Categories.Find(bvin);                    
+            Category resultCategory = MTApp.CatalogServices.Categories.Find(bvin);                    
             if (resultCategory != null) response.Content = resultCategory.ToDto();
             
             data = MerchantTribe.Web.Json.ObjectToJson(response);            
@@ -128,12 +128,12 @@ namespace BVCommerce.api.rest
             if (bvin == string.Empty)
             {
                 // Clear Requested
-                response.Content = BVApp.DestroyAllCategories();
+                response.Content = MTApp.DestroyAllCategories();
             }
             else
             {
                 // Single Item Delete
-                response.Content = BVApp.CatalogServices.Categories.Delete(bvin);
+                response.Content = MTApp.CatalogServices.Categories.Delete(bvin);
             }
 
             data = MerchantTribe.Web.Json.ObjectToJson(response);

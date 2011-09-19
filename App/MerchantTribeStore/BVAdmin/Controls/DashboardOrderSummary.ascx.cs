@@ -14,7 +14,7 @@ namespace BVCommerce
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            OrderSummary summary = new OrderSummary(MyPage.BVApp.CurrentStore.Id);
+            OrderSummary summary = new OrderSummary(MyPage.MTApp.CurrentStore.Id);
             this.litNewCount.Text = summary.NewOrderCount.ToString();
             this.litHoldCount.Text = summary.OnHoldOrderCount.ToString();
             this.litPaymentCount.Text = summary.ReadyForPaymentOrderCount.ToString();

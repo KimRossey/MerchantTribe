@@ -40,9 +40,9 @@ namespace MerchantTribe.Commerce.Marketing.PromotionQualifications
             SetSetting("TypeIds", all);
         }
 
-        public override string FriendlyDescription(BVApplication bvapp)
+        public override string FriendlyDescription(MerchantTribeApplication app)
         {
-            List<Catalog.ProductType> allTypes = bvapp.CatalogServices.ProductTypes.FindAll();
+            List<Catalog.ProductType> allTypes = app.CatalogServices.ProductTypes.FindAll();
             allTypes.Insert(0, new Catalog.ProductType() { Bvin = "0", ProductTypeName = "Generic" });
 
             string result = "When Product Type is:<ul>";

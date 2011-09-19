@@ -11,7 +11,7 @@ namespace BVCommerce.api.rest
 {
     public class ProductOptionsHandler: BaseRestHandler
     {
-        public ProductOptionsHandler(MerchantTribe.Commerce.BVApplication app)
+        public ProductOptionsHandler(MerchantTribe.Commerce.MerchantTribeApplication app)
             : base(app)
         {
 
@@ -31,11 +31,11 @@ namespace BVCommerce.api.rest
                 List<Option> results;
                 if (productBvin.Trim().Length > 0)
                 {
-                    results = BVApp.CatalogServices.ProductOptions.FindAllShared(1, 1000);
+                    results = MTApp.CatalogServices.ProductOptions.FindAllShared(1, 1000);
                 }
                 else
                 {
-                    results = BVApp.CatalogServices.ProductOptions.FindByProductId(productBvin);
+                    results = MTApp.CatalogServices.ProductOptions.FindByProductId(productBvin);
                 }                 
                 List<OptionDTO> dto = new List<OptionDTO>();
 
@@ -51,7 +51,7 @@ namespace BVCommerce.api.rest
                 // Find One Specific Category
                 ApiResponse<OptionDTO> response = new ApiResponse<OptionDTO>();                                
                 string bvin = FirstParameter(parameters);
-                Option item = BVApp.CatalogServices.ProductOptions.Find(bvin);
+                Option item = MTApp.CatalogServices.ProductOptions.Find(bvin);
                 if (item == null)
                 {
                     response.Errors.Add(new ApiError("NULL", "Could not locate that item. Check bvin and try again."));
@@ -79,13 +79,13 @@ namespace BVCommerce.api.rest
             {
                 // Generate Variants Only
                 ApiResponse<bool> response = new ApiResponse<bool>();
-                Product p = BVApp.CatalogServices.Products.Find(productBvin);
+                Product p = MTApp.CatalogServices.Products.Find(productBvin);
                 if (p == null | p.Bvin == string.Empty)
                 {                    
                     data = MerchantTribe.Web.Json.ObjectToJson(response);
                     return data;
                 }
-                BVApp.CatalogServices.VariantsGenerateAllPossible(p);
+                MTApp.CatalogServices.VariantsGenerateAllPossible(p);
                 response.Content = true;
                 data = MerchantTribe.Web.Json.ObjectToJson(response);   
             }
@@ -96,16 +96,16 @@ namespace BVCommerce.api.rest
 
                 // Assign to Products
                 ApiResponse<bool> response = new ApiResponse<bool>();
-                Product p = BVApp.CatalogServices.Products.Find(productBvin);
+                Product p = MTApp.CatalogServices.Products.Find(productBvin);
                 if (p == null || p.Bvin == string.Empty)
                 {
                     data = MerchantTribe.Web.Json.ObjectToJson(response);
                     return data;
                 }
-                BVApp.CatalogServices.ProductsAddOption(p, bvin);                
+                MTApp.CatalogServices.ProductsAddOption(p, bvin);                
                 if (generatevariants.Trim() == "1")
                 {
-                    BVApp.CatalogServices.VariantsGenerateAllPossible(p);                    
+                    MTApp.CatalogServices.VariantsGenerateAllPossible(p);                    
                 }
                 response.Content = true;
                 data = MerchantTribe.Web.Json.ObjectToJson(response);            
@@ -125,11 +125,11 @@ namespace BVCommerce.api.rest
                     return MerchantTribe.Web.Json.ObjectToJson(response);
                 }
 
-                Option existing = BVApp.CatalogServices.ProductOptions.Find(postedItem.Bvin);
+                Option existing = MTApp.CatalogServices.ProductOptions.Find(postedItem.Bvin);
 
                 if (existing == null || existing.Bvin == string.Empty)
                 {
-                    postedItem.StoreId = BVApp.CurrentStore.Id;
+                    postedItem.StoreId = MTApp.CurrentStore.Id;
 
                     // Create
                     Option op = new Option();
@@ -141,9 +141,9 @@ namespace BVCommerce.api.rest
 
                     op.FromDto(postedItem);
 
-                    bool createResult = BVApp.CatalogServices.ProductOptions.Create(op);
+                    bool createResult = MTApp.CatalogServices.ProductOptions.Create(op);
 
-                    Option created = BVApp.CatalogServices.ProductOptions.Find(postedItem.Bvin);
+                    Option created = MTApp.CatalogServices.ProductOptions.Find(postedItem.Bvin);
                     if (postedItem.Items != null)
                     {
                         foreach (OptionItemDTO oi in postedItem.Items)
@@ -153,7 +153,7 @@ namespace BVCommerce.api.rest
                             i.FromDto(oi);                            
                             created.Items.Add(i);                            
                         }
-                        BVApp.CatalogServices.ProductOptions.Update(created);
+                        MTApp.CatalogServices.ProductOptions.Update(created);
                     }
                     response.Content = ((Option)created).ToDto();
                 }
@@ -176,7 +176,7 @@ namespace BVCommerce.api.rest
             ApiResponse<bool> response = new ApiResponse<bool>();
 
                 // Single Item Delete
-                response.Content = BVApp.CatalogServices.ProductOptions.Delete(bvin);
+                response.Content = MTApp.CatalogServices.ProductOptions.Delete(bvin);
 
             data = MerchantTribe.Web.Json.ObjectToJson(response);
             return data;

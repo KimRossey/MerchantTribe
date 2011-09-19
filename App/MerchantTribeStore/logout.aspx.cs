@@ -13,7 +13,7 @@ namespace BVCommerce
         {
             base.OnLoad(e);
 
-            BVApp.MembershipServices.LogoutCustomer(this.Request.RequestContext.HttpContext);
+            MTApp.MembershipServices.LogoutCustomer(this.Request.RequestContext.HttpContext);
             Response.Redirect("~/");
                                     
         }

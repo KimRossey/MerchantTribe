@@ -73,7 +73,7 @@ namespace MerchantTribe.Commerce.Tests
         {
             
             RequestContext c = new RequestContext();
-            BVApplication bvapp = BVApplication.InstantiateForMemory(c);
+            MerchantTribeApplication app = MerchantTribeApplication.InstantiateForMemory(c);
             c.CurrentStore = new Accounts.Store();
             c.CurrentStore.Id = 1;
 
@@ -83,11 +83,11 @@ namespace MerchantTribe.Commerce.Tests
                                            ProductSku = "ABC123", 
                                            Quantity = 2 };
             target.Items.Add(li);
-            bvapp.CalculateOrder(target);
+            app.CalculateOrder(target);
             Assert.AreEqual(39.98m, target.TotalOrderBeforeDiscounts, "SubTotal was Incorrect");
             Assert.AreEqual(39.98m, target.TotalGrand, "Grand Total was incorrect");
             
-            bool upsertResult = bvapp.OrderServices.Orders.Upsert(target);
+            bool upsertResult = app.OrderServices.Orders.Upsert(target);
             Assert.IsTrue(upsertResult, "Order Upsert Failed");
 
             Assert.AreEqual(c.CurrentStore.Id, target.StoreId, "Order store ID was not set correctly");
@@ -102,7 +102,7 @@ namespace MerchantTribe.Commerce.Tests
         {
 
             RequestContext c = new RequestContext();
-            BVApplication bvapp = BVApplication.InstantiateForMemory(c);
+            MerchantTribeApplication app = MerchantTribeApplication.InstantiateForMemory(c);
             c.CurrentStore = new Accounts.Store();
             c.CurrentStore.Id = 1;
 
@@ -114,7 +114,7 @@ namespace MerchantTribe.Commerce.Tests
             m.Bvin = System.Guid.NewGuid().ToString();
             m.Name = "Sample Order";
             m.ZoneId = -100; // US All Zone
-            bvapp.OrderServices.ShippingMethods.Create(m);            
+            app.OrderServices.ShippingMethods.Create(m);            
 
             Order target = new Order();
             target.BillingAddress.City = "Richmond";
@@ -156,7 +156,7 @@ namespace MerchantTribe.Commerce.Tests
             };
             target.Items.Add(li2);
 
-            bvapp.CalculateOrder(target);
+            app.CalculateOrder(target);
             Assert.AreEqual(39.98m, target.TotalOrderBeforeDiscounts, "SubTotal was Incorrect");
             Assert.AreEqual(1.50m, target.TotalShippingBeforeDiscounts, "Shipping Total was Incorrect");
             Assert.AreEqual(41.48m, target.TotalGrand, "Grand Total was incorrect");
@@ -167,7 +167,7 @@ namespace MerchantTribe.Commerce.Tests
         {
 
             RequestContext c = new RequestContext();
-            BVApplication bvapp = BVApplication.InstantiateForMemory(c);
+            MerchantTribeApplication app = MerchantTribeApplication.InstantiateForMemory(c);
             c.CurrentStore = new Accounts.Store();
             c.CurrentStore.Id = 1;
 
@@ -179,7 +179,7 @@ namespace MerchantTribe.Commerce.Tests
             m.Bvin = System.Guid.NewGuid().ToString();
             m.Name = "Sample Order";
             m.ZoneId = -100; // US All Zone
-            bvapp.OrderServices.ShippingMethods.Create(m);
+            app.OrderServices.ShippingMethods.Create(m);
 
             Order target = new Order();
             target.BillingAddress.City = "Richmond";
@@ -221,7 +221,7 @@ namespace MerchantTribe.Commerce.Tests
             };
             target.Items.Add(li2);
 
-            bvapp.CalculateOrder(target);
+            app.CalculateOrder(target);
             Assert.AreEqual(39.98m, target.TotalOrderBeforeDiscounts, "SubTotal was Incorrect");
             Assert.AreEqual(0m, target.TotalShippingBeforeDiscounts, "Shipping Total was Incorrect");
             Assert.AreEqual(39.98m, target.TotalGrand, "Grand Total was incorrect");
@@ -232,7 +232,7 @@ namespace MerchantTribe.Commerce.Tests
         {
 
             RequestContext c = new RequestContext();
-            BVApplication bvapp = BVApplication.InstantiateForMemory(c);
+            MerchantTribeApplication app = MerchantTribeApplication.InstantiateForMemory(c);
             c.CurrentStore = new Accounts.Store();
             c.CurrentStore.Id = 1;
 
@@ -244,7 +244,7 @@ namespace MerchantTribe.Commerce.Tests
             m.Bvin = System.Guid.NewGuid().ToString();
             m.Name = "Sample Order";
             m.ZoneId = -100; // US All Zone
-            bvapp.OrderServices.ShippingMethods.Create(m);
+            app.OrderServices.ShippingMethods.Create(m);
 
             Order target = new Order();
             target.BillingAddress.City = "Richmond";
@@ -288,7 +288,7 @@ namespace MerchantTribe.Commerce.Tests
 
             target.TotalShippingBeforeDiscountsOverride = 5.00m;
 
-            bvapp.CalculateOrder(target);
+            app.CalculateOrder(target);
             Assert.AreEqual(39.98m, target.TotalOrderBeforeDiscounts, "SubTotal was Incorrect");
             Assert.AreEqual(5.00m, target.TotalShippingBeforeDiscounts, "Shipping Total was not overridden");
             Assert.AreEqual(44.98m, target.TotalGrand, "Grand Total was incorrect");

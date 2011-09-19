@@ -39,7 +39,7 @@ namespace BVCommerce
 
         private void LoadCountries()
         {
-            List<Country> countries = MyPage.BVApp.CurrentStore.Settings.FindActiveCountries();
+            List<Country> countries = MyPage.MTApp.CurrentStore.Settings.FindActiveCountries();
             this.shippingcountryname.Items.Clear();
             foreach (Country c in countries)
             {

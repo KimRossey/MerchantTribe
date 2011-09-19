@@ -31,7 +31,7 @@ namespace BVCommerce
         private void Resort(string ids, string parentId)
         {
 
-            List<CategorySnapshot> children = BVApp.CatalogServices.Categories.FindChildren(parentId);
+            List<CategorySnapshot> children = MTApp.CatalogServices.Categories.FindChildren(parentId);
 
             string[] sorted = ids.Split(',');
             List<string> l = new List<string>();
@@ -47,10 +47,10 @@ namespace BVCommerce
                 {
                     if (child.Bvin == s)
                     {
-                        Category c = BVApp.CatalogServices.Categories.Find(child.Bvin);
+                        Category c = MTApp.CatalogServices.Categories.Find(child.Bvin);
                         c.SortOrder = counter;
                         counter += 1;
-                        BVApp.CatalogServices.Categories.Update(c);
+                        MTApp.CatalogServices.Categories.Update(c);
                     }
                 }
             }

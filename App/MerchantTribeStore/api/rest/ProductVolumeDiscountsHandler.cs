@@ -12,7 +12,7 @@ namespace BVCommerce.api.rest
 {
     public class ProductVolumeDiscountsHandler: BaseRestHandler
     {
-        public ProductVolumeDiscountsHandler(MerchantTribe.Commerce.BVApplication app)
+        public ProductVolumeDiscountsHandler(MerchantTribe.Commerce.MerchantTribeApplication app)
             : base(app)
         {
 
@@ -26,7 +26,7 @@ namespace BVCommerce.api.rest
             // Find One Specific Category
             ApiResponse<ProductVolumeDiscountDTO> response = new ApiResponse<ProductVolumeDiscountDTO>();
             string bvin = FirstParameter(parameters);
-            ProductVolumeDiscount item = BVApp.CatalogServices.VolumeDiscounts.Find(bvin);
+            ProductVolumeDiscount item = MTApp.CatalogServices.VolumeDiscounts.Find(bvin);
             if (item == null)
             {
                 response.Errors.Add(new ApiError("NULL", "Could not locate that item. Check bvin and try again."));
@@ -63,16 +63,16 @@ namespace BVCommerce.api.rest
 
             if (bvin == string.Empty)
             {
-                if (BVApp.CatalogServices.VolumeDiscounts.Create(item))
+                if (MTApp.CatalogServices.VolumeDiscounts.Create(item))
                 {
                     bvin = item.Bvin;
                 }
             }
             else
             {
-                BVApp.CatalogServices.VolumeDiscounts.Update(item);
+                MTApp.CatalogServices.VolumeDiscounts.Update(item);
             }
-            ProductVolumeDiscount resultItem = BVApp.CatalogServices.VolumeDiscounts.Find(bvin);
+            ProductVolumeDiscount resultItem = MTApp.CatalogServices.VolumeDiscounts.Find(bvin);
             if (resultItem != null) response.Content = resultItem.ToDto();
 
             data = MerchantTribe.Web.Json.ObjectToJson(response);
@@ -86,7 +86,7 @@ namespace BVCommerce.api.rest
             ApiResponse<bool> response = new ApiResponse<bool>();
 
             // Single Item Delete
-            response.Content = BVApp.CatalogServices.VolumeDiscounts.Delete(bvin);
+            response.Content = MTApp.CatalogServices.VolumeDiscounts.Delete(bvin);
 
             data = MerchantTribe.Web.Json.ObjectToJson(response);
             return data;

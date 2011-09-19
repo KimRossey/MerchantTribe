@@ -32,7 +32,7 @@ namespace BVCommerce.BVAdmin.Catalog
             long theParentId = 0;
             long.TryParse(parentId, out theParentId);
 
-            CategoryFacetManager manager = CategoryFacetManager.InstantiateForDatabase(BVApp.CurrentRequestContext);
+            CategoryFacetManager manager = CategoryFacetManager.InstantiateForDatabase(MTApp.CurrentRequestContext);
 
             List<CategoryFacet> children = manager.FindByParent(theParentId);
 

@@ -20,10 +20,10 @@ namespace BVCommerce
             if (Request.QueryString["ReviewID"] != null)
             {
                 ProductReview r = new ProductReview();
-                r = MyPage.BVApp.CatalogServices.ProductReviews.Find(ReviewID);
+                r = MyPage.MTApp.CatalogServices.ProductReviews.Find(ReviewID);
                 if (r != null)
                 {
-                    Product p = MyPage.BVApp.CatalogServices.Products.Find(r.ProductBvin);
+                    Product p = MyPage.MTApp.CatalogServices.Products.Find(r.ProductBvin);
                     if (p != null)
                     {
                         this.lblProductName.Text = p.ProductName;
@@ -34,7 +34,7 @@ namespace BVCommerce
                     }
                     if (r.UserID != string.Empty)
                     {
-                        MerchantTribe.Commerce.Membership.CustomerAccount u = MyPage.BVApp.MembershipServices.Customers.Find(r.UserID);
+                        MerchantTribe.Commerce.Membership.CustomerAccount u = MyPage.MTApp.MembershipServices.Customers.Find(r.UserID);
                         if (u == null)
                         {
                             this.lblUserName.Text = "Anonymous";
@@ -44,7 +44,7 @@ namespace BVCommerce
                             this.lblUserName.Text = u.LastName + ", " + u.FirstName + " " + u.Email;
                         }
                     }
-                    this.lblReviewDate.Text = r.ReviewDateForTimeZone(MyPage.BVApp.CurrentStore.Settings.TimeZone).ToString();
+                    this.lblReviewDate.Text = r.ReviewDateForTimeZone(MyPage.MTApp.CurrentStore.Settings.TimeZone).ToString();
                     this.chkApproved.Checked = r.Approved;
                     this.KarmaField.Text = r.Karma.ToString();
                     switch (r.Rating)
@@ -93,7 +93,7 @@ namespace BVCommerce
                 if (Request.QueryString["ReviewID"] != null)
                 {
                     ProductReview r = new ProductReview();
-                    r = MyPage.BVApp.CatalogServices.ProductReviews.Find(ReviewID);
+                    r = MyPage.MTApp.CatalogServices.ProductReviews.Find(ReviewID);
                     if (r != null)
                     {
                         r.Approved = this.chkApproved.Checked;
@@ -101,7 +101,7 @@ namespace BVCommerce
                         r.Rating = (ProductReviewRating)int.Parse(this.lstRating.SelectedValue);
                         r.Description = this.DescriptionField.Text.Trim();
                     }
-                    MyPage.BVApp.CatalogServices.ProductReviews.Update(r);
+                    MyPage.MTApp.CatalogServices.ProductReviews.Update(r);
                     r = null;
 
                     if (Request.QueryString["pid"] == null)

@@ -36,9 +36,9 @@ namespace BVCommerce
             if (!Page.IsPostBack)
             {
 
-                this.ProductReviewCountField.Text = BVApp.CurrentStore.Settings.ProductReviewCount.ToString();
-                this.chkProductReviewModerate.Checked = BVApp.CurrentStore.Settings.ProductReviewModerate;
-                this.chkProductReviewShowRating.Checked = BVApp.CurrentStore.Settings.ProductReviewShowRating;
+                this.ProductReviewCountField.Text = MTApp.CurrentStore.Settings.ProductReviewCount.ToString();
+                this.chkProductReviewModerate.Checked = MTApp.CurrentStore.Settings.ProductReviewModerate;
+                this.chkProductReviewShowRating.Checked = MTApp.CurrentStore.Settings.ProductReviewShowRating;
 
             }
         }
@@ -53,10 +53,10 @@ namespace BVCommerce
             msg.ClearMessage();
 
 
-            BVApp.CurrentStore.Settings.ProductReviewCount = int.Parse(this.ProductReviewCountField.Text.Trim());
-            BVApp.CurrentStore.Settings.ProductReviewModerate = this.chkProductReviewModerate.Checked;
-            BVApp.CurrentStore.Settings.ProductReviewShowRating = this.chkProductReviewShowRating.Checked;
-            BVApp.UpdateCurrentStore();
+            MTApp.CurrentStore.Settings.ProductReviewCount = int.Parse(this.ProductReviewCountField.Text.Trim());
+            MTApp.CurrentStore.Settings.ProductReviewModerate = this.chkProductReviewModerate.Checked;
+            MTApp.CurrentStore.Settings.ProductReviewShowRating = this.chkProductReviewShowRating.Checked;
+            MTApp.UpdateCurrentStore();
 
             this.msg.ShowOk("Settings saved successfully.");
 

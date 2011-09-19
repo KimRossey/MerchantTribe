@@ -8,11 +8,11 @@ namespace MerchantTribe.Commerce.Tests
     
     
     /// <summary>
-    ///This is a test class for BVApplicationTest and is intended
-    ///to contain all BVApplicationTest Unit Tests
+    ///This is a test class for MerchantTribeApplicationTest and is intended
+    ///to contain all MerchantTribeApplicationTest Unit Tests
     ///</summary>
     [TestClass()]
-    public class BVApplicationTest
+    public class MerchantTribeApplicationTest
     {
 
 
@@ -69,7 +69,7 @@ namespace MerchantTribe.Commerce.Tests
         public void CanAddSampleProductsToStore()
         {
             RequestContext c = new RequestContext();
-            BVApplication target = BVApplication.InstantiateForMemory(c);
+            MerchantTribeApplication target = MerchantTribeApplication.InstantiateForMemory(c);
             target.AddSampleProductsToStore();
 
             int totalCount = target.CatalogServices.Products.CountOfAll();

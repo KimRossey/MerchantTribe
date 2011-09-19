@@ -42,7 +42,7 @@ namespace BVCommerce.BVModules.Shipping.US_Postal_Service___International
 
         private void LoadZones()
         {
-            this.lstZones.DataSource = MyPage.BVApp.OrderServices.ShippingZones.FindForStore(MyPage.BVApp.CurrentStore.Id);
+            this.lstZones.DataSource = MyPage.MTApp.OrderServices.ShippingZones.FindForStore(MyPage.MTApp.CurrentStore.Id);
             this.lstZones.DataTextField = "Name";
             this.lstZones.DataValueField = "id";
             this.lstZones.DataBind();
@@ -85,7 +85,7 @@ namespace BVCommerce.BVModules.Shipping.US_Postal_Service___International
             }
 
             // Global
-            this.Diagnostics.Checked = MyPage.BVApp.CurrentStore.Settings.ShippingUSPostalDiagnostics;
+            this.Diagnostics.Checked = MyPage.MTApp.CurrentStore.Settings.ShippingUSPostalDiagnostics;
 
             USPostalServiceSettings settings = new USPostalServiceSettings();
             settings.Merge(ShippingMethod.Settings);
@@ -111,7 +111,7 @@ namespace BVCommerce.BVModules.Shipping.US_Postal_Service___International
             ShippingMethod.Adjustment = decimal.Parse(AdjustmentTextBox.Text, System.Globalization.NumberStyles.Currency);
 
             // Global Settings
-            MyPage.BVApp.CurrentStore.Settings.ShippingUSPostalDiagnostics = this.Diagnostics.Checked;
+            MyPage.MTApp.CurrentStore.Settings.ShippingUSPostalDiagnostics = this.Diagnostics.Checked;
             
             // Method Settings
             USPostalServiceSettings Settings = new USPostalServiceSettings();
@@ -131,7 +131,7 @@ namespace BVCommerce.BVModules.Shipping.US_Postal_Service___International
                         
             ShippingMethod.Settings.Merge(Settings);
 
-            MyPage.BVApp.UpdateCurrentStore();
+            MyPage.MTApp.UpdateCurrentStore();
         }
 
         protected void CustomValidator1_ServerValidate(object source, System.Web.UI.WebControls.ServerValidateEventArgs args)

@@ -11,7 +11,7 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
 
 		public override bool Execute(OrderTaskContext context)
 		{
-            return context.BVApp.OrderServices.Orders.Update(context.Order);
+            return context.MTApp.OrderServices.Orders.Update(context.Order);
 		}
 
 		public override bool Rollback(OrderTaskContext context)

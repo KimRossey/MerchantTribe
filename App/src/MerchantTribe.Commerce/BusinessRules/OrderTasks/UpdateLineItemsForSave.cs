@@ -8,7 +8,7 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
 		public override bool Execute(OrderTaskContext context)
 		{
             context.Order.EvaluateCurrentShippingStatus();
-            context.BVApp.OrderServices.Orders.Update(context.Order);
+            context.MTApp.OrderServices.Orders.Update(context.Order);
 			return true;
 		}
 

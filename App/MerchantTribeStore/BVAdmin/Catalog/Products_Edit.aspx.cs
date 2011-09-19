@@ -72,10 +72,10 @@ namespace BVCommerce
                 {
                     this.BvinField.Value = string.Empty;
                 }
-                List<ProductProperty> props = BVApp.CatalogServices.ProductPropertiesFindForType(lstProductType.SelectedValue);
+                List<ProductProperty> props = MTApp.CatalogServices.ProductPropertiesFindForType(lstProductType.SelectedValue);
                 foreach (ProductProperty prop in props)
                 {
-                    ProductTypeProperties.Add(BVApp.CatalogServices.ProductPropertyValues.GetPropertyValue(this.BvinField.Value, prop.Id));
+                    ProductTypeProperties.Add(MTApp.CatalogServices.ProductPropertyValues.GetPropertyValue(this.BvinField.Value, prop.Id));
                 }
                 GenerateProductTypePropertyFields();
                 this.UrlsAssociated1.ObjectId = this.BvinField.Value;
@@ -121,7 +121,7 @@ namespace BVCommerce
 
         private void PopulateManufacturers()
         {
-            this.lstManufacturers.DataSource = BVApp.ContactServices.Manufacturers.FindAll();
+            this.lstManufacturers.DataSource = MTApp.ContactServices.Manufacturers.FindAll();
             this.lstManufacturers.DataTextField = "DisplayName";
             this.lstManufacturers.DataValueField = "Bvin";
             this.lstManufacturers.DataBind();
@@ -130,7 +130,7 @@ namespace BVCommerce
 
         private void PopulateVendors()
         {
-            this.lstVendors.DataSource = BVApp.ContactServices.Vendors.FindAll();
+            this.lstVendors.DataSource = MTApp.ContactServices.Vendors.FindAll();
             this.lstVendors.DataTextField = "DisplayName";
             this.lstVendors.DataValueField = "Bvin";
             this.lstVendors.DataBind();
@@ -138,7 +138,7 @@ namespace BVCommerce
         }
         private void PopulateTaxes()
         {
-            this.TaxClassField.DataSource = BVApp.OrderServices.TaxSchedules.FindAllAndCreateDefault(BVApp.CurrentStore.Id);
+            this.TaxClassField.DataSource = MTApp.OrderServices.TaxSchedules.FindAllAndCreateDefault(MTApp.CurrentStore.Id);
             this.TaxClassField.DataTextField = "Name";
             this.TaxClassField.DataValueField = "Id";
             this.TaxClassField.DataBind();
@@ -148,7 +148,7 @@ namespace BVCommerce
             this.lstProductType.Items.Clear();
             this.lstProductType.Items.Add(new System.Web.UI.WebControls.ListItem("Generic", ""));
             this.lstProductType.AppendDataBoundItems = true;
-            this.lstProductType.DataSource = BVApp.CatalogServices.ProductTypes.FindAll();
+            this.lstProductType.DataSource = MTApp.CatalogServices.ProductTypes.FindAll();
             this.lstProductType.DataTextField = "ProductTypeName";
             this.lstProductType.DataValueField = "bvin";
             this.lstProductType.DataBind();
@@ -156,7 +156,7 @@ namespace BVCommerce
 
         private void PopulateColumns()
         {
-            List<ContentColumn> columns = BVApp.ContentServices.Columns.FindAll();
+            List<ContentColumn> columns = MTApp.ContentServices.Columns.FindAll();
             foreach (ContentColumn col in columns)
             {
                 this.PreContentColumnIdField.Items.Add(new System.Web.UI.WebControls.ListItem(col.DisplayName, col.Bvin));
@@ -167,7 +167,7 @@ namespace BVCommerce
         private void LoadProduct()
         {
             Product p;
-            p = BVApp.CatalogServices.Products.Find(this.BvinField.Value);
+            p = MTApp.CatalogServices.Products.Find(this.BvinField.Value);
             if (p != null)
             {
                 if (p.Bvin != string.Empty)
@@ -292,7 +292,7 @@ namespace BVCommerce
 
         private void LoadImagePreview(Product p)
         {
-            this.imgPreviewSmall.ImageUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductImageUrlSmall(BVApp.CurrentStore.Id, p.Bvin, p.ImageFileSmall, true);
+            this.imgPreviewSmall.ImageUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductImageUrlSmall(MTApp.CurrentStore.Id, p.Bvin, p.ImageFileSmall, true);
         }
       
         private void CancelClick()
@@ -346,7 +346,7 @@ namespace BVCommerce
             if (Page.IsValid)
             {
                 Product p;
-                p = BVApp.CatalogServices.Products.Find(this.BvinField.Value);
+                p = MTApp.CatalogServices.Products.Find(this.BvinField.Value);
                 if (p == null)
                 {
                     //if it is nothing then create a new product
@@ -370,7 +370,7 @@ namespace BVCommerce
                     if (string.Compare(p.Sku.Trim(), this.SkuField.Text.Trim(), true) != 0)
                     {
                         //sku changed, so do a sku check
-                        Product skuCheckProduct = BVApp.CatalogServices.Products.FindBySku(this.SkuField.Text.Trim());
+                        Product skuCheckProduct = MTApp.CatalogServices.Products.FindBySku(this.SkuField.Text.Trim());
                         if (skuCheckProduct != null)
                         {
                             MessageBox1.ShowError("Sku already exists on another product. Please pick another sku.");
@@ -457,7 +457,7 @@ namespace BVCommerce
                         p.UrlSlug = MerchantTribe.Web.Text.Slugify(this.RewriteUrlField.Text, true, true);
                     }
 
-                    if (MerchantTribe.Commerce.Utilities.UrlRewriter.IsProductSlugInUse(p.UrlSlug, p.Bvin, BVApp))
+                    if (MerchantTribe.Commerce.Utilities.UrlRewriter.IsProductSlugInUse(p.UrlSlug, p.Bvin, MTApp))
                     {
                         this.MessageBox1.ShowWarning("The requested URL is already in use by another item.");
                         return false;
@@ -501,11 +501,11 @@ namespace BVCommerce
 
                     if ((p.Bvin == string.Empty))
                     {
-                        result = BVApp.CatalogServices.ProductsCreateWithInventory(p, true);
+                        result = MTApp.CatalogServices.ProductsCreateWithInventory(p, true);
                     }
                     else
                     {
-                        result = BVApp.CatalogServices.ProductsUpdateWithSearchRebuild(p);
+                        result = MTApp.CatalogServices.ProductsUpdateWithSearchRebuild(p);
                     }
 
                     if (result)
@@ -515,11 +515,11 @@ namespace BVCommerce
 
                     if (result)
                     {
-                        List<ProductProperty> props = BVApp.CatalogServices.ProductPropertiesFindForType(lstProductType.SelectedValue);
-                        BVApp.CatalogServices.ProductPropertyValues.DeleteByProductId(p.Bvin);
+                        List<ProductProperty> props = MTApp.CatalogServices.ProductPropertiesFindForType(lstProductType.SelectedValue);
+                        MTApp.CatalogServices.ProductPropertyValues.DeleteByProductId(p.Bvin);
                         for (int i = 0; i <= (props.Count - 1); i++)
                         {
-                            BVApp.CatalogServices.ProductPropertyValues.SetPropertyValue(p.Bvin, props[i].Id, ProductTypeProperties[i]);
+                            MTApp.CatalogServices.ProductPropertyValues.SetPropertyValue(p.Bvin, props[i].Id, ProductTypeProperties[i]);
                         }
                     }
 
@@ -536,9 +536,9 @@ namespace BVCommerce
                         {
                             if (oldUrl != p.UrlSlug)
                             {
-                                BVApp.ContentServices.CustomUrls.Register301(GetRouteUrl("bvroute", new { slug = oldUrl }),
+                                MTApp.ContentServices.CustomUrls.Register301(GetRouteUrl("bvroute", new { slug = oldUrl }),
                                                       GetRouteUrl("bvroute", new { slug = p.UrlSlug }),
-                                                      p.Bvin, CustomUrlType.Product, BVApp.CurrentRequestContext, BVApp);
+                                                      p.Bvin, CustomUrlType.Product, MTApp.CurrentRequestContext, MTApp);
                                 this.UrlsAssociated1.LoadUrls();
                             }
                         }
@@ -567,7 +567,7 @@ namespace BVCommerce
                 if (MerchantTribe.Commerce.Storage.DiskStorage.ValidateImageType(ext))
                 {
                     fileName = MerchantTribe.Web.Text.CleanFileName(fileName);
-                    if ((MerchantTribe.Commerce.Storage.DiskStorage.UploadProductImage(BVApp.CurrentStore.Id, p.Bvin, this.imgupload.PostedFile)))
+                    if ((MerchantTribe.Commerce.Storage.DiskStorage.UploadProductImage(MTApp.CurrentStore.Id, p.Bvin, this.imgupload.PostedFile)))
                     {
                         p.ImageFileSmall = fileName + ext;
                     }
@@ -579,7 +579,7 @@ namespace BVCommerce
                 }
             }
 
-            return BVApp.CatalogServices.ProductsUpdateWithSearchRebuild(p);
+            return MTApp.CatalogServices.ProductsUpdateWithSearchRebuild(p);
         }
 
         protected void CheckIfProductTypePropertyChanged()
@@ -597,7 +597,7 @@ namespace BVCommerce
             if (lstProductType.SelectedValue.Trim() != string.Empty)
             {
                 string productTypeBvin = lstProductType.SelectedValue;
-                List<ProductProperty> props = BVApp.CatalogServices.ProductPropertiesFindForType(productTypeBvin);
+                List<ProductProperty> props = MTApp.CatalogServices.ProductPropertiesFindForType(productTypeBvin);
                 StringBuilder sb = new StringBuilder();
                 int count = 0;
                 foreach (ProductProperty item in props)
@@ -748,7 +748,7 @@ namespace BVCommerce
 
         protected void ProductTypeCustomValidator_ServerValidate(object source, System.Web.UI.WebControls.ServerValidateEventArgs args)
         {
-            List<ProductProperty> props = BVApp.CatalogServices.ProductPropertiesFindForType(lstProductType.SelectedValue);
+            List<ProductProperty> props = MTApp.CatalogServices.ProductPropertiesFindForType(lstProductType.SelectedValue);
             for (int i = 0; i <= (ProductTypeProperties.Count - 1); i++)
             {
                 switch (props[i].TypeCode)
@@ -848,7 +848,7 @@ namespace BVCommerce
 
         protected void btnDelete_Click(object sender, System.Web.UI.ImageClickEventArgs e)
         {
-            if (!BVApp.DestroyProduct(this.BvinField.Value))
+            if (!MTApp.DestroyProduct(this.BvinField.Value))
             {
                 this.MessageBox1.ShowWarning("Unable to delete product. Unknown Error.");
             }

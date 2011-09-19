@@ -11,13 +11,13 @@ namespace MerchantTribe.Commerce.Orders
 {
     public class OrderCalculator: IOrderCalculator
     {
-        private BVApplication _app = null;
+        private MerchantTribeApplication _app = null;
         public bool SkipRepricing { get; set; }
 
-        public OrderCalculator(BVApplication bvapp)                
+        public OrderCalculator(MerchantTribeApplication app)                
         {
             this.SkipRepricing = false;
-            this._app = bvapp;
+            this._app = app;
         }
 
         public bool Calculate(Order o)

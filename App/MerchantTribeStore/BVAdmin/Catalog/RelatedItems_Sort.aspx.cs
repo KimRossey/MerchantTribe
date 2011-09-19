@@ -35,7 +35,7 @@ namespace BVCommerce.BVAdmin.Catalog
                 l.Add(id.Replace("item",""));
             }
 
-            if ((BVApp.CatalogServices.ProductRelationships.ResortRelationships(productId, l)))
+            if ((MTApp.CatalogServices.ProductRelationships.ResortRelationships(productId, l)))
             {
                 this.litOutput.Text = "{\"result\":true}";
             }

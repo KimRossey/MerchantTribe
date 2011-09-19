@@ -15,26 +15,26 @@ namespace BVCommerce.Controllers.Shared
         // Initialize Store Specific Request Data
         MerchantTribe.Commerce.RequestContext _BVRequestContext = new RequestContext();
 
-        public BVApplication BVApp { get; set; }
+        public MerchantTribeApplication MTApp { get; set; }
 
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             base.OnActionExecuting(filterContext);
-            BVApp = BVApplication.InstantiateForDataBase(new RequestContext());
+            MTApp = MerchantTribeApplication.InstantiateForDataBase(new RequestContext());
 
             // Check for non-www url and redirect if needed
             //RedirectBVCommerceCom(System.Web.HttpContext.Current);
 
-            BVApp.CurrentRequestContext.RoutingContext = this.Request.RequestContext;
+            MTApp.CurrentRequestContext.RoutingContext = this.Request.RequestContext;
 
             // Determine store id        
-            BVApp.CurrentStore = MerchantTribe.Commerce.Utilities.UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, BVApp.AccountServices);
-            if (BVApp.CurrentStore == null)
+            MTApp.CurrentStore = MerchantTribe.Commerce.Utilities.UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, MTApp.AccountServices);
+            if (MTApp.CurrentStore == null)
             {
                 Response.Redirect("~/storenotfound");
             }
 
-            if (BVApp.CurrentStore.Status == MerchantTribe.Commerce.Accounts.StoreStatus.Deactivated)
+            if (MTApp.CurrentStore.Status == MerchantTribe.Commerce.Accounts.StoreStatus.Deactivated)
             {
                 //if ((AvailableWhenInactive == false))
                 //{
@@ -49,8 +49,8 @@ namespace BVCommerce.Controllers.Shared
 
             if (SessionManager.CurrentUserHasCart())
             {
-                itemCount = SessionManager.GetCookieString(WebAppSettings.CookieNameCartItemCount(BVApp.CurrentStore.Id));
-                subTotal = SessionManager.GetCookieString(WebAppSettings.CookieNameCartSubTotal(BVApp.CurrentStore.Id));
+                itemCount = SessionManager.GetCookieString(WebAppSettings.CookieNameCartItemCount(MTApp.CurrentStore.Id));
+                subTotal = SessionManager.GetCookieString(WebAppSettings.CookieNameCartSubTotal(MTApp.CurrentStore.Id));
                 if (itemCount.Trim().Length < 1) itemCount = "0";
                 if (subTotal.Trim().Length < 1) subTotal = "$0.00";
             }
@@ -58,35 +58,35 @@ namespace BVCommerce.Controllers.Shared
             ViewData["CurrentCartSubTotal"] = subTotal;
 
             // style sheet
-            ThemeManager themes = BVApp.ThemeManager();
+            ThemeManager themes = MTApp.ThemeManager();
             ViewBag.Css = themes.CurrentStyleSheet(System.Web.HttpContext.Current.Request.IsSecureConnection);
 
             // Add Google Tracker to Page
-            if (BVApp.CurrentStore.Settings.Analytics.UseGoogleTracker)
+            if (MTApp.CurrentStore.Settings.Analytics.UseGoogleTracker)
             {
-                ViewData["analyticstop"] = MerchantTribe.Commerce.Metrics.GoogleAnalytics.RenderLatestTracker(BVApp.CurrentStore.Settings.Analytics.GoogleTrackerId);
+                ViewData["analyticstop"] = MerchantTribe.Commerce.Metrics.GoogleAnalytics.RenderLatestTracker(MTApp.CurrentStore.Settings.Analytics.GoogleTrackerId);
             }
 
             // Additional Meta Tags
-            ViewData["AdditionalMetaTags"] = MerchantTribe.Web.HtmlSanitizer.MakeHtmlSafe(BVApp.CurrentStore.Settings.Analytics.AdditionalMetaTags);
+            ViewData["AdditionalMetaTags"] = MerchantTribe.Web.HtmlSanitizer.MakeHtmlSafe(MTApp.CurrentStore.Settings.Analytics.AdditionalMetaTags);
 
             // JQuery
             ViewBag.JqueryInclude = Helpers.Html.JQueryIncludes(Url.Content("~/scripts"), this.Request.IsSecureConnection);
 
             // header and footer            
-            string header = MerchantTribe.Commerce.Storage.DiskStorage.ReadCustomHeader(BVApp.CurrentStore.Id, BVApp.CurrentStore.Settings.ThemeId);
-            string footer = MerchantTribe.Commerce.Storage.DiskStorage.ReadCustomFooter(BVApp.CurrentStore.Id, BVApp.CurrentStore.Settings.ThemeId);
+            string header = MerchantTribe.Commerce.Storage.DiskStorage.ReadCustomHeader(MTApp.CurrentStore.Id, MTApp.CurrentStore.Settings.ThemeId);
+            string footer = MerchantTribe.Commerce.Storage.DiskStorage.ReadCustomFooter(MTApp.CurrentStore.Id, MTApp.CurrentStore.Settings.ThemeId);
             if ((header.Trim().Length < 1))
             {
                 header = MerchantTribe.Commerce.Utilities.HtmlRendering.StandardHeader();
             }
-            ViewData["siteheader"] = MerchantTribe.Commerce.Utilities.TagReplacer.ReplaceContentTags(header, BVApp, itemCount, Request.IsSecureConnection);
+            ViewData["siteheader"] = MerchantTribe.Commerce.Utilities.TagReplacer.ReplaceContentTags(header, MTApp, itemCount, Request.IsSecureConnection);
             if ((footer.Trim().Length < 1))
             {
-                footer = MerchantTribe.Commerce.Utilities.HtmlRendering.StandardFooter(BVApp.CurrentStore);
+                footer = MerchantTribe.Commerce.Utilities.HtmlRendering.StandardFooter(MTApp.CurrentStore);
             }
             footer = footer + MerchantTribe.Commerce.Utilities.HtmlRendering.PromoTag();
-            ViewData["sitefooter"] = MerchantTribe.Commerce.Utilities.TagReplacer.ReplaceContentTags(footer, BVApp, itemCount, Request.IsSecureConnection);
+            ViewData["sitefooter"] = MerchantTribe.Commerce.Utilities.TagReplacer.ReplaceContentTags(footer, MTApp, itemCount, Request.IsSecureConnection);
 
             //log affiliate request
             if (!((string)Request.Params[WebAppSettings.AffiliateQueryStringName] == null))
@@ -97,7 +97,7 @@ namespace BVCommerce.Controllers.Shared
                     affid = Request.Params[WebAppSettings.AffiliateQueryStringName];
                     string referrerURL = Request.UrlReferrer.AbsoluteUri;
                     if (referrerURL == null) referrerURL = string.Empty;
-                    BVApp.ContactServices.RecordAffiliateReferral(affid, referrerURL);
+                    MTApp.ContactServices.RecordAffiliateReferral(affid, referrerURL);
 
                 }
                 catch (System.Exception ex)
@@ -107,9 +107,9 @@ namespace BVCommerce.Controllers.Shared
             }
 
             //If this is a private store, force login before showing anything.
-            if (BVApp.CurrentStore.Settings.IsPrivateStore == true)
+            if (MTApp.CurrentStore.Settings.IsPrivateStore == true)
             {
-                if (SessionManager.IsUserAuthenticated(this.BVApp) == false)
+                if (SessionManager.IsUserAuthenticated(this.MTApp) == false)
                 {
                     string nameOfPage = Request.AppRelativeCurrentExecutionFilePath;
                     // Check to make sure we're not going to end up in an endless loop of redirects
@@ -123,20 +123,20 @@ namespace BVCommerce.Controllers.Shared
             }
 
             // Store data for admin panel
-            ViewBag.IsAdmin = IsCurrentUserAdmin(this.BVApp, this.Request.RequestContext.HttpContext);
-            ViewBag.RootUrlSecure = BVApp.CurrentStore.RootUrlSecure();
-            ViewBag.RootUrl = BVApp.CurrentStore.RootUrl();
-            ViewBag.StoreClosed = BVApp.CurrentStore.Settings.StoreClosed;
+            ViewBag.IsAdmin = IsCurrentUserAdmin(this.MTApp, this.Request.RequestContext.HttpContext);
+            ViewBag.RootUrlSecure = MTApp.CurrentStore.RootUrlSecure();
+            ViewBag.RootUrl = MTApp.CurrentStore.RootUrl();
+            ViewBag.StoreClosed = MTApp.CurrentStore.Settings.StoreClosed;
 
 
-            ViewBag.MetaKeywords = BVApp.CurrentStore.Settings.MetaKeywords;            
-            ViewBag.MetaDescription = BVApp.CurrentStore.Settings.MetaDescription;                                            
+            ViewBag.MetaKeywords = MTApp.CurrentStore.Settings.MetaKeywords;            
+            ViewBag.MetaDescription = MTApp.CurrentStore.Settings.MetaDescription;                                            
 
             // Integrations
-            IntegrationLoader.AddIntegrations(this.BVApp.CurrentRequestContext.IntegrationEvents, this.BVApp.CurrentStore);
+            IntegrationLoader.AddIntegrations(this.MTApp.CurrentRequestContext.IntegrationEvents, this.MTApp.CurrentStore);
         }
 
-        public bool IsCurrentUserAdmin(BVApplication bvapp, HttpContextBase httpContext)
+        public bool IsCurrentUserAdmin(MerchantTribeApplication app, HttpContextBase httpContext)
         {
 
             Guid? tokenId = MerchantTribe.Web.Cookies.GetCookieGuid(
@@ -146,7 +146,7 @@ namespace BVCommerce.Controllers.Shared
             // no token, return
             if (!tokenId.HasValue) return false;
 
-            if (bvapp.AccountServices.IsTokenValidForStore(bvapp.CurrentStore.Id, tokenId.Value))
+            if (app.AccountServices.IsTokenValidForStore(app.CurrentStore.Id, tokenId.Value))
             {
                 return true;
             }

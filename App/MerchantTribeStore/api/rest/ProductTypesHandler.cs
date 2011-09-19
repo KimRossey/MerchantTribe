@@ -11,7 +11,7 @@ namespace BVCommerce.api.rest
 {
     public class ProductTypesHandler: BaseRestHandler
     {
-        public ProductTypesHandler(MerchantTribe.Commerce.BVApplication app)
+        public ProductTypesHandler(MerchantTribe.Commerce.MerchantTribeApplication app)
             : base(app)
         {
 
@@ -27,7 +27,7 @@ namespace BVCommerce.api.rest
                 // List
                 ApiResponse<List<ProductTypeDTO>> response = new ApiResponse<List<ProductTypeDTO>>();
 
-                List<ProductType> results = BVApp.CatalogServices.ProductTypes.FindAll();
+                List<ProductType> results = MTApp.CatalogServices.ProductTypes.FindAll();
                 List<ProductTypeDTO> dto = new List<ProductTypeDTO>();
 
                 foreach (ProductType item in results)
@@ -42,7 +42,7 @@ namespace BVCommerce.api.rest
                 // Find One Specific Category
                 ApiResponse<ProductTypeDTO> response = new ApiResponse<ProductTypeDTO>();                                
                 string bvin = FirstParameter(parameters);
-                ProductType item = BVApp.CatalogServices.ProductTypes.Find(bvin);
+                ProductType item = MTApp.CatalogServices.ProductTypes.Find(bvin);
                 if (item == null)
                 {
                     response.Errors.Add(new ApiError("NULL", "Could not locate that item. Check bvin and try again."));
@@ -75,7 +75,7 @@ namespace BVCommerce.api.rest
                 long propertyId = 0;
                 long.TryParse(propertyIds, out propertyId);                              
 
-                response2.Content = BVApp.CatalogServices.ProductTypeAddProperty(bvin, propertyId);
+                response2.Content = MTApp.CatalogServices.ProductTypeAddProperty(bvin, propertyId);
                 data = MerchantTribe.Web.Json.ObjectToJson(response2);            
             }
             else
@@ -97,16 +97,16 @@ namespace BVCommerce.api.rest
 
                 if (bvin == string.Empty)
                 {
-                    if (BVApp.CatalogServices.ProductTypes.Create(item))
+                    if (MTApp.CatalogServices.ProductTypes.Create(item))
                     {
                         bvin = item.Bvin;
                     }
                 }
                 else
                 {
-                    BVApp.CatalogServices.ProductTypes.Update(item);
+                    MTApp.CatalogServices.ProductTypes.Update(item);
                 }
-                ProductType resultItem = BVApp.CatalogServices.ProductTypes.Find(bvin);
+                ProductType resultItem = MTApp.CatalogServices.ProductTypes.Find(bvin);
                 if (resultItem != null) response.Content = resultItem.ToDto();
                 data = MerchantTribe.Web.Json.ObjectToJson(response);            
             }
@@ -135,13 +135,13 @@ namespace BVCommerce.api.rest
                 long propertyId = 0;
                 long.TryParse(propertyIds, out propertyId);
 
-                response2.Content = BVApp.CatalogServices.ProductTypeRemoveProperty(bvin, propertyId);
+                response2.Content = MTApp.CatalogServices.ProductTypeRemoveProperty(bvin, propertyId);
                 data = MerchantTribe.Web.Json.ObjectToJson(response2);
             }
             else
             {
                 // Single Item Delete
-                response.Content = BVApp.CatalogServices.ProductTypeDestroy(bvin);
+                response.Content = MTApp.CatalogServices.ProductTypeDestroy(bvin);
             }
 
             data = MerchantTribe.Web.Json.ObjectToJson(response);

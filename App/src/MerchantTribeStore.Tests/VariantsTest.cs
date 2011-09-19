@@ -43,9 +43,9 @@ namespace MerchantTribe.UnitTests
             OptionList options = GetSampleOptions();
 
             VariantList target = new VariantList();
-            BVApplication bvapp = BVApplication.InstantiateForMemory(new RequestContext());
+            MerchantTribeApplication mtapp = MerchantTribeApplication.InstantiateForMemory(new RequestContext());
 
-            List<OptionSelectionList> data = bvapp.CatalogServices.VariantsGenerateAllPossibleSelections(options);
+            List<OptionSelectionList> data = mtapp.CatalogServices.VariantsGenerateAllPossibleSelections(options);
 
             Assert.IsNotNull(data, "Data should not be null");
             Assert.AreEqual(6, data.Count, "There should be six possible combinations");

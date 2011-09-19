@@ -67,7 +67,7 @@ namespace MerchantTribe.Commerce.Marketing.PromotionQualifications
             set { SetSetting("Quantity", value);}
         }
 
-        public override string FriendlyDescription(BVApplication bvapp)
+        public override string FriendlyDescription(MerchantTribeApplication app)
         {
             string result = "";
             
@@ -91,7 +91,7 @@ namespace MerchantTribe.Commerce.Marketing.PromotionQualifications
             
             foreach (string bvin in this.CurrentProductIds())
             {
-                Catalog.Product p = bvapp.CatalogServices.Products.Find(bvin);
+                Catalog.Product p = app.CatalogServices.Products.Find(bvin);
                 if (p != null)
                 {
                     result += "<li>[" + p.Sku + "] " + p.ProductName + "</li>";

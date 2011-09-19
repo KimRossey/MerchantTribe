@@ -38,7 +38,7 @@ namespace BVCommerce
         protected override void OnInit(System.EventArgs e)
         {
             base.OnInit(e);
-            this.btnLogin.ImageUrl = this.MyPage.BVApp.ThemeManager().ButtonUrl("login", Request.IsSecureConnection);
+            this.btnLogin.ImageUrl = this.MyPage.MTApp.ThemeManager().ButtonUrl("login", Request.IsSecureConnection);
         }
 
         protected override void OnLoad(System.EventArgs e)
@@ -70,7 +70,7 @@ namespace BVCommerce
 
             if (!Page.IsPostBack)
             {
-                this.btnLogin.ImageUrl = MyPage.BVApp.ThemeManager().ButtonUrl("login", Request.IsSecureConnection);
+                this.btnLogin.ImageUrl = MyPage.MTApp.ThemeManager().ButtonUrl("login", Request.IsSecureConnection);
 
                 if (Request.QueryString["ReturnURL"] != null)
                 {
@@ -89,7 +89,7 @@ namespace BVCommerce
                     string uid = SessionManager.GetCookieString(WebAppSettings.CustomerIdCookieName);
                     if (uid != string.Empty)
                     {
-                        CustomerAccount u = MyPage.BVApp.MembershipServices.Customers.Find(uid);
+                        CustomerAccount u = MyPage.MTApp.MembershipServices.Customers.Find(uid);
                         if (u != null)
                         {
                             this.UsernameField.Text = u.Email;
@@ -108,18 +108,18 @@ namespace BVCommerce
 
                 string errorMessage = string.Empty;
                 string userId  = string.Empty;
-                if (MyPage.BVApp.MembershipServices.LoginCustomer(this.UsernameField.Text.Trim(),
+                if (MyPage.MTApp.MembershipServices.LoginCustomer(this.UsernameField.Text.Trim(),
                                         this.PasswordField.Text.Trim(),
                                         ref errorMessage,
                                         this.Request.RequestContext.HttpContext, 
                                         ref userId))
                 {
-                    MerchantTribe.Commerce.Orders.Order cart = SessionManager.CurrentShoppingCart(MyPage.BVApp.OrderServices);
+                    MerchantTribe.Commerce.Orders.Order cart = SessionManager.CurrentShoppingCart(MyPage.MTApp.OrderServices);
                     if (cart != null && !string.IsNullOrEmpty(cart.bvin))
                     {
                         cart.UserEmail = this.UsernameField.Text.Trim();
                         cart.UserID = userId;
-                        MyPage.BVApp.CalculateOrderAndSave(cart);
+                        MyPage.MTApp.CalculateOrderAndSave(cart);
                         SessionManager.SaveOrderCookies(cart);
                     }
 
@@ -136,7 +136,7 @@ namespace BVCommerce
                 {
                     string errorMessage2 = string.Empty;
                     // Failed to Login as Customer, Try admin account
-                    if (MyPage.BVApp.AccountServices.LoginAdminUser(this.UsernameField.Text.Trim(), this.PasswordField.Text.Trim(), 
+                    if (MyPage.MTApp.AccountServices.LoginAdminUser(this.UsernameField.Text.Trim(), this.PasswordField.Text.Trim(), 
                                                                                ref errorMessage2, this.Request.RequestContext.HttpContext))
                     {
                         Response.Redirect("~/bvadmin"); //System.IO.Path.Combine(MyPage.CurrentStore.RootUrlSecure(), "bvadmin"));                        

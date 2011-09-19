@@ -18,14 +18,14 @@ namespace BVCommerce
             if (!Page.IsPostBack)
             {
 
-                btnSend.ImageUrl = this.BVApp.ThemeManager().ButtonUrl("Submit", Request.IsSecureConnection);
+                btnSend.ImageUrl = this.MTApp.ThemeManager().ButtonUrl("Submit", Request.IsSecureConnection);
 
                 inMessage.Text = "<a href=\"" + Request.Params["page"] + "\">" + Request.Params["page"] + "</a>";
 
-                if (SessionManager.IsUserAuthenticated(this.BVApp) == true)
+                if (SessionManager.IsUserAuthenticated(this.MTApp) == true)
                 {
 
-                    CustomerAccount u = BVApp.CurrentCustomer;
+                    CustomerAccount u = MTApp.CurrentCustomer;
 
                     this.FromEmailField.Text = u.Email;
                 }
@@ -48,15 +48,15 @@ namespace BVCommerce
             string f = string.Empty;
 
             Product p;
-            p = BVApp.CatalogServices.Products.Find(Request.QueryString["productID"]);
+            p = MTApp.CatalogServices.Products.Find(Request.QueryString["productID"]);
 
-            HtmlTemplate t = BVApp.ContentServices.GetHtmlTemplateOrDefault(HtmlTemplateType.EmailFriend);
+            HtmlTemplate t = MTApp.ContentServices.GetHtmlTemplateOrDefault(HtmlTemplateType.EmailFriend);
 
             if (t != null)
             {
 
                 System.Net.Mail.MailMessage m;
-                t = t.ReplaceTagsInTemplate(BVApp, p);
+                t = t.ReplaceTagsInTemplate(MTApp, p);
                 t.From = this.FromEmailField.Text.Trim();
                 m = t.ConvertToMailMessage(this.toEmailField.Text.Trim());
 

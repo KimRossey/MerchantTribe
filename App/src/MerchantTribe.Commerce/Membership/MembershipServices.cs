@@ -146,9 +146,9 @@ namespace MerchantTribe.Commerce.Membership
             }
             return result;
         }
-        public BVOperationResult ValidateUser(string email, string password)
+        public SystemOperationResult ValidateUser(string email, string password)
         {
-            BVOperationResult result = new BVOperationResult();
+            SystemOperationResult result = new SystemOperationResult();
 
             CustomerAccount u = Customers.FindByEmail(email);
             if (u != null)
@@ -198,7 +198,7 @@ namespace MerchantTribe.Commerce.Membership
 
             try
             {
-                BVOperationResult op = ValidateUser(email, password);
+                SystemOperationResult op = ValidateUser(email, password);
                 if (op.Success == false)
                 {
                     errorMessage = op.Message;
@@ -242,10 +242,10 @@ namespace MerchantTribe.Commerce.Membership
             return MerchantTribe.Web.PasswordGenerator.GeneratePassword(length);
         }
         // Use this VERY carefully
-        public bool DestroyAllCustomers(BVApplication bvapp)
+        public bool DestroyAllCustomers(MerchantTribeApplication app)
         {            
             DateTime current = DateTime.UtcNow;
-            DateTime availableUntil = bvapp.CurrentStore.Settings.AllowApiToClearUntil;
+            DateTime availableUntil = app.CurrentStore.Settings.AllowApiToClearUntil;
             int compareResult = DateTime.Compare(current, availableUntil);
             if (compareResult >= 0)
             {

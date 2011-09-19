@@ -41,7 +41,7 @@ namespace BVCommerce
         {
             msg.ClearMessage();
             string bvin = (string)GridView1.DataKeys[e.RowIndex].Value;
-            if (BVApp.ContentServices.CustomUrls.Delete(bvin) == false)
+            if (MTApp.ContentServices.CustomUrls.Delete(bvin) == false)
             {
                 this.msg.ShowWarning("Unable to delete this custom Url.");
             }

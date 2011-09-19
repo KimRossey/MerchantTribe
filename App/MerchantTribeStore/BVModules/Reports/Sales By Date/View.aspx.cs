@@ -75,7 +75,7 @@ namespace BVCommerce
                 OrderSearchCriteria c = new OrderSearchCriteria();
 
                 // Get Local Times
-                TimeZoneInfo timezone = BVApp.CurrentStore.Settings.TimeZone;
+                TimeZoneInfo timezone = MTApp.CurrentStore.Settings.TimeZone;
                 DateTime zonedStart = this.DateRangeField.StartDateForZone(timezone);
                 DateTime zonedEnd = this.DateRangeField.EndDateForZone(timezone);
 
@@ -87,7 +87,7 @@ namespace BVCommerce
                 c.EndDateUtc = utcEnd;
 
                 List<OrderSnapshot> found = new List<OrderSnapshot>();
-                found = BVApp.OrderServices.Orders.FindByCriteria(c);
+                found = MTApp.OrderServices.Orders.FindByCriteria(c);
 
                 TotalCount = found.Count;
 
@@ -198,7 +198,7 @@ namespace BVCommerce
                 Label lblDate = (Label)e.Item.FindControl("lblDate");
                 if (lblDate != null)
                 {
-                    lblDate.Text = TimeZoneInfo.ConvertTimeFromUtc(order.TimeOfOrderUtc, BVApp.CurrentStore.Settings.TimeZone).ToShortDateString();
+                    lblDate.Text = TimeZoneInfo.ConvertTimeFromUtc(order.TimeOfOrderUtc, MTApp.CurrentStore.Settings.TimeZone).ToShortDateString();
                 }
 
                 HyperLink lnkViewOrder = (HyperLink)e.Item.FindControl("lnkViewOrder");

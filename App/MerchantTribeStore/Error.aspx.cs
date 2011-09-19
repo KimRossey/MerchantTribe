@@ -12,7 +12,7 @@ namespace BVCommerce
         protected override void OnInit(System.EventArgs e)
         {
             base.OnInit(e);
-            this.Page.Title = BVApp.CurrentStore.StoreName;
+            this.Page.Title = MTApp.CurrentStore.StoreName;
         }
 
         protected override void OnLoad(System.EventArgs e)
@@ -65,7 +65,7 @@ namespace BVCommerce
                     requested = Request.RawUrl;
                 }
                                 
-                    MerchantTribe.Commerce.Content.CustomUrl url = BVApp.ContentServices.CustomUrls.FindByRequestedUrl(requested);
+                    MerchantTribe.Commerce.Content.CustomUrl url = MTApp.ContentServices.CustomUrls.FindByRequestedUrl(requested);
                     if (url != null)
                     {
                         if (url.Bvin != string.Empty)

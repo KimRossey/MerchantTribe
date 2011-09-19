@@ -75,7 +75,7 @@ namespace BVCommerce
 
         private void LoadAddressForUser(string addressID)
         {
-            CustomerAccount u = BVApp.MembershipServices.Customers.Find(this.UserIDField.Value);
+            CustomerAccount u = MTApp.MembershipServices.Customers.Find(this.UserIDField.Value);
             if (u != null)
             {
                 if (u.Addresses != null)
@@ -94,7 +94,7 @@ namespace BVCommerce
 
         private void LoadBilling()
         {
-            CustomerAccount u = BVApp.MembershipServices.Customers.Find(this.UserIDField.Value);
+            CustomerAccount u = MTApp.MembershipServices.Customers.Find(this.UserIDField.Value);
             if (u != null)
             {
                 this.AddressEditor1.LoadFromAddress(u.GetBillingAddress());
@@ -104,7 +104,7 @@ namespace BVCommerce
 
         private void LoadShipping()
         {
-            CustomerAccount u = BVApp.MembershipServices.Customers.Find(this.UserIDField.Value);
+            CustomerAccount u = MTApp.MembershipServices.Customers.Find(this.UserIDField.Value);
             if (u != null)
             {
                 this.AddressEditor1.LoadFromAddress(u.GetShippingAddress());
@@ -137,7 +137,7 @@ namespace BVCommerce
             bool result = false;
 
             CustomerAccount u;
-            u = BVApp.MembershipServices.Customers.Find(this.UserIDField.Value);
+            u = MTApp.MembershipServices.Customers.Find(this.UserIDField.Value);
 
             if (u != null)
             {
@@ -145,16 +145,16 @@ namespace BVCommerce
                 switch (Request.QueryString["id"])
                 {
                     case "b":
-                        BVApp.MembershipServices.CustomerSetBillingAddress(u,temp);
+                        MTApp.MembershipServices.CustomerSetBillingAddress(u,temp);
                         break;
                     case "s":
-                        BVApp.MembershipServices.CustomerSetShippingAddress(u,temp);
+                        MTApp.MembershipServices.CustomerSetShippingAddress(u,temp);
                         break;
                     default:
                         if (temp.Bvin == null || temp.Bvin == string.Empty)
                         {                                                        
                             temp.Bvin = System.Guid.NewGuid().ToString();
-                            BVApp.MembershipServices.CheckIfNewAddressAndAddWithUpdate(u,temp);
+                            MTApp.MembershipServices.CheckIfNewAddressAndAddWithUpdate(u,temp);
                         }
                         else
                         {
@@ -164,7 +164,7 @@ namespace BVCommerce
                 }
 
                 CreateUserStatus s = CreateUserStatus.None;
-                result = BVApp.MembershipServices.UpdateCustomer(u, ref s);
+                result = MTApp.MembershipServices.UpdateCustomer(u, ref s);
             }
 
             return result;

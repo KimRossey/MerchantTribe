@@ -20,27 +20,27 @@ namespace BVCommerce.Controllers
 
         // Initialize Store Specific Request Data
         MerchantTribe.Commerce.RequestContext _BVRequestContext = new RequestContext();
-        public BVApplication BVApp { get; set; }               
+        public MerchantTribeApplication MTApp { get; set; }               
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             base.OnActionExecuting(filterContext);
-            BVApp = BVApplication.InstantiateForDataBase(new RequestContext());
+            MTApp = MerchantTribeApplication.InstantiateForDataBase(new RequestContext());
 
-            BVApp.CurrentRequestContext.RoutingContext = this.Request.RequestContext;
+            MTApp.CurrentRequestContext.RoutingContext = this.Request.RequestContext;
 
             // Determine store id        
-            BVApp.CurrentStore = MerchantTribe.Commerce.Utilities.UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, BVApp.AccountServices);
-            if (BVApp.CurrentStore == null)
+            MTApp.CurrentStore = MerchantTribe.Commerce.Utilities.UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, MTApp.AccountServices);
+            if (MTApp.CurrentStore == null)
             {
                 Response.Redirect("~/storenotfound");
             }
 
-            if (BVApp.CurrentStore.Status == MerchantTribe.Commerce.Accounts.StoreStatus.Deactivated)
+            if (MTApp.CurrentStore.Status == MerchantTribe.Commerce.Accounts.StoreStatus.Deactivated)
             {
                 Response.Redirect("~/storenotavailable");
             }
 
-            HttpContext.Items.Add("bvapp", BVApp);
+            HttpContext.Items.Add("mtapp", MTApp);
 
             // Jquery
             //ViewData["JQueryInclude"] = Helpers.Html.JQueryIncludes(Url.Content("~/scripts"), this.Request.IsSecureConnection);
@@ -56,7 +56,7 @@ namespace BVCommerce.Controllers
                 return false;
             }
 
-            ApiKey key = BVApp.AccountServices.ApiKeys.FindByKey(apikey);
+            ApiKey key = MTApp.AccountServices.ApiKeys.FindByKey(apikey);
             if (key == null)
             {
                 response.Errors.Add(new ApiError("KEY", "Api Key is invalid or missing."));
@@ -74,18 +74,18 @@ namespace BVCommerce.Controllers
             }
 
             long storeID = key.StoreId;
-            BVApp.CurrentStore = BVApp.AccountServices.Stores.FindById(storeID);
-            if (BVApp.CurrentStore == null)
+            MTApp.CurrentStore = MTApp.AccountServices.Stores.FindById(storeID);
+            if (MTApp.CurrentStore == null)
             {
                 response.Errors.Add(new ApiError("STORENOTFOUND", "No store was found at this URL."));
                 return false;
             }
-            if (BVApp.CurrentStore.Id < 0)
+            if (MTApp.CurrentStore.Id < 0)
             {
                 response.Errors.Add(new ApiError("STORENOTFOUND2", "No store was found at this URL."));
                 return false;
             }
-            if (BVApp.CurrentStore.Status == MerchantTribe.Commerce.Accounts.StoreStatus.Deactivated)
+            if (MTApp.CurrentStore.Status == MerchantTribe.Commerce.Accounts.StoreStatus.Deactivated)
             {
                 response.Errors.Add(new ApiError("STOREDISABLED", "Store is not active. Contact an Administrator for Assistance"));
                 return false;
@@ -109,7 +109,7 @@ namespace BVCommerce.Controllers
             else
             {
                 // Create Handler
-                IRestHandler handler = RestHandlerFactory.Instantiate(version, modelname, BVApp);
+                IRestHandler handler = RestHandlerFactory.Instantiate(version, modelname, MTApp);
 
                 // Read Posted JSON
                 string postedString = string.Empty;

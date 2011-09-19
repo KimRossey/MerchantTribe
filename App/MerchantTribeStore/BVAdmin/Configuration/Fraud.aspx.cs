@@ -31,7 +31,7 @@ namespace BVCommerce
         {                        
             base.OnLoad(e);
             
-            repository = new FraudRuleRepository(BVApp.CurrentRequestContext);
+            repository = new FraudRuleRepository(MTApp.CurrentRequestContext);
 
             if (!Page.IsPostBack)
             {
@@ -51,7 +51,7 @@ namespace BVCommerce
         private void LoadLists()
         {
 
-            List<FraudRule> rules = repository.FindForStore(BVApp.CurrentStore.Id);
+            List<FraudRule> rules = repository.FindForStore(MTApp.CurrentStore.Id);
             SortableCollection<FraudRule> emailRules = new SortableCollection<FraudRule>();
             SortableCollection<FraudRule> domainRules = new SortableCollection<FraudRule>();
             SortableCollection<FraudRule> ipRules = new SortableCollection<FraudRule>();

@@ -13,7 +13,7 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
             // Assign Order Number
             if (context.Order.OrderNumber == string.Empty)
             {
-                context.Order.OrderNumber = context.BVApp.OrderServices.GenerateNewOrderNumber(context.CurrentRequest.CurrentStore.Id).ToString();
+                context.Order.OrderNumber = context.MTApp.OrderServices.GenerateNewOrderNumber(context.CurrentRequest.CurrentStore.Id).ToString();
 
                 Orders.OrderNote note = new Orders.OrderNote();
                 note.IsPublic = false;

@@ -63,7 +63,7 @@ namespace BVCommerce
         private void SetDefaults()
         {
             this.lstCommissionType.ClearSelection();
-            switch (BVApp.CurrentStore.Settings.AffiliateCommissionType)
+            switch (MTApp.CurrentStore.Settings.AffiliateCommissionType)
             {
                 case AffiliateCommissionType.PercentageCommission:
                 case AffiliateCommissionType.None:
@@ -76,13 +76,13 @@ namespace BVCommerce
                     this.lstCommissionType.Items.FindByValue("1").Selected = true;
                     break;
             }
-            this.CommissionAmountField.Text = BVApp.CurrentStore.Settings.AffiliateCommissionAmount.ToString("N");
-            this.ReferralDaysField.Text = BVApp.CurrentStore.Settings.AffiliateReferralDays.ToString();
+            this.CommissionAmountField.Text = MTApp.CurrentStore.Settings.AffiliateCommissionAmount.ToString("N");
+            this.ReferralDaysField.Text = MTApp.CurrentStore.Settings.AffiliateReferralDays.ToString();
         }
 
         private void LoadAffiliate()
         {
-            Affiliate a = BVApp.ContactServices.Affiliates.Find(CurrentId);
+            Affiliate a = MTApp.ContactServices.Affiliates.Find(CurrentId);
             if (a == null) return;
             
                     this.chkEnabled.Checked = a.Enabled;
@@ -110,7 +110,7 @@ namespace BVCommerce
                     this.NotesTextBox.Text = a.Notes;
                     if (a.ReferralId != string.Empty)
                     {
-                        this.SampleUrlLabel.Text = BVApp.CurrentStore.RootUrl() + "?" + WebAppSettings.AffiliateQueryStringName + "=" + a.ReferralId;
+                        this.SampleUrlLabel.Text = MTApp.CurrentStore.RootUrl() + "?" + WebAppSettings.AffiliateQueryStringName + "=" + a.ReferralId;
                     }
                     else
                     {
@@ -155,7 +155,7 @@ namespace BVCommerce
             }
             else
             {
-                a = BVApp.ContactServices.Affiliates.Find(CurrentId);
+                a = MTApp.ContactServices.Affiliates.Find(CurrentId);
             }
 
 
@@ -173,7 +173,7 @@ namespace BVCommerce
                 a.Notes = this.NotesTextBox.Text;
                 if (CurrentId < 1)
                 {
-                    result = BVApp.ContactServices.Affiliates.Create(a);
+                    result = MTApp.ContactServices.Affiliates.Create(a);
                     if (result)
                     {
                         CurrentId = a.Id;
@@ -181,7 +181,7 @@ namespace BVCommerce
                 }
                 else
                 {
-                    result = BVApp.ContactServices.Affiliates.Update(a);
+                    result = MTApp.ContactServices.Affiliates.Update(a);
                 }
 
                 if (result == false)

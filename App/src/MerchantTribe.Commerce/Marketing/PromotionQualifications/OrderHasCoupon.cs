@@ -39,7 +39,7 @@ namespace MerchantTribe.Commerce.Marketing.PromotionQualifications
             SetSetting("coupons", all);
         }
 
-        public override string FriendlyDescription(BVApplication bvapp)
+        public override string FriendlyDescription(MerchantTribeApplication app)
         {
             string result = "When Order Has Any of These Coupon Codes:<ul>";
             foreach (string coupon in this.CurrentCoupons())

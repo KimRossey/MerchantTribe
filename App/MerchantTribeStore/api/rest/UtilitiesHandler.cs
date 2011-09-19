@@ -11,7 +11,7 @@ namespace BVCommerce.api.rest
 {
     public class UtilitiesHandler: BaseRestHandler
     {
-        public UtilitiesHandler(MerchantTribe.Commerce.BVApplication app)
+        public UtilitiesHandler(MerchantTribe.Commerce.MerchantTribeApplication app)
             : base(app)
         {
 

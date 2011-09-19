@@ -46,7 +46,7 @@ namespace BVCommerce
             string valueToSet = "0";
             this.pnlMain.Visible = false;
 
-            if (BVApp.CurrentStore.Settings.MailServer.UseCustomMailServer)
+            if (MTApp.CurrentStore.Settings.MailServer.UseCustomMailServer)
             { valueToSet = "1"; this.pnlMain.Visible = true; }
 
             if (WebAppSettings.IsIndividualMode)
@@ -63,13 +63,13 @@ namespace BVCommerce
                 this.lstMailServerChoice.Items.FindByValue(valueToSet).Selected = true;
             }
 
-            MailServerField.Text = BVApp.CurrentStore.Settings.MailServer.HostAddress;
-            this.chkMailServerAuthentication.Checked = BVApp.CurrentStore.Settings.MailServer.UseAuthentication;
-            this.UsernameField.Text = BVApp.CurrentStore.Settings.MailServer.Username;
+            MailServerField.Text = MTApp.CurrentStore.Settings.MailServer.HostAddress;
+            this.chkMailServerAuthentication.Checked = MTApp.CurrentStore.Settings.MailServer.UseAuthentication;
+            this.UsernameField.Text = MTApp.CurrentStore.Settings.MailServer.Username;
             this.PasswordField.Text = "****************";
 
-            this.chkSSL.Checked = BVApp.CurrentStore.Settings.MailServer.UseSsl;
-            this.SmtpPortField.Text = BVApp.CurrentStore.Settings.MailServer.Port;
+            this.chkSSL.Checked = MTApp.CurrentStore.Settings.MailServer.UseSsl;
+            this.SmtpPortField.Text = MTApp.CurrentStore.Settings.MailServer.Port;
 
         }
 
@@ -82,29 +82,29 @@ namespace BVCommerce
 
         private void SaveData()
         {
-            BVApp.CurrentStore.Settings.MailServer.HostAddress = MailServerField.Text.Trim();
-            BVApp.CurrentStore.Settings.MailServer.UseAuthentication = this.chkMailServerAuthentication.Checked;
-            BVApp.CurrentStore.Settings.MailServer.Username = this.UsernameField.Text.Trim();
+            MTApp.CurrentStore.Settings.MailServer.HostAddress = MailServerField.Text.Trim();
+            MTApp.CurrentStore.Settings.MailServer.UseAuthentication = this.chkMailServerAuthentication.Checked;
+            MTApp.CurrentStore.Settings.MailServer.Username = this.UsernameField.Text.Trim();
             if (this.PasswordField.Text.Trim().Length > 0)
             {
                 if (this.PasswordField.Text != "****************")
                 {
-                    BVApp.CurrentStore.Settings.MailServer.Password = this.PasswordField.Text.Trim();
+                    MTApp.CurrentStore.Settings.MailServer.Password = this.PasswordField.Text.Trim();
                     this.PasswordField.Text = "****************";
                 }
             }
 
-            BVApp.CurrentStore.Settings.MailServer.UseSsl = this.chkSSL.Checked;
-            BVApp.CurrentStore.Settings.MailServer.Port = this.SmtpPortField.Text.Trim();
+            MTApp.CurrentStore.Settings.MailServer.UseSsl = this.chkSSL.Checked;
+            MTApp.CurrentStore.Settings.MailServer.Port = this.SmtpPortField.Text.Trim();
             if (this.lstMailServerChoice.SelectedItem.Value == "1")
             {
-                BVApp.CurrentStore.Settings.MailServer.UseCustomMailServer = true;
+                MTApp.CurrentStore.Settings.MailServer.UseCustomMailServer = true;
             }
             else
             {
-                BVApp.CurrentStore.Settings.MailServer.UseCustomMailServer = false;
+                MTApp.CurrentStore.Settings.MailServer.UseCustomMailServer = false;
             }
-            BVApp.UpdateCurrentStore();
+            MTApp.UpdateCurrentStore();
         }
 
         protected void btnCancel_Click(object sender, System.Web.UI.ImageClickEventArgs e)

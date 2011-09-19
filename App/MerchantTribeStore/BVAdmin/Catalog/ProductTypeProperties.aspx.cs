@@ -28,7 +28,7 @@ namespace BVCommerce
 
         private void FillList()
         {
-            this.dgList.DataSource = BVApp.CatalogServices.ProductProperties.FindAll();
+            this.dgList.DataSource = MTApp.CatalogServices.ProductProperties.FindAll();
             this.dgList.DataBind();
         }
 
@@ -39,7 +39,7 @@ namespace BVCommerce
             ProductProperty p = new ProductProperty();
             p.DisplayName = "New Property";
             p.TypeCode = (ProductPropertyType)int.Parse(lstProductType.SelectedValue);
-            if (BVApp.CatalogServices.ProductProperties.Create(p) == true)
+            if (MTApp.CatalogServices.ProductProperties.Create(p) == true)
             {
                 FillList();
             }
@@ -58,7 +58,7 @@ namespace BVCommerce
         protected void dgList_DeleteCommand(object source, System.Web.UI.WebControls.DataGridCommandEventArgs e)
         {
             long deleteID = (long)dgList.DataKeys[e.Item.ItemIndex];
-            BVApp.CatalogServices.ProductPropertiesDestroy(deleteID);
+            MTApp.CatalogServices.ProductPropertiesDestroy(deleteID);
             FillList();
         }
     }

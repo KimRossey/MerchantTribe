@@ -18,7 +18,7 @@ namespace BVCommerce
         {
 
             List<Product> displayProducts = null;
-            displayProducts = MyPage.BVApp.CatalogServices.Products.FindFeatured(1,100);
+            displayProducts = MyPage.MTApp.CatalogServices.Products.FindFeatured(1,100);
 
             if ((displayProducts == null))
             {
@@ -30,7 +30,7 @@ namespace BVCommerce
             sb.Append("<div class=\"featuredproducts\">");
             foreach (Product p in displayProducts)
             {
-                UserSpecificPrice price = MyPage.BVApp.PriceProduct(p, MyPage.BVApp.CurrentCustomer, null);
+                UserSpecificPrice price = MyPage.MTApp.PriceProduct(p, MyPage.MTApp.CurrentCustomer, null);
                 MerchantTribe.Commerce.Utilities.HtmlRendering.RenderSingleProduct(ref sb, p, false, false, this.Page, price);
             }
             sb.Append("<div class=\"clear\"></div></div>");

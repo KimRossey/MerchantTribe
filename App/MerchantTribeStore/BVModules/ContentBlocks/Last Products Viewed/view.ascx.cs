@@ -25,7 +25,7 @@ namespace BVCommerce
 
         private void LoadProductGrid()
         {
-            List<Product> myProducts = PersonalizationServices.GetProductsViewed(MyPage.BVApp);
+            List<Product> myProducts = PersonalizationServices.GetProductsViewed(MyPage.MTApp);
 
             if (myProducts.Count > 0)
             {
@@ -37,7 +37,7 @@ namespace BVCommerce
                 {
                     if (i < 5)
                     {
-                        UserSpecificPrice price = MyPage.BVApp.PriceProduct(p, MyPage.BVApp.CurrentCustomer, null);
+                        UserSpecificPrice price = MyPage.MTApp.PriceProduct(p, MyPage.MTApp.CurrentCustomer, null);
                         MerchantTribe.Commerce.Utilities.HtmlRendering.RenderSingleProduct(ref sb, p, false, false, this.Page, price);
                     }
                 }

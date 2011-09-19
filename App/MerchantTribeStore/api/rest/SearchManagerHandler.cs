@@ -12,7 +12,7 @@ namespace BVCommerce.api.rest
 {
     public class SearchManagerHandler: BaseRestHandler
     {
-        public SearchManagerHandler(MerchantTribe.Commerce.BVApplication app)
+        public SearchManagerHandler(MerchantTribe.Commerce.MerchantTribeApplication app)
             : base(app)
         {
 
@@ -42,7 +42,7 @@ namespace BVCommerce.api.rest
                 if (objecttype.Trim().ToLowerInvariant() == "products")
                 {
                     SearchManager m = new SearchManager();
-                    Product p = BVApp.CatalogServices.Products.Find(objectid);
+                    Product p = MTApp.CatalogServices.Products.Find(objectid);
                     if (p != null)
                     {
                         if (p.Bvin.Length > 0)

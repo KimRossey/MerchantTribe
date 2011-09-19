@@ -56,20 +56,20 @@ namespace BVCommerce
             {
                 this.BlockIDField.Value = Request.QueryString["id"];
             }
-            m = BVApp.OrderServices.ShippingMethods.Find(this.BlockIDField.Value);
+            m = MTApp.OrderServices.ShippingMethods.Find(this.BlockIDField.Value);
             LoadEditor();
         }
 
         private IShippingService FindProvider(string bvin)
         {
-            return MerchantTribe.Commerce.Shipping.AvailableServices.FindById(bvin, BVApp.CurrentStore);
+            return MerchantTribe.Commerce.Shipping.AvailableServices.FindById(bvin, MTApp.CurrentStore);
         }
 
         private void LoadEditor()
         {
             System.Web.UI.Control tempControl = null;
 
-            MerchantTribe.Shipping.IShippingService p = MerchantTribe.Commerce.Shipping.AvailableServices.FindById(m.ShippingProviderId, BVApp.CurrentStore);
+            MerchantTribe.Shipping.IShippingService p = MerchantTribe.Commerce.Shipping.AvailableServices.FindById(m.ShippingProviderId, MTApp.CurrentStore);
 
             tempControl = ModuleController.LoadShippingEditor(p.Name, this);
 
@@ -96,7 +96,7 @@ namespace BVCommerce
             {
                 if ((Request.QueryString["doc"] == "1"))
                 {
-                    BVApp.OrderServices.ShippingMethods.Delete(m.Bvin);
+                    MTApp.OrderServices.ShippingMethods.Delete(m.Bvin);
                 }
             }
             else
@@ -104,7 +104,7 @@ namespace BVCommerce
                 if (e.Info != string.Empty)
                 {
                     m.Name = e.Info;
-                    BVApp.OrderServices.ShippingMethods.Update(m);
+                    MTApp.OrderServices.ShippingMethods.Update(m);
                 }
             }
             Response.Redirect("Shipping.aspx");

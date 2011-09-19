@@ -66,7 +66,7 @@ namespace BVCommerce
         {
             StringBuilder sb = new StringBuilder();
 
-            List<CategorySnapshot> allCats = BVApp.CatalogServices.Categories.FindAllPaged(1, 5000);
+            List<CategorySnapshot> allCats = MTApp.CatalogServices.Categories.FindAllPaged(1, 5000);
 
             this.lstParents.Items.Clear();
             this.lstParents.Items.Add(new System.Web.UI.WebControls.ListItem("( Site Root )", "0"));
@@ -135,7 +135,7 @@ namespace BVCommerce
             CategorySourceType sourceType = CategorySourceType.Manual;
             System.Enum.TryParse<CategorySourceType>(this.lstType.SelectedItem.Value, out sourceType);
             c.SourceType = sourceType;
-            BVApp.CatalogServices.Categories.Create(c);            
+            MTApp.CatalogServices.Categories.Create(c);            
             Response.Redirect(EditorPage(c.SourceType) + "?id=" + c.Bvin);            
         }
     }

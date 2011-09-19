@@ -74,7 +74,7 @@ namespace BVCommerce.BVAdmin.Catalog
 
         private Category LoadCategory()
         {
-            Category c = BVApp.CatalogServices.Categories.Find(this.BvinField.Value);
+            Category c = MTApp.CatalogServices.Categories.Find(this.BvinField.Value);
             if (c != null)
             {
 
@@ -97,7 +97,7 @@ namespace BVCommerce.BVAdmin.Catalog
         {
             bool result = false;
 
-            Category c = BVApp.CatalogServices.Categories.Find(this.BvinField.Value);
+            Category c = MTApp.CatalogServices.Categories.Find(this.BvinField.Value);
             if (c == null)
             {
                 c = new Category();
@@ -124,7 +124,7 @@ namespace BVCommerce.BVAdmin.Catalog
                 }
                 this.RewriteUrlField.Text = c.RewriteUrl;
 
-                if (UrlRewriter.IsCategorySlugInUse(c.RewriteUrl, c.Bvin, BVApp.CurrentRequestContext))
+                if (UrlRewriter.IsCategorySlugInUse(c.RewriteUrl, c.Bvin, MTApp.CurrentRequestContext))
                 {
                     this.MessageBox1.ShowWarning("The requested URL is already in use by another item.");
                     return false;
@@ -136,11 +136,11 @@ namespace BVCommerce.BVAdmin.Catalog
                 if (this.BvinField.Value == string.Empty)
                 {
                     c.ParentId = this.ParentIDField.Value;
-                    result = BVApp.CatalogServices.Categories.Create(c);
+                    result = MTApp.CatalogServices.Categories.Create(c);
                 }
                 else
                 {
-                    result = BVApp.CatalogServices.Categories.Update(c);
+                    result = MTApp.CatalogServices.Categories.Update(c);
                 }
 
                 if (result == false)
@@ -156,8 +156,8 @@ namespace BVCommerce.BVAdmin.Catalog
                     {
                         if (oldUrl != c.RewriteUrl)
                         {
-                            BVApp.ContentServices.CustomUrls.Register301(oldUrl, c.RewriteUrl,
-                                                  c.Bvin, CustomUrlType.Category, BVApp.CurrentRequestContext, BVApp);
+                            MTApp.ContentServices.CustomUrls.Register301(oldUrl, c.RewriteUrl,
+                                                  c.Bvin, CustomUrlType.Category, MTApp.CurrentRequestContext, MTApp);
                             this.UrlsAssociated1.LoadUrls();
                         }
                     }
@@ -188,7 +188,7 @@ namespace BVCommerce.BVAdmin.Catalog
             if (this.Save())
             {
                 MessageBox1.ShowOk("Page Updated Successfully.");
-                Category cat = BVApp.CatalogServices.Categories.Find(this.BvinField.Value);
+                Category cat = MTApp.CatalogServices.Categories.Find(this.BvinField.Value);
             }
             else
             {
@@ -200,16 +200,16 @@ namespace BVCommerce.BVAdmin.Catalog
         {               
             if (Save())
             {
-                Category c = BVApp.CatalogServices.Categories.Find(this.BvinField.Value);
-                BVApp.CurrentRequestContext.IsEditMode = true;
-                string destination = UrlRewriter.BuildUrlForCategory(new CategorySnapshot(c), BVApp.CurrentRequestContext.RoutingContext);
+                Category c = MTApp.CatalogServices.Categories.Find(this.BvinField.Value);
+                MTApp.CurrentRequestContext.IsEditMode = true;
+                string destination = UrlRewriter.BuildUrlForCategory(new CategorySnapshot(c), MTApp.CurrentRequestContext.RoutingContext);
                 if (destination.StartsWith("http"))
                 {
                     destination = destination.Replace("https://", "http://");
                 }
                 else
                 {
-                    Uri rootUri = new Uri(BVApp.CurrentStore.RootUrl());
+                    Uri rootUri = new Uri(MTApp.CurrentStore.RootUrl());
                     string host = rootUri.DnsSafeHost;                    
                     destination = "http://" + host + destination;
                 }

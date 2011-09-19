@@ -41,7 +41,7 @@ namespace BVCommerce
 
         private void InitializeForm()
         {
-            EmailTemplateDropDownList.DataSource = BVApp.ContentServices.GetAllTemplatesForStoreOrDefaults();
+            EmailTemplateDropDownList.DataSource = MTApp.ContentServices.GetAllTemplatesForStoreOrDefaults();
             EmailTemplateDropDownList.DataTextField = "DisplayName";
             EmailTemplateDropDownList.DataValueField = "Id";
             EmailTemplateDropDownList.DataBind();
@@ -64,7 +64,7 @@ namespace BVCommerce
 
         private void LoadManufacturer()
         {
-            VendorManufacturer m = BVApp.ContactServices.Manufacturers.Find(this.BvinField.Value);
+            VendorManufacturer m = MTApp.ContactServices.Manufacturers.Find(this.BvinField.Value);
             if (m != null)
             {
                 if (m.Bvin != string.Empty)
@@ -106,7 +106,7 @@ namespace BVCommerce
         {
             bool result = false;
 
-            VendorManufacturer m = BVApp.ContactServices.Manufacturers.Find(this.BvinField.Value);
+            VendorManufacturer m = MTApp.ContactServices.Manufacturers.Find(this.BvinField.Value);
             if (m == null) m = new VendorManufacturer();            
             
                 m.DisplayName = this.DisplayNameField.Text.Trim();
@@ -115,11 +115,11 @@ namespace BVCommerce
                 m.DropShipEmailTemplateId = this.EmailTemplateDropDownList.SelectedValue;
                 if (this.BvinField.Value == string.Empty)
                 {
-                    result = BVApp.ContactServices.Manufacturers.Create(m);
+                    result = MTApp.ContactServices.Manufacturers.Create(m);
                 }
                 else
                 {
-                    result = BVApp.ContactServices.Manufacturers.Update(m);
+                    result = MTApp.ContactServices.Manufacturers.Update(m);
                 }
 
                 if (result == false)
@@ -137,7 +137,7 @@ namespace BVCommerce
 
         protected void RemoveButton_Click(object sender, System.Web.UI.ImageClickEventArgs e)
         {
-            VendorManufacturer m = BVApp.ContactServices.Manufacturers.Find(this.BvinField.Value);
+            VendorManufacturer m = MTApp.ContactServices.Manufacturers.Find(this.BvinField.Value);
             if (m != null)
             {
                 foreach (System.Web.UI.WebControls.ListItem li in MemberList.Items)
@@ -148,7 +148,7 @@ namespace BVCommerce
                     }
                 }
             }
-            BVApp.ContactServices.Manufacturers.Update(m);
+            MTApp.ContactServices.Manufacturers.Update(m);
             LoadGroups(m);
         }
 
@@ -166,11 +166,11 @@ namespace BVCommerce
             {
                 Save();
             }
-            VendorManufacturer m = BVApp.ContactServices.Manufacturers.Find(this.BvinField.Value);
+            VendorManufacturer m = MTApp.ContactServices.Manufacturers.Find(this.BvinField.Value);
             if (m != null)
             {
                 m.AddContact(args.UserAccount.Bvin);
-                BVApp.ContactServices.Manufacturers.Update(m);
+                MTApp.ContactServices.Manufacturers.Update(m);
             }
             LoadGroups(m);
         }

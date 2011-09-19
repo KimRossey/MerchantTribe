@@ -244,7 +244,7 @@ namespace BVCommerce
             }
             else
             {
-                if (BVApp.AccountServices.StoreNameExists(testStore.StoreName))
+                if (MTApp.AccountServices.StoreNameExists(testStore.StoreName))
                 {
                     RenderError("storename", "A store with that name already exists. Choose another name and try again.");
                 }
@@ -272,7 +272,7 @@ namespace BVCommerce
                 RenderError("billingzipcode", "Please enter the billing zip code for your credit card.");
             }
 
-            UserAccount u = BVApp.AccountServices.AdminUsers.FindByEmail(data.email);
+            UserAccount u = MTApp.AccountServices.AdminUsers.FindByEmail(data.email);
 
             if (u == null)
             {
@@ -301,8 +301,8 @@ namespace BVCommerce
                 {
                     u.Status = MerchantTribe.Commerce.Accounts.UserAccountStatus.Active;
                     u.DateCreated = DateTime.UtcNow;
-                    userOk = BVApp.AccountServices.AdminUsers.Create(u);
-                    u = BVApp.AccountServices.AdminUsers.FindByEmail(u.Email);
+                    userOk = MTApp.AccountServices.AdminUsers.Create(u);
+                    u = MTApp.AccountServices.AdminUsers.FindByEmail(u.Email);
                 }
                 else
                 {
@@ -342,7 +342,7 @@ namespace BVCommerce
                         }
                     }
 
-                    MerchantTribe.Commerce.Accounts.Store s = BVApp.AccountServices.CreateAndSetupStore(data.storename,
+                    MerchantTribe.Commerce.Accounts.Store s = MTApp.AccountServices.CreateAndSetupStore(data.storename,
                                                                 u.Id,
                                                                 data.storename + " store for " + data.email,
                                                                 data.plan,
@@ -353,7 +353,7 @@ namespace BVCommerce
                         if (isPayPalLead)
                         {
                             s.Settings.LeadSource = "PayPalOffer";
-                            BVApp.AccountServices.Stores.Update(s);
+                            MTApp.AccountServices.Stores.Update(s);
                         }
 
                         string e = MerchantTribe.Web.Cryptography.Base64.ConvertStringToBase64(u.Email);

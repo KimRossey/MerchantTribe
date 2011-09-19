@@ -453,7 +453,7 @@ namespace BVCommerce
 
         private void PopulateCountries()
         {
-            lstCountry.DataSource = MyPage.BVApp.CurrentStore.Settings.FindActiveCountries();
+            lstCountry.DataSource = MyPage.MTApp.CurrentStore.Settings.FindActiveCountries();
             lstCountry.DataValueField = "Bvin";
             lstCountry.DataTextField = "DisplayName";
             lstCountry.DataBind();

@@ -29,7 +29,7 @@ namespace BVCommerce.BVAdmin.Catalog
         {
             bool result = false;
 
-            CategoryProductAssociationRepository repo = BVApp.CatalogServices.CategoriesXProducts;
+            CategoryProductAssociationRepository repo = MTApp.CatalogServices.CategoriesXProducts;
              
             result = repo.RemoveProductFromCategory(productId, categoryId);
 

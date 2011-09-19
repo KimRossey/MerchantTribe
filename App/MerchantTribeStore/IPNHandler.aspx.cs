@@ -20,7 +20,7 @@ namespace BVCommerce
 
             System.Net.HttpWebRequest req;
             // Create the request back
-            if (string.Compare(BVApp.CurrentStore.Settings.PayPal.Mode, "Live", true) == 0)
+            if (string.Compare(MTApp.CurrentStore.Settings.PayPal.Mode, "Live", true) == 0)
             {
                 req = (System.Net.HttpWebRequest)System.Net.WebRequest.Create("https://www.paypal.com/cgi-bin/webscr");
             }

@@ -23,7 +23,7 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
 			context.Order.TimeOfOrderUtc = DateTime.UtcNow;            
 			//if (!WebAppSettings.DisableInventory) {				
 					List<string> errors = new List<string>();
-					if (!context.BVApp.OrdersReserveInventoryForAllItems(context.Order,errors)) {
+					if (!context.MTApp.OrdersReserveInventoryForAllItems(context.Order,errors)) {
 						foreach (string item in errors) {
 							context.Errors.Add(new WorkflowMessage("Stock Too Low", item, true));
 						}
@@ -44,7 +44,7 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
 			if (c != null) {
 				context.Order.StatusName = c.StatusName;
 				context.Order.StatusCode = c.Bvin;
-                context.Order.AffiliateID = context.BVApp.ContactServices.GetValidAffiliateId().ToString();
+                context.Order.AffiliateID = context.MTApp.ContactServices.GetValidAffiliateId().ToString();
 			}
 			return true;
 		}
@@ -53,11 +53,11 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
 		{
             // No Rollback for this. Never unplace an order
 
-            //context.BVApp.OrdersUnreserveInventoryForAllItems(context.Order);
+            //context.MTApp.OrdersUnreserveInventoryForAllItems(context.Order);
             //context.Order.IsPlaced = false;
             //context.Order.StatusCode = string.Empty;
             //context.Order.StatusName = "Shopping Cart";
-            //context.BVApp.OrderServices.Orders.Update(context.Order);
+            //context.MTApp.OrderServices.Orders.Update(context.Order);
 			return true;
 		}
 

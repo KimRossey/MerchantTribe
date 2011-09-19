@@ -211,7 +211,7 @@ namespace MerchantTribe.Commerce.Utilities
 
         string imageUrl 
             = MerchantTribe.Commerce.Storage.DiskStorage.ProductImageUrlSmall(
-                    ((IMultiStorePage)page).BVApp.CurrentStore.Id, 
+                    ((IMultiStorePage)page).MTApp.CurrentStore.Id, 
                     p.Bvin, 
                     p.ImageFileSmall, 
                     page.Request.IsSecureConnection);
@@ -250,12 +250,12 @@ namespace MerchantTribe.Commerce.Utilities
         }
 
 
-        public static string HeaderLinks(BVApplication bvapp, string currentUserId)
+        public static string HeaderLinks(MerchantTribeApplication app, string currentUserId)
         {
             StringBuilder sb = new StringBuilder();
 
-            string rootUrl = bvapp.CurrentStore.RootUrl();
-            string rootUrlSecure = bvapp.CurrentStore.RootUrlSecure();
+            string rootUrl = app.CurrentStore.RootUrl();
+            string rootUrlSecure = app.CurrentStore.RootUrlSecure();
 
             sb.Append("<ul>");
 
@@ -273,7 +273,7 @@ namespace MerchantTribe.Commerce.Utilities
             else
             {
                 string name = string.Empty;
-                MerchantTribe.Commerce.Membership.CustomerAccount a = bvapp.MembershipServices.Customers.Find(currentUserId);
+                MerchantTribe.Commerce.Membership.CustomerAccount a = app.MembershipServices.Customers.Find(currentUserId);
                 if (a != null)
                 {
                     name = a.Email;

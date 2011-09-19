@@ -103,7 +103,7 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
                                 note.IsPublic = false;
 								note.Note = "Paypal Order Accepted With Paypal Order Number: " + expressResponse.Token;
 								context.Order.Notes.Add(note);
-                                if (context.BVApp.OrderServices.Orders.Update(context.Order))
+                                if (context.MTApp.OrderServices.Orders.Update(context.Order))
                                 {
 									if (string.Compare(context.CurrentRequest.CurrentStore.Settings.PayPal.Mode, "Live", true) == 0) {
 										HttpContext.Current.Response.Redirect("https://www.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=" + expressResponse.Token, false);

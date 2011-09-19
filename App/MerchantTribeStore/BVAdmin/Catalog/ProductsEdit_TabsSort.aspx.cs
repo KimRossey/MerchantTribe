@@ -34,7 +34,7 @@ namespace BVCommerce
                 l.Add(id);
             }
 
-            Product p = BVApp.CatalogServices.Products.Find(productBvin);
+            Product p = MTApp.CatalogServices.Products.Find(productBvin);
             int currentSort = 1;
             if (p != null)
             {
@@ -51,7 +51,7 @@ namespace BVCommerce
                 }
             }
 
-            if (BVApp.CatalogServices.ProductsUpdateWithSearchRebuild(p))
+            if (MTApp.CatalogServices.ProductsUpdateWithSearchRebuild(p))
             {
                 this.litOutput.Text = "{\"result\":true}";
             }

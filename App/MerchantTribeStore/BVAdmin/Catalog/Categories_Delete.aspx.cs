@@ -27,7 +27,7 @@ namespace BVCommerce
         {
             bool result = false;
 
-            result = BVApp.DestroyCategory(bvin);
+            result = MTApp.DestroyCategory(bvin);
             
             if ((result))
             {

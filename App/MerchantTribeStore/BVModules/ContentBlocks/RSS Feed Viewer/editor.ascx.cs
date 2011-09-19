@@ -19,7 +19,7 @@ namespace BVCommerce
 
         private void LoadData()
         {
-            ContentBlock b = MyPage.BVApp.ContentServices.Columns.FindBlock(this.BlockId);
+            ContentBlock b = MyPage.MTApp.ContentServices.Columns.FindBlock(this.BlockId);
             if (b != null)
             {
                 this.FeedField.Text = b.BaseSettings.GetSettingOrEmpty("FeedUrl");
@@ -31,14 +31,14 @@ namespace BVCommerce
 
         private void SaveData()
         {
-            ContentBlock b = MyPage.BVApp.ContentServices.Columns.FindBlock(this.BlockId);
+            ContentBlock b = MyPage.MTApp.ContentServices.Columns.FindBlock(this.BlockId);
             if (b != null)
             {
                 b.BaseSettings.AddOrUpdate("FeedUrl", this.FeedField.Text.Trim());
                 b.BaseSettings.SetBoolSetting("ShowDescription", this.chkShowDescription.Checked);
                 b.BaseSettings.SetBoolSetting("ShowTitle", this.chkShowTitle.Checked);
                 b.BaseSettings.SetIntegerSetting("MaxItems", int.Parse(this.MaxItemsField.Text.Trim()));
-                MyPage.BVApp.ContentServices.Columns.UpdateBlock(b);
+                MyPage.MTApp.ContentServices.Columns.UpdateBlock(b);
             }
         }
 

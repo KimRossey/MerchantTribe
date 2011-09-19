@@ -23,7 +23,7 @@ namespace BVCommerce
 
         private void LoadProductGrid()
         {
-            List<Product> myProducts = PersonalizationServices.GetProductsViewed(MyPage.BVApp);
+            List<Product> myProducts = PersonalizationServices.GetProductsViewed(MyPage.MTApp);
 
             List<Product> n = new List<Product>();
             int i = 0;

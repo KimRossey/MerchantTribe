@@ -60,7 +60,7 @@ namespace BVCommerce
         private void LoadUser()
         {
             CustomerAccount u;
-            u = BVApp.MembershipServices.Customers.Find(this.BvinField.Value);
+            u = MTApp.MembershipServices.Customers.Find(this.BvinField.Value);
             if (u != null)
             {
                 if (u.Bvin != string.Empty)
@@ -72,7 +72,7 @@ namespace BVCommerce
                     this.PasswordField.Text = "********";
                     this.CommentField.Text = u.Notes;
                     this.LockedField.Checked = u.Locked;
-                    this.LockedField.Text = " until " + TimeZoneInfo.ConvertTimeFromUtc(u.LockedUntilUtc, BVApp.CurrentStore.Settings.TimeZone).ToString() + " (" + u.FailedLoginCount + " failed attempts)";
+                    this.LockedField.Text = " until " + TimeZoneInfo.ConvertTimeFromUtc(u.LockedUntilUtc, MTApp.CurrentStore.Settings.TimeZone).ToString() + " (" + u.FailedLoginCount + " failed attempts)";
 
                     this.PricingGroupDropDownList.SelectedValue = u.PricingGroupId;
                     //this.CustomQuestionAnswerTextBox.Text = u.CustomQuestionAnswers;
@@ -89,7 +89,7 @@ namespace BVCommerce
         private void LoadAddresses()
         {
             CustomerAccount u;
-            u = BVApp.MembershipServices.Customers.Find(this.BvinField.Value);
+            u = MTApp.MembershipServices.Customers.Find(this.BvinField.Value);
             if (u != null)
             {
                 AddressList.DataSource = u.Addresses;
@@ -101,7 +101,7 @@ namespace BVCommerce
         private void BindPricingGroups()
         {
             PricingGroupDropDownList.Items.Clear();
-            PricingGroupDropDownList.DataSource = BVApp.ContactServices.PriceGroups.FindAll();
+            PricingGroupDropDownList.DataSource = MTApp.ContactServices.PriceGroups.FindAll();
             PricingGroupDropDownList.DataTextField = "Name";
             PricingGroupDropDownList.DataValueField = "bvin";
             PricingGroupDropDownList.DataBind();
@@ -114,7 +114,7 @@ namespace BVCommerce
 
             List<OrderSnapshot> dtOrders = new List<OrderSnapshot>();
             int totalCount = 0;
-            dtOrders = BVApp.OrderServices.Orders.FindByUserId(Request.QueryString["id"], 1, 100, ref totalCount);
+            dtOrders = MTApp.OrderServices.Orders.FindByUserId(Request.QueryString["id"], 1, 100, ref totalCount);
 
             if (dtOrders != null)
             {
@@ -138,7 +138,7 @@ namespace BVCommerce
         {
             List<MerchantTribe.Commerce.Metrics.SearchQuery> sr = new List<MerchantTribe.Commerce.Metrics.SearchQuery>();
             int totalCount = 0;
-            sr = BVApp.MetricsSerices.SearchQueries.FindByShopperId(this.BvinField.Value.ToString(), 1, 50, ref totalCount);
+            sr = MTApp.MetricsSerices.SearchQueries.FindByShopperId(this.BvinField.Value.ToString(), 1, 50, ref totalCount);
 
             if (sr != null)
             {
@@ -157,7 +157,7 @@ namespace BVCommerce
 
         //    foreach (WishList item in w)
         //    {
-        //        Product n = BVApp.CatalogServices.Products.Find(item.ProductBvin);
+        //        Product n = MTApp.CatalogServices.Products.Find(item.ProductBvin);
         //        p.Add(n);
         //    }
 
@@ -193,13 +193,13 @@ namespace BVCommerce
             Save();
 
             CustomerAccount u;
-            u = BVApp.MembershipServices.Customers.Find(this.BvinField.Value);
+            u = MTApp.MembershipServices.Customers.Find(this.BvinField.Value);
             if (u != null)
             {
                 string bvin = (string)this.AddressList.DataKeys[e.Item.ItemIndex];
                 u.DeleteAddress(bvin);                
                 CreateUserStatus s = CreateUserStatus.None;
-                BVApp.MembershipServices.UpdateCustomer(u, ref s);
+                MTApp.MembershipServices.UpdateCustomer(u, ref s);
                 LoadAddresses();
             }
         }
@@ -251,7 +251,7 @@ namespace BVCommerce
             string newEmailAddress = this.EmailField.Text.Trim();
 
             CustomerAccount u;
-            u = BVApp.MembershipServices.Customers.Find(this.BvinField.Value);
+            u = MTApp.MembershipServices.Customers.Find(this.BvinField.Value);
             if (u == null) u = new CustomerAccount();
 
             if (u != null)
@@ -273,11 +273,11 @@ namespace BVCommerce
                     // Lock Status Changed                
                     if (this.LockedField.Checked == true)
                     {
-                        BVApp.MembershipServices.LockCustomer(u);
+                        MTApp.MembershipServices.LockCustomer(u);
                     }
                     else
                     {
-                        BVApp.MembershipServices.UnlockCustomer(u);
+                        MTApp.MembershipServices.UnlockCustomer(u);
                     }
                 }
 
@@ -288,7 +288,7 @@ namespace BVCommerce
                 if (this.BvinField.Value == string.Empty)
                 {
                     // Create new user
-                    result = BVApp.MembershipServices.CreateCustomer(u, ref s, this.PasswordField.Text.Trim());
+                    result = MTApp.MembershipServices.CreateCustomer(u, ref s, this.PasswordField.Text.Trim());
                 }
                 else
                 {
@@ -299,7 +299,7 @@ namespace BVCommerce
                     }           
 
                     // Update User
-                    result = BVApp.MembershipServices.UpdateCustomer(u, ref s);
+                    result = MTApp.MembershipServices.UpdateCustomer(u, ref s);
                 }
 
                 if (result == false)
@@ -321,7 +321,7 @@ namespace BVCommerce
 
                     if (emailChanged)
                     {
-                        if (BVApp.MembershipServices.UpdateCustomerEmail(u, newEmailAddress))
+                        if (MTApp.MembershipServices.UpdateCustomerEmail(u, newEmailAddress))
                         {
                             Integration.Current().CustomerAccountEmailChanged(oldEmailAddress, u.Email);
                         }

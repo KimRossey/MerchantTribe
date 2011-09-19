@@ -46,7 +46,7 @@ namespace BVCommerce
         private void LoadMethods()
         {
             MerchantTribe.Commerce.Payment.AvailablePayments availablePayments = new MerchantTribe.Commerce.Payment.AvailablePayments();
-            this.PaymentMethodsGrid.DataSource = availablePayments.AvailableMethodsForPlan(BVApp.CurrentStore.PlanId);
+            this.PaymentMethodsGrid.DataSource = availablePayments.AvailableMethodsForPlan(MTApp.CurrentStore.PlanId);
             this.PaymentMethodsGrid.DataBind();
         }
 
@@ -73,8 +73,8 @@ namespace BVCommerce
                 }
             }
 
-            BVApp.CurrentStore.Settings.PaymentMethodsEnabled = newList;
-            BVApp.UpdateCurrentStore();
+            MTApp.CurrentStore.Settings.PaymentMethodsEnabled = newList;
+            MTApp.UpdateCurrentStore();
 
         }
 
@@ -86,7 +86,7 @@ namespace BVCommerce
                 CheckBox chkEnabled = (CheckBox)e.Row.FindControl("chkEnabled");
                 if (chkEnabled != null)
                 {
-                    if (BVApp.CurrentStore.Settings.PaymentMethodsEnabled.ContainsKey(m.MethodId))
+                    if (MTApp.CurrentStore.Settings.PaymentMethodsEnabled.ContainsKey(m.MethodId))
                     {
                         chkEnabled.Checked = true;
                     }
@@ -121,7 +121,7 @@ namespace BVCommerce
 
         private void ShowFreeMessage()
         {
-            if (BVApp.CurrentStore.PlanId == 0)
+            if (MTApp.CurrentStore.PlanId == 0)
             {
                 this.MessageBox1.ShowInformation("Your store is on the Free plan. <a href=\"../ChangePlan.aspx\">Upgrade Your Store</a> to allow other credit card processors, purchase orders, and more.");
             }

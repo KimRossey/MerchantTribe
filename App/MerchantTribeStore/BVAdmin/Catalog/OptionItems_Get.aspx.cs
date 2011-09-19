@@ -15,7 +15,7 @@ namespace BVCommerce
             if (!Page.IsPostBack)
             {
                 string ids = Request["id"];
-                OptionItem result = BVApp.CatalogServices.ProductOptions.OptionItemFind(ids);
+                OptionItem result = MTApp.CatalogServices.ProductOptions.OptionItemFind(ids);
                 if (result != null)
                 {
                     this.litOutput.Text = MerchantTribe.Web.Json.ObjectToJson(result);

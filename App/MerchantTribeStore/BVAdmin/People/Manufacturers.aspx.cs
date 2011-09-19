@@ -49,7 +49,7 @@ namespace BVCommerce
 
         private void LoadData()
         {         
-            List<VendorManufacturer> items = BVApp.ContactServices.Manufacturers.FindAllWithFilter(this.keyword, currentPage, pageSize, ref rowCount);
+            List<VendorManufacturer> items = MTApp.ContactServices.Manufacturers.FindAllWithFilter(this.keyword, currentPage, pageSize, ref rowCount);
             this.lblResults.Text = rowCount.ToString() + " found";
             this.litPager1.Text = MerchantTribe.Web.Paging.RenderPagerWithLimits("Manufacturers.aspx?page={0}&keyword=" + System.Web.HttpUtility.UrlEncode(keyword), currentPage, rowCount, pageSize, 20);
             RenderItems(items);

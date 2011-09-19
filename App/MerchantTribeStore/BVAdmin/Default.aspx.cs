@@ -21,10 +21,10 @@ namespace BVCommerce
             if (WebAppSettings.IsIndividualMode)
             {
                 // Simple pci check for default admin username
-                if (BVApp.CurrentRequestContext.CurrentAdministrator.Email == "admin@bvcommerce.com") Response.Redirect("ChangeEmail.aspx?pci=1");
+                if (MTApp.CurrentRequestContext.CurrentAdministrator.Email == "admin@bvcommerce.com") Response.Redirect("ChangeEmail.aspx?pci=1");
             }
 
-            this.pnlGettingStarted.Visible = !BVApp.CurrentStore.Settings.HideGettingStarted;
+            this.pnlGettingStarted.Visible = !MTApp.CurrentStore.Settings.HideGettingStarted;
             ShowFreeMessage();
         }
 
@@ -37,14 +37,14 @@ namespace BVCommerce
 
         protected void lnkHideGettingStarted_Click(object sender, EventArgs e)
         {
-            BVApp.CurrentStore.Settings.HideGettingStarted = true;
-            BVApp.UpdateCurrentStore();
+            MTApp.CurrentStore.Settings.HideGettingStarted = true;
+            MTApp.UpdateCurrentStore();
             this.pnlGettingStarted.Visible = false;
         }
 
         private void ShowFreeMessage()
         {
-            if (BVApp.CurrentStore.PlanId == 0)
+            if (MTApp.CurrentStore.PlanId == 0)
             {
                 this.litFreePlan.Text = "<div class=\"flash-message-info\">Your store is on the Free plan. <a href=\"ChangePlan.aspx\">Upgrade Your Store</a> to support more products and features.</div>";
             }

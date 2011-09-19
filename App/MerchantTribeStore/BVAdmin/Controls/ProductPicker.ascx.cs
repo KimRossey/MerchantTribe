@@ -166,7 +166,7 @@ namespace BVCommerce
 
         private void PopulateCategories()
         {
-            Collection<System.Web.UI.WebControls.ListItem> tree = MerchantTribe.Commerce.Catalog.Category.ListFullTreeWithIndents(MyPage.BVApp.CurrentRequestContext);
+            Collection<System.Web.UI.WebControls.ListItem> tree = MerchantTribe.Commerce.Catalog.Category.ListFullTreeWithIndents(MyPage.MTApp.CurrentRequestContext);
             this.CategoryFilter.Items.Clear();
             foreach (System.Web.UI.WebControls.ListItem li in tree)
             {
@@ -177,7 +177,7 @@ namespace BVCommerce
 
         private void PopulateManufacturers()
         {
-            this.ManufacturerFilter.DataSource = MyPage.BVApp.ContactServices.Manufacturers.FindAll();
+            this.ManufacturerFilter.DataSource = MyPage.MTApp.ContactServices.Manufacturers.FindAll();
             this.ManufacturerFilter.DataTextField = "DisplayName";
             this.ManufacturerFilter.DataValueField = "Bvin";
             this.ManufacturerFilter.DataBind();
@@ -186,7 +186,7 @@ namespace BVCommerce
 
         private void PopulateVendors()
         {
-            this.VendorFilter.DataSource = MyPage.BVApp.ContactServices.Vendors.FindAll();
+            this.VendorFilter.DataSource = MyPage.MTApp.ContactServices.Vendors.FindAll();
             this.VendorFilter.DataTextField = "DisplayName";
             this.VendorFilter.DataValueField = "Bvin";
             this.VendorFilter.DataBind();
@@ -236,7 +236,7 @@ namespace BVCommerce
         {
             int totalCount = 0;
             this.GridView1.PageIndex = (CurrentPage - 1);
-            this.GridView1.DataSource = MyPage.BVApp.CatalogServices.Products.FindByCriteria(GetCurrentCriteria(),
+            this.GridView1.DataSource = MyPage.MTApp.CatalogServices.Products.FindByCriteria(GetCurrentCriteria(),
                                                                                         this.GridView1.PageIndex * this.GridView1.PageSize,
                                                                                         this.GridView1.PageSize,
                                                                                         ref totalCount);

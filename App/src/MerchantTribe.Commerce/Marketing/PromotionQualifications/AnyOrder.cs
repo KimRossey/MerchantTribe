@@ -17,7 +17,7 @@ namespace MerchantTribe.Commerce.Marketing.PromotionQualifications
             this.ProcessingCost = RelativeProcessingCost.Lowest;            
         }
 
-        public override string FriendlyDescription(BVApplication bvapp)
+        public override string FriendlyDescription(MerchantTribeApplication app)
         {
             return "When Any Order";
         }

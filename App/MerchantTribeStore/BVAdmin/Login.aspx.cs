@@ -9,32 +9,32 @@ namespace BVCommerce
     partial class BVAdmin_Login : System.Web.UI.Page, IMultiStorePage
     {
         
-        public BVApplication BVApp { get; set; }
+        public MerchantTribeApplication MTApp { get; set; }
 
         
 
         protected override void OnPreInit(System.EventArgs e)
         {
             base.OnPreInit(e);
-            BVApp = BVApplication.InstantiateForDataBase(new RequestContext());
+            MTApp = MerchantTribeApplication.InstantiateForDataBase(new RequestContext());
 
             // Determine store id        
-            BVApp.CurrentStore = MerchantTribe.Commerce.Utilities.UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, BVApp.AccountServices);
-            if (BVApp.CurrentStore == null)
+            MTApp.CurrentStore = MerchantTribe.Commerce.Utilities.UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, MTApp.AccountServices);
+            if (MTApp.CurrentStore == null)
             {
                 Response.Redirect("~/storenotfound");
             }
 
-            if (BVApp.CurrentStore.Status == MerchantTribe.Commerce.Accounts.StoreStatus.Deactivated)
+            if (MTApp.CurrentStore.Status == MerchantTribe.Commerce.Accounts.StoreStatus.Deactivated)
             {
                 Response.Redirect("~/storenotavailable");
             }
 
             // Culture Settings
-            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(BVApp.CurrentStore.Settings.CultureCode);
-            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(BVApp.CurrentStore.Settings.CultureCode);
+            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(MTApp.CurrentStore.Settings.CultureCode);
+            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(MTApp.CurrentStore.Settings.CultureCode);
 
-            IntegrationLoader.AddIntegrations(this.BVApp.CurrentRequestContext.IntegrationEvents, this.BVApp.CurrentStore);        
+            IntegrationLoader.AddIntegrations(this.MTApp.CurrentRequestContext.IntegrationEvents, this.MTApp.CurrentStore);        
         }
 
         protected override void OnLoad(System.EventArgs e)
@@ -85,7 +85,7 @@ namespace BVCommerce
             if (!Request.IsSecureConnection)
             {
                 MerchantTribe.Commerce.Utilities.SSL.SSLRedirect(this,
-                    this.BVApp.CurrentStore,
+                    this.MTApp.CurrentStore,
                     MerchantTribe.Commerce.Utilities.SSL.SSLRedirectTo.SSL);
             }
         }
@@ -100,7 +100,7 @@ namespace BVCommerce
 
             string err = string.Empty;
 
-            if ((BVApp.AccountServices.LoginAdminUser(email, password, ref err, Page.Request.RequestContext.HttpContext)))
+            if ((MTApp.AccountServices.LoginAdminUser(email, password, ref err, Page.Request.RequestContext.HttpContext)))
             {
 
                 if (Request.QueryString["wizard"] != null)

@@ -14,7 +14,7 @@ namespace BVCommerce
         {
             base.OnPreLoad(e);
             choiceid = Request.QueryString["id"];
-            choice = BVApp.CatalogServices.ProductOptions.Find(choiceid);
+            choice = MTApp.CatalogServices.ProductOptions.Find(choiceid);
             if (choice.OptionType == OptionTypes.DropDownList)
             {
                 this.ItemsEditor.AllowLabels = true;
@@ -79,33 +79,33 @@ namespace BVCommerce
             switch (choice.OptionType)
             {
                 case OptionTypes.CheckBoxes:
-                    success = BVApp.CatalogServices.ProductOptions.Update(choice);
+                    success = MTApp.CatalogServices.ProductOptions.Update(choice);
                     break;
                 case OptionTypes.DropDownList:
-                    success = BVApp.CatalogServices.ProductOptions.Update(choice);
+                    success = MTApp.CatalogServices.ProductOptions.Update(choice);
                     break;
                 case OptionTypes.FileUpload:
-                    success = BVApp.CatalogServices.ProductOptions.Update(choice);
+                    success = MTApp.CatalogServices.ProductOptions.Update(choice);
                     break;
                 case OptionTypes.Html:
                     choice.Settings.AddOrUpdate("html", this.HtmlEditor1.Text);
-                    success = BVApp.CatalogServices.ProductOptions.Update(choice);
+                    success = MTApp.CatalogServices.ProductOptions.Update(choice);
                     break;
                 case OptionTypes.RadioButtonList:
-                    success = BVApp.CatalogServices.ProductOptions.Update(choice);
+                    success = MTApp.CatalogServices.ProductOptions.Update(choice);
                     break;
                 case OptionTypes.TextInput:
                     MerchantTribe.Commerce.Catalog.Options.TextInput ti = (MerchantTribe.Commerce.Catalog.Options.TextInput)choice.Processor;
                     ti.SetColumns(choice, this.ColumnsField.Text);
                     ti.SetRows(choice, this.RowsField.Text);
                     ti.SetMaxLength(choice, this.MaxLengthField.Text);
-                    success = BVApp.CatalogServices.ProductOptions.Update(choice);
+                    success = MTApp.CatalogServices.ProductOptions.Update(choice);
                     break;
             }
 
             if ((success))
             {
-                BVApp.CatalogServices.ValidateVariantsForSharedOption(choice);
+                MTApp.CatalogServices.ValidateVariantsForSharedOption(choice);
                 this.MessageBox1.ShowOk("Changes Saved!");
             }
 

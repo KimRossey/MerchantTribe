@@ -19,12 +19,12 @@ namespace BVCommerce.Controllers
         private EstimateShippingViewModel BuildViewModel()
         {            
             EstimateShippingViewModel model = new EstimateShippingViewModel();
-            ViewBag.GetRatesButton = this.BVApp.ThemeManager().ButtonUrl("GetRates", Request.IsSecureConnection);
-            ViewBag.Countries = BVApp.CurrentStore.Settings.FindActiveCountries();
+            ViewBag.GetRatesButton = this.MTApp.ThemeManager().ButtonUrl("GetRates", Request.IsSecureConnection);
+            ViewBag.Countries = MTApp.CurrentStore.Settings.FindActiveCountries();
 
             if (SessionManager.CurrentUserHasCart())
             {
-                Order basket = SessionManager.CurrentShoppingCart(BVApp.OrderServices);
+                Order basket = SessionManager.CurrentShoppingCart(MTApp.OrderServices);
                 if (basket.ShippingAddress.CountryBvin != string.Empty)
                 {
                     model.CountryId = basket.ShippingAddress.CountryBvin;                    
@@ -107,7 +107,7 @@ namespace BVCommerce.Controllers
         {
             if (SessionManager.CurrentUserHasCart() == true)
             {
-                Order Basket = SessionManager.CurrentShoppingCart(BVApp.OrderServices);
+                Order Basket = SessionManager.CurrentShoppingCart(MTApp.OrderServices);
                 if (Basket != null)
                 {
                     Basket.ShippingAddress.PostalCode = model.PostalCode;
@@ -124,10 +124,10 @@ namespace BVCommerce.Controllers
                         }                        
                     }                                                            
 
-                    BVApp.OrderServices.Orders.Update(Basket);
+                    MTApp.OrderServices.Orders.Update(Basket);
 
                     SortableCollection<ShippingRateDisplay> Rates;
-                    Rates = BVApp.OrderServices.FindAvailableShippingRates(Basket);
+                    Rates = MTApp.OrderServices.FindAvailableShippingRates(Basket);
 
                     if (Rates.Count < 1)
                     {

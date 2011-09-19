@@ -39,7 +39,7 @@ namespace BVCommerce
                 LoadOrder();
                 
                 // Acumatica Warning
-                if (BVApp.CurrentStore.Settings.Acumatica.IntegrationEnabled)
+                if (MTApp.CurrentStore.Settings.Acumatica.IntegrationEnabled)
                 {
                     this.MessageBox1.ShowWarning(MerchantTribe.Commerce.Content.SiteTerms.GetTerm(MerchantTribe.Commerce.Content.SiteTermIds.AcumaticaWarning));
                 }
@@ -48,7 +48,7 @@ namespace BVCommerce
 
         private void LoadOrder()
         {
-            o = BVApp.OrderServices.Orders.FindForCurrentStore(Request.QueryString["id"]);
+            o = MTApp.OrderServices.Orders.FindForCurrentStore(Request.QueryString["id"]);
             if (o != null)
             {
                 this.lblOrderNumber.Text = "Order " + o.OrderNumber + " ";
@@ -77,11 +77,11 @@ namespace BVCommerce
 
         private void ReloadOrder(OrderShippingStatus previousShippingStatus)
         {
-            o = BVApp.OrderServices.Orders.FindForCurrentStore(Request.QueryString["id"]);
+            o = MTApp.OrderServices.Orders.FindForCurrentStore(Request.QueryString["id"]);
             o.EvaluateCurrentShippingStatus();
-            BVApp.OrderServices.Orders.Update(o);
+            MTApp.OrderServices.Orders.Update(o);
             MerchantTribe.Commerce.BusinessRules.OrderTaskContext context 
-                = new MerchantTribe.Commerce.BusinessRules.OrderTaskContext(BVApp);
+                = new MerchantTribe.Commerce.BusinessRules.OrderTaskContext(MTApp);
             context.Order = o;
             context.UserId = o.UserID;
             context.Inputs.Add("bvsoftware", "PreviousShippingStatus", previousShippingStatus.ToString());
@@ -119,7 +119,7 @@ namespace BVCommerce
                     {
                         description.Text = lineItem.ProductName;
 
-                        Product associatedProduct = lineItem.GetAssociatedProduct(BVApp);
+                        Product associatedProduct = lineItem.GetAssociatedProduct(MTApp);
                         if (associatedProduct != null)
                         {
                             if (lineItem.ShippingStatus == OrderShippingStatus.NonShipping)
@@ -187,7 +187,7 @@ namespace BVCommerce
 
         private void ShipOrPackageItems(bool dontShip)
         {
-            Order order = BVApp.OrderServices.Orders.FindForCurrentStore(Request.QueryString["id"]);
+            Order order = MTApp.OrderServices.Orders.FindForCurrentStore(Request.QueryString["id"]);
             OrderShippingStatus previousShippingStatus = order.ShippingStatus;
 
             string serviceCode = string.Empty;
@@ -236,9 +236,9 @@ namespace BVCommerce
             o.Packages.Add(p);            
             if (!dontShip)
             {
-                BVApp.OrdersShipPackage(p, o);
+                MTApp.OrdersShipPackage(p, o);
             }
-            BVApp.OrderServices.Orders.Update(o);
+            MTApp.OrderServices.Orders.Update(o);
 
             return p;
         }
@@ -343,7 +343,7 @@ namespace BVCommerce
 
         protected void PackagesGridView_RowDeleting(object sender, System.Web.UI.WebControls.GridViewDeleteEventArgs e)
         {
-            Order order = BVApp.OrderServices.Orders.FindForCurrentStore(Request.QueryString["id"]);
+            Order order = MTApp.OrderServices.Orders.FindForCurrentStore(Request.QueryString["id"]);
             OrderShippingStatus previousShippingStatus = order.ShippingStatus;
 
             long Id = (long)PackagesGridView.DataKeys[e.RowIndex].Value;
@@ -352,7 +352,7 @@ namespace BVCommerce
             if (p != null)
             {
                 order.Packages.Remove(p);
-                BVApp.OrderServices.Orders.Update(order);
+                MTApp.OrderServices.Orders.Update(order);
             }
             ReloadOrder(previousShippingStatus);
         }
@@ -512,7 +512,7 @@ namespace BVCommerce
                 if (e.CommandSource is System.Web.UI.Control)
                 {
 
-                    Order o = BVApp.OrderServices.Orders.FindForCurrentStore(Request.QueryString["id"]);
+                    Order o = MTApp.OrderServices.Orders.FindForCurrentStore(Request.QueryString["id"]);
 
                     GridViewRow row = (GridViewRow)((System.Web.UI.Control)e.CommandSource).NamingContainer;
                     TextBox trackingNumberTextBox = (TextBox)row.FindControl("TrackingNumberTextBox");
@@ -526,7 +526,7 @@ namespace BVCommerce
                         if (package != null)
                         {
                             package.TrackingNumber = trackingNumberTextBox.Text;
-                            BVApp.OrderServices.Orders.Update(o);
+                            MTApp.OrderServices.Orders.Update(o);
                         }
                     }
                 }
@@ -540,7 +540,7 @@ namespace BVCommerce
             {
                 if (e.CommandSource is System.Web.UI.Control)
                 {
-                    Order o = BVApp.OrderServices.Orders.FindForCurrentStore(Request.QueryString["id"]);
+                    Order o = MTApp.OrderServices.Orders.FindForCurrentStore(Request.QueryString["id"]);
 
                     GridViewRow row = (GridViewRow)((System.Web.UI.Control)e.CommandSource).NamingContainer;
                     TextBox trackingNumberTextBox = (TextBox)row.FindControl("TrackingNumber");
@@ -550,7 +550,7 @@ namespace BVCommerce
                         if (package != null)
                         {
                             package.TrackingNumber = trackingNumberTextBox.Text;
-                            BVApp.OrderServices.Orders.Update(o);
+                            MTApp.OrderServices.Orders.Update(o);
                         }
                     }
                 }

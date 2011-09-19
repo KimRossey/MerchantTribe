@@ -31,7 +31,7 @@ namespace BVCommerce.BVAdmin.Configuration
             {
                 LoadServices();
                 LoadCountries();
-                this.FromZipField.Text = BVApp.ContactServices.Addresses.FindStoreContactAddress().PostalCode;
+                this.FromZipField.Text = MTApp.ContactServices.Addresses.FindStoreContactAddress().PostalCode;
             }
         }
 
@@ -45,7 +45,7 @@ namespace BVCommerce.BVAdmin.Configuration
 
         private void LoadServices()
         {
-            MerchantTribe.Shipping.IShippingService uspostal = AvailableServices.FindById(WebAppSettings.ShippingUSPostalInternationalId, BVApp.CurrentStore);
+            MerchantTribe.Shipping.IShippingService uspostal = AvailableServices.FindById(WebAppSettings.ShippingUSPostalInternationalId, MTApp.CurrentStore);
             this.lstServiceTypes.DataSource = uspostal.ListAllServiceCodes();
             this.lstServiceTypes.DataTextField = "DisplayName";
             this.lstServiceTypes.DataValueField = "Code";

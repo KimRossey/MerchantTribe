@@ -28,7 +28,7 @@ namespace BVCommerce.BVAdmin.Controls
 
         public void LoadUrls()
         {
-            List<CustomUrl> all = MyPage.BVApp.ContentServices.CustomUrls.FindBySystemData(this.ObjectId);
+            List<CustomUrl> all = MyPage.MTApp.ContentServices.CustomUrls.FindBySystemData(this.ObjectId);
             if (all.Count > 0)
             {
                 StringBuilder sb = new StringBuilder();

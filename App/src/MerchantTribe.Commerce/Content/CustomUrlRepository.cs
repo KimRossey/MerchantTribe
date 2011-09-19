@@ -148,9 +148,9 @@ namespace MerchantTribe.Commerce.Content
             return result;
         }
 
-        public void Register301(string requestedUrl, string redirectUrl, string objectId, CustomUrlType customUrlType, RequestContext context, BVApplication bvapp)
+        public void Register301(string requestedUrl, string redirectUrl, string objectId, CustomUrlType customUrlType, RequestContext context, MerchantTribeApplication app)
         {
-            bool AlreadyInUse = Utilities.UrlRewriter.IsUrlInUse(requestedUrl, string.Empty, context, bvapp);
+            bool AlreadyInUse = Utilities.UrlRewriter.IsUrlInUse(requestedUrl, string.Empty, context, app);
             if (AlreadyInUse) return;
             CustomUrl c = new CustomUrl();
             c.IsPermanentRedirect = true;

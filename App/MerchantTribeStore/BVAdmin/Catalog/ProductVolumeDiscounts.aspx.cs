@@ -37,7 +37,7 @@ namespace BVCommerce
 
         protected void BindGridViews()
         {
-            VolumeDiscountsGridView.DataSource = BVApp.CatalogServices.VolumeDiscounts.FindByProductId((string)ViewState["id"]);
+            VolumeDiscountsGridView.DataSource = MTApp.CatalogServices.VolumeDiscounts.FindByProductId((string)ViewState["id"]);
             VolumeDiscountsGridView.DataBind();
         }
 
@@ -55,7 +55,7 @@ namespace BVCommerce
                 MessageBox1.ShowError("Price must be a monetary amount.");
             }
 
-            List<ProductVolumeDiscount> volumeDiscounts = BVApp.CatalogServices.VolumeDiscounts.FindByProductId((string)ViewState["id"]);
+            List<ProductVolumeDiscount> volumeDiscounts = MTApp.CatalogServices.VolumeDiscounts.FindByProductId((string)ViewState["id"]);
             ProductVolumeDiscount volumeDiscount = null;
             foreach (ProductVolumeDiscount item in volumeDiscounts)
             {
@@ -77,11 +77,11 @@ namespace BVCommerce
             bool result = false;
             if (volumeDiscount.Bvin == string.Empty)
             {
-                result = BVApp.CatalogServices.VolumeDiscounts.Create(volumeDiscount);
+                result = MTApp.CatalogServices.VolumeDiscounts.Create(volumeDiscount);
             }
             else
             {
-                result = BVApp.CatalogServices.VolumeDiscounts.Update(volumeDiscount);
+                result = MTApp.CatalogServices.VolumeDiscounts.Update(volumeDiscount);
             }
             if (result)
             {
@@ -98,7 +98,7 @@ namespace BVCommerce
 
         protected void VolumeDiscountsGridView_RowDeleting(object sender, System.Web.UI.WebControls.GridViewDeleteEventArgs e)
         {
-            if (BVApp.CatalogServices.VolumeDiscounts.Delete(VolumeDiscountsGridView.DataKeys[e.RowIndex].Value.ToString()))
+            if (MTApp.CatalogServices.VolumeDiscounts.Delete(VolumeDiscountsGridView.DataKeys[e.RowIndex].Value.ToString()))
             {
                 MessageBox1.ShowOk("Volume discount level deleted");
             }

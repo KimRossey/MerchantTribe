@@ -708,7 +708,7 @@ namespace MerchantTribe.Commerce.Catalog
             return result;
         }
 
-        public List<Content.HtmlTemplateTag> GetReplaceableTags(BVApplication bvapp)
+        public List<Content.HtmlTemplateTag> GetReplaceableTags(MerchantTribeApplication app)
         {
             List<Content.HtmlTemplateTag> result = new List<Content.HtmlTemplateTag>();
 
@@ -756,16 +756,16 @@ namespace MerchantTribe.Commerce.Catalog
             result.Add(new Content.HtmlTemplateTag("[[Product.Sku]]", this.Sku));
             result.Add(new Content.HtmlTemplateTag("[[Product.TaxExempt]]", this.TaxExempt.ToString()));
             //result.Add(new Content.EmailTemplateTag("[[Product.TemplateName]]", this.TemplateName));
-            result.Add(new Content.HtmlTemplateTag("[[Product.TypeProperties]]", this.GetTypeProperties(bvapp)));
-            result.Add(new Content.HtmlTemplateTag("[[Product.TypePropertiesDropShipper]]", this.GetTypeProperties(true, bvapp)));
+            result.Add(new Content.HtmlTemplateTag("[[Product.TypeProperties]]", this.GetTypeProperties(app)));
+            result.Add(new Content.HtmlTemplateTag("[[Product.TypePropertiesDropShipper]]", this.GetTypeProperties(true, app)));
             result.Add(new Content.HtmlTemplateTag("[[Product.VendorId]]", this.VendorId));
 
             return result;
         }
 
-        public string GetTypeProperties(BVApplication bvapp)
+        public string GetTypeProperties(MerchantTribeApplication app)
         {
-            return GetTypeProperties(false, bvapp);
+            return GetTypeProperties(false, app);
         }
         private string GetPropertyValueFromList(List<ProductPropertyValue> values, long propertyId)
         {
@@ -773,14 +773,14 @@ namespace MerchantTribe.Commerce.Catalog
             if (temp != null) return temp;
             return string.Empty;
         }        
-        public string GetTypeProperties(bool forDropShipper, BVApplication bvapp)
+        public string GetTypeProperties(bool forDropShipper, MerchantTribeApplication app)
         {
             string productTypeId = this.Bvin;
             string productId = this.ProductTypeId;
 
 
-            List<ProductPropertyValue> propertyValues = bvapp.CatalogServices.ProductPropertyValues.FindByProductId(this.Bvin);            
-            System.Collections.Generic.List<Catalog.ProductProperty> props = bvapp.CatalogServices.ProductPropertiesFindForType(productTypeId);
+            List<ProductPropertyValue> propertyValues = app.CatalogServices.ProductPropertyValues.FindByProductId(this.Bvin);            
+            System.Collections.Generic.List<Catalog.ProductProperty> props = app.CatalogServices.ProductPropertiesFindForType(productTypeId);
 
             StringBuilder sb = new StringBuilder();
             sb.Append("<ul class=\"typedisplay\">");
@@ -795,7 +795,7 @@ namespace MerchantTribe.Commerce.Catalog
 
                 if (render)
                 {
-                    string currentValue = bvapp.CatalogServices.FormatProductPropertyChoiceValue(props[i], GetPropertyValueFromList(propertyValues, props[i].Id));
+                    string currentValue = app.CatalogServices.FormatProductPropertyChoiceValue(props[i], GetPropertyValueFromList(propertyValues, props[i].Id));
                     // If text property is empty, do not display
                     if ((props[i].TypeCode == Catalog.ProductPropertyType.TextField) && (currentValue == string.Empty))
                     {
@@ -995,11 +995,11 @@ namespace MerchantTribe.Commerce.Catalog
 
         #region IPurchasable Members
 
-        public Orders.PurchasableSnapshot AsPurchasable(Catalog.OptionSelectionList selectionData, BVApplication bvapp)
+        public Orders.PurchasableSnapshot AsPurchasable(Catalog.OptionSelectionList selectionData, MerchantTribeApplication app)
         {
-            return AsPurchasable(selectionData, bvapp, true);
+            return AsPurchasable(selectionData, app, true);
         }
-        public Orders.PurchasableSnapshot AsPurchasable(OptionSelectionList selectionData, BVApplication bvapp, bool calculateUserPrice)
+        public Orders.PurchasableSnapshot AsPurchasable(OptionSelectionList selectionData, MerchantTribeApplication app, bool calculateUserPrice)
         {
             Orders.PurchasableSnapshot result = new Orders.PurchasableSnapshot();
 
@@ -1014,18 +1014,18 @@ namespace MerchantTribe.Commerce.Catalog
             {
                 case Shipping.ShippingMode.ShipFromManufacturer:
                     result.ShippingDetails.ShippingSourceId = this.ManufacturerId;
-                    Contacts.VendorManufacturer m = bvapp.ContactServices.Manufacturers.Find(this.ManufacturerId);
+                    Contacts.VendorManufacturer m = app.ContactServices.Manufacturers.Find(this.ManufacturerId);
                     if (m != null)
                     {
                         result.ShippingDetails.ShippingSourceAddress = m.Address;
                     }
                     break;
                 case Shipping.ShippingMode.ShipFromSite:
-                    result.ShippingDetails.ShippingSourceAddress = bvapp.ContactServices.Addresses.FindStoreContactAddress();
+                    result.ShippingDetails.ShippingSourceAddress = app.ContactServices.Addresses.FindStoreContactAddress();
                     break;
                 case Shipping.ShippingMode.ShipFromVendor:
                     result.ShippingDetails.ShippingSourceId = this.VendorId;
-                    Contacts.VendorManufacturer v = bvapp.ContactServices.Vendors.Find(this.VendorId);
+                    Contacts.VendorManufacturer v = app.ContactServices.Vendors.Find(this.VendorId);
                     if (v != null)
                     {
                         result.ShippingDetails.ShippingSourceAddress = v.Address;
@@ -1062,12 +1062,12 @@ namespace MerchantTribe.Commerce.Catalog
             // See if we need to calculate user group discounts on base price
             if (calculateUserPrice)
             {
-                Membership.CustomerAccount account = bvapp.CurrentCustomer;
+                Membership.CustomerAccount account = app.CurrentCustomer;
                 if ((account != null) && (account.Bvin != string.Empty))
                 {
                     if ((account.PricingGroupId != string.Empty))
                     {
-                        Contacts.PriceGroup pricingGroup = bvapp.ContactServices.PriceGroups.Find(account.PricingGroupId);
+                        Contacts.PriceGroup pricingGroup = app.ContactServices.PriceGroups.Find(account.PricingGroupId);
                         if (pricingGroup != null)
                         {
                             decimal groupPrice = this.SitePrice;

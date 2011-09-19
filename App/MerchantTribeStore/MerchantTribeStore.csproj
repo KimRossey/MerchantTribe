@@ -164,17 +164,9 @@
   <ItemGroup>
     <Content Include="BVAdmin\Account.aspx" />
     <Content Include="BVAdmin\BVAdmin.js" />
-    <Content Include="BVAdmin\BVSql\6.0.20 to 6.0.40\BV6020_to_6040_1_Schema.sql" />
-    <Content Include="BVAdmin\BVSql\6.0.24 to 6.0.40\BV6024_to_6040_1_Schema.sql" />
-    <Content Include="BVAdmin\BVSql\6.0.3 to 6.0.7\BV603_to_607_1_Schema.sql" />
-    <Content Include="BVAdmin\BVSql\6.0.3 to 6.0.7\BV603_to_607_2_Data.sql" />
-    <Content Include="BVAdmin\BVSql\6.0.40 to 6.0.50\bv6.0.40_to_6.0.50_schema.sql" />
-    <Content Include="BVAdmin\BVSql\6.0.40 to 6.0.50\bv6.0.40_to_6.0.50_urlupdates.sql" />
-    <Content Include="BVAdmin\BVSql\6.0.7 to 6.0.8\BV607_to_608_1_Schema.sql" />
-    <Content Include="BVAdmin\BVSql\6.0.8 to 6.0.40\BV608_to_6040_1_Schema.sql" />
-    <Content Include="BVAdmin\BVSql\Full\CreateProcedures.sql" />
-    <Content Include="BVAdmin\BVSql\Full\CreateTables.sql" />
-    <Content Include="BVAdmin\BVSql\Full\PopulateData.sql" />
+    <Content Include="BVAdmin\SqlScripts\Full\CreateProcedures.sql" />
+    <Content Include="BVAdmin\SqlScripts\Full\CreateTables.sql" />
+    <Content Include="BVAdmin\SqlScripts\Full\PopulateData.sql" />
     <Content Include="BVAdmin\CancelStore.aspx" />
     <Content Include="BVAdmin\Catalog\Categories.aspx" />
     <Content Include="BVAdmin\Catalog\Categories.js" />

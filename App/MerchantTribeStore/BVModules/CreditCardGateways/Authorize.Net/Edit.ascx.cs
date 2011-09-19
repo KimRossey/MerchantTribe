@@ -34,7 +34,7 @@ namespace BVCommerce
         private void LoadData()
         {
             AuthorizeNetSettings settings = new AuthorizeNetSettings();
-            settings.Merge(MyPage.BVApp.CurrentStore.Settings.PaymentSettingsGet(this.BlockId));
+            settings.Merge(MyPage.MTApp.CurrentStore.Settings.PaymentSettingsGet(this.BlockId));
 
             this.UsernameField.Text = settings.MerchantLoginId;
             this.PasswordField.Text = settings.TransactionKey;
@@ -46,7 +46,7 @@ namespace BVCommerce
         private void SaveData()
         {
             AuthorizeNetSettings settings = new AuthorizeNetSettings();
-            settings.Merge(MyPage.BVApp.CurrentStore.Settings.PaymentSettingsGet(this.BlockId));
+            settings.Merge(MyPage.MTApp.CurrentStore.Settings.PaymentSettingsGet(this.BlockId));
 
             settings.MerchantLoginId = this.UsernameField.Text.Trim();
             settings.TransactionKey = this.PasswordField.Text.Trim();
@@ -54,9 +54,9 @@ namespace BVCommerce
             settings.SendEmailToCustomer = this.EmailCustomerCheckBox.Checked;
             settings.DeveloperMode = this.chkDebugMode.Checked;
 
-            MyPage.BVApp.CurrentStore.Settings.PaymentSettingsSet(this.BlockId, settings);
+            MyPage.MTApp.CurrentStore.Settings.PaymentSettingsSet(this.BlockId, settings);
 
-            MyPage.BVApp.AccountServices.Stores.Update(MyPage.BVApp.CurrentStore);
+            MyPage.MTApp.AccountServices.Stores.Update(MyPage.MTApp.CurrentStore);
         }
 
     }

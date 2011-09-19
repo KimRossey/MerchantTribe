@@ -28,7 +28,7 @@ namespace BVCommerce
         private void Update(string themeid, string css)
         {
 
-            bool result = BVApp.ThemeManager().UpdateStyleSheet(themeid, css);
+            bool result = MTApp.ThemeManager().UpdateStyleSheet(themeid, css);
 
             if (result)
             {
