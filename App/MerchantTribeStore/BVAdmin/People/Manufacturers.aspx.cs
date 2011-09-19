@@ -1,7 +1,7 @@
 
 using System.Collections.Generic;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Contacts;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Contacts;
 using System.IO;
 using System.Text;
 
@@ -20,7 +20,7 @@ namespace BVCommerce
             base.OnPreInit(e);
             this.PageTitle = "Manufacturers";
             this.CurrentTab = AdminTabType.People;
-            ValidateCurrentUserHasPermission(BVSoftware.Commerce.Membership.SystemPermissions.PeopleView);
+            ValidateCurrentUserHasPermission(MerchantTribe.Commerce.Membership.SystemPermissions.PeopleView);
         }
 
         protected override void OnLoad(System.EventArgs e)

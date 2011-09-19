@@ -124,11 +124,10 @@
       <HintPath>..\..\packages\MerchantTribe.Web.1.2.0.0\lib\net4\MerchantTribe.Web.dll</HintPath>
     </Reference>
     <Reference Include="Payflow_dotNET">
-      <HintPath>..\..\components\Payflow_dotNET.dll</HintPath>
+      <HintPath>..\..\lib\Payflow_dotNET.dll</HintPath>
     </Reference>
-    <Reference Include="paypal_base, Version=5.6.61.0, Culture=neutral, PublicKeyToken=b37401294aaf5617">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\components\paypal_base.dll</HintPath>
+    <Reference Include="paypal_base">
+      <HintPath>..\..\lib\paypal_base.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -206,13 +205,13 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BVSoftware.PaypalWebServices\BVSoftware.PaypalWebServices.csproj">
-      <Project>{40FCF14A-F903-4BF1-B4E0-FC5CB623BDF2}</Project>
-      <Name>BVSoftware.PaypalWebServices</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\MerchantTribe.PaypalWebServices\MerchantTribe.PaypalWebServices.csproj">
+      <Project>{40FCF14A-F903-4BF1-B4E0-FC5CB623BDF2}</Project>
+      <Name>MerchantTribe.PaypalWebServices</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

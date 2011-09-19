@@ -1,9 +1,9 @@
 using System.Collections.ObjectModel;
 using System.Web;
 using System.Web.UI;
-using BVSoftware.Commerce.Catalog;
-using BVSoftware.Commerce.Content;
-using BVSoftware.Commerce.Utilities;
+using MerchantTribe.Commerce.Catalog;
+using MerchantTribe.Commerce.Content;
+using MerchantTribe.Commerce.Utilities;
 using System.Text;
 using System.Collections.Generic;
 

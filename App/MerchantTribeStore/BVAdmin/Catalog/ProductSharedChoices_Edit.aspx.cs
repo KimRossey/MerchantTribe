@@ -1,5 +1,5 @@
 using System.Web.UI;
-using BVSoftware.Commerce.Catalog;
+using MerchantTribe.Commerce.Catalog;
 
 namespace BVCommerce
 {
@@ -59,7 +59,7 @@ namespace BVCommerce
                     break;
                 case OptionTypes.TextInput:
                     this.viewMain.SetActiveView(this.viewTextInput);
-                    BVSoftware.Commerce.Catalog.Options.TextInput ti = (BVSoftware.Commerce.Catalog.Options.TextInput)choice.Processor;
+                    MerchantTribe.Commerce.Catalog.Options.TextInput ti = (MerchantTribe.Commerce.Catalog.Options.TextInput)choice.Processor;
                     this.ColumnsField.Text = ti.GetColumns(choice);
                     this.RowsField.Text = ti.GetRows(choice);
                     this.MaxLengthField.Text = ti.GetMaxLength(choice);
@@ -95,7 +95,7 @@ namespace BVCommerce
                     success = BVApp.CatalogServices.ProductOptions.Update(choice);
                     break;
                 case OptionTypes.TextInput:
-                    BVSoftware.Commerce.Catalog.Options.TextInput ti = (BVSoftware.Commerce.Catalog.Options.TextInput)choice.Processor;
+                    MerchantTribe.Commerce.Catalog.Options.TextInput ti = (MerchantTribe.Commerce.Catalog.Options.TextInput)choice.Processor;
                     ti.SetColumns(choice, this.ColumnsField.Text);
                     ti.SetRows(choice, this.RowsField.Text);
                     ti.SetMaxLength(choice, this.MaxLengthField.Text);

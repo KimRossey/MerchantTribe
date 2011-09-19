@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Web;
-using BVSoftware.Commerce;
-using BVSoftware.CommerceDTO.v1;
-using BVSoftware.CommerceDTO.v1.Catalog;
-using BVSoftware.Commerce.Catalog;
+using MerchantTribe.Commerce;
+using MerchantTribe.CommerceDTO.v1;
+using MerchantTribe.CommerceDTO.v1.Catalog;
+using MerchantTribe.Commerce.Catalog;
 
 namespace BVCommerce.api.rest
 {
     public class ProductsHandler: BaseRestHandler
     {
-        public ProductsHandler(BVSoftware.Commerce.BVApplication app)
+        public ProductsHandler(MerchantTribe.Commerce.BVApplication app)
             : base(app)
         {
 
@@ -134,13 +134,13 @@ namespace BVCommerce.api.rest
                 }
 
                 // Try ten times to append to URL if in use
-                bool rewriteUrlInUse = BVSoftware.Commerce.Utilities.UrlRewriter.IsProductSlugInUse(item.UrlSlug, string.Empty, BVApp);
+                bool rewriteUrlInUse = MerchantTribe.Commerce.Utilities.UrlRewriter.IsProductSlugInUse(item.UrlSlug, string.Empty, BVApp);
                 for (int i = 0; i < 10; i++)
                 {
                     if (rewriteUrlInUse)
                     {
                         item.UrlSlug = item.UrlSlug + "-2";
-                        rewriteUrlInUse = BVSoftware.Commerce.Utilities.UrlRewriter.IsProductSlugInUse(item.UrlSlug, string.Empty, BVApp);
+                        rewriteUrlInUse = MerchantTribe.Commerce.Utilities.UrlRewriter.IsProductSlugInUse(item.UrlSlug, string.Empty, BVApp);
                         if (rewriteUrlInUse == false) break;
                     }
                 }

@@ -1,9 +1,9 @@
 using System;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce.Catalog;
-using BVSoftware.Commerce.Membership;
-using BVSoftware.Commerce.Content;
+using MerchantTribe.Commerce.Catalog;
+using MerchantTribe.Commerce.Membership;
+using MerchantTribe.Commerce.Content;
 using MerchantTribe.Web.Geography;
 using System.Linq;
 
@@ -93,7 +93,7 @@ namespace BVCommerce
                     }
                     catch (Exception ex)
                     {
-                        BVSoftware.Commerce.EventLog.LogEvent(ex);
+                        MerchantTribe.Commerce.EventLog.LogEvent(ex);
                     }
                     this.DefaultDate.SelectedDate = d;
                 }

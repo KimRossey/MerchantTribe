@@ -4,9 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce.Marketing;
-using BVSoftware.Commerce.Marketing.PromotionActions;
-using BVSoftware.Commerce.Content;
+using MerchantTribe.Commerce.Marketing;
+using MerchantTribe.Commerce.Marketing.PromotionActions;
+using MerchantTribe.Commerce.Content;
 using System.Collections.ObjectModel;
 
 namespace BVCommerce.BVAdmin.Marketing

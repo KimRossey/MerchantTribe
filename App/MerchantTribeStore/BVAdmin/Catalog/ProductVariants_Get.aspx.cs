@@ -1,5 +1,5 @@
 using System.Web.UI;
-using BVSoftware.Commerce.Catalog;
+using MerchantTribe.Commerce.Catalog;
 
 namespace BVCommerce
 {
@@ -39,7 +39,7 @@ namespace BVCommerce
                     {
                         output.Price = p.SitePrice;
                     }
-                    output.ImageUrl = BVSoftware.Commerce.Storage.DiskStorage.ProductVariantImageUrlMedium(this.BVApp.CurrentStore.Id, p.Bvin, p.ImageFileSmall, result.Bvin, true);
+                    output.ImageUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductVariantImageUrlMedium(this.BVApp.CurrentStore.Id, p.Bvin, p.ImageFileSmall, result.Bvin, true);
 
                     foreach (string s in result.SelectionNames(p.Options.VariantsOnly()))
                     {

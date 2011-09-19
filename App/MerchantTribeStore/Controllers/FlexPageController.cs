@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Accounts;
-using BVSoftware.Commerce.Catalog;
-using BVSoftware.Commerce.Content;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Accounts;
+using MerchantTribe.Commerce.Catalog;
+using MerchantTribe.Commerce.Content;
 using System.Text;
-using BVSoftware.Commerce.Content.Parts;
+using MerchantTribe.Commerce.Content.Parts;
 
 namespace BVCommerce.Controllers
 {
@@ -18,7 +18,7 @@ namespace BVCommerce.Controllers
 
         private void CheckFor301(string slug)
         {
-            BVSoftware.Commerce.Content.CustomUrl url = BVApp.ContentServices.CustomUrls.FindByRequestedUrl(slug);
+            MerchantTribe.Commerce.Content.CustomUrl url = BVApp.ContentServices.CustomUrls.FindByRequestedUrl(slug);
             if (url != null)
             {
                 if (url.Bvin != string.Empty)

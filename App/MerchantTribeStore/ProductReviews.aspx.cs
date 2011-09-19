@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Text;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Catalog;
-using BVSoftware.Commerce.Content;
-using BVSoftware.Commerce.Utilities;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Catalog;
+using MerchantTribe.Commerce.Content;
+using MerchantTribe.Commerce.Utilities;
 
 namespace BVCommerce
 {
@@ -27,21 +27,21 @@ namespace BVCommerce
                 _LocalProduct = BVApp.CatalogServices.Products.FindBySlug(slug);
                 if (_LocalProduct == null)
                 {
-                    UrlRewriter.RedirectToErrorPage(BVSoftware.Commerce.ErrorTypes.Product, Response);
+                    UrlRewriter.RedirectToErrorPage(MerchantTribe.Commerce.ErrorTypes.Product, Response);
                 }
                 else if (_LocalProduct.Status == ProductStatus.Disabled)
                 {
-                    UrlRewriter.RedirectToErrorPage(BVSoftware.Commerce.ErrorTypes.Product, Response);
+                    UrlRewriter.RedirectToErrorPage(MerchantTribe.Commerce.ErrorTypes.Product, Response);
                 }
             }
             else
             {
-                UrlRewriter.RedirectToErrorPage(BVSoftware.Commerce.ErrorTypes.Product, Response);
+                UrlRewriter.RedirectToErrorPage(MerchantTribe.Commerce.ErrorTypes.Product, Response);
             }
 
             if (_LocalProduct.Bvin == string.Empty)
             {
-                EventLog.LogEvent("Product Page", "Requested Product slug " + slug + " was not found", BVSoftware.Commerce.Metrics.EventLogSeverity.Error);
+                EventLog.LogEvent("Product Page", "Requested Product slug " + slug + " was not found", MerchantTribe.Commerce.Metrics.EventLogSeverity.Error);
             }
 
             // Page Title

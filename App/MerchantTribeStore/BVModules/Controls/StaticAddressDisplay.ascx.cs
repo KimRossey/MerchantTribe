@@ -1,4 +1,4 @@
-using BVSoftware.Commerce.Contacts;
+using MerchantTribe.Commerce.Contacts;
 
 namespace BVCommerce
 {

@@ -1,6 +1,6 @@
 using System.Web.UI;
 using System.Collections.Generic;
-using BVSoftware.Commerce.Catalog;
+using MerchantTribe.Commerce.Catalog;
 
 namespace BVCommerce
 {

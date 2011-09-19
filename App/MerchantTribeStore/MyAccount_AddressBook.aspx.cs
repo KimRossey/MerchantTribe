@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Text;
 using System.Web.UI;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Catalog;
-using BVSoftware.Commerce.Content;
-using BVSoftware.Commerce.Orders;
-using BVSoftware.Commerce.Utilities;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Catalog;
+using MerchantTribe.Commerce.Content;
+using MerchantTribe.Commerce.Orders;
+using MerchantTribe.Commerce.Utilities;
 using System.Linq;
-using BVSoftware.Commerce.Membership;
+using MerchantTribe.Commerce.Membership;
 using System.Web.UI.WebControls;
 
 namespace BVCommerce

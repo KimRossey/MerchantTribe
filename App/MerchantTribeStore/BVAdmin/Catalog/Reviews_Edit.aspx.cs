@@ -1,5 +1,5 @@
 using System.Web.UI;
-using BVSoftware.Commerce.Membership;
+using MerchantTribe.Commerce.Membership;
 
 namespace BVCommerce
 {

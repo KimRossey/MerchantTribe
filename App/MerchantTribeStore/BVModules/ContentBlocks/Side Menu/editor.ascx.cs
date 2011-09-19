@@ -1,6 +1,6 @@
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce.Content;
+using MerchantTribe.Commerce.Content;
 
 namespace BVCommerce
 {

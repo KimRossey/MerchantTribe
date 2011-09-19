@@ -1,7 +1,7 @@
 using System;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Controls;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Controls;
 
 namespace BVCommerce
 {
@@ -34,19 +34,19 @@ namespace BVCommerce
                 }
                 else if (this.MonetaryDropDownList.SelectedIndex == (int)Modes.IncreaseByAmount)
                 {
-                    return BVSoftware.Commerce.Utilities.Money.ApplyIncreasedAmount(item, val);
+                    return MerchantTribe.Commerce.Utilities.Money.ApplyIncreasedAmount(item, val);
                 }
                 else if (this.MonetaryDropDownList.SelectedIndex == (int)Modes.DecreaseByAmount)
                 {
-                    return BVSoftware.Commerce.Utilities.Money.ApplyDiscountAmount(item, val);
+                    return MerchantTribe.Commerce.Utilities.Money.ApplyDiscountAmount(item, val);
                 }
                 else if (this.MonetaryDropDownList.SelectedIndex == (int)Modes.IncreaseByPercent)
                 {
-                    return BVSoftware.Commerce.Utilities.Money.ApplyIncreasedPercent(item, val);
+                    return MerchantTribe.Commerce.Utilities.Money.ApplyIncreasedPercent(item, val);
                 }
                 else if (this.MonetaryDropDownList.SelectedIndex == (int)Modes.DecreaseByPercent)
                 {
-                    return BVSoftware.Commerce.Utilities.Money.ApplyDiscountPercent(item, val);
+                    return MerchantTribe.Commerce.Utilities.Money.ApplyDiscountPercent(item, val);
                 }
             }
             else

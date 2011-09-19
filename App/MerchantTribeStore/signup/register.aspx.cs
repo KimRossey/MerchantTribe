@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using BVCommerce.Helpers;
-using BVSoftware.Commerce.Accounts;
+using MerchantTribe.Commerce.Accounts;
 
 namespace BVCommerce
 {
@@ -111,7 +111,7 @@ namespace BVCommerce
             if (thePlan != null)
             {
                 string PayPalLead = string.Empty;
-                PayPalLead = BVSoftware.Commerce.SessionManager.GetCookieString("PayPalLead");
+                PayPalLead = MerchantTribe.Commerce.SessionManager.GetCookieString("PayPalLead");
 
                 if (thePlan.Id == 0)
                 {
@@ -233,7 +233,7 @@ namespace BVCommerce
                 data.expmonth = int.Parse(this.expmonth.SelectedItem.Value);
             }
 
-            BVSoftware.Commerce.Accounts.Store testStore = new BVSoftware.Commerce.Accounts.Store();
+            MerchantTribe.Commerce.Accounts.Store testStore = new MerchantTribe.Commerce.Accounts.Store();
             testStore.StoreName = data.storename;
             if (!testStore.IsValid())
             {
@@ -276,7 +276,7 @@ namespace BVCommerce
 
             if (u == null)
             {
-                u = new BVSoftware.Commerce.Accounts.UserAccount();
+                u = new MerchantTribe.Commerce.Accounts.UserAccount();
             }
 
             bool userOk = false;
@@ -293,13 +293,13 @@ namespace BVCommerce
             }
             else
             {
-                u = new BVSoftware.Commerce.Accounts.UserAccount();
+                u = new MerchantTribe.Commerce.Accounts.UserAccount();
                 u.Email = data.email;
                 u.HashedPassword = data.password;
 
                 if (u.IsValid())
                 {
-                    u.Status = BVSoftware.Commerce.Accounts.UserAccountStatus.Active;
+                    u.Status = MerchantTribe.Commerce.Accounts.UserAccountStatus.Active;
                     u.DateCreated = DateTime.UtcNow;
                     userOk = BVApp.AccountServices.AdminUsers.Create(u);
                     u = BVApp.AccountServices.AdminUsers.FindByEmail(u.Email);
@@ -317,7 +317,7 @@ namespace BVCommerce
             {
                 try
                 {
-                    BVSoftware.Billing.BillingAccount billingAccount = new BVSoftware.Billing.BillingAccount();
+                    MerchantTribe.Billing.BillingAccount billingAccount = new MerchantTribe.Billing.BillingAccount();
                     billingAccount.Email = u.Email;
                     billingAccount.BillingZipCode = data.billingzipcode;
                     billingAccount.CreditCard.CardNumber = data.cardnumber;
@@ -326,7 +326,7 @@ namespace BVCommerce
                     billingAccount.CreditCard.CardHolderName = data.cardholder;
 
                     bool isPayPalLead = false;
-                    if (BVSoftware.Commerce.SessionManager.GetCookieString("PayPalLead") != string.Empty)
+                    if (MerchantTribe.Commerce.SessionManager.GetCookieString("PayPalLead") != string.Empty)
                     {
                         isPayPalLead = true;
                     }
@@ -342,7 +342,7 @@ namespace BVCommerce
                         }
                     }
 
-                    BVSoftware.Commerce.Accounts.Store s = BVApp.AccountServices.CreateAndSetupStore(data.storename,
+                    MerchantTribe.Commerce.Accounts.Store s = BVApp.AccountServices.CreateAndSetupStore(data.storename,
                                                                 u.Id,
                                                                 data.storename + " store for " + data.email,
                                                                 data.plan,
@@ -369,7 +369,7 @@ namespace BVCommerce
                         //this.pnlMain.Visible = false;                                                                                
                     }
                 }
-                catch (BVSoftware.Commerce.Accounts.CreateStoreException cex)
+                catch (MerchantTribe.Commerce.Accounts.CreateStoreException cex)
                 {
                     RenderError("storename", cex.Message);
                 }

@@ -1,5 +1,5 @@
-using BVSoftware.Commerce.Content;
-using BVSoftware.Commerce;
+using MerchantTribe.Commerce.Content;
+using MerchantTribe.Commerce;
 using System;
 using System.Web.UI;
 using System.Web.UI.WebControls;

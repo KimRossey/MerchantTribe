@@ -1,7 +1,7 @@
 
 
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Marketing;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Marketing;
 
 namespace BVCommerce
 {

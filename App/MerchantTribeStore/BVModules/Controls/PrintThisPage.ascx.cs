@@ -3,7 +3,7 @@ using System.Web.UI;
 namespace BVCommerce
 {
 
-    partial class BVModules_Controls_PrintThisPage : BVSoftware.Commerce.Content.BVUserControl
+    partial class BVModules_Controls_PrintThisPage : MerchantTribe.Commerce.Content.BVUserControl
     {
 
         protected override void OnLoad(System.EventArgs e)

@@ -2,9 +2,9 @@
 using System.Text;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Catalog;
-using BVSoftware.Commerce.Utilities;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Catalog;
+using MerchantTribe.Commerce.Utilities;
 
 namespace BVCommerce
 {
@@ -79,7 +79,7 @@ namespace BVCommerce
                 Page.MetaDescription = LocalCategory.MetaDescription;
             }
 
-            this.litMain.Text = BVSoftware.Commerce.Utilities.TagReplacer.ReplaceContentTags(LocalCategory.Description,
+            this.litMain.Text = MerchantTribe.Commerce.Utilities.TagReplacer.ReplaceContentTags(LocalCategory.Description,
                                                                                             this.BVApp,
                                                                                             "", Request.IsSecureConnection);
 

@@ -1,10 +1,10 @@
 using System.Web.UI;
-using BVSoftware.Commerce.Content;
+using MerchantTribe.Commerce.Content;
 
 namespace BVCommerce
 {
 
-    partial class BVModules_Controls_Search : BVSoftware.Commerce.Content.BVUserControl
+    partial class BVModules_Controls_Search : MerchantTribe.Commerce.Content.BVUserControl
     {
 
         protected override void OnLoad(System.EventArgs e)

@@ -1,7 +1,7 @@
 
 using System.Collections.Generic;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Membership;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Membership;
 using System.Text;
 using System.IO;
 using System.Text;
@@ -21,7 +21,7 @@ namespace BVCommerce
             base.OnPreInit(e);
             this.PageTitle = "Customers";
             this.CurrentTab = AdminTabType.People;
-            ValidateCurrentUserHasPermission(BVSoftware.Commerce.Membership.SystemPermissions.PeopleView);
+            ValidateCurrentUserHasPermission(MerchantTribe.Commerce.Membership.SystemPermissions.PeopleView);
         }
        
         protected override void OnLoad(System.EventArgs e)
@@ -79,7 +79,7 @@ namespace BVCommerce
             string deleteLink = destinationLink.Replace("_edit", "_delete");
 
             sb.Append("<tr><td><a href=\"" + destinationLink + "\">");
-            sb.Append("<img src=\"" + BVSoftware.Commerce.Contacts.GravatarHelper.GetGravatarUrlForEmailWithSize(a.Email, 40) + "\" alt=\"" + a.Email + "\" />");
+            sb.Append("<img src=\"" + MerchantTribe.Commerce.Contacts.GravatarHelper.GetGravatarUrlForEmailWithSize(a.Email, 40) + "\" alt=\"" + a.Email + "\" />");
             sb.Append("</a></td>");
 
 

@@ -1,10 +1,10 @@
 using System.Web.UI;
-using BVSoftware.Commerce;
+using MerchantTribe.Commerce;
 
 namespace BVCommerce
 {
 
-    partial class BVModules_Controls_EmailThisPage : BVSoftware.Commerce.Content.BVUserControl
+    partial class BVModules_Controls_EmailThisPage : MerchantTribe.Commerce.Content.BVUserControl
     {
 
         protected override void OnLoad(System.EventArgs e)

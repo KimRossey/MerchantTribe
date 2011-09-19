@@ -28,7 +28,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVSoftware.Commerce.Controls.BVRegularExpressionValidator RegularExpressionValidator1;
+        protected global::MerchantTribe.Commerce.Controls.BVRegularExpressionValidator RegularExpressionValidator1;
         
         /// <summary>
         /// IntegerDropDownList control.

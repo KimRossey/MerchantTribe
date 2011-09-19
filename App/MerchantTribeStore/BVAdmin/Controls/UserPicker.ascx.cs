@@ -1,10 +1,10 @@
-using BVSoftware.Commerce;
+using MerchantTribe.Commerce;
 using System.Collections.Generic;
 
 namespace BVCommerce
 {
 
-    partial class BVAdmin_Controls_UserPicker : BVSoftware.Commerce.Content.BVUserControl
+    partial class BVAdmin_Controls_UserPicker : MerchantTribe.Commerce.Content.BVUserControl
     {
 
         private int _tabIndex = -1;
@@ -36,7 +36,7 @@ namespace BVCommerce
             set { _tabIndex = value; }
         }
 
-        public delegate void UserSelectedDelegate(BVSoftware.Commerce.Controls.UserSelectedEventArgs e);
+        public delegate void UserSelectedDelegate(MerchantTribe.Commerce.Controls.UserSelectedEventArgs e);
         public event UserSelectedDelegate UserSelected;
 
         protected override void OnLoad(System.EventArgs e)
@@ -114,7 +114,7 @@ namespace BVCommerce
 
         private void LoadUsers()
         {
-            List<BVSoftware.Commerce.Membership.CustomerAccount> users;
+            List<MerchantTribe.Commerce.Membership.CustomerAccount> users;
             int count = 0;
             users = MyPage.BVApp.MembershipServices.Customers.FindByFilter(this.FilterField.Text.Trim(), 0, 50, ref count);
             this.GridView1.DataSource = users;
@@ -125,13 +125,13 @@ namespace BVCommerce
         {
             if (MessageBox != null) MessageBox.ClearMessage();
 
-            BVSoftware.Commerce.Membership.CustomerAccount u = new BVSoftware.Commerce.Membership.CustomerAccount();
+            MerchantTribe.Commerce.Membership.CustomerAccount u = new MerchantTribe.Commerce.Membership.CustomerAccount();
             u.Email = this.NewUserEmailField.Text.Trim();
             u.FirstName = this.NewUserFirstNameField.Text.Trim();
             u.LastName = this.NewUserLastNameField.Text.Trim();
             u.Password = MyPage.BVApp.MembershipServices.GeneratePasswordForCustomer(12);
             u.TaxExempt = this.NewUserTaxExemptField.Checked;
-            BVSoftware.Commerce.Membership.CreateUserStatus createResult = new BVSoftware.Commerce.Membership.CreateUserStatus();
+            MerchantTribe.Commerce.Membership.CreateUserStatus createResult = new MerchantTribe.Commerce.Membership.CreateUserStatus();
             if (MyPage.BVApp.MembershipServices.CreateCustomer(u, ref createResult, u.Password) == true)
             {
                 this.UserNameField.Text = u.Email;
@@ -142,10 +142,10 @@ namespace BVCommerce
             {
                 switch (createResult)
                 {
-                    case BVSoftware.Commerce.Membership.CreateUserStatus.DuplicateUsername:
+                    case MerchantTribe.Commerce.Membership.CreateUserStatus.DuplicateUsername:
                         if (MessageBox != null) MessageBox.ShowWarning("The username " + this.NewUserEmailField.Text.Trim() + " already exists. Please select another username.");
                         break;
-                    case BVSoftware.Commerce.Membership.CreateUserStatus.InvalidPassword:
+                    case MerchantTribe.Commerce.Membership.CreateUserStatus.InvalidPassword:
                         if (MessageBox != null) MessageBox.ShowWarning("Unable to create this account. Invalid Password");
                         break;
                     default:
@@ -160,7 +160,7 @@ namespace BVCommerce
         {
             if (MessageBox != null) MessageBox.ClearMessage();
             string bvin = (string)GridView1.DataKeys[e.NewEditIndex].Value;
-            BVSoftware.Commerce.Membership.CustomerAccount u = MyPage.BVApp.MembershipServices.Customers.Find(bvin);
+            MerchantTribe.Commerce.Membership.CustomerAccount u = MyPage.BVApp.MembershipServices.Customers.Find(bvin);
             if (u != null)
             {
                 this.UserNameField.Text = u.Email;
@@ -178,13 +178,13 @@ namespace BVCommerce
 
         private void ValidateUser()
         {
-            BVSoftware.Commerce.Membership.CustomerAccount u
+            MerchantTribe.Commerce.Membership.CustomerAccount u
                 = MyPage.BVApp.MembershipServices.Customers.FindByEmail(this.UserNameField.Text.Trim());
             if (u != null)
             {
                 if (u.Bvin != string.Empty)
                 {
-                    BVSoftware.Commerce.Controls.UserSelectedEventArgs args = new BVSoftware.Commerce.Controls.UserSelectedEventArgs();
+                    MerchantTribe.Commerce.Controls.UserSelectedEventArgs args = new MerchantTribe.Commerce.Controls.UserSelectedEventArgs();
                     args.UserAccount = u;
                     if (UserSelected != null)
                     {

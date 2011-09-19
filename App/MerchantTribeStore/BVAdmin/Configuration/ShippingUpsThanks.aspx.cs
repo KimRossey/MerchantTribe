@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce.Membership;
+using MerchantTribe.Commerce.Membership;
 
 namespace BVCommerce.BVAdmin.Configuration
 {

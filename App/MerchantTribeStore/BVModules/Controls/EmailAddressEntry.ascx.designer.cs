@@ -28,7 +28,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVSoftware.Commerce.Controls.BVRequiredFieldValidator EmailAddressRequiredFieldValidator;
+        protected global::MerchantTribe.Commerce.Controls.BVRequiredFieldValidator EmailAddressRequiredFieldValidator;
         
         /// <summary>
         /// BVRegularExpressionValidator1 control.
@@ -37,6 +37,6 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVSoftware.Commerce.Controls.BVRegularExpressionValidator BVRegularExpressionValidator1;
+        protected global::MerchantTribe.Commerce.Controls.BVRegularExpressionValidator BVRegularExpressionValidator1;
     }
 }

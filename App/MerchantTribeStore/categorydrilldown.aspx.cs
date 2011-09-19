@@ -2,9 +2,9 @@
 using System.Text;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Catalog;
-using BVSoftware.Commerce.Utilities;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Catalog;
+using MerchantTribe.Commerce.Utilities;
 using System.Collections.Generic;
 using System.Linq;
 using MerchantTribe.Web;
@@ -291,7 +291,7 @@ namespace BVCommerce
                     columnCount += 1;
                 }
                 UserSpecificPrice price = BVApp.PriceProduct(p, BVApp.CurrentCustomer, null);
-                BVSoftware.Commerce.Utilities.HtmlRendering.RenderSingleProduct(ref sb, p, isLastInRow, isFirstInRow, this.Page, price);
+                MerchantTribe.Commerce.Utilities.HtmlRendering.RenderSingleProduct(ref sb, p, isLastInRow, isFirstInRow, this.Page, price);
             }
 
             this.categoryitems.Text = sb.ToString();

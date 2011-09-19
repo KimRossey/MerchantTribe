@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Shipping;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Shipping;
 
 namespace BVCommerce.Models
 {

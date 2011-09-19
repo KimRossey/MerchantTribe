@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using BVSoftware.Commerce.Content;
+using MerchantTribe.Commerce.Content;
 
 namespace BVCommerce.Controllers
 {

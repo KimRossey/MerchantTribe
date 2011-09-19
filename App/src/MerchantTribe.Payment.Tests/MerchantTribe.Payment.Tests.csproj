@@ -58,9 +58,9 @@
       <Project>{4C223AD8-685A-4AAC-8610-1BEC50636203}</Project>
       <Name>MerchantTribe.Payment</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BVSoftware.PaypalWebServices\BVSoftware.PaypalWebServices.csproj">
+    <ProjectReference Include="..\MerchantTribe.PaypalWebServices\MerchantTribe.PaypalWebServices.csproj">
       <Project>{40FCF14A-F903-4BF1-B4E0-FC5CB623BDF2}</Project>
-      <Name>BVSoftware.PaypalWebServices</Name>
+      <Name>MerchantTribe.PaypalWebServices</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

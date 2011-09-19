@@ -1,8 +1,8 @@
 using System;
-using BVSoftware.Commerce.Orders;
+using MerchantTribe.Commerce.Orders;
 using System.Collections.Generic;
 using System.Text;
-using BVSoftware.Commerce;
+using MerchantTribe.Commerce;
 
 namespace BVCommerce
 {
@@ -15,7 +15,7 @@ namespace BVCommerce
             base.OnPreInit(e);
             this.PageTitle = "Order Manager";
             this.CurrentTab = AdminTabType.Orders;
-            ValidateCurrentUserHasPermission(BVSoftware.Commerce.Membership.SystemPermissions.OrdersView);
+            ValidateCurrentUserHasPermission(MerchantTribe.Commerce.Membership.SystemPermissions.OrdersView);
         }
         protected override void OnLoad(EventArgs e)
         {
@@ -82,13 +82,13 @@ namespace BVCommerce
                 this.lnkGenerateBVBills.Visible = false;
             }
           
-            BVSoftware.Commerce.SessionManager.SetCookieString("AdminLastManager", "Default.aspx?p=" + pageNumber.ToString());
+            MerchantTribe.Commerce.SessionManager.SetCookieString("AdminLastManager", "Default.aspx?p=" + pageNumber.ToString());
             FindOrders(pageNumber);
 
             // Acumatica Warning
             if (BVApp.CurrentStore.Settings.Acumatica.IntegrationEnabled)
             {
-                this.MessageBox1.ShowWarning(BVSoftware.Commerce.Content.SiteTerms.GetTerm(BVSoftware.Commerce.Content.SiteTermIds.AcumaticaWarning));
+                this.MessageBox1.ShowWarning(MerchantTribe.Commerce.Content.SiteTerms.GetTerm(MerchantTribe.Commerce.Content.SiteTermIds.AcumaticaWarning));
             }
         }
 
@@ -162,7 +162,7 @@ namespace BVCommerce
             SetListToValue(this.lstShippingStatus, SessionManager.AdminOrderSearchShippingFilter);
             SetListToValue(this.lstStatus, SessionManager.AdminOrderSearchStatusFilter);
             this.DateRangePicker1.RangeType = SessionManager.AdminOrderSearchDateRange;
-            if (this.DateRangePicker1.RangeType == BVSoftware.Commerce.Utilities.DateRangeType.Custom)
+            if (this.DateRangePicker1.RangeType == MerchantTribe.Commerce.Utilities.DateRangeType.Custom)
             {
                 this.DateRangePicker1.StartDate = SessionManager.AdminOrderSearchStartDate;
                 this.DateRangePicker1.EndDate = SessionManager.AdminOrderSearchEndDate;
@@ -226,7 +226,7 @@ namespace BVCommerce
             sb.Append("<td><a href=\"" + url + "\">" + string.Format("{0:c}", o.TotalGrand) + "</a></td>");
 
             sb.Append("<td>");
-            sb.Append(BVSoftware.Commerce.Utilities.MailServices.MailToLink(o.UserEmail, "Order "
+            sb.Append(MerchantTribe.Commerce.Utilities.MailServices.MailToLink(o.UserEmail, "Order "
                                                                   + o.OrderNumber,
                                                                   o.BillingAddress.FirstName + ",",
                                                                   o.BillingAddress.FirstName + " " + o.BillingAddress.LastName));
@@ -234,7 +234,7 @@ namespace BVCommerce
 
 
 
-            string payText = BVSoftware.Commerce.Utilities.EnumToString.OrderPaymentStatus(o.PaymentStatus);
+            string payText = MerchantTribe.Commerce.Utilities.EnumToString.OrderPaymentStatus(o.PaymentStatus);
             string payImage = "";
             string payLink = ResolveUrl("~/bvadmin/orders/ReceivePayments.aspx?id=" + o.bvin);
             switch (o.PaymentStatus)
@@ -258,7 +258,7 @@ namespace BVCommerce
             sb.Append("<td><a href=\"" + payLink + "\" title=\"" + payText + "\"><img src=\"" + payImage + "\" alt=\"" + payText + "\" /></a></td>");
 
 
-            string shipText = BVSoftware.Commerce.Utilities.EnumToString.OrderShippingStatus(o.ShippingStatus);
+            string shipText = MerchantTribe.Commerce.Utilities.EnumToString.OrderShippingStatus(o.ShippingStatus);
             string shipImage = "";
             string shipLink = ResolveUrl("~/bvadmin/orders/ShipOrder.aspx?id=" + o.bvin);
             switch (o.ShippingStatus)
@@ -402,7 +402,7 @@ namespace BVCommerce
             // only process if we're the billing store
             if (BVApp.CurrentStore.Id == WebAppSettings.BillingStoreId)
             {
-                BVSoftware.Commerce.Accounts.BillingManager.GenerateInvoicesForLastWeek(BVApp);
+                MerchantTribe.Commerce.Accounts.BillingManager.GenerateInvoicesForLastWeek(BVApp);
             }
             FindOrders(1);
         }

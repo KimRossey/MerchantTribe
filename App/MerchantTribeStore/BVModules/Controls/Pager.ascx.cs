@@ -1,7 +1,7 @@
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce.Content;
-using BVSoftware.Commerce.Utilities;
+using MerchantTribe.Commerce.Content;
+using MerchantTribe.Commerce.Utilities;
 
 namespace BVCommerce
 {
@@ -228,7 +228,7 @@ namespace BVCommerce
                     BaseStoreCategoryPage CategoryPage = (BaseStoreCategoryPage)this.Page;
                     if (CategoryPage.LocalCategory != null)
                     {
-                        result = UrlRewriter.BuildUrlForCategory(new BVSoftware.Commerce.Catalog.CategorySnapshot(CategoryPage.LocalCategory), CategoryPage.Request.RequestContext);
+                        result = UrlRewriter.BuildUrlForCategory(new MerchantTribe.Commerce.Catalog.CategorySnapshot(CategoryPage.LocalCategory), CategoryPage.Request.RequestContext);
                     }
                 }
                 else if (this.Page is BaseSearchPage)

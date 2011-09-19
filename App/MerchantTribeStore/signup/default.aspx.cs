@@ -17,7 +17,7 @@ namespace BVCommerce
             this.Title = "BV Commerce Pricing & Sign Up : Online hosted stores and ecommerce software";
 
             bool IsPayPalLead = false;
-            if (BVSoftware.Commerce.SessionManager.GetCookieString("PayPalLead") != string.Empty)
+            if (MerchantTribe.Commerce.SessionManager.GetCookieString("PayPalLead") != string.Empty)
             {
                 IsPayPalLead = true;
                 this.trCC.Visible = false;

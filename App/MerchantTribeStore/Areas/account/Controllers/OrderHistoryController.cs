@@ -4,11 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BVCommerce.Filters;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Orders;
-using BVSoftware.Commerce.Catalog;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Orders;
+using MerchantTribe.Commerce.Catalog;
 using MerchantTribe.Web;
-using BVSoftware.Commerce.Content;
+using MerchantTribe.Commerce.Content;
 
 namespace BVCommerce.Areas.account.Controllers
 {

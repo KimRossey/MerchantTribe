@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using BVSoftware.Commerce.Content;
+using MerchantTribe.Commerce.Content;
 using System.Text;
 
 namespace BVCommerce

@@ -1,13 +1,13 @@
 using System;
-using BVSoftware.Commerce;
+using MerchantTribe.Commerce;
 using System.IO;
 using System.Text;
 using System.Data;
 using System.Web.UI.WebControls;
 using System.Collections.ObjectModel;
-using BVSoftware.Commerce.Membership;
-using BVSoftware.Commerce.Content;
-using BVSoftware.Commerce.Orders;
+using MerchantTribe.Commerce.Membership;
+using MerchantTribe.Commerce.Content;
+using MerchantTribe.Commerce.Orders;
 using BVSoftware.Cryptography;
 
 partial class BVAdmin_Orders_UPSOnlineTools_Ship : BaseAdminPage
@@ -84,8 +84,8 @@ partial class BVAdmin_Orders_UPSOnlineTools_Ship : BaseAdminPage
 			this.CCExpYearField.Items.Add(new ListItem(i.ToString(), i.ToString()));
 		}
 
-		BVSoftware.Shipping.Ups.UpsProvider.PopulateListWithCurrencies(this.CODCurrencyField.Items);
-		BVSoftware.Shipping.Ups.UpsProvider.PopulateListWithCurrencies(this.DeclaredValueCurrencyField.Items);
+		MerchantTribe.Shipping.Ups.UpsProvider.PopulateListWithCurrencies(this.CODCurrencyField.Items);
+		MerchantTribe.Shipping.Ups.UpsProvider.PopulateListWithCurrencies(this.DeclaredValueCurrencyField.Items);
 
 		if (Request.IsSecureConnection == false) {
 			this.trWarning.Visible = true;
@@ -97,7 +97,7 @@ partial class BVAdmin_Orders_UPSOnlineTools_Ship : BaseAdminPage
 
 	private void PopulateFromAddress()
 	{
-		BVSoftware.Commerce.Contacts.Address siteAddress = BVSoftware.Commerce.Contacts.Address.FindStoreContactAddress();
+		MerchantTribe.Commerce.Contacts.Address siteAddress = MerchantTribe.Commerce.Contacts.Address.FindStoreContactAddress();
 
 		if (siteAddress != null) {
 			this.FromCompanyField.Text = siteAddress.Company;
@@ -117,11 +117,11 @@ partial class BVAdmin_Orders_UPSOnlineTools_Ship : BaseAdminPage
 
 	private void LoadPackageSettings()
 	{
-        BVSoftware.Commerce.Shipping.Package p = BVSoftware.Commerce.Shipping.Package.FindByBvin(this.PackageIdField.Value);
+        MerchantTribe.Commerce.Shipping.Package p = MerchantTribe.Commerce.Shipping.Package.FindByBvin(this.PackageIdField.Value);
 		if (p != null) {
 
 			string orderID = p.OrderId;
-			BVSoftware.Commerce.Orders.Order o = BVSoftware.Commerce.Orders.Order.FindByBvin(orderID);
+			MerchantTribe.Commerce.Orders.Order o = MerchantTribe.Commerce.Orders.Order.FindByBvin(orderID);
 
 			if (o != null) {
 				// To Address
@@ -199,17 +199,17 @@ partial class BVAdmin_Orders_UPSOnlineTools_Ship : BaseAdminPage
 
 		msg.ClearMessage();
 
-		BVSoftware.Shipping.Ups.ShipRequest req = new BVSoftware.Shipping.Ups.ShipRequest();
+		MerchantTribe.Shipping.Ups.ShipRequest req = new MerchantTribe.Shipping.Ups.ShipRequest();
 
 
 		req.AddressVerification = this.chkAddressVerification.Checked;
 
-		req.BillTo = (BVSoftware.Shipping.Ups.PaymentType)int.Parse(this.BillToField.SelectedValue);
-		if (req.BillTo == BVSoftware.Shipping.Ups.PaymentType.ShipperCreditCard) {
+		req.BillTo = (MerchantTribe.Shipping.Ups.PaymentType)int.Parse(this.BillToField.SelectedValue);
+		if (req.BillTo == MerchantTribe.Shipping.Ups.PaymentType.ShipperCreditCard) {
 			req.BillToCreditCardExpirationMonth = int.Parse(this.CCExpMonthField.SelectedValue);
 			req.BillToCreditCardExpirationYear = int.Parse(this.CCExpYearField.SelectedValue);
 			req.BillToCreditCardNumber = BVSoftware.Payment.CardValidator.CleanCardNumber(this.CCNumberField.Text);
-			req.BillToCreditCardType = (BVSoftware.Shipping.Ups.CreditCardType)int.Parse(this.CCTypeField.SelectedValue);
+			req.BillToCreditCardType = (MerchantTribe.Shipping.Ups.CreditCardType)int.Parse(this.CCTypeField.SelectedValue);
 		}
 		else {
 			req.BillToAccountNumber = this.BillToAccountNumberField.Text;
@@ -226,7 +226,7 @@ partial class BVAdmin_Orders_UPSOnlineTools_Ship : BaseAdminPage
 			req.ShipmentDescription = this.DescriptionField.Text.Trim();
 		}
 		req.InvoiceLineTotal = false;
-		req.LabelFormat = BVSoftware.Shipping.Ups.ShipLabelFormat.Gif;
+		req.LabelFormat = MerchantTribe.Shipping.Ups.ShipLabelFormat.Gif;
 		//req.LabelStockSizeHeight = 4
 		//req.LabelStockSizeWidth = 6
 		req.NonValuedDocumentsOnly = false;
@@ -235,11 +235,11 @@ partial class BVAdmin_Orders_UPSOnlineTools_Ship : BaseAdminPage
 		req.NotificationEmailAddress = this.NotificationEmailField.Text;
 		req.NotificationFromName = this.NotificationFromField.Text;
 		req.NotificationMemo = this.NotificationMessage.Text;
-		req.NotificationSubjectType = (BVSoftware.Shipping.Ups.NotificationSubjectCode)int.Parse(this.NotificationSubjectField.SelectedValue);
-		req.NotificationType = (BVSoftware.Shipping.Ups.NotificationCode)int.Parse(this.NotificationTypeField.SelectedValue);
+		req.NotificationSubjectType = (MerchantTribe.Shipping.Ups.NotificationSubjectCode)int.Parse(this.NotificationSubjectField.SelectedValue);
+		req.NotificationType = (MerchantTribe.Shipping.Ups.NotificationCode)int.Parse(this.NotificationTypeField.SelectedValue);
 
 		req.SaturdayDelivery = this.chkSaturdayDelivery.Checked;
-		req.Service = (BVSoftware.Shipping.Ups.ServiceType)int.Parse(this.ServiceField.SelectedValue);
+		req.Service = (MerchantTribe.Shipping.Ups.ServiceType)int.Parse(this.ServiceField.SelectedValue);
         req.Settings.UserID = CurrentStore.ShippingUpsUsername;
         req.Settings.Password = CurrentStore.ShippingUpsPassword;
         req.Settings.License = CurrentStore.ShippingUpsLicense;
@@ -291,19 +291,19 @@ partial class BVAdmin_Orders_UPSOnlineTools_Ship : BaseAdminPage
 						useDeclaredValueInsteadOfInsurance = true;
 						req.InvoiceLineTotal = true;
 						req.InvoiceLineTotalAmount = decimal.Parse(this.DeclaredValueField.Text.Trim());
-						req.InvoiceLineTotalCurrency = BVSoftware.Shipping.Ups.XmlTools.ConvertStringToCurrencyCode(this.DeclaredValueCurrencyField.SelectedValue);
+						req.InvoiceLineTotalCurrency = MerchantTribe.Shipping.Ups.XmlTools.ConvertStringToCurrencyCode(this.DeclaredValueCurrencyField.SelectedValue);
 					}
 				}
 			}
 		}
 
-		BVSoftware.Shipping.Ups.Package p = new BVSoftware.Shipping.Ups.Package();
+		MerchantTribe.Shipping.Ups.Package p = new MerchantTribe.Shipping.Ups.Package();
 		p.AdditionalHandlingIsRequired = this.chkAdditionalHandling.Checked;
 
 		if (this.CODAmountField.Text.Trim() != string.Empty) {
 			p.COD = true;
 			p.CODAmount = decimal.Parse(this.CODAmountField.Text.Trim());
-			p.CODCurrencyCode = BVSoftware.Shipping.Ups.XmlTools.ConvertStringToCurrencyCode(this.CODCurrencyField.SelectedValue);
+			p.CODCurrencyCode = MerchantTribe.Shipping.Ups.XmlTools.ConvertStringToCurrencyCode(this.CODCurrencyField.SelectedValue);
 		}
 		else {
 			p.COD = false;
@@ -314,10 +314,10 @@ partial class BVAdmin_Orders_UPSOnlineTools_Ship : BaseAdminPage
 		}
 		else {
 			p.DeliveryConfirmation = true;
-			p.DeliveryConfirmationType = (BVSoftware.Shipping.Ups.ConfirmationType)int.Parse(this.DeliveryConfirmationField.SelectedValue);
+			p.DeliveryConfirmationType = (MerchantTribe.Shipping.Ups.ConfirmationType)int.Parse(this.DeliveryConfirmationField.SelectedValue);
 		}
 
-		p.DimensionalUnits = (BVSoftware.Shipping.Ups.UnitsType)int.Parse(this.DimensionalUnitsField.SelectedValue);
+		p.DimensionalUnits = (MerchantTribe.Shipping.Ups.UnitsType)int.Parse(this.DimensionalUnitsField.SelectedValue);
 		if (this.HeightField.Text.Trim() != string.Empty) {
 			p.Height = decimal.Parse(this.HeightField.Text);
 		}
@@ -326,31 +326,31 @@ partial class BVAdmin_Orders_UPSOnlineTools_Ship : BaseAdminPage
 		if (useDeclaredValueInsteadOfInsurance == false) {
 			if (this.DeclaredValueField.Text.Trim() != string.Empty) {
 				p.InsuredValue = decimal.Parse(this.DeclaredValueField.Text.Trim());
-				p.InsuredValueCurrency = BVSoftware.Shipping.Ups.XmlTools.ConvertStringToCurrencyCode(this.DeclaredValueCurrencyField.SelectedValue);
+				p.InsuredValueCurrency = MerchantTribe.Shipping.Ups.XmlTools.ConvertStringToCurrencyCode(this.DeclaredValueCurrencyField.SelectedValue);
 			}
 		}
 
 		if (this.LengthField.Text.Trim() != string.Empty) {
 			p.Length = decimal.Parse(this.LengthField.Text);
 		}
-		p.Packaging = (BVSoftware.Shipping.Ups.PackagingType)int.Parse(this.PackageTypeField.SelectedValue);
+		p.Packaging = (MerchantTribe.Shipping.Ups.PackagingType)int.Parse(this.PackageTypeField.SelectedValue);
 
 
 
 		if (this.Reference1Field.Text.Trim() != string.Empty) {
 			p.ReferenceNumber = this.Reference1Field.Text;
-			p.ReferenceNumberType = BVSoftware.Shipping.Ups.ReferenceNumberCode.TransactionReferenceNumber;
+			p.ReferenceNumberType = MerchantTribe.Shipping.Ups.ReferenceNumberCode.TransactionReferenceNumber;
 		}
 		if (this.Reference2Field.Text.Trim() != string.Empty) {
 			p.ReferenceNumber2 = this.Reference2Field.Text;
-			p.ReferenceNumber2Type = BVSoftware.Shipping.Ups.ReferenceNumberCode.TransactionReferenceNumber;
+			p.ReferenceNumber2Type = MerchantTribe.Shipping.Ups.ReferenceNumberCode.TransactionReferenceNumber;
 		}
 
 		p.VerbalConfirmation = false;
 		if (this.WeightField.Text.Trim() != string.Empty) {
 			p.Weight = decimal.Parse(this.WeightField.Text);
 		}
-		p.WeightUnits = (BVSoftware.Shipping.Ups.UnitsType)int.Parse(this.WeightUnitsField.SelectedValue);
+		p.WeightUnits = (MerchantTribe.Shipping.Ups.UnitsType)int.Parse(this.WeightUnitsField.SelectedValue);
 		if (this.WidthField.Text.Trim() != string.Empty) {
 			p.Width = decimal.Parse(this.WidthField.Text);
 		}
@@ -366,8 +366,8 @@ partial class BVAdmin_Orders_UPSOnlineTools_Ship : BaseAdminPage
 		ViewState["ShipDigest"] = null;
 		ViewState["TrackingNumber"] = null;
 
-		BVSoftware.Shipping.Ups.ShipResponse res;
-		res = BVSoftware.Shipping.Ups.XmlTools.SendConfirmRequest(ref req);
+		MerchantTribe.Shipping.Ups.ShipResponse res;
+		res = MerchantTribe.Shipping.Ups.XmlTools.SendConfirmRequest(ref req);
 
 		if (res != null) {
 
@@ -417,15 +417,15 @@ partial class BVAdmin_Orders_UPSOnlineTools_Ship : BaseAdminPage
 		// Send accept here
 		if (digest != string.Empty) {
 
-			BVSoftware.Shipping.Ups.ShipAcceptRequest req = new BVSoftware.Shipping.Ups.ShipAcceptRequest();
+			MerchantTribe.Shipping.Ups.ShipAcceptRequest req = new MerchantTribe.Shipping.Ups.ShipAcceptRequest();
             req.Settings.UserID = CurrentStore.ShippingUpsUsername;
             req.Settings.Password = CurrentStore.ShippingUpsPassword;
             req.Settings.License = CurrentStore.ShippingUpsLicense;
 			req.Settings.ServerUrl = WebAppSettings.ShippingUpsServer;
 			req.ShipDigest = digest;
 
-			BVSoftware.Shipping.Ups.ShipAcceptResponse res;
-			res = BVSoftware.Shipping.Ups.XmlTools.SendShipAcceptRequest(ref req);
+			MerchantTribe.Shipping.Ups.ShipAcceptResponse res;
+			res = MerchantTribe.Shipping.Ups.XmlTools.SendShipAcceptRequest(ref req);
 
             if (CurrentStore.ShippingUPSWriteXML == true)
             {
@@ -439,12 +439,12 @@ partial class BVAdmin_Orders_UPSOnlineTools_Ship : BaseAdminPage
 
 					if (!(res.Packages == null)) {
 						if (res.Packages.Count > 0) {
-							BVSoftware.Shipping.Ups.ShippedPackageInformation pak;
-							pak = (BVSoftware.Shipping.Ups.ShippedPackageInformation)res.Packages[0];
+							MerchantTribe.Shipping.Ups.ShippedPackageInformation pak;
+							pak = (MerchantTribe.Shipping.Ups.ShippedPackageInformation)res.Packages[0];
 							if (pak != null) {
 
 
-								if (pak.LabelFormat == BVSoftware.Shipping.Ups.ShipLabelFormat.Epl2) {
+								if (pak.LabelFormat == MerchantTribe.Shipping.Ups.ShipLabelFormat.Epl2) {
 									SaveBase64ToFile(pak.TrackingNumber + ".elp2", pak.Base64Image);
 								}
 								else {
@@ -459,23 +459,23 @@ partial class BVAdmin_Orders_UPSOnlineTools_Ship : BaseAdminPage
 								msg.ShowOk("Package Shipped with UPS Tracking Number: " + res.TrackingNumber);
 
 								if (this.PackageIdField.Value != string.Empty) {
-									BVSoftware.Commerce.Shipping.Package p = BVSoftware.Commerce.Shipping.Package.FindByBvin(this.PackageIdField.Value);
+									MerchantTribe.Commerce.Shipping.Package p = MerchantTribe.Commerce.Shipping.Package.FindByBvin(this.PackageIdField.Value);
 									if (p != null) {
 										Order o = Order.FindByBvin(p.OrderId);
 										OrderShippingStatus previousShippingStatus = o.ShippingStatus;
 
 										p.TrackingNumber = res.TrackingNumber;
-										p.ShippingProviderId = BVSoftware.Shipping.Ups.UpsProvider.UPSProviderID;
+										p.ShippingProviderId = MerchantTribe.Shipping.Ups.UpsProvider.UPSProviderID;
 										p.ShippingProviderServiceCode = this.ServiceField.SelectedValue;
 										p.Ship();
-										BVSoftware.Commerce.Shipping.Package.Update(p);
+										MerchantTribe.Commerce.Shipping.Package.Update(p);
 
 										o = Order.FindByBvin(p.OrderId);
-										BVSoftware.Commerce.BusinessRules.OrderTaskContext context = new BVSoftware.Commerce.BusinessRules.OrderTaskContext();
+										MerchantTribe.Commerce.BusinessRules.OrderTaskContext context = new MerchantTribe.Commerce.BusinessRules.OrderTaskContext();
 										context.Order = o;
 										context.UserId = o.UserID;
 										context.Inputs.Add("bvsoftware", "PreviousShippingStatus", ((int)previousShippingStatus).ToString());
-										BVSoftware.Commerce.BusinessRules.Workflow.RunByName(context, BVSoftware.Commerce.BusinessRules.WorkflowNames.ShippingChanged);
+										MerchantTribe.Commerce.BusinessRules.Workflow.RunByName(context, MerchantTribe.Commerce.BusinessRules.WorkflowNames.ShippingChanged);
 									}
 								}
 							}
@@ -582,10 +582,10 @@ partial class BVAdmin_Orders_UPSOnlineTools_Ship : BaseAdminPage
 	private void OnContinue(bool deletePackage)
 	{
 		if (deletePackage) {
-			BVSoftware.Commerce.Shipping.Package p = BVSoftware.Commerce.Shipping.Package.FindByBvin(this.PackageIdField.Value);
+			MerchantTribe.Commerce.Shipping.Package p = MerchantTribe.Commerce.Shipping.Package.FindByBvin(this.PackageIdField.Value);
 			if (p != null) {
 				if (p.Bvin != string.Empty) {
-					BVSoftware.Commerce.Shipping.Package.Delete(p.Bvin);
+					MerchantTribe.Commerce.Shipping.Package.Delete(p.Bvin);
 				}
 			}
 		}

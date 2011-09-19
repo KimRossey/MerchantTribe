@@ -1,5 +1,5 @@
 
-using BVSoftware.Commerce;
+using MerchantTribe.Commerce;
 using System.Xml.Serialization;
 using System.Collections.ObjectModel;
 

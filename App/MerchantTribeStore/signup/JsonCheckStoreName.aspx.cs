@@ -5,8 +5,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using MerchantTribe.Web;
-using BVSoftware.Billing;
-using BVSoftware.Commerce.Accounts;
+using MerchantTribe.Billing;
+using MerchantTribe.Commerce.Accounts;
 
 namespace BVCommerce
 {
@@ -29,7 +29,7 @@ namespace BVCommerce
         {
             base.OnLoad(e);
 
-            BVSoftware.Commerce.RequestContext context = new BVSoftware.Commerce.RequestContext();
+            MerchantTribe.Commerce.RequestContext context = new MerchantTribe.Commerce.RequestContext();
             AccountService accountServices = AccountService.InstantiateForDatabase(context);
 
             JsonCheckStoreNameRequest data = MerchantTribe.Web.Json.ObjectFromJson<JsonCheckStoreNameRequest>(Request.InputStream);

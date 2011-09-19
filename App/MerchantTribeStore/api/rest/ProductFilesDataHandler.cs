@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Web;
-using BVSoftware.Commerce;
-using BVSoftware.CommerceDTO.v1;
-using BVSoftware.CommerceDTO.v1.Catalog;
-using BVSoftware.Commerce.Catalog;
+using MerchantTribe.Commerce;
+using MerchantTribe.CommerceDTO.v1;
+using MerchantTribe.CommerceDTO.v1.Catalog;
+using MerchantTribe.Commerce.Catalog;
 
 namespace BVCommerce.api.rest
 {
     public class ProductFilesDataHandler: BaseRestHandler
     {
-        public ProductFilesDataHandler(BVSoftware.Commerce.BVApplication app)
+        public ProductFilesDataHandler(MerchantTribe.Commerce.BVApplication app)
             : base(app)
         {
 
@@ -65,11 +65,11 @@ namespace BVCommerce.api.rest
                     {
                         if (firstPart == "1")
                         {
-                            response.Content = BVSoftware.Commerce.Storage.DiskStorage.FileVaultUploadPartial(BVApp.CurrentStore.Id, diskFileName, postedData, true);
+                            response.Content = MerchantTribe.Commerce.Storage.DiskStorage.FileVaultUploadPartial(BVApp.CurrentStore.Id, diskFileName, postedData, true);
                         }
                         else
                         {
-                            response.Content = BVSoftware.Commerce.Storage.DiskStorage.FileVaultUploadPartial(BVApp.CurrentStore.Id, diskFileName, postedData, false);
+                            response.Content = MerchantTribe.Commerce.Storage.DiskStorage.FileVaultUploadPartial(BVApp.CurrentStore.Id, diskFileName, postedData, false);
                         }
                     }
                 }

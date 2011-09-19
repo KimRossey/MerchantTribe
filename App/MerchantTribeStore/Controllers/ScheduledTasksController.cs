@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using BVSoftware.Commerce;
+using MerchantTribe.Commerce;
 using System.Configuration;
-using BVSoftware.Commerce.Scheduling;
+using MerchantTribe.Commerce.Scheduling;
 
 namespace BVCommerce.Controllers
 {
@@ -13,7 +13,7 @@ namespace BVCommerce.Controllers
     {
         #region " Store Specific Setup Code"
         // Initialize Store Specific Request Data
-        BVSoftware.Commerce.RequestContext _BVRequestContext = new RequestContext();
+        MerchantTribe.Commerce.RequestContext _BVRequestContext = new RequestContext();
         public BVApplication BVApp { get; set; }
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
@@ -23,13 +23,13 @@ namespace BVCommerce.Controllers
             BVApp.CurrentRequestContext.RoutingContext = this.Request.RequestContext;
 
             // Determine store id        
-            BVApp.CurrentStore = BVSoftware.Commerce.Utilities.UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, BVApp.AccountServices);
+            BVApp.CurrentStore = MerchantTribe.Commerce.Utilities.UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, BVApp.AccountServices);
             if (BVApp.CurrentStore == null)
             {
                 Response.Redirect("~/storenotfound");
             }
 
-            if (BVApp.CurrentStore.Status == BVSoftware.Commerce.Accounts.StoreStatus.Deactivated)
+            if (BVApp.CurrentStore.Status == MerchantTribe.Commerce.Accounts.StoreStatus.Deactivated)
             {
                 Response.Redirect("~/storenotavailable");
             }
@@ -37,7 +37,7 @@ namespace BVCommerce.Controllers
         }
         private void CheckFor301(string slug)
         {
-            BVSoftware.Commerce.Content.CustomUrl url = BVApp.ContentServices.CustomUrls.FindByRequestedUrl(slug);
+            MerchantTribe.Commerce.Content.CustomUrl url = BVApp.ContentServices.CustomUrls.FindByRequestedUrl(slug);
             if (url != null)
             {
                 if (url.Bvin != string.Empty)
@@ -61,7 +61,7 @@ namespace BVCommerce.Controllers
             string AcutalKey = WebAppSettings.StoreKey;
             if (AcutalKey != storekey)
             {
-                EventLog.LogEvent("Scheduled Tasks", "Store Key Mismatch on Scheduled Task Call for Store " + BVApp.CurrentStore.Id, BVSoftware.Commerce.Metrics.EventLogSeverity.Warning);
+                EventLog.LogEvent("Scheduled Tasks", "Store Key Mismatch on Scheduled Task Call for Store " + BVApp.CurrentStore.Id, MerchantTribe.Commerce.Metrics.EventLogSeverity.Warning);
                 return View();
             }
 
@@ -69,7 +69,7 @@ namespace BVCommerce.Controllers
             QueuedTask task = BVApp.ScheduleServices.QueuedTasks.PopATaskForRun(BVApp.CurrentStore.Id);
             if (task == null)
             {
-                EventLog.LogEvent("Scheduled Tasks", "No Task found on call to store " + BVApp.CurrentStore.Id, BVSoftware.Commerce.Metrics.EventLogSeverity.Information);
+                EventLog.LogEvent("Scheduled Tasks", "No Task found on call to store " + BVApp.CurrentStore.Id, MerchantTribe.Commerce.Metrics.EventLogSeverity.Information);
                 return View();
             }
 

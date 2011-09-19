@@ -1,16 +1,16 @@
 using System;
 using System.Collections.ObjectModel;
 using System.Web.UI;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Catalog;
-using BVSoftware.Commerce.Content;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Catalog;
+using MerchantTribe.Commerce.Content;
 using System.Collections.Generic;
 using System.Text;
 
 namespace BVCommerce
 {
 
-    partial class BVModules_Controls_RelatedItems : BVSoftware.Commerce.Content.BVUserControl
+    partial class BVModules_Controls_RelatedItems : MerchantTribe.Commerce.Content.BVUserControl
     {
 
         public string ProductID
@@ -88,7 +88,7 @@ namespace BVCommerce
                     if (i == (toDisplay - 1)) isLast = true;
 
                     UserSpecificPrice price = MyPage.BVApp.PriceProduct(related, MyPage.BVApp.CurrentCustomer, null);
-                    BVSoftware.Commerce.Utilities.HtmlRendering.RenderSingleProduct(ref sb, related, isLast, isFirst, this.Page, price);
+                    MerchantTribe.Commerce.Utilities.HtmlRendering.RenderSingleProduct(ref sb, related, isLast, isFirst, this.Page, price);
                 }
             }
 

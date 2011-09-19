@@ -3,19 +3,19 @@ using System;
 using System.Web;
 using System.Web.UI.WebControls;
 using System.Text;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Accounts;
-using BVSoftware.Commerce.BusinessRules;
-using BVSoftware.Commerce.Catalog;
-using BVSoftware.Commerce.Contacts;
-using BVSoftware.Commerce.Content;
-using BVSoftware.Commerce.Membership;
-using BVSoftware.Commerce.Metrics;
-using BVSoftware.Commerce.Orders;
-using BVSoftware.Commerce.Payment;
-using BVSoftware.Commerce.Shipping;
-using BVSoftware.Commerce.Taxes;
-using BVSoftware.Commerce.Utilities;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Accounts;
+using MerchantTribe.Commerce.BusinessRules;
+using MerchantTribe.Commerce.Catalog;
+using MerchantTribe.Commerce.Contacts;
+using MerchantTribe.Commerce.Content;
+using MerchantTribe.Commerce.Membership;
+using MerchantTribe.Commerce.Metrics;
+using MerchantTribe.Commerce.Orders;
+using MerchantTribe.Commerce.Payment;
+using MerchantTribe.Commerce.Shipping;
+using MerchantTribe.Commerce.Taxes;
+using MerchantTribe.Commerce.Utilities;
 
 using System.Collections.Generic;
 
@@ -45,7 +45,7 @@ namespace BVCommerce
 
         private void LoadMethods()
         {
-            BVSoftware.Commerce.Payment.AvailablePayments availablePayments = new BVSoftware.Commerce.Payment.AvailablePayments();
+            MerchantTribe.Commerce.Payment.AvailablePayments availablePayments = new MerchantTribe.Commerce.Payment.AvailablePayments();
             this.PaymentMethodsGrid.DataSource = availablePayments.AvailableMethodsForPlan(BVApp.CurrentStore.PlanId);
             this.PaymentMethodsGrid.DataBind();
         }

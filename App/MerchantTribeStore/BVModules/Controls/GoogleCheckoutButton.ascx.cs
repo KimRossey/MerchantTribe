@@ -1,13 +1,13 @@
 using System.Collections.ObjectModel;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Metrics;
-using BVSoftware.Commerce.Orders;
-using BVSoftware.Commerce.Payment;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Metrics;
+using MerchantTribe.Commerce.Orders;
+using MerchantTribe.Commerce.Payment;
 
 namespace BVCommerce
 {
 
-    partial class BVModules_Controls_GoogleCheckoutButton : BVSoftware.Commerce.Content.BVUserControl
+    partial class BVModules_Controls_GoogleCheckoutButton : MerchantTribe.Commerce.Content.BVUserControl
     {
         public delegate void WorkflowFailedDelegate(string message);
         public event WorkflowFailedDelegate WorkflowFailed;
@@ -18,7 +18,7 @@ namespace BVCommerce
         {
             base.OnLoad(e);
             this.Visible = false;
-            BVSoftware.Commerce.Payment.AvailablePayments availablePayments = new BVSoftware.Commerce.Payment.AvailablePayments();
+            MerchantTribe.Commerce.Payment.AvailablePayments availablePayments = new MerchantTribe.Commerce.Payment.AvailablePayments();
             Collection<DisplayPaymentMethod> enabledMethods = availablePayments.EnabledMethods(MyPage.BVApp.CurrentStore);
             foreach (DisplayPaymentMethod m in enabledMethods)
             {
@@ -86,16 +86,16 @@ namespace BVCommerce
             {
                 Order Basket = SessionManager.CurrentShoppingCart(MyPage.BVApp.OrderServices);
                 // Save as Order
-                BVSoftware.Commerce.BusinessRules.OrderTaskContext c 
-                    = new BVSoftware.Commerce.BusinessRules.OrderTaskContext(MyPage.BVApp);
+                MerchantTribe.Commerce.BusinessRules.OrderTaskContext c 
+                    = new MerchantTribe.Commerce.BusinessRules.OrderTaskContext(MyPage.BVApp);
                 c.UserId = SessionManager.GetCurrentUserId();
                 c.Order = Basket;
                 bool checkoutFailed = false;
-                if (!BVSoftware.Commerce.BusinessRules.Workflow.RunByName(c, BVSoftware.Commerce.BusinessRules.WorkflowNames.CheckoutSelected))
+                if (!MerchantTribe.Commerce.BusinessRules.Workflow.RunByName(c, MerchantTribe.Commerce.BusinessRules.WorkflowNames.CheckoutSelected))
                 {
                     checkoutFailed = true;
                     bool customerMessageFound = false;
-                    foreach (BVSoftware.Commerce.BusinessRules.WorkflowMessage msg in c.Errors)
+                    foreach (MerchantTribe.Commerce.BusinessRules.WorkflowMessage msg in c.Errors)
                     {
                         EventLog.LogEvent(msg.Name, msg.Description, EventLogSeverity.Error);
                         if (msg.CustomerVisible)
@@ -120,11 +120,11 @@ namespace BVCommerce
                 if (!checkoutFailed)
                 {
                     c.Inputs.Add("bvsoftware", "Mode", "GoogleCheckout");
-                    if (!BVSoftware.Commerce.BusinessRules.Workflow.RunByName(c, BVSoftware.Commerce.BusinessRules.WorkflowNames.ThirdPartyCheckoutSelected))
+                    if (!MerchantTribe.Commerce.BusinessRules.Workflow.RunByName(c, MerchantTribe.Commerce.BusinessRules.WorkflowNames.ThirdPartyCheckoutSelected))
                     {
                         bool customerMessageFound = false;
                         EventLog.LogEvent("Google Checkout", "Failed: Specific Errors to follow", EventLogSeverity.Error);
-                        foreach (BVSoftware.Commerce.BusinessRules.WorkflowMessage item in c.Errors)
+                        foreach (MerchantTribe.Commerce.BusinessRules.WorkflowMessage item in c.Errors)
                         {
                             EventLog.LogEvent("Google Checkout", "Failed: " + item.Name + ": " + item.Description, EventLogSeverity.Error);
                             if (item.CustomerVisible)

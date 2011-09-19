@@ -1,12 +1,12 @@
 using System;
 using System.Web;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Orders;
-using BVSoftware.Commerce.Membership;
-using BVSoftware.Commerce.Utilities;
-using BVSoftware.Commerce.Shipping;
-using BVSoftware.Commerce.Payment;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Orders;
+using MerchantTribe.Commerce.Membership;
+using MerchantTribe.Commerce.Utilities;
+using MerchantTribe.Commerce.Shipping;
+using MerchantTribe.Commerce.Payment;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.IO;
@@ -23,15 +23,15 @@ partial class BVAdmin_Orders_UPSOnlineTools_Void : BaseAdminPage
 
 	protected void btnGo_Click(object sender, System.Web.UI.ImageClickEventArgs e)
 	{
-		BVSoftware.Shipping.Ups.VoidShipmentRequest req = new BVSoftware.Shipping.Ups.VoidShipmentRequest();
+		MerchantTribe.Shipping.Ups.VoidShipmentRequest req = new MerchantTribe.Shipping.Ups.VoidShipmentRequest();
         req.Settings.UserID = CurrentStore.ShippingUpsUsername;
         req.Settings.Password = CurrentStore.ShippingUpsPassword;
         req.Settings.License = CurrentStore.ShippingUpsLicense;
 		req.Settings.ServerUrl = WebAppSettings.ShippingUpsServer;
 		req.ShipmentIdentificationNumber = this.TrackingNumberField.Text.Trim();
 
-		BVSoftware.Shipping.Ups.VoidShipmentResponse res;
-		res = BVSoftware.Shipping.Ups.XmlTools.SendVoidShipmentRequest(ref req);
+		MerchantTribe.Shipping.Ups.VoidShipmentResponse res;
+		res = MerchantTribe.Shipping.Ups.XmlTools.SendVoidShipmentRequest(ref req);
 
 		if (res != null) {
 

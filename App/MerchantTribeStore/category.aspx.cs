@@ -2,9 +2,9 @@ using System.Collections.ObjectModel;
 using System.Text;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Catalog;
-using BVSoftware.Commerce.Utilities;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Catalog;
+using MerchantTribe.Commerce.Utilities;
 using System.Collections.Generic;
 
 namespace BVCommerce
@@ -126,7 +126,7 @@ namespace BVCommerce
             if (LocalCategory.BannerImageUrl.Trim().Length > 0)
             {
                 this.BannerImage.Visible = true;
-                this.BannerImage.ImageUrl = BVSoftware.Commerce.Storage.DiskStorage.CategoryBannerUrl(BVApp.CurrentStore.Id, LocalCategory.Bvin, LocalCategory.BannerImageUrl, Request.IsSecureConnection);
+                this.BannerImage.ImageUrl = MerchantTribe.Commerce.Storage.DiskStorage.CategoryBannerUrl(BVApp.CurrentStore.Id, LocalCategory.Bvin, LocalCategory.BannerImageUrl, Request.IsSecureConnection);
                 this.BannerImage.AlternateText = LocalCategory.Name;
             }
             else
@@ -163,7 +163,7 @@ namespace BVCommerce
                     columnCount += 1;
                 }
                 UserSpecificPrice price = BVApp.PriceProduct(p, BVApp.CurrentCustomer, null);                
-                BVSoftware.Commerce.Utilities.HtmlRendering.RenderSingleProduct(ref sb, p, isLastInRow, isFirstInRow, this.Page, price);
+                MerchantTribe.Commerce.Utilities.HtmlRendering.RenderSingleProduct(ref sb, p, isLastInRow, isFirstInRow, this.Page, price);
             }
 
             this.categoryitems.Text = sb.ToString();
@@ -191,7 +191,7 @@ namespace BVCommerce
                     {
 
                         string destinationLink = UrlRewriter.BuildUrlForCategory(c, BVApp.CurrentRequestContext.RoutingContext);
-                        string imageUrl = BVSoftware.Commerce.Storage.DiskStorage.CategoryIconUrl(BVApp.CurrentStore.Id, c.Bvin, c.ImageUrl, Request.IsSecureConnection);
+                        string imageUrl = MerchantTribe.Commerce.Storage.DiskStorage.CategoryIconUrl(BVApp.CurrentStore.Id, c.Bvin, c.ImageUrl, Request.IsSecureConnection);
 
                         //Image
                         HtmlAnchor imageAnchor = (HtmlAnchor)e.Item.FindControl("recordimageanchor");

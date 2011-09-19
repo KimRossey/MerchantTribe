@@ -1,13 +1,13 @@
 
-using BVSoftware.Commerce;
+using MerchantTribe.Commerce;
 using System.Data;
 using System.Collections.ObjectModel;
-using BVSoftware.Commerce.Catalog;
-using BVSoftware.Commerce.Accounts;
+using MerchantTribe.Commerce.Catalog;
+using MerchantTribe.Commerce.Accounts;
 
 namespace BVCommerce
 {
-    public class BaseStoreJsonPage : System.Web.UI.Page, IStorePage, BVSoftware.Commerce.IMultiStorePage
+    public class BaseStoreJsonPage : System.Web.UI.Page, IStorePage, MerchantTribe.Commerce.IMultiStorePage
     {
 
         private bool _useTabIndexes = false;
@@ -76,13 +76,13 @@ namespace BVCommerce
             RedirectBVCommerceCom(System.Web.HttpContext.Current);
 
             // Determine store id        
-            BVApp.CurrentStore = BVSoftware.Commerce.Utilities.UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, BVApp.AccountServices);
+            BVApp.CurrentStore = MerchantTribe.Commerce.Utilities.UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, BVApp.AccountServices);
             if (BVApp.CurrentStore == null)
             {
                 Response.Redirect("~/storenotfound");
             }
 
-            if (BVApp.CurrentStore.Status == BVSoftware.Commerce.Accounts.StoreStatus.Deactivated)
+            if (BVApp.CurrentStore.Status == MerchantTribe.Commerce.Accounts.StoreStatus.Deactivated)
             {
                 if ((AvailableWhenInactive == false))
                 {
@@ -131,7 +131,7 @@ namespace BVCommerce
                 {
                     if (!Request.IsSecureConnection)
                     {
-                        BVSoftware.Commerce.Utilities.SSL.SSLRedirect(this, this.BVApp.CurrentStore, BVSoftware.Commerce.Utilities.SSL.SSLRedirectTo.SSL);
+                        MerchantTribe.Commerce.Utilities.SSL.SSLRedirect(this, this.BVApp.CurrentStore, MerchantTribe.Commerce.Utilities.SSL.SSLRedirectTo.SSL);
                     }
                 }
             }
@@ -141,7 +141,7 @@ namespace BVCommerce
                 {
                     if (Request.IsSecureConnection)
                     {
-                        BVSoftware.Commerce.Utilities.SSL.SSLRedirect(this, this.BVApp.CurrentStore, BVSoftware.Commerce.Utilities.SSL.SSLRedirectTo.NonSSL);
+                        MerchantTribe.Commerce.Utilities.SSL.SSLRedirect(this, this.BVApp.CurrentStore, MerchantTribe.Commerce.Utilities.SSL.SSLRedirectTo.NonSSL);
                     }
                 }
             }

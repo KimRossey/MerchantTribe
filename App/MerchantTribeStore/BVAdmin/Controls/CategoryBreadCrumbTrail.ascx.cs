@@ -1,14 +1,14 @@
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Catalog;
-using BVSoftware.Commerce.Content;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Catalog;
+using MerchantTribe.Commerce.Content;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
 
 namespace BVCommerce
 {
 
-    partial class BVAdmin_Controls_CategoryBreadCrumbTrail : BVSoftware.Commerce.Content.BVUserControl
+    partial class BVAdmin_Controls_CategoryBreadCrumbTrail : MerchantTribe.Commerce.Content.BVUserControl
     {
 
         private string _Spacer = "&nbsp;::&nbsp;";
@@ -86,7 +86,7 @@ namespace BVCommerce
             m.ToolTip = c.MetaTitle;
             m.Text = c.Name;
 
-            m.NavigateUrl = BVSoftware.Commerce.Utilities.UrlRewriter.BuildUrlForCategory(c, MyPage.BVApp.CurrentRequestContext.RoutingContext);
+            m.NavigateUrl = MerchantTribe.Commerce.Utilities.UrlRewriter.BuildUrlForCategory(c, MyPage.BVApp.CurrentRequestContext.RoutingContext);
             if (c.SourceType == CategorySourceType.CustomLink)
             {
                 if (c.CustomPageOpenInNewWindow == true)

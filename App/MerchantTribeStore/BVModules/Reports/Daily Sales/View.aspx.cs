@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce.Membership;
-using BVSoftware.Commerce.Orders;
+using MerchantTribe.Commerce.Membership;
+using MerchantTribe.Commerce.Orders;
 using System.Linq;
 
 namespace BVCommerce
@@ -207,7 +207,7 @@ namespace BVCommerce
             }
         }
 
-        protected void DatePicker_DateChanged(object sender, BVSoftware.Commerce.Content.BVModuleEventArgs e)
+        protected void DatePicker_DateChanged(object sender, MerchantTribe.Commerce.Content.BVModuleEventArgs e)
         {
             FillList(this.DatePicker.SelectedDate);
         }

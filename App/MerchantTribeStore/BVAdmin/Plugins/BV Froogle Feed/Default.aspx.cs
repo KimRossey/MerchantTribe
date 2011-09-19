@@ -1,7 +1,7 @@
 using System;
 using System.Text;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Membership;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Membership;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
@@ -119,10 +119,10 @@ namespace BVCommerce
             StringBuilder sb = new StringBuilder();
             WriteHeaders(ref sb);
 
-            List<BVSoftware.Commerce.Catalog.Product> prods = BVApp.CatalogServices.Products.FindAllPaged(1,3000);
-            foreach (BVSoftware.Commerce.Catalog.Product p in prods)
+            List<MerchantTribe.Commerce.Catalog.Product> prods = BVApp.CatalogServices.Products.FindAllPaged(1,3000);
+            foreach (MerchantTribe.Commerce.Catalog.Product p in prods)
             {
-                if (p.Status == BVSoftware.Commerce.Catalog.ProductStatus.Active)
+                if (p.Status == MerchantTribe.Commerce.Catalog.ProductStatus.Active)
                 {
                     WriteItem(p, ref sb, expirationDate);
                 }
@@ -172,7 +172,7 @@ namespace BVCommerce
 
         }
 
-        private void WriteItem(BVSoftware.Commerce.Catalog.Product p, ref StringBuilder sb, string expirationDate)
+        private void WriteItem(MerchantTribe.Commerce.Catalog.Product p, ref StringBuilder sb, string expirationDate)
         {
             sb.Append(SafeString(p.Bvin));
             sb.Append("\t");
@@ -201,7 +201,7 @@ namespace BVCommerce
             // payment_notes
             sb.Append("\t");
 
-            List<BVSoftware.Commerce.Catalog.ProductProperty> props = BVApp.CatalogServices.ProductPropertiesFindForType(p.ProductTypeId);
+            List<MerchantTribe.Commerce.Catalog.ProductProperty> props = BVApp.CatalogServices.ProductPropertiesFindForType(p.ProductTypeId);
 
             sb.Append(SafeString(PropertyMatcher("shipping", props, p.Bvin)));
             sb.Append("\t");
@@ -263,7 +263,7 @@ namespace BVCommerce
             }
         }
 
-        private string RemoteUrl(BVSoftware.Commerce.Catalog.Product p)
+        private string RemoteUrl(MerchantTribe.Commerce.Catalog.Product p)
         {
 
             string temp = BuildUrlForProduct(p);
@@ -279,7 +279,7 @@ namespace BVCommerce
             }
         }
 
-        private string PropertyMatcher(string googleBaseName, List<BVSoftware.Commerce.Catalog.ProductProperty> props, string productId)
+        private string PropertyMatcher(string googleBaseName, List<MerchantTribe.Commerce.Catalog.ProductProperty> props, string productId)
         {
             string result = string.Empty;
 
@@ -323,14 +323,14 @@ namespace BVCommerce
 
         #region " URL Functions "
 
-        private string BuildUrlForProduct(BVSoftware.Commerce.Catalog.Product p)
+        private string BuildUrlForProduct(MerchantTribe.Commerce.Catalog.Product p)
         {
-            return BVSoftware.Commerce.Utilities.UrlRewriter.BuildUrlForProduct(p, this);
+            return MerchantTribe.Commerce.Utilities.UrlRewriter.BuildUrlForProduct(p, this);
         }
 
-        private string BuildPhysicalUrlForProduct(BVSoftware.Commerce.Catalog.Product p)
+        private string BuildPhysicalUrlForProduct(MerchantTribe.Commerce.Catalog.Product p)
         {
-            return BVSoftware.Commerce.Utilities.UrlRewriter.BuildUrlForProduct(p, this.Page);
+            return MerchantTribe.Commerce.Utilities.UrlRewriter.BuildUrlForProduct(p, this.Page);
         }
 
         private string CleanNameForUrl(string input)

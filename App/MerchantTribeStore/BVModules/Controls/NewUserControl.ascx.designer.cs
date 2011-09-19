@@ -64,7 +64,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVSoftware.Commerce.Controls.BVRequiredFieldValidator val2Username;
+        protected global::MerchantTribe.Commerce.Controls.BVRequiredFieldValidator val2Username;
         
         /// <summary>
         /// valUsername control.
@@ -73,7 +73,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVSoftware.Commerce.Controls.BVRegularExpressionValidator valUsername;
+        protected global::MerchantTribe.Commerce.Controls.BVRegularExpressionValidator valUsername;
         
         /// <summary>
         /// FirstNameLabel control.
@@ -100,7 +100,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVSoftware.Commerce.Controls.BVRequiredFieldValidator valFirstName;
+        protected global::MerchantTribe.Commerce.Controls.BVRequiredFieldValidator valFirstName;
         
         /// <summary>
         /// LastNameLabel control.
@@ -127,7 +127,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVSoftware.Commerce.Controls.BVRequiredFieldValidator RequiredFieldValidator1;
+        protected global::MerchantTribe.Commerce.Controls.BVRequiredFieldValidator RequiredFieldValidator1;
         
         /// <summary>
         /// PasswordLabel control.
@@ -181,7 +181,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVSoftware.Commerce.Controls.BVRequiredFieldValidator RequiredFieldValidator2;
+        protected global::MerchantTribe.Commerce.Controls.BVRequiredFieldValidator RequiredFieldValidator2;
         
         /// <summary>
         /// CompareValidator1 control.
@@ -190,7 +190,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVSoftware.Commerce.Controls.BVCompareValidator CompareValidator1;
+        protected global::MerchantTribe.Commerce.Controls.BVCompareValidator CompareValidator1;
         
         /// <summary>
         /// btnSaveChanges control.

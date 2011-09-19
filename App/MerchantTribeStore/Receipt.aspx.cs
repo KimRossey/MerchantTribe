@@ -2,10 +2,10 @@ using System;
 using System.Collections.ObjectModel;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Catalog;
-using BVSoftware.Commerce.Orders;
-using BVSoftware.Commerce.Utilities;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Catalog;
+using MerchantTribe.Commerce.Orders;
+using MerchantTribe.Commerce.Utilities;
 using System.Collections.Generic;
 
 namespace BVCommerce
@@ -68,7 +68,7 @@ namespace BVCommerce
                 if (BVApp.CurrentStore.Settings.Analytics.UseGoogleEcommerce)
                 {
                     // Ecommerce + Page Tracker
-                    this.ViewData["analyticstop"] = BVSoftware.Commerce.Metrics.GoogleAnalytics.RenderLatestTrackerAndTransaction(
+                    this.ViewData["analyticstop"] = MerchantTribe.Commerce.Metrics.GoogleAnalytics.RenderLatestTrackerAndTransaction(
                         BVApp.CurrentStore.Settings.Analytics.GoogleTrackerId,
                         o,
                         BVApp.CurrentStore.Settings.Analytics.GoogleEcommerceStoreName,
@@ -77,7 +77,7 @@ namespace BVCommerce
                 else
                 {
                     // Page Tracker Only
-                    this.ViewData["analyticstop"] = BVSoftware.Commerce.Metrics.GoogleAnalytics.RenderLatestTracker(BVApp.CurrentStore.Settings.Analytics.GoogleTrackerId);
+                    this.ViewData["analyticstop"] = MerchantTribe.Commerce.Metrics.GoogleAnalytics.RenderLatestTracker(BVApp.CurrentStore.Settings.Analytics.GoogleTrackerId);
                 }
             }
 
@@ -88,7 +88,7 @@ namespace BVCommerce
             // Adwords Tracker at bottom if needed
             if (BVApp.CurrentStore.Settings.Analytics.UseGoogleAdWords)
             {
-                this.ViewData["analyticsbottom"] = BVSoftware.Commerce.Metrics.GoogleAnalytics.RenderGoogleAdwordTracker(
+                this.ViewData["analyticsbottom"] = MerchantTribe.Commerce.Metrics.GoogleAnalytics.RenderGoogleAdwordTracker(
                                                         o.TotalGrand,
                                                         BVApp.CurrentStore.Settings.Analytics.GoogleAdWordsId,
                                                         BVApp.CurrentStore.Settings.Analytics.GoogleAdWordsLabel,
@@ -99,7 +99,7 @@ namespace BVCommerce
             // Add Yahoo Tracker to Bottom if Needed
             if (BVApp.CurrentStore.Settings.Analytics.UseYahooTracker)
             {
-                this.ViewData["analyticsbottom"] += BVSoftware.Commerce.Metrics.YahooAnalytics.RenderYahooTracker(
+                this.ViewData["analyticsbottom"] += MerchantTribe.Commerce.Metrics.YahooAnalytics.RenderYahooTracker(
                     o, BVApp.CurrentStore.Settings.Analytics.YahooAccountId);
             }
         }

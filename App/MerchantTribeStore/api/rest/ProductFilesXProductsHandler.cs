@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using BVSoftware.Commerce;
-using BVSoftware.CommerceDTO.v1;
-using BVSoftware.CommerceDTO.v1.Catalog;
-using BVSoftware.Commerce.Catalog;
+using MerchantTribe.Commerce;
+using MerchantTribe.CommerceDTO.v1;
+using MerchantTribe.CommerceDTO.v1.Catalog;
+using MerchantTribe.Commerce.Catalog;
 
 namespace BVCommerce.api.rest
 {
     public class ProductFilesXProductsHandler: BaseRestHandler
     {
-        public ProductFilesXProductsHandler(BVSoftware.Commerce.BVApplication app)
+        public ProductFilesXProductsHandler(MerchantTribe.Commerce.BVApplication app)
             : base(app)
         {
 

@@ -1,6 +1,6 @@
 using System.Web.UI;
-using BVSoftware.Commerce.Catalog;
-using BVSoftware.Commerce.Membership;
+using MerchantTribe.Commerce.Catalog;
+using MerchantTribe.Commerce.Membership;
 using System.Linq;
 
 namespace BVCommerce
@@ -12,7 +12,7 @@ namespace BVCommerce
         private string choiceid = string.Empty;
         protected internal string productBvin = string.Empty;
         private Product localProduct = null;
-        private BVSoftware.Commerce.Catalog.Option choice;
+        private MerchantTribe.Commerce.Catalog.Option choice;
 
         protected override void OnInit(System.EventArgs e)
         {
@@ -73,7 +73,7 @@ namespace BVCommerce
                     break;
                 case OptionTypes.TextInput:
                     this.viewMain.SetActiveView(this.viewTextInput);
-                    BVSoftware.Commerce.Catalog.Options.TextInput ti = (BVSoftware.Commerce.Catalog.Options.TextInput)choice.Processor;
+                    MerchantTribe.Commerce.Catalog.Options.TextInput ti = (MerchantTribe.Commerce.Catalog.Options.TextInput)choice.Processor;
                     this.ColumnsField.Text = ti.GetColumns(choice);
                     this.RowsField.Text = ti.GetRows(choice);
                     this.MaxLengthField.Text = ti.GetMaxLength(choice);
@@ -98,7 +98,7 @@ namespace BVCommerce
                     choice.Settings.AddOrUpdate("html", this.HtmlEditor1.Text);
                     break;
                 case OptionTypes.TextInput:
-                    BVSoftware.Commerce.Catalog.Options.TextInput ti = (BVSoftware.Commerce.Catalog.Options.TextInput)choice.Processor;
+                    MerchantTribe.Commerce.Catalog.Options.TextInput ti = (MerchantTribe.Commerce.Catalog.Options.TextInput)choice.Processor;
                     ti.SetColumns(choice,this.ColumnsField.Text);
                     ti.SetRows(choice,this.RowsField.Text);
                     ti.SetMaxLength(choice,this.MaxLengthField.Text);

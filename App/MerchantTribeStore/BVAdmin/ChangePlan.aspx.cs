@@ -4,8 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce.Accounts;
-using BVSoftware.Billing;
+using MerchantTribe.Commerce.Accounts;
+using MerchantTribe.Billing;
 
 namespace BVCommerce
 {
@@ -86,7 +86,7 @@ namespace BVCommerce
 
         private void LoadBilling(UserAccount u)
         {
-            BVSoftware.Billing.Service svc = new BVSoftware.Billing.Service(BVSoftware.Commerce.WebAppSettings.ApplicationConnectionString);
+            MerchantTribe.Billing.Service svc = new MerchantTribe.Billing.Service(MerchantTribe.Commerce.WebAppSettings.ApplicationConnectionString);
             BillingAccount act = svc.Accounts.FindOrCreate(u.Email);
             if (act != null)
             {

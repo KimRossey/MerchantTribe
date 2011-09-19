@@ -1,8 +1,8 @@
 using System;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Datalayer;
-using BVSoftware.Commerce.Catalog;
-using BVSoftware.Commerce.Content;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Datalayer;
+using MerchantTribe.Commerce.Catalog;
+using MerchantTribe.Commerce.Content;
 
 namespace BVCommerce
 {
@@ -110,13 +110,13 @@ namespace BVCommerce
                     }
 
                     // No custom found, go to error
-                    EventLog.LogEvent("Category Page", "Requested Category " + slug + " was not found", BVSoftware.Commerce.Metrics.EventLogSeverity.Error);
-                    BVSoftware.Commerce.Utilities.UrlRewriter.RedirectToErrorPage(BVSoftware.Commerce.ErrorTypes.Category, Response);
+                    EventLog.LogEvent("Category Page", "Requested Category " + slug + " was not found", MerchantTribe.Commerce.Metrics.EventLogSeverity.Error);
+                    MerchantTribe.Commerce.Utilities.UrlRewriter.RedirectToErrorPage(MerchantTribe.Commerce.ErrorTypes.Category, Response);
                 }
             }
             else
             {
-                BVSoftware.Commerce.Utilities.UrlRewriter.RedirectToErrorPage(BVSoftware.Commerce.ErrorTypes.Category, Response);
+                MerchantTribe.Commerce.Utilities.UrlRewriter.RedirectToErrorPage(MerchantTribe.Commerce.ErrorTypes.Category, Response);
             }
         }
     }

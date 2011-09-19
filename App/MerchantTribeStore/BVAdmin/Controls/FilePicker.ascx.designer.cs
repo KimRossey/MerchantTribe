@@ -46,7 +46,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVSoftware.Commerce.Controls.BVCustomValidator FileHasBeenSelectedCustomValidator;
+        protected global::MerchantTribe.Commerce.Controls.BVCustomValidator FileHasBeenSelectedCustomValidator;
         
         /// <summary>
         /// FileIsUniqueToProductCustomValidator control.
@@ -55,7 +55,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVSoftware.Commerce.Controls.BVCustomValidator FileIsUniqueToProductCustomValidator;
+        protected global::MerchantTribe.Commerce.Controls.BVCustomValidator FileIsUniqueToProductCustomValidator;
         
         /// <summary>
         /// browseButton control.
@@ -109,7 +109,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVSoftware.Commerce.Controls.BVCustomValidator DescriptionIsUniqueToProductCustomValidator;
+        protected global::MerchantTribe.Commerce.Controls.BVCustomValidator DescriptionIsUniqueToProductCustomValidator;
         
         /// <summary>
         /// AvailableMinutesRow control.
@@ -154,6 +154,6 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVSoftware.Commerce.Controls.BVRegularExpressionValidator RegularExpressionValidator1;
+        protected global::MerchantTribe.Commerce.Controls.BVRegularExpressionValidator RegularExpressionValidator1;
     }
 }

@@ -1,9 +1,9 @@
 using System;
 using System.Web;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce.Membership;
-using BVSoftware.Commerce.Content;
-using BVSoftware.Commerce;
+using MerchantTribe.Commerce.Membership;
+using MerchantTribe.Commerce.Content;
+using MerchantTribe.Commerce;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Collections.Generic;
@@ -78,7 +78,7 @@ namespace BVCommerce
                 else
                 {
                     msg.ShowError("Unable to create policy. Please see event log for details");
-                    EventLog.LogEvent("Create New Policy Button", "Unable to create policy", BVSoftware.Commerce.Metrics.EventLogSeverity.Error);
+                    EventLog.LogEvent("Create New Policy Button", "Unable to create policy", MerchantTribe.Commerce.Metrics.EventLogSeverity.Error);
                 }
             }
         }

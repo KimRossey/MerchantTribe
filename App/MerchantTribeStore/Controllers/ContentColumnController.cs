@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using BVCommerce.Models;
 using System.Text;
-using BVSoftware.Commerce.Content;
+using MerchantTribe.Commerce.Content;
 
 namespace BVCommerce.Controllers
 {

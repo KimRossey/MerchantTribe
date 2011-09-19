@@ -2,10 +2,10 @@ using System;
 using System.Collections.ObjectModel;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce.Catalog;
-using BVSoftware.Commerce.Content;
-using BVSoftware.Commerce.Membership;
-using BVSoftware.Commerce.Utilities;
+using MerchantTribe.Commerce.Catalog;
+using MerchantTribe.Commerce.Content;
+using MerchantTribe.Commerce.Membership;
+using MerchantTribe.Commerce.Utilities;
 using System.Collections.Generic;
 
 namespace BVCommerce
@@ -38,9 +38,9 @@ namespace BVCommerce
                     Category category = LoadCategory();
                     if (category == null)
                     {
-                        BVSoftware.Commerce.EventLog.LogEvent("Edit Category Page", 
+                        MerchantTribe.Commerce.EventLog.LogEvent("Edit Category Page", 
                                                               "Could not find category with bvin " + this.BvinField.Value, 
-                                                              BVSoftware.Commerce.Metrics.EventLogSeverity.Error);
+                                                              MerchantTribe.Commerce.Metrics.EventLogSeverity.Error);
                         Response.Redirect("categories.aspx");
                     }
 
@@ -186,7 +186,7 @@ namespace BVCommerce
         }
         private void UpdateIconImage(Category c)
         {
-            IconImage = BVSoftware.Commerce.Storage.DiskStorage.CategoryIconUrl(BVApp.CurrentStore.Id, c.Bvin, c.ImageUrl, true);
+            IconImage = MerchantTribe.Commerce.Storage.DiskStorage.CategoryIconUrl(BVApp.CurrentStore.Id, c.Bvin, c.ImageUrl, true);
             if (IconImage == string.Empty || c.ImageUrl == string.Empty)
             {
                 IconImage = Page.ResolveUrl("~/content/admin/images/MissingImage.png");
@@ -194,7 +194,7 @@ namespace BVCommerce
         }
         private void UpdateBannerImage(Category c)
         {
-            BannerImage = BVSoftware.Commerce.Storage.DiskStorage.CategoryBannerUrl(BVApp.CurrentStore.Id, c.Bvin, c.BannerImageUrl, true);
+            BannerImage = MerchantTribe.Commerce.Storage.DiskStorage.CategoryBannerUrl(BVApp.CurrentStore.Id, c.Bvin, c.BannerImageUrl, true);
             if (BannerImage == string.Empty || c.BannerImageUrl == string.Empty)
             {
                 BannerImage = Page.ResolveUrl("~/content/admin/images/MissingImage.png");
@@ -233,10 +233,10 @@ namespace BVCommerce
                     string fileName = System.IO.Path.GetFileNameWithoutExtension(iconupload.FileName);
                     string ext = System.IO.Path.GetExtension(iconupload.FileName);
 
-                    if (BVSoftware.Commerce.Storage.DiskStorage.ValidateImageType(ext))
+                    if (MerchantTribe.Commerce.Storage.DiskStorage.ValidateImageType(ext))
                     {
                         fileName = MerchantTribe.Web.Text.CleanFileName(fileName);
-                        if ((BVSoftware.Commerce.Storage.DiskStorage.UploadCategoryIcon(BVApp.CurrentStore.Id, c.Bvin, this.iconupload.PostedFile)))
+                        if ((MerchantTribe.Commerce.Storage.DiskStorage.UploadCategoryIcon(BVApp.CurrentStore.Id, c.Bvin, this.iconupload.PostedFile)))
                         {
                             c.ImageUrl = fileName + ext;
                         }
@@ -254,10 +254,10 @@ namespace BVCommerce
                     string fileName = System.IO.Path.GetFileNameWithoutExtension(bannerupload.FileName);
                     string ext = System.IO.Path.GetExtension(bannerupload.FileName);
 
-                    if (BVSoftware.Commerce.Storage.DiskStorage.ValidateImageType(ext))
+                    if (MerchantTribe.Commerce.Storage.DiskStorage.ValidateImageType(ext))
                     {
                         fileName = MerchantTribe.Web.Text.CleanFileName(fileName);
-                        if ((BVSoftware.Commerce.Storage.DiskStorage.UploadCategoryBanner(BVApp.CurrentStore.Id, c.Bvin, this.bannerupload.PostedFile)))
+                        if ((MerchantTribe.Commerce.Storage.DiskStorage.UploadCategoryBanner(BVApp.CurrentStore.Id, c.Bvin, this.bannerupload.PostedFile)))
                         {
                             c.BannerImageUrl = fileName + ext;
                         }

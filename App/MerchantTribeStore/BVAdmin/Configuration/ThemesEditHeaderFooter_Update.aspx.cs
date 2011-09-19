@@ -30,10 +30,10 @@ namespace BVCommerce
         private void Update(string themeid, string headerhtml, string footerhtml)
         {
 
-            bool result = BVSoftware.Commerce.Storage.DiskStorage.WriteCustomFooter(BVApp.CurrentStore.Id, themeid, footerhtml);
+            bool result = MerchantTribe.Commerce.Storage.DiskStorage.WriteCustomFooter(BVApp.CurrentStore.Id, themeid, footerhtml);
             if (result)
             {
-                result = BVSoftware.Commerce.Storage.DiskStorage.WriteCustomHeader(BVApp.CurrentStore.Id, themeid, headerhtml);
+                result = MerchantTribe.Commerce.Storage.DiskStorage.WriteCustomHeader(BVApp.CurrentStore.Id, themeid, headerhtml);
             }
 
             if (result)

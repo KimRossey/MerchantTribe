@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.SessionState;
 using System.Web.Routing;
-using BVSoftware.Commerce;
+using MerchantTribe.Commerce;
 using System.Web.Mvc;
 using System.Web.Caching;
 
@@ -35,22 +35,22 @@ namespace BVCommerce
         {
             try
             {
-                BVSoftware.Commerce.RequestContext context = new BVSoftware.Commerce.RequestContext();
-                BVApplication bvapp = BVSoftware.Commerce.BVApplication.InstantiateForDataBase(context);
+                MerchantTribe.Commerce.RequestContext context = new MerchantTribe.Commerce.RequestContext();
+                BVApplication bvapp = MerchantTribe.Commerce.BVApplication.InstantiateForDataBase(context);
 
                 List<long> storeIds = bvapp.ScheduleServices.QueuedTasks.ListStoresWithTasksToRun();
                 if (storeIds != null)
                 {
-                    List<BVSoftware.Commerce.Accounts.StoreDomainSnapshot> stores = bvapp.AccountServices.Stores.FindDomainSnapshotsByIds(storeIds);
+                    List<MerchantTribe.Commerce.Accounts.StoreDomainSnapshot> stores = bvapp.AccountServices.Stores.FindDomainSnapshotsByIds(storeIds);
                     if (stores != null)
                     {
                         System.Threading.Tasks.Parallel.ForEach(stores, CallTasksOnStore);
-                        //foreach (BVSoftware.Commerce.Accounts.StoreDomainSnapshot snap in stores)
+                        //foreach (MerchantTribe.Commerce.Accounts.StoreDomainSnapshot snap in stores)
                         //{
                         //    string storekey = System.Configuration.ConfigurationManager.AppSettings["storekey"];
                         //    string rootUrl = snap.RootUrl();
                         //    string destination = rootUrl + "scheduledtasks/" + storekey;
-                        //    BVSoftware.Commerce.Utilities.WebForms.SendRequestByPost(destination, string.Empty);
+                        //    MerchantTribe.Commerce.Utilities.WebForms.SendRequestByPost(destination, string.Empty);
                         //}
                     }
                 }
@@ -64,12 +64,12 @@ namespace BVCommerce
             ScheduleTaskTrigger();
         }
 
-        private static void CallTasksOnStore(BVSoftware.Commerce.Accounts.StoreDomainSnapshot snap)
+        private static void CallTasksOnStore(MerchantTribe.Commerce.Accounts.StoreDomainSnapshot snap)
         {
             string storekey = System.Configuration.ConfigurationManager.AppSettings["storekey"];
             string rootUrl = snap.RootUrl();
             string destination = rootUrl + "scheduledtasks/" + storekey;
-            BVSoftware.Commerce.Utilities.WebForms.SendRequestByPost(destination, string.Empty);
+            MerchantTribe.Commerce.Utilities.WebForms.SendRequestByPost(destination, string.Empty);
         }
 
 #endregion
@@ -195,11 +195,11 @@ namespace BVCommerce
         {
             // Code that runs when an unhandled error occurs
             Exception ex = Server.GetLastError().GetBaseException();
-            BVSoftware.Commerce.EventLog.LogEvent("Error", StringUtils.SessionInfo(), BVSoftware.Commerce.Metrics.EventLogSeverity.Error);
-            BVSoftware.Commerce.EventLog.LogEvent(ex);
+            MerchantTribe.Commerce.EventLog.LogEvent("Error", StringUtils.SessionInfo(), MerchantTribe.Commerce.Metrics.EventLogSeverity.Error);
+            MerchantTribe.Commerce.EventLog.LogEvent(ex);
             while (ex.InnerException != null)
             {
-                BVSoftware.Commerce.EventLog.LogEvent(ex);
+                MerchantTribe.Commerce.EventLog.LogEvent(ex);
             }
         }
 
@@ -208,49 +208,49 @@ namespace BVCommerce
             // Code that runs when a new session is started
             /*
                 'Try
-                'If BVSoftware.Commerce.WebAppSettings.AutomaticallyRegenerateDynamicCategories Then
-                'If ((DateTime.Now() - BVSoftware.Commerce.WebAppSettings.AutomaticallyRegenerateDynamicCategoriesLastDateTimeRun).Ticks / TimeSpan.TicksPerHour) > _
-                'BVSoftware.Commerce.WebAppSettings.AutomaticallyRegenerateDynamicCategoriesIntervalInHours Then
-                'BVSoftware.Commerce.WebAppSettings.AutomaticallyRegenerateDynamicCategoriesLastDateTimeRun = DateTime.Now()
-                'System.Threading.ThreadPool.QueueUserWorkItem(New System.Threading.WaitCallback(AddressOf BVSoftware.Commerce.Catalog.Category.RegenerateDynamicCategories))
+                'If MerchantTribe.Commerce.WebAppSettings.AutomaticallyRegenerateDynamicCategories Then
+                'If ((DateTime.Now() - MerchantTribe.Commerce.WebAppSettings.AutomaticallyRegenerateDynamicCategoriesLastDateTimeRun).Ticks / TimeSpan.TicksPerHour) > _
+                'MerchantTribe.Commerce.WebAppSettings.AutomaticallyRegenerateDynamicCategoriesIntervalInHours Then
+                'MerchantTribe.Commerce.WebAppSettings.AutomaticallyRegenerateDynamicCategoriesLastDateTimeRun = DateTime.Now()
+                'System.Threading.ThreadPool.QueueUserWorkItem(New System.Threading.WaitCallback(AddressOf MerchantTribe.Commerce.Catalog.Category.RegenerateDynamicCategories))
                 'End If
                 'End If
                 'Catch ex As Exception
-                'BVSoftware.Commerce.EventLog.LogEvent(ex)
+                'MerchantTribe.Commerce.EventLog.LogEvent(ex)
                 'End Try
         
                 'Try
-                'If ((DateTime.Now() - BVSoftware.Commerce.WebAppSettings.CartCleanupLastTimeRun).Ticks / TimeSpan.TicksPerHour) > _
-                'BVSoftware.Commerce.WebAppSettings.CartCleanupIntervalInHours Then
-                'BVSoftware.Commerce.WebAppSettings.CartCleanupLastTimeRun = DateTime.Now()
-                'System.Threading.ThreadPool.QueueUserWorkItem(New System.Threading.WaitCallback(AddressOf BVSoftware.Commerce.Orders.Order.CleanupCarts))
+                'If ((DateTime.Now() - MerchantTribe.Commerce.WebAppSettings.CartCleanupLastTimeRun).Ticks / TimeSpan.TicksPerHour) > _
+                'MerchantTribe.Commerce.WebAppSettings.CartCleanupIntervalInHours Then
+                'MerchantTribe.Commerce.WebAppSettings.CartCleanupLastTimeRun = DateTime.Now()
+                'System.Threading.ThreadPool.QueueUserWorkItem(New System.Threading.WaitCallback(AddressOf MerchantTribe.Commerce.Orders.Order.CleanupCarts))
                 'End If
                 'Catch ex As Exception
-                'BVSoftware.Commerce.EventLog.LogEvent(ex)
+                'MerchantTribe.Commerce.EventLog.LogEvent(ex)
                 'End Try
         
                 'Try
-                'If (BVSoftware.Commerce.WebAppSettings.InventoryLowHours > 0) AndAlso (Not BVSoftware.Commerce.WebAppSettings.DisableInventory) Then
-                'If ((DateTime.Now() - BVSoftware.Commerce.WebAppSettings.InventoryLowLastTimeRun).Ticks / TimeSpan.TicksPerHour) > _
-                'BVSoftware.Commerce.WebAppSettings.InventoryLowHours Then
-                'BVSoftware.Commerce.WebAppSettings.InventoryLowLastTimeRun = DateTime.Now()
-                'System.Threading.ThreadPool.QueueUserWorkItem(New System.Threading.WaitCallback(AddressOf BVSoftware.Commerce.Catalog.ProductInventory.EmailLowStockReport))
+                'If (MerchantTribe.Commerce.WebAppSettings.InventoryLowHours > 0) AndAlso (Not MerchantTribe.Commerce.WebAppSettings.DisableInventory) Then
+                'If ((DateTime.Now() - MerchantTribe.Commerce.WebAppSettings.InventoryLowLastTimeRun).Ticks / TimeSpan.TicksPerHour) > _
+                'MerchantTribe.Commerce.WebAppSettings.InventoryLowHours Then
+                'MerchantTribe.Commerce.WebAppSettings.InventoryLowLastTimeRun = DateTime.Now()
+                'System.Threading.ThreadPool.QueueUserWorkItem(New System.Threading.WaitCallback(AddressOf MerchantTribe.Commerce.Catalog.ProductInventory.EmailLowStockReport))
                 'End If
                 'End If
                 'Catch ex As Exception
-                'BVSoftware.Commerce.EventLog.LogEvent(ex)
+                'MerchantTribe.Commerce.EventLog.LogEvent(ex)
                 'End Try
         
                 'Try
-                'If (BVSoftware.Commerce.WebAppSettings.CCSHours > 0) Then
-                'If ((DateTime.Now() - BVSoftware.Commerce.WebAppSettings.CCSLastTimeRun).Ticks / TimeSpan.TicksPerHour) > 24 Then
-                'Dim lastTimeRun As DateTime = BVSoftware.Commerce.WebAppSettings.CCSLastTimeRun
-                'BVSoftware.Commerce.WebAppSettings.CCSLastTimeRun = DateTime.Now()
-                'System.Threading.ThreadPool.QueueUserWorkItem(New System.Threading.WaitCallback(AddressOf BVSoftware.Commerce.Orders.Order.CleanUpCCNumbers), lastTimeRun)
+                'If (MerchantTribe.Commerce.WebAppSettings.CCSHours > 0) Then
+                'If ((DateTime.Now() - MerchantTribe.Commerce.WebAppSettings.CCSLastTimeRun).Ticks / TimeSpan.TicksPerHour) > 24 Then
+                'Dim lastTimeRun As DateTime = MerchantTribe.Commerce.WebAppSettings.CCSLastTimeRun
+                'MerchantTribe.Commerce.WebAppSettings.CCSLastTimeRun = DateTime.Now()
+                'System.Threading.ThreadPool.QueueUserWorkItem(New System.Threading.WaitCallback(AddressOf MerchantTribe.Commerce.Orders.Order.CleanUpCCNumbers), lastTimeRun)
                 'End If
                 'End If
                 'Catch ex As Exception
-                'BVSoftware.Commerce.EventLog.LogEvent(ex)
+                'MerchantTribe.Commerce.EventLog.LogEvent(ex)
                 'End Try
             */
 
@@ -263,8 +263,8 @@ namespace BVCommerce
 
         void Application_BeginRequest(object sender, EventArgs e)
         {
-            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(BVSoftware.Commerce.WebAppSettings.SiteCultureCode);
-            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(BVSoftware.Commerce.WebAppSettings.SiteCultureCode);
+            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(MerchantTribe.Commerce.WebAppSettings.SiteCultureCode);
+            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(MerchantTribe.Commerce.WebAppSettings.SiteCultureCode);
         }
 
         public override string GetVaryByCustomString(HttpContext context, string custom)

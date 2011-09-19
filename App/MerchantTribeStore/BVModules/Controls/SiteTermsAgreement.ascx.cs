@@ -1,11 +1,11 @@
 using System.Web.UI;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Content;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Content;
 
 namespace BVCommerce
 {
 
-    partial class BVModules_Controls_SiteTermsAgreement : BVSoftware.Commerce.Content.BVModule
+    partial class BVModules_Controls_SiteTermsAgreement : MerchantTribe.Commerce.Content.BVModule
     {
 
         public bool IsValid

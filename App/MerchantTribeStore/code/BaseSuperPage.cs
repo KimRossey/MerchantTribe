@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Linq;
 using System.Web;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Accounts;
-using BVSoftware.Commerce.Controls;
-using BVSoftware.Commerce.Utilities;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Accounts;
+using MerchantTribe.Commerce.Controls;
+using MerchantTribe.Commerce.Utilities;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using MerchantTribe.Web;
-using BVSoftware.Commerce.Catalog;
+using MerchantTribe.Commerce.Catalog;
 
 namespace BVCommerce
 {

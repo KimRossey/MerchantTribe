@@ -109,7 +109,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVSoftware.Commerce.Controls.BVRequiredFieldValidator RequiredFieldValidator1;
+        protected global::MerchantTribe.Commerce.Controls.BVRequiredFieldValidator RequiredFieldValidator1;
         
         /// <summary>
         /// RegularExpressionValidator1 control.
@@ -118,7 +118,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVSoftware.Commerce.Controls.BVRegularExpressionValidator RegularExpressionValidator1;
+        protected global::MerchantTribe.Commerce.Controls.BVRegularExpressionValidator RegularExpressionValidator1;
         
         /// <summary>
         /// RangeValidator1 control.
@@ -127,7 +127,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVSoftware.Commerce.Controls.BVRangeValidator RangeValidator1;
+        protected global::MerchantTribe.Commerce.Controls.BVRangeValidator RangeValidator1;
         
         /// <summary>
         /// DaysOldTextBox control.
@@ -145,7 +145,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVSoftware.Commerce.Controls.BVRequiredFieldValidator DaysOldRequiredFieldValidator;
+        protected global::MerchantTribe.Commerce.Controls.BVRequiredFieldValidator DaysOldRequiredFieldValidator;
         
         /// <summary>
         /// DaysOldRegularExpressionValidator control.
@@ -154,7 +154,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVSoftware.Commerce.Controls.BVRegularExpressionValidator DaysOldRegularExpressionValidator;
+        protected global::MerchantTribe.Commerce.Controls.BVRegularExpressionValidator DaysOldRegularExpressionValidator;
         
         /// <summary>
         /// DaysOldRangeValidator control.
@@ -163,7 +163,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVSoftware.Commerce.Controls.BVRangeValidator DaysOldRangeValidator;
+        protected global::MerchantTribe.Commerce.Controls.BVRangeValidator DaysOldRangeValidator;
         
         /// <summary>
         /// AVSFailsCheckBox control.
@@ -262,7 +262,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVSoftware.Commerce.Controls.BVCustomValidator BaseDefaultShippingCustomValidator;
+        protected global::MerchantTribe.Commerce.Controls.BVCustomValidator BaseDefaultShippingCustomValidator;
         
         /// <summary>
         /// ShippingSettingsPlaceHolder control.

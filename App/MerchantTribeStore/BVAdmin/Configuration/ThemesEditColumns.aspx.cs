@@ -4,10 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Membership;
-using BVSoftware.Commerce.Content;
-using BVSoftware.Commerce.Storage;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Membership;
+using MerchantTribe.Commerce.Content;
+using MerchantTribe.Commerce.Storage;
 
 namespace BVCommerce
 {

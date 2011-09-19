@@ -2,14 +2,14 @@ using System;
 using System.Text;
 using System.Web;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Orders;
-using BVSoftware.Commerce.Catalog;
-using BVSoftware.Commerce.Membership;
-using BVSoftware.Commerce.Utilities;
-using BVSoftware.Commerce.Shipping;
-using BVSoftware.Commerce.Payment;
-using BVSoftware.Commerce.Content;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Orders;
+using MerchantTribe.Commerce.Catalog;
+using MerchantTribe.Commerce.Membership;
+using MerchantTribe.Commerce.Utilities;
+using MerchantTribe.Commerce.Shipping;
+using MerchantTribe.Commerce.Payment;
+using MerchantTribe.Commerce.Content;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Collections.Generic;
@@ -51,7 +51,7 @@ namespace BVCommerce
                 // Acumatica Warning
                 if (BVApp.CurrentStore.Settings.Acumatica.IntegrationEnabled)
                 {
-                    this.MessageBox1.ShowWarning(BVSoftware.Commerce.Content.SiteTerms.GetTerm(BVSoftware.Commerce.Content.SiteTermIds.AcumaticaWarning));
+                    this.MessageBox1.ShowWarning(MerchantTribe.Commerce.Content.SiteTerms.GetTerm(MerchantTribe.Commerce.Content.SiteTermIds.AcumaticaWarning));
                 }
             }
             //ViewUtilities.DisplayKitInLineItem(this.Page, ItemsGridView, false);
@@ -116,7 +116,7 @@ namespace BVCommerce
             this.BillingAddressField.Text = o.BillingAddress.ToHtmlString();
 
             //Email
-            this.EmailAddressField.Text = BVSoftware.Commerce.Utilities.MailServices.MailToLink(o.UserEmail, "Order " + o.OrderNumber, o.BillingAddress.FirstName + ",");
+            this.EmailAddressField.Text = MerchantTribe.Commerce.Utilities.MailServices.MailToLink(o.UserEmail, "Order " + o.OrderNumber, o.BillingAddress.FirstName + ",");
 
             // Shipping (hide if the same as billing address)
             this.pnlShipTo.Visible = true;
@@ -202,7 +202,7 @@ namespace BVCommerce
                     Label ShippingStatusField = (Label)e.Row.FindControl("ShippingStatusField");
                     if (ShippingStatusField != null)
                     {
-                        ShippingStatusField.Text = BVSoftware.Commerce.Utilities.EnumToString.OrderShippingStatus(lineItem.ShippingStatus);
+                        ShippingStatusField.Text = MerchantTribe.Commerce.Utilities.EnumToString.OrderShippingStatus(lineItem.ShippingStatus);
                     }
 
                     if (lineItem.LineTotal != lineItem.LineTotalWithoutDiscounts)
@@ -366,7 +366,7 @@ namespace BVCommerce
                             m = t.ConvertToMailMessage(toEmail);
                             if (m != null)
                             {
-                                    if (BVSoftware.Commerce.Utilities.MailServices.SendMail(m))
+                                    if (MerchantTribe.Commerce.Utilities.MailServices.SendMail(m))
                                     {
                                         this.MessageBox1.ShowOk("Email Sent!");
                                     }

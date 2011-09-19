@@ -2,15 +2,15 @@
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.HtmlControls;
-using BVSoftware.Commerce.Content;
-using BVSoftware.Commerce.Shipping;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Datalayer;
-using BVSoftware.Shipping;
+using MerchantTribe.Commerce.Content;
+using MerchantTribe.Commerce.Shipping;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Datalayer;
+using MerchantTribe.Shipping;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
-using BVSoftware.Shipping.USPostal;
-using BVSoftware.Shipping.USPostal.v4;
+using MerchantTribe.Shipping.USPostal;
+using MerchantTribe.Shipping.USPostal.v4;
 
 
 namespace BVCommerce.BVModules.Shipping.US_Postal_Service___International
@@ -50,7 +50,7 @@ namespace BVCommerce.BVModules.Shipping.US_Postal_Service___International
 
         private void LoadServiceCodes()
         {
-            BVSoftware.Shipping.IShippingService uspostal = AvailableServices.FindById(ShippingMethod.ShippingProviderId, CurrentStore);
+            MerchantTribe.Shipping.IShippingService uspostal = AvailableServices.FindById(ShippingMethod.ShippingProviderId, CurrentStore);
             this.ShippingTypesCheckBoxList.DataSource = uspostal.ListAllServiceCodes();
             this.ShippingTypesCheckBoxList.DataTextField = "DisplayName";
             this.ShippingTypesCheckBoxList.DataValueField = "Code";
@@ -90,7 +90,7 @@ namespace BVCommerce.BVModules.Shipping.US_Postal_Service___International
             USPostalServiceSettings settings = new USPostalServiceSettings();
             settings.Merge(ShippingMethod.Settings);
 
-            foreach (BVSoftware.Shipping.ServiceCode code in settings.ServiceCodeFilter)
+            foreach (MerchantTribe.Shipping.ServiceCode code in settings.ServiceCodeFilter)
             {
                 foreach (ListItem item in ShippingTypesCheckBoxList.Items)
                 {
@@ -118,12 +118,12 @@ namespace BVCommerce.BVModules.Shipping.US_Postal_Service___International
             Settings.Merge(ShippingMethod.Settings);
 
             // Service Code
-            List<BVSoftware.Shipping.IServiceCode> filter = new List<BVSoftware.Shipping.IServiceCode>();
+            List<MerchantTribe.Shipping.IServiceCode> filter = new List<MerchantTribe.Shipping.IServiceCode>();
                 foreach (ListItem item in ShippingTypesCheckBoxList.Items)
                 {
                     if (item.Selected)
                     {
-                        BVSoftware.Shipping.ServiceCode code = new BVSoftware.Shipping.ServiceCode() { Code = item.Value, DisplayName = item.Text };
+                        MerchantTribe.Shipping.ServiceCode code = new MerchantTribe.Shipping.ServiceCode() { Code = item.Value, DisplayName = item.Text };
                         filter.Add(code);
                     }
                 }

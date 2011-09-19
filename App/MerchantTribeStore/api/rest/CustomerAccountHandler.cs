@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Web;
-using BVSoftware.Commerce;
-using BVSoftware.CommerceDTO.v1;
-using BVSoftware.CommerceDTO.v1.Membership;
-using BVSoftware.CommerceDTO.v1.Contacts;
-using BVSoftware.Commerce.Membership;
-using BVSoftware.Commerce.Contacts;
+using MerchantTribe.Commerce;
+using MerchantTribe.CommerceDTO.v1;
+using MerchantTribe.CommerceDTO.v1.Membership;
+using MerchantTribe.CommerceDTO.v1.Contacts;
+using MerchantTribe.Commerce.Membership;
+using MerchantTribe.Commerce.Contacts;
 
 namespace BVCommerce.api.rest
 {
     public class CustomerAccountHandler: BaseRestHandler
     {
-        public CustomerAccountHandler(BVSoftware.Commerce.BVApplication app)
+        public CustomerAccountHandler(MerchantTribe.Commerce.BVApplication app)
             : base(app)
         {
 

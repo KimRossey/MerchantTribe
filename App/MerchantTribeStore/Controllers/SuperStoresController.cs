@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Accounts;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Accounts;
 using System.Text;
 using BVCommerce.Models;
 

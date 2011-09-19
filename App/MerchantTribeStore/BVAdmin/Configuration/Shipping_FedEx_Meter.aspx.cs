@@ -8,19 +8,19 @@ using System;
 using System.Web;
 using System.Web.UI.WebControls;
 using System.Text;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Accounts;
-using BVSoftware.Commerce.BusinessRules;
-using BVSoftware.Commerce.Catalog;
-using BVSoftware.Commerce.Contacts;
-using BVSoftware.Commerce.Content;
-using BVSoftware.Commerce.Membership;
-using BVSoftware.Commerce.Metrics;
-using BVSoftware.Commerce.Orders;
-using BVSoftware.Commerce.Payment;
-using BVSoftware.Commerce.Shipping;
-using BVSoftware.Commerce.Taxes;
-using BVSoftware.Commerce.Utilities;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Accounts;
+using MerchantTribe.Commerce.BusinessRules;
+using MerchantTribe.Commerce.Catalog;
+using MerchantTribe.Commerce.Contacts;
+using MerchantTribe.Commerce.Content;
+using MerchantTribe.Commerce.Membership;
+using MerchantTribe.Commerce.Metrics;
+using MerchantTribe.Commerce.Orders;
+using MerchantTribe.Commerce.Payment;
+using MerchantTribe.Commerce.Shipping;
+using MerchantTribe.Commerce.Taxes;
+using MerchantTribe.Commerce.Utilities;
 using System.Collections.ObjectModel;
 using MerchantTribe.Web.Geography;
 
@@ -115,10 +115,10 @@ namespace BVCommerce.BVAdmin.Configuration
 
 
 
-            BVSoftware.Shipping.FedEx.SubscriptionRequest req = new BVSoftware.Shipping.FedEx.SubscriptionRequest();
+            MerchantTribe.Shipping.FedEx.SubscriptionRequest req = new MerchantTribe.Shipping.FedEx.SubscriptionRequest();
             LoadRequest(req);
 
-            BVSoftware.Shipping.FedEx.SubscriptionResponse res = req.Send();
+            MerchantTribe.Shipping.FedEx.SubscriptionResponse res = req.Send();
 
             if (res.Errors.Count > 0)
             {
@@ -135,13 +135,13 @@ namespace BVCommerce.BVAdmin.Configuration
             BVApp.AccountServices.Stores.Update(BVApp.CurrentStore);
         }
 
-        private void LoadRequest(BVSoftware.Shipping.FedEx.SubscriptionRequest req)
+        private void LoadRequest(MerchantTribe.Shipping.FedEx.SubscriptionRequest req)
         {
             req.RequestAddress.City = this.CityNameField.Text.Trim();
             req.RequestAddress.CountryCode = this.CountryCodeField.SelectedValue;
             req.RequestAddress.Line1 = this.Line1Field.Text.Trim();
             req.RequestAddress.Line2 = this.Line1Field.Text.Trim();
-            req.RequestAddress.PostalCode = BVSoftware.Commerce.Utilities.CreditCardValidator.CleanCardNumber(this.PostalCodeField.Text.Trim());
+            req.RequestAddress.PostalCode = MerchantTribe.Commerce.Utilities.CreditCardValidator.CleanCardNumber(this.PostalCodeField.Text.Trim());
             if (this.lstState.Visible == true)
             {
                 req.RequestAddress.StateOrProvinceCode = this.lstState.SelectedValue;
@@ -155,7 +155,7 @@ namespace BVCommerce.BVAdmin.Configuration
             //req.RequestContact.FaxNumber = Me.FaxNumberField.Text.Trim
             //req.RequestContact.PagerNumber = Me.PagerNumberField.Text.Trim
             req.RequestContact.PersonName = this.PersonNameField.Text.Trim();
-            req.RequestContact.PhoneNumber = BVSoftware.Commerce.Utilities.CreditCardValidator.CleanCardNumber(this.PhoneNumber.Text.Trim());
+            req.RequestContact.PhoneNumber = MerchantTribe.Commerce.Utilities.CreditCardValidator.CleanCardNumber(this.PhoneNumber.Text.Trim());
             req.RequestHeader.AccountNumber = this.AccountNumberField.Text.Trim();
         }
 

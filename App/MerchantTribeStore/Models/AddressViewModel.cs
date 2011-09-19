@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using BVSoftware.Commerce.Contacts;
+using MerchantTribe.Commerce.Contacts;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 

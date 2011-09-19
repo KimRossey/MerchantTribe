@@ -1,7 +1,7 @@
 <%@ Page Language="C#" MasterPageFile="~/BVAdmin/BVAdmin.master" AutoEventWireup="True" Inherits="BVCommerce.BVAdmin_Catalog_Discounts" Title="Untitled Page" Codebehind="Default.aspx.cs" %>
 
 <%@ Register Src="../Controls/MessageBox.ascx" TagName="MessageBox" TagPrefix="uc1" %>
-<%@ Register Assembly="BVSoftware.Commerce" Namespace="BVSoftware.Commerce" TagPrefix="cc1" %>
+<%@ Register Assembly="MerchantTribe.Commerce" Namespace="MerchantTribe.Commerce" TagPrefix="cc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="Server">
     <h1>
         Offers</h1>

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
 using System.Data.SqlClient;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Catalog;
-using BVSoftware.Commerce.Membership;
-using BVSoftware.Commerce.Orders;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Catalog;
+using MerchantTribe.Commerce.Membership;
+using MerchantTribe.Commerce.Orders;
 using System.Configuration;
 
 namespace BVCommerce
@@ -153,7 +153,7 @@ namespace BVCommerce
                 }
                 else
                 {
-                    BVSoftware.Commerce.Contacts.Address ship = u.GetShippingAddress();
+                    MerchantTribe.Commerce.Contacts.Address ship = u.GetShippingAddress();
                     if (ship != null)
                     {
                         if (ship.Line1.Trim().Length > 0)

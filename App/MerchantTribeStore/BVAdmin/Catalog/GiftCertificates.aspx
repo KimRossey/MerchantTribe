@@ -68,7 +68,7 @@
     <uc1:MessageBox ID="MessageBox2" runat="server" EnableViewState="false" />
     <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" EnablePaging="True" OldValuesParameterFormatString="original_{0}"
         SelectCountMethod="GetRowCount" SelectMethod="FindAll" 
-        TypeName="BVSoftware.Commerce.Catalog.GiftCertificate" 
+        TypeName="MerchantTribe.Commerce.Catalog.GiftCertificate" 
         onselected="ObjectDataSource1_Selected" 
         onselecting="ObjectDataSource1_Selecting">
         <SelectParameters>            

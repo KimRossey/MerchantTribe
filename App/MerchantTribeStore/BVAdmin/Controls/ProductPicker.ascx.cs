@@ -3,9 +3,9 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Text;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Catalog;
-using BVSoftware.Commerce.Content;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Catalog;
+using MerchantTribe.Commerce.Content;
 
 namespace BVCommerce
 {
@@ -166,7 +166,7 @@ namespace BVCommerce
 
         private void PopulateCategories()
         {
-            Collection<System.Web.UI.WebControls.ListItem> tree = BVSoftware.Commerce.Catalog.Category.ListFullTreeWithIndents(MyPage.BVApp.CurrentRequestContext);
+            Collection<System.Web.UI.WebControls.ListItem> tree = MerchantTribe.Commerce.Catalog.Category.ListFullTreeWithIndents(MyPage.BVApp.CurrentRequestContext);
             this.CategoryFilter.Items.Clear();
             foreach (System.Web.UI.WebControls.ListItem li in tree)
             {
@@ -200,7 +200,7 @@ namespace BVCommerce
 
         private ProductSearchCriteria GetCurrentCriteria()
         {
-            BVSoftware.Commerce.Catalog.ProductSearchCriteria c = new BVSoftware.Commerce.Catalog.ProductSearchCriteria();
+            MerchantTribe.Commerce.Catalog.ProductSearchCriteria c = new MerchantTribe.Commerce.Catalog.ProductSearchCriteria();
 
             if (this.FilterField.Text.Trim().Length > 0)
             {
@@ -335,7 +335,7 @@ namespace BVCommerce
                 Label InventoryLabel = (Label)e.Row.FindControl("InventoryLabel");
                 if (this.DisplayPrice)
                 {
-                    PriceLabel.Text = ((BVSoftware.Commerce.Catalog.Product)e.Row.DataItem).SitePrice.ToString("c");
+                    PriceLabel.Text = ((MerchantTribe.Commerce.Catalog.Product)e.Row.DataItem).SitePrice.ToString("c");
                 }
 
                 if (this.DisplayInventory)

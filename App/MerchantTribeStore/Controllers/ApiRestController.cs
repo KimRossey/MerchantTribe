@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Accounts;
-using BVSoftware.CommerceDTO.v1;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Accounts;
+using MerchantTribe.CommerceDTO.v1;
 using System.Dynamic;
 using System.Xml.Serialization;
 using System.IO;
-using BVSoftware.Commerce.Catalog;
+using MerchantTribe.Commerce.Catalog;
 
 using BVCommerce.api.rest;
 
@@ -19,7 +19,7 @@ namespace BVCommerce.Controllers
     {
 
         // Initialize Store Specific Request Data
-        BVSoftware.Commerce.RequestContext _BVRequestContext = new RequestContext();
+        MerchantTribe.Commerce.RequestContext _BVRequestContext = new RequestContext();
         public BVApplication BVApp { get; set; }               
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
@@ -29,13 +29,13 @@ namespace BVCommerce.Controllers
             BVApp.CurrentRequestContext.RoutingContext = this.Request.RequestContext;
 
             // Determine store id        
-            BVApp.CurrentStore = BVSoftware.Commerce.Utilities.UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, BVApp.AccountServices);
+            BVApp.CurrentStore = MerchantTribe.Commerce.Utilities.UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, BVApp.AccountServices);
             if (BVApp.CurrentStore == null)
             {
                 Response.Redirect("~/storenotfound");
             }
 
-            if (BVApp.CurrentStore.Status == BVSoftware.Commerce.Accounts.StoreStatus.Deactivated)
+            if (BVApp.CurrentStore.Status == MerchantTribe.Commerce.Accounts.StoreStatus.Deactivated)
             {
                 Response.Redirect("~/storenotavailable");
             }
@@ -85,7 +85,7 @@ namespace BVCommerce.Controllers
                 response.Errors.Add(new ApiError("STORENOTFOUND2", "No store was found at this URL."));
                 return false;
             }
-            if (BVApp.CurrentStore.Status == BVSoftware.Commerce.Accounts.StoreStatus.Deactivated)
+            if (BVApp.CurrentStore.Status == MerchantTribe.Commerce.Accounts.StoreStatus.Deactivated)
             {
                 response.Errors.Add(new ApiError("STOREDISABLED", "Store is not active. Contact an Administrator for Assistance"));
                 return false;

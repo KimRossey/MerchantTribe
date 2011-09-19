@@ -1,5 +1,5 @@
 ﻿@model BVSoftware.AcumaticaTools.OrderData
-@using BVSoftware.Commerce.Orders;
+@using MerchantTribe.Commerce.Orders;
 @using MerchantTribe.Web.Geography;
 @using BVSoftware.AcumaticaTools;
 
@@ -12,7 +12,7 @@
     
     string UnavailableMessage()
     {
-        return BVSoftware.Commerce.Content.SiteTerms.GetTerm(BVSoftware.Commerce.Content.SiteTermIds.AcumaticaUnavailable);
+        return MerchantTribe.Commerce.Content.SiteTerms.GetTerm(MerchantTribe.Commerce.Content.SiteTermIds.AcumaticaUnavailable);
     }
     string RenderAddress(IAddress a)
     {

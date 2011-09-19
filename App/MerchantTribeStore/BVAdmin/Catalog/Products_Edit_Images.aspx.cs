@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Collections.ObjectModel;
-using BVSoftware.Commerce.Catalog;
-using BVSoftware.Commerce.Membership;
-using BVSoftware.Commerce.Utilities;
+using MerchantTribe.Commerce.Catalog;
+using MerchantTribe.Commerce.Membership;
+using MerchantTribe.Commerce.Utilities;
 using System.Collections.Generic;
 
 namespace BVCommerce
@@ -121,7 +121,7 @@ namespace BVCommerce
             sb.Append("<div class=\"dragitem\" id=\"img" + img.Bvin + "\"><table class=\"formtable\" width=\"100%\"><tr>");
             sb.Append("<td width=\"25%\"><a href=\"" + destinationLink + "\">");            
             sb.Append("<img src=\"");
-            sb.Append(BVSoftware.Commerce.Storage.DiskStorage.ProductAdditionalImageUrlTiny(BVApp.CurrentStore.Id,
+            sb.Append(MerchantTribe.Commerce.Storage.DiskStorage.ProductAdditionalImageUrlTiny(BVApp.CurrentStore.Id,
                                                                                                       img.ProductId,
                                                                                                       img.Bvin,
                                                                                                       img.FileName,
@@ -290,14 +290,14 @@ namespace BVCommerce
                 string fileName = System.IO.Path.GetFileNameWithoutExtension(imgupload.FileName);
                 string ext = System.IO.Path.GetExtension(imgupload.FileName);
 
-                if (BVSoftware.Commerce.Storage.DiskStorage.ValidateImageType(ext))
+                if (MerchantTribe.Commerce.Storage.DiskStorage.ValidateImageType(ext))
                 {
                     fileName = MerchantTribe.Web.Text.CleanFileName(fileName);
 
                     ProductImage img = new ProductImage();
                     img.Bvin = System.Guid.NewGuid().ToString();
 
-                    if (BVSoftware.Commerce.Storage.DiskStorage.UploadAdditionalProductImage(BVApp.CurrentStore.Id, this.ProductIdField.Value, img.Bvin, this.imgupload.PostedFile))
+                    if (MerchantTribe.Commerce.Storage.DiskStorage.UploadAdditionalProductImage(BVApp.CurrentStore.Id, this.ProductIdField.Value, img.Bvin, this.imgupload.PostedFile))
                     {
                         img.AlternateText = fileName + ext;
                         img.FileName = fileName + ext;

@@ -1,7 +1,7 @@
 using System.Collections.ObjectModel;
-using BVSoftware.Commerce.Content;
-using BVSoftware.Commerce.Catalog;
-using BVSoftware.Commerce.Utilities;
+using MerchantTribe.Commerce.Content;
+using MerchantTribe.Commerce.Catalog;
+using MerchantTribe.Commerce.Utilities;
 using System.Text;
 using System.Collections.Generic;
 

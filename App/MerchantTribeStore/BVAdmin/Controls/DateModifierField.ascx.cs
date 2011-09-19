@@ -1,12 +1,12 @@
 using System;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce.Controls;
-using BVSoftware.Commerce;
+using MerchantTribe.Commerce.Controls;
+using MerchantTribe.Commerce;
 
 namespace BVCommerce
 {
 
-    partial class BVAdmin_Controls_DateModifierField : BVSoftware.Commerce.Controls.ModificationControl<System.DateTime>
+    partial class BVAdmin_Controls_DateModifierField : MerchantTribe.Commerce.Controls.ModificationControl<System.DateTime>
     {
 
         private enum Modes

@@ -2,19 +2,19 @@ using System;
 using System.Web;
 using System.Web.UI.WebControls;
 using System.Text;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Accounts;
-using BVSoftware.Commerce.BusinessRules;
-using BVSoftware.Commerce.Catalog;
-using BVSoftware.Commerce.Contacts;
-using BVSoftware.Commerce.Content;
-using BVSoftware.Commerce.Membership;
-using BVSoftware.Commerce.Metrics;
-using BVSoftware.Commerce.Orders;
-using BVSoftware.Commerce.Payment;
-using BVSoftware.Commerce.Shipping;
-using BVSoftware.Commerce.Taxes;
-using BVSoftware.Commerce.Utilities;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Accounts;
+using MerchantTribe.Commerce.BusinessRules;
+using MerchantTribe.Commerce.Catalog;
+using MerchantTribe.Commerce.Contacts;
+using MerchantTribe.Commerce.Content;
+using MerchantTribe.Commerce.Membership;
+using MerchantTribe.Commerce.Metrics;
+using MerchantTribe.Commerce.Orders;
+using MerchantTribe.Commerce.Payment;
+using MerchantTribe.Commerce.Shipping;
+using MerchantTribe.Commerce.Taxes;
+using MerchantTribe.Commerce.Utilities;
 
 namespace BVCommerce
 {
@@ -24,7 +24,7 @@ namespace BVCommerce
 
         private DisplayPaymentMethod m;
         private BVModule editor;
-        private BVSoftware.Commerce.Payment.AvailablePayments availablePayments = new BVSoftware.Commerce.Payment.AvailablePayments();
+        private MerchantTribe.Commerce.Payment.AvailablePayments availablePayments = new MerchantTribe.Commerce.Payment.AvailablePayments();
 
         public override bool RequiresSSL
         {
@@ -81,7 +81,7 @@ namespace BVCommerce
             }
         }
 
-        protected void editor_EditingComplete(object sender, BVSoftware.Commerce.Content.BVModuleEventArgs e)
+        protected void editor_EditingComplete(object sender, MerchantTribe.Commerce.Content.BVModuleEventArgs e)
         {
             Response.Redirect("Payment.aspx");
         }

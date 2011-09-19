@@ -63,7 +63,7 @@
                 ImageUrl="~/BVAdmin/Images/Buttons/Cancel.png" onclick="ImageButton3_Click" />
             <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" EnablePaging="True" OldValuesParameterFormatString="original_{0}"
                 SelectCountMethod="GetRowCount" SelectMethod="FindByCriteria" 
-                TypeName="BVSoftware.Commerce.Catalog.Product" 
+                TypeName="MerchantTribe.Commerce.Catalog.Product" 
                 onselected="ObjectDataSource1_Selected" 
                 onselecting="ObjectDataSource1_Selecting">
                 <SelectParameters>

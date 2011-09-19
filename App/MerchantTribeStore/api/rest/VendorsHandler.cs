@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using BVSoftware.Commerce;
-using BVSoftware.CommerceDTO.v1;
-using BVSoftware.CommerceDTO.v1.Contacts;
-using BVSoftware.Commerce.Contacts;
+using MerchantTribe.Commerce;
+using MerchantTribe.CommerceDTO.v1;
+using MerchantTribe.CommerceDTO.v1.Contacts;
+using MerchantTribe.Commerce.Contacts;
 
 namespace BVCommerce.api.rest
 {
     public class VendorsHandler: BaseRestHandler
     {
-        public VendorsHandler(BVSoftware.Commerce.BVApplication app)
+        public VendorsHandler(MerchantTribe.Commerce.BVApplication app)
             : base(app)
         {
 

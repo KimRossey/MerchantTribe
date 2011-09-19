@@ -1,11 +1,11 @@
 
 using System;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Orders;
-using BVSoftware.Commerce.Content;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Orders;
+using MerchantTribe.Commerce.Content;
 using MerchantTribe.Web.Geography;
-using BVSoftware.Commerce.Shipping;
-using BVSoftware.Commerce.Utilities;
+using MerchantTribe.Commerce.Shipping;
+using MerchantTribe.Commerce.Utilities;
 
 namespace BVCommerce
 {
@@ -66,7 +66,7 @@ namespace BVCommerce
             // See if rate is available
             if ((rateKey.Length > 0))
             {
-                foreach (BVSoftware.Commerce.Shipping.ShippingRateDisplay r in rates)
+                foreach (MerchantTribe.Commerce.Shipping.ShippingRateDisplay r in rates)
                 {
                     if ((r.UniqueKey == rateKey))
                     {

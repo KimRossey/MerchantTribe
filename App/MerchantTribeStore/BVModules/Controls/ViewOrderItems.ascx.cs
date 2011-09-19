@@ -2,13 +2,13 @@ using System.Collections.Generic;
 using System.Text;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce.Orders;
-using BVSoftware.Commerce.Utilities;
+using MerchantTribe.Commerce.Orders;
+using MerchantTribe.Commerce.Utilities;
 
 namespace BVCommerce
 {
 
-    partial class BVModules_Controls_ViewOrderItems : BVSoftware.Commerce.Content.BVUserControl
+    partial class BVModules_Controls_ViewOrderItems : MerchantTribe.Commerce.Content.BVUserControl
     {
 
         private bool _DisableReturns = false;
@@ -30,7 +30,7 @@ namespace BVCommerce
         }
 
 
-        public void LoadItems(List<BVSoftware.Commerce.Orders.LineItem> items)
+        public void LoadItems(List<MerchantTribe.Commerce.Orders.LineItem> items)
         {
             this.ItemsGridView.DataSource = items;
             this.ItemsGridView.DataBind();

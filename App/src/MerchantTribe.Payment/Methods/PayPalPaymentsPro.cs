@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-using BVSoftware.PaypalWebServices;
+using MerchantTribe.PaypalWebServices;
 using com.paypal.sdk.services;
 using com.paypal.soap.api;
 namespace MerchantTribe.Payment.Methods

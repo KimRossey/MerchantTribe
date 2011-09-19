@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce.Scheduling;
+using MerchantTribe.Commerce.Scheduling;
 using System.Text;
 
 namespace BVCommerce.BVAdmin.Configuration
@@ -20,7 +20,7 @@ namespace BVCommerce.BVAdmin.Configuration
             base.OnPreInit(e);
             this.PageTitle = "Scheduled Tasks";
             this.CurrentTab = AdminTabType.Configuration;
-            ValidateCurrentUserHasPermission(BVSoftware.Commerce.Membership.SystemPermissions.SettingsView);
+            ValidateCurrentUserHasPermission(MerchantTribe.Commerce.Membership.SystemPermissions.SettingsView);
         }
 
         protected override void OnLoad(System.EventArgs e)

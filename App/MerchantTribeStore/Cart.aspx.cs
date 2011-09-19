@@ -1,14 +1,14 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Content;
-using BVSoftware.Commerce.BusinessRules;
-using BVSoftware.Commerce.Orders;
-using BVSoftware.Commerce.Utilities;
-using BVSoftware.Commerce.Catalog;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Content;
+using MerchantTribe.Commerce.BusinessRules;
+using MerchantTribe.Commerce.Orders;
+using MerchantTribe.Commerce.Utilities;
+using MerchantTribe.Commerce.Catalog;
 using System.Linq;
-using BVSoftware.Commerce.Marketing;
+using MerchantTribe.Commerce.Marketing;
 
 namespace BVCommerce
 {
@@ -259,7 +259,7 @@ namespace BVCommerce
                         if (associatedProduct != null)
                         {
                             img.Visible = true;
-                            img.ImageUrl = BVSoftware.Commerce.Storage.DiskStorage.ProductVariantImageUrlMedium(BVApp.CurrentStore.Id, lineItem.ProductId, associatedProduct.ImageFileSmall, lineItem.VariantId, Request.IsSecureConnection);
+                            img.ImageUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductVariantImageUrlMedium(BVApp.CurrentStore.Id, lineItem.ProductId, associatedProduct.ImageFileSmall, lineItem.VariantId, Request.IsSecureConnection);
                             img.AlternateText = lineItem.ProductName;
                         }
                     }
@@ -453,7 +453,7 @@ namespace BVCommerce
                 bool customerMessageFound = false;
                 foreach (WorkflowMessage msg in c.Errors)
                 {
-                    EventLog.LogEvent(msg.Name, msg.Description, BVSoftware.Commerce.Metrics.EventLogSeverity.Error);
+                    EventLog.LogEvent(msg.Name, msg.Description, MerchantTribe.Commerce.Metrics.EventLogSeverity.Error);
                     if (msg.CustomerVisible)
                     {
                         customerMessageFound = true;
@@ -462,7 +462,7 @@ namespace BVCommerce
                 }
                 if (!customerMessageFound)
                 {
-                    EventLog.LogEvent("Checkout Selected Workflow", "Checkout failed but no errors were recorded.", BVSoftware.Commerce.Metrics.EventLogSeverity.Error);
+                    EventLog.LogEvent("Checkout Selected Workflow", "Checkout failed but no errors were recorded.", MerchantTribe.Commerce.Metrics.EventLogSeverity.Error);
                     MessageBox1.ShowError("Checkout Failed. If problem continues, please contact customer support.");
                 }
             }

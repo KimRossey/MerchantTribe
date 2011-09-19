@@ -1,10 +1,10 @@
 using System;
-using BVSoftware.Commerce;
+using MerchantTribe.Commerce;
 
 namespace BVCommerce
 {
 
-    partial class BVAdmin_Controls_BooleanModifierField : BVSoftware.Commerce.Controls.ModificationControl<bool>
+    partial class BVAdmin_Controls_BooleanModifierField : MerchantTribe.Commerce.Controls.ModificationControl<bool>
     {
 
         public enum Modes

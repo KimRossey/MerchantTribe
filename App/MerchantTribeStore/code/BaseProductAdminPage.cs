@@ -1,4 +1,4 @@
-using BVSoftware.Commerce.Content;
+using MerchantTribe.Commerce.Content;
 
 namespace BVCommerce
 {
@@ -31,7 +31,7 @@ namespace BVCommerce
             }
         }
 
-        protected void ProductNavigator_Clicked(object sender, BVSoftware.Commerce.Content.NotifyClickControl.ClickedEventArgs e)
+        protected void ProductNavigator_Clicked(object sender, MerchantTribe.Commerce.Content.NotifyClickControl.ClickedEventArgs e)
         {
             if (!this.Save())
             {

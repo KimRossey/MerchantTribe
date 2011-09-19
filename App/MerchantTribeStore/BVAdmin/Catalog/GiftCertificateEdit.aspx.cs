@@ -1,10 +1,10 @@
 using System.Text;
 using System.Web.UI;
 using System.Collections.ObjectModel;
-using BVSoftware.Commerce.Catalog;
-using BVSoftware.Commerce.Membership;
-using BVSoftware.Commerce.Utilities;
-using BVSoftware.Commerce.Content;
+using MerchantTribe.Commerce.Catalog;
+using MerchantTribe.Commerce.Membership;
+using MerchantTribe.Commerce.Utilities;
+using MerchantTribe.Commerce.Content;
 using System.Collections.Generic;
 
 namespace BVCommerce
@@ -54,7 +54,7 @@ namespace BVCommerce
             System.Web.UI.Control c = Page.Master.FindControl("ProductNavigator");
             if (c != null)
             {
-                this._ProductNavigator = (BVSoftware.Commerce.Content.NotifyClickControl)c;
+                this._ProductNavigator = (MerchantTribe.Commerce.Content.NotifyClickControl)c;
             }
         }
 
@@ -359,7 +359,7 @@ namespace BVCommerce
             return result;
         }
 
-        protected void _ProductNavigator_Clicked(object sender, BVSoftware.Commerce.Content.NotifyClickControl.ClickedEventArgs e)
+        protected void _ProductNavigator_Clicked(object sender, MerchantTribe.Commerce.Content.NotifyClickControl.ClickedEventArgs e)
         {
             this.Save();
         }

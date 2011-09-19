@@ -4,10 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Membership;
-using BVSoftware.Commerce.Shipping;
-using BVSoftware.Shipping.USPostal;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Membership;
+using MerchantTribe.Commerce.Shipping;
+using MerchantTribe.Shipping.USPostal;
 
 
 namespace BVCommerce.BVAdmin.Configuration
@@ -45,7 +45,7 @@ namespace BVCommerce.BVAdmin.Configuration
 
         private void LoadServices()
         {
-            BVSoftware.Shipping.IShippingService uspostal = AvailableServices.FindById(WebAppSettings.ShippingUSPostalInternationalId, BVApp.CurrentStore);
+            MerchantTribe.Shipping.IShippingService uspostal = AvailableServices.FindById(WebAppSettings.ShippingUSPostalInternationalId, BVApp.CurrentStore);
             this.lstServiceTypes.DataSource = uspostal.ListAllServiceCodes();
             this.lstServiceTypes.DataTextField = "DisplayName";
             this.lstServiceTypes.DataValueField = "Code";
@@ -56,12 +56,12 @@ namespace BVCommerce.BVAdmin.Configuration
         {
 
 
-            BVSoftware.Shipping.Shipment shipment = new BVSoftware.Shipping.Shipment();
+            MerchantTribe.Shipping.Shipment shipment = new MerchantTribe.Shipping.Shipment();
             shipment.DestinationAddress.CountryData.Name = this.lstCountries.SelectedItem.Value;
             shipment.SourceAddress.PostalCode = this.FromZipField.Text.Trim();
 
             // box
-            BVSoftware.Shipping.Shippable item = new BVSoftware.Shipping.Shippable();
+            MerchantTribe.Shipping.Shippable item = new MerchantTribe.Shipping.Shippable();
             decimal length = 0m;
             decimal.TryParse(this.LengthField.Text.Trim(), out length);
             decimal height = 0m;
@@ -75,53 +75,53 @@ namespace BVCommerce.BVAdmin.Configuration
             item.BoxLength = length;
             item.BoxHeight = height;
             item.BoxWidth = width;
-            item.BoxLengthType = BVSoftware.Shipping.LengthType.Inches;
+            item.BoxLengthType = MerchantTribe.Shipping.LengthType.Inches;
             item.BoxWeight = weightPounds + MerchantTribe.Web.Conversions.OuncesToDecimalPounds(weightOunces);
-            item.BoxWeightType = BVSoftware.Shipping.WeightType.Pounds;
+            item.BoxWeightType = MerchantTribe.Shipping.WeightType.Pounds;
             item.QuantityOfItemsInBox = 1;
 
             shipment.Items.Add(item);
 
             // Global Settings
-            BVSoftware.Shipping.USPostal.USPostalServiceGlobalSettings globalSettings = new USPostalServiceGlobalSettings();
+            MerchantTribe.Shipping.USPostal.USPostalServiceGlobalSettings globalSettings = new USPostalServiceGlobalSettings();
             globalSettings.DiagnosticsMode = true;
             globalSettings.IgnoreDimensions = false;
 
             // Settings
-            BVSoftware.Shipping.USPostal.USPostalServiceSettings settings = new USPostalServiceSettings();            
-            BVSoftware.Shipping.ServiceCode code = new BVSoftware.Shipping.ServiceCode();
+            MerchantTribe.Shipping.USPostal.USPostalServiceSettings settings = new USPostalServiceSettings();
+            MerchantTribe.Shipping.ServiceCode code = new MerchantTribe.Shipping.ServiceCode();
             code.Code = this.lstServiceTypes.SelectedItem.Value;
             code.DisplayName = this.lstServiceTypes.SelectedItem.Text;
-            List<BVSoftware.Shipping.IServiceCode> codes = new List<BVSoftware.Shipping.IServiceCode>();
+            List<MerchantTribe.Shipping.IServiceCode> codes = new List<MerchantTribe.Shipping.IServiceCode>();
             codes.Add(code);
             settings.ServiceCodeFilter = codes;
             
             // Provider
             MerchantTribe.Web.Logging.TextLogger logger = new MerchantTribe.Web.Logging.TextLogger();
-            BVSoftware.Shipping.USPostal.InternationalProvider provider = new InternationalProvider(globalSettings, logger);
+            MerchantTribe.Shipping.USPostal.InternationalProvider provider = new InternationalProvider(globalSettings, logger);
             provider.Settings = settings;
 
-            List<BVSoftware.Shipping.IShippingRate> rates = provider.RateShipment(shipment);
+            List<MerchantTribe.Shipping.IShippingRate> rates = provider.RateShipment(shipment);
 
             this.litRates.Text = "<ul>";
-            foreach (BVSoftware.Shipping.IShippingRate rate in rates)
+            foreach (MerchantTribe.Shipping.IShippingRate rate in rates)
             {
                 this.litRates.Text += "<li>" + rate.EstimatedCost.ToString("c") + " - " + rate.DisplayName + "</li>";
             }
             this.litRates.Text += "</ul>";
 
             this.litMessages.Text = "<ul>";
-            foreach (BVSoftware.Shipping.ShippingServiceMessage msg in provider.LatestMessages)
+            foreach (MerchantTribe.Shipping.ShippingServiceMessage msg in provider.LatestMessages)
             {
                 switch (msg.MessageType)
                 {
-                    case BVSoftware.Shipping.ShippingServiceMessageType.Diagnostics:
+                    case MerchantTribe.Shipping.ShippingServiceMessageType.Diagnostics:
                         this.litMessages.Text += "<li>DIAGNOSTICS:";
                         break;
-                    case BVSoftware.Shipping.ShippingServiceMessageType.Information:
+                    case MerchantTribe.Shipping.ShippingServiceMessageType.Information:
                         this.litMessages.Text += "<li>INFO:";
                         break;
-                    case BVSoftware.Shipping.ShippingServiceMessageType.Error:
+                    case MerchantTribe.Shipping.ShippingServiceMessageType.Error:
                         this.litMessages.Text += "<li>ERROR:";
                         break;
                 }

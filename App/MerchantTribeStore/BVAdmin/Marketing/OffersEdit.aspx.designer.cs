@@ -37,7 +37,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVSoftware.Commerce.Controls.BVRegularExpressionValidator RegularExpressionValidator1;
+        protected global::MerchantTribe.Commerce.Controls.BVRegularExpressionValidator RegularExpressionValidator1;
         
         /// <summary>
         /// RequiredFieldValidator1 control.
@@ -46,7 +46,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVSoftware.Commerce.Controls.BVRequiredFieldValidator RequiredFieldValidator1;
+        protected global::MerchantTribe.Commerce.Controls.BVRequiredFieldValidator RequiredFieldValidator1;
         
         /// <summary>
         /// StartDatePicker control.
@@ -73,7 +73,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVSoftware.Commerce.Controls.BVCustomValidator CustomValidator1;
+        protected global::MerchantTribe.Commerce.Controls.BVCustomValidator CustomValidator1;
         
         /// <summary>
         /// EditPlaceHolder control.
@@ -145,7 +145,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVSoftware.Commerce.Controls.BVCustomValidator PerCustomerCustomValidator;
+        protected global::MerchantTribe.Commerce.Controls.BVCustomValidator PerCustomerCustomValidator;
         
         /// <summary>
         /// PerStoreRadioButton control.
@@ -181,7 +181,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVSoftware.Commerce.Controls.BVCustomValidator PerStoreCustomValidator;
+        protected global::MerchantTribe.Commerce.Controls.BVCustomValidator PerStoreCustomValidator;
         
         /// <summary>
         /// PromotionCodeCantBeCombinedCheckBox control.
@@ -225,9 +225,9 @@ namespace BVCommerce {
         /// <remarks>
         /// Auto-generated property.
         /// </remarks>
-        public new BVAdmin_Catalog_Discounts PreviousPage {
+        public new BVCommerce.BVAdmin_Catalog_Discounts PreviousPage {
             get {
-                return ((BVAdmin_Catalog_Discounts)(base.PreviousPage));
+                return ((BVCommerce.BVAdmin_Catalog_Discounts)(base.PreviousPage));
             }
         }
     }

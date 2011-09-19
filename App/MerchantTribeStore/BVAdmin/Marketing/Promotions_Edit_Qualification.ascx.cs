@@ -4,11 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce.Marketing;
-using BVSoftware.Commerce.Marketing.PromotionQualifications;
-using BVSoftware.Commerce.Content;
+using MerchantTribe.Commerce.Marketing;
+using MerchantTribe.Commerce.Marketing.PromotionQualifications;
+using MerchantTribe.Commerce.Content;
 using System.Collections.ObjectModel;
-using BVSoftware.Commerce.Shipping;
+using MerchantTribe.Commerce.Shipping;
 
 namespace BVCommerce.BVAdmin.Marketing
 {
@@ -172,8 +172,8 @@ namespace BVCommerce.BVAdmin.Marketing
          // Product Type Editor        
         private void LoadProductTypeEditor(ProductType q)
         {
-            List<BVSoftware.Commerce.Catalog.ProductType> allTypes = MyPage.BVApp.CatalogServices.ProductTypes.FindAll();
-            allTypes.Insert(0, new BVSoftware.Commerce.Catalog.ProductType() { Bvin = "0", ProductTypeName = "Generic" });
+            List<MerchantTribe.Commerce.Catalog.ProductType> allTypes = MyPage.BVApp.CatalogServices.ProductTypes.FindAll();
+            allTypes.Insert(0, new MerchantTribe.Commerce.Catalog.ProductType() { Bvin = "0", ProductTypeName = "Generic" });
 
             List<FriendlyBvinDisplay> displayData = new List<FriendlyBvinDisplay>();
 
@@ -224,8 +224,8 @@ namespace BVCommerce.BVAdmin.Marketing
         private void LoadProductCategoryEditor(ProductCategory q)
         {
 
-            List<BVSoftware.Commerce.Catalog.CategorySnapshot> allCats = MyPage.BVApp.CatalogServices.Categories.FindAll();
-            Collection<System.Web.UI.WebControls.ListItem> available = BVSoftware.Commerce.Catalog.Category.ListFullTreeWithIndents(allCats, true);
+            List<MerchantTribe.Commerce.Catalog.CategorySnapshot> allCats = MyPage.BVApp.CatalogServices.Categories.FindAll();
+            Collection<System.Web.UI.WebControls.ListItem> available = MerchantTribe.Commerce.Catalog.Category.ListFullTreeWithIndents(allCats, true);
 
             List<FriendlyBvinDisplay> displayData = new List<FriendlyBvinDisplay>();
 
@@ -286,7 +286,7 @@ namespace BVCommerce.BVAdmin.Marketing
                 item.bvin = bvin;
                 item.DisplayName = bvin;
 
-                BVSoftware.Commerce.Catalog.Product p = MyPage.BVApp.CatalogServices.Products.Find(item.bvin);
+                MerchantTribe.Commerce.Catalog.Product p = MyPage.BVApp.CatalogServices.Products.Find(item.bvin);
                 if (p != null)
                 {
                     item.DisplayName = "[" + p.Sku + "] " + p.ProductName;                    
@@ -371,7 +371,7 @@ namespace BVCommerce.BVAdmin.Marketing
                 item.bvin = bvin;
                 item.DisplayName = bvin;
 
-                BVSoftware.Commerce.Catalog.Product p = MyPage.BVApp.CatalogServices.Products.Find(item.bvin);
+                MerchantTribe.Commerce.Catalog.Product p = MyPage.BVApp.CatalogServices.Products.Find(item.bvin);
                 if (p != null)
                 {
                     item.DisplayName = "[" + p.Sku + "] " + p.ProductName;
@@ -422,7 +422,7 @@ namespace BVCommerce.BVAdmin.Marketing
                 item.bvin = bvin;
                 item.DisplayName = bvin;
 
-                BVSoftware.Commerce.Membership.CustomerAccount c = MyPage.BVApp.MembershipServices.Customers.Find(item.bvin);
+                MerchantTribe.Commerce.Membership.CustomerAccount c = MyPage.BVApp.MembershipServices.Customers.Find(item.bvin);
                 if (c != null)
                 {
                     item.DisplayName = c.Email;
@@ -443,7 +443,7 @@ namespace BVCommerce.BVAdmin.Marketing
             MyPage.BVApp.MarketingServices.Promotions.Update(p);
             LoadUserIsEditor(q);
         }        
-        void UserPicker1_UserSelected(BVSoftware.Commerce.Controls.UserSelectedEventArgs e)
+        void UserPicker1_UserSelected(MerchantTribe.Commerce.Controls.UserSelectedEventArgs e)
         {
             Promotion p = GetCurrentPromotion();
             UserIs q = (UserIs)GetCurrentQualification(p);
@@ -456,7 +456,7 @@ namespace BVCommerce.BVAdmin.Marketing
         // User Is in Group
         private void LoadUserIsInGroupEditor(UserIsInGroup q)
         {
-            List<BVSoftware.Commerce.Contacts.PriceGroup> allGroups = MyPage.BVApp.ContactServices.PriceGroups.FindAll();
+            List<MerchantTribe.Commerce.Contacts.PriceGroup> allGroups = MyPage.BVApp.ContactServices.PriceGroups.FindAll();
 
             List<FriendlyBvinDisplay> displayData = new List<FriendlyBvinDisplay>();
 

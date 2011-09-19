@@ -39,7 +39,7 @@ namespace BVCommerce
 
         public static string SessionID()
         {
-            return ToStr(BVSoftware.Commerce.SessionManager.CurrentCartID);
+            return ToStr(MerchantTribe.Commerce.SessionManager.CurrentCartID);
         }
     }
 }

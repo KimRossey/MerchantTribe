@@ -2,14 +2,14 @@
 using System.Text;
 using System.Web;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Orders;
-using BVSoftware.Commerce.Catalog;
-using BVSoftware.Commerce.Membership;
-using BVSoftware.Commerce.Utilities;
-using BVSoftware.Commerce.Shipping;
-using BVSoftware.Commerce.Payment;
-using BVSoftware.Commerce.Content;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Orders;
+using MerchantTribe.Commerce.Catalog;
+using MerchantTribe.Commerce.Membership;
+using MerchantTribe.Commerce.Utilities;
+using MerchantTribe.Commerce.Shipping;
+using MerchantTribe.Commerce.Payment;
+using MerchantTribe.Commerce.Content;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Collections.Generic;
@@ -219,7 +219,7 @@ namespace BVCommerce.BVAdmin.Orders
                         // Render Options
                         this.phChoices.Controls.Clear();
                         this.phChoices.Controls.Add(new System.Web.UI.LiteralControl("<div id=\"options\">"));
-                        BVSoftware.Commerce.Utilities.HtmlRendering.ProductOptionsAsControls(p.Options, phChoices);
+                        MerchantTribe.Commerce.Utilities.HtmlRendering.ProductOptionsAsControls(p.Options, phChoices);
                         this.phChoices.Controls.Add(new System.Web.UI.LiteralControl("<div class=\"clear\"></div></div>"));
                         this.litProductInfo.Text = p.Sku + " | " + p.ProductName;
                     }
@@ -417,7 +417,7 @@ namespace BVCommerce.BVAdmin.Orders
                     Label ShippingStatusField = (Label)e.Row.FindControl("ShippingStatusField");
                     if (ShippingStatusField != null)
                     {
-                        ShippingStatusField.Text = BVSoftware.Commerce.Utilities.EnumToString.OrderShippingStatus(lineItem.ShippingStatus);
+                        ShippingStatusField.Text = MerchantTribe.Commerce.Utilities.EnumToString.OrderShippingStatus(lineItem.ShippingStatus);
                     }
 
                     if (lineItem.LineTotal != lineItem.LineTotalWithoutDiscounts)
@@ -459,7 +459,7 @@ namespace BVCommerce.BVAdmin.Orders
 
         private void LoadPaymentMethods()
         {
-            BVSoftware.Commerce.Payment.AvailablePayments availablePayments = new BVSoftware.Commerce.Payment.AvailablePayments();
+            MerchantTribe.Commerce.Payment.AvailablePayments availablePayments = new MerchantTribe.Commerce.Payment.AvailablePayments();
             Collection<DisplayPaymentMethod> enabledMethods;
             enabledMethods = availablePayments.EnabledMethods(BVApp.CurrentStore);
 
@@ -593,7 +593,7 @@ namespace BVCommerce.BVAdmin.Orders
                     BVApp.OrderServices.Orders.Update(o);
 
                     // Save as Order
-                    BVSoftware.Commerce.BusinessRules.OrderTaskContext c = new BVSoftware.Commerce.BusinessRules.OrderTaskContext(BVApp);
+                    MerchantTribe.Commerce.BusinessRules.OrderTaskContext c = new MerchantTribe.Commerce.BusinessRules.OrderTaskContext(BVApp);
                     c.UserId = string.Empty;
                     // Use currently selected user for process new order context
                     CustomerAccount u = GetSelectedUserAccount();
@@ -607,7 +607,7 @@ namespace BVCommerce.BVAdmin.Orders
                     }
                     c.Order = o;
 
-                    if (BVSoftware.Commerce.BusinessRules.Workflow.RunByName(c, BVSoftware.Commerce.BusinessRules.WorkflowNames.ProcessNewOrder))
+                    if (MerchantTribe.Commerce.BusinessRules.Workflow.RunByName(c, MerchantTribe.Commerce.BusinessRules.WorkflowNames.ProcessNewOrder))
                     {
                         Response.Redirect("ViewOrder.aspx?id=" + o.bvin);
                     }
@@ -771,7 +771,7 @@ namespace BVCommerce.BVAdmin.Orders
             }
             else
             {
-                BVSoftware.Commerce.Utilities.SortableCollection<ShippingRateDisplay> rates = SessionManager.LastShippingRates;
+                MerchantTribe.Commerce.Utilities.SortableCollection<ShippingRateDisplay> rates = SessionManager.LastShippingRates;
                 if ((rates == null) | (rates.Count < 1))
                 {
                     rates = BVApp.OrderServices.FindAvailableShippingRates(o);
@@ -809,7 +809,7 @@ namespace BVCommerce.BVAdmin.Orders
             }
             else
             {
-                BVSoftware.Commerce.Utilities.SortableCollection<ShippingRateDisplay> Rates;
+                MerchantTribe.Commerce.Utilities.SortableCollection<ShippingRateDisplay> Rates;
                 Rates = BVApp.OrderServices.FindAvailableShippingRates(o);
                 SessionManager.LastShippingRates = Rates;
                 this.ShippingRatesList.DataTextField = "RateAndNameForDisplay";
@@ -865,7 +865,7 @@ namespace BVCommerce.BVAdmin.Orders
             LoadOrder(o.bvin);
         }
 
-        protected void UserSelected(BVSoftware.Commerce.Controls.UserSelectedEventArgs args)
+        protected void UserSelected(MerchantTribe.Commerce.Controls.UserSelectedEventArgs args)
         {
             if (args.UserAccount == null) return;
 
@@ -980,7 +980,7 @@ namespace BVCommerce.BVAdmin.Orders
                 if (results.Count > 0)
                 {
                     found = true;
-                    BVSoftware.Commerce.Controls.UserSelectedEventArgs args = new BVSoftware.Commerce.Controls.UserSelectedEventArgs();
+                    MerchantTribe.Commerce.Controls.UserSelectedEventArgs args = new MerchantTribe.Commerce.Controls.UserSelectedEventArgs();
                     args.UserAccount = BVApp.MembershipServices.Customers.Find(results[0].UserID);
                     this.UserSelected(args);
                 }
@@ -1003,7 +1003,7 @@ namespace BVCommerce.BVAdmin.Orders
             
             if (BVApp.MembershipServices.CreateCustomer(u, clearPassword) == true)
             {
-                BVSoftware.Commerce.Controls.UserSelectedEventArgs args = new BVSoftware.Commerce.Controls.UserSelectedEventArgs();
+                MerchantTribe.Commerce.Controls.UserSelectedEventArgs args = new MerchantTribe.Commerce.Controls.UserSelectedEventArgs();
                 args.UserAccount = BVApp.MembershipServices.Customers.Find(u.Bvin);
                 this.UserSelected(args);
             }
@@ -1030,7 +1030,7 @@ namespace BVCommerce.BVAdmin.Orders
                     if (users.Count == 1)
                     {
                         this.lblFindUserMessage.Text = "<span class=\"successmessage\">User " + users[0].Email + " Found and Selected</span>";
-                        BVSoftware.Commerce.Controls.UserSelectedEventArgs args = new BVSoftware.Commerce.Controls.UserSelectedEventArgs();
+                        MerchantTribe.Commerce.Controls.UserSelectedEventArgs args = new MerchantTribe.Commerce.Controls.UserSelectedEventArgs();
                         args.UserAccount = users[0];
                         this.UserSelected(args);
                     }
@@ -1054,7 +1054,7 @@ namespace BVCommerce.BVAdmin.Orders
         {
             string bvin = (string)GridView1.DataKeys[e.NewEditIndex].Value;
             CustomerAccount u = BVApp.MembershipServices.Customers.Find(bvin);
-            BVSoftware.Commerce.Controls.UserSelectedEventArgs args = new BVSoftware.Commerce.Controls.UserSelectedEventArgs();
+            MerchantTribe.Commerce.Controls.UserSelectedEventArgs args = new MerchantTribe.Commerce.Controls.UserSelectedEventArgs();
             args.UserAccount = u;
             this.UserSelected(args);
         }

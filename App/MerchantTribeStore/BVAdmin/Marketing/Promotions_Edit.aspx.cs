@@ -5,9 +5,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce.Marketing;
-using BVSoftware.Commerce.Marketing.PromotionActions;
-using BVSoftware.Commerce.Marketing.PromotionQualifications;
+using MerchantTribe.Commerce.Marketing;
+using MerchantTribe.Commerce.Marketing.PromotionActions;
+using MerchantTribe.Commerce.Marketing.PromotionQualifications;
 using System.IO;
 using System.Text;
 
@@ -20,7 +20,7 @@ namespace BVCommerce.BVAdmin.Marketing
             base.OnPreInit(e);
             this.PageTitle = "Edit Promotion";
             this.CurrentTab = AdminTabType.Marketing;
-            ValidateCurrentUserHasPermission(BVSoftware.Commerce.Membership.SystemPermissions.MarketingView);
+            ValidateCurrentUserHasPermission(MerchantTribe.Commerce.Membership.SystemPermissions.MarketingView);
         }
 
         private string keyword = string.Empty;

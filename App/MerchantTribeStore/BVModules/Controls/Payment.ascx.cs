@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Orders;
-using BVSoftware.Commerce.Payment;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Orders;
+using MerchantTribe.Commerce.Payment;
 using MerchantTribe.Web.Validation;
 
 namespace BVCommerce
 {
 
-    partial class BVModules_Controls_Payment : BVSoftware.Commerce.Content.BVModule, MerchantTribe.Web.Validation.IValidatable
+    partial class BVModules_Controls_Payment : MerchantTribe.Commerce.Content.BVModule, MerchantTribe.Web.Validation.IValidatable
     {
 
         private int _tabIndex = -1;
@@ -24,7 +24,7 @@ namespace BVCommerce
 
         public void LoadPaymentMethods(decimal orderCost)
         {
-            BVSoftware.Commerce.Payment.AvailablePayments availablePayments = new BVSoftware.Commerce.Payment.AvailablePayments();
+            MerchantTribe.Commerce.Payment.AvailablePayments availablePayments = new MerchantTribe.Commerce.Payment.AvailablePayments();
             Collection<DisplayPaymentMethod> enabledMethods;
             enabledMethods = availablePayments.EnabledMethods(MyPage.BVApp.CurrentStore);
 

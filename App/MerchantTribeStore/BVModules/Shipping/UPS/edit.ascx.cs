@@ -2,10 +2,10 @@ using System;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.HtmlControls;
-using BVSoftware.Commerce.Content;
-using BVSoftware.Commerce.Shipping;
-using BVSoftware.Commerce;
-using BVSoftware.Shipping.Ups;
+using MerchantTribe.Commerce.Content;
+using MerchantTribe.Commerce.Shipping;
+using MerchantTribe.Commerce;
+using MerchantTribe.Shipping.Ups;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
@@ -47,7 +47,7 @@ namespace BVCommerce
 
         private void LoadServiceCodes()
         {
-            BVSoftware.Shipping.IShippingService ups = AvailableServices.FindById(ShippingMethod.ShippingProviderId, CurrentStore);
+            MerchantTribe.Shipping.IShippingService ups = AvailableServices.FindById(ShippingMethod.ShippingProviderId, CurrentStore);
             this.ShippingTypesCheckBoxList.DataSource= ups.ListAllServiceCodes();
             this.ShippingTypesCheckBoxList.DataTextField = "DisplayName";
             this.ShippingTypesCheckBoxList.DataValueField = "Code";
@@ -108,7 +108,7 @@ namespace BVCommerce
 
             if (Settings.ServiceCodeFilter == null)
             {
-                Settings.ServiceCodeFilter = new List<BVSoftware.Shipping.IServiceCode>();
+                Settings.ServiceCodeFilter = new List<MerchantTribe.Shipping.IServiceCode>();
             }
 
             if (Settings.ServiceCodeFilter.Count < 1 || Settings.GetAllRates)
@@ -130,7 +130,7 @@ namespace BVCommerce
                     this.rbFilterMode.Items.FindByValue("0").Selected = true;
                 }
 
-                foreach (BVSoftware.Shipping.ServiceCode code in Settings.ServiceCodeFilter)
+                foreach (MerchantTribe.Shipping.ServiceCode code in Settings.ServiceCodeFilter)
                 {                    
                     foreach (ListItem item in ShippingTypesCheckBoxList.Items)
                     {
@@ -168,7 +168,7 @@ namespace BVCommerce
             UPSServiceSettings Settings = new UPSServiceSettings();
             Settings.Merge(ShippingMethod.Settings);
 
-            List<BVSoftware.Shipping.IServiceCode> filter = new List<BVSoftware.Shipping.IServiceCode>();
+            List<MerchantTribe.Shipping.IServiceCode> filter = new List<MerchantTribe.Shipping.IServiceCode>();
 
             if (this.rbFilterMode.SelectedValue == "0")
             {
@@ -178,7 +178,7 @@ namespace BVCommerce
                 {
                     if (item.Selected)
                     {
-                        BVSoftware.Shipping.ServiceCode code = new BVSoftware.Shipping.ServiceCode() { Code = item.Value, DisplayName = item.Text };
+                        MerchantTribe.Shipping.ServiceCode code = new MerchantTribe.Shipping.ServiceCode() { Code = item.Value, DisplayName = item.Text };
                         filter.Add(code);
                     }
                 }

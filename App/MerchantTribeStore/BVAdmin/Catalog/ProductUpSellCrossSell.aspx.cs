@@ -8,11 +8,11 @@ using System.Web.UI.HtmlControls;
 using System.Collections.Specialized;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Catalog;
-using BVSoftware.Commerce.Membership;
-using BVSoftware.Commerce.Metrics;
-using BVSoftware.Commerce.Utilities;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Catalog;
+using MerchantTribe.Commerce.Membership;
+using MerchantTribe.Commerce.Metrics;
+using MerchantTribe.Commerce.Utilities;
 
 namespace BVCommerce
 {
@@ -71,7 +71,7 @@ namespace BVCommerce
             Product p = BVApp.CatalogServices.Products.Find(r.RelatedProductId);
             if (p != null) name = p.Sku + "<br />" + p.ProductName;
 
-            string imageUrl = BVSoftware.Commerce.Storage.DiskStorage.ProductImageUrlSmall(BVApp.CurrentStore.Id, p.Bvin, p.ImageFileSmall, true);
+            string imageUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductImageUrlSmall(BVApp.CurrentStore.Id, p.Bvin, p.ImageFileSmall, true);
 
             sb.Append("<div class=\"dragitem\" id=\"item" + r.RelatedProductId.ToString() + "\"><table class=\"formtable\" width=\"100%\"><tr>");
             sb.Append("<td width=\"60\" class=\"imgfield\">");

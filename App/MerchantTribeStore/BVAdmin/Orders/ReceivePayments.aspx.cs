@@ -2,12 +2,12 @@ using System;
 using System.Web;
 using System.Web.UI.WebControls;
 using System.Web.UI.HtmlControls;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Orders;
-using BVSoftware.Commerce.Membership;
-using BVSoftware.Commerce.Utilities;
-using BVSoftware.Commerce.Shipping;
-using BVSoftware.Commerce.Payment;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Orders;
+using MerchantTribe.Commerce.Membership;
+using MerchantTribe.Commerce.Utilities;
+using MerchantTribe.Commerce.Shipping;
+using MerchantTribe.Commerce.Payment;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Text;
@@ -19,7 +19,7 @@ namespace BVCommerce
     partial class BVAdmin_Orders_ReceivePayments : BaseAdminPage
     {
 
-        private Order o = new BVSoftware.Commerce.Orders.Order();
+        private Order o = new MerchantTribe.Commerce.Orders.Order();
 
         protected override void OnPreInit(EventArgs e)
         {
@@ -68,7 +68,7 @@ namespace BVCommerce
             // Acumatica Warning
             if (BVApp.CurrentStore.Settings.Acumatica.IntegrationEnabled)
             {
-                this.MessageBox1.ShowWarning(BVSoftware.Commerce.Content.SiteTerms.GetTerm(BVSoftware.Commerce.Content.SiteTermIds.AcumaticaWarning));
+                this.MessageBox1.ShowWarning(MerchantTribe.Commerce.Content.SiteTerms.GetTerm(MerchantTribe.Commerce.Content.SiteTermIds.AcumaticaWarning));
             }
         }
 

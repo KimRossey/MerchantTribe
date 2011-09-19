@@ -6,9 +6,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Collections.ObjectModel;
-using BVSoftware.Commerce.Content;
-using BVSoftware.Commerce.Membership;
-using BVSoftware.Commerce.Storage;
+using MerchantTribe.Commerce.Content;
+using MerchantTribe.Commerce.Membership;
+using MerchantTribe.Commerce.Storage;
 
 namespace BVCommerce
 {
@@ -43,9 +43,9 @@ namespace BVCommerce
 
             sb.Append("<ul class=\"removablelist\">");
 
-            List<BVSoftware.Commerce.Storage.ButtonSnapshot> buttons =
-                BVSoftware.Commerce.Storage.DiskStorage.ListButtonsForTheme(BVApp.CurrentStore.Id, themeid);
-            foreach (BVSoftware.Commerce.Storage.ButtonSnapshot snapshot in buttons)
+            List<MerchantTribe.Commerce.Storage.ButtonSnapshot> buttons =
+                MerchantTribe.Commerce.Storage.DiskStorage.ListButtonsForTheme(BVApp.CurrentStore.Id, themeid);
+            foreach (MerchantTribe.Commerce.Storage.ButtonSnapshot snapshot in buttons)
             {
                 sb.Append("<li id=\"" + snapshot.FileName + "\">");
                 sb.Append("<a href=\"#\" title=\"" + snapshot.FileName + "\" class=\"deleteitem\"><img src=\"/images/system/trashcan.png\" alt=\"Delete Button\" /></a>");
@@ -63,7 +63,7 @@ namespace BVCommerce
             string themeId = Request.QueryString["id"];
             if (this.fileupload1.HasFile)
             {
-                BVSoftware.Commerce.Storage.DiskStorage.UploadThemeButton(BVApp.CurrentStore.Id, themeId, this.fileupload1.PostedFile);
+                MerchantTribe.Commerce.Storage.DiskStorage.UploadThemeButton(BVApp.CurrentStore.Id, themeId, this.fileupload1.PostedFile);
                 LoadTheInfo(themeId);
             }
         }

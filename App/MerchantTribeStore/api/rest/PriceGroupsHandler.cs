@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using BVSoftware.Commerce;
-using BVSoftware.CommerceDTO.v1;
-using BVSoftware.CommerceDTO.v1.Contacts;
-using BVSoftware.Commerce.Contacts;
+using MerchantTribe.Commerce;
+using MerchantTribe.CommerceDTO.v1;
+using MerchantTribe.CommerceDTO.v1.Contacts;
+using MerchantTribe.Commerce.Contacts;
 
 namespace BVCommerce.api.rest
 {
     public class PriceGroupsHandler: BaseRestHandler
     {
-        public PriceGroupsHandler(BVSoftware.Commerce.BVApplication app)
+        public PriceGroupsHandler(MerchantTribe.Commerce.BVApplication app)
             : base(app)
         {
 

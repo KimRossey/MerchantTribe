@@ -3,16 +3,16 @@ using System.Collections.ObjectModel;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Content;
-using BVSoftware.Commerce.Membership;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Content;
+using MerchantTribe.Commerce.Membership;
 
 namespace BVCommerce
 {
 
-    partial class BVModules_Controls_NewUserControl : BVSoftware.Commerce.Content.BVUserControl
+    partial class BVModules_Controls_NewUserControl : MerchantTribe.Commerce.Content.BVUserControl
     {
-        public delegate void LoginCompletedDelegate(object sender, BVSoftware.Commerce.Controls.LoginCompleteEventArgs args);
+        public delegate void LoginCompletedDelegate(object sender, MerchantTribe.Commerce.Controls.LoginCompleteEventArgs args);
         public event LoginCompletedDelegate LoginCompleted;
 
         public bool LoginAfterCreate
@@ -80,7 +80,7 @@ namespace BVCommerce
         //            cell.Controls.Add(questionTextBox);
         //            row.Cells.Add(cell);
 
-        //            BVSoftware.Commerce.Controls.BVRequiredFieldValidator validator = new BVSoftware.Commerce.Controls.BVRequiredFieldValidator();
+        //            MerchantTribe.Commerce.Controls.BVRequiredFieldValidator validator = new MerchantTribe.Commerce.Controls.BVRequiredFieldValidator();
         //            validator.Text = "*";
         //            validator.ErrorMessage = "Field is required.";
         //            validator.ControlToValidate = "questionTextBox" + count.ToString();
@@ -112,7 +112,7 @@ namespace BVCommerce
         //            cell.Controls.Add(questionDropDownList);
         //            row.Cells.Add(cell);
 
-        //            BVSoftware.Commerce.Controls.BVRequiredFieldValidator validator = new BVSoftware.Commerce.Controls.BVRequiredFieldValidator();
+        //            MerchantTribe.Commerce.Controls.BVRequiredFieldValidator validator = new MerchantTribe.Commerce.Controls.BVRequiredFieldValidator();
         //            validator.Text = "*";
         //            validator.ErrorMessage = "Field is required.";
         //            validator.ControlToValidate = "questionDropDownList" + count.ToString();
@@ -200,12 +200,12 @@ namespace BVCommerce
                             this.BvinField.Value = u.Bvin;
                             if (LoginAfterCreate)
                             {
-                                MerchantTribe.Web.Cookies.SetCookieString(BVSoftware.Commerce.WebAppSettings.CookieNameAuthenticationTokenCustomer(),
+                                MerchantTribe.Web.Cookies.SetCookieString(MerchantTribe.Commerce.WebAppSettings.CookieNameAuthenticationTokenCustomer(),
                                                                         u.Bvin,
                                                                         this.Request.RequestContext.HttpContext, false, new EventLog());
                                 
                             }
-                            BVSoftware.Commerce.Controls.LoginCompleteEventArgs args = new BVSoftware.Commerce.Controls.LoginCompleteEventArgs();
+                            MerchantTribe.Commerce.Controls.LoginCompleteEventArgs args = new MerchantTribe.Commerce.Controls.LoginCompleteEventArgs();
                             args.UserId = u.Bvin;
                             args.UserEmail = u.Email;
                             if (LoginCompleted != null)

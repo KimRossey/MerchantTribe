@@ -1,8 +1,8 @@
 using System;
 using System.Web;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce.Membership;
-using BVSoftware.Commerce;
+using MerchantTribe.Commerce.Membership;
+using MerchantTribe.Commerce;
 
 namespace BVCommerce
 {

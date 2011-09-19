@@ -1,12 +1,12 @@
 using System;
 using System.Web;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce;
+using MerchantTribe.Commerce;
 
 namespace BVCommerce
 {
 
-    partial class BVAdmin_Controls_ProductEditMenu : BVSoftware.Commerce.Content.NotifyClickControl
+    partial class BVAdmin_Controls_ProductEditMenu : MerchantTribe.Commerce.Content.NotifyClickControl
     {
 
         protected void btnContinue_Click(object sender, System.Web.UI.ImageClickEventArgs e)

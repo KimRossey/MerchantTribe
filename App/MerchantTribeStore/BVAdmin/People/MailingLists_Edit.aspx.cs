@@ -1,7 +1,7 @@
 
-using BVSoftware.Commerce;
+using MerchantTribe.Commerce;
 using System.Collections.Generic;
-using BVSoftware.Commerce.Contacts;
+using MerchantTribe.Commerce.Contacts;
 
 namespace BVCommerce
 {
@@ -69,7 +69,7 @@ namespace BVCommerce
             base.OnPreInit(e);
             this.PageTitle = "Edit Mailing List";
             this.CurrentTab = AdminTabType.People;
-            ValidateCurrentUserHasPermission(BVSoftware.Commerce.Membership.SystemPermissions.PeopleView);
+            ValidateCurrentUserHasPermission(MerchantTribe.Commerce.Membership.SystemPermissions.PeopleView);
         }
 
         protected void btnCancel_Click(object sender, System.Web.UI.ImageClickEventArgs e)
@@ -125,7 +125,7 @@ namespace BVCommerce
 
         protected void btnExport_Click(object sender, System.Web.UI.ImageClickEventArgs e)
         {
-            BVSoftware.Commerce.Contacts.MailingList m = BVApp.ContactServices.MailingLists.Find(CurrentId);
+            MerchantTribe.Commerce.Contacts.MailingList m = BVApp.ContactServices.MailingLists.Find(CurrentId);
             this.ImportField.Text = m.ExportToCommaDelimited(this.chkOnlyEmail.Checked);
         }
 

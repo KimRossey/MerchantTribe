@@ -4,13 +4,13 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Orders;
-using BVSoftware.Commerce.Membership;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Orders;
+using MerchantTribe.Commerce.Membership;
 
 namespace BVCommerce.BVModules.Controls
 {
-    public partial class PaymentRewardsPoints : BVSoftware.Commerce.Content.BVUserControl
+    public partial class PaymentRewardsPoints : MerchantTribe.Commerce.Content.BVUserControl
     {
         private CustomerPointsManager pointsManager = null;
 

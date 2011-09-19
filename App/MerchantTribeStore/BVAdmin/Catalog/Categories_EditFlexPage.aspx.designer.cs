@@ -64,7 +64,7 @@ namespace BVCommerce.BVAdmin.Catalog {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVSoftware.Commerce.Controls.BVRequiredFieldValidator valName;
+        protected global::MerchantTribe.Commerce.Controls.BVRequiredFieldValidator valName;
         
         /// <summary>
         /// RewriteUrlField control.

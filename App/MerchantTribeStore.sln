@@ -1,40 +1,40 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BVSoftware.PaypalWebServices", "src\BVSoftware.PaypalWebServices\BVSoftware.PaypalWebServices.csproj", "{40FCF14A-F903-4BF1-B4E0-FC5CB623BDF2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MerchantTribe.PaypalWebServices", "src\MerchantTribe.PaypalWebServices\MerchantTribe.PaypalWebServices.csproj", "{40FCF14A-F903-4BF1-B4E0-FC5CB623BDF2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BVSoftware.UnitTests", "src\BVSoftware.UnitTests\BVSoftware.UnitTests.csproj", "{42A2E75B-4DAA-4024-B82F-E5128091C83A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MerchantTribeStore.Tests", "src\MerchantTribeStore.Tests\MerchantTribeStore.Tests.csproj", "{42A2E75B-4DAA-4024-B82F-E5128091C83A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BVSoftware.Commerce", "src\BVSoftware.Commerce\BVSoftware.Commerce.csproj", "{4EFF0D3E-99D4-4A8D-A672-B88E5E47CBAA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MerchantTribe.Commerce", "src\MerchantTribe.Commerce\MerchantTribe.Commerce.csproj", "{4EFF0D3E-99D4-4A8D-A672-B88E5E47CBAA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BVSoftware.Billing", "src\BVSoftware.Billing\BVSoftware.Billing.csproj", "{39CB3B9D-94B5-46B1-9C5F-E1C3348565D9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MerchantTribe.Billing", "src\MerchantTribe.Billing\MerchantTribe.Billing.csproj", "{39CB3B9D-94B5-46B1-9C5F-E1C3348565D9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MerchantTribe.Payment", "src\MerchantTribe.Payment\MerchantTribe.Payment.csproj", "{4C223AD8-685A-4AAC-8610-1BEC50636203}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BVSoftware.GoogleCheckout", "src\BVSoftware.GoogleCheckout\BVSoftware.GoogleCheckout.csproj", "{EE651FCB-FE6E-4940-B887-60C54369DB6C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MerchantTribe.GoogleCheckout", "src\MerchantTribe.GoogleCheckout\MerchantTribe.GoogleCheckout.csproj", "{EE651FCB-FE6E-4940-B887-60C54369DB6C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BVSoftware.Shipping", "src\BVSoftware.Shipping\BVSoftware.Shipping.csproj", "{99A252BB-D844-4581-B924-4E59AE19857F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MerchantTribe.Shipping", "src\MerchantTribe.Shipping\MerchantTribe.Shipping.csproj", "{99A252BB-D844-4581-B924-4E59AE19857F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MerchantTribeStore", "MerchantTribeStore\MerchantTribeStore.csproj", "{6DDD0B1F-5395-4045-8FD1-3A1893BB7DC7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BVSoftware.Shipping.Ups", "src\BVSoftware.Shipping.Ups\BVSoftware.Shipping.Ups.csproj", "{68FF27BE-6296-4A8B-B20F-6480A491D092}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MerchantTribe.Shipping.Ups", "src\MerchantTribe.Shipping.Ups\MerchantTribe.Shipping.Ups.csproj", "{68FF27BE-6296-4A8B-B20F-6480A491D092}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BVSoftware.Shipping.USPostal", "src\BVSoftware.Shipping.USPostal\BVSoftware.Shipping.USPostal.csproj", "{A7F1EBBC-53E6-43AE-902E-8B8EF5082C54}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MerchantTribe.Shipping.USPostal", "src\MerchantTribe.Shipping.USPostal\MerchantTribe.Shipping.USPostal.csproj", "{A7F1EBBC-53E6-43AE-902E-8B8EF5082C54}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BVSoftware.CommerceDTO", "src\BVSoftware.CommerceDTO\BVSoftware.CommerceDTO.csproj", "{C47A3A58-D11F-4D67-92FC-3E95B5DD6221}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MerchantTribe.CommerceDTO", "src\MerchantTribe.CommerceDTO\MerchantTribe.CommerceDTO.csproj", "{C47A3A58-D11F-4D67-92FC-3E95B5DD6221}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BVSoftware.SilverlightFileUpload", "src\BVSoftware.SilverlightFileUpload\BVSoftware.SilverlightFileUpload.csproj", "{24A4744E-6A96-4DED-B4D9-018C3171C8DA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MerchantTribe.SilverlightFileUpload", "src\MerchantTribe.SilverlightFileUpload\MerchantTribe.SilverlightFileUpload.csproj", "{24A4744E-6A96-4DED-B4D9-018C3171C8DA}"
 	ProjectSection(ProjectDependencies) = postProject
 		{6DDD0B1F-5395-4045-8FD1-3A1893BB7DC7} = {6DDD0B1F-5395-4045-8FD1-3A1893BB7DC7}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BVSoftware.Commerce.Tests", "src\BVSoftware.Commerce.Tests\BVSoftware.Commerce.Tests.csproj", "{90DA5B3D-F044-4FC3-A428-56AC87724D80}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MerchantTribe.Commerce.Tests", "src\MerchantTribe.Commerce.Tests\MerchantTribe.Commerce.Tests.csproj", "{90DA5B3D-F044-4FC3-A428-56AC87724D80}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MerchantTribe.Payment.Tests", "src\MerchantTribe.Payment.Tests\MerchantTribe.Payment.Tests.csproj", "{6E00638C-0C75-4CC7-9E89-F185355F696B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BVSoftware.Commerce.ApiSample", "src\BVSoftware.Commerce.ApiSample\BVSoftware.Commerce.ApiSample.csproj", "{B5DDC02D-27DB-4D93-8BF2-5BA9854CB54A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MerchantTribe.Commerce.ApiSample", "src\MerchantTribe.Commerce.ApiSample\MerchantTribe.Commerce.ApiSample.csproj", "{B5DDC02D-27DB-4D93-8BF2-5BA9854CB54A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BVSoftware.Shipping.FedEx", "src\BVSoftware.Shipping.FedEx\BVSoftware.Shipping.FedEx.csproj", "{9B00258D-45D2-43BD-8178-A6F2AAFF5090}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MerchantTribe.Shipping.FedEx", "src\MerchantTribe.Shipping.FedEx\MerchantTribe.Shipping.FedEx.csproj", "{9B00258D-45D2-43BD-8178-A6F2AAFF5090}"
 EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution

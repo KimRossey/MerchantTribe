@@ -1,7 +1,7 @@
 using System.Collections.ObjectModel;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce.Content;
+using MerchantTribe.Commerce.Content;
 using System.Collections.Generic;
 
 namespace BVCommerce

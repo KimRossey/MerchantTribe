@@ -1,12 +1,12 @@
 using System;
 using System.Text;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Catalog;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Catalog;
 
 namespace BVCommerce
 {
 
-    partial class BVAdmin_Controls_OptionItemEditor : BVSoftware.Commerce.Content.BVUserControl
+    partial class BVAdmin_Controls_OptionItemEditor : MerchantTribe.Commerce.Content.BVUserControl
     {
 
         private string _OptionId = string.Empty;

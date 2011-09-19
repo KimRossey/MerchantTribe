@@ -1,16 +1,16 @@
 using System.Collections.ObjectModel;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Catalog;
-using BVSoftware.Commerce.Orders;
-using BVSoftware.Commerce.Payment;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Catalog;
+using MerchantTribe.Commerce.Orders;
+using MerchantTribe.Commerce.Payment;
 using System.Text;
 
 namespace BVCommerce
 {
 
-    partial class BVModules_Controls_ViewOrder : BVSoftware.Commerce.Content.BVUserControl
+    partial class BVModules_Controls_ViewOrder : MerchantTribe.Commerce.Content.BVUserControl
     {
 
         //private bool _InputsAndModifiersLoaded = false;
@@ -212,7 +212,7 @@ namespace BVCommerce
                     ((Label)e.Row.FindControl("ShippedDateLabel")).Text = val.ShipDateUtc.ToLocalTime().ToString("d");
                     if (val.TrackingNumber.Trim() != string.Empty)
                     {
-                        foreach (BVSoftware.Shipping.IShippingService item in BVSoftware.Commerce.Shipping.AvailableServices.FindAll(MyPage.BVApp.CurrentStore))
+                        foreach (MerchantTribe.Shipping.IShippingService item in MerchantTribe.Commerce.Shipping.AvailableServices.FindAll(MyPage.BVApp.CurrentStore))
                         {
                             if (item.Id == val.ShippingProviderId)
                             {

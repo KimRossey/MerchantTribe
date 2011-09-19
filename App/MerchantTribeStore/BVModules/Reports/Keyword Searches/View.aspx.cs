@@ -1,8 +1,8 @@
 using System;
 using System.Data;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce.Membership;
-using BVSoftware.Commerce.Metrics;
+using MerchantTribe.Commerce.Membership;
+using MerchantTribe.Commerce.Metrics;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -32,7 +32,7 @@ namespace BVCommerce
         private void RunReport()
         {
 
-            List<BVSoftware.Commerce.Metrics.SearchQueryRepository.SearchQueryData> reportData = BVApp.MetricsSerices.SearchQueries.FindQueryCountReport();
+            List<MerchantTribe.Commerce.Metrics.SearchQueryRepository.SearchQueryData> reportData = BVApp.MetricsSerices.SearchQueries.FindQueryCountReport();
 
             AddPercentages(ref reportData);
 
@@ -40,12 +40,12 @@ namespace BVCommerce
             this.GridView1.DataBind();
         }
 
-        private void AddPercentages(ref List<BVSoftware.Commerce.Metrics.SearchQueryRepository.SearchQueryData> data)
+        private void AddPercentages(ref List<MerchantTribe.Commerce.Metrics.SearchQueryRepository.SearchQueryData> data)
         {
             if (data != null)
             {
                 int totalSearches = data.Sum(y => y.Count);
-                foreach (BVSoftware.Commerce.Metrics.SearchQueryRepository.SearchQueryData q in data)
+                foreach (MerchantTribe.Commerce.Metrics.SearchQueryRepository.SearchQueryData q in data)
                 {
                     if (totalSearches > 0)
                     {

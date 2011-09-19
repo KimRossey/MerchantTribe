@@ -1,7 +1,7 @@
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Catalog;
-using BVSoftware.Commerce.Content;
-using BVSoftware.Commerce.Orders;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Catalog;
+using MerchantTribe.Commerce.Content;
+using MerchantTribe.Commerce.Orders;
 
 namespace BVCommerce
 {
@@ -37,9 +37,9 @@ namespace BVCommerce
 
                 UserSpecificPrice price = BVApp.PriceProduct(p, BVApp.CurrentCustomer, selections);
 
-                result.Price = BVSoftware.Commerce.Utilities.HtmlRendering.UserSpecificPriceForDisplay(price);
+                result.Price = MerchantTribe.Commerce.Utilities.HtmlRendering.UserSpecificPriceForDisplay(price);
                 result.Sku = price.Sku;
-                result.ImageUrl = BVSoftware.Commerce.Storage.DiskStorage.ProductImageUrlMedium(BVApp.CurrentStore.Id, p.Bvin, p.ImageFileSmall, false);
+                result.ImageUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductImageUrlMedium(BVApp.CurrentStore.Id, p.Bvin, p.ImageFileSmall, false);
                 result.IsValid = price.IsValid;
                 if (result.IsValid)
                 {
@@ -51,7 +51,7 @@ namespace BVCommerce
                 }
                 if (price.VariantId.Length > 0)
                 {
-                    result.ImageUrl = BVSoftware.Commerce.Storage.DiskStorage.ProductVariantImageUrlMedium(BVApp.CurrentStore.Id, p.Bvin, p.ImageFileSmall, price.VariantId, false);
+                    result.ImageUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductVariantImageUrlMedium(BVApp.CurrentStore.Id, p.Bvin, p.ImageFileSmall, price.VariantId, false);
                 }
 
                 // Make sure we have stock on the product or variant

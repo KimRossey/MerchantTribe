@@ -145,7 +145,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVSoftware.Commerce.Controls.BVRequiredFieldValidator RequiredFieldValidator5;
+        protected global::MerchantTribe.Commerce.Controls.BVRequiredFieldValidator RequiredFieldValidator5;
         
         /// <summary>
         /// ProductNameField control.
@@ -163,7 +163,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVSoftware.Commerce.Controls.BVRequiredFieldValidator valName;
+        protected global::MerchantTribe.Commerce.Controls.BVRequiredFieldValidator valName;
         
         /// <summary>
         /// PriceRow control.
@@ -190,7 +190,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVSoftware.Commerce.Controls.BVRequiredFieldValidator RequiredFieldValidator4;
+        protected global::MerchantTribe.Commerce.Controls.BVRequiredFieldValidator RequiredFieldValidator4;
         
         /// <summary>
         /// CustomValidator2 control.
@@ -199,7 +199,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVSoftware.Commerce.Controls.BVCustomValidator CustomValidator2;
+        protected global::MerchantTribe.Commerce.Controls.BVCustomValidator CustomValidator2;
         
         /// <summary>
         /// tblGeneral control.
@@ -280,7 +280,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVSoftware.Commerce.Controls.BVCustomValidator CustomValidator1;
+        protected global::MerchantTribe.Commerce.Controls.BVCustomValidator CustomValidator1;
         
         /// <summary>
         /// btnCancel control.

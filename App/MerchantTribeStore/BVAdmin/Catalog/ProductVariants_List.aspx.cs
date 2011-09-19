@@ -1,8 +1,8 @@
 using System.Text;
 using System.Web.UI;
 using System.Collections.Generic;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Catalog;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Catalog;
 
 namespace BVCommerce
 {
@@ -39,7 +39,7 @@ namespace BVCommerce
                 }
             }
 
-            if ((renderedCount >= BVSoftware.Commerce.WebAppSettings.MaxVariants))
+            if ((renderedCount >= MerchantTribe.Commerce.WebAppSettings.MaxVariants))
             {
                 this.litOutput.Text = "<div class=\"flash-message-warning\">This product has " + renderedCount + " variants. The maximum allowed is " + WebAppSettings.MaxVariants + ". If you need more variants try creating separate products with fewer choices that affect Pictures, Sku and Price.</div>";
                 this.litOutput.Text += sb.ToString();
@@ -65,7 +65,7 @@ namespace BVCommerce
             // Image
             sb.Append("<td width=\"75\">");
             sb.Append("<img width=\"50\" src=\"");
-            sb.Append(BVSoftware.Commerce.Storage.DiskStorage.ProductVariantImageUrlMedium(this.BVApp.CurrentStore.Id, p.Bvin, p.ImageFileSmall, v.Bvin, true));
+            sb.Append(MerchantTribe.Commerce.Storage.DiskStorage.ProductVariantImageUrlMedium(this.BVApp.CurrentStore.Id, p.Bvin, p.ImageFileSmall, v.Bvin, true));
             sb.Append("\" border=\"0\" />");
             sb.Append("</td>");
 

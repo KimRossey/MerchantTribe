@@ -2,10 +2,10 @@
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.HtmlControls;
-using BVSoftware.Commerce.Content;
-using BVSoftware.Commerce.Shipping;
-using BVSoftware.Commerce;
-using BVSoftware.Shipping.Services;
+using MerchantTribe.Commerce.Content;
+using MerchantTribe.Commerce.Shipping;
+using MerchantTribe.Commerce;
+using MerchantTribe.Shipping.Services;
 
 
 namespace BVCommerce.BVModules.Shipping.Rate_Per_Weight_Formula

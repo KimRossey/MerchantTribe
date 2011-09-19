@@ -4,9 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Accounts;
-using BVSoftware.Commerce.Catalog;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Accounts;
+using MerchantTribe.Commerce.Catalog;
 
 namespace BVCommerce.BVAdmin
 {
@@ -20,13 +20,13 @@ namespace BVCommerce.BVAdmin
             BVApp = BVApplication.InstantiateForDataBase(new RequestContext());
 
             // Determine store id        
-            BVApp.CurrentStore = BVSoftware.Commerce.Utilities.UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, BVApp.AccountServices);
+            BVApp.CurrentStore = MerchantTribe.Commerce.Utilities.UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, BVApp.AccountServices);
             if (BVApp.CurrentStore == null)
             {
                 Response.Redirect("~/storenotfound");
             }
 
-            if (BVApp.CurrentStore.Status == BVSoftware.Commerce.Accounts.StoreStatus.Deactivated)
+            if (BVApp.CurrentStore.Status == MerchantTribe.Commerce.Accounts.StoreStatus.Deactivated)
             {
                 Response.Redirect("~/storenotavailable");
             }
@@ -52,9 +52,9 @@ namespace BVCommerce.BVAdmin
         {
             if (!Request.IsSecureConnection)
             {
-                BVSoftware.Commerce.Utilities.SSL.SSLRedirect(this,
+                MerchantTribe.Commerce.Utilities.SSL.SSLRedirect(this,
                     this.BVApp.CurrentStore,
-                    BVSoftware.Commerce.Utilities.SSL.SSLRedirectTo.SSL);
+                    MerchantTribe.Commerce.Utilities.SSL.SSLRedirectTo.SSL);
             }
         }
 

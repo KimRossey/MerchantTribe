@@ -1,13 +1,13 @@
 
-using BVSoftware.Commerce;
+using MerchantTribe.Commerce;
 using System.Collections.Generic;
 using System.IO;
-using BVSoftware.Commerce.Content;
+using MerchantTribe.Commerce.Content;
 
 namespace BVCommerce
 {
 
-    partial class BVModules_Controls_ContentColumnControl : BVSoftware.Commerce.Content.BVUserControl
+    partial class BVModules_Controls_ContentColumnControl : MerchantTribe.Commerce.Content.BVUserControl
     {
 
         private string _ColumnID = string.Empty;

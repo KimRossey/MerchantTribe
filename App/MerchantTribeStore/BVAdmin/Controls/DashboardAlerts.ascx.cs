@@ -4,13 +4,13 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce.Catalog;
+using MerchantTribe.Commerce.Catalog;
 using System.Collections.ObjectModel;
 
 namespace BVCommerce
 {
 
-    public partial class BVAdmin_Controls_DashboardAlerts : BVSoftware.Commerce.Content.BVUserControl
+    public partial class BVAdmin_Controls_DashboardAlerts : MerchantTribe.Commerce.Content.BVUserControl
     {
 
         protected override void OnLoad(EventArgs e)

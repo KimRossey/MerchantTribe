@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Membership;
-using BVSoftware.Commerce.Orders;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Membership;
+using MerchantTribe.Commerce.Orders;
 
 namespace BVCommerce
 {

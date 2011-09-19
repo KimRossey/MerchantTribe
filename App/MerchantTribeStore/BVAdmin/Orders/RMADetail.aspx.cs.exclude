@@ -1,12 +1,12 @@
 using System;
 using System.Web;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Orders;
-using BVSoftware.Commerce.Membership;
-using BVSoftware.Commerce.Utilities;
-using BVSoftware.Commerce.Shipping;
-using BVSoftware.Commerce.Payment;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Orders;
+using MerchantTribe.Commerce.Membership;
+using MerchantTribe.Commerce.Utilities;
+using MerchantTribe.Commerce.Shipping;
+using MerchantTribe.Commerce.Payment;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 
@@ -154,7 +154,7 @@ partial class BVAdmin_Orders_RMADetail : BaseAdminPage
 
 						// Return to Inventory Here
 						if (!RMAItem.LineItem.ReturnQuantity(received, returnToInventory)) {
-							EventLog.LogEvent("Receive RMA Items", "Unable to return quantity of " + received + " of product " + RMAItem.Product.Bvin, BVSoftware.Commerce.Metrics.EventLogSeverity.Error);
+							EventLog.LogEvent("Receive RMA Items", "Unable to return quantity of " + received + " of product " + RMAItem.Product.Bvin, MerchantTribe.Commerce.Metrics.EventLogSeverity.Error);
 							MessageBox.ShowError("Item was successfully received, but an error occurred while trying to return your items to inventory. This item may not have inventory enabled.");
 							return;
 						}

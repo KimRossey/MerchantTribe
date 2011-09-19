@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using BVSoftware.Commerce;
-using BVSoftware.CommerceDTO.v1;
-using BVSoftware.CommerceDTO.v1.Taxes;
-using BVSoftware.Commerce.Taxes;
+using MerchantTribe.Commerce;
+using MerchantTribe.CommerceDTO.v1;
+using MerchantTribe.CommerceDTO.v1.Taxes;
+using MerchantTribe.Commerce.Taxes;
 
 namespace BVCommerce.api.rest
 {
     public class TaxSchedulesHandler: BaseRestHandler
     {
-        public TaxSchedulesHandler(BVSoftware.Commerce.BVApplication app)
+        public TaxSchedulesHandler(MerchantTribe.Commerce.BVApplication app)
             : base(app)
         {
 

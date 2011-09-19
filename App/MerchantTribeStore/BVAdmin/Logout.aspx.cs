@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce.Accounts;
+using MerchantTribe.Commerce.Accounts;
 
 namespace BVCommerce.BVAdmin
 {
@@ -12,7 +12,7 @@ namespace BVCommerce.BVAdmin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            AccountService account = AccountService.InstantiateForDatabase(new BVSoftware.Commerce.RequestContext());            
+            AccountService account = AccountService.InstantiateForDatabase(new MerchantTribe.Commerce.RequestContext());            
             account.LogoutAdminUser(Page.Request.RequestContext.HttpContext);
 
             Response.Redirect("~/");

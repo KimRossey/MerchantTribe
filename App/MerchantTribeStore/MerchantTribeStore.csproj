@@ -104,11 +104,17 @@
     <DeployIisAppPath>CommerceHostedBeta</DeployIisAppPath>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BVSoftware.Shipping.Ups.Keys">
+      <HintPath>..\lib\BVSoftware.Shipping.Ups.Keys.dll</HintPath>
+    </Reference>
     <Reference Include="EcmaScript.NET.modified, Version=0.1.1.0, Culture=neutral, PublicKeyToken=7d53ba4f537753a5, processorArchitecture=MSIL">
       <HintPath>..\packages\YUICompressor.NET.1.6.0.1\lib\net35\EcmaScript.NET.modified.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.4.1.10331.0\lib\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="FreetextBox">
+      <HintPath>..\lib\FreetextBox.dll</HintPath>
     </Reference>
     <Reference Include="MerchantTribe.Web, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -121,14 +127,6 @@
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="BVSoftware.Shipping.Ups.Keys, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\components\BVSoftware.Shipping.Ups.Keys.dll</HintPath>
-    </Reference>
-    <Reference Include="FreetextBox, Version=3.1.1.31029, Culture=neutral, PublicKeyToken=5962a4e684a48b87, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\components\FreetextBox.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="paypal_base, Version=5.6.61.0, Culture=neutral, PublicKeyToken=b37401294aaf5617">
       <SpecificVersion>False</SpecificVersion>
@@ -747,6 +745,7 @@
     <Content Include="checkoutpaymenterror.aspx" />
     <Content Include="checkoutpaymenterror.js" />
     <Content Include="ClientBin\BVSoftware.SilverlightFileUpload.xap" />
+    <Content Include="ClientBin\MerchantTribe.SilverlightFileUpload.xap" />
     <Content Include="content\themes\common.css" />
     <Content Include="content\themes\commonupdates.css" />
     <Content Include="content\themes\theme-bv-craftystore\buttons\Go.png" />
@@ -4952,41 +4951,41 @@
     <Content Include="Site.Master" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\src\BVSoftware.Billing\BVSoftware.Billing.csproj">
-      <Project>{39CB3B9D-94B5-46B1-9C5F-E1C3348565D9}</Project>
-      <Name>BVSoftware.Billing</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\src\BVSoftware.CommerceDTO\BVSoftware.CommerceDTO.csproj">
+    <ProjectReference Include="..\src\MerchantTribe.CommerceDTO\MerchantTribe.CommerceDTO.csproj">
       <Project>{C47A3A58-D11F-4D67-92FC-3E95B5DD6221}</Project>
-      <Name>BVSoftware.CommerceDTO</Name>
+      <Name>MerchantTribe.CommerceDTO</Name>
     </ProjectReference>
-    <ProjectReference Include="..\src\BVSoftware.Commerce\BVSoftware.Commerce.csproj">
+    <ProjectReference Include="..\src\MerchantTribe.Commerce\MerchantTribe.Commerce.csproj">
       <Project>{4EFF0D3E-99D4-4A8D-A672-B88E5E47CBAA}</Project>
-      <Name>BVSoftware.Commerce</Name>
+      <Name>MerchantTribe.Commerce</Name>
     </ProjectReference>
-    <ProjectReference Include="..\src\BVSoftware.GoogleCheckout\BVSoftware.GoogleCheckout.csproj">
+    <ProjectReference Include="..\src\MerchantTribe.GoogleCheckout\MerchantTribe.GoogleCheckout.csproj">
       <Project>{EE651FCB-FE6E-4940-B887-60C54369DB6C}</Project>
-      <Name>BVSoftware.GoogleCheckout</Name>
+      <Name>MerchantTribe.GoogleCheckout</Name>
     </ProjectReference>
-    <ProjectReference Include="..\src\BVSoftware.PaypalWebServices\BVSoftware.PaypalWebServices.csproj">
+    <ProjectReference Include="..\src\MerchantTribe.PaypalWebServices\MerchantTribe.PaypalWebServices.csproj">
       <Project>{40FCF14A-F903-4BF1-B4E0-FC5CB623BDF2}</Project>
-      <Name>BVSoftware.PaypalWebServices</Name>
+      <Name>MerchantTribe.PaypalWebServices</Name>
     </ProjectReference>
-    <ProjectReference Include="..\src\BVSoftware.Shipping.FedEx\BVSoftware.Shipping.FedEx.csproj">
+    <ProjectReference Include="..\src\MerchantTribe.Shipping.FedEx\MerchantTribe.Shipping.FedEx.csproj">
       <Project>{9B00258D-45D2-43BD-8178-A6F2AAFF5090}</Project>
-      <Name>BVSoftware.Shipping.FedEx</Name>
+      <Name>MerchantTribe.Shipping.FedEx</Name>
     </ProjectReference>
-    <ProjectReference Include="..\src\BVSoftware.Shipping.Ups\BVSoftware.Shipping.Ups.csproj">
+    <ProjectReference Include="..\src\MerchantTribe.Shipping.Ups\MerchantTribe.Shipping.Ups.csproj">
       <Project>{68FF27BE-6296-4A8B-B20F-6480A491D092}</Project>
-      <Name>BVSoftware.Shipping.Ups</Name>
+      <Name>MerchantTribe.Shipping.Ups</Name>
     </ProjectReference>
-    <ProjectReference Include="..\src\BVSoftware.Shipping.USPostal\BVSoftware.Shipping.USPostal.csproj">
+    <ProjectReference Include="..\src\MerchantTribe.Shipping.USPostal\MerchantTribe.Shipping.USPostal.csproj">
       <Project>{A7F1EBBC-53E6-43AE-902E-8B8EF5082C54}</Project>
-      <Name>BVSoftware.Shipping.USPostal</Name>
+      <Name>MerchantTribe.Shipping.USPostal</Name>
     </ProjectReference>
-    <ProjectReference Include="..\src\BVSoftware.Shipping\BVSoftware.Shipping.csproj">
+    <ProjectReference Include="..\src\MerchantTribe.Shipping\MerchantTribe.Shipping.csproj">
       <Project>{99A252BB-D844-4581-B924-4E59AE19857F}</Project>
-      <Name>BVSoftware.Shipping</Name>
+      <Name>MerchantTribe.Shipping</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\src\MerchantTribe.Billing\MerchantTribe.Billing.csproj">
+      <Project>{39CB3B9D-94B5-46B1-9C5F-E1C3348565D9}</Project>
+      <Name>MerchantTribe.Billing</Name>
     </ProjectReference>
     <ProjectReference Include="..\src\MerchantTribe.Payment\MerchantTribe.Payment.csproj">
       <Project>{4C223AD8-685A-4AAC-8610-1BEC50636203}</Project>

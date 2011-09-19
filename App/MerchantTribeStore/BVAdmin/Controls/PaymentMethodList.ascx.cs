@@ -1,15 +1,15 @@
 
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Payment;
-using BVSoftware.Commerce.Content;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Payment;
+using MerchantTribe.Commerce.Content;
 
 namespace BVCommerce
 {
 
-    partial class BVAdmin_Controls_PaymentMethodList : BVSoftware.Commerce.Content.BVUserControl
+    partial class BVAdmin_Controls_PaymentMethodList : MerchantTribe.Commerce.Content.BVUserControl
     {
 
-        protected BVSoftware.Commerce.Payment.AvailablePayments availablePayments = new BVSoftware.Commerce.Payment.AvailablePayments();
+        protected MerchantTribe.Commerce.Payment.AvailablePayments availablePayments = new MerchantTribe.Commerce.Payment.AvailablePayments();
 
         public string SelectMethodId
         {
@@ -66,7 +66,7 @@ namespace BVCommerce
 
         private DisplayPaymentMethod FindMethod(string methodId)
         {
-            DisplayPaymentMethod result = new BVSoftware.Commerce.Payment.Method.NullPayment();
+            DisplayPaymentMethod result = new MerchantTribe.Commerce.Payment.Method.NullPayment();
 
             System.Collections.ObjectModel.Collection<DisplayPaymentMethod> enabled = availablePayments.EnabledMethods(MyPage.BVApp.CurrentStore);
 

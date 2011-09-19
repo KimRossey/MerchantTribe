@@ -1,7 +1,7 @@
 using System;
 using System.Web.UI;
-using BVSoftware.Commerce.Catalog;
-using BVSoftware.Commerce.Content;
+using MerchantTribe.Commerce.Catalog;
+using MerchantTribe.Commerce.Content;
 using System.Collections.Generic;
 
 namespace BVCommerce

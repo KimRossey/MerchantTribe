@@ -4,8 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce.Catalog;
-using BVSoftware.Commerce.Membership;
+using MerchantTribe.Commerce.Catalog;
+using MerchantTribe.Commerce.Membership;
 
 namespace BVCommerce
 {

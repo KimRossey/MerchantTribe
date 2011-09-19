@@ -1,8 +1,8 @@
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Text;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Orders;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Orders;
 
 namespace BVCommerce
 {
@@ -66,13 +66,13 @@ namespace BVCommerce
             //                            OrderPayment.Update(payItem);
             //                            Order order = Order.FindByBvin(payItem.OrderID);
 
-            //                            BVSoftware.Commerce.BusinessRules.OrderTaskContext context = new BVSoftware.Commerce.BusinessRules.OrderTaskContext();
+            //                            MerchantTribe.Commerce.BusinessRules.OrderTaskContext context = new MerchantTribe.Commerce.BusinessRules.OrderTaskContext();
             //                            context.Order = order;
             //                            context.UserId = SessionManager.GetCurrentUserId();
             //                            OrderPaymentStatus previousPaymentStatus = order.PaymentStatus;
             //                            order.EvaluatePaymentStatus();
             //                            context.Inputs.Add("bvsoftware", "PreviousPaymentStatus", previousPaymentStatus.ToString());
-            //                            BVSoftware.Commerce.BusinessRules.Workflow.RunByName(context, BVSoftware.Commerce.BusinessRules.WorkflowNames.PaymentChanged);
+            //                            MerchantTribe.Commerce.BusinessRules.Workflow.RunByName(context, MerchantTribe.Commerce.BusinessRules.WorkflowNames.PaymentChanged);
 
             //                            Order.Update(order);
             //                        }
@@ -93,13 +93,13 @@ namespace BVCommerce
             //                                OrderPayment.Update(payItem);
             //                                Order order = Order.FindByBvin(payItem.OrderID);
 
-            //                                BVSoftware.Commerce.BusinessRules.OrderTaskContext context = new BVSoftware.Commerce.BusinessRules.OrderTaskContext();
+            //                                MerchantTribe.Commerce.BusinessRules.OrderTaskContext context = new MerchantTribe.Commerce.BusinessRules.OrderTaskContext();
             //                                context.Order = order;
             //                                context.UserId = SessionManager.GetCurrentUserId();
             //                                OrderPaymentStatus previousPaymentStatus = order.PaymentStatus;
             //                                order.EvaluatePaymentStatus();
             //                                context.Inputs.Add("bvsoftware", "PreviousPaymentStatus", previousPaymentStatus.ToString());
-            //                                BVSoftware.Commerce.BusinessRules.Workflow.RunByName(context, BVSoftware.Commerce.BusinessRules.WorkflowNames.PaymentChanged);
+            //                                MerchantTribe.Commerce.BusinessRules.Workflow.RunByName(context, MerchantTribe.Commerce.BusinessRules.WorkflowNames.PaymentChanged);
 
             //                                Order.Update(order);
             //                            }

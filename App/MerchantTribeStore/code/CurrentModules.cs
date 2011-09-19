@@ -1,8 +1,8 @@
 using System;
 using Microsoft.VisualBasic;
-using BVSoftware.Commerce;
+using MerchantTribe.Commerce;
 using System.Collections.ObjectModel;
-using BVSoftware.Commerce.BusinessRules;
+using MerchantTribe.Commerce.BusinessRules;
 
 namespace BVCommerce
 {
@@ -11,8 +11,8 @@ namespace BVCommerce
 
         //result.Add(New BVSoftware.BVC5.Payment.AuthorizeNet.AuthorizeNetProvider)
         //result.Add(new BVSoftware.Bvc5.Payment.ACHDirect.ACHDirectProvider());
-        //result.Add(new BVSoftware.Commerce.Payment.Gateways.BVTestGateway());
-        //result.Add(new BVSoftware.Commerce.Payment.Gateways.ManualGateway());
+        //result.Add(new MerchantTribe.Commerce.Payment.Gateways.BVTestGateway());
+        //result.Add(new MerchantTribe.Commerce.Payment.Gateways.ManualGateway());
         //result.Add(New EcLinx3DSI)
         //result.Add(New BVSoftware.Bvc5.Payment.AuthorizeDotNet)
         //result.Add(New BVSoftware.Bvc5.Payment.BankOfAmerica)
@@ -51,29 +51,29 @@ namespace BVCommerce
         //result.Add(New BVSoftware.Bvc5.Payment.WorldPay)
 
 
-        //public static Collection<BVSoftware.Commerce.Shipping.ShippingProvider> AvailableShippingProviders()
+        //public static Collection<MerchantTribe.Commerce.Shipping.ShippingProvider> AvailableShippingProviders()
         //{
-        //    Collection<BVSoftware.Commerce.Shipping.ShippingProvider> result = new Collection<BVSoftware.Commerce.Shipping.ShippingProvider>();
+        //    Collection<MerchantTribe.Commerce.Shipping.ShippingProvider> result = new Collection<MerchantTribe.Commerce.Shipping.ShippingProvider>();
 
-        //    result.Add(new BVSoftware.Commerce.Shipping.Provider.NullProvider());
-        //    result.Add(new BVSoftware.Commerce.Shipping.Provider.ByItemCount());
-        //    result.Add(new BVSoftware.Commerce.Shipping.Provider.ByOrderTotal());
-        //    result.Add(new BVSoftware.Commerce.Shipping.Provider.ByOrderTotalMixed());
-        //    result.Add(new BVSoftware.Commerce.Shipping.Provider.ByWeight());
-        //    result.Add(new BVSoftware.Commerce.Shipping.Provider.PerItem());
-        //    result.Add(new BVSoftware.Commerce.Shipping.Provider.PerOrder());
-        //    result.Add(new BVSoftware.Shipping.FedEx.FedExProvider());
-        //    result.Add(new BVSoftware.Shipping.Ups.UpsProvider());
-        //    result.Add(new BVSoftware.Shipping.USPostal.USPostalProvider());
+        //    result.Add(new MerchantTribe.Commerce.Shipping.Provider.NullProvider());
+        //    result.Add(new MerchantTribe.Commerce.Shipping.Provider.ByItemCount());
+        //    result.Add(new MerchantTribe.Commerce.Shipping.Provider.ByOrderTotal());
+        //    result.Add(new MerchantTribe.Commerce.Shipping.Provider.ByOrderTotalMixed());
+        //    result.Add(new MerchantTribe.Commerce.Shipping.Provider.ByWeight());
+        //    result.Add(new MerchantTribe.Commerce.Shipping.Provider.PerItem());
+        //    result.Add(new MerchantTribe.Commerce.Shipping.Provider.PerOrder());
+        //    result.Add(new MerchantTribe.Shipping.FedEx.FedExProvider());
+        //    result.Add(new MerchantTribe.Shipping.Ups.UpsProvider());
+        //    result.Add(new MerchantTribe.Shipping.USPostal.USPostalProvider());
         //    result.Add(new EstimatedPackageSample());
 
         //    return result;
         //}
-        //public static BVSoftware.Commerce.Shipping.ShippingProvider FindShippingProviderById(string providerId)
+        //public static MerchantTribe.Commerce.Shipping.ShippingProvider FindShippingProviderById(string providerId)
         //{
-        //    BVSoftware.Commerce.Shipping.ShippingProvider result = null;
+        //    MerchantTribe.Commerce.Shipping.ShippingProvider result = null;
 
-        //    Collection<BVSoftware.Commerce.Shipping.ShippingProvider> Providers = AvailableShippingProviders();
+        //    Collection<MerchantTribe.Commerce.Shipping.ShippingProvider> Providers = AvailableShippingProviders();
         //    for (int i = 0; i <= Providers.Count - 1; i++)
         //    {
         //        if (Providers[i].ProviderId == providerId)
@@ -85,7 +85,7 @@ namespace BVCommerce
 
         //    if (result == null)
         //    {
-        //        result = new BVSoftware.Commerce.Shipping.Provider.NullProvider();
+        //        result = new MerchantTribe.Commerce.Shipping.Provider.NullProvider();
         //    }
 
         //    return result;
