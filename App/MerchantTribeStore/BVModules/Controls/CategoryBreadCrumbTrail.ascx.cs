@@ -2,15 +2,15 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Catalog;
-using BVSoftware.Commerce.Content;
-using BVSoftware.Commerce.Utilities;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Catalog;
+using MerchantTribe.Commerce.Content;
+using MerchantTribe.Commerce.Utilities;
 
 namespace BVCommerce
 {
 
-    partial class BVModules_Controls_CategoryBreadCrumbTrail : BVSoftware.Commerce.Content.BVUserControl
+    partial class BVModules_Controls_CategoryBreadCrumbTrail : MerchantTribe.Commerce.Content.BVUserControl
     {
 
         private string _Spacer = "&nbsp;&raquo;&nbsp;";

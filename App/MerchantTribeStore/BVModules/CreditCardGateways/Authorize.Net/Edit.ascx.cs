@@ -1,8 +1,8 @@
 using System;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Content;
-using BVSoftware.Commerce.Payment;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Content;
+using MerchantTribe.Commerce.Payment;
 using MerchantTribe.Payment.Methods;
 
 namespace BVCommerce

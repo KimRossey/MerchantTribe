@@ -1,6 +1,6 @@
 using System;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Catalog;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Catalog;
 
 namespace BVCommerce
 {

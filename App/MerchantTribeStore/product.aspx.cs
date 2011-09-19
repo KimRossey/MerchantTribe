@@ -1,11 +1,11 @@
 using System;
 using System.Text;
 using System.Web.UI;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Catalog;
-using BVSoftware.Commerce.Content;
-using BVSoftware.Commerce.Orders;
-using BVSoftware.Commerce.Utilities;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Catalog;
+using MerchantTribe.Commerce.Content;
+using MerchantTribe.Commerce.Orders;
+using MerchantTribe.Commerce.Utilities;
 using System.Linq;
 using System.Collections.Generic;
 
@@ -82,7 +82,7 @@ namespace BVCommerce
                         }
                     }
 
-                    UrlRewriter.RedirectToErrorPage(BVSoftware.Commerce.ErrorTypes.Product, Response);
+                    UrlRewriter.RedirectToErrorPage(MerchantTribe.Commerce.ErrorTypes.Product, Response);
                 }
 
 
@@ -90,12 +90,12 @@ namespace BVCommerce
             }
             else
             {                
-                UrlRewriter.RedirectToErrorPage(BVSoftware.Commerce.ErrorTypes.Product, Response);
+                UrlRewriter.RedirectToErrorPage(MerchantTribe.Commerce.ErrorTypes.Product, Response);
             }
 
             if (LocalProduct.Bvin == string.Empty)
             {                
-                EventLog.LogEvent("Product Page", "Requested Product slug " + slug + " was not found", BVSoftware.Commerce.Metrics.EventLogSeverity.Error);
+                EventLog.LogEvent("Product Page", "Requested Product slug " + slug + " was not found", MerchantTribe.Commerce.Metrics.EventLogSeverity.Error);
             }
             else
             {
@@ -114,7 +114,7 @@ namespace BVCommerce
                 if (LocalProduct.HasOptions())
                 {
                     this.phOptions.Controls.Add(new LiteralControl("<div class=\"options\">"));
-                    BVSoftware.Commerce.Utilities.HtmlRendering.ProductOptionsAsControls(LocalProduct.Options, phOptions);
+                    MerchantTribe.Commerce.Utilities.HtmlRendering.ProductOptionsAsControls(LocalProduct.Options, phOptions);
                     this.phOptions.Controls.Add(new LiteralControl("<div class=\"clear\"></div></div>"));
                 }
 
@@ -441,19 +441,19 @@ namespace BVCommerce
         }
         private void RenderSingleAdditionalImage(StringBuilder sb, ProductImage img)
         {
-            string mediumUrl = BVSoftware.Commerce.Storage.DiskStorage.ProductAdditionalImageUrlMedium(BVApp.CurrentStore.Id,
+            string mediumUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductAdditionalImageUrlMedium(BVApp.CurrentStore.Id,
                                                                                                        img.ProductId,
                                                                                                        img.Bvin,
                                                                                                        img.FileName,
                                                                                                        false);
-            string largeUrl = BVSoftware.Commerce.Storage.DiskStorage.ProductAdditionalImageUrlOriginal(BVApp.CurrentStore.Id,
+            string largeUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductAdditionalImageUrlOriginal(BVApp.CurrentStore.Id,
                                                                                                        img.ProductId,
                                                                                                        img.Bvin,
                                                                                                        img.FileName,
                                                                                                        false);
             sb.Append("<a href=\"" + largeUrl + "\" alt=\"" + mediumUrl + "\" class=\"popover\">");
             sb.Append("<img src=\"");
-            sb.Append(BVSoftware.Commerce.Storage.DiskStorage.ProductAdditionalImageUrlTiny(BVApp.CurrentStore.Id,
+            sb.Append(MerchantTribe.Commerce.Storage.DiskStorage.ProductAdditionalImageUrlTiny(BVApp.CurrentStore.Id,
                                                                                                       img.ProductId,
                                                                                                       img.Bvin,
                                                                                                       img.FileName,
@@ -469,7 +469,7 @@ namespace BVCommerce
             this.lblSku.Text = this.LocalProduct.Sku;
             this.lblDescription.Text = this.LocalProduct.LongDescription;
 
-            this.imgMain.ImageUrl = BVSoftware.Commerce.Storage.DiskStorage.ProductImageUrlMedium(BVApp.CurrentStore.Id, LocalProduct.Bvin, LocalProduct.ImageFileSmall, Request.IsSecureConnection);
+            this.imgMain.ImageUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductImageUrlMedium(BVApp.CurrentStore.Id, LocalProduct.Bvin, LocalProduct.ImageFileSmall, Request.IsSecureConnection);
             this.imgMain.AlternateText = LocalProduct.ImageFileSmallAlternateText;
 
             // Cross Sell
@@ -505,7 +505,7 @@ namespace BVCommerce
 
         }
 
-        private void RenderTabs(BVSoftware.Commerce.Catalog.Product p)
+        private void RenderTabs(MerchantTribe.Commerce.Catalog.Product p)
         {
             this.litOtherTabsNav.Text = string.Empty;
             this.litOtherTabs.Text = string.Empty;
@@ -513,7 +513,7 @@ namespace BVCommerce
             if (p == null) return;
             if (p.Tabs == null) return;
 
-            foreach (BVSoftware.Commerce.Catalog.ProductDescriptionTab t in p.Tabs.OrderBy(y => y.SortOrder))
+            foreach (MerchantTribe.Commerce.Catalog.ProductDescriptionTab t in p.Tabs.OrderBy(y => y.SortOrder))
             {
                 this.litOtherTabsNav.Text += "<li id=\"TabNav" + t.Bvin + "\"><a href=\"#Tab" + t.Bvin + "\">" + t.TabTitle + "</a></li>";
                 this.litOtherTabs.Text += "<div><div id=\"Tab" + t.Bvin + "\"><div class=\"padded\"><h2>"

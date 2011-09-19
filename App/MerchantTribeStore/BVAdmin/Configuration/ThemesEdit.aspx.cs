@@ -1,9 +1,9 @@
 using System;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
-using BVSoftware.Commerce.Content;
-using BVSoftware.Commerce.Membership;
-using BVSoftware.Commerce.Storage;
+using MerchantTribe.Commerce.Content;
+using MerchantTribe.Commerce.Membership;
+using MerchantTribe.Commerce.Storage;
 
 namespace BVCommerce
 {
@@ -89,7 +89,7 @@ namespace BVCommerce
             if (this.fileupload1.HasFile)
             {
                 string themeId = Request.QueryString["id"];
-                BVSoftware.Commerce.Storage.DiskStorage.UploadThemePreview(BVApp.CurrentStore.Id, themeId, this.fileupload1.PostedFile, false);
+                MerchantTribe.Commerce.Storage.DiskStorage.UploadThemePreview(BVApp.CurrentStore.Id, themeId, this.fileupload1.PostedFile, false);
                 LoadTheInfo(themeId);
             }
         }

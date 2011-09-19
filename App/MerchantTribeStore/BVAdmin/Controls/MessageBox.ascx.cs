@@ -1,14 +1,14 @@
 using System;
 using System.Web.UI.WebControls;
 using System.Web.UI.HtmlControls;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Content;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Content;
 using System.Collections.Generic;
 
 namespace BVCommerce
 {
 
-    partial class BVAdmin_Controls_MessageBox : BVSoftware.Commerce.Content.BVUserControl, IMessageBox
+    partial class BVAdmin_Controls_MessageBox : MerchantTribe.Commerce.Content.BVUserControl, IMessageBox
     {
 
         public void ShowOk(string msg)
@@ -47,7 +47,7 @@ namespace BVCommerce
             ShowMessage(msg, DisplayMessageType.Exception);
         }
 
-        public void ShowMessage(string msg, BVSoftware.Commerce.Content.DisplayMessageType msgType)
+        public void ShowMessage(string msg, MerchantTribe.Commerce.Content.DisplayMessageType msgType)
         {
             this.litMain.Text += "<div class=\"";
             switch (msgType)

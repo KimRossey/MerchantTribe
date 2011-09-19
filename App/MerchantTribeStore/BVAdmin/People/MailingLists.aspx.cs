@@ -1,6 +1,6 @@
 
 using System.Collections.Generic;
-using BVSoftware.Commerce;
+using MerchantTribe.Commerce;
 
 namespace BVCommerce
 {
@@ -13,7 +13,7 @@ namespace BVCommerce
             base.OnPreInit(e);
             this.PageTitle = "Mailing Lists";
             this.CurrentTab = AdminTabType.People;
-            ValidateCurrentUserHasPermission(BVSoftware.Commerce.Membership.SystemPermissions.PeopleView);
+            ValidateCurrentUserHasPermission(MerchantTribe.Commerce.Membership.SystemPermissions.PeopleView);
         }
 
         protected override void OnLoad(System.EventArgs e)
@@ -28,7 +28,7 @@ namespace BVCommerce
 
         private void LoadMailingLists()
         {
-            List<BVSoftware.Commerce.Contacts.MailingListSnapShot> m;
+            List<MerchantTribe.Commerce.Contacts.MailingListSnapShot> m;
             m = BVApp.ContactServices.MailingLists.FindAll();
             this.GridView1.DataSource = m;
             this.GridView1.DataBind();

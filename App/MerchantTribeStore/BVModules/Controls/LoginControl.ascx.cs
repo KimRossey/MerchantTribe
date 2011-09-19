@@ -1,12 +1,12 @@
 using System.Web.UI;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Content;
-using BVSoftware.Commerce.Membership;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Content;
+using MerchantTribe.Commerce.Membership;
 
 namespace BVCommerce
 {
 
-    partial class BVModules_Controls_LoginControl : BVSoftware.Commerce.Content.BVUserControl
+    partial class BVModules_Controls_LoginControl : MerchantTribe.Commerce.Content.BVUserControl
     {
 
         //public bool HideIfLoggedIn
@@ -32,7 +32,7 @@ namespace BVCommerce
             set { this.CheckoutModeField.Value = value.ToString(); }
         }
 
-        public delegate void LoginCompletedDelegate(object sender, BVSoftware.Commerce.Controls.LoginCompleteEventArgs args);
+        public delegate void LoginCompletedDelegate(object sender, MerchantTribe.Commerce.Controls.LoginCompleteEventArgs args);
         public event LoginCompletedDelegate LoginCompleted;
 
         protected override void OnInit(System.EventArgs e)
@@ -114,7 +114,7 @@ namespace BVCommerce
                                         this.Request.RequestContext.HttpContext, 
                                         ref userId))
                 {
-                    BVSoftware.Commerce.Orders.Order cart = SessionManager.CurrentShoppingCart(MyPage.BVApp.OrderServices);
+                    MerchantTribe.Commerce.Orders.Order cart = SessionManager.CurrentShoppingCart(MyPage.BVApp.OrderServices);
                     if (cart != null && !string.IsNullOrEmpty(cart.bvin))
                     {
                         cart.UserEmail = this.UsernameField.Text.Trim();
@@ -123,7 +123,7 @@ namespace BVCommerce
                         SessionManager.SaveOrderCookies(cart);
                     }
 
-                    BVSoftware.Commerce.Controls.LoginCompleteEventArgs args = new BVSoftware.Commerce.Controls.LoginCompleteEventArgs();
+                    MerchantTribe.Commerce.Controls.LoginCompleteEventArgs args = new MerchantTribe.Commerce.Controls.LoginCompleteEventArgs();
                     args.UserId = userId;
                     args.UserEmail = this.UsernameField.Text.Trim();
                     if (LoginCompleted != null)

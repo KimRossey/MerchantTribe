@@ -1,9 +1,9 @@
 using System;
 using System.Web;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Catalog;
-using BVSoftware.Commerce.Content;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Catalog;
+using MerchantTribe.Commerce.Content;
 
 namespace BVCommerce
 {
@@ -17,7 +17,7 @@ namespace BVCommerce
             if (Request.QueryString["id"] != null)
             {
                 Product prod = MyPage.BVApp.CatalogServices.Products.Find(Request.QueryString["id"]);
-                productImage.ImageUrl = BVSoftware.Commerce.Storage.DiskStorage.ProductImageUrlSmall(this.MyPage.BVApp.CurrentStore.Id, prod.Bvin, prod.ImageFileSmall, true);
+                productImage.ImageUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductImageUrlSmall(this.MyPage.BVApp.CurrentStore.Id, prod.Bvin, prod.ImageFileSmall, true);
                 productLabel.Text = prod.ProductName;
                 productSkuLabel.Text = prod.Sku;
                 productPrice.Text = prod.SitePrice.ToString("C");

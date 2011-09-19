@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Web;
-using BVSoftware.Commerce;
-using BVSoftware.CommerceDTO.v1;
-using BVSoftware.CommerceDTO.v1.Catalog;
-using BVSoftware.Commerce.Catalog;
+using MerchantTribe.Commerce;
+using MerchantTribe.CommerceDTO.v1;
+using MerchantTribe.CommerceDTO.v1.Catalog;
+using MerchantTribe.Commerce.Catalog;
 
 namespace BVCommerce.api.rest
 {
     public class ProductImagesUploadHandler: BaseRestHandler
     {
-        public ProductImagesUploadHandler(BVSoftware.Commerce.BVApplication app)
+        public ProductImagesUploadHandler(MerchantTribe.Commerce.BVApplication app)
             : base(app)
         {
 
@@ -42,7 +42,7 @@ namespace BVCommerce.api.rest
             try
             {
                 postedData = MerchantTribe.Web.Json.ObjectFromJson<byte[]>(postdata);
-                response.Content = BVSoftware.Commerce.Storage.DiskStorage.UploadProductAdditionalImage(BVApp.CurrentStore.Id, productBvin, imageBvin, fileName, postedData);
+                response.Content = MerchantTribe.Commerce.Storage.DiskStorage.UploadProductAdditionalImage(BVApp.CurrentStore.Id, productBvin, imageBvin, fileName, postedData);
             }
             catch(Exception ex)
             {

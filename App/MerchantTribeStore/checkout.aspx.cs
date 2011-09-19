@@ -1,15 +1,15 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.BusinessRules;
-using BVSoftware.Commerce.Catalog;
-using BVSoftware.Commerce.Contacts;
-using BVSoftware.Commerce.Content;
-using BVSoftware.Commerce.Membership;
-using BVSoftware.Commerce.Orders;
-using BVSoftware.Commerce.Utilities;
-using BVSoftware.Commerce.Payment;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.BusinessRules;
+using MerchantTribe.Commerce.Catalog;
+using MerchantTribe.Commerce.Contacts;
+using MerchantTribe.Commerce.Content;
+using MerchantTribe.Commerce.Membership;
+using MerchantTribe.Commerce.Orders;
+using MerchantTribe.Commerce.Utilities;
+using MerchantTribe.Commerce.Payment;
 
 namespace BVCommerce
 {
@@ -100,7 +100,7 @@ namespace BVCommerce
             }
         }
 
-        void LoginControl1_LoginCompleted(object sender, BVSoftware.Commerce.Controls.LoginCompleteEventArgs args)
+        void LoginControl1_LoginCompleted(object sender, MerchantTribe.Commerce.Controls.LoginCompleteEventArgs args)
         {
             Order Basket = LoadBasket();
             Basket.UserID = args.UserId;
@@ -110,7 +110,7 @@ namespace BVCommerce
             Response.Redirect(GetRouteUrl("checkout-route", new { }));
         }
 
-        private BVSoftware.Commerce.Contacts.Address GetBillingAddress()
+        private MerchantTribe.Commerce.Contacts.Address GetBillingAddress()
         {
             if (this.chkBillSame.Checked)
             {
@@ -169,7 +169,7 @@ namespace BVCommerce
         //Basket = SessionManager.CurrentShoppingCart
         //End If
         //If Basket IsNot Nothing Then
-        //Dim shipAdd As BVSoftware.Commerce.Contacts.Address = Me.AddressShipping1.GetAsAddress()
+        //Dim shipAdd As MerchantTribe.Commerce.Contacts.Address = Me.AddressShipping1.GetAsAddress()
         //Basket.SetShippingAddress(shipAdd)
         //Orders.Order.Update(Basket)
         //Shipping.LoadShippingMethodsForOrder(Basket, shipAdd.PostalCode)
@@ -273,7 +273,7 @@ namespace BVCommerce
                 c.Inputs.Add("bvsoftware", "AddressSupplied", "1");
                 if (!Workflow.RunByName(c, WorkflowNames.ThirdPartyCheckoutSelected))
                 {
-                    EventLog.LogEvent("Paypal Express Checkout Failed", "Specific Errors to follow", BVSoftware.Commerce.Metrics.EventLogSeverity.Error);
+                    EventLog.LogEvent("Paypal Express Checkout Failed", "Specific Errors to follow", MerchantTribe.Commerce.Metrics.EventLogSeverity.Error);
                     // Show Errors     
                     List<MerchantTribe.Web.Validation.RuleViolation> violations = new List<MerchantTribe.Web.Validation.RuleViolation>();
                     foreach (WorkflowMessage item in c.GetCustomerVisibleErrors())
@@ -291,11 +291,11 @@ namespace BVCommerce
                     SessionManager.CurrentCartID = string.Empty;
 
                     // Process Payment
-                    if (BVSoftware.Commerce.BusinessRules.Workflow.RunByName(c, BVSoftware.Commerce.BusinessRules.WorkflowNames.ProcessNewOrderPayments))
+                    if (MerchantTribe.Commerce.BusinessRules.Workflow.RunByName(c, MerchantTribe.Commerce.BusinessRules.WorkflowNames.ProcessNewOrderPayments))
                     {
-                        BVSoftware.Commerce.BusinessRules.Workflow.RunByName(c, BVSoftware.Commerce.BusinessRules.WorkflowNames.ProcessNewOrderAfterPayments);
+                        MerchantTribe.Commerce.BusinessRules.Workflow.RunByName(c, MerchantTribe.Commerce.BusinessRules.WorkflowNames.ProcessNewOrderAfterPayments);
                         Order tempOrder = BVApp.OrderServices.Orders.FindForCurrentStore(Basket.bvin);
-                        BVSoftware.Commerce.Integration.Current().OrderReceived(tempOrder, BVApp);
+                        MerchantTribe.Commerce.Integration.Current().OrderReceived(tempOrder, BVApp);
                         Response.Redirect("~/Receipt.aspx?id=" + Basket.bvin);
                     }
                     else

@@ -1,6 +1,6 @@
 <%@ Page Language="C#" MasterPageFile="~/BVAdmin/BVAdmin.master" AutoEventWireup="True" Inherits="BVCommerce.BVAdmin_Content_CategoryTemplatesEdit" title="Untitled Page" Codebehind="CategoryTemplatesEdit.aspx.cs" %>
 
-<%@ Register Assembly="BVSoftware.Commerce" Namespace="BVSoftware.Commerce" TagPrefix="cc1" %>
+<%@ Register Assembly="MerchantTribe.Commerce" Namespace="MerchantTribe.Commerce" TagPrefix="cc1" %>
 
 <%@ Register Src="../Controls/MessageBox.ascx" TagName="MessageBox" TagPrefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="Server">

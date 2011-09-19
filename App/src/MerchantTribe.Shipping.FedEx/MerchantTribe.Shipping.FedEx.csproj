@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9B00258D-45D2-43BD-8178-A6F2AAFF5090}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MerchantTribe.Shipping.FedEx</RootNamespace>
+    <AssemblyName>MerchantTribe.Shipping.FedEx</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EcmaScript.NET.modified, Version=0.1.1.0, Culture=neutral, PublicKeyToken=7d53ba4f537753a5, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\YUICompressor.NET.1.6.0.1\lib\net35\EcmaScript.NET.modified.dll</HintPath>
+    </Reference>
+    <Reference Include="MerchantTribe.Web, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\MerchantTribe.Web.1.2.0.0\lib\net4\MerchantTribe.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Yahoo.Yui.Compressor, Version=1.6.0.1, Culture=neutral, PublicKeyToken=f8b4b81ec75097e2, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\YUICompressor.NET.1.6.0.1\lib\net35\Yahoo.Yui.Compressor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Address.cs" />
+    <Compile Include="AlcoholPackageType.cs" />
+    <Compile Include="AlcoholType.cs" />
+    <Compile Include="CarrierCode.cs" />
+    <Compile Include="CodCode.cs" />
+    <Compile Include="CodFundType.cs" />
+    <Compile Include="Contact.cs" />
+    <Compile Include="DeliverySignatureType.cs" />
+    <Compile Include="DimensionsBlock.cs" />
+    <Compile Include="DimensionType.cs" />
+    <Compile Include="DropOffType.cs" />
+    <Compile Include="ErrorType.cs" />
+    <Compile Include="FedExConstants.cs" />
+    <Compile Include="FedExError.cs" />
+    <Compile Include="FedExGlobalServiceSettings.cs" />
+    <Compile Include="FedExProvider.cs" />
+    <Compile Include="FedExServiceSettings.cs" />
+    <Compile Include="Header.cs" />
+    <Compile Include="OversizeType.cs" />
+    <Compile Include="Package.cs" />
+    <Compile Include="PackageType.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RateCharge.cs" />
+    <Compile Include="RateEstimatedCharges.cs" />
+    <Compile Include="RateRequest.cs" />
+    <Compile Include="RateResponse.cs" />
+    <Compile Include="RateService.cs" />
+    <Compile Include="RateSpecialServices.cs" />
+    <Compile Include="ReturnShipmentIndicatorType.cs" />
+    <Compile Include="ScanInfo.cs" />
+    <Compile Include="ServiceType.cs" />
+    <Compile Include="ShipEntity.cs" />
+    <Compile Include="SubscriptionRequest.cs" />
+    <Compile Include="SubscriptionResponse.cs" />
+    <Compile Include="Surcharge.cs" />
+    <Compile Include="WeightType.cs" />
+    <Compile Include="XmlHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MerchantTribe.Shipping\MerchantTribe.Shipping.csproj">
+      <Project>{99A252BB-D844-4581-B924-4E59AE19857F}</Project>
+      <Name>MerchantTribe.Shipping</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

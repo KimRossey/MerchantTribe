@@ -1,7 +1,7 @@
 <%@ Page Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="True" Inherits="BVCommerce.Search" Title="Search" Codebehind="Search.aspx.cs" %>
 <%@ Register Src="~/BVModules/Controls/Pager.ascx" TagName="Pager" TagPrefix="uc3" %>
 <%@ Register Src="BVModules/Controls/MessageBox.ascx" TagName="MessageBox" TagPrefix="uc2" %>
-<%@ Import Namespace="BVSoftware.Commerce" %>
+<%@ Import Namespace="MerchantTribe.Commerce" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="Server">
     <h1>Search</h1>

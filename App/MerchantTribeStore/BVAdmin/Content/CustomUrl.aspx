@@ -44,7 +44,7 @@
     </asp:GridView>
     <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" EnablePaging="True" OldValuesParameterFormatString="original_{0}"
         SelectCountMethod="GetRowCount" SelectMethod="FindAll" 
-        TypeName="BVSoftware.Commerce.Content.CustomUrl" 
+        TypeName="MerchantTribe.Commerce.Content.CustomUrl" 
         onselected="ObjectDataSource1_Selected" 
         onselecting="ObjectDataSource1_Selecting">
         <SelectParameters>            

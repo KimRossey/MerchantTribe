@@ -2,14 +2,14 @@
 using System.Text;
 using System.Web;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Orders;
-using BVSoftware.Commerce.Catalog;
-using BVSoftware.Commerce.Membership;
-using BVSoftware.Commerce.Utilities;
-using BVSoftware.Commerce.Shipping;
-using BVSoftware.Commerce.Payment;
-using BVSoftware.Commerce.Content;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Orders;
+using MerchantTribe.Commerce.Catalog;
+using MerchantTribe.Commerce.Membership;
+using MerchantTribe.Commerce.Utilities;
+using MerchantTribe.Commerce.Shipping;
+using MerchantTribe.Commerce.Payment;
+using MerchantTribe.Commerce.Content;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Collections.Generic;
@@ -77,7 +77,7 @@ namespace BVCommerce.BVAdmin.Orders
                 {
                     // Render Options
                     this.phChoices.Controls.Add(new System.Web.UI.LiteralControl("<div id=\"options\">"));
-                    BVSoftware.Commerce.Utilities.HtmlRendering.ProductOptionsAsControls(p.Options, phChoices);
+                    MerchantTribe.Commerce.Utilities.HtmlRendering.ProductOptionsAsControls(p.Options, phChoices);
                     this.phChoices.Controls.Add(new System.Web.UI.LiteralControl("<div class=\"clear\"></div></div>"));
                     this.litProductInfo.Text = p.Sku + " | " + p.ProductName;
                 }
@@ -223,7 +223,7 @@ namespace BVCommerce.BVAdmin.Orders
                     Label ShippingStatusField = (Label)e.Row.FindControl("ShippingStatusField");
                     if (ShippingStatusField != null)
                     {
-                        ShippingStatusField.Text = BVSoftware.Commerce.Utilities.EnumToString.OrderShippingStatus(lineItem.ShippingStatus);
+                        ShippingStatusField.Text = MerchantTribe.Commerce.Utilities.EnumToString.OrderShippingStatus(lineItem.ShippingStatus);
                     }
 
                     if (lineItem.LineTotal != lineItem.LineTotalWithoutDiscounts)
@@ -262,15 +262,15 @@ namespace BVCommerce.BVAdmin.Orders
 
         private void RunOrderEditedWorkflow(BVOperationResult saveResult)
         {
-            BVSoftware.Commerce.BusinessRules.OrderTaskContext c = new BVSoftware.Commerce.BusinessRules.OrderTaskContext(BVApp);
+            MerchantTribe.Commerce.BusinessRules.OrderTaskContext c = new MerchantTribe.Commerce.BusinessRules.OrderTaskContext(BVApp);
             c.Order = BVApp.OrderServices.Orders.FindForCurrentStore(this.BvinField.Value);
             c.UserId = c.Order.UserID;
 
-            if (!BVSoftware.Commerce.BusinessRules.Workflow.RunByName(c, BVSoftware.Commerce.BusinessRules.WorkflowNames.OrderEdited))
+            if (!MerchantTribe.Commerce.BusinessRules.Workflow.RunByName(c, MerchantTribe.Commerce.BusinessRules.WorkflowNames.OrderEdited))
             {
-                foreach (BVSoftware.Commerce.BusinessRules.WorkflowMessage msg in c.Errors)
+                foreach (MerchantTribe.Commerce.BusinessRules.WorkflowMessage msg in c.Errors)
                 {
-                    EventLog.LogEvent("Order Edited Workflow", msg.Description, BVSoftware.Commerce.Metrics.EventLogSeverity.Error);
+                    EventLog.LogEvent("Order Edited Workflow", msg.Description, MerchantTribe.Commerce.Metrics.EventLogSeverity.Error);
                 }
                 if (!String.IsNullOrEmpty(saveResult.Message))
                 {
@@ -368,7 +368,7 @@ namespace BVCommerce.BVAdmin.Orders
             return result;
         }
 
-        void UserPicker1_UserSelected(BVSoftware.Commerce.Controls.UserSelectedEventArgs e)
+        void UserPicker1_UserSelected(MerchantTribe.Commerce.Controls.UserSelectedEventArgs e)
         {
             this.UserIdField.Value = e.UserAccount.Bvin;
         }
@@ -434,7 +434,7 @@ namespace BVCommerce.BVAdmin.Orders
 
             }
 
-            this.litShippingMethods.Text = BVSoftware.Commerce.Utilities.HtmlRendering.ShippingRatesToRadioButtons(Rates, 300, o.ShippingMethodUniqueKey);
+            this.litShippingMethods.Text = MerchantTribe.Commerce.Utilities.HtmlRendering.ShippingRatesToRadioButtons(Rates, 300, o.ShippingMethodUniqueKey);
         }
 
         protected void ItemsGridView_RowDeleting(object sender, GridViewDeleteEventArgs e)
@@ -525,7 +525,7 @@ namespace BVCommerce.BVAdmin.Orders
                         // Render Options
                         this.phChoices.Controls.Clear();
                         this.phChoices.Controls.Add(new System.Web.UI.LiteralControl("<div id=\"options\">"));
-                        BVSoftware.Commerce.Utilities.HtmlRendering.ProductOptionsAsControls(p.Options, phChoices);
+                        MerchantTribe.Commerce.Utilities.HtmlRendering.ProductOptionsAsControls(p.Options, phChoices);
                         this.phChoices.Controls.Add(new System.Web.UI.LiteralControl("<div class=\"clear\"></div></div>"));
                         this.litProductInfo.Text = p.Sku + " | " + p.ProductName;
                     }

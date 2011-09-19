@@ -5,15 +5,15 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Content;
-using BVSoftware.Commerce.Orders;
-using BVSoftware.Commerce.Utilities;
-using BVSoftware.Commerce.Shipping;
-using BVSoftware.PaypalWebServices;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Content;
+using MerchantTribe.Commerce.Orders;
+using MerchantTribe.Commerce.Utilities;
+using MerchantTribe.Commerce.Shipping;
+using MerchantTribe.PaypalWebServices;
 using MerchantTribe.Web.Geography;
 using com.paypal.soap.api;
-using BVSoftware.Commerce.Catalog;
+using MerchantTribe.Commerce.Catalog;
 
 namespace BVCommerce
 {
@@ -45,7 +45,7 @@ namespace BVCommerce
                     Order Basket = SessionManager.CurrentShoppingCart(BVApp.OrderServices);
 
                     // Save Shipping Selection
-                    BVSoftware.Commerce.Shipping.ShippingRateDisplay r = FindSelectedRate(this.ShippingRatesList.SelectedValue, Basket);
+                    MerchantTribe.Commerce.Shipping.ShippingRateDisplay r = FindSelectedRate(this.ShippingRatesList.SelectedValue, Basket);
                     BVApp.OrderServices.OrdersRequestShippingMethod(r, Basket);
                     BVApp.CalculateOrder(Basket);
                     SessionManager.SaveOrderCookies(Basket);
@@ -56,22 +56,22 @@ namespace BVCommerce
                     BVApp.OrderServices.Orders.Update(Basket);
 
                     // Save as Order
-                    BVSoftware.Commerce.BusinessRules.OrderTaskContext c 
-                        = new BVSoftware.Commerce.BusinessRules.OrderTaskContext(BVApp);
+                    MerchantTribe.Commerce.BusinessRules.OrderTaskContext c 
+                        = new MerchantTribe.Commerce.BusinessRules.OrderTaskContext(BVApp);
                     c.UserId = SessionManager.GetCurrentUserId();
                     c.Order = Basket;
 
-                    if (BVSoftware.Commerce.BusinessRules.Workflow.RunByName(c, BVSoftware.Commerce.BusinessRules.WorkflowNames.ProcessNewOrder))
+                    if (MerchantTribe.Commerce.BusinessRules.Workflow.RunByName(c, MerchantTribe.Commerce.BusinessRules.WorkflowNames.ProcessNewOrder))
                     {                                               
                         // Clear Cart ID because we're now an order
                         SessionManager.CurrentCartID = string.Empty;
 
                         // Process Payment
-                        if (BVSoftware.Commerce.BusinessRules.Workflow.RunByName(c, BVSoftware.Commerce.BusinessRules.WorkflowNames.ProcessNewOrderPayments))
+                        if (MerchantTribe.Commerce.BusinessRules.Workflow.RunByName(c, MerchantTribe.Commerce.BusinessRules.WorkflowNames.ProcessNewOrderPayments))
                         {                            
-                            BVSoftware.Commerce.BusinessRules.Workflow.RunByName(c, BVSoftware.Commerce.BusinessRules.WorkflowNames.ProcessNewOrderAfterPayments);
+                            MerchantTribe.Commerce.BusinessRules.Workflow.RunByName(c, MerchantTribe.Commerce.BusinessRules.WorkflowNames.ProcessNewOrderAfterPayments);
                             Order tempOrder = BVApp.OrderServices.Orders.FindForCurrentStore(Basket.bvin);
-                            BVSoftware.Commerce.Integration.Current().OrderReceived(tempOrder, BVApp);                            
+                            MerchantTribe.Commerce.Integration.Current().OrderReceived(tempOrder, BVApp);                            
                             Response.Redirect("~/Receipt.aspx?id=" + Basket.bvin);
                         }
                         else
@@ -84,7 +84,7 @@ namespace BVCommerce
                     else
                     {
                         // Show Errors                
-                        foreach (BVSoftware.Commerce.BusinessRules.WorkflowMessage item in c.GetCustomerVisibleErrors())
+                        foreach (MerchantTribe.Commerce.BusinessRules.WorkflowMessage item in c.GetCustomerVisibleErrors())
                         {
                             MessageBox1.ShowError(item.Description);
                         }
@@ -97,7 +97,7 @@ namespace BVCommerce
         {
             if ((Request.QueryString["token"] != null) && (Request.QueryString["token"] != string.Empty))
             {
-                PayPalAPI ppAPI = BVSoftware.Commerce.Utilities.PaypalExpressUtilities.GetPaypalAPI();
+                PayPalAPI ppAPI = MerchantTribe.Commerce.Utilities.PaypalExpressUtilities.GetPaypalAPI();
                 bool failed = false;
                 GetExpressCheckoutDetailsResponseType ppResponse = null;
                 try
@@ -107,10 +107,10 @@ namespace BVCommerce
                         if (!GetExpressCheckoutDetails(ppAPI, ref ppResponse))
                         {
                             failed = true;
-                            EventLog.LogEvent("Paypal Express Checkout", "GetExpressCheckoutDetails call failed. Detailed Errors will follow. ", BVSoftware.Commerce.Metrics.EventLogSeverity.Error);
+                            EventLog.LogEvent("Paypal Express Checkout", "GetExpressCheckoutDetails call failed. Detailed Errors will follow. ", MerchantTribe.Commerce.Metrics.EventLogSeverity.Error);
                             foreach (ErrorType ppError in ppResponse.Errors)
                             {
-                                EventLog.LogEvent("Paypal error number: " + ppError.ErrorCode, "Paypal Error: '" + ppError.ShortMessage + "' Message: '" + ppError.LongMessage + "' " + " Values passed to GetExpressCheckoutDetails: Token: " + Request.QueryString["token"], BVSoftware.Commerce.Metrics.EventLogSeverity.Error);
+                                EventLog.LogEvent("Paypal error number: " + ppError.ErrorCode, "Paypal Error: '" + ppError.ShortMessage + "' Message: '" + ppError.LongMessage + "' " + " Values passed to GetExpressCheckoutDetails: Token: " + Request.QueryString["token"], MerchantTribe.Commerce.Metrics.EventLogSeverity.Error);
                             }
                             MessageBox1.ShowError("An error occurred during the Paypal Express checkout. No charges have been made. Please try again.");
                             CheckoutImageButton.Visible = false;
@@ -197,7 +197,7 @@ namespace BVCommerce
         protected override void OnLoad(System.EventArgs e)
         {
             base.OnLoad(e);
-            BVSoftware.Commerce.Utilities.WebForms.MakePageNonCacheable(this);
+            MerchantTribe.Commerce.Utilities.WebForms.MakePageNonCacheable(this);
             this.CheckoutImageButton.Visible = true;
             if (!Page.IsPostBack)
             {
@@ -213,7 +213,7 @@ namespace BVCommerce
         {
             Order o = SessionManager.CurrentShoppingCart(BVApp.OrderServices);
 
-            BVSoftware.Commerce.Contacts.Address address = GetAddress();
+            MerchantTribe.Commerce.Contacts.Address address = GetAddress();
             if ((address != null))
             {
                 o.ShippingAddress = address;
@@ -262,12 +262,12 @@ namespace BVCommerce
             this.ShippingRatesList.DataValueField = "UniqueKey";
             this.ShippingRatesList.DataSource = Rates;
             this.ShippingRatesList.DataBind();
-            //this.litMain.Text = BVSoftware.Commerce.Utilities.HtmlRendering.ShippingRatesToRadioButtons(Rates, this.TabIndex, o.ShippingMethodUniqueKey);
+            //this.litMain.Text = MerchantTribe.Commerce.Utilities.HtmlRendering.ShippingRatesToRadioButtons(Rates, this.TabIndex, o.ShippingMethodUniqueKey);
         }
 
-        private BVSoftware.Commerce.Contacts.Address GetAddress()
+        private MerchantTribe.Commerce.Contacts.Address GetAddress()
         {
-            BVSoftware.Commerce.Contacts.Address a = new BVSoftware.Commerce.Contacts.Address();
+            MerchantTribe.Commerce.Contacts.Address a = new MerchantTribe.Commerce.Contacts.Address();
             Country country = Country.FindByISOCode((string)ViewState["CountryCode"]);
             if (country.Bvin == string.Empty)
             {
@@ -319,17 +319,17 @@ namespace BVCommerce
             }
         }
 
-        private BVSoftware.Commerce.Shipping.ShippingRateDisplay FindSelectedRate(string uniqueKey, Order o)
+        private MerchantTribe.Commerce.Shipping.ShippingRateDisplay FindSelectedRate(string uniqueKey, Order o)
         {
-            BVSoftware.Commerce.Shipping.ShippingRateDisplay result = null;
+            MerchantTribe.Commerce.Shipping.ShippingRateDisplay result = null;
 
-            BVSoftware.Commerce.Utilities.SortableCollection<BVSoftware.Commerce.Shipping.ShippingRateDisplay> rates = SessionManager.LastShippingRates;
+            MerchantTribe.Commerce.Utilities.SortableCollection<MerchantTribe.Commerce.Shipping.ShippingRateDisplay> rates = SessionManager.LastShippingRates;
             if ((rates == null) | (rates.Count < 1))
             {
                 rates = BVApp.OrderServices.FindAvailableShippingRates(o);
             }
 
-            foreach (BVSoftware.Commerce.Shipping.ShippingRateDisplay r in rates)
+            foreach (MerchantTribe.Commerce.Shipping.ShippingRateDisplay r in rates)
             {
                 if (r.UniqueKey == uniqueKey)
                 {
@@ -378,12 +378,12 @@ namespace BVCommerce
 
             if (SessionManager.CategoryLastId != string.Empty)
             {
-                BVSoftware.Commerce.Catalog.Category c = BVApp.CatalogServices.Categories.Find(SessionManager.CategoryLastId);
+                MerchantTribe.Commerce.Catalog.Category c = BVApp.CatalogServices.Categories.Find(SessionManager.CategoryLastId);
                 if (c != null)
                 {
                     if (c.Bvin != string.Empty)
                     {
-                        destination = BVSoftware.Commerce.Utilities.UrlRewriter.BuildUrlForCategory(new CategorySnapshot(c), BVApp.CurrentRequestContext.RoutingContext);
+                        destination = MerchantTribe.Commerce.Utilities.UrlRewriter.BuildUrlForCategory(new CategorySnapshot(c), BVApp.CurrentRequestContext.RoutingContext);
                     }
                 }
             }
@@ -395,7 +395,7 @@ namespace BVCommerce
         {
             Order o = SessionManager.CurrentShoppingCart(BVApp.OrderServices);
 
-            PayPalAPI ppAPI = BVSoftware.Commerce.Utilities.PaypalExpressUtilities.GetPaypalAPI();
+            PayPalAPI ppAPI = MerchantTribe.Commerce.Utilities.PaypalExpressUtilities.GetPaypalAPI();
             try
             {
                 string cartReturnUrl = BVApp.CurrentStore.RootUrlSecure() + "paypalexpresscheckout";
@@ -431,7 +431,7 @@ namespace BVCommerce
                 {
                     foreach (ErrorType ppError in expressResponse.Errors)
                     {
-                        EventLog.LogEvent("Paypal error number: " + ppError.ErrorCode, "Paypal Error: '" + ppError.ShortMessage + "' Message: '" + ppError.LongMessage + "' " + " Values passed to SetExpressCheckout: Total=" + string.Format("{0:c}", o.TotalOrderBeforeDiscounts) + " Cart Return Url: " + cartReturnUrl + " Cart Cancel Url: " + cartCancelUrl, BVSoftware.Commerce.Metrics.EventLogSeverity.Error);
+                        EventLog.LogEvent("Paypal error number: " + ppError.ErrorCode, "Paypal Error: '" + ppError.ShortMessage + "' Message: '" + ppError.LongMessage + "' " + " Values passed to SetExpressCheckout: Total=" + string.Format("{0:c}", o.TotalOrderBeforeDiscounts) + " Cart Return Url: " + cartReturnUrl + " Cart Cancel Url: " + cartCancelUrl, MerchantTribe.Commerce.Metrics.EventLogSeverity.Error);
                     }
                 }
             }

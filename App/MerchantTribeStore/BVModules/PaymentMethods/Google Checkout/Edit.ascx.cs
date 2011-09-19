@@ -1,13 +1,13 @@
 using System;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Content;
-using BVSoftware.Commerce.Payment;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Content;
+using MerchantTribe.Commerce.Payment;
 using System.Collections.ObjectModel;
-using BVSoftware.Commerce.Controls;
+using MerchantTribe.Commerce.Controls;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
-using BVSoftware.Shipping;
+using MerchantTribe.Shipping;
 
 namespace BVCommerce
 {
@@ -66,7 +66,7 @@ namespace BVCommerce
 
             this.DefaultShippingTypeRadioButtonList.SelectedValue = ((int)MyPage.BVApp.CurrentStore.Settings.GoogleCheckout.DefaultShippingType).ToString();
 
-            BVSoftware.Commerce.Utilities.SerializableDictionary<string, decimal> defaultShippingValues = MyPage.BVApp.CurrentStore.Settings.GoogleCheckout.DefaultShippingValues;
+            MerchantTribe.Commerce.Utilities.SerializableDictionary<string, decimal> defaultShippingValues = MyPage.BVApp.CurrentStore.Settings.GoogleCheckout.DefaultShippingValues;
             foreach (System.Web.UI.Control control in ShippingSettingsPlaceHolder.Controls)
             {
                 if (control is System.Web.UI.HtmlControls.HtmlTableRow)
@@ -129,7 +129,7 @@ namespace BVCommerce
             MyPage.BVApp.CurrentStore.Settings.GoogleCheckout.DefaultShippingAmount = decimal.Parse(this.BaseDefaultShippingTextBox.Text, System.Globalization.NumberStyles.Currency);
             MyPage.BVApp.CurrentStore.Settings.GoogleCheckout.DefaultShippingType = (GoogleDefaultShippingTypes)int.Parse(this.DefaultShippingTypeRadioButtonList.SelectedValue);
 
-            BVSoftware.Commerce.Utilities.SerializableDictionary<string, decimal> defaultShippingValues = new BVSoftware.Commerce.Utilities.SerializableDictionary<string, decimal>();
+            MerchantTribe.Commerce.Utilities.SerializableDictionary<string, decimal> defaultShippingValues = new MerchantTribe.Commerce.Utilities.SerializableDictionary<string, decimal>();
             foreach (System.Web.UI.Control control in ShippingSettingsPlaceHolder.Controls)
             {
                 if (control is System.Web.UI.HtmlControls.HtmlTableRow)
@@ -172,9 +172,9 @@ namespace BVCommerce
         {
             Collection<string> methods = new Collection<string>();
             int count = 1;
-            foreach (BVSoftware.Commerce.Shipping.ShippingMethod method in MyPage.BVApp.OrderServices.ShippingMethods.FindAll(MyPage.BVApp.CurrentStore.Id))
+            foreach (MerchantTribe.Commerce.Shipping.ShippingMethod method in MyPage.BVApp.OrderServices.ShippingMethods.FindAll(MyPage.BVApp.CurrentStore.Id))
             {
-                IShippingService provider = BVSoftware.Commerce.Shipping.AvailableServices.FindById(method.ShippingProviderId, CurrentStore);
+                IShippingService provider = MerchantTribe.Commerce.Shipping.AvailableServices.FindById(method.ShippingProviderId, CurrentStore);
                 if (provider != null)
                 {
                     //foreach (string newMethod in provider.GetSelectedShippingNames(method)) {
@@ -191,7 +191,7 @@ namespace BVCommerce
                     //    count += 1;
                     //    cell2.Controls.Add(textBox);
 
-                    //    BVSoftware.Commerce.Controls.BVCustomValidator validator = new BVSoftware.Commerce.Controls.BVCustomValidator();
+                    //    MerchantTribe.Commerce.Controls.BVCustomValidator validator = new MerchantTribe.Commerce.Controls.BVCustomValidator();
                     //    validator.ControlToValidate = textBox.ID;
                     //    validator.ErrorMessage = newMethod + " Default Shipping Amount Must Be A Valid Monetary Amount.";
                     //    validator.Text = " *";

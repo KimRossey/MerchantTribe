@@ -8,8 +8,8 @@ namespace BVCommerce.api.rest
     public class BaseRestHandler: IRestHandler
     {
 
-        public BVSoftware.Commerce.BVApplication BVApp {get;set;}
-        public BaseRestHandler(BVSoftware.Commerce.BVApplication app)
+        public MerchantTribe.Commerce.BVApplication BVApp {get;set;}
+        public BaseRestHandler(MerchantTribe.Commerce.BVApplication app)
         {
             this.BVApp = app;
         }

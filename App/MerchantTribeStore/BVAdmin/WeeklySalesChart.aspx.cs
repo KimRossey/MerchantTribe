@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.IO;
-using BVSoftware.Commerce.Reporting;
+using MerchantTribe.Commerce.Reporting;
 using System.Drawing;
 using System.Web.UI.DataVisualization;
 using System.Web.UI.DataVisualization.Charting;

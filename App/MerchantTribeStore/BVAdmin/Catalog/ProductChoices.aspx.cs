@@ -1,9 +1,9 @@
 using System.Text;
 using System.Web.UI;
 using System.Collections.Generic;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Catalog;
-using BVSoftware.Commerce.Membership;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Catalog;
+using MerchantTribe.Commerce.Membership;
 
 namespace BVCommerce
 {
@@ -248,7 +248,7 @@ namespace BVCommerce
                 else
                 {
                     this.MessageBox1.ShowError("Unable to associate choice with product. An Administrator has been alerted to the issue.");
-                    EventLog.LogEvent("ProductChoices.aspx", "Could not associate choice " + opt.Bvin + " with product " + productBvin, BVSoftware.Commerce.Metrics.EventLogSeverity.Error);
+                    EventLog.LogEvent("ProductChoices.aspx", "Could not associate choice " + opt.Bvin + " with product " + productBvin, MerchantTribe.Commerce.Metrics.EventLogSeverity.Error);
                 }
             }
 

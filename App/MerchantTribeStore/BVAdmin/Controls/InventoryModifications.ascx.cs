@@ -1,8 +1,8 @@
 using System;
 using System.Web.UI.WebControls;
 using System.Web.UI.HtmlControls;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Controls;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Controls;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
 
@@ -81,7 +81,7 @@ namespace BVCommerce
 
         }
 
-        public bool PostChanges(BVSoftware.Commerce.Catalog.ProductInventory item)
+        public bool PostChanges(MerchantTribe.Commerce.Catalog.ProductInventory item)
         {
             bool process = false;
             Collection<ModificationControlBase> controls = new Collection<ModificationControlBase>();
@@ -137,7 +137,7 @@ namespace BVCommerce
             return result;
         }
 
-        protected void MakeChanges(ModificationControl<int> control, BVSoftware.Commerce.Catalog.ProductInventory item)
+        protected void MakeChanges(ModificationControl<int> control, MerchantTribe.Commerce.Catalog.ProductInventory item)
         {
             if (control.ID == "QuantityAvailableIntegerModifierField")
             {
@@ -157,12 +157,12 @@ namespace BVCommerce
             }
         }
 
-        protected void MakeChanges(ModificationControl<double> control, BVSoftware.Commerce.Catalog.ProductInventory item)
+        protected void MakeChanges(ModificationControl<double> control, MerchantTribe.Commerce.Catalog.ProductInventory item)
         {
             throw new ControlNotFoundException(control.ID);
         }
 
-        protected void MakeChanges(ModificationControl<decimal> control, BVSoftware.Commerce.Catalog.ProductInventory item)
+        protected void MakeChanges(ModificationControl<decimal> control, MerchantTribe.Commerce.Catalog.ProductInventory item)
         {
             throw new ControlNotFoundException(control.ID);
         }

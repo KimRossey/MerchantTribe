@@ -4,8 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce.Accounts;
-using BVSoftware.Billing;
+using MerchantTribe.Commerce.Accounts;
+using MerchantTribe.Billing;
 using System.Text;
 using System.Configuration;
 
@@ -18,7 +18,7 @@ namespace BVCommerce
         {
             base.OnLoad(e);
 
-            if (BVSoftware.Commerce.WebAppSettings.IsIndividualMode)
+            if (MerchantTribe.Commerce.WebAppSettings.IsIndividualMode)
             {
                 this.pnlBilling.Visible = false;
             }
@@ -81,7 +81,7 @@ namespace BVCommerce
 
         private void RenderStore(Store s, StringBuilder sb)
         {
-            bool isIndividual = BVSoftware.Commerce.WebAppSettings.IsIndividualMode;
+            bool isIndividual = MerchantTribe.Commerce.WebAppSettings.IsIndividualMode;
 
             if (s != null)
             {
@@ -110,7 +110,7 @@ namespace BVCommerce
         }
         private void LoadBilling(UserAccount u)
         {
-            BVSoftware.Billing.Service svc = new BVSoftware.Billing.Service(BVSoftware.Commerce.WebAppSettings.ApplicationConnectionString);
+            MerchantTribe.Billing.Service svc = new MerchantTribe.Billing.Service(MerchantTribe.Commerce.WebAppSettings.ApplicationConnectionString);
             BillingAccount act = svc.Accounts.FindOrCreate(u.Email);
             if (act != null)
             {
@@ -126,7 +126,7 @@ namespace BVCommerce
         protected void btnUpdateCreditCard_Click(object sender, EventArgs e)
         {
             UserAccount u = GetCorrectUser();
-            BVSoftware.Billing.Service svc = new BVSoftware.Billing.Service(BVSoftware.Commerce.WebAppSettings.ApplicationConnectionString);
+            MerchantTribe.Billing.Service svc = new MerchantTribe.Billing.Service(MerchantTribe.Commerce.WebAppSettings.ApplicationConnectionString);
             BillingAccount act = svc.Accounts.FindOrCreate(u.Email);
 
             MerchantTribe.Payment.CardData data = this.CreditCardInput1.GetCardData();

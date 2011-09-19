@@ -1,12 +1,12 @@
 using System.Collections.ObjectModel;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Membership;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Membership;
 using System;
 
 namespace BVCommerce
 {
 
-    partial class BVModules_Controls_AdminPanel : BVSoftware.Commerce.Content.BVUserControl
+    partial class BVModules_Controls_AdminPanel : MerchantTribe.Commerce.Content.BVUserControl
     {
 
         protected override void OnLoad(System.EventArgs e)

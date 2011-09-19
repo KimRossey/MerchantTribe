@@ -1,6 +1,6 @@
 using System;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce;
+using MerchantTribe.Commerce;
 
 namespace BVCommerce
 {
@@ -28,7 +28,7 @@ namespace BVCommerce
             base.OnPreInit(e);
             this.PageTitle = "Price Groups";
             this.CurrentTab = AdminTabType.People;
-            ValidateCurrentUserHasPermission(BVSoftware.Commerce.Membership.SystemPermissions.PeopleView);
+            ValidateCurrentUserHasPermission(MerchantTribe.Commerce.Membership.SystemPermissions.PeopleView);
         }
 
         protected void SaveImageButton_Click(object sender, System.Web.UI.ImageClickEventArgs e)
@@ -36,7 +36,7 @@ namespace BVCommerce
             foreach (GridViewRow row in PricingGroupsGridView.Rows)
             {
                 string key = (string)PricingGroupsGridView.DataKeys[row.RowIndex].Value;
-                BVSoftware.Commerce.Contacts.PriceGroup pricingGroup = BVApp.ContactServices.PriceGroups.Find(key);
+                MerchantTribe.Commerce.Contacts.PriceGroup pricingGroup = BVApp.ContactServices.PriceGroups.Find(key);
 
                 TextBox NameTextBox = (TextBox)row.FindControl("NameTextBox");
                 DropDownList PricingTypeDropDownList = (DropDownList)row.FindControl("PricingTypeDropDownList");
@@ -51,7 +51,7 @@ namespace BVCommerce
 
                 if ((int)pricingGroup.PricingType != int.Parse(PricingTypeDropDownList.SelectedValue))
                 {
-                    pricingGroup.PricingType = (BVSoftware.Commerce.Contacts.PricingTypes)int.Parse(PricingTypeDropDownList.SelectedValue);
+                    pricingGroup.PricingType = (MerchantTribe.Commerce.Contacts.PricingTypes)int.Parse(PricingTypeDropDownList.SelectedValue);
                     needToUpdate = true;
                 }
 
@@ -75,7 +75,7 @@ namespace BVCommerce
             {
                 if (e.Row.DataItem != null)
                 {
-                    BVSoftware.Commerce.Contacts.PriceGroup pricingGroup = (BVSoftware.Commerce.Contacts.PriceGroup)e.Row.DataItem;
+                    MerchantTribe.Commerce.Contacts.PriceGroup pricingGroup = (MerchantTribe.Commerce.Contacts.PriceGroup)e.Row.DataItem;
                     ((TextBox)e.Row.FindControl("NameTextBox")).Text = pricingGroup.Name;
                     ((DropDownList)e.Row.FindControl("PricingTypeDropDownList")).SelectedValue = ((int)pricingGroup.PricingType).ToString();
                     ((TextBox)e.Row.FindControl("AdjustmentAmountTextBox")).Text = pricingGroup.AdjustmentAmount.ToString("N");
@@ -85,7 +85,7 @@ namespace BVCommerce
 
         protected void AddNewImageButton_Click(object sender, System.Web.UI.ImageClickEventArgs e)
         {
-            BVSoftware.Commerce.Contacts.PriceGroup pricingGroup = new BVSoftware.Commerce.Contacts.PriceGroup();
+            MerchantTribe.Commerce.Contacts.PriceGroup pricingGroup = new MerchantTribe.Commerce.Contacts.PriceGroup();
             pricingGroup.Name = "New Pricing Group";
             if (BVApp.ContactServices.PriceGroups.Create(pricingGroup))
             {

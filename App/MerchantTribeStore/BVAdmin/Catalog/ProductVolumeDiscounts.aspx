@@ -1,5 +1,5 @@
 <%@ Page Language="C#" MasterPageFile="~/BVAdmin/BVAdminNav.master" AutoEventWireup="True" Inherits="BVCommerce.BVAdmin_Catalog_ProductVolumeDiscounts" title="Untitled Page" Codebehind="ProductVolumeDiscounts.aspx.cs" %>
-<%@ Register Assembly="BVSoftware.Commerce" Namespace="BVSoftware.Commerce" TagPrefix="cc1" %>
+<%@ Register Assembly="MerchantTribe.Commerce" Namespace="MerchantTribe.Commerce" TagPrefix="cc1" %>
 <%@ Register Src="../Controls/MessageBox.ascx" TagName="MessageBox" TagPrefix="uc1" %>
 <%@ Register src="../Controls/ProductEditMenu.ascx" tagname="ProductEditMenu" tagprefix="uc5" %>
 <%@ Register src="../Controls/ProductEditingDisplay.ascx" tagname="ProductEditing" tagprefix="uc5" %>

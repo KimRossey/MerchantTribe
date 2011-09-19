@@ -1,9 +1,9 @@
-using BVSoftware.Commerce;
+using MerchantTribe.Commerce;
 
 namespace BVCommerce
 {
 
-    partial class BVModules_Controls_EmailAddressEntry : BVSoftware.Commerce.Content.BVUserControl
+    partial class BVModules_Controls_EmailAddressEntry : MerchantTribe.Commerce.Content.BVUserControl
     {
 
         private int _tabIndex = -1;

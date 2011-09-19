@@ -1,8 +1,8 @@
 using System;
 using System.Web;
 using System.Text;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Content;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Content;
 using System.Collections.Specialized;
 
 namespace BVCommerce

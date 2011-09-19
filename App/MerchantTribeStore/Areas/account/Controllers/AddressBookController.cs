@@ -3,9 +3,9 @@ using System.Web.Mvc;
 using BVCommerce.Controllers.Shared;
 using BVCommerce.Filters;
 using BVCommerce.Models;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Contacts;
-using BVSoftware.Commerce.Membership;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Contacts;
+using MerchantTribe.Commerce.Membership;
 
 namespace BVCommerce.Areas.account.Controllers
 {
@@ -77,11 +77,11 @@ namespace BVCommerce.Areas.account.Controllers
                 switch (bvin.ToLower())
                 {
                     case "new":
-                        BVSoftware.Commerce.Contacts.Address a = new BVSoftware.Commerce.Contacts.Address();
+                        MerchantTribe.Commerce.Contacts.Address a = new MerchantTribe.Commerce.Contacts.Address();
                         a.Bvin = System.Guid.NewGuid().ToString();
                         return a;                        
                     default:
-                        foreach (BVSoftware.Commerce.Contacts.Address a2 in u.Addresses)
+                        foreach (MerchantTribe.Commerce.Contacts.Address a2 in u.Addresses)
                         {
                             if (a2.Bvin == bvin)
                             {

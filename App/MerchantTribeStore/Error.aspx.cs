@@ -1,6 +1,6 @@
 using System.Web;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Content;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Content;
 
 namespace BVCommerce
 {
@@ -65,7 +65,7 @@ namespace BVCommerce
                     requested = Request.RawUrl;
                 }
                                 
-                    BVSoftware.Commerce.Content.CustomUrl url = BVApp.ContentServices.CustomUrls.FindByRequestedUrl(requested);
+                    MerchantTribe.Commerce.Content.CustomUrl url = BVApp.ContentServices.CustomUrls.FindByRequestedUrl(requested);
                     if (url != null)
                     {
                         if (url.Bvin != string.Empty)

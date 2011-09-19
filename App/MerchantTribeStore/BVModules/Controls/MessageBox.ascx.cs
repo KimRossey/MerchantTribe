@@ -1,11 +1,11 @@
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce.Content;
+using MerchantTribe.Commerce.Content;
 
 namespace BVCommerce
 {
 
-    partial class BVModules_Controls_MessageBox : BVSoftware.Commerce.Content.BVUserControl, IMessageBox
+    partial class BVModules_Controls_MessageBox : MerchantTribe.Commerce.Content.BVUserControl, IMessageBox
     {
 
         public void ShowOk(string msg)
@@ -39,7 +39,7 @@ namespace BVCommerce
             ShowMessage(msg, DisplayMessageType.Exception);
         }
 
-        public void ShowMessage(string msg, BVSoftware.Commerce.Content.DisplayMessageType msgType)
+        public void ShowMessage(string msg, MerchantTribe.Commerce.Content.DisplayMessageType msgType)
         {
             this.pnlMain.Visible = true;
             HtmlGenericControl li = new HtmlGenericControl("li");
@@ -71,17 +71,17 @@ namespace BVCommerce
         {
             switch (msgType)
             {
-                case BVSoftware.Commerce.Content.DisplayMessageType.Error:
+                case MerchantTribe.Commerce.Content.DisplayMessageType.Error:
                     return MyPage.BVApp.ThemeManager().ButtonUrl("messageerror", Request.IsSecureConnection);
-                case BVSoftware.Commerce.Content.DisplayMessageType.Exception:
+                case MerchantTribe.Commerce.Content.DisplayMessageType.Exception:
                     return MyPage.BVApp.ThemeManager().ButtonUrl("messageexception", Request.IsSecureConnection);
-                case BVSoftware.Commerce.Content.DisplayMessageType.Information:
+                case MerchantTribe.Commerce.Content.DisplayMessageType.Information:
                     return MyPage.BVApp.ThemeManager().ButtonUrl("messageinformation", Request.IsSecureConnection);
-                case BVSoftware.Commerce.Content.DisplayMessageType.Question:
+                case MerchantTribe.Commerce.Content.DisplayMessageType.Question:
                     return MyPage.BVApp.ThemeManager().ButtonUrl("messagequestion", Request.IsSecureConnection);
-                case BVSoftware.Commerce.Content.DisplayMessageType.Success:
+                case MerchantTribe.Commerce.Content.DisplayMessageType.Success:
                     return MyPage.BVApp.ThemeManager().ButtonUrl("messageok", Request.IsSecureConnection);
-                case BVSoftware.Commerce.Content.DisplayMessageType.Warning:
+                case MerchantTribe.Commerce.Content.DisplayMessageType.Warning:
                     return MyPage.BVApp.ThemeManager().ButtonUrl("messagewarning", Request.IsSecureConnection);
             }
             return string.Empty;

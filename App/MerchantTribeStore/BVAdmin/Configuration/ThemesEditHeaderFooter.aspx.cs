@@ -5,9 +5,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce.Content;
-using BVSoftware.Commerce.Membership;
-using BVSoftware.Commerce.Storage;
+using MerchantTribe.Commerce.Content;
+using MerchantTribe.Commerce.Membership;
+using MerchantTribe.Commerce.Storage;
 
 namespace BVCommerce
 {
@@ -33,11 +33,11 @@ namespace BVCommerce
         private void LoadTheInfo(string themeId)
         {
             this.litheader.Text = "<textarea id=\"headerhtml\" name=\"headerhtml\" style=\"width:700px;height:180px;\" wrap=\"false\">";
-            this.litheader.Text += BVSoftware.Commerce.Storage.DiskStorage.ReadCustomHeader(BVApp.CurrentStore.Id, themeId);
+            this.litheader.Text += MerchantTribe.Commerce.Storage.DiskStorage.ReadCustomHeader(BVApp.CurrentStore.Id, themeId);
             this.litheader.Text += "</textarea>";
 
             this.litFooter.Text = "<textarea id=\"footerhtml\" name=\"footerhtml\" style=\"width:700px;height:180px;\" wrap=\"false\">";
-            this.litFooter.Text += BVSoftware.Commerce.Storage.DiskStorage.ReadCustomFooter(BVApp.CurrentStore.Id, themeId);
+            this.litFooter.Text += MerchantTribe.Commerce.Storage.DiskStorage.ReadCustomFooter(BVApp.CurrentStore.Id, themeId);
             this.litFooter.Text += "</textarea>";
 
             this.litIdField.Text = "<input type=\"hidden\" id=\"themeidfield\" name=\"themeidfield\" value=\"" + themeId + "\" />";
@@ -50,10 +50,10 @@ namespace BVCommerce
             string headerhtml = Request.Form["headerhtml"];
             string footerhtml = Request.Form["footerhtml"];
 
-            bool result = BVSoftware.Commerce.Storage.DiskStorage.WriteCustomFooter(BVApp.CurrentStore.Id, themeId, footerhtml);
+            bool result = MerchantTribe.Commerce.Storage.DiskStorage.WriteCustomFooter(BVApp.CurrentStore.Id, themeId, footerhtml);
             if (result)
             {
-                result = BVSoftware.Commerce.Storage.DiskStorage.WriteCustomHeader(BVApp.CurrentStore.Id, themeId, headerhtml);
+                result = MerchantTribe.Commerce.Storage.DiskStorage.WriteCustomHeader(BVApp.CurrentStore.Id, themeId, headerhtml);
             }
 
             if (result)

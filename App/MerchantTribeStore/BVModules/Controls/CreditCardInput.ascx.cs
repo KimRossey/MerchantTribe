@@ -1,15 +1,15 @@
 
-using BVSoftware.Commerce;
+using MerchantTribe.Commerce;
 using System.Collections.ObjectModel;
 using MerchantTribe.Web.Validation;
 using System.Collections.Generic;
-using BVSoftware.Commerce.Orders;
+using MerchantTribe.Commerce.Orders;
 using MerchantTribe.Payment;
 
 namespace BVCommerce
 {
 
-    partial class BVModules_Controls_CreditCardInput : BVSoftware.Commerce.Content.BVUserControl, MerchantTribe.Web.Validation.IValidatable
+    partial class BVModules_Controls_CreditCardInput : MerchantTribe.Commerce.Content.BVUserControl, MerchantTribe.Web.Validation.IValidatable
     {
 
         private int _tabIndex = -1;

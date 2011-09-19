@@ -1,15 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.BusinessRules;
-using BVSoftware.Commerce.Catalog;
-using BVSoftware.Commerce.Contacts;
-using BVSoftware.Commerce.Content;
-using BVSoftware.Commerce.Membership;
-using BVSoftware.Commerce.Orders;
-using BVSoftware.Commerce.Utilities;
-using BVSoftware.Commerce.Payment;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.BusinessRules;
+using MerchantTribe.Commerce.Catalog;
+using MerchantTribe.Commerce.Contacts;
+using MerchantTribe.Commerce.Content;
+using MerchantTribe.Commerce.Membership;
+using MerchantTribe.Commerce.Orders;
+using MerchantTribe.Commerce.Utilities;
+using MerchantTribe.Commerce.Payment;
 
 namespace BVCommerce
 {
@@ -52,7 +52,7 @@ namespace BVCommerce
             Page.ClientScript.RegisterClientScriptInclude("checkoutscripts", scriptPath);
         }
        
-        private BVSoftware.Commerce.Contacts.Address GetBillingAddress()
+        private MerchantTribe.Commerce.Contacts.Address GetBillingAddress()
         {
             return this.AddressBilling1.GetAsAddress();
         }
@@ -113,9 +113,9 @@ namespace BVCommerce
                     SessionManager.CurrentPaymentPendingCartId = string.Empty;
 
                     // Process Post Payment Stuff                    
-                    BVSoftware.Commerce.BusinessRules.Workflow.RunByName(c, BVSoftware.Commerce.BusinessRules.WorkflowNames.ProcessNewOrderAfterPayments);
+                    MerchantTribe.Commerce.BusinessRules.Workflow.RunByName(c, MerchantTribe.Commerce.BusinessRules.WorkflowNames.ProcessNewOrderAfterPayments);
                     Order tempOrder = BVApp.OrderServices.Orders.FindForCurrentStore(Basket.bvin);
-                    BVSoftware.Commerce.Integration.Current().OrderReceived(tempOrder, BVApp);
+                    MerchantTribe.Commerce.Integration.Current().OrderReceived(tempOrder, BVApp);
                     Response.Redirect("~/Receipt.aspx?id=" + Basket.bvin);                    
                 }
                 else

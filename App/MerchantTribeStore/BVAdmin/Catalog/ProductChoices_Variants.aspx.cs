@@ -2,8 +2,8 @@ using System.Text;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Collections.Generic;
-using BVSoftware.Commerce.Catalog;
-using BVSoftware.Commerce.Membership;
+using MerchantTribe.Commerce.Catalog;
+using MerchantTribe.Commerce.Membership;
 
 namespace BVCommerce
 {
@@ -211,7 +211,7 @@ namespace BVCommerce
 
                 if (this.dialognewFile.HasFile)
                 {
-                    BVSoftware.Commerce.Storage.DiskStorage.UploadProductVariantImage(this.BVApp.CurrentStore.Id, this.productBvin, item.Bvin, this.dialognewFile.PostedFile);
+                    MerchantTribe.Commerce.Storage.DiskStorage.UploadProductVariantImage(this.BVApp.CurrentStore.Id, this.productBvin, item.Bvin, this.dialognewFile.PostedFile);
                 }
                 BVApp.CatalogServices.ProductVariants.Update(item);
 

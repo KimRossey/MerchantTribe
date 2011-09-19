@@ -1,8 +1,8 @@
 using System;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce.Contacts;
-using BVSoftware.Commerce.Content;
-using BVSoftware.Commerce;
+using MerchantTribe.Commerce.Contacts;
+using MerchantTribe.Commerce.Content;
+using MerchantTribe.Commerce;
 using System.Collections.Generic;
 
 namespace BVCommerce
@@ -126,7 +126,7 @@ namespace BVCommerce
             base.OnPreInit(e);
             this.PageTitle = "Edit Affiliate";
             this.CurrentTab = AdminTabType.People;
-            ValidateCurrentUserHasPermission(BVSoftware.Commerce.Membership.SystemPermissions.PeopleView);
+            ValidateCurrentUserHasPermission(MerchantTribe.Commerce.Membership.SystemPermissions.PeopleView);
         }
 
         protected void btnCancel_Click(object sender, System.Web.UI.ImageClickEventArgs e)

@@ -1,11 +1,11 @@
 using System;
 using System.Web;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce.Membership;
-using BVSoftware.Commerce.Orders;
-using BVSoftware.Commerce.Catalog;
-using BVSoftware.Commerce.Contacts;
-using BVSoftware.Commerce;
+using MerchantTribe.Commerce.Membership;
+using MerchantTribe.Commerce.Orders;
+using MerchantTribe.Commerce.Catalog;
+using MerchantTribe.Commerce.Contacts;
+using MerchantTribe.Commerce;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
@@ -136,7 +136,7 @@ namespace BVCommerce
         }
         private void LoadSearchResults()
         {
-            List<BVSoftware.Commerce.Metrics.SearchQuery> sr = new List<BVSoftware.Commerce.Metrics.SearchQuery>();
+            List<MerchantTribe.Commerce.Metrics.SearchQuery> sr = new List<MerchantTribe.Commerce.Metrics.SearchQuery>();
             int totalCount = 0;
             sr = BVApp.MetricsSerices.SearchQueries.FindByShopperId(this.BvinField.Value.ToString(), 1, 50, ref totalCount);
 

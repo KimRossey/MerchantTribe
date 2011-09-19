@@ -2,9 +2,9 @@ using System;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce.Contacts;
-using BVSoftware.Commerce.Membership;
-using BVSoftware.Commerce.Orders;
+using MerchantTribe.Commerce.Contacts;
+using MerchantTribe.Commerce.Membership;
+using MerchantTribe.Commerce.Orders;
 
 namespace BVCommerce
 {

@@ -55,7 +55,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVSoftware.Commerce.Controls.BVRequiredFieldValidator RequiredVal1;
+        protected global::MerchantTribe.Commerce.Controls.BVRequiredFieldValidator RequiredVal1;
         
         /// <summary>
         /// RedirectToUrlField control.
@@ -73,7 +73,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVSoftware.Commerce.Controls.BVRequiredFieldValidator RequiredVal2;
+        protected global::MerchantTribe.Commerce.Controls.BVRequiredFieldValidator RequiredVal2;
         
         /// <summary>
         /// chkPermanent control.

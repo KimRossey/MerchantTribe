@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using BVSoftware.Commerce;
+using MerchantTribe.Commerce;
 using System.Web.Mvc;
 using System.Text;
 using System.Web.UI;
@@ -130,7 +130,7 @@ namespace BVCommerce.Helpers
             return sb.ToString();
         }
 
-        public static string SuperHeader(BVSoftware.Commerce.Accounts.Store currentStore)
+        public static string SuperHeader(MerchantTribe.Commerce.Accounts.Store currentStore)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("<div id=\"header\">");
@@ -152,7 +152,7 @@ namespace BVCommerce.Helpers
 
             return sb.ToString();
         }
-        private static string RenderSuperMenu(BVSoftware.Commerce.Accounts.Store currentStore)
+        private static string RenderSuperMenu(MerchantTribe.Commerce.Accounts.Store currentStore)
         {
             StringBuilder sb = new StringBuilder();
             AdminTabType tab = AdminTabType.None;
@@ -178,7 +178,7 @@ namespace BVCommerce.Helpers
 
             return sb.ToString();
         }
-        public static string AdminHeader(BVSoftware.Commerce.Accounts.Store currentStore, AdminTabType selectedTab)
+        public static string AdminHeader(MerchantTribe.Commerce.Accounts.Store currentStore, AdminTabType selectedTab)
         {                        
             StringBuilder sb = new StringBuilder();
             sb.Append("<div id=\"header\">");
@@ -205,14 +205,14 @@ namespace BVCommerce.Helpers
             return sb.ToString();
         }
 
-        private static string LoadVersion(BVSoftware.Commerce.Accounts.Store currentStore)        
+        private static string LoadVersion(MerchantTribe.Commerce.Accounts.Store currentStore)        
         {            
             string result = "Admin for " + currentStore.Settings.FriendlyName + ": ";
             result += WebAppSettings.BvcProductName + " " + WebAppSettings.BvcVersionNumber;
             return result;
         }
 
-        private static string RenderMenu(AdminTabType selected, BVSoftware.Commerce.Accounts.Store currentStore)
+        private static string RenderMenu(AdminTabType selected, MerchantTribe.Commerce.Accounts.Store currentStore)
         {
             StringBuilder sb = new StringBuilder();
 
@@ -342,7 +342,7 @@ namespace BVCommerce.Helpers
 
             // Plug-Ins Menu
             //sb.Append(OpenMenu("Plug-Ins", selected, AdminTabType.Plugins))
-            //Dim plugins As StringCollection = BVSoftware.Commerce.Content.ModuleController.FindAdminPlugins()
+            //Dim plugins As StringCollection = MerchantTribe.Commerce.Content.ModuleController.FindAdminPlugins()
             //For Each item As String In plugins
             //sb.Append(AddMenuItem(item, "plugins/" & item & "/default.aspx"))            
             //Next

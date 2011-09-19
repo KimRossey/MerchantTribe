@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Web;
-using BVSoftware.Commerce;
-using BVSoftware.CommerceDTO.v1;
-using BVSoftware.CommerceDTO.v1.Orders;
-using BVSoftware.Commerce.Orders;
+using MerchantTribe.Commerce;
+using MerchantTribe.CommerceDTO.v1;
+using MerchantTribe.CommerceDTO.v1.Orders;
+using MerchantTribe.Commerce.Orders;
 
 namespace BVCommerce.api.rest
 {
     public class OrderTransactionsHandler: BaseRestHandler
     {
-        public OrderTransactionsHandler(BVSoftware.Commerce.BVApplication app)
+        public OrderTransactionsHandler(MerchantTribe.Commerce.BVApplication app)
             : base(app)
         {
 

@@ -2,8 +2,8 @@ using System;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Utilities;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Utilities;
 using System.Collections.ObjectModel;
 
 namespace BVCommerce
@@ -99,14 +99,14 @@ namespace BVCommerce
         //public static void DisplayKitInLineItem(Page p, GridView gv, bool displayCollapsible)
         //{
         //    foreach (GridViewRow row in gv.Rows) {
-        //        BVSoftware.Commerce.Orders.LineItem lineItem = null;
+        //        MerchantTribe.Commerce.Orders.LineItem lineItem = null;
         //        if (row.DataItem != null) {
-        //            if (lineItem is BVSoftware.Commerce.Orders.LineItem) {
-        //                lineItem = (BVSoftware.Commerce.Orders.LineItem)row.DataItem;
+        //            if (lineItem is MerchantTribe.Commerce.Orders.LineItem) {
+        //                lineItem = (MerchantTribe.Commerce.Orders.LineItem)row.DataItem;
         //            }
         //        }
         //        else {
-        //            lineItem = BVSoftware.Commerce.Orders.LineItem.FindByBvin((string)gv.DataKeys[row.RowIndex].Value);
+        //            lineItem = MerchantTribe.Commerce.Orders.LineItem.FindByBvin((string)gv.DataKeys[row.RowIndex].Value);
         //            if (string.IsNullOrEmpty(lineItem.Bvin)) {
         //                lineItem = null;
         //            }
@@ -116,10 +116,10 @@ namespace BVCommerce
 
         //        if ((kitDisplayPlaceHolder != null) && (lineItem != null)) {
         //            if ((lineItem.KitSelections != null) && (!lineItem.KitSelections.IsEmpty)) {
-        //                Collection<BVSoftware.Commerce.Catalog.KitPart> parts = BVSoftware.Commerce.Services.KitService.GetKitPartsForKitSelections(lineItem.KitSelections);
+        //                Collection<MerchantTribe.Commerce.Catalog.KitPart> parts = MerchantTribe.Commerce.Services.KitService.GetKitPartsForKitSelections(lineItem.KitSelections);
         //                if (parts.Count > 0) {
         //                    LiteralControl literal = new LiteralControl();
-        //                    string kitDetails = BVSoftware.Commerce.Content.SiteTerms.GetTerm("KitDetails");
+        //                    string kitDetails = MerchantTribe.Commerce.Content.SiteTerms.GetTerm("KitDetails");
 
         //                    if (displayCollapsible) {
         //                        if (WebAppSettings.KitDisplayCollapsed) {
@@ -147,7 +147,7 @@ namespace BVCommerce
         //                        literal.Text += "<ul class=\"kit-detail-display\">";
         //                    }
 
-        //                    foreach (BVSoftware.Commerce.Catalog.KitPart part in parts) {
+        //                    foreach (MerchantTribe.Commerce.Catalog.KitPart part in parts) {
         //                        literal.Text += "<li>" + part.Description + "</li>";
         //                    }
         //                    literal.Text += "</ul>";
@@ -161,14 +161,14 @@ namespace BVCommerce
         //private static void GetInputsAndModifiersForLineItemDescription(Page p, GridView gv, Location @where)
         //{
         //    foreach (GridViewRow row in gv.Rows) {
-        //        BVSoftware.Commerce.Orders.LineItem lineItem = null;
+        //        MerchantTribe.Commerce.Orders.LineItem lineItem = null;
         //        if (row.DataItem != null) {
-        //            if (lineItem is BVSoftware.Commerce.Orders.LineItem) {
-        //                lineItem = (BVSoftware.Commerce.Orders.LineItem)row.DataItem;
+        //            if (lineItem is MerchantTribe.Commerce.Orders.LineItem) {
+        //                lineItem = (MerchantTribe.Commerce.Orders.LineItem)row.DataItem;
         //            }
         //        }
         //        else {
-        //            lineItem = BVSoftware.Commerce.Orders.LineItem.FindByBvin((string)gv.DataKeys[row.RowIndex].Value);
+        //            lineItem = MerchantTribe.Commerce.Orders.LineItem.FindByBvin((string)gv.DataKeys[row.RowIndex].Value);
         //            if (string.IsNullOrEmpty(lineItem.Bvin)) {
         //                lineItem = null;
         //            }
@@ -177,7 +177,7 @@ namespace BVCommerce
         //        PlaceHolder inputModifiersPlaceHolder = (PlaceHolder)row.FindControl("CartInputModifiersPlaceHolder");
 
         //        if ((inputModifiersPlaceHolder != null) && (lineItem != null)) {
-        //            BVSoftware.Commerce.Catalog.Product product = BVSoftware.Commerce.Catalog.Product.FindByBvin(lineItem.ProductId);
+        //            MerchantTribe.Commerce.Catalog.Product product = MerchantTribe.Commerce.Catalog.Product.FindByBvin(lineItem.ProductId);
 
 
         //            //int count = 0;
@@ -315,7 +315,7 @@ namespace BVCommerce
             return "JavaScript:window.open('" + currentPage.ResolveUrl("~/ZoomImage.aspx") + "?productID=" + productId + "','Images','width=" + w + ", height=" + h + ", menubar=no, scrollbars=yes, resizable=yes, status=no, toolbar=no')";
         }
 
-        public static bool DownloadFile(BVSoftware.Commerce.Catalog.ProductFile file)
+        public static bool DownloadFile(MerchantTribe.Commerce.Catalog.ProductFile file)
         {
             string extension = System.IO.Path.GetExtension(file.FileName);
             string name = System.IO.Path.GetFileName(file.FileName);
@@ -323,12 +323,12 @@ namespace BVCommerce
 
             long storeId = RequestContext.GetCurrentRequestContext().CurrentStore.Id;
             string diskFileName = file.Bvin + "_" + file.FileName + ".config";
-            if (!BVSoftware.Commerce.Storage.DiskStorage.FileVaultFileExists(storeId, diskFileName)) return false;
+            if (!MerchantTribe.Commerce.Storage.DiskStorage.FileVaultFileExists(storeId, diskFileName)) return false;
 
-            byte[] bytes = BVSoftware.Commerce.Storage.DiskStorage.FileVaultGetBytes(storeId, diskFileName);
+            byte[] bytes = MerchantTribe.Commerce.Storage.DiskStorage.FileVaultGetBytes(storeId, diskFileName);
 
             string type = "";
-            type = BVSoftware.Commerce.Utilities.MimeTypes.FindTypeForExtension(extension);
+            type = MerchantTribe.Commerce.Utilities.MimeTypes.FindTypeForExtension(extension);
 
             //System.IO.FileInfo f = new System.IO.FileInfo(filePath);
             fileSize = bytes.Length;// f.Length;

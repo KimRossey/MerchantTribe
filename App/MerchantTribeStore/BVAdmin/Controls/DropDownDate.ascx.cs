@@ -66,7 +66,7 @@ namespace BVCommerce
                 }
                 catch (Exception ex)
                 {
-                    BVSoftware.Commerce.EventLog.LogEvent(ex);
+                    MerchantTribe.Commerce.EventLog.LogEvent(ex);
                     return new System.DateTime(1900, 1, 1);
                 }
             }

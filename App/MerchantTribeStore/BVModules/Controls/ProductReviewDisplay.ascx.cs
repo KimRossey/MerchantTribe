@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Catalog;
-using BVSoftware.Commerce.Content;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Catalog;
+using MerchantTribe.Commerce.Content;
 
 namespace BVCommerce
 {
 
-    partial class BVModules_Controls_ProductReviewDisplay : BVSoftware.Commerce.Content.BVUserControl
+    partial class BVModules_Controls_ProductReviewDisplay : MerchantTribe.Commerce.Content.BVUserControl
     {
         protected override void OnLoad(EventArgs e)
         {

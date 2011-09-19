@@ -6,11 +6,11 @@ using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Catalog;
-using BVSoftware.Commerce.Membership;
-using BVSoftware.Commerce.Contacts;
-using BVSoftware.Commerce.Content;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Catalog;
+using MerchantTribe.Commerce.Membership;
+using MerchantTribe.Commerce.Contacts;
+using MerchantTribe.Commerce.Content;
 
 namespace BVCommerce
 {
@@ -282,7 +282,7 @@ namespace BVCommerce
                     this.chkGiftWrapAllowed.Checked = p.GiftWrapAllowed;
                     this.txtGiftWrapCharge.Text = p.GiftWrapPrice.ToString("C");
 
-                    this.lnkViewInStore.NavigateUrl = BVSoftware.Commerce.Utilities.UrlRewriter.BuildUrlForProduct(p, this.Page);
+                    this.lnkViewInStore.NavigateUrl = MerchantTribe.Commerce.Utilities.UrlRewriter.BuildUrlForProduct(p, this.Page);
 
                     this.chkAllowReviews.Checked = p.AllowReviews;
                 }
@@ -292,7 +292,7 @@ namespace BVCommerce
 
         private void LoadImagePreview(Product p)
         {
-            this.imgPreviewSmall.ImageUrl = BVSoftware.Commerce.Storage.DiskStorage.ProductImageUrlSmall(BVApp.CurrentStore.Id, p.Bvin, p.ImageFileSmall, true);
+            this.imgPreviewSmall.ImageUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductImageUrlSmall(BVApp.CurrentStore.Id, p.Bvin, p.ImageFileSmall, true);
         }
       
         private void CancelClick()
@@ -457,7 +457,7 @@ namespace BVCommerce
                         p.UrlSlug = MerchantTribe.Web.Text.Slugify(this.RewriteUrlField.Text, true, true);
                     }
 
-                    if (BVSoftware.Commerce.Utilities.UrlRewriter.IsProductSlugInUse(p.UrlSlug, p.Bvin, BVApp))
+                    if (MerchantTribe.Commerce.Utilities.UrlRewriter.IsProductSlugInUse(p.UrlSlug, p.Bvin, BVApp))
                     {
                         this.MessageBox1.ShowWarning("The requested URL is already in use by another item.");
                         return false;
@@ -478,7 +478,7 @@ namespace BVCommerce
                     p.ShippingDetails.Height = decimal.Parse(this.HeightField.Text, System.Globalization.NumberStyles.Float, System.Threading.Thread.CurrentThread.CurrentUICulture);
 
                     p.ShippingDetails.ExtraShipFee = decimal.Parse(this.ExtraShipFeeField.Text, System.Globalization.NumberStyles.Currency, System.Threading.Thread.CurrentThread.CurrentUICulture);
-                    p.ShippingMode = (BVSoftware.Commerce.Shipping.ShippingMode)int.Parse(this.ShipTypeField.SelectedValue);
+                    p.ShippingMode = (MerchantTribe.Commerce.Shipping.ShippingMode)int.Parse(this.ShipTypeField.SelectedValue);
                     p.ShippingDetails.IsNonShipping = this.chkNonShipping.Checked;
                     p.ShippingDetails.ShipSeparately = this.chkShipSeparately.Checked;
 
@@ -564,10 +564,10 @@ namespace BVCommerce
                 //string ext = System.IO.Path.GetExtension(imgupload.PostedFile.FileName);
                 string ext = System.IO.Path.GetExtension(imgupload.FileName);
 
-                if (BVSoftware.Commerce.Storage.DiskStorage.ValidateImageType(ext))
+                if (MerchantTribe.Commerce.Storage.DiskStorage.ValidateImageType(ext))
                 {
                     fileName = MerchantTribe.Web.Text.CleanFileName(fileName);
-                    if ((BVSoftware.Commerce.Storage.DiskStorage.UploadProductImage(BVApp.CurrentStore.Id, p.Bvin, this.imgupload.PostedFile)))
+                    if ((MerchantTribe.Commerce.Storage.DiskStorage.UploadProductImage(BVApp.CurrentStore.Id, p.Bvin, this.imgupload.PostedFile)))
                     {
                         p.ImageFileSmall = fileName + ext;
                     }
@@ -814,7 +814,7 @@ namespace BVCommerce
             }
         }
 
-        protected void ProductPropertyCopier_Clicked(object sender, BVSoftware.Commerce.Content.NotifyClickControl.ClickedEventArgs e)
+        protected void ProductPropertyCopier_Clicked(object sender, MerchantTribe.Commerce.Content.NotifyClickControl.ClickedEventArgs e)
         {
             if (!this.Save())
             {

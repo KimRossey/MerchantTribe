@@ -1,5 +1,5 @@
 using System.Collections.ObjectModel;
-using BVSoftware.Commerce.Content;
+using MerchantTribe.Commerce.Content;
 using System.Collections.Generic;
 
 namespace BVCommerce

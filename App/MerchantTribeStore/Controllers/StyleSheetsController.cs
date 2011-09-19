@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Content;
-using BVSoftware.Commerce.Accounts;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Content;
+using MerchantTribe.Commerce.Accounts;
 using System.IO;
 
 namespace BVCommerce.Controllers
@@ -15,8 +15,8 @@ namespace BVCommerce.Controllers
 
 
         // Initialize Store Specific Request Data
-        //BVSoftware.Commerce.RequestContext _BVRequestContext = new RequestContext();
-        public BVSoftware.Commerce.RequestContext CurrentRequestContext
+        //MerchantTribe.Commerce.RequestContext _BVRequestContext = new RequestContext();
+        public MerchantTribe.Commerce.RequestContext CurrentRequestContext
         {
             get { return BVApp.CurrentRequestContext; }
             set { BVApp.CurrentRequestContext = value; }
@@ -24,7 +24,7 @@ namespace BVCommerce.Controllers
 
         public BVApplication BVApp { get; set; }
 
-        public BVSoftware.Commerce.Accounts.Store CurrentStore
+        public MerchantTribe.Commerce.Accounts.Store CurrentStore
         {
             get { return BVApp.CurrentStore; }
             set { BVApp.CurrentStore = value; }
@@ -40,7 +40,7 @@ namespace BVCommerce.Controllers
             BVApp.CurrentRequestContext.RoutingContext = this.Request.RequestContext;
 
             // Determine store id        
-            BVApp.CurrentStore = BVSoftware.Commerce.Utilities.UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, BVApp.AccountServices);
+            BVApp.CurrentStore = MerchantTribe.Commerce.Utilities.UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, BVApp.AccountServices);
             if (BVApp.CurrentStore == null)
             {
                 Response.Redirect("~/storenotfound");

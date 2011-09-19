@@ -4,18 +4,18 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Orders;
-using BVSoftware.Commerce.Payment;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Orders;
+using MerchantTribe.Commerce.Payment;
 using MerchantTribe.Payment;
 
 namespace BVCommerce
 {
 
-    public partial class BVAdmin_Orders_ReceivePaymentsControl : BVSoftware.Commerce.Content.BVUserControl
+    public partial class BVAdmin_Orders_ReceivePaymentsControl : MerchantTribe.Commerce.Content.BVUserControl
     {
 
-        private Order o = new BVSoftware.Commerce.Orders.Order();
+        private Order o = new MerchantTribe.Commerce.Orders.Order();
         private OrderPaymentManager payManager = null;
 
         public delegate void TransactionEventDelegate();

@@ -1,10 +1,10 @@
 using MerchantTribe.Web.Geography;
-using BVSoftware.Commerce;
+using MerchantTribe.Commerce;
 
 namespace BVCommerce
 {
 
-    partial class BVAdmin_Controls_AddressEditor : BVSoftware.Commerce.Content.BVUserControl
+    partial class BVAdmin_Controls_AddressEditor : MerchantTribe.Commerce.Content.BVUserControl
     {
 
         private bool _ShowCompanyName = true;
@@ -306,7 +306,7 @@ namespace BVCommerce
             return result;
         }
 
-        public void LoadFromAddress(BVSoftware.Commerce.Contacts.Address a)
+        public void LoadFromAddress(MerchantTribe.Commerce.Contacts.Address a)
         {
             InitializeAddress();
             if (!(a == null))
@@ -343,9 +343,9 @@ namespace BVCommerce
             }
         }
 
-        public BVSoftware.Commerce.Contacts.Address GetAsAddress()
+        public MerchantTribe.Commerce.Contacts.Address GetAsAddress()
         {
-            BVSoftware.Commerce.Contacts.Address a = new BVSoftware.Commerce.Contacts.Address();
+            MerchantTribe.Commerce.Contacts.Address a = new MerchantTribe.Commerce.Contacts.Address();
             if (lstCountry.Items.Count > 0)
             {
                 a.CountryBvin = lstCountry.SelectedValue;
@@ -383,7 +383,7 @@ namespace BVCommerce
             int type = 0;
             if (int.TryParse(this.AddressTypeField.Value, out type))
             {
-                a.AddressType = (BVSoftware.Commerce.Contacts.AddressTypes)type;
+                a.AddressType = (MerchantTribe.Commerce.Contacts.AddressTypes)type;
             }
 
             long storeId = 0;

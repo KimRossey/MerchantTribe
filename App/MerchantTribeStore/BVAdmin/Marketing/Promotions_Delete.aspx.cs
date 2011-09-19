@@ -14,7 +14,7 @@ namespace BVCommerce.BVAdmin.Marketing
             base.OnPreInit(e);
             this.PageTitle = "Promotions";
             this.CurrentTab = AdminTabType.Marketing;
-            ValidateCurrentUserHasPermission(BVSoftware.Commerce.Membership.SystemPermissions.MarketingView);
+            ValidateCurrentUserHasPermission(MerchantTribe.Commerce.Membership.SystemPermissions.MarketingView);
         }
 
         protected override void OnLoad(EventArgs e)

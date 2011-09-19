@@ -1,12 +1,12 @@
 
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Catalog;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Catalog;
 using System.Collections.ObjectModel;
 
 namespace BVCommerce
 {
 
-    partial class BVAdmin_Controls_ProductReviewEditor : BVSoftware.Commerce.Content.BVUserControl
+    partial class BVAdmin_Controls_ProductReviewEditor : MerchantTribe.Commerce.Content.BVUserControl
     {
 
         public string ReviewID
@@ -34,7 +34,7 @@ namespace BVCommerce
                     }
                     if (r.UserID != string.Empty)
                     {
-                        BVSoftware.Commerce.Membership.CustomerAccount u = MyPage.BVApp.MembershipServices.Customers.Find(r.UserID);
+                        MerchantTribe.Commerce.Membership.CustomerAccount u = MyPage.BVApp.MembershipServices.Customers.Find(r.UserID);
                         if (u == null)
                         {
                             this.lblUserName.Text = "Anonymous";

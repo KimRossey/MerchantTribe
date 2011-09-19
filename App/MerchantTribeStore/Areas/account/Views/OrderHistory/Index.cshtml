@@ -1,4 +1,4 @@
-﻿@model IEnumerable<BVSoftware.Commerce.Orders.OrderSnapshot>
+﻿@model IEnumerable<MerchantTribe.Commerce.Orders.OrderSnapshot>
 
 @{
     ViewBag.Title = "Order History";
@@ -7,7 +7,7 @@
 
 @functions
 {
-    string OrderLink(BVSoftware.Commerce.Orders.OrderSnapshot o)
+    string OrderLink(MerchantTribe.Commerce.Orders.OrderSnapshot o)
     {
         if (o == null) return string.Empty;
         string toFormat = "~/account/orderhistory/details/{0}";

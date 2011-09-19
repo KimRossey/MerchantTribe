@@ -6,9 +6,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Collections.ObjectModel;
-using BVSoftware.Commerce.Content;
-using BVSoftware.Commerce.Membership;
-using BVSoftware.Commerce.Storage;
+using MerchantTribe.Commerce.Content;
+using MerchantTribe.Commerce.Membership;
+using MerchantTribe.Commerce.Storage;
 
 namespace BVCommerce
 {
@@ -40,9 +40,9 @@ namespace BVCommerce
 
             sb.Append("<ul class=\"removablelist\">");
 
-            List<BVSoftware.Commerce.Storage.StoreAssetSnapshot> assets =
-                BVSoftware.Commerce.Storage.DiskStorage.ListStoreAssets(BVApp.CurrentStore.Id);
-            foreach (BVSoftware.Commerce.Storage.StoreAssetSnapshot snapshot in assets)
+            List<MerchantTribe.Commerce.Storage.StoreAssetSnapshot> assets =
+                MerchantTribe.Commerce.Storage.DiskStorage.ListStoreAssets(BVApp.CurrentStore.Id);
+            foreach (MerchantTribe.Commerce.Storage.StoreAssetSnapshot snapshot in assets)
             {
                 sb.Append("<li id=\"" + snapshot.FileName + "\">");
                 sb.Append("<a href=\"#\" title=\"" + snapshot.FileName + "\" class=\"deleteitem\"><img src=\"../../images/system/trashcan.png\" alt=\"Delete Item\" /></a>");
@@ -59,7 +59,7 @@ namespace BVCommerce
         {
             if (this.fileupload1.HasFile)
             {
-                BVSoftware.Commerce.Storage.DiskStorage.UploadStoreAsset(BVApp.CurrentStore.Id, this.fileupload1.PostedFile);
+                MerchantTribe.Commerce.Storage.DiskStorage.UploadStoreAsset(BVApp.CurrentStore.Id, this.fileupload1.PostedFile);
                 LoadTheInfo();
             }
         }

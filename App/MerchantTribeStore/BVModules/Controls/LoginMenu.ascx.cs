@@ -1,12 +1,12 @@
 using System.Text;
 using System.Web.UI;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Membership;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Membership;
 
 namespace BVCommerce
 {
 
-    partial class BVModules_Controls_LoginMenu : BVSoftware.Commerce.Content.BVUserControl
+    partial class BVModules_Controls_LoginMenu : MerchantTribe.Commerce.Content.BVUserControl
     {
 
         protected bool _ShowUserName = false;

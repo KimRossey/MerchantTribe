@@ -37,7 +37,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVSoftware.Commerce.Controls.BVRequiredFieldValidator valFirstName;
+        protected global::MerchantTribe.Commerce.Controls.BVRequiredFieldValidator valFirstName;
         
         /// <summary>
         /// lastNameField control.
@@ -55,7 +55,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVSoftware.Commerce.Controls.BVRequiredFieldValidator valLastName;
+        protected global::MerchantTribe.Commerce.Controls.BVRequiredFieldValidator valLastName;
         
         /// <summary>
         /// CompanyNameRow control.
@@ -82,7 +82,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVSoftware.Commerce.Controls.BVRequiredFieldValidator valCompany;
+        protected global::MerchantTribe.Commerce.Controls.BVRequiredFieldValidator valCompany;
         
         /// <summary>
         /// address1Field control.
@@ -100,7 +100,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVSoftware.Commerce.Controls.BVRequiredFieldValidator valAddress;
+        protected global::MerchantTribe.Commerce.Controls.BVRequiredFieldValidator valAddress;
         
         /// <summary>
         /// address2Field control.
@@ -136,7 +136,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVSoftware.Commerce.Controls.BVRequiredFieldValidator valCity;
+        protected global::MerchantTribe.Commerce.Controls.BVRequiredFieldValidator valCity;
         
         /// <summary>
         /// lstState control.
@@ -172,7 +172,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVSoftware.Commerce.Controls.BVRequiredFieldValidator valPostalCode;
+        protected global::MerchantTribe.Commerce.Controls.BVRequiredFieldValidator valPostalCode;
         
         /// <summary>
         /// lblStateError control.
@@ -208,7 +208,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVSoftware.Commerce.Controls.BVRequiredFieldValidator valPhone;
+        protected global::MerchantTribe.Commerce.Controls.BVRequiredFieldValidator valPhone;
         
         /// <summary>
         /// AddressBvin control.

@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using BVSoftware.Commerce;
+using MerchantTribe.Commerce;
 using BVCommerce.Models;
 using MerchantTribe.Web.Geography;
 using System.Text;
-using BVSoftware.Commerce.Orders;
-using BVSoftware.Commerce.Shipping;
-using BVSoftware.Commerce.Utilities;
+using MerchantTribe.Commerce.Orders;
+using MerchantTribe.Commerce.Shipping;
+using MerchantTribe.Commerce.Utilities;
 
 namespace BVCommerce.Controllers
 {

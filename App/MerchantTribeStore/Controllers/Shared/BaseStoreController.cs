@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Content;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Content;
 using BVCommerce.Filters;
 
 namespace BVCommerce.Controllers.Shared
@@ -13,7 +13,7 @@ namespace BVCommerce.Controllers.Shared
     public class BaseStoreController : Controller, IMultiStorePage
     {
         // Initialize Store Specific Request Data
-        BVSoftware.Commerce.RequestContext _BVRequestContext = new RequestContext();
+        MerchantTribe.Commerce.RequestContext _BVRequestContext = new RequestContext();
 
         public BVApplication BVApp { get; set; }
 
@@ -28,13 +28,13 @@ namespace BVCommerce.Controllers.Shared
             BVApp.CurrentRequestContext.RoutingContext = this.Request.RequestContext;
 
             // Determine store id        
-            BVApp.CurrentStore = BVSoftware.Commerce.Utilities.UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, BVApp.AccountServices);
+            BVApp.CurrentStore = MerchantTribe.Commerce.Utilities.UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, BVApp.AccountServices);
             if (BVApp.CurrentStore == null)
             {
                 Response.Redirect("~/storenotfound");
             }
 
-            if (BVApp.CurrentStore.Status == BVSoftware.Commerce.Accounts.StoreStatus.Deactivated)
+            if (BVApp.CurrentStore.Status == MerchantTribe.Commerce.Accounts.StoreStatus.Deactivated)
             {
                 //if ((AvailableWhenInactive == false))
                 //{
@@ -64,7 +64,7 @@ namespace BVCommerce.Controllers.Shared
             // Add Google Tracker to Page
             if (BVApp.CurrentStore.Settings.Analytics.UseGoogleTracker)
             {
-                ViewData["analyticstop"] = BVSoftware.Commerce.Metrics.GoogleAnalytics.RenderLatestTracker(BVApp.CurrentStore.Settings.Analytics.GoogleTrackerId);
+                ViewData["analyticstop"] = MerchantTribe.Commerce.Metrics.GoogleAnalytics.RenderLatestTracker(BVApp.CurrentStore.Settings.Analytics.GoogleTrackerId);
             }
 
             // Additional Meta Tags
@@ -74,19 +74,19 @@ namespace BVCommerce.Controllers.Shared
             ViewBag.JqueryInclude = Helpers.Html.JQueryIncludes(Url.Content("~/scripts"), this.Request.IsSecureConnection);
 
             // header and footer            
-            string header = BVSoftware.Commerce.Storage.DiskStorage.ReadCustomHeader(BVApp.CurrentStore.Id, BVApp.CurrentStore.Settings.ThemeId);
-            string footer = BVSoftware.Commerce.Storage.DiskStorage.ReadCustomFooter(BVApp.CurrentStore.Id, BVApp.CurrentStore.Settings.ThemeId);
+            string header = MerchantTribe.Commerce.Storage.DiskStorage.ReadCustomHeader(BVApp.CurrentStore.Id, BVApp.CurrentStore.Settings.ThemeId);
+            string footer = MerchantTribe.Commerce.Storage.DiskStorage.ReadCustomFooter(BVApp.CurrentStore.Id, BVApp.CurrentStore.Settings.ThemeId);
             if ((header.Trim().Length < 1))
             {
-                header = BVSoftware.Commerce.Utilities.HtmlRendering.StandardHeader();
+                header = MerchantTribe.Commerce.Utilities.HtmlRendering.StandardHeader();
             }
-            ViewData["siteheader"] = BVSoftware.Commerce.Utilities.TagReplacer.ReplaceContentTags(header, BVApp, itemCount, Request.IsSecureConnection);
+            ViewData["siteheader"] = MerchantTribe.Commerce.Utilities.TagReplacer.ReplaceContentTags(header, BVApp, itemCount, Request.IsSecureConnection);
             if ((footer.Trim().Length < 1))
             {
-                footer = BVSoftware.Commerce.Utilities.HtmlRendering.StandardFooter(BVApp.CurrentStore);
+                footer = MerchantTribe.Commerce.Utilities.HtmlRendering.StandardFooter(BVApp.CurrentStore);
             }
-            footer = footer + BVSoftware.Commerce.Utilities.HtmlRendering.PromoTag();
-            ViewData["sitefooter"] = BVSoftware.Commerce.Utilities.TagReplacer.ReplaceContentTags(footer, BVApp, itemCount, Request.IsSecureConnection);
+            footer = footer + MerchantTribe.Commerce.Utilities.HtmlRendering.PromoTag();
+            ViewData["sitefooter"] = MerchantTribe.Commerce.Utilities.TagReplacer.ReplaceContentTags(footer, BVApp, itemCount, Request.IsSecureConnection);
 
             //log affiliate request
             if (!((string)Request.Params[WebAppSettings.AffiliateQueryStringName] == null))
@@ -102,7 +102,7 @@ namespace BVCommerce.Controllers.Shared
                 }
                 catch (System.Exception ex)
                 {
-                    EventLog.LogEvent("BaseStorePage - Page_Init", "Error loading affiliate " + ex.Message, BVSoftware.Commerce.Metrics.EventLogSeverity.Warning);
+                    EventLog.LogEvent("BaseStorePage - Page_Init", "Error loading affiliate " + ex.Message, MerchantTribe.Commerce.Metrics.EventLogSeverity.Warning);
                 }
             }
 

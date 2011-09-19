@@ -1,15 +1,15 @@
 using System;
 using System.Text;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Catalog;
-using BVSoftware.Commerce.Controls;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Catalog;
+using MerchantTribe.Commerce.Controls;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
 
 namespace BVCommerce
 {
 
-    partial class BVAdmin_Controls_FilePicker : BVSoftware.Commerce.Content.BVUserControl
+    partial class BVAdmin_Controls_FilePicker : MerchantTribe.Commerce.Content.BVUserControl
     {
 
         private string _productId = string.Empty;

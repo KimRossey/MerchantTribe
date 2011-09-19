@@ -1,6 +1,6 @@
 
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Controls;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Controls;
 
 namespace BVCommerce
 {

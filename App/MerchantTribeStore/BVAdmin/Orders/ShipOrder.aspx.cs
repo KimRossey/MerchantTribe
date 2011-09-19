@@ -1,16 +1,16 @@
 using System;
 using System.Web;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Orders;
-using BVSoftware.Commerce.Membership;
-using BVSoftware.Commerce.Utilities;
-using BVSoftware.Commerce.Shipping;
-using BVSoftware.Commerce.Payment;
-using BVSoftware.Commerce.Catalog;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Orders;
+using MerchantTribe.Commerce.Membership;
+using MerchantTribe.Commerce.Utilities;
+using MerchantTribe.Commerce.Shipping;
+using MerchantTribe.Commerce.Payment;
+using MerchantTribe.Commerce.Catalog;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
-using BVSoftware.Shipping;
+using MerchantTribe.Shipping;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -20,7 +20,7 @@ namespace BVCommerce
     partial class BVAdmin_Orders_ShipOrder : BaseAdminPage
     {
 
-        private Order o = new BVSoftware.Commerce.Orders.Order();
+        private Order o = new MerchantTribe.Commerce.Orders.Order();
 
         protected override void OnPreInit(EventArgs e)
         {
@@ -41,7 +41,7 @@ namespace BVCommerce
                 // Acumatica Warning
                 if (BVApp.CurrentStore.Settings.Acumatica.IntegrationEnabled)
                 {
-                    this.MessageBox1.ShowWarning(BVSoftware.Commerce.Content.SiteTerms.GetTerm(BVSoftware.Commerce.Content.SiteTermIds.AcumaticaWarning));
+                    this.MessageBox1.ShowWarning(MerchantTribe.Commerce.Content.SiteTerms.GetTerm(MerchantTribe.Commerce.Content.SiteTermIds.AcumaticaWarning));
                 }
             }
         }
@@ -80,19 +80,19 @@ namespace BVCommerce
             o = BVApp.OrderServices.Orders.FindForCurrentStore(Request.QueryString["id"]);
             o.EvaluateCurrentShippingStatus();
             BVApp.OrderServices.Orders.Update(o);
-            BVSoftware.Commerce.BusinessRules.OrderTaskContext context 
-                = new BVSoftware.Commerce.BusinessRules.OrderTaskContext(BVApp);
+            MerchantTribe.Commerce.BusinessRules.OrderTaskContext context 
+                = new MerchantTribe.Commerce.BusinessRules.OrderTaskContext(BVApp);
             context.Order = o;
             context.UserId = o.UserID;
             context.Inputs.Add("bvsoftware", "PreviousShippingStatus", previousShippingStatus.ToString());
-            BVSoftware.Commerce.BusinessRules.Workflow.RunByName(context, BVSoftware.Commerce.BusinessRules.WorkflowNames.ShippingChanged);
+            MerchantTribe.Commerce.BusinessRules.Workflow.RunByName(context, MerchantTribe.Commerce.BusinessRules.WorkflowNames.ShippingChanged);
             LoadOrder();
             this.OrderStatusDisplay1.LoadStatusForOrder(o);
         }
 
         //private void PopulateShippingProviders()
         //{
-        //    this.lstShippingProvider.DataSource = BVSoftware.Commerce.Shipping.AvailableServices.FindAll();
+        //    this.lstShippingProvider.DataSource = MerchantTribe.Commerce.Shipping.AvailableServices.FindAll();
         //    this.lstShippingProvider.DataTextField = "Name";
         //    this.lstShippingProvider.DataValueField = "Id";
         //    this.lstShippingProvider.DataBind();
@@ -272,7 +272,7 @@ namespace BVCommerce
                         trackProvider = TrackingProvider.USPostal;
                         break;
                 }
-                //IShippingService provider = BVSoftware.Commerce.Shipping.AvailableServices.FindById(p.ShippingProviderId);
+                //IShippingService provider = MerchantTribe.Commerce.Shipping.AvailableServices.FindById(p.ShippingProviderId);
 
 
                 //List<IServiceCode> codes = provider.ListAllServiceCodes();
@@ -363,7 +363,7 @@ namespace BVCommerce
         //    if (p != null)
         //    {
 
-        //        IShippingService provider = BVSoftware.Commerce.Shipping.AvailableServices.FindById(p.ShippingProviderId, Services.CurrentStore);
+        //        IShippingService provider = MerchantTribe.Commerce.Shipping.AvailableServices.FindById(p.ShippingProviderId, Services.CurrentStore);
 
         //        string serviceCodeName = string.Empty;
         //        List<IServiceCode> codes = provider.ListAllServiceCodes();
@@ -457,12 +457,12 @@ namespace BVCommerce
             //}
 
             //Package p;
-            //if ((this.lstShippingProvider.SelectedValue == BVSoftware.Shipping.Ups.UpsProvider.UPSProviderID) && (serviceCode != string.Empty)) {
-            //    p = ShipItems(string.Empty, BVSoftware.Shipping.Ups.UpsProvider.UPSProviderID, serviceCode, true);
+            //if ((this.lstShippingProvider.SelectedValue == MerchantTribe.Shipping.Ups.UpsProvider.UPSProviderID) && (serviceCode != string.Empty)) {
+            //    p = ShipItems(string.Empty, MerchantTribe.Shipping.Ups.UpsProvider.UPSProviderID, serviceCode, true);
             //}
             //else {
             //    p = ShipItems(string.Empty, 
-            //                  BVSoftware.Shipping.Ups.UpsProvider.UPSProviderID,
+            //                  MerchantTribe.Shipping.Ups.UpsProvider.UPSProviderID,
             //                  CurrentStore.ShippingUpsDefaultService.ToString(), 
             //                  true);
             //}
@@ -484,7 +484,7 @@ namespace BVCommerce
         //{
         //    this.lstServiceCode.Items.Clear();
 
-        //    IShippingService p = BVSoftware.Commerce.Shipping.AvailableServices.FindById(this.lstShippingProvider.SelectedValue);
+        //    IShippingService p = MerchantTribe.Commerce.Shipping.AvailableServices.FindById(this.lstShippingProvider.SelectedValue);
         //    if (p != null) {
         //        foreach (IServiceCode li in p.ListAllServiceCodes()) 
         //        {

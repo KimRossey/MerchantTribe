@@ -1,15 +1,15 @@
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Contacts;
-using BVSoftware.Commerce.Membership;
-using BVSoftware.Commerce.Content;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Contacts;
+using MerchantTribe.Commerce.Membership;
+using MerchantTribe.Commerce.Content;
 
 namespace BVCommerce
 {
 
-    partial class BVModules_Controls_AddressBook : BVSoftware.Commerce.Content.BVUserControl
+    partial class BVModules_Controls_AddressBook : MerchantTribe.Commerce.Content.BVUserControl
     {
         public delegate void AddressSelectedDelegate(string addresstype, Address a);
         public event AddressSelectedDelegate AddressSelected;

@@ -4,12 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce.Reporting;
+using MerchantTribe.Commerce.Reporting;
 
 namespace BVCommerce
 {
 
-    public partial class BVAdmin_Controls_DashboardSalesSummary : BVSoftware.Commerce.Content.BVUserControl
+    public partial class BVAdmin_Controls_DashboardSalesSummary : MerchantTribe.Commerce.Content.BVUserControl
     {
         protected override void OnLoad(EventArgs e)
         {

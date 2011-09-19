@@ -2,14 +2,14 @@ using System;
 using System.Web;
 using System.Web.UI.WebControls;
 using System.Web.UI.HtmlControls;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Controls;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Controls;
 using System.Collections.ObjectModel;
 
 namespace BVCommerce
 {
 
-    partial class BVAdmin_Controls_ProductModifications : BVSoftware.Commerce.Content.BVUserControl
+    partial class BVAdmin_Controls_ProductModifications : MerchantTribe.Commerce.Content.BVUserControl
     {
 
         protected override void OnLoad(System.EventArgs e)
@@ -84,7 +84,7 @@ namespace BVCommerce
             ManufacturerEnumeratedValueModifierField.DataBind();
 
 
-            ProductTemplateEnumeratedValueModifierField.Datasource = BVSoftware.Commerce.Content.ModuleController.FindProductTemplates();
+            ProductTemplateEnumeratedValueModifierField.Datasource = MerchantTribe.Commerce.Content.ModuleController.FindProductTemplates();
             ProductTemplateEnumeratedValueModifierField.DataBind();
 
             PreContentColumnEnumeratedValueModifierField.Datasource = MyPage.BVApp.ContentServices.Columns.FindAll();
@@ -108,7 +108,7 @@ namespace BVCommerce
             VendorEnumeratedValueModifierField.DataBind();
         }
 
-        public void PostChangesToProduct(BVSoftware.Commerce.Catalog.Product item)
+        public void PostChangesToProduct(MerchantTribe.Commerce.Catalog.Product item)
         {
             bool process = false;
             Collection<ModificationControlBase> controls = new Collection<ModificationControlBase>();
@@ -170,7 +170,7 @@ namespace BVCommerce
 
         }
 
-        public void MakeChanges(ModificationControl<string> control, BVSoftware.Commerce.Catalog.Product item)
+        public void MakeChanges(ModificationControl<string> control, MerchantTribe.Commerce.Catalog.Product item)
         {
             if (control.ID == "ProductNameStringModifierField")
             {
@@ -245,7 +245,7 @@ namespace BVCommerce
             }
         }
 
-        public void MakeChanges(ModificationControl<bool> control, BVSoftware.Commerce.Catalog.Product item)
+        public void MakeChanges(ModificationControl<bool> control, MerchantTribe.Commerce.Catalog.Product item)
         {
             if (control.ID == "TaxExemptBooleanModifierField")
             {
@@ -261,13 +261,13 @@ namespace BVCommerce
             }
             else if (control.ID == "ProductStateBooleanModifierField")
             {
-                if (control.ApplyChanges(item.Status == BVSoftware.Commerce.Catalog.ProductStatus.Active))
+                if (control.ApplyChanges(item.Status == MerchantTribe.Commerce.Catalog.ProductStatus.Active))
                 {
-                    item.Status = BVSoftware.Commerce.Catalog.ProductStatus.Active;
+                    item.Status = MerchantTribe.Commerce.Catalog.ProductStatus.Active;
                 }
                 else
                 {
-                    item.Status = BVSoftware.Commerce.Catalog.ProductStatus.Disabled;
+                    item.Status = MerchantTribe.Commerce.Catalog.ProductStatus.Disabled;
                 }
             }
             else if (control.ID == "GiftWrapAllowedBooleanModifierField")
@@ -280,7 +280,7 @@ namespace BVCommerce
             }
         }
 
-        public void MakeChanges(ModificationControl<int> control, BVSoftware.Commerce.Catalog.Product item)
+        public void MakeChanges(ModificationControl<int> control, MerchantTribe.Commerce.Catalog.Product item)
         {
             if (control.ID == "MinimumQuantityIntegerModifierField")
             {
@@ -292,7 +292,7 @@ namespace BVCommerce
             }
         }
 
-        public void MakeChanges(ModificationControl<double> control, BVSoftware.Commerce.Catalog.Product item)
+        public void MakeChanges(ModificationControl<double> control, MerchantTribe.Commerce.Catalog.Product item)
         {
             if (control.ID == "ShippingWeightFloatModifierField")
             {
@@ -316,7 +316,7 @@ namespace BVCommerce
             }
         }
 
-        public void MakeChanges(ModificationControl<decimal> control, BVSoftware.Commerce.Catalog.Product item)
+        public void MakeChanges(ModificationControl<decimal> control, MerchantTribe.Commerce.Catalog.Product item)
         {
             if (control.ID == "ListPriceMonetaryModifierField")
             {

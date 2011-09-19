@@ -2,15 +2,15 @@ using System;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.HtmlControls;
-using BVSoftware.Commerce.Content;
-using BVSoftware.Commerce.Shipping;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Utilities;
+using MerchantTribe.Commerce.Content;
+using MerchantTribe.Commerce.Shipping;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Utilities;
 using System.Collections.ObjectModel;
-using BVSoftware.Commerce.Datalayer;
-using BVSoftware.Shipping;
+using MerchantTribe.Commerce.Datalayer;
+using MerchantTribe.Shipping;
 using System.Collections.Generic;
-using BVSoftware.Shipping.FedEx;
+using MerchantTribe.Shipping.FedEx;
 
 namespace BVCommerce
 {
@@ -56,7 +56,7 @@ namespace BVCommerce
 
         private void PopulateLists()
         {
-            IShippingService provider = BVSoftware.Commerce.Shipping.AvailableServices.FindById(ShippingMethod.ShippingProviderId, CurrentStore);
+            IShippingService provider = MerchantTribe.Commerce.Shipping.AvailableServices.FindById(ShippingMethod.ShippingProviderId, CurrentStore);
             if (provider != null)
             {
                 List<IServiceCode> codes = provider.ListAllServiceCodes();

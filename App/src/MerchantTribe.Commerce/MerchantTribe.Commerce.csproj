@@ -1,0 +1,757 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4EFF0D3E-99D4-4A8D-A672-B88E5E47CBAA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BVSoftware.Commerce</RootNamespace>
+    <AssemblyName>BVSoftware.Commerce</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-Hosted|AnyCPU'">
+    <OutputPath>bin\Release-Hosted\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\BVSoftware.Commerce.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;c:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;c:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-Source|AnyCPU'">
+    <OutputPath>bin\Release-Source\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\BVSoftware.Commerce.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;c:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;c:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-HostedStaging|AnyCPU'">
+    <OutputPath>bin\Release-HostedStaging\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\BVSoftware.Commerce.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;c:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;c:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EcmaScript.NET.modified, Version=0.1.1.0, Culture=neutral, PublicKeyToken=7d53ba4f537753a5, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\YUICompressor.NET.1.6.0.1\lib\net35\EcmaScript.NET.modified.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="MerchantTribe.Web, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\MerchantTribe.Web.1.2.0.0\lib\net4\MerchantTribe.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="paypal_base">
+      <HintPath>..\..\lib\paypal_base.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Yahoo.Yui.Compressor, Version=1.6.0.1, Culture=neutral, PublicKeyToken=f8b4b81ec75097e2, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\YUICompressor.NET.1.6.0.1\lib\net35\Yahoo.Yui.Compressor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Accounts\AccountService.cs" />
+    <Compile Include="Accounts\ApiKey.cs" />
+    <Compile Include="Accounts\ApiKeyRepository.cs" />
+    <Compile Include="Accounts\AuthToken.cs" />
+    <Compile Include="Accounts\AuthTokenRepository.cs" />
+    <Compile Include="Accounts\BillingManager.cs" />
+    <Compile Include="Accounts\HostedPlan.cs" />
+    <Compile Include="Accounts\Store.cs" />
+    <Compile Include="Accounts\StoreAccessMode.cs" />
+    <Compile Include="Accounts\StoreDomain.cs" />
+    <Compile Include="Accounts\StoreDomainRepository.cs" />
+    <Compile Include="Accounts\StoreDomainSnapshot.cs" />
+    <Compile Include="Accounts\StoreIntegrationPaymentMapping.cs" />
+    <Compile Include="Accounts\StoreIntegrationShippingMapping.cs" />
+    <Compile Include="Accounts\CreateStoreException.cs" />
+    <Compile Include="Accounts\StoreRepository.cs" />
+    <Compile Include="Accounts\StoreSetting.cs" />
+    <Compile Include="Accounts\StoreSettings.cs" />
+    <Compile Include="Accounts\StoreSettingsAcumatica.cs" />
+    <Compile Include="Accounts\StoreSettingsAnalytics.cs" />
+    <Compile Include="Accounts\StoreSettingsGoogleCheckout.cs" />
+    <Compile Include="Accounts\StoreSettingsMailServer.cs" />
+    <Compile Include="Accounts\StoreSettingsPayPal.cs" />
+    <Compile Include="Accounts\StoreSettingsRepository.cs" />
+    <Compile Include="Accounts\StoreStatus.cs" />
+    <Compile Include="Accounts\StoreUserRelationship.cs" />
+    <Compile Include="Accounts\StoreUserRelationshipRepository.cs" />
+    <Compile Include="Accounts\ToDoItem.cs" />
+    <Compile Include="Accounts\ToDoItemRepository.cs" />
+    <Compile Include="Accounts\UserAccount.cs" />
+    <Compile Include="Accounts\UserAccountRepository.cs" />
+    <Compile Include="Accounts\UserAccountStatus.cs" />
+    <Compile Include="BusinessRules\OrderTasks\ApplyMinimumOrderAmount.cs" />
+    <Compile Include="BusinessRules\OrderTasks\AssignOrderNumber.cs" />
+    <Compile Include="BusinessRules\OrderTasks\AssignOrderToUser.cs" />
+    <Compile Include="BusinessRules\OrderTasks\ChangeOrderStatusWhenPaymentRemoved.cs" />
+    <Compile Include="BusinessRules\OrderTasks\ChangeOrderStatusWhenShipmentRemoved.cs" />
+    <Compile Include="BusinessRules\OrderTasks\CheckForOrderMaximums.cs" />
+    <Compile Include="BusinessRules\OrderTasks\CheckForZeroDollarOrders.cs" />
+    <Compile Include="BusinessRules\OrderTasks\CompleteCreditCards.cs" />
+    <Compile Include="BusinessRules\OrderTasks\CreateUserAccountForNewCustomer.cs" />
+    <Compile Include="BusinessRules\OrderTasks\EmailOrder.cs" />
+    <Compile Include="BusinessRules\OrderTasks\EmailShippingInfo.cs" />
+    <Compile Include="BusinessRules\OrderTasks\GoogleCheckoutOrderShipped.cs" />
+    <Compile Include="BusinessRules\OrderTasks\GoogleCheckoutSendTrackingInfo.cs" />
+    <Compile Include="BusinessRules\OrderTasks\IssueGiftCertificates.cs" />
+    <Compile Include="BusinessRules\OrderTasks\IssueRewardsPoints.cs" />
+    <Compile Include="BusinessRules\OrderTasks\LocalFraudCheck.cs" />
+    <Compile Include="BusinessRules\OrderTasks\MakeOrderAddressUsersCurrentAddress.cs" />
+    <Compile Include="BusinessRules\OrderTasks\MakePlacedOrder.cs" />
+    <Compile Include="BusinessRules\OrderTasks\MarkCompletedWhenShippedAndPaid.cs" />
+    <Compile Include="BusinessRules\OrderTasks\ReceiveCreditCards.cs" />
+    <Compile Include="BusinessRules\OrderTasks\ReceivePaypalExpressPayments.cs" />
+    <Compile Include="BusinessRules\OrderTasks\ReceiveRewardsPoints.cs" />
+    <Compile Include="BusinessRules\OrderTasks\RequireLoginBeforeCheckout.cs" />
+    <Compile Include="BusinessRules\OrderTasks\RunAllDropShipWorkflows.cs" />
+    <Compile Include="BusinessRules\OrderTasks\RunShippingCompleteWorkflow.cs" />
+    <Compile Include="BusinessRules\OrderTasks\RunWorkflowIfPaid.cs" />
+    <Compile Include="BusinessRules\OrderTasks\SendRMAEmail.cs" />
+    <Compile Include="BusinessRules\OrderTasks\StartPaypalExpressCheckout.cs" />
+    <Compile Include="BusinessRules\OrderTasks\TestCreateErrors.cs" />
+    <Compile Include="BusinessRules\OrderTasks\UpdateLineItemsForSave.cs" />
+    <Compile Include="BusinessRules\OrderTasks\UpdateOrder.cs" />
+    <Compile Include="BusinessRules\OrderTasks\WorkflowNote.cs" />
+    <Compile Include="BusinessRules\WorkflowNames.cs" />
+    <Compile Include="Catalog\CatalogService.cs" />
+    <Compile Include="Catalog\CategoryFacet.cs" />
+    <Compile Include="Catalog\CategoryFacetDisplayMode.cs" />
+    <Compile Include="Catalog\CategoryFacetKeyHelper.cs" />
+    <Compile Include="Catalog\CategoryFacetManager.cs" />
+    <Compile Include="Catalog\CategoryPageVersion.cs" />
+    <Compile Include="Catalog\CategoryPageVersionRepository.cs" />
+    <Compile Include="Catalog\CategoryProductAssociationRepository.cs" />
+    <Compile Include="Catalog\CategorySnapshot.cs" />
+    <Compile Include="Catalog\CategorySourceType.cs" />
+    <Compile Include="Catalog\CustomPageLayoutType.cs" />
+    <Compile Include="Catalog\CategoryRepository.cs" />
+    <Compile Include="Catalog\OptionList.cs" />
+    <Compile Include="Catalog\Option.cs" />
+    <Compile Include="Catalog\OptionItemRepository.cs" />
+    <Compile Include="Catalog\IOptionProcessor.cs" />
+    <Compile Include="Catalog\OptionRepository.cs" />
+    <Compile Include="Catalog\OptionSelection.cs" />
+    <Compile Include="Catalog\OptionSelectionList.cs" />
+    <Compile Include="Catalog\Options\CheckBoxes.cs" />
+    <Compile Include="Catalog\Options\DropDownList.cs" />
+    <Compile Include="Catalog\Options\Html.cs" />
+    <Compile Include="Catalog\OptionItem.cs" />
+    <Compile Include="Catalog\OptionSettings.cs" />
+    <Compile Include="Catalog\Options\RadioButtonList.cs" />
+    <Compile Include="Catalog\Options\TextInput.cs" />
+    <Compile Include="Catalog\OptionTypes.cs" />
+    <Compile Include="Catalog\ProductDescriptionTab.cs" />
+    <Compile Include="Catalog\ProductFacetCount.cs" />
+    <Compile Include="Catalog\ProductFileAssociation.cs" />
+    <Compile Include="Catalog\ProductFileAssociationRepository.cs" />
+    <Compile Include="Catalog\ProductFileRepository.cs" />
+    <Compile Include="Catalog\ProductImageRepository.cs" />
+    <Compile Include="Catalog\ProductInventoryRepository.cs" />
+    <Compile Include="Catalog\ProductOptionAssociation.cs" />
+    <Compile Include="Catalog\ProductOptionAssociationRepository.cs" />
+    <Compile Include="Catalog\ProductPropertyChoiceRepository.cs" />
+    <Compile Include="Catalog\ProductPropertyRepository.cs" />
+    <Compile Include="Catalog\ProductPropertyValueRepository.cs" />
+    <Compile Include="Catalog\ProductRelationship.cs" />
+    <Compile Include="Catalog\ProductRelationshipRepository.cs" />
+    <Compile Include="Catalog\ProductRepository.cs" />
+    <Compile Include="Catalog\ProductReviewRepository.cs" />
+    <Compile Include="Catalog\ProductTypePropertyAssociation.cs" />
+    <Compile Include="Catalog\ProductTypePropertyAssociationRepository.cs" />
+    <Compile Include="Catalog\ProductTypeRepository.cs" />
+    <Compile Include="Catalog\ProductVolumeDiscountRepository.cs" />
+    <Compile Include="Catalog\SearchManager.cs" />
+    <Compile Include="Catalog\SearchManagerImportance.cs" />
+    <Compile Include="Catalog\SearchManagerObjectType.cs" />
+    <Compile Include="Catalog\UserSpecificPrice.cs" />
+    <Compile Include="Catalog\Variant.cs" />
+    <Compile Include="Catalog\VariantList.cs" />
+    <Compile Include="BusinessRules\NullTask.cs" />
+    <Compile Include="BusinessRules\OrderTask.cs" />
+    <Compile Include="BusinessRules\OrderTaskContext.cs" />
+    <Compile Include="Catalog\VariantRepository.cs" />
+    <Compile Include="Contacts\AddressList.cs" />
+    <Compile Include="Contacts\AddressRepository.cs" />
+    <Compile Include="Contacts\AddressTypes.cs" />
+    <Compile Include="Contacts\AffiliateContact.cs" />
+    <Compile Include="Contacts\AffiliateContactRepository.cs" />
+    <Compile Include="Contacts\AffiliateReferralRepository.cs" />
+    <Compile Include="Contacts\AffiliateRepository.cs" />
+    <Compile Include="Contacts\ContactService.cs" />
+    <Compile Include="Contacts\GravatarHelper.cs" />
+    <Compile Include="Contacts\MailingListMemberRepository.cs" />
+    <Compile Include="Contacts\MailingListRepository.cs" />
+    <Compile Include="Contacts\MailingListSnapShot.cs" />
+    <Compile Include="Contacts\ManufacturerRepository.cs" />
+    <Compile Include="Contacts\PhoneNumber.cs" />
+    <Compile Include="Contacts\PhoneNumberList.cs" />
+    <Compile Include="Contacts\PriceGroup.cs" />
+    <Compile Include="Contacts\PriceGroupRepository.cs" />
+    <Compile Include="Contacts\PricingTypes.cs" />
+    <Compile Include="Contacts\VendorManufacturerContact.cs" />
+    <Compile Include="Contacts\VendorManufacturerContactRepository.cs" />
+    <Compile Include="Contacts\VendorManufacturerType.cs" />
+    <Compile Include="Contacts\VendorRepository.cs" />
+    <Compile Include="Content\BVShippingModule.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Content\BVUserControl.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Content\CategoryTemplate.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Content\ContentBlockRepository.cs" />
+    <Compile Include="Content\ContentBlockSettingListItem.cs" />
+    <Compile Include="Content\ContentBlockSettingList.cs" />
+    <Compile Include="Content\ContentBlockSettings.cs" />
+    <Compile Include="Content\ContentColumnRepository.cs" />
+    <Compile Include="Content\ContentService.cs" />
+    <Compile Include="Content\CustomUrlRepository.cs" />
+    <Compile Include="Content\CustomUrlType.cs" />
+    <Compile Include="Content\HtmlTemplateRepository.cs" />
+    <Compile Include="Content\HtmlTemplateType.cs" />
+    <Compile Include="Content\IReplaceable.cs" />
+    <Compile Include="Content\Parts\Column.cs" />
+    <Compile Include="Content\Parts\ColumnSize.cs" />
+    <Compile Include="Content\Parts\Html.cs" />
+    <Compile Include="Content\Parts\IColumn.cs" />
+    <Compile Include="Content\Parts\IContentPart.cs" />
+    <Compile Include="Content\NotifyClickControl.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Content\Parts\IColumnContainer.cs" />
+    <Compile Include="Content\Parts\ColumnContainer.cs" />
+    <Compile Include="Content\Parts\Image.cs" />
+    <Compile Include="Content\Parts\ImageDisplayFile.cs" />
+    <Compile Include="Content\Parts\PartFactory.cs" />
+    <Compile Include="Content\Parts\PartJsonResult.cs" />
+    <Compile Include="Content\Parts\RootColumn.cs" />
+    <Compile Include="Content\PolicyBlockRepository.cs" />
+    <Compile Include="Content\PolicyRepository.cs" />
+    <Compile Include="Content\PolicyType.cs" />
+    <Compile Include="Content\ProductTemplate.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Content\PublishStatus.cs" />
+    <Compile Include="Content\Replaceable.cs" />
+    <Compile Include="Content\SiteTermIds.cs" />
+    <Compile Include="Content\ThemeManager.cs" />
+    <Compile Include="Content\ThemeView.cs" />
+    <Compile Include="Controls\AddressTypes.cs" />
+    <Compile Include="Controls\BVCompareValidator.cs" />
+    <Compile Include="Controls\BVCustomValidator.cs" />
+    <Compile Include="Controls\BVRangeValidator.cs" />
+    <Compile Include="Controls\BVRegularExpressionValidator.cs" />
+    <Compile Include="Controls\BVRequiredFieldValidator.cs" />
+    <Compile Include="Controls\BVValidationController.cs" />
+    <Compile Include="Controls\ContentColumnBoundField.cs" />
+    <Compile Include="Controls\ControlNotFoundException.cs" />
+    <Compile Include="Controls\GoogleDefaultShippingTypes.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\ModificationControl.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\ModificationControlBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\PagerModes.cs" />
+    <Compile Include="Controls\SingleProductDisplayModes.cs" />
+    <Compile Include="Controls\SplitButton.cs" />
+    <Compile Include="Data\EF\Models.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Models.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Marketing\DiscountDetail.cs" />
+    <Compile Include="Marketing\PromotionActionMode.cs" />
+    <Compile Include="Marketing\PromotionActions\OrderShippingAdjustment.cs" />
+    <Compile Include="Marketing\PromotionActions\OrderTotalAdjustment.cs" />
+    <Compile Include="Marketing\PromotionActions\PromotionActionBase.cs" />
+    <Compile Include="Marketing\PromotionQualifications\AnyOrder.cs" />
+    <Compile Include="Marketing\PromotionQualifications\AnyShippingMethod.cs" />
+    <Compile Include="Marketing\PromotionQualifications\OrderHasCoupon.cs" />
+    <Compile Include="Marketing\PromotionQualifications\OrderHasProducts.cs" />
+    <Compile Include="Marketing\PromotionQualifications\OrderSubTotalIs.cs" />
+    <Compile Include="Marketing\PromotionQualifications\PromotionQualificationBase.cs" />
+    <Compile Include="Marketing\PromotionQualifications\QualificationHasMode.cs" />
+    <Compile Include="Marketing\PromotionQualifications\QualificationSetMode.cs" />
+    <Compile Include="Marketing\PromotionQualifications\ShippingMethodIs.cs" />
+    <Compile Include="Marketing\PromotionQualifications\UserIs.cs" />
+    <Compile Include="Marketing\PromotionQualifications\UserIsInGroup.cs" />
+    <Compile Include="Marketing\PromotionType.cs" />
+    <Compile Include="Marketing\RelativeProcessingCost.cs" />
+    <Compile Include="Membership\CustomerAccountRepository.cs" />
+    <Compile Include="Membership\MembershipServices.cs" />
+    <Compile Include="Membership\UserQuestionRepository.cs" />
+    <Compile Include="Metrics\EventLogRepository.cs" />
+    <Compile Include="GoogleCheckoutArgs.cs" />
+    <Compile Include="Controls\IBaseAdminPage.cs" />
+    <Compile Include="Controls\ITextBoxBasedControl.cs" />
+    <Compile Include="Controls\LoginCompleteEventArgs.cs" />
+    <Compile Include="Controls\PageChangingEventArgs.cs" />
+    <Compile Include="IMultiStorePage.cs" />
+    <Compile Include="Integration.cs" />
+    <Compile Include="Marketing\MarketingService.cs" />
+    <Compile Include="Marketing\PreDefinedPromotion.cs" />
+    <Compile Include="Marketing\PromotionActions\IPromotionAction.cs" />
+    <Compile Include="Marketing\PromotionQualifications\AnyProduct.cs" />
+    <Compile Include="Marketing\PromotionQualifications\IPromotionQualification.cs" />
+    <Compile Include="Marketing\Promotion.cs" />
+    <Compile Include="Marketing\PromotionActions\ProductPriceAdjustment.cs" />
+    <Compile Include="Marketing\PromotionContext.cs" />
+    <Compile Include="Marketing\PromotionQualifications\ProductBvin.cs" />
+    <Compile Include="Marketing\PromotionQualifications\ProductCategory.cs" />
+    <Compile Include="Marketing\PromotionQualifications\ProductType.cs" />
+    <Compile Include="Marketing\PromotionRepository.cs" />
+    <Compile Include="Marketing\PromotionStatus.cs" />
+    <Compile Include="Metrics\GoogleAnalytics.cs" />
+    <Compile Include="Metrics\MetricsServices.cs" />
+    <Compile Include="Metrics\SearchQueryRepository.cs" />
+    <Compile Include="Metrics\YahooAnalytics.cs" />
+    <Compile Include="Orders\IPurchasable.cs" />
+    <Compile Include="Orders\LineItemRepository.cs" />
+    <Compile Include="Orders\OrderBatchProcessor.cs" />
+    <Compile Include="Orders\IOrderCalculator.cs" />
+    <Compile Include="Orders\OrderCalculator.cs" />
+    <Compile Include="Orders\OrderCouponRepository.cs" />
+    <Compile Include="Orders\OrderNoteRepository.cs" />
+    <Compile Include="Orders\OrderNumberGenerator.cs" />
+    <Compile Include="Orders\OrderPackage.cs" />
+    <Compile Include="Orders\OrderPackageItem.cs" />
+    <Compile Include="Orders\OrderPackageRepository.cs" />
+    <Compile Include="Orders\OrderPaymentManager.cs" />
+    <Compile Include="Orders\OrderRepository.cs" />
+    <Compile Include="Orders\OrderSnapshot.cs" />
+    <Compile Include="Orders\OrderTransaction.cs" />
+    <Compile Include="Orders\OrderTransactionRepository.cs" />
+    <Compile Include="Orders\PurchasableSnapshot.cs" />
+    <Compile Include="Payment\CustomerPointsManager.cs" />
+    <Compile Include="Payment\IRewardPointsProvider.cs" />
+    <Compile Include="Payment\Method\CompanyAccount.cs" />
+    <Compile Include="Payment\RewardPoints.cs" />
+    <Compile Include="Payment\RewardPointsProviderDatabase.cs" />
+    <Compile Include="Payment\RewardPointsProviderMemory.cs" />
+    <Compile Include="Payment\RewardPointsSettings.cs" />
+    <Compile Include="PaypalExpressCheckoutArgs.cs" />
+    <Compile Include="Controls\UserSelectedEventArgs.cs" />
+    <Compile Include="Marketing\AmountTypes.cs" />
+    <Compile Include="Marketing\OLD Promotions for Refernce\BuyOneGetOneOfferTaskProcessor.cs" />
+    <Compile Include="Marketing\OLD Promotions for Refernce\OLD_BuyXGetYByCategory.cs" />
+    <Compile Include="Marketing\OLD Promotions for Refernce\BuyXGetYOfferTaskProcessor.cs" />
+    <Compile Include="Marketing\OLD Promotions for Refernce\OLD_FreePromoItem.cs" />
+    <Compile Include="Marketing\OLD Promotions for Refernce\FreePromoItemByAmount.cs" />
+    <Compile Include="Marketing\OLD Promotions for Refernce\OLD_FreeShippingByCategory.cs" />
+    <Compile Include="Marketing\OLD Promotions for Refernce\FreeShippingOfferTaskProcessor.cs" />
+    <Compile Include="Membership\AuthenticationToken.cs" />
+    <Compile Include="Membership\BVMembershipUserException.cs" />
+    <Compile Include="Membership\UserQuestion.cs" />
+    <Compile Include="Membership\UserQuestionOption.cs" />
+    <Compile Include="Membership\UserQuestionType.cs" />
+    <Compile Include="Payment\Method\Cash.cs" />
+    <Compile Include="Payment\Method\CashOnDelivery.cs" />
+    <Compile Include="Payment\Method\Check.cs" />
+    <Compile Include="Payment\Method\CreditCard.cs" />
+    <Compile Include="Payment\Method\GiftCertificate.cs" />
+    <Compile Include="Payment\Method\GoogleCheckout.cs" />
+    <Compile Include="Payment\Method\PaypalExpress.cs" />
+    <Compile Include="Payment\Method\PurchaseOrder.cs" />
+    <Compile Include="Payment\Method\Telephone.cs" />
+    <Compile Include="BusinessRules\ShippingTask.cs" />
+    <Compile Include="BusinessRules\ShippingTaskContext.cs" />
+    <Compile Include="BusinessRules\Task.cs" />
+    <Compile Include="BusinessRules\TaskContext.cs" />
+    <Compile Include="BusinessRules\Workflow.cs" />
+    <Compile Include="BusinessRules\WorkflowMessage.cs" />
+    <Compile Include="BusinessRules\WorkFlowStep.cs" />
+    <Compile Include="BusinessRules\WorkFlowType.cs" />
+    <Compile Include="BVOperationResult.cs" />
+    <Compile Include="Catalog\Category.cs" />
+    <Compile Include="Catalog\CategoryPeerSet.cs" />
+    <Compile Include="Catalog\CategoryProductAssociation.cs" />
+    <Compile Include="Catalog\CategorySortOrder.cs" />
+    <Compile Include="Catalog\CopyableProductProperties.cs" />
+    <Compile Include="Catalog\Product.cs" />
+    <Compile Include="Catalog\ProductFile.cs" />
+    <Compile Include="Catalog\ProductFilter.cs" />
+    <Compile Include="Catalog\ProductImage.cs" />
+    <Compile Include="Catalog\ProductInventory.cs" />
+    <Compile Include="Catalog\ProductInventoryMode.cs" />
+    <Compile Include="Catalog\ProductInventoryStatus.cs" />
+    <Compile Include="Catalog\ProductProperty.cs" />
+    <Compile Include="Catalog\ProductPropertyChoice.cs" />
+    <Compile Include="Catalog\ProductPropertyType.cs" />
+    <Compile Include="Catalog\ProductPropertyValue.cs" />
+    <Compile Include="Catalog\ProductReview.cs" />
+    <Compile Include="Catalog\ProductReviewRating.cs" />
+    <Compile Include="Catalog\ProductSearchCriteria.cs" />
+    <Compile Include="Catalog\ProductSearchCriteriaSortBy.cs" />
+    <Compile Include="Catalog\ProductSearchCriteriaSortOrder.cs" />
+    <Compile Include="Catalog\ProductSearchResultGroup.cs" />
+    <Compile Include="Catalog\ProductStatus.cs" />
+    <Compile Include="Catalog\ProductStoreSearchCriteria.cs" />
+    <Compile Include="Catalog\ProductStoreSearchSortBy.cs" />
+    <Compile Include="Catalog\ProductType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Catalog\ProductVolumeDiscount.cs" />
+    <Compile Include="Catalog\ProductVolumeDiscountType.cs" />
+    <Compile Include="Catalog\SpecialProductTypes.cs" />
+    <Compile Include="Catalog\StoreProductInventoryMode.cs" />
+    <Compile Include="Contacts\Address.cs" />
+    <Compile Include="Contacts\Affiliate.cs" />
+    <Compile Include="Contacts\AffiliateCommissionType.cs" />
+    <Compile Include="Contacts\AffiliateConflictMode.cs" />
+    <Compile Include="Contacts\AffiliateReferral.cs" />
+    <Compile Include="Contacts\AffiliateReferralSearchCriteria.cs" />
+    <Compile Include="Contacts\MailingList.cs" />
+    <Compile Include="Contacts\MailingListMember.cs" />
+    <Compile Include="Contacts\VendorManufacturer.cs" />
+    <Compile Include="Content\BVModule.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Content\BVValidationResult.cs" />
+    <Compile Include="Content\CategoryEditorTemplate.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Content\ContentBlock.cs" />
+    <Compile Include="Content\ContentColumn.cs" />
+    <Compile Include="Content\CustomUrl.cs" />
+    <Compile Include="Content\DisplayMessageType.cs" />
+    <Compile Include="Content\HtmlTemplate.cs" />
+    <Compile Include="Content\HtmlTemplateTag.cs" />
+    <Compile Include="Content\ModuleController.cs" />
+    <Compile Include="Content\Policy.cs" />
+    <Compile Include="Content\PolicyBlock.cs" />
+    <Compile Include="Content\SiteTerms.cs" />
+    <Compile Include="Content\Templates\ParserMessage.cs" />
+    <Compile Include="Content\Templates\TemplateParser.cs" />
+    <Compile Include="Content\TextEditorBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Content\ThemeInfo.cs" />
+    <Compile Include="CustomProperty.cs" />
+    <Compile Include="CustomPropertyCollection.cs" />
+    <Compile Include="Datalayer\CacheManager.cs" />
+    <Compile Include="EventLog.cs" />
+    <Compile Include="Marketing\OLD Promotions for Refernce\OfferUseTypes.cs" />
+    <Compile Include="Membership\CreateUserStatus.cs" />
+    <Compile Include="Membership\SystemPermissions.cs" />
+    <Compile Include="Membership\CustomerAccount.cs" />
+    <Compile Include="Membership\UserPasswordFormat.cs" />
+    <Compile Include="Metrics\EventLogEntry.cs" />
+    <Compile Include="Metrics\EventLogSeverity.cs" />
+    <Compile Include="Metrics\SearchQuery.cs" />
+    <Compile Include="Orders\GiftWrapDetails.cs" />
+    <Compile Include="Orders\HandlingMode.cs" />
+    <Compile Include="Orders\LineItem.cs" />
+    <Compile Include="Orders\Order.cs" />
+    <Compile Include="Orders\OrderCoupon.cs" />
+    <Compile Include="Orders\OrderNote.cs" />
+    <Compile Include="Orders\OrderPaymentStatus.cs" />
+    <Compile Include="Orders\OrderPaymentSummary.cs" />
+    <Compile Include="Orders\OrderSearchCriteria.cs" />
+    <Compile Include="Orders\OrderShippingStatus.cs" />
+    <Compile Include="Orders\OrderStatusCode.cs" />
+    <Compile Include="Orders\RMA.cs" />
+    <Compile Include="Orders\RMAItem.cs" />
+    <Compile Include="Orders\RMAStatus.cs" />
+    <Compile Include="Payment\AvailablePayments.cs" />
+    <Compile Include="Payment\Method\NullPayment.cs" />
+    <Compile Include="Payment\PaymentMethod.cs" />
+    <Compile Include="PersonalizationServices.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Reporting\BVNewsMessage.cs" />
+    <Compile Include="Reporting\BVNewsMessageManager.cs" />
+    <Compile Include="Reporting\OrderSummary.cs" />
+    <Compile Include="Reporting\SalesSummary.cs" />
+    <Compile Include="RequestContext.cs" />
+    <Compile Include="Scheduling\QueuedTask.cs" />
+    <Compile Include="Scheduling\QueuedTaskRepository.cs" />
+    <Compile Include="Scheduling\QueuedTaskResult.cs" />
+    <Compile Include="Scheduling\QueuedTaskStatus.cs" />
+    <Compile Include="Scheduling\ScheduledEventFrequency.cs" />
+    <Compile Include="Scheduling\ScheduleService.cs" />
+    <Compile Include="Security\FraudCheckData.cs" />
+    <Compile Include="Security\FraudRule.cs" />
+    <Compile Include="Security\FraudRuleRepository.cs" />
+    <Compile Include="Security\FraudRuleType.cs" />
+    <Compile Include="Security\FraudScorer.cs" />
+    <Compile Include="BVApplication.cs" />
+    <Compile Include="SessionManager.cs" />
+    <Compile Include="Shipping\AvailableServices.cs" />
+    <Compile Include="Shipping\AvailableShippingMethod.cs" />
+    <Compile Include="Shipping\DefaultDimensionCalculator.cs" />
+    <Compile Include="Shipping\DimensionCalculator.cs" />
+    <Compile Include="Shipping\IZoneRepository.cs" />
+    <Compile Include="Shipping\ShippableItem.cs" />
+    <Compile Include="Shipping\ShippingGroup.cs" />
+    <Compile Include="Shipping\ShippingMethod.cs" />
+    <Compile Include="Shipping\ShippingMethodAdjustmentType.cs" />
+    <Compile Include="Shipping\ShippingMethodLevel.cs" />
+    <Compile Include="Shipping\ShippingMethodMixedLevel.cs" />
+    <Compile Include="Shipping\ShippingMethodRepository.cs" />
+    <Compile Include="Shipping\ShippingMethodType.cs" />
+    <Compile Include="Shipping\ShippingMode.cs" />
+    <Compile Include="Shipping\ShippingRateDisplay.cs" />
+    <Compile Include="Shipping\TrackingProvider.cs" />
+    <Compile Include="Shipping\Zone.cs" />
+    <Compile Include="Shipping\ZoneArea.cs" />
+    <Compile Include="Shipping\ZoneRepository.cs" />
+    <Compile Include="SiteMapGenerator.cs" />
+    <Compile Include="Storage\AssetSnapshot.cs" />
+    <Compile Include="Storage\ButtonSnapshot.cs" />
+    <Compile Include="Storage\FileHelper.cs" />
+    <Compile Include="Storage\DiskStorage.cs" />
+    <Compile Include="ErrorTypes.cs" />
+    <Compile Include="Storage\StoreAssetSnapshot.cs" />
+    <Compile Include="Taxes\ITaxable.cs" />
+    <Compile Include="Taxes\ITaxRate.cs" />
+    <Compile Include="Taxes\ITaxRateRepository.cs" />
+    <Compile Include="Taxes\ITaxSchedule.cs" />
+    <Compile Include="Taxes\StaticRateRepository.cs" />
+    <Compile Include="Taxes\Tax.cs" />
+    <Compile Include="Taxes\TaxableItem.cs" />
+    <Compile Include="Taxes\TaxRepository.cs" />
+    <Compile Include="Taxes\TaxSchedule.cs" />
+    <Compile Include="Taxes\TaxScheduleRepository.cs" />
+    <Compile Include="Orders\OrderService.cs" />
+    <Compile Include="Utilities\CreditCardValidator.cs" />
+    <Compile Include="Utilities\DateHelpers.cs" />
+    <Compile Include="Utilities\DateRange.cs" />
+    <Compile Include="Utilities\DateRangeType.cs" />
+    <Compile Include="Utilities\EnumToString.cs" />
+    <Compile Include="Utilities\GoogleCheckoutUtilities.cs" />
+    <Compile Include="Utilities\HtmlRendering.cs" />
+    <Compile Include="Utilities\ImageHelper.cs" />
+    <Compile Include="Utilities\ImageInfo.cs" />
+    <Compile Include="Utilities\ImageProcessing.cs" />
+    <Compile Include="Utilities\LoginPersister.cs" />
+    <Compile Include="Utilities\MailServices.cs" />
+    <Compile Include="Utilities\MimeTypes.cs" />
+    <Compile Include="Utilities\Money.cs" />
+    <Compile Include="Utilities\PasswordGenerator.cs" />
+    <Compile Include="Utilities\PaypalExpressUtilities.cs" />
+    <Compile Include="Utilities\RandomNumbers.cs" />
+    <Compile Include="Utilities\SerializableDictionary.cs" />
+    <Compile Include="Utilities\Serialization.cs" />
+    <Compile Include="Utilities\SortableCollection.cs" />
+    <Compile Include="Utilities\SortableCollectionComparer.cs" />
+    <Compile Include="Utilities\SortDirection.cs" />
+    <Compile Include="Utilities\SSL.cs" />
+    <Compile Include="Utilities\TagReplacer.cs" />
+    <Compile Include="Utilities\TempFiles.cs" />
+    <Compile Include="Utilities\TextUtilities.cs" />
+    <Compile Include="Utilities\Translators.cs" />
+    <Compile Include="Utilities\UrlHelper.cs" />
+    <Compile Include="Utilities\UrlRewriter.cs" />
+    <Compile Include="Utilities\UrlRewriterParts.cs" />
+    <Compile Include="Utilities\UrlRewritingRule.cs" />
+    <Compile Include="Utilities\Versions.cs" />
+    <Compile Include="Utilities\WebForms.cs" />
+    <Compile Include="XmlHelper.cs" />
+    <Compile Include="WebAppSettings.BV.cs" />
+    <Compile Include="WebAppSettings.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MerchantTribe.CommerceDTO\MerchantTribe.CommerceDTO.csproj">
+      <Project>{C47A3A58-D11F-4D67-92FC-3E95B5DD6221}</Project>
+      <Name>MerchantTribe.CommerceDTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MerchantTribe.GoogleCheckout\MerchantTribe.GoogleCheckout.csproj">
+      <Project>{EE651FCB-FE6E-4940-B887-60C54369DB6C}</Project>
+      <Name>MerchantTribe.GoogleCheckout</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MerchantTribe.PaypalWebServices\MerchantTribe.PaypalWebServices.csproj">
+      <Project>{40FCF14A-F903-4BF1-B4E0-FC5CB623BDF2}</Project>
+      <Name>MerchantTribe.PaypalWebServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MerchantTribe.Shipping.FedEx\MerchantTribe.Shipping.FedEx.csproj">
+      <Project>{9B00258D-45D2-43BD-8178-A6F2AAFF5090}</Project>
+      <Name>MerchantTribe.Shipping.FedEx</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MerchantTribe.Shipping.Ups\MerchantTribe.Shipping.Ups.csproj">
+      <Project>{68FF27BE-6296-4A8B-B20F-6480A491D092}</Project>
+      <Name>MerchantTribe.Shipping.Ups</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MerchantTribe.Shipping.USPostal\MerchantTribe.Shipping.USPostal.csproj">
+      <Project>{A7F1EBBC-53E6-43AE-902E-8B8EF5082C54}</Project>
+      <Name>MerchantTribe.Shipping.USPostal</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MerchantTribe.Shipping\MerchantTribe.Shipping.csproj">
+      <Project>{99A252BB-D844-4581-B924-4E59AE19857F}</Project>
+      <Name>MerchantTribe.Shipping</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MerchantTribe.Billing\MerchantTribe.Billing.csproj">
+      <Project>{39CB3B9D-94B5-46B1-9C5F-E1C3348565D9}</Project>
+      <Name>MerchantTribe.Billing</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MerchantTribe.Payment\MerchantTribe.Payment.csproj">
+      <Project>{4C223AD8-685A-4AAC-8610-1BEC50636203}</Project>
+      <Name>MerchantTribe.Payment</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.VisualBasic.PowerPacks.10.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft Visual Basic PowerPacks 10.0</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <EntityDeploy Include="Data\EF\Models.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Models.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

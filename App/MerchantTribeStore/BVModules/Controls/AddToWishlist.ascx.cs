@@ -1,14 +1,14 @@
 using System.Web.UI;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Catalog;
-using BVSoftware.Commerce.Content;
-using BVSoftware.Commerce.Metrics;
-using BVSoftware.Commerce.Orders;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Catalog;
+using MerchantTribe.Commerce.Content;
+using MerchantTribe.Commerce.Metrics;
+using MerchantTribe.Commerce.Orders;
 
 namespace BVCommerce
 {
 
-    partial class BVModules_Controls_AddToWishlist : BVSoftware.Commerce.Content.BVUserControl
+    partial class BVModules_Controls_AddToWishlist : MerchantTribe.Commerce.Content.BVUserControl
     {
         public delegate void ClickedDelegate(AddToWishlistClickedEventArgs args);
         public event ClickedDelegate Clicked;

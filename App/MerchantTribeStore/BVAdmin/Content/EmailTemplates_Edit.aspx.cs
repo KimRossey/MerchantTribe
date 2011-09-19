@@ -2,14 +2,14 @@ using System;
 using System.Text;
 using System.Web;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce.Membership;
-using BVSoftware.Commerce.Content;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Content.Templates;
-using BVSoftware.Commerce.Orders;
-using BVSoftware.Commerce.Catalog;
-using BVSoftware.Commerce.Shipping;
-using BVSoftware.Commerce.Contacts;
+using MerchantTribe.Commerce.Membership;
+using MerchantTribe.Commerce.Content;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Content.Templates;
+using MerchantTribe.Commerce.Orders;
+using MerchantTribe.Commerce.Catalog;
+using MerchantTribe.Commerce.Shipping;
+using MerchantTribe.Commerce.Contacts;
 using System.Collections.Generic;
 
 namespace BVCommerce

@@ -2,14 +2,14 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce.Contacts;
-using BVSoftware.Commerce.Content;
+using MerchantTribe.Commerce.Contacts;
+using MerchantTribe.Commerce.Content;
 using MerchantTribe.Web.Geography;
 
 namespace BVCommerce
 {
 
-    partial class BVModules_Controls_AddressBilling : BVSoftware.Commerce.Content.BVUserControl, MerchantTribe.Web.Validation.IValidatable
+    partial class BVModules_Controls_AddressBilling : MerchantTribe.Commerce.Content.BVUserControl, MerchantTribe.Web.Validation.IValidatable
     {
 
         private bool _RequireName = true;

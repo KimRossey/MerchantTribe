@@ -4,9 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BVCommerce.Filters;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Membership;
-using BVSoftware.Commerce.Contacts;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Membership;
+using MerchantTribe.Commerce.Contacts;
 
 namespace BVCommerce.Areas.account.Controllers
 {

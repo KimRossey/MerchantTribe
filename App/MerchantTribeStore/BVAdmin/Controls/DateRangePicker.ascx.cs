@@ -1,6 +1,6 @@
 using System;
-using BVSoftware.Commerce.Controls;
-using BVSoftware.Commerce.Utilities;
+using MerchantTribe.Commerce.Controls;
+using MerchantTribe.Commerce.Utilities;
 
 namespace BVCommerce
 {
@@ -8,7 +8,7 @@ namespace BVCommerce
     partial class BVAdmin_Controls_DateRangePicker : System.Web.UI.UserControl
     {
 
-        private BVSoftware.Commerce.Utilities.DateRange _range = new BVSoftware.Commerce.Utilities.DateRange();
+        private MerchantTribe.Commerce.Utilities.DateRange _range = new MerchantTribe.Commerce.Utilities.DateRange();
 
         public delegate void RangeTypeChangedDelegate(System.EventArgs e);
         public event RangeTypeChangedDelegate RangeTypeChanged;
@@ -42,7 +42,7 @@ namespace BVCommerce
         {
             get
             {
-                if (RangeType == BVSoftware.Commerce.Utilities.DateRangeType.Custom)
+                if (RangeType == MerchantTribe.Commerce.Utilities.DateRangeType.Custom)
                 {
                     return MerchantTribe.Web.Dates.ZeroOutTime(this.StartDateField.SelectedDate);
                 }
@@ -55,7 +55,7 @@ namespace BVCommerce
             set
             {
                 this.StartDateField.SelectedDate = value;
-                RangeType = BVSoftware.Commerce.Utilities.DateRangeType.Custom;
+                RangeType = MerchantTribe.Commerce.Utilities.DateRangeType.Custom;
             }
         }
 
@@ -72,7 +72,7 @@ namespace BVCommerce
         {
             get
             {
-                if (RangeType == BVSoftware.Commerce.Utilities.DateRangeType.Custom)
+                if (RangeType == MerchantTribe.Commerce.Utilities.DateRangeType.Custom)
                 {
                     return MerchantTribe.Web.Dates.MaxOutTime(this.EndDateField.SelectedDate);
                 }
@@ -85,7 +85,7 @@ namespace BVCommerce
             set
             {
                 this.EndDateField.SelectedDate = value;
-                RangeType = BVSoftware.Commerce.Utilities.DateRangeType.Custom;
+                RangeType = MerchantTribe.Commerce.Utilities.DateRangeType.Custom;
             }
         }
 
@@ -98,9 +98,9 @@ namespace BVCommerce
             return _range.EndDate;
         }
 
-        public BVSoftware.Commerce.Utilities.DateRangeType RangeType
+        public MerchantTribe.Commerce.Utilities.DateRangeType RangeType
         {
-            get { return (BVSoftware.Commerce.Utilities.DateRangeType)int.Parse(this.lstRangeType.SelectedValue); }
+            get { return (MerchantTribe.Commerce.Utilities.DateRangeType)int.Parse(this.lstRangeType.SelectedValue); }
             set
             {
                 if (this.lstRangeType.Items.FindByValue(((int)value).ToString()) != null)

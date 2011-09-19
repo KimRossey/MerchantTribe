@@ -1,20 +1,20 @@
 using System;
-using BVSoftware.Commerce;
+using MerchantTribe.Commerce;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using BVSoftware.Commerce.Accounts;
-using BVSoftware.Commerce.Catalog;
-using BVSoftware.Commerce.Contacts;
+using MerchantTribe.Commerce.Accounts;
+using MerchantTribe.Commerce.Catalog;
+using MerchantTribe.Commerce.Contacts;
 
 namespace BVCommerce
 {
-    public class BaseAdminPage : System.Web.UI.Page, BVSoftware.Commerce.Controls.IBaseAdminPage, IMultiStorePage
+    public class BaseAdminPage : System.Web.UI.Page, MerchantTribe.Commerce.Controls.IBaseAdminPage, IMultiStorePage
     {
         protected const string DefaultCatalogPage = "~/BVAdmin/Catalog/Default.aspx";
 
         private Guid? _AuthTokenGuid = null;
 
-        //private BVSoftware.Commerce.RequestContext _CurrentRequestContext = new BVSoftware.Commerce.RequestContext();
+        //private MerchantTribe.Commerce.RequestContext _CurrentRequestContext = new MerchantTribe.Commerce.RequestContext();
         private IMessageBox _messageBox = null;
 
         public BVApplication BVApp { get; set; }
@@ -29,7 +29,7 @@ namespace BVCommerce
             get { return _AuthTokenGuid; }
             set { _AuthTokenGuid = value; }
         }
-        public BVSoftware.Commerce.Accounts.UserAccount CurrentUser
+        public MerchantTribe.Commerce.Accounts.UserAccount CurrentUser
         {
             get
             {
@@ -74,13 +74,13 @@ namespace BVCommerce
             BVApp.CurrentRequestContext.RoutingContext = this.Request.RequestContext;
 
             // Determine store id        
-            BVApp.CurrentStore = BVSoftware.Commerce.Utilities.UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, BVApp.AccountServices);
+            BVApp.CurrentStore = MerchantTribe.Commerce.Utilities.UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, BVApp.AccountServices);
             if (BVApp.CurrentStore == null)
             {
                 Response.Redirect("~/storenotfound");
             }
 
-            if (BVApp.CurrentStore.Status == BVSoftware.Commerce.Accounts.StoreStatus.Deactivated)
+            if (BVApp.CurrentStore.Status == MerchantTribe.Commerce.Accounts.StoreStatus.Deactivated)
             {
                 Response.Redirect("~/storenotavailable");
             }
@@ -107,7 +107,7 @@ namespace BVCommerce
                 {
                     if (!Request.IsSecureConnection)
                     {
-                        BVSoftware.Commerce.Utilities.SSL.SSLRedirect(this, this.BVApp.CurrentStore, BVSoftware.Commerce.Utilities.SSL.SSLRedirectTo.SSL);
+                        MerchantTribe.Commerce.Utilities.SSL.SSLRedirect(this, this.BVApp.CurrentStore, MerchantTribe.Commerce.Utilities.SSL.SSLRedirectTo.SSL);
                     }
                 }
             }
@@ -117,7 +117,7 @@ namespace BVCommerce
                 {
                     //if (Request.IsSecureConnection)
                     //{
-                    //    BVSoftware.Commerce.Utilities.SSL.SSLRedirect(this, this.BVApp.CurrentStore, BVSoftware.Commerce.Utilities.SSL.SSLRedirectTo.NonSSL);
+                    //    MerchantTribe.Commerce.Utilities.SSL.SSLRedirect(this, this.BVApp.CurrentStore, MerchantTribe.Commerce.Utilities.SSL.SSLRedirectTo.NonSSL);
                     //}
                 }
             }
@@ -128,7 +128,7 @@ namespace BVCommerce
             base.OnLoad(e);
             if (!DesignMode)
             {
-                BVSoftware.Commerce.Utilities.WebForms.MakePageNonCacheable(this);
+                MerchantTribe.Commerce.Utilities.WebForms.MakePageNonCacheable(this);
             }
         }
 

@@ -1,11 +1,11 @@
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Content;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Content;
 
 namespace BVCommerce
 {
 
-    partial class BVAdmin_Controls_ContentColumnEditor : BVSoftware.Commerce.Content.BVUserControl
+    partial class BVAdmin_Controls_ContentColumnEditor : MerchantTribe.Commerce.Content.BVUserControl
     {
         protected override void OnLoad(System.EventArgs e)
         {

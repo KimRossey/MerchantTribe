@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Collections.ObjectModel;
-using BVSoftware.Commerce.Content;
+using MerchantTribe.Commerce.Content;
 using System.Text;
 
 namespace BVCommerce
@@ -69,7 +69,7 @@ namespace BVCommerce
             sb.Append(">");
 
             // Image
-            sb.Append("<img src=\"" + BVSoftware.Commerce.Utilities.TagReplacer.ReplaceContentTags(imageUrl,
+            sb.Append("<img src=\"" + MerchantTribe.Commerce.Utilities.TagReplacer.ReplaceContentTags(imageUrl,
                                                                                                    MyPage.BVApp,
                                                                                                    "",
                                                                                                    Request.IsSecureConnection)

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Web.UI;
-using BVSoftware.Commerce.Membership;
+using MerchantTribe.Commerce.Membership;
 using MerchantTribe.Web.Geography;
 
 namespace BVCommerce.BVAdmin.Configuration

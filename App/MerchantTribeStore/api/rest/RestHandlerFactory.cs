@@ -7,7 +7,7 @@ namespace BVCommerce.api.rest
 {
     public class RestHandlerFactory
     {
-        public static IRestHandler Instantiate(string version, string modelname, BVSoftware.Commerce.BVApplication app)
+        public static IRestHandler Instantiate(string version, string modelname, MerchantTribe.Commerce.BVApplication app)
         {
             switch (modelname.Trim().ToLowerInvariant())
             {

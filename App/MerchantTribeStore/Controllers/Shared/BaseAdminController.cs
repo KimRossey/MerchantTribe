@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Accounts;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Accounts;
 
 namespace BVCommerce.Controllers.Shared
 {
@@ -20,13 +20,13 @@ namespace BVCommerce.Controllers.Shared
 
 
 
-        BVSoftware.Commerce.RequestContext _CurrentRequestContext = new RequestContext();        
-        public BVSoftware.Commerce.RequestContext CurrentRequestContext
+        MerchantTribe.Commerce.RequestContext _CurrentRequestContext = new RequestContext();        
+        public MerchantTribe.Commerce.RequestContext CurrentRequestContext
         {
             get { return _CurrentRequestContext; }
             set { _CurrentRequestContext = value; }
         }
-        public BVSoftware.Commerce.Accounts.Store CurrentStore
+        public MerchantTribe.Commerce.Accounts.Store CurrentStore
         {
             get { return _CurrentRequestContext.CurrentStore; }
             set { _CurrentRequestContext.CurrentStore = value; }
@@ -52,13 +52,13 @@ namespace BVCommerce.Controllers.Shared
             CurrentRequestContext.RoutingContext = this.Request.RequestContext;
 
             // Determine store id        
-            CurrentStore = BVSoftware.Commerce.Utilities.UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, AccountServices);
+            CurrentStore = MerchantTribe.Commerce.Utilities.UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, AccountServices);
             if (CurrentStore == null)
             {
                 Response.Redirect("~/storenotfound");
             }
 
-            if (CurrentStore.Status == BVSoftware.Commerce.Accounts.StoreStatus.Deactivated)
+            if (CurrentStore.Status == MerchantTribe.Commerce.Accounts.StoreStatus.Deactivated)
             {
                 Response.Redirect("~/storenotavailable");
             }

@@ -1,12 +1,12 @@
 using System;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Accounts;
-using BVSoftware.Commerce.Catalog;
-using BVSoftware.Commerce.Contacts;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Accounts;
+using MerchantTribe.Commerce.Catalog;
+using MerchantTribe.Commerce.Contacts;
 
 namespace BVCommerce
 {
-    public class BaseAdminJsonPage : System.Web.UI.Page, BVSoftware.Commerce.Controls.IBaseAdminPage, IMultiStorePage
+    public class BaseAdminJsonPage : System.Web.UI.Page, MerchantTribe.Commerce.Controls.IBaseAdminPage, IMultiStorePage
     {
         private Guid? _AuthTokenGuid = null;
         public Guid? AuthTokenGuid
@@ -30,13 +30,13 @@ namespace BVCommerce
             BVApp.CurrentRequestContext.RoutingContext = this.Request.RequestContext;
 
             // Determine store id        
-            BVApp.CurrentStore = BVSoftware.Commerce.Utilities.UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, BVApp.AccountServices);
+            BVApp.CurrentStore = MerchantTribe.Commerce.Utilities.UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, BVApp.AccountServices);
             if (BVApp.CurrentStore == null)
             {
                 Response.Redirect("~/storenotfound");
             }
 
-            if (BVApp.CurrentStore.Status == BVSoftware.Commerce.Accounts.StoreStatus.Deactivated)
+            if (BVApp.CurrentStore.Status == MerchantTribe.Commerce.Accounts.StoreStatus.Deactivated)
             {
                 Response.Redirect("~/storenotavailable");
             }

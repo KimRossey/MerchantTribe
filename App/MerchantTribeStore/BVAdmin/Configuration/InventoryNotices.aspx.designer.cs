@@ -55,7 +55,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVSoftware.Commerce.Controls.BVRequiredFieldValidator RequiredFieldValidator1;
+        protected global::MerchantTribe.Commerce.Controls.BVRequiredFieldValidator RequiredFieldValidator1;
         
         /// <summary>
         /// EmailReportToTextBox control.
@@ -73,7 +73,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVSoftware.Commerce.Controls.BVRequiredFieldValidator BVRequiredFieldValidator3;
+        protected global::MerchantTribe.Commerce.Controls.BVRequiredFieldValidator BVRequiredFieldValidator3;
         
         /// <summary>
         /// BVRegularExpressionValidator4 control.
@@ -82,7 +82,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVSoftware.Commerce.Controls.BVRegularExpressionValidator BVRegularExpressionValidator4;
+        protected global::MerchantTribe.Commerce.Controls.BVRegularExpressionValidator BVRegularExpressionValidator4;
         
         /// <summary>
         /// LinePrefixTextBox control.

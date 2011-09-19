@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using BVSoftware.Commerce.Accounts;
+using MerchantTribe.Commerce.Accounts;
 
 namespace BVCommerce.Models
 {
-    public class SuperStoreViewModel: BVSoftware.Commerce.Accounts.Store
+    public class SuperStoreViewModel: MerchantTribe.Commerce.Accounts.Store
     {
         public List<UserAccount> Users { get; set; }
 

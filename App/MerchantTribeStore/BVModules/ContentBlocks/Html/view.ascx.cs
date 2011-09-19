@@ -1,4 +1,4 @@
-using BVSoftware.Commerce.Content;
+using MerchantTribe.Commerce.Content;
 
 namespace BVCommerce
 {
@@ -21,7 +21,7 @@ namespace BVCommerce
                 result = b.BaseSettings.GetSettingOrEmpty("HtmlData");
             }
 
-            result = BVSoftware.Commerce.Utilities.TagReplacer.ReplaceContentTags(result,
+            result = MerchantTribe.Commerce.Utilities.TagReplacer.ReplaceContentTags(result,
                                                                                     MyPage.BVApp,
                                                                                     "",
                                                                                     Request.IsSecureConnection);

@@ -3,7 +3,7 @@ using System.Web.UI;
 namespace BVCommerce
 {
 
-    partial class BVModules_Controls_EstimateShipping : BVSoftware.Commerce.Content.BVUserControl
+    partial class BVModules_Controls_EstimateShipping : MerchantTribe.Commerce.Content.BVUserControl
     {
 
         protected override void OnLoad(System.EventArgs e)

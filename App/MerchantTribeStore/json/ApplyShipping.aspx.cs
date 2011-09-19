@@ -1,7 +1,7 @@
 
 using System;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Orders;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Orders;
 
 namespace BVCommerce
 {

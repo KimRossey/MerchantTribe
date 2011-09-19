@@ -8,11 +8,11 @@ using System.Web.UI.HtmlControls;
 using System.Collections.Specialized;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Catalog;
-using BVSoftware.Commerce.Membership;
-using BVSoftware.Commerce.Metrics;
-using BVSoftware.Commerce.Utilities;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Catalog;
+using MerchantTribe.Commerce.Membership;
+using MerchantTribe.Commerce.Metrics;
+using MerchantTribe.Commerce.Utilities;
 
 namespace BVCommerce
 {

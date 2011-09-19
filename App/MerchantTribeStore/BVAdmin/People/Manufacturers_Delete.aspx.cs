@@ -14,7 +14,7 @@ namespace BVCommerce.BVAdmin.People
             base.OnPreInit(e);
             this.PageTitle = "Manufacturers";
             this.CurrentTab = AdminTabType.People;
-            ValidateCurrentUserHasPermission(BVSoftware.Commerce.Membership.SystemPermissions.PeopleView);
+            ValidateCurrentUserHasPermission(MerchantTribe.Commerce.Membership.SystemPermissions.PeopleView);
         }
 
         protected override void OnLoad(EventArgs e)

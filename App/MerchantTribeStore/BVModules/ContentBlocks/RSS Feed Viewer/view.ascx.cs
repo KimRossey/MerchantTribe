@@ -5,7 +5,7 @@ using System.IO;
 using System.Net;
 using System.Web.UI;
 using System.Xml;
-using BVSoftware.Commerce.Content;
+using MerchantTribe.Commerce.Content;
 
 namespace BVCommerce
 {
@@ -92,7 +92,7 @@ namespace BVCommerce
                 System.Xml.XmlNodeList tempNodeList = null;
                 XmlDocument rssDoc = new XmlDocument();
 
-                string cached = BVSoftware.Commerce.Datalayer.CacheManager.GetStringFromCache("com.bvsoftware.rssfeedviewer.channel." + this.FeedUrl);
+                string cached = MerchantTribe.Commerce.Datalayer.CacheManager.GetStringFromCache("com.bvsoftware.rssfeedviewer.channel." + this.FeedUrl);
 
                 if ((cached == null) | (cached == string.Empty))
                 {
@@ -103,7 +103,7 @@ namespace BVCommerce
                     StreamReader sr = new StreamReader(rssStream);
                     string Data = sr.ReadToEnd();
                     rssDoc.Load(new StringReader(Data));
-                    BVSoftware.Commerce.Datalayer.CacheManager.AddStringToCache("com.bvsoftware.rssfeedviewer.channel." + this.FeedUrl, Data, 30);
+                    MerchantTribe.Commerce.Datalayer.CacheManager.AddStringToCache("com.bvsoftware.rssfeedviewer.channel." + this.FeedUrl, Data, 30);
                 }
                 else
                 {
@@ -126,7 +126,7 @@ namespace BVCommerce
                 }
                 catch (Exception ex)
                 {
-                    BVSoftware.Commerce.EventLog.LogEvent(ex);
+                    MerchantTribe.Commerce.EventLog.LogEvent(ex);
                 }
             }
 
@@ -150,7 +150,7 @@ namespace BVCommerce
                 }
                 catch (Exception ex)
                 {
-                    BVSoftware.Commerce.EventLog.LogEvent(ex);
+                    MerchantTribe.Commerce.EventLog.LogEvent(ex);
                 }
 
                 return result;

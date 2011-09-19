@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<BVCommerce.Models.SuperStoreViewModel>
 @using System.Collections.Generic;
-@using BVSoftware.Commerce.Accounts;
+@using MerchantTribe.Commerce.Accounts;
 @{    
     ViewBag.Title = "New Store Report";
     Layout = "~/Views/Shared/_SuperLayout.cshtml";
@@ -40,7 +40,7 @@
     <td class="formlabel">
     @foreach (UserAccount u in s.Users)
     {
-        @BVSoftware.Commerce.Utilities.MailServices.MailToLink(u.Email, "BV Commerce Store", "")
+        @MerchantTribe.Commerce.Utilities.MailServices.MailToLink(u.Email, "BV Commerce Store", "")
         <br />
     }
     </td>

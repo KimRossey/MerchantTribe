@@ -1,10 +1,10 @@
 using System;
 using System.Web;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce.Contacts;
-using BVSoftware.Commerce.Membership;
+using MerchantTribe.Commerce.Contacts;
+using MerchantTribe.Commerce.Membership;
 using System.Collections.ObjectModel;
-using BVSoftware.Commerce;
+using MerchantTribe.Commerce;
 using System.IO;
 using System.Text;
 using System.Collections.Generic;
@@ -24,7 +24,7 @@ namespace BVCommerce
             base.OnPreInit(e);
             this.PageTitle = "Vendors";
             this.CurrentTab = AdminTabType.People;
-            ValidateCurrentUserHasPermission(BVSoftware.Commerce.Membership.SystemPermissions.PeopleView);
+            ValidateCurrentUserHasPermission(MerchantTribe.Commerce.Membership.SystemPermissions.PeopleView);
         }
 
         protected override void OnLoad(System.EventArgs e)

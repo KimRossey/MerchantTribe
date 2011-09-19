@@ -1,4 +1,4 @@
-﻿@model IEnumerable<BVSoftware.Commerce.Contacts.Address>
+﻿@model IEnumerable<MerchantTribe.Commerce.Contacts.Address>
 
 @{  
     Layout = "~/Areas/account/Views/Shared/_AccountLayout.cshtml";
@@ -9,7 +9,7 @@
     <a href="@Url.Action("Edit", new { id="new" })" alt="Add New Address"><img src="@ViewBag.AddNewButtonUrl" alt="Add New Address" /></a>
     <h2>@Model.Count().ToString() addresses found</h2>
     <div class="addressbookwrapper">
-    @foreach (BVSoftware.Commerce.Contacts.Address a in Model)
+    @foreach (MerchantTribe.Commerce.Contacts.Address a in Model)
     {
         <div class="address">
             @if (a.IsBilling()) { <strong>Bill To:</strong> }&nbsp;

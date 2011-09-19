@@ -1,5 +1,5 @@
-using BVSoftware.Commerce.Controls;
-using BVSoftware.Commerce;
+using MerchantTribe.Commerce.Controls;
+using MerchantTribe.Commerce;
 
 namespace BVCommerce
 {

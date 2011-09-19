@@ -1,12 +1,12 @@
 using System.Web.UI;
-using BVSoftware.Commerce.Catalog;
-using BVSoftware.Commerce.Content;
+using MerchantTribe.Commerce.Catalog;
+using MerchantTribe.Commerce.Content;
 using System.Collections.Generic;
 
 namespace BVCommerce
 {
 
-    partial class BVModules_Controls_AdditionalImages : BVSoftware.Commerce.Content.BVUserControl
+    partial class BVModules_Controls_AdditionalImages : MerchantTribe.Commerce.Content.BVUserControl
     {
 
         protected override void OnLoad(System.EventArgs e)

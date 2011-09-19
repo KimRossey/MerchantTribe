@@ -1,12 +1,12 @@
 using System;
 using System.Web;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce.Membership;
-using BVSoftware.Commerce.Content;
-using BVSoftware.Commerce;
+using MerchantTribe.Commerce.Membership;
+using MerchantTribe.Commerce.Content;
+using MerchantTribe.Commerce;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
-using BVSoftware.Commerce.Utilities;
+using MerchantTribe.Commerce.Utilities;
 
 namespace BVCommerce
 {

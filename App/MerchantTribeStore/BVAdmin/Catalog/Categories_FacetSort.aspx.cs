@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Web.UI;
-using BVSoftware.Commerce.Catalog;
+using MerchantTribe.Commerce.Catalog;
 using System;
 using System.Collections.ObjectModel;
 

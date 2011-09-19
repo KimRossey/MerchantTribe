@@ -28,7 +28,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVSoftware.Commerce.Controls.BVCustomValidator DateCustomValidator;
+        protected global::MerchantTribe.Commerce.Controls.BVCustomValidator DateCustomValidator;
         
         /// <summary>
         /// DateRequiredValidator control.
@@ -37,7 +37,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVSoftware.Commerce.Controls.BVRequiredFieldValidator DateRequiredValidator;
+        protected global::MerchantTribe.Commerce.Controls.BVRequiredFieldValidator DateRequiredValidator;
         
         /// <summary>
         /// CalendarShowImageButton control.

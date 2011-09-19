@@ -1,16 +1,16 @@
 using System;
 using System.Web;
-using BVSoftware.Commerce;
+using MerchantTribe.Commerce;
 using System.Data;
 using System.Collections.ObjectModel;
-using BVSoftware.Commerce.Accounts;
-using BVSoftware.Commerce.Content;
-using BVSoftware.Commerce.Catalog;
-using BVSoftware.Commerce.Contacts;
+using MerchantTribe.Commerce.Accounts;
+using MerchantTribe.Commerce.Content;
+using MerchantTribe.Commerce.Catalog;
+using MerchantTribe.Commerce.Contacts;
 
 namespace BVCommerce
 {
-    public class BaseStorePage : System.Web.UI.Page, IStorePage, BVSoftware.Commerce.IMultiStorePage
+    public class BaseStorePage : System.Web.UI.Page, IStorePage, MerchantTribe.Commerce.IMultiStorePage
     {
 
         private bool _useTabIndexes = false;
@@ -82,14 +82,14 @@ namespace BVCommerce
             {
                 if ((!Request.IsSecureConnection))
                 {
-                    BVSoftware.Commerce.Utilities.SSL.SSLRedirect(this, this.BVApp.CurrentStore, BVSoftware.Commerce.Utilities.SSL.SSLRedirectTo.SSL);
+                    MerchantTribe.Commerce.Utilities.SSL.SSLRedirect(this, this.BVApp.CurrentStore, MerchantTribe.Commerce.Utilities.SSL.SSLRedirectTo.SSL);
                 }
             }
             else
             {
                 if ((Request.IsSecureConnection))
                 {
-                    BVSoftware.Commerce.Utilities.SSL.SSLRedirect(this, this.BVApp.CurrentStore, BVSoftware.Commerce.Utilities.SSL.SSLRedirectTo.NonSSL);
+                    MerchantTribe.Commerce.Utilities.SSL.SSLRedirect(this, this.BVApp.CurrentStore, MerchantTribe.Commerce.Utilities.SSL.SSLRedirectTo.NonSSL);
                 }
             }
         }
@@ -106,13 +106,13 @@ namespace BVCommerce
             BVApp.CurrentRequestContext.RoutingContext = this.Request.RequestContext;
 
             // Determine store id        
-            BVApp.CurrentStore = BVSoftware.Commerce.Utilities.UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, BVApp.AccountServices);
+            BVApp.CurrentStore = MerchantTribe.Commerce.Utilities.UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, BVApp.AccountServices);
             if (BVApp.CurrentStore == null)
             {
                 Response.Redirect("~/storenotfound");
             }
 
-            if (BVApp.CurrentStore.Status == BVSoftware.Commerce.Accounts.StoreStatus.Deactivated)
+            if (BVApp.CurrentStore.Status == MerchantTribe.Commerce.Accounts.StoreStatus.Deactivated)
             {
                 if ((AvailableWhenInactive == false))
                 {
@@ -149,24 +149,24 @@ namespace BVCommerce
             // Add Google Tracker to Page
             if (BVApp.CurrentStore.Settings.Analytics.UseGoogleTracker)
             {
-                ViewData["analyticstop"] = BVSoftware.Commerce.Metrics.GoogleAnalytics.RenderLatestTracker(BVApp.CurrentStore.Settings.Analytics.GoogleTrackerId);
+                ViewData["analyticstop"] = MerchantTribe.Commerce.Metrics.GoogleAnalytics.RenderLatestTracker(BVApp.CurrentStore.Settings.Analytics.GoogleTrackerId);
             }
 
             // header and footer
-            string header = BVSoftware.Commerce.Storage.DiskStorage.ReadCustomHeader(BVApp.CurrentStore.Id, BVApp.CurrentStore.Settings.ThemeId);
-            string footer = BVSoftware.Commerce.Storage.DiskStorage.ReadCustomFooter(BVApp.CurrentStore.Id, BVApp.CurrentStore.Settings.ThemeId);
+            string header = MerchantTribe.Commerce.Storage.DiskStorage.ReadCustomHeader(BVApp.CurrentStore.Id, BVApp.CurrentStore.Settings.ThemeId);
+            string footer = MerchantTribe.Commerce.Storage.DiskStorage.ReadCustomFooter(BVApp.CurrentStore.Id, BVApp.CurrentStore.Settings.ThemeId);
 
             if ((header.Trim().Length < 1))
             {
-                header = BVSoftware.Commerce.Utilities.HtmlRendering.StandardHeader();
+                header = MerchantTribe.Commerce.Utilities.HtmlRendering.StandardHeader();
             }
-            ViewData["header"] = BVSoftware.Commerce.Utilities.TagReplacer.ReplaceContentTags(header, BVApp, itemCount, Page.Request.IsSecureConnection);
+            ViewData["header"] = MerchantTribe.Commerce.Utilities.TagReplacer.ReplaceContentTags(header, BVApp, itemCount, Page.Request.IsSecureConnection);
             if ((footer.Trim().Length < 1))
             {
-                footer = BVSoftware.Commerce.Utilities.HtmlRendering.StandardFooter(BVApp.CurrentStore);
+                footer = MerchantTribe.Commerce.Utilities.HtmlRendering.StandardFooter(BVApp.CurrentStore);
             }
-            footer = footer + BVSoftware.Commerce.Utilities.HtmlRendering.PromoTag();
-            ViewData["footer"] = BVSoftware.Commerce.Utilities.TagReplacer.ReplaceContentTags(footer, BVApp, itemCount, Page.Request.IsSecureConnection);
+            footer = footer + MerchantTribe.Commerce.Utilities.HtmlRendering.PromoTag();
+            ViewData["footer"] = MerchantTribe.Commerce.Utilities.TagReplacer.ReplaceContentTags(footer, BVApp, itemCount, Page.Request.IsSecureConnection);
 
 
             //log affiliate request
@@ -183,7 +183,7 @@ namespace BVCommerce
                 }
                 catch (System.Exception ex)
                 {
-                    EventLog.LogEvent("BaseStorePage - Page_Init", "Error loading affiliate " + ex.Message, BVSoftware.Commerce.Metrics.EventLogSeverity.Warning);
+                    EventLog.LogEvent("BaseStorePage - Page_Init", "Error loading affiliate " + ex.Message, MerchantTribe.Commerce.Metrics.EventLogSeverity.Warning);
                 }
             }
             

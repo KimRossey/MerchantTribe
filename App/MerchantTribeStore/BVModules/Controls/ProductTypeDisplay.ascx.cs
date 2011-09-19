@@ -2,13 +2,13 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 using System.Web.UI;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Catalog;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Catalog;
 
 namespace BVCommerce
 {
 
-    partial class BVModules_Controls_ProductTypeDisplay : BVSoftware.Commerce.Content.BVUserControl
+    partial class BVModules_Controls_ProductTypeDisplay : MerchantTribe.Commerce.Content.BVUserControl
     {
 
         protected override void OnLoad(System.EventArgs e)

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce.Shipping;
+using MerchantTribe.Commerce.Shipping;
 
 namespace BVCommerce
 {

@@ -1,12 +1,12 @@
-using BVSoftware.Commerce.Content;
-using BVSoftware.Commerce.Orders;
-using BVSoftware.Commerce.Shipping;
-using BVSoftware.Commerce.Utilities;
+using MerchantTribe.Commerce.Content;
+using MerchantTribe.Commerce.Orders;
+using MerchantTribe.Commerce.Shipping;
+using MerchantTribe.Commerce.Utilities;
 
 namespace BVCommerce
 {
 
-    partial class BVModules_Controls_Shipping : BVSoftware.Commerce.Content.BVUserControl
+    partial class BVModules_Controls_Shipping : MerchantTribe.Commerce.Content.BVUserControl
     {
 
         private int _tabIndex = -1;
@@ -48,7 +48,7 @@ namespace BVCommerce
 
             }
 
-            this.litMain.Text = BVSoftware.Commerce.Utilities.HtmlRendering.ShippingRatesToRadioButtons(Rates, this.TabIndex, o.ShippingMethodUniqueKey);
+            this.litMain.Text = MerchantTribe.Commerce.Utilities.HtmlRendering.ShippingRatesToRadioButtons(Rates, this.TabIndex, o.ShippingMethodUniqueKey);
         }
 
         protected override void OnLoad(System.EventArgs e)

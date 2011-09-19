@@ -1,4 +1,4 @@
-using BVSoftware.Commerce;
+using MerchantTribe.Commerce;
 using System;
 
 namespace BVCommerce

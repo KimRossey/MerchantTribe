@@ -4,12 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce.Content;
+using MerchantTribe.Commerce.Content;
 using System.Text;
 
 namespace BVCommerce.BVAdmin.Controls
 {
-    public partial class UrlsAssociated : BVSoftware.Commerce.Content.BVUserControl
+    public partial class UrlsAssociated : MerchantTribe.Commerce.Content.BVUserControl
     {
         public string ObjectId
         {

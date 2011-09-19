@@ -12,7 +12,7 @@ namespace BVCommerce
         void ShowQuestion(string msg);
         void ShowWarning(string msg);
         void ShowException(Exception ex);
-        void ShowMessage(string msg, BVSoftware.Commerce.Content.DisplayMessageType msgType);
+        void ShowMessage(string msg, MerchantTribe.Commerce.Content.DisplayMessageType msgType);
 
     }
 }

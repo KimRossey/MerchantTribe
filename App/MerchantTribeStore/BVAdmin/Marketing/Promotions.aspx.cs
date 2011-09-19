@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce.Marketing;
+using MerchantTribe.Commerce.Marketing;
 using System.IO;
 using System.Text;
 
@@ -23,7 +23,7 @@ namespace BVCommerce.BVAdmin.Marketing
             base.OnPreInit(e);
             this.PageTitle = "Promotions";
             this.CurrentTab = AdminTabType.Marketing;
-            ValidateCurrentUserHasPermission(BVSoftware.Commerce.Membership.SystemPermissions.MarketingView);
+            ValidateCurrentUserHasPermission(MerchantTribe.Commerce.Membership.SystemPermissions.MarketingView);
         }
 
         protected override void OnLoad(System.EventArgs e)

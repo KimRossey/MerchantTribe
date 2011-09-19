@@ -1,8 +1,8 @@
 using System;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce.Content;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Catalog;
+using MerchantTribe.Commerce.Content;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Catalog;
 using System.Collections.ObjectModel;
 
 namespace BVCommerce

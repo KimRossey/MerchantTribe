@@ -1,9 +1,9 @@
 using System.Collections.ObjectModel;
 using System.Text;
 using System.Web.UI;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Catalog;
-using BVSoftware.Commerce.Membership;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Catalog;
+using MerchantTribe.Commerce.Membership;
 using System.Collections.Generic;
 
 namespace BVCommerce
@@ -135,7 +135,7 @@ namespace BVCommerce
 
             string destinationLink = "Products_Edit.aspx?id=" + p.Bvin;
 
-            string imageUrl = BVSoftware.Commerce.Storage.DiskStorage.ProductImageUrlSmall(((IMultiStorePage)this.Page).BVApp.CurrentStore.Id, p.Bvin, p.ImageFileSmall, Page.Request.IsSecureConnection);
+            string imageUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductImageUrlSmall(((IMultiStorePage)this.Page).BVApp.CurrentStore.Id, p.Bvin, p.ImageFileSmall, Page.Request.IsSecureConnection);
 
             sb.Append("<div class=\"record\"><a href=\"" + destinationLink + "\">");
 

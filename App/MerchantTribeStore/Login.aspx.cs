@@ -1,7 +1,7 @@
 using System;
 using System.Web.UI;
-using BVSoftware.Commerce;
-using BVSoftware.Commerce.Content;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Content;
 
 namespace BVCommerce
 {
@@ -81,7 +81,7 @@ namespace BVCommerce
             }
         }
 
-        public void LoginCompleted(object sender, BVSoftware.Commerce.Controls.LoginCompleteEventArgs args)
+        public void LoginCompleted(object sender, MerchantTribe.Commerce.Controls.LoginCompleteEventArgs args)
         {
             RedirectOnComplete(args.UserId);
         }

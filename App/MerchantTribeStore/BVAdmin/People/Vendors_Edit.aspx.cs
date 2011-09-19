@@ -1,9 +1,9 @@
 using System;
 using System.Web;
 using System.Web.UI.WebControls;
-using BVSoftware.Commerce.Contacts;
-using BVSoftware.Commerce.Membership;
-using BVSoftware.Commerce;
+using MerchantTribe.Commerce.Contacts;
+using MerchantTribe.Commerce.Membership;
+using MerchantTribe.Commerce;
 using System.Collections.Generic;
 
 namespace BVCommerce
@@ -87,7 +87,7 @@ namespace BVCommerce
             base.OnPreInit(e);
             this.PageTitle = "Edit Manufacturer";
             this.CurrentTab = AdminTabType.People;
-            ValidateCurrentUserHasPermission(BVSoftware.Commerce.Membership.SystemPermissions.PeopleView);
+            ValidateCurrentUserHasPermission(MerchantTribe.Commerce.Membership.SystemPermissions.PeopleView);
         }
 
         protected void btnCancel_Click(object sender, System.Web.UI.ImageClickEventArgs e)
@@ -163,7 +163,7 @@ namespace BVCommerce
             MemberList.DataBind();
         }
 
-        protected void UserSelected(BVSoftware.Commerce.Controls.UserSelectedEventArgs args)
+        protected void UserSelected(MerchantTribe.Commerce.Controls.UserSelectedEventArgs args)
         {
             if (this.BvinField.Value == string.Empty)
             {
