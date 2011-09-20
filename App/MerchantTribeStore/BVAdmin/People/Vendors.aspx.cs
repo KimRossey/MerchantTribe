@@ -9,7 +9,7 @@ using System.IO;
 using System.Text;
 using System.Collections.Generic;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_People_Vendors : BaseAdminPage

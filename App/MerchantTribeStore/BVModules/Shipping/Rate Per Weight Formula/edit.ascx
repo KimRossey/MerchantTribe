@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="edit.ascx.cs" Inherits="BVCommerce.BVModules.Shipping.Rate_Per_Weight_Formula.edit" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="edit.ascx.cs" Inherits="MerchantTribeStore.BVModules.Shipping.Rate_Per_Weight_Formula.edit" %>
 <h1>
     Edit Shipping Method - 
     Rate Per Weight Formula</h1>

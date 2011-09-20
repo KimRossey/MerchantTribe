@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using MerchantTribe.Commerce.Catalog;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     public partial class BVAdmin_Catalog_Categories_Delete : BaseAdminJsonPage

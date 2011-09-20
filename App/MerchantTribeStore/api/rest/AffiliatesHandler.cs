@@ -10,7 +10,7 @@ using MerchantTribe.CommerceDTO.v1.Contacts;
 using MerchantTribe.Commerce.Membership;
 using MerchantTribe.Commerce.Contacts;
 
-namespace BVCommerce.api.rest
+namespace MerchantTribeStore.api.rest
 {
     public class AffiliatesHandler: BaseRestHandler
     {

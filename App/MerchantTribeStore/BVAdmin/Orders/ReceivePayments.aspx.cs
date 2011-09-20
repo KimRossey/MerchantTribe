@@ -13,7 +13,7 @@ using System.Collections.Specialized;
 using System.Text;
 using System.Linq;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_Orders_ReceivePayments : BaseAdminPage

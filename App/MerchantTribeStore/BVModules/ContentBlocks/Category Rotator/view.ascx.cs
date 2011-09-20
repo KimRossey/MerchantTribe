@@ -5,7 +5,7 @@ using MerchantTribe.Commerce.Content;
 using MerchantTribe.Commerce.Utilities;
 using System.Collections.Generic;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVModules_ContentBlocks_Category_Rotator_view : BVModule

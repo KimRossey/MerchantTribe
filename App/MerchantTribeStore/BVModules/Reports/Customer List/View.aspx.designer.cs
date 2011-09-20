@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BVCommerce {
+namespace MerchantTribeStore {
     
     
     public partial class BVModules_Reports_Customer_List_View {

@@ -3,7 +3,7 @@ using System.Web;
 using System.Web.UI.WebControls;
 using MerchantTribe.Commerce;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_Controls_ProductEditMenu : MerchantTribe.Commerce.Content.NotifyClickControl

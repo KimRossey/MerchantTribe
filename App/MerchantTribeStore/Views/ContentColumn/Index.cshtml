@@ -7,6 +7,6 @@
 @foreach (var b in Model.Blocks)
 {
     <div style="border:solid 1px red;">
-    @Html.Partial("~/views/ContentBlocks/" + b.ControlName.Replace(" ","-") + ".cshtml", b)
+    @Html.Action("DisplayBlock", "ContentBlock", b)    
     </div>
 }

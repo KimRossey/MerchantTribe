@@ -3,7 +3,7 @@ using System.Web.UI;
 using MerchantTribe.Commerce.Catalog;
 using System.Collections.Generic;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVModules_Controls_VolumeDiscounts : MerchantTribe.Commerce.Content.BVUserControl

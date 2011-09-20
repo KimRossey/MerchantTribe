@@ -9,7 +9,7 @@ using MerchantTribe.Commerce.Membership;
 using MerchantTribe.Commerce.Orders;
 using System.Configuration;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVModules_Reports_Customer_List_View : BaseAdminPage

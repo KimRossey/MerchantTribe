@@ -3,7 +3,7 @@ using MerchantTribe.Commerce;
 using System.Collections.Generic;
 using MerchantTribe.Commerce.Contacts;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_People_MailingLists_Edit : BaseAdminPage

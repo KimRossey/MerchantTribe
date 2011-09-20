@@ -9,7 +9,7 @@ using MerchantTribe.Commerce;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_Content_Template_Edit : BaseAdminPage

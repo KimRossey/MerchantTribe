@@ -1,4 +1,4 @@
-<%@ Page Language="C#" MasterPageFile="~/BVAdmin/BVAdminPopup.master" AutoEventWireup="True" Inherits="BVCommerce.BVAdmin_Orders_PrintOrder" Title="Print Order" Codebehind="PrintOrder.aspx.cs" %>
+<%@ Page Language="C#" MasterPageFile="~/BVAdmin/BVAdminPopup.master" AutoEventWireup="True" Inherits="MerchantTribeStore.BVAdmin_Orders_PrintOrder" Title="Print Order" Codebehind="PrintOrder.aspx.cs" %>
 
 <%@ Register src="OrderActions.ascx" tagname="OrderActions" tagprefix="uc1" %>
 <asp:Content ContentPlaceHolderID="headcontent" runat="server">

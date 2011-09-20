@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BVCommerce {
+namespace MerchantTribeStore {
     
     
     public partial class BVAdmin_Catalog_ProductChoices {
@@ -19,7 +19,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_ProductEditMenu ProductEditMenu1;
+        protected global::MerchantTribeStore.BVAdmin_Controls_ProductEditMenu ProductEditMenu1;
         
         /// <summary>
         /// ProductEditing1 control.
@@ -28,7 +28,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_ProductEditingDisplay ProductEditing1;
+        protected global::MerchantTribeStore.BVAdmin_Controls_ProductEditingDisplay ProductEditing1;
         
         /// <summary>
         /// MessageBox1 control.
@@ -37,7 +37,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_MessageBox MessageBox1;
+        protected global::MerchantTribeStore.BVAdmin_Controls_MessageBox MessageBox1;
         
         /// <summary>
         /// litResults control.

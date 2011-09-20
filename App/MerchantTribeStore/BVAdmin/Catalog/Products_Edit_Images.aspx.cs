@@ -10,7 +10,7 @@ using MerchantTribe.Commerce.Membership;
 using MerchantTribe.Commerce.Utilities;
 using System.Collections.Generic;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class products_products_edit_images : BaseProductAdminPage

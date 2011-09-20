@@ -1,5 +1,5 @@
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class SiteJson : System.Web.UI.MasterPage, IStorePage

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BVCommerce.BVAdmin.Configuration {
+namespace MerchantTribeStore.BVAdmin.Configuration {
     
     
     public partial class ApiRemoveKey {

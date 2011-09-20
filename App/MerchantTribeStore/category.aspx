@@ -1,5 +1,5 @@
 <%@ Page Language="C#" AutoEventWireup="True" 
-Inherits="BVCommerce.category" 
+Inherits="MerchantTribeStore.category" 
 MasterPageFile="~/Site.master" Codebehind="Category.aspx.cs" %>
 <%@ Register Src="BVModules/Controls/CategorySortOrder.ascx" TagName="CategorySortOrder"
     TagPrefix="uc4" %>

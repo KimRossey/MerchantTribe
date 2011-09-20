@@ -5,7 +5,7 @@ using MerchantTribe.Commerce;
 using MerchantTribe.Commerce.Membership;
 using MerchantTribe.Commerce.Orders;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVModules_Reports_Shopping_Carts_Default : BaseAdminPage

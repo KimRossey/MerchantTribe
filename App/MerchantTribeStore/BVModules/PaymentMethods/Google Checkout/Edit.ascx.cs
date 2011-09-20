@@ -9,7 +9,7 @@ using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using MerchantTribe.Shipping;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVModules_PaymentMethods_Google_Checkout_Edit : BVModule

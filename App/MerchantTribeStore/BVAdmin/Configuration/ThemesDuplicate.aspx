@@ -1,2 +1,2 @@
-﻿<%@ Page Language="C#" AutoEventWireup="True" Inherits="BVCommerce.BVAdmin_Configuration_ThemesDuplicate" Codebehind="ThemesDuplicate.aspx.cs" %>
+﻿<%@ Page Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVAdmin_Configuration_ThemesDuplicate" Codebehind="ThemesDuplicate.aspx.cs" %>
 <asp:Literal id="litMain" runat="server" EnableViewState="False" />

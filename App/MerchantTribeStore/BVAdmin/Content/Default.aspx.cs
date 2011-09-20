@@ -1,6 +1,6 @@
 using MerchantTribe.Commerce.Membership;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_Content_Default : BaseAdminPage

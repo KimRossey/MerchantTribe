@@ -2,7 +2,7 @@ using System;
 using System.Web.UI.WebControls;
 using MerchantTribe.Commerce;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_People_PriceGroups : BaseAdminPage

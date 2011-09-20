@@ -1,4 +1,4 @@
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_Controls_TimespanPicker : System.Web.UI.UserControl

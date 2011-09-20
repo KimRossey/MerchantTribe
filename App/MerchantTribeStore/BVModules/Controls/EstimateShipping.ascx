@@ -1,4 +1,4 @@
-<%@ Control Language="C#" AutoEventWireup="True" Inherits="BVCommerce.BVModules_Controls_EstimateShipping" Codebehind="EstimateShipping.ascx.cs" %>
+<%@ Control Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVModules_Controls_EstimateShipping" Codebehind="EstimateShipping.ascx.cs" %>
 <div id="EstimateShipping">
     <a id="GetRatesLink" onclick="JavaScript:void(0)" runat="server">
     <asp:Image 

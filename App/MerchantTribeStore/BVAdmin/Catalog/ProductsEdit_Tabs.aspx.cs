@@ -9,7 +9,7 @@ using MerchantTribe.Commerce;
 using MerchantTribe.Commerce.Catalog;
 using MerchantTribe.Commerce.Membership;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     public partial class BVAdmin_Catalog_ProductsEdit_Tabs : BaseProductAdminPage

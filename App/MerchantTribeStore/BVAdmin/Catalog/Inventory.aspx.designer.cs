@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BVCommerce {
+namespace MerchantTribeStore {
     
     
     public partial class BVAdmin_Catalog_Inventory {
@@ -37,7 +37,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_SimpleProductFilter SimpleProductFilter;
+        protected global::MerchantTribeStore.BVAdmin_Controls_SimpleProductFilter SimpleProductFilter;
         
         /// <summary>
         /// View2 control.

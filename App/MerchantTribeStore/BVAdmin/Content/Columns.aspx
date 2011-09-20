@@ -1,4 +1,4 @@
-<%@ Page Language="C#" MasterPageFile="~/BVAdmin/BVAdmin.master" AutoEventWireup="True" Inherits="BVCommerce.BVAdmin_Content_Columns" title="Untitled Page" Codebehind="Columns.aspx.cs" %>
+<%@ Page Language="C#" MasterPageFile="~/BVAdmin/BVAdmin.master" AutoEventWireup="True" Inherits="MerchantTribeStore.BVAdmin_Content_Columns" title="Untitled Page" Codebehind="Columns.aspx.cs" %>
 
 <%@ Register Src="../Controls/MessageBox.ascx" TagName="MessageBox" TagPrefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">

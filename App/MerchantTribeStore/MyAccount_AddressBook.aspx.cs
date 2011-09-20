@@ -10,7 +10,7 @@ using System.Linq;
 using MerchantTribe.Commerce.Membership;
 using System.Web.UI.WebControls;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
     public partial class MyAccount_AddressBook : BaseStorePage
     {       

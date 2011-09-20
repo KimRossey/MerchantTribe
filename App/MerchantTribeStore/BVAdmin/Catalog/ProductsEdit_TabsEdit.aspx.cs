@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using MerchantTribe.Commerce.Catalog;
 using MerchantTribe.Commerce.Membership;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     public partial class BVAdmin_Catalog_ProductsEdit_TabsEdit : BaseProductAdminPage

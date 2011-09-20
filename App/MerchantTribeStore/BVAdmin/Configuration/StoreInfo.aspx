@@ -1,4 +1,4 @@
-<%@ Page Language="C#" MasterPageFile="~/BVAdmin/BVAdminNav.master" AutoEventWireup="True" Inherits="BVCommerce.BVAdmin_Content_StoreInfo" title="Untitled Page" Codebehind="StoreInfo.aspx.cs" %>
+<%@ Page Language="C#" MasterPageFile="~/BVAdmin/BVAdminNav.master" AutoEventWireup="True" Inherits="MerchantTribeStore.BVAdmin_Content_StoreInfo" title="Untitled Page" Codebehind="StoreInfo.aspx.cs" %>
 
 <%@ Register Src="../Controls/MessageBox.ascx" TagName="MessageBox" TagPrefix="uc2" %>
 

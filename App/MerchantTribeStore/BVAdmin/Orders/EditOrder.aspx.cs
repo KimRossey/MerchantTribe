@@ -15,7 +15,7 @@ using System.Collections.Specialized;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace BVCommerce.BVAdmin.Orders
+namespace MerchantTribeStore.BVAdmin.Orders
 {
     public partial class EditOrder : BaseAdminPage
     {

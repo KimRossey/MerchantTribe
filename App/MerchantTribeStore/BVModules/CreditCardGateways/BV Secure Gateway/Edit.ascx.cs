@@ -5,7 +5,7 @@ using MerchantTribe.Commerce.Content;
 using MerchantTribe.Commerce.Payment;
 using MerchantTribe.Payment.Methods;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     public partial class BVModules_CreditCardGateways_BV_Secure_Gateway_Edit : BVModule

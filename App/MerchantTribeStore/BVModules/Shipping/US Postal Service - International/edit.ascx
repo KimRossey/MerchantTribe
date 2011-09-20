@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="edit.ascx.cs" Inherits="BVCommerce.BVModules.Shipping.US_Postal_Service___International.edit" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="edit.ascx.cs" Inherits="MerchantTribeStore.BVModules.Shipping.US_Postal_Service___International.edit" %>
 <h1>Edit Shipping Method - US Postal Service International</h1>
 <asp:Panel ID="pnlMain" DefaultButton="btnSave" runat="server">
 <asp:HyperLink ID="HyperLink1" NavigateUrl="~/bvadmin/configuration/ShippingUSPSInternationalTester.aspx" Text="Test/Estimate International Rates" runat="server" Target="_blank"></asp:HyperLink>

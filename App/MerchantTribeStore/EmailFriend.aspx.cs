@@ -6,7 +6,7 @@ using MerchantTribe.Commerce.Content;
 using MerchantTribe.Commerce.Membership;
 using MerchantTribe.Commerce.Utilities;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class EmailFriend : BaseStorePage

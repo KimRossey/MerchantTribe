@@ -4,10 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using BVCommerce.Helpers;
+using MerchantTribeStore.Helpers;
 using MerchantTribe.Commerce.Accounts;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     public partial class signup_register : BaseSignupPage

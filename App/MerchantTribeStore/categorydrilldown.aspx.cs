@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using MerchantTribe.Web;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
     public partial class categorydrilldown : BaseStoreCategoryPage
     {

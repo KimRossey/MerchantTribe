@@ -11,9 +11,9 @@ using System.Xml.Serialization;
 using System.IO;
 using MerchantTribe.Commerce.Catalog;
 
-using BVCommerce.api.rest;
+using MerchantTribeStore.api.rest;
 
-namespace BVCommerce.Controllers
+namespace MerchantTribeStore.Controllers
 {    
     public class ApiRestController : Controller, IMultiStorePage
     {

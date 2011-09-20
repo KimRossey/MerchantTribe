@@ -1,4 +1,4 @@
-<%@ Page Language="C#" MasterPageFile="~/BVAdmin/BVAdmin.master" AutoEventWireup="True" Inherits="BVCommerce.BVAdmin_People_users_edit_address"
+<%@ Page Language="C#" MasterPageFile="~/BVAdmin/BVAdmin.master" AutoEventWireup="True" Inherits="MerchantTribeStore.BVAdmin_People_users_edit_address"
     Title="Untitled Page" Codebehind="Users_Edit_Address.aspx.cs" %>
 
 <%@ Register Src="../Controls/AddressEditor.ascx" TagName="AddressEditor" TagPrefix="uc1" %>

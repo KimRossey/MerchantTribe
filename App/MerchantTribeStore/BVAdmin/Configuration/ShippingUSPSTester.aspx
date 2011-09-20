@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/BVAdmin/BVAdminNav.master" AutoEventWireup="true" CodeBehind="ShippingUSPSTester.aspx.cs" Inherits="BVCommerce.BVAdmin.Configuration.ShippingUSPSTester" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/BVAdmin/BVAdminNav.master" AutoEventWireup="true" CodeBehind="ShippingUSPSTester.aspx.cs" Inherits="MerchantTribeStore.BVAdmin.Configuration.ShippingUSPSTester" %>
 <%@ Register src="NavMenu.ascx" tagname="NavMenu" tagprefix="uc2" %>
 <%@ Register Src="../Controls/MessageBox.ascx" TagName="MessageBox" TagPrefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="headcontent" runat="server">

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BVCommerce {
+namespace MerchantTribeStore {
     
     
     public partial class BVAdmin_Content_Default {
@@ -19,7 +19,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_ContentColumnEditor ContentColumnEditor1;
+        protected global::MerchantTribeStore.BVAdmin_Controls_ContentColumnEditor ContentColumnEditor1;
         
         /// <summary>
         /// ContentColumnEditor2 control.
@@ -28,7 +28,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_ContentColumnEditor ContentColumnEditor2;
+        protected global::MerchantTribeStore.BVAdmin_Controls_ContentColumnEditor ContentColumnEditor2;
         
         /// <summary>
         /// ContentColumnEditor3 control.
@@ -37,6 +37,6 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_ContentColumnEditor ContentColumnEditor3;
+        protected global::MerchantTribeStore.BVAdmin_Controls_ContentColumnEditor ContentColumnEditor3;
     }
 }

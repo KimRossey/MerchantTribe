@@ -4,7 +4,7 @@ using MerchantTribe.Commerce.Datalayer;
 using MerchantTribe.Commerce.Catalog;
 using MerchantTribe.Commerce.Content;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
     public class BaseStoreCategoryPage : BaseStorePage
     {

@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="True" Inherits="BVCommerce.BVAdmin_Orders_OrderActions" Codebehind="OrderActions.ascx.cs" %>
+﻿<%@ Control Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVAdmin_Orders_OrderActions" Codebehind="OrderActions.ascx.cs" %>
 <asp:HyperLink ID="lnkDetails" runat="server" ImageUrl="~/BVAdmin/Images/Buttons/OrderDetails.png"></asp:HyperLink><br />
 <asp:HyperLink ID="lnkEditOrder" runat="server" ImageUrl="~/BVAdmin/Images/Buttons/EditOrder.png"></asp:HyperLink><br />
 <asp:HyperLink ID="lnkPayment" runat="server" ImageUrl="~/BVAdmin/Images/Buttons/Payment.png"></asp:HyperLink><br />

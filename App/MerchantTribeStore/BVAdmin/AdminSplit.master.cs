@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using MerchantTribe.Commerce;
 
-namespace BVCommerce.BVAdmin
+namespace MerchantTribeStore.BVAdmin
 {
     public partial class AdminSplit : System.Web.UI.MasterPage
     {

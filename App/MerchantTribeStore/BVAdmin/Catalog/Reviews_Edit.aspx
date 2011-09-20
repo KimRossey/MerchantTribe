@@ -1,5 +1,5 @@
 <%@ Page MasterPageFile="~/BVAdmin/BVAdminNav.Master" ValidateRequest="False" Language="C#"
-    AutoEventWireup="True" Inherits="BVCommerce.Reviews_Edit" Codebehind="Reviews_Edit.aspx.cs" %>
+    AutoEventWireup="True" Inherits="MerchantTribeStore.Reviews_Edit" Codebehind="Reviews_Edit.aspx.cs" %>
 
 <%@ Register TagPrefix="uc1" TagName="ProductReviewEditor" Src="~/BVAdmin/controls/ProductReviewEditor.ascx" %>
 <%@ Register src="../Controls/ProductEditMenu.ascx" tagname="ProductEditMenu" tagprefix="uc5" %>

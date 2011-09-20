@@ -1,5 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="True"
-    Inherits="BVCommerce.BVModules_Controls_AddressBilling" Codebehind="AddressBilling.ascx.cs" %>
+    Inherits="MerchantTribeStore.BVModules_Controls_AddressBilling" Codebehind="AddressBilling.ascx.cs" %>
 <table border="0" cellspacing="0" cellpadding="3" class="address-table">
 <tr>
     <td class="formlabel">&nbsp;</td>

@@ -2,7 +2,7 @@
 using MerchantTribe.Commerce;
 using MerchantTribe.Commerce.Contacts;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_People_MailingLists_EditMember : BaseAdminPage

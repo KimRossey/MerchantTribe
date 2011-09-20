@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BVCommerce {
+namespace MerchantTribeStore {
     
     
     public partial class BVModules_ContentBlocks_RSS_Feed_Viewer_editor {

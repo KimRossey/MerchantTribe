@@ -4,7 +4,7 @@ using System.Web.UI.WebControls;
 using MerchantTribe.Commerce.Content;
 using System.Collections.Generic;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVModules_ContentBlocks_Side_Menu_adminview : BVModule

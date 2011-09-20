@@ -5,7 +5,7 @@ using System.Collections.ObjectModel;
 using MerchantTribe.Commerce.Catalog;
 using MerchantTribe.Commerce.Accounts;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
     public class BaseStoreJsonPage : System.Web.UI.Page, IStorePage, MerchantTribe.Commerce.IMultiStorePage
     {

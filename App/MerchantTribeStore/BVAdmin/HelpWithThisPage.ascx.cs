@@ -1,7 +1,7 @@
 using System;
 using System.Text;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_HelpWithThisPage : System.Web.UI.UserControl

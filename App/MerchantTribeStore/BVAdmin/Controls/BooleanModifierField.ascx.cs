@@ -1,7 +1,7 @@
 using System;
 using MerchantTribe.Commerce;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_Controls_BooleanModifierField : MerchantTribe.Commerce.Controls.ModificationControl<bool>

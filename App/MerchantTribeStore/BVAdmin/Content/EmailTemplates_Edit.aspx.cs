@@ -12,7 +12,7 @@ using MerchantTribe.Commerce.Shipping;
 using MerchantTribe.Commerce.Contacts;
 using System.Collections.Generic;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_Content_EmailTemplates_Edit : BaseAdminPage

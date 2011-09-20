@@ -3,7 +3,7 @@ using MerchantTribe.Commerce.Orders;
 using MerchantTribe.Commerce.Shipping;
 using MerchantTribe.Commerce.Utilities;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVModules_Controls_Shipping : MerchantTribe.Commerce.Content.BVUserControl

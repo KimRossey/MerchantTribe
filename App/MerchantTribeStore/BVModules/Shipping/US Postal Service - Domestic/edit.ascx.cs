@@ -12,7 +12,7 @@ using System.Collections.Generic;
 using MerchantTribe.Shipping.USPostal;
 using MerchantTribe.Shipping.USPostal.v4;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVModules_Shipping_US_Postal_Service_edit : BVShippingModule

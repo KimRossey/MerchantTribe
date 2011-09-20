@@ -1,2 +1,2 @@
-<%@ Control Language="C#" AutoEventWireup="True" Inherits="BVCommerce.BVModules_Controls_MasterPageJavascript" Codebehind="MasterPageJavascript.ascx.cs" %>
+<%@ Control Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVModules_Controls_MasterPageJavascript" Codebehind="MasterPageJavascript.ascx.cs" %>
 <asp:Literal runat="server" ID="litMain"></asp:Literal>

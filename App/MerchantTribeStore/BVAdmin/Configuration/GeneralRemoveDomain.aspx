@@ -1,2 +1,2 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="GeneralRemoveDomain.aspx.cs" Inherits="BVCommerce.BVAdmin.Configuration.GeneralRemoveDomain" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="GeneralRemoveDomain.aspx.cs" Inherits="MerchantTribeStore.BVAdmin.Configuration.GeneralRemoveDomain" %>
 <asp:Literal ID="litOutput" runat="server"></asp:Literal>

@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="True" Inherits="BVCommerce.signup_SignUpMenu" Codebehind="SignUpMenu.ascx.cs" %>
+﻿<%@ Control Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.signup_SignUpMenu" Codebehind="SignUpMenu.ascx.cs" %>
  <div class="block">            
             <ul class="GraphicalList">
                 <li><a href="/signup/tour" title="Setting Up Your Store">Building a Store</a></li>                

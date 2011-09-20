@@ -3,7 +3,7 @@
 using MerchantTribe.Commerce;
 using MerchantTribe.Commerce.Marketing;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_Controls_PercentAmountSelection : System.Web.UI.UserControl

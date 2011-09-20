@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using MerchantTribe.Commerce.Content;
 using System.Text;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     public partial class BVAdmin_SetupWizard_WizardTheme : BaseAdminPage

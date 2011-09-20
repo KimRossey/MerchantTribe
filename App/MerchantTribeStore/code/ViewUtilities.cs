@@ -6,7 +6,7 @@ using MerchantTribe.Commerce;
 using MerchantTribe.Commerce.Utilities;
 using System.Collections.ObjectModel;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
     public class ViewUtilities
     {

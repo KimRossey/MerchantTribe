@@ -2,7 +2,7 @@ using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using MerchantTribe.Commerce.Content;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVModules_Controls_MessageBox : MerchantTribe.Commerce.Content.BVUserControl, IMessageBox

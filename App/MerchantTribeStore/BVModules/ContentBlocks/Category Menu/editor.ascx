@@ -1,4 +1,4 @@
-<%@ Control Language="C#" AutoEventWireup="True" Inherits="BVCommerce.BVModules_ContentBlocks_Category_Menu_editor" Codebehind="editor.ascx.cs" %>
+<%@ Control Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVModules_ContentBlocks_Category_Menu_editor" Codebehind="editor.ascx.cs" %>
 <asp:Panel ID="pnlMain" DefaultButton="btnSave" runat="server">
 <table border="0" cellspacing="0" cellpadding="3">
 <tr>

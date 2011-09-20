@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using MerchantTribe.Commerce;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     public partial class BVAdmin_AdminWizard : System.Web.UI.MasterPage

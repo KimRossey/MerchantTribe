@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using MerchantTribe.Commerce.Scheduling;
 using System.Text;
 
-namespace BVCommerce.BVAdmin.Configuration
+namespace MerchantTribeStore.BVAdmin.Configuration
 {
     public partial class ScheduledTasks : BaseAdminPage
     {

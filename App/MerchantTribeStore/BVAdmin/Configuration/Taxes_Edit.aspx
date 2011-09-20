@@ -1,5 +1,5 @@
 <%@ Page MasterPageFile="~/BVAdmin/BVAdminNav.master" ValidateRequest="False" Language="C#"
-    AutoEventWireup="True" Inherits="BVCommerce.Taxes_Edit" Codebehind="Taxes_Edit.aspx.cs" %>
+    AutoEventWireup="True" Inherits="MerchantTribeStore.Taxes_Edit" Codebehind="Taxes_Edit.aspx.cs" %>
 <%@ Register src="NavMenu.ascx" tagname="NavMenu" tagprefix="uc2" %>
 <%@ Register Src="../Controls/MessageBox.ascx" TagName="MessageBox" TagPrefix="uc1" %>
 <asp:Content ID="nav" ContentPlaceHolderID="NavContent" runat="server">

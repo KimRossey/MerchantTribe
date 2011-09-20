@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using BVCommerce.Filters;
+using MerchantTribeStore.Filters;
 using MerchantTribe.Commerce;
 using MerchantTribe.Commerce.Membership;
 using MerchantTribe.Commerce.Contacts;
 
-namespace BVCommerce.Areas.account.Controllers
+namespace MerchantTribeStore.Areas.account.Controllers
 {
     [CustomerSignedInFilter]
-    public class ManagementController : BVCommerce.Controllers.Shared.BaseStoreController
+    public class ManagementController : MerchantTribeStore.Controllers.Shared.BaseStoreController
     {
         private void PasswordSetup()
         {

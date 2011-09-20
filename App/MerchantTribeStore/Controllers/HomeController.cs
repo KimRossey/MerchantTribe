@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using MerchantTribe.Commerce;
 
-namespace BVCommerce.Controllers
+namespace MerchantTribeStore.Controllers
 {
     public class HomeController : Shared.BaseStoreController
     {

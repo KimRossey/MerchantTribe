@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BVCommerce.BVAdmin.People
+namespace MerchantTribeStore.BVAdmin.People
 {
 
 

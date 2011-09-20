@@ -1,5 +1,5 @@
 <%@ Page MasterPageFile="~/BVAdmin/BVAdmin.Master" Language="C#" AutoEventWireup="True"
-    Inherits="BVCommerce.Products_ReviewsToModerate" Codebehind="ReviewsToModerate.aspx.cs" %>
+    Inherits="MerchantTribeStore.Products_ReviewsToModerate" Codebehind="ReviewsToModerate.aspx.cs" %>
         
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <h1>Product Reviews to Moderate</h1>

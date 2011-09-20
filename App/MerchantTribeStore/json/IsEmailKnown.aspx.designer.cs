@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BVCommerce.json {
+namespace MerchantTribeStore.json {
     
     
     public partial class IsEmailKnown {

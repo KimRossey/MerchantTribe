@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using MerchantTribe.Commerce.Orders;
 using MerchantTribe.Payment;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVModules_Controls_CreditCardInput : MerchantTribe.Commerce.Content.BVUserControl, MerchantTribe.Web.Validation.IValidatable

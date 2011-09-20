@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Promotions_Edit_Qualification.ascx.cs" Inherits="BVCommerce.BVAdmin.Marketing.Promotions_Edit_Qualification" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Promotions_Edit_Qualification.ascx.cs" Inherits="MerchantTribeStore.BVAdmin.Marketing.Promotions_Edit_Qualification" %>
 <%@ Register src="../Controls/MessageBox.ascx" tagname="MessageBox" tagprefix="uc1" %>
 <%@ Register src="../Controls/ProductPicker.ascx" tagname="ProductPicker" tagprefix="uc2" %>
 <%@ Register src="../Controls/UserPicker.ascx" tagname="UserPicker" tagprefix="uc3" %>

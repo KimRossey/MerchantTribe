@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/BVAdmin/BVAdminNav.master" AutoEventWireup="true" CodeBehind="ScheduledTasks.aspx.cs" Inherits="BVCommerce.BVAdmin.Configuration.ScheduledTasks" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/BVAdmin/BVAdminNav.master" AutoEventWireup="true" CodeBehind="ScheduledTasks.aspx.cs" Inherits="MerchantTribeStore.BVAdmin.Configuration.ScheduledTasks" %>
 <%@ Register src="NavMenu.ascx" tagname="NavMenu" tagprefix="uc2" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="headcontent" runat="server">
 </asp:Content>

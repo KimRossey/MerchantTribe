@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using MerchantTribe.Commerce.Catalog;
 
 
-namespace BVCommerce.BVAdmin.Content
+namespace MerchantTribeStore.BVAdmin.Content
 {
     public partial class CustomUrlRemove : BaseAdminJsonPage
     {

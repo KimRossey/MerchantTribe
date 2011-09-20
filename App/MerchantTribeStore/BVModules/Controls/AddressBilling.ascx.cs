@@ -6,7 +6,7 @@ using MerchantTribe.Commerce.Contacts;
 using MerchantTribe.Commerce.Content;
 using MerchantTribe.Web.Geography;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVModules_Controls_AddressBilling : MerchantTribe.Commerce.Content.BVUserControl, MerchantTribe.Web.Validation.IValidatable

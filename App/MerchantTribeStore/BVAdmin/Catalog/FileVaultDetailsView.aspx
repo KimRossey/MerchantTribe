@@ -1,4 +1,4 @@
-<%@ Page Language="C#" MasterPageFile="~/BVAdmin/BVAdmin.master" AutoEventWireup="True" Inherits="BVCommerce.BVAdmin_Catalog_FileVaultDetailsView"
+<%@ Page Language="C#" MasterPageFile="~/BVAdmin/BVAdmin.master" AutoEventWireup="True" Inherits="MerchantTribeStore.BVAdmin_Catalog_FileVaultDetailsView"
     Title="File Vault Details" Codebehind="FileVaultDetailsView.aspx.cs" %>
 <%@ Register Src="../Controls/FilePicker.ascx" TagName="FilePicker" TagPrefix="uc4" %>
 <%@ Register Src="../Controls/TimespanPicker.ascx" TagName="TimespanPicker" TagPrefix="uc3" %>

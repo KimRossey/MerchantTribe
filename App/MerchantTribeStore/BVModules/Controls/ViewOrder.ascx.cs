@@ -7,7 +7,7 @@ using MerchantTribe.Commerce.Orders;
 using MerchantTribe.Commerce.Payment;
 using System.Text;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVModules_Controls_ViewOrder : MerchantTribe.Commerce.Content.BVUserControl

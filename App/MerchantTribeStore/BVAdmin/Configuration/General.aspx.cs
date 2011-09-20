@@ -17,7 +17,7 @@ using MerchantTribe.Commerce.Taxes;
 using MerchantTribe.Commerce.Utilities;
 using System.Collections.Generic;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_Configuration_General : BaseAdminPage

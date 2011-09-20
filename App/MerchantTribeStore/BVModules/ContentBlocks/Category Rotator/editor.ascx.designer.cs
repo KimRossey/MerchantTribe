@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BVCommerce {
+namespace MerchantTribeStore {
     
     
     public partial class BVModules_ContentBlocks_Category_Rotator_editor {
@@ -46,7 +46,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_CategoryPicker CategoryPicker1;
+        protected global::MerchantTribeStore.BVAdmin_Controls_CategoryPicker CategoryPicker1;
         
         /// <summary>
         /// chkShowInOrder control.

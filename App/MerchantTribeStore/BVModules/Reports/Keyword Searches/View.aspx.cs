@@ -6,7 +6,7 @@ using MerchantTribe.Commerce.Metrics;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_Reports_SearchKeywords : BaseAdminPage

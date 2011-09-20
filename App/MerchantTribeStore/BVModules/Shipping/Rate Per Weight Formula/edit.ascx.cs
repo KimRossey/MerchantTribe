@@ -8,7 +8,7 @@ using MerchantTribe.Commerce;
 using MerchantTribe.Shipping.Services;
 
 
-namespace BVCommerce.BVModules.Shipping.Rate_Per_Weight_Formula
+namespace MerchantTribeStore.BVModules.Shipping.Rate_Per_Weight_Formula
 {
     public partial class edit : BVShippingModule
     {

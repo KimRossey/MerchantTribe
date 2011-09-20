@@ -10,7 +10,7 @@ using MerchantTribe.Commerce.Content;
 using System.Collections.ObjectModel;
 using MerchantTribe.Commerce.Shipping;
 
-namespace BVCommerce.BVAdmin.Marketing
+namespace MerchantTribeStore.BVAdmin.Marketing
 {
     public partial class Promotions_Edit_Qualification : BVUserControl
     {

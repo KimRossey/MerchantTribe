@@ -15,7 +15,7 @@ using MerchantTribe.Web.Geography;
 using com.paypal.soap.api;
 using MerchantTribe.Commerce.Catalog;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     public partial class CheckoutPayPalExpress : BaseStorePage

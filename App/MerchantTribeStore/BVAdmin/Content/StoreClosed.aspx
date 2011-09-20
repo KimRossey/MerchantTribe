@@ -1,4 +1,4 @@
-<%@ Page ValidateRequest="false" Language="C#" MasterPageFile="~/BVAdmin/BVAdmin.master" AutoEventWireup="True" Inherits="BVCommerce.BVAdmin_Content_StoreClosed" title="Untitled Page" Codebehind="StoreClosed.aspx.cs" %>
+<%@ Page ValidateRequest="false" Language="C#" MasterPageFile="~/BVAdmin/BVAdmin.master" AutoEventWireup="True" Inherits="MerchantTribeStore.BVAdmin_Content_StoreClosed" title="Untitled Page" Codebehind="StoreClosed.aspx.cs" %>
 
 <%@ Register Src="../Controls/HtmlEditor.ascx" TagName="HtmlEditor" TagPrefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">

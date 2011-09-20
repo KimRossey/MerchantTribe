@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BVCommerce {
+namespace MerchantTribeStore {
     
     
     public partial class Taxes_Edit {
@@ -19,7 +19,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Configuration_NavMenu NavMenu1;
+        protected global::MerchantTribeStore.BVAdmin_Configuration_NavMenu NavMenu1;
         
         /// <summary>
         /// msg control.
@@ -28,7 +28,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_MessageBox msg;
+        protected global::MerchantTribeStore.BVAdmin_Controls_MessageBox msg;
         
         /// <summary>
         /// ScheduleNameField control.

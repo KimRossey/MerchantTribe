@@ -8,7 +8,7 @@ using MerchantTribe.Web;
 using MerchantTribe.Billing;
 using MerchantTribe.Commerce.Accounts;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     public partial class signup_JsonCheckStoreName : System.Web.UI.Page

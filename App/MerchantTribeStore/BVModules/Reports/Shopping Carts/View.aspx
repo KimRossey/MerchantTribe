@@ -1,4 +1,4 @@
-<%@ Page Language="C#" MasterPageFile="~/BVAdmin/BVAdmin.master" AutoEventWireup="True" Inherits="BVCommerce.BVModules_Reports_Shopping_Carts_Default" title="Reports - Shopping Carts" Codebehind="View.aspx.cs" %>
+<%@ Page Language="C#" MasterPageFile="~/BVAdmin/BVAdmin.master" AutoEventWireup="True" Inherits="MerchantTribeStore.BVModules_Reports_Shopping_Carts_Default" title="Reports - Shopping Carts" Codebehind="View.aspx.cs" %>
 <%@ Register Src="~/BVAdmin/Controls/MessageBox.ascx" TagName="MessageBox" TagPrefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
 <h1>

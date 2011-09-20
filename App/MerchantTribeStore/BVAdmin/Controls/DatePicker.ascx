@@ -1,4 +1,4 @@
-<%@ Control Language="C#" AutoEventWireup="True" Inherits="BVCommerce.BVAdmin_Controls_DatePicker" Codebehind="DatePicker.ascx.cs" %>
+<%@ Control Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVAdmin_Controls_DatePicker" Codebehind="DatePicker.ascx.cs" %>
 <asp:TextBox ID="DateTextBox" runat="server"></asp:TextBox>
 <bvc5:BVCustomValidator ID="DateCustomValidator" runat="server" 
     ControlToValidate="DateTextBox" CssClass="errormessage" ForeColor=" " 

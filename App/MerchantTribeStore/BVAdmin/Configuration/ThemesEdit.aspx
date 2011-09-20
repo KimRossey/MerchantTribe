@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/BVAdmin/BVAdminNav.master" AutoEventWireup="True" Inherits="BVCommerce.BVAdmin_Configuration_ThemesEdit" Codebehind="ThemesEdit.aspx.cs" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/BVAdmin/BVAdminNav.master" AutoEventWireup="True" Inherits="MerchantTribeStore.BVAdmin_Configuration_ThemesEdit" Codebehind="ThemesEdit.aspx.cs" %>
 <%@ Register src="ThemesNav.ascx" tagname="ThemesNav" tagprefix="uc1" %>
 <%@ Register src="../Controls/MessageBox.ascx" tagname="MessageBox" tagprefix="uc2" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="headcontent" Runat="Server">

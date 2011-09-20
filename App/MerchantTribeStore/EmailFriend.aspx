@@ -1,4 +1,4 @@
-<%@ Page Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="True" Inherits="BVCommerce.EmailFriend" title="Email a Friend" Codebehind="EmailFriend.aspx.cs" %>
+<%@ Page Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="True" Inherits="MerchantTribeStore.EmailFriend" title="Email a Friend" Codebehind="EmailFriend.aspx.cs" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
 			<div id="popupContainer">
 				<asp:Panel ID="pnlMain" Runat="server" Visible="False">

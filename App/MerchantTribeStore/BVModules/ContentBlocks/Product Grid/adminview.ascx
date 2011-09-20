@@ -1,4 +1,4 @@
-<%@ Control Language="C#" AutoEventWireup="True" Inherits="BVCommerce.BVModules_ContentBlocks_Product_Grid_adminview" Codebehind="adminview.ascx.cs" %>
+<%@ Control Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVModules_ContentBlocks_Product_Grid_adminview" Codebehind="adminview.ascx.cs" %>
 <div class="decoratedblock">
     <h4>
         Product Grid</h4>

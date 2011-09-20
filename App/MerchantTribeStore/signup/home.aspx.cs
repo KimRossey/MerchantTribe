@@ -1,5 +1,5 @@
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class signup_home : System.Web.UI.Page

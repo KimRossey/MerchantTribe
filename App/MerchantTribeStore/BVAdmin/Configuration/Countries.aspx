@@ -1,4 +1,4 @@
-<%@ Page Language="C#" MasterPageFile="~/BVAdmin/BVAdminNav.master" AutoEventWireup="True" Inherits="BVCommerce.BVAdmin_Configuration_Countries" Title="Untitled Page" Codebehind="Countries.aspx.cs" %>
+<%@ Page Language="C#" MasterPageFile="~/BVAdmin/BVAdminNav.master" AutoEventWireup="True" Inherits="MerchantTribeStore.BVAdmin_Configuration_Countries" Title="Untitled Page" Codebehind="Countries.aspx.cs" %>
 <%@ Register src="NavMenu.ascx" tagname="NavMenu" tagprefix="uc2" %>
 <%@ Register src="../Controls/MessageBox.ascx" tagname="MessageBox" tagprefix="uc1" %>
 <asp:Content ID="nav" ContentPlaceHolderID="NavContent" runat="server">

@@ -1,4 +1,4 @@
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class GiftCertificatePage : BaseStorePage

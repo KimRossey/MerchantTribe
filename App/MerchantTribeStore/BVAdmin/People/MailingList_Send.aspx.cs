@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using MerchantTribe.Commerce.Contacts;
 using MerchantTribe.Commerce.Content;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_People_MailingList_Send : BaseAdminPage

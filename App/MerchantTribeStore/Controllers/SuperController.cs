@@ -7,7 +7,7 @@ using MerchantTribe.Commerce;
 using MerchantTribe.Commerce.Catalog;
 using MerchantTribe.Web.Search;
 
-namespace BVCommerce.Controllers
+namespace MerchantTribeStore.Controllers
 {
     public class SuperController : Shared.BaseSuperController
     {

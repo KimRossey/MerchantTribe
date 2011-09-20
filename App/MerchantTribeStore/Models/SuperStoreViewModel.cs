@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using MerchantTribe.Commerce.Accounts;
 
-namespace BVCommerce.Models
+namespace MerchantTribeStore.Models
 {
     public class SuperStoreViewModel: MerchantTribe.Commerce.Accounts.Store
     {

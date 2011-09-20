@@ -1,2 +1,0 @@
-<%@ Control EnableViewState="false" Language="C#" AutoEventWireup="True" Inherits="BVCommerce.BVModules_ContentBlocks_Html_view" Codebehind="view.ascx.cs" %>
-<asp:Literal EnableViewState="false" ID="HtmlContent" runat="server"></asp:Literal>

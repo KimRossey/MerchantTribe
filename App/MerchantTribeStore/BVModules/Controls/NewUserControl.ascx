@@ -1,5 +1,5 @@
 <%@ Control Language="C#" AutoEventWireup="True"
-    Inherits="BVCommerce.BVModules_Controls_NewUserControl" Codebehind="NewUserControl.ascx.cs" %>
+    Inherits="MerchantTribeStore.BVModules_Controls_NewUserControl" Codebehind="NewUserControl.ascx.cs" %>
 <asp:ValidationSummary ID="valNewUserSummary" CssClass="validationmessage" EnableClientScript="True"
     runat="server" ValidationGroup="NewUser"></asp:ValidationSummary>
 <asp:Label ID="lblError" runat="server" CssClass="errormessage" EnableViewState="False" Visible="false"></asp:Label>

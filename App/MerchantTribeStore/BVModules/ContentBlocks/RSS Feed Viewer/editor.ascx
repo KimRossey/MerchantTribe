@@ -1,4 +1,4 @@
-<%@ Control Language="C#" AutoEventWireup="True" Inherits="BVCommerce.BVModules_ContentBlocks_RSS_Feed_Viewer_editor" Codebehind="editor.ascx.cs" %>
+<%@ Control Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVModules_ContentBlocks_RSS_Feed_Viewer_editor" Codebehind="editor.ascx.cs" %>
 
 <div style="margin:50px auto 50px auto;width:650px;text-align:left;">
 <asp:Panel id="pnlEditor" runat="server" DefaultButton="btnSave">

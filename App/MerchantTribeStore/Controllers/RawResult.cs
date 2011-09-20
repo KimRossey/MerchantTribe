@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 
 
-namespace BVCommerce.Controllers
+namespace MerchantTribeStore.Controllers
 {
     public class RawResult : ActionResult
     {

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BVCommerce {
+namespace MerchantTribeStore {
     
     
     public partial class categorydrilldown {
@@ -19,7 +19,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVModules_Controls_CategoryBreadCrumbTrail CategoryBreadCrumbTrail1;
+        protected global::MerchantTribeStore.BVModules_Controls_CategoryBreadCrumbTrail CategoryBreadCrumbTrail1;
         
         /// <summary>
         /// litFilters control.
@@ -55,7 +55,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVModules_Controls_Pager Pager1;
+        protected global::MerchantTribeStore.BVModules_Controls_Pager Pager1;
         
         /// <summary>
         /// categoryitems control.
@@ -73,6 +73,6 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVModules_Controls_Pager Pager2;
+        protected global::MerchantTribeStore.BVModules_Controls_Pager Pager2;
     }
 }

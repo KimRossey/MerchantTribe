@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Web.UI;
 using MerchantTribe.Commerce;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     public partial class BVAdmin_SetupWizard_WizardPayment : BaseAdminPage

@@ -1,5 +1,5 @@
 ﻿<%@ Page ValidateRequest="false" Title="" Language="C#" MasterPageFile="~/BVAdmin/BVAdmin.master"
-    AutoEventWireup="True" Inherits="BVCommerce.BVAdmin_Catalog_ProductSharedChoices_Edit" Codebehind="ProductSharedChoices_Edit.aspx.cs" %>
+    AutoEventWireup="True" Inherits="MerchantTribeStore.BVAdmin_Catalog_ProductSharedChoices_Edit" Codebehind="ProductSharedChoices_Edit.aspx.cs" %>
 
 <%@ Register Src="../Controls/HtmlEditor.ascx" TagName="HtmlEditor" TagPrefix="uc1" %>
 <%@ Register Src="../Controls/MessageBox.ascx" TagName="MessageBox" TagPrefix="uc2" %>

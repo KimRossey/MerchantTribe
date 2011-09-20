@@ -1,5 +1,5 @@
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVModules_Controls_MasterPageJavascript : System.Web.UI.UserControl

@@ -14,7 +14,7 @@ using MerchantTribe.Commerce.Membership;
 using MerchantTribe.Commerce.Metrics;
 using MerchantTribe.Commerce.Utilities;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_Catalog_Products_Edit_Inventory : BaseProductAdminPage

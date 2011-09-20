@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/BVAdmin/BVAdmin.master" AutoEventWireup="true" CodeBehind="ChangePassword.aspx.cs" Inherits="BVCommerce.BVAdmin.ChangePassword" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/BVAdmin/BVAdmin.master" AutoEventWireup="true" CodeBehind="ChangePassword.aspx.cs" Inherits="MerchantTribeStore.BVAdmin.ChangePassword" %>
 <%@ Register src="Controls/MessageBox.ascx" tagname="MessageBox" tagprefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="headcontent" runat="server">
 </asp:Content>

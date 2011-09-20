@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="True" Inherits="BVCommerce.BVAdmin_Configuration_NavMenu" Codebehind="NavMenu.ascx.cs" %>
+﻿<%@ Control Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVAdmin_Configuration_NavMenu" Codebehind="NavMenu.ascx.cs" %>
                     <ul class="navmenu">
                         <li><a href="General.aspx">Store Name &amp; Logo</a></li>
                         <li><a href="StoreInfo.aspx">Store's Address</a></li>

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="checkoutpaymenterror.aspx.cs" Inherits="BVCommerce.checkoutpaymenterror" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="checkoutpaymenterror.aspx.cs" Inherits="MerchantTribeStore.checkoutpaymenterror" %>
 
 
 <%@ Register Src="~/BVModules/Controls/Payment.ascx" TagName="Payment" TagPrefix="uc8" %>

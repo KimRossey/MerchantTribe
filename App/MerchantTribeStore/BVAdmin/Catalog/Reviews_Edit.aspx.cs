@@ -1,7 +1,7 @@
 using System.Web.UI;
 using MerchantTribe.Commerce.Membership;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class Reviews_Edit : BaseProductAdminPage

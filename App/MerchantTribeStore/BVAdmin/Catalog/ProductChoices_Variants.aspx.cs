@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using MerchantTribe.Commerce.Catalog;
 using MerchantTribe.Commerce.Membership;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_Catalog_ProductChoices_Variants : BaseProductAdminPage

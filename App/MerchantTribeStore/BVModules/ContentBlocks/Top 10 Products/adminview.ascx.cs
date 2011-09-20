@@ -4,7 +4,7 @@ using MerchantTribe.Commerce.Catalog;
 using MerchantTribe.Commerce.Content;
 using System.Collections.Generic;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVModules_ContentBlocks_Top_10_Products_adminview : BVModule

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using MerchantTribe.Commerce;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_People_MailingLists : BaseAdminPage

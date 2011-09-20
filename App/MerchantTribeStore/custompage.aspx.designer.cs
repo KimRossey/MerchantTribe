@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BVCommerce {
+namespace MerchantTribeStore {
     
     
     public partial class custompage {
@@ -19,7 +19,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVModules_Controls_CategoryBreadCrumbTrail CategoryBreadCrumbTrail1;
+        protected global::MerchantTribeStore.BVModules_Controls_CategoryBreadCrumbTrail CategoryBreadCrumbTrail1;
         
         /// <summary>
         /// litPreLeft control.
@@ -37,7 +37,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVModules_Controls_ContentColumnControl ContentColumnControl1;
+        protected global::MerchantTribeStore.BVModules_Controls_ContentColumnControl ContentColumnControl1;
         
         /// <summary>
         /// litPostLeft control.

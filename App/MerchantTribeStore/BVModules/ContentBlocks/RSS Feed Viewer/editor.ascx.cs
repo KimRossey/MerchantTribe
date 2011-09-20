@@ -1,7 +1,7 @@
 using System.Web.UI;
 using MerchantTribe.Commerce.Content;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVModules_ContentBlocks_RSS_Feed_Viewer_editor : BVModule

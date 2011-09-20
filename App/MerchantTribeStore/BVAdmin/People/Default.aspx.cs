@@ -6,7 +6,7 @@ using System.Text;
 using System.IO;
 using System.Text;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_People_Default : BaseAdminPage

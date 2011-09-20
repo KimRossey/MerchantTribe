@@ -1,5 +1,5 @@
 <%@ Page MasterPageFile="~/BVAdmin/BVAdmin.Master" Language="C#" AutoEventWireup="True"
-    Inherits="BVCommerce.Products_ProductTypes" Codebehind="ProductTypes.aspx.cs" %>
+    Inherits="MerchantTribeStore.Products_ProductTypes" Codebehind="ProductTypes.aspx.cs" %>
 
 <%@ Register Src="../Controls/MessageBox.ascx" TagName="MessageBox" TagPrefix="uc1" %>
     

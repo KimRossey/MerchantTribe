@@ -5,7 +5,7 @@ using MerchantTribe.Commerce.Content;
 using MerchantTribe.Commerce.Membership;
 using MerchantTribe.Commerce.Storage;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_Configuration_ThemesEdit : BaseAdminPage

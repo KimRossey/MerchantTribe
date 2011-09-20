@@ -1,5 +1,5 @@
 <%@ Control Language="C#" AutoEventWireup="True"
-    Inherits="BVCommerce.BVAdmin_Controls_AddressEditor" Codebehind="AddressEditor.ascx.cs" %>
+    Inherits="MerchantTribeStore.BVAdmin_Controls_AddressEditor" Codebehind="AddressEditor.ascx.cs" %>
      <table width="300" cellpadding="1" cellspacing="0">
         <tr>
             <td class="formlabel">

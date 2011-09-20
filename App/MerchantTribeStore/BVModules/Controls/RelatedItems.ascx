@@ -1,5 +1,5 @@
 <%@ Control Language="C#" AutoEventWireup="True"
-    Inherits="BVCommerce.BVModules_Controls_RelatedItems" Codebehind="RelatedItems.ascx.cs" %>
+    Inherits="MerchantTribeStore.BVModules_Controls_RelatedItems" Codebehind="RelatedItems.ascx.cs" %>
 <asp:Panel ID="pnlMain" runat="server" Visible="True">
     <div class="relateditems">        
         <asp:Literal ID="litRelatedItems" runat="server" EnableViewState="false" />

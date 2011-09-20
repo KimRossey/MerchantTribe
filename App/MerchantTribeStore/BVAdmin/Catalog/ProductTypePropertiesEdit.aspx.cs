@@ -7,7 +7,7 @@ using MerchantTribe.Commerce.Content;
 using MerchantTribe.Web.Geography;
 using System.Linq;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class Products_ProductProperties_Edit : BaseAdminPage

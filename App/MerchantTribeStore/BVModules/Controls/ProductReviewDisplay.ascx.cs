@@ -7,7 +7,7 @@ using MerchantTribe.Commerce;
 using MerchantTribe.Commerce.Catalog;
 using MerchantTribe.Commerce.Content;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVModules_Controls_ProductReviewDisplay : MerchantTribe.Commerce.Content.BVUserControl

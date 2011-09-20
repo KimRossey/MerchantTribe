@@ -1,4 +1,4 @@
-<%@ Control Language="C#" AutoEventWireup="True" Inherits="BVCommerce.BVModules_ContentBlocks_Product_Grid_editor" Codebehind="editor.ascx.cs" %>
+<%@ Control Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVModules_ContentBlocks_Product_Grid_editor" Codebehind="editor.ascx.cs" %>
 <%@ Register Src="../../../BVAdmin/Controls/ProductPicker.ascx" TagName="ProductPicker"
     TagPrefix="uc1" %>
 <div style="float: right; width: 450px; margin-bottom: 20px; text-align: left;">

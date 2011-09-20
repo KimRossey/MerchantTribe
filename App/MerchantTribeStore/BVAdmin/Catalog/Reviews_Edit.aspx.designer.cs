@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BVCommerce {
+namespace MerchantTribeStore {
     
     
     public partial class Reviews_Edit {
@@ -19,7 +19,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_ProductEditMenu ProductEditMenu1;
+        protected global::MerchantTribeStore.BVAdmin_Controls_ProductEditMenu ProductEditMenu1;
         
         /// <summary>
         /// ProductReviewEditor1 control.
@@ -28,6 +28,6 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_ProductReviewEditor ProductReviewEditor1;
+        protected global::MerchantTribeStore.BVAdmin_Controls_ProductReviewEditor ProductReviewEditor1;
     }
 }

@@ -1,4 +1,4 @@
-<%@ Page Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="True" Inherits="BVCommerce.Receipt" Codebehind="Receipt.aspx.cs" %>
+<%@ Page Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="True" Inherits="MerchantTribeStore.Receipt" Codebehind="Receipt.aspx.cs" %>
 
 <%@ Register Src="BVModules/Controls/ViewOrder.ascx" TagName="ViewOrder" TagPrefix="uc1" %>
 <%@ Register src="BVModules/Controls/MessageBox.ascx" tagname="MessageBox" tagprefix="uc2" %>

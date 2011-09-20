@@ -1,4 +1,4 @@
-<%@ Control Language="C#" AutoEventWireup="True" Inherits="BVCommerce.BVAdmin_Controls_TimespanPicker" Codebehind="TimespanPicker.ascx.cs" %>
+<%@ Control Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVAdmin_Controls_TimespanPicker" Codebehind="TimespanPicker.ascx.cs" %>
 <span class="formfield" style="padding: 0px 5px 0px 0px">
     <asp:DropDownList ID="MonthsDropDownList" runat="server">
         <asp:ListItem Selected="True"></asp:ListItem>

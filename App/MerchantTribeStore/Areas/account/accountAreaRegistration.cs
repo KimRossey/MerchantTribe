@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace BVCommerce.Areas.account
+namespace MerchantTribeStore.Areas.account
 {
     public class accountAreaRegistration : AreaRegistration
     {

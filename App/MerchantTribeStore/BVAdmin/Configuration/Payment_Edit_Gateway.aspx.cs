@@ -18,7 +18,7 @@ using MerchantTribe.Commerce.Utilities;
 using MerchantTribe.Payment;
 using System.Collections.Generic;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_Configuration_Payment_Edit_Gateway : BaseAdminPage

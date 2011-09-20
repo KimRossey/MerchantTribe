@@ -1,4 +1,4 @@
-<%@ Page Language="C#" MasterPageFile="~/BVAdmin/BVAdmin.master" AutoEventWireup="True" Inherits="BVCommerce.BVAdmin_People_UserQuestionEdit" title="Untitled Page" Codebehind="UserQuestionEdit.aspx.cs" %>
+<%@ Page Language="C#" MasterPageFile="~/BVAdmin/BVAdmin.master" AutoEventWireup="True" Inherits="MerchantTribeStore.BVAdmin_People_UserQuestionEdit" title="Untitled Page" Codebehind="UserQuestionEdit.aspx.cs" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
     <h1>Question Options Edit</h1>
     <asp:RadioButtonList ID="QuestionTypeRadioButtonList" runat="server" 

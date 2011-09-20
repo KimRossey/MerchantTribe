@@ -20,7 +20,7 @@ using MerchantTribe.Commerce.Utilities;
 using MerchantTribe.Web.Geography;
 using System.Text;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     public partial class BVAdmin_Configuration_Shipping_Zones_Edit : BaseAdminPage

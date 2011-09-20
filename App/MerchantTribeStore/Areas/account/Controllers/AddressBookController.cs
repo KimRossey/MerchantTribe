@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
-using BVCommerce.Controllers.Shared;
-using BVCommerce.Filters;
-using BVCommerce.Models;
+using MerchantTribeStore.Controllers.Shared;
+using MerchantTribeStore.Filters;
+using MerchantTribeStore.Models;
 using MerchantTribe.Commerce;
 using MerchantTribe.Commerce.Contacts;
 using MerchantTribe.Commerce.Membership;
 
-namespace BVCommerce.Areas.account.Controllers
+namespace MerchantTribeStore.Areas.account.Controllers
 {
     [CustomerSignedInFilter]
     public class AddressBookController : BaseStoreController

@@ -1,4 +1,4 @@
-<%@ Control Language="C#" AutoEventWireup="True" Inherits="BVCommerce.BVModules_PaymentMethods_Credit_Card_edit" Codebehind="edit.ascx.cs" %>
+<%@ Control Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVModules_PaymentMethods_Credit_Card_edit" Codebehind="edit.ascx.cs" %>
 <h1>Credit Card Options</h1>
 <asp:Panel ID="pnlMain" DefaultButton="btnSave" runat="server">
 <table border="0" cellspacing="0" cellpadding="3">

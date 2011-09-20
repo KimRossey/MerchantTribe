@@ -1,6 +1,6 @@
 using MerchantTribe.Commerce.Content;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
     public abstract class BaseProductAdminPage : BaseAdminPage
     {

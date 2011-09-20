@@ -1,4 +1,4 @@
-<%@ Control Language="C#" AutoEventWireup="True" Inherits="BVCommerce.BVAdmin_Controls_DropDownDate" Codebehind="DropDownDate.ascx.cs" %>
+<%@ Control Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVAdmin_Controls_DropDownDate" Codebehind="DropDownDate.ascx.cs" %>
 <table border="0" cellspacing="0" cellpadding="2">
 <tr>
 <td><asp:DropDownList ID="DayList" runat="server"></asp:DropDownList></td>

@@ -1,6 +1,6 @@
 using System;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_footer : System.Web.UI.UserControl

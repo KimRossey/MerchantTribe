@@ -44,8 +44,8 @@ namespace MerchantTribe.Commerce.Utilities
 
         public static string PromoTag()
         {
-            string BVTag = "<span class=\"bvtag\"><a href=\"http://www.bvcommerce.com\" title=\"Hosted Shopping Cart Software\" target=\"_blank\">Shopping Cart Software by BV Commerce</a></span>";
-            return BVTag;
+            string copyrightTag = "<span class=\"bvtag\"><a href=\"http://www.MerchantTribe.com\" title=\"Free Open Source Shopping Cart Software\" target=\"_blank\">Shopping Cart Software by MerchantTribe</a></span>";
+            return copyrightTag;
         }
 
         public static string Logo(Accounts.Store store, bool isSecureRequest)

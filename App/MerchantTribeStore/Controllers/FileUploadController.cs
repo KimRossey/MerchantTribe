@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using System.IO;
 using MerchantTribe.Commerce.Storage;
 
-namespace BVCommerce.Controllers
+namespace MerchantTribeStore.Controllers
 {
     public class FileUploadController : Shared.BaseAdminController
     {

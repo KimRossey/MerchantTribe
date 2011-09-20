@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="OldDefault.aspx.cs" Inherits="BVCommerce.Default" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="OldDefault.aspx.cs" Inherits="MerchantTribeStore.Default" %>
 
 <%@ Register Src="BVModules/Controls/ContentColumnControl.ascx" TagName="ContentColumnControl"
     TagPrefix="uc1" %>

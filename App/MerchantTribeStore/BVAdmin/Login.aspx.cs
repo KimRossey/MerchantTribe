@@ -3,7 +3,7 @@ using MerchantTribe.Commerce;
 using MerchantTribe.Commerce.Accounts;
 using MerchantTribe.Commerce.Catalog;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_Login : System.Web.UI.Page, IMultiStorePage
@@ -64,7 +64,7 @@ namespace BVCommerce
                 {
                     if (WebAppSettings.IsIndividualMode)
                     {
-                        this.MessageBox1.ShowInformation("Default username: admin@bvcommerce.com<br />Default Password: password");
+                        this.MessageBox1.ShowInformation("Default username: admin@merchanttribe.com<br />Default Password: password");
                     }
                     else
                     {

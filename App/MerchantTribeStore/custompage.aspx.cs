@@ -6,7 +6,7 @@ using MerchantTribe.Commerce;
 using MerchantTribe.Commerce.Catalog;
 using MerchantTribe.Commerce.Utilities;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     public partial class custompage : BaseStoreCategoryPage

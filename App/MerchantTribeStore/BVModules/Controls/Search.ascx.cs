@@ -1,7 +1,7 @@
 using System.Web.UI;
 using MerchantTribe.Commerce.Content;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVModules_Controls_Search : MerchantTribe.Commerce.Content.BVUserControl

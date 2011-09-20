@@ -1,7 +1,7 @@
 using MerchantTribe.Commerce.Controls;
 using MerchantTribe.Commerce;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_Controls_EnumeratedValueModifierField : ModificationControl<string>

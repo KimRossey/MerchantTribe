@@ -1,7 +1,7 @@
 using System.Web.UI;
 using MerchantTribe.Commerce.Catalog;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_Catalog_ProductChoices_Delete : BaseAdminJsonPage

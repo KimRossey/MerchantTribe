@@ -1,2 +1,2 @@
-﻿<%@ Page Language="C#" AutoEventWireup="True" Inherits="BVCommerce.json_ApplyShipping" Codebehind="ApplyShipping.aspx.cs" %>
+﻿<%@ Page Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.json_ApplyShipping" Codebehind="ApplyShipping.aspx.cs" %>
 <asp:Literal ID="litOutput" runat="Server" EnableViewState="false" />

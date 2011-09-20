@@ -1,5 +1,5 @@
 <%@ Control Language="C#" AutoEventWireup="True"
-    Inherits="BVCommerce.BVModules_Controls_ProductReviewDisplay" Codebehind="ProductReviewDisplay.ascx.cs" %>
+    Inherits="MerchantTribeStore.BVModules_Controls_ProductReviewDisplay" Codebehind="ProductReviewDisplay.ascx.cs" %>
 <asp:Panel ID="pnlReviewDisplay" EnableViewState="False" runat="server" CssClass="ProductReviews">
     <div class="reviews">
     <div class="reviewlist"><div class="ProductReviewRating">

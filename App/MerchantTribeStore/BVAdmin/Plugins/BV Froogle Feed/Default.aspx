@@ -1,4 +1,4 @@
-<%@ Page ValidateRequest="false" Language="C#" MasterPageFile="~/BVAdmin/BVAdmin.master" AutoEventWireup="True" Inherits="BVCommerce.BVAdmin_Plugins_Default" title="Froogle/GoogleBase Generator" Codebehind="Default.aspx.cs" %>
+<%@ Page ValidateRequest="false" Language="C#" MasterPageFile="~/BVAdmin/BVAdmin.master" AutoEventWireup="True" Inherits="MerchantTribeStore.BVAdmin_Plugins_Default" title="Froogle/GoogleBase Generator" Codebehind="Default.aspx.cs" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
 <strong><asp:Label ID="lblStatus" runat="server" Text=""></asp:Label></strong><br />
 &nbsp;<br />

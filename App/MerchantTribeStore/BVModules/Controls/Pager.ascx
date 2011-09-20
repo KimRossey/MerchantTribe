@@ -1,4 +1,4 @@
-<%@ Control Language="C#" AutoEventWireup="True" Inherits="BVCommerce.BVModules_Controls_Pager" Codebehind="Pager.ascx.cs" %>
+<%@ Control Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVModules_Controls_Pager" Codebehind="Pager.ascx.cs" %>
 <div class="pager">
     <ul>
         <li id="FirstListItem" runat="server"></li>

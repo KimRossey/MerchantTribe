@@ -1,5 +1,5 @@
 <%@ Page ValidateRequest="false" Language="C#" MasterPageFile="~/BVAdmin/BVAdmin.master"
-    AutoEventWireup="True" Inherits="BVCommerce.BVAdmin_Content_EmailTemplates_Edit"
+    AutoEventWireup="True" Inherits="MerchantTribeStore.BVAdmin_Content_EmailTemplates_Edit"
     Title="Untitled Page" Codebehind="EmailTemplates_Edit.aspx.cs" %>
 
 <%@ Register Src="../Controls/MessageBox.ascx" TagName="MessageBox" TagPrefix="uc2" %>

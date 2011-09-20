@@ -1,4 +1,4 @@
-<%@ Control Language="C#" AutoEventWireup="True" Inherits="BVCommerce.BVModules_Controls_Search" Codebehind="Search.ascx.cs" %>
+<%@ Control Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVModules_Controls_Search" Codebehind="Search.ascx.cs" %>
 <div class="searchboxform">
     <h4><span><asp:Label ID="lblTitle" runat="server" Text="Search" AssociatedControlID="KeywordField"></asp:Label></span></h4>    
     <asp:Panel runat="server" DefaultButton="btnSearch" ID="pnlSearchBox">

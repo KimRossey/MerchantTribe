@@ -3,7 +3,7 @@ using MerchantTribe.Commerce;
 using MerchantTribe.Commerce.Content;
 using MerchantTribe.Commerce.Membership;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVModules_Controls_LoginControl : MerchantTribe.Commerce.Content.BVUserControl

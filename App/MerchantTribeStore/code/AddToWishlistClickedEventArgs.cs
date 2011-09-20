@@ -3,7 +3,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
     public class AddToWishlistClickedEventArgs
     {

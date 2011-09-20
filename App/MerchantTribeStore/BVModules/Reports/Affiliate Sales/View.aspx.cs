@@ -6,7 +6,7 @@ using MerchantTribe.Commerce.Contacts;
 using MerchantTribe.Commerce.Membership;
 using MerchantTribe.Commerce.Orders;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_Reports_Affiliates : BaseAdminPage

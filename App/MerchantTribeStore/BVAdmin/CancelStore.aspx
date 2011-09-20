@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/BVAdmin/BVAdmin.master" AutoEventWireup="True" Inherits="BVCommerce.BVAdmin_CancelStore" Codebehind="CancelStore.aspx.cs" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/BVAdmin/BVAdmin.master" AutoEventWireup="True" Inherits="MerchantTribeStore.BVAdmin_CancelStore" Codebehind="CancelStore.aspx.cs" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="headcontent" Runat="Server">
 </asp:Content>

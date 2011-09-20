@@ -7,7 +7,7 @@ using MerchantTribe.Commerce.Shipping;
 using MerchantTribe.Commerce;
 using MerchantTribe.Shipping.Services;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     public partial class BVModules_Shipping_Flat_Rate_Per_Item_edit : BVShippingModule

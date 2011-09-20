@@ -7,7 +7,7 @@ using MerchantTribe.Commerce;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_People_UserSignupConfig : BaseAdminPage

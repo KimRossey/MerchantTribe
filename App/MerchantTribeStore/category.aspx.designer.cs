@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BVCommerce {
+namespace MerchantTribeStore {
     
     
     public partial class category {
@@ -19,7 +19,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVModules_Controls_CategoryBreadCrumbTrail CategoryBreadCrumbTrail1;
+        protected global::MerchantTribeStore.BVModules_Controls_CategoryBreadCrumbTrail CategoryBreadCrumbTrail1;
         
         /// <summary>
         /// ContentColumnControl1 control.
@@ -28,7 +28,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVModules_Controls_ContentColumnControl ContentColumnControl1;
+        protected global::MerchantTribeStore.BVModules_Controls_ContentColumnControl ContentColumnControl1;
         
         /// <summary>
         /// lblTitle control.
@@ -46,7 +46,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVModules_Controls_ContentColumnControl PreContentColumn;
+        protected global::MerchantTribeStore.BVModules_Controls_ContentColumnControl PreContentColumn;
         
         /// <summary>
         /// BannerImage control.
@@ -91,7 +91,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVModules_Controls_CategorySortOrder CategorySortOrder1;
+        protected global::MerchantTribeStore.BVModules_Controls_CategorySortOrder CategorySortOrder1;
         
         /// <summary>
         /// Pager1 control.
@@ -100,7 +100,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVModules_Controls_Pager Pager1;
+        protected global::MerchantTribeStore.BVModules_Controls_Pager Pager1;
         
         /// <summary>
         /// categoryitems control.
@@ -118,7 +118,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVModules_Controls_Pager Pager2;
+        protected global::MerchantTribeStore.BVModules_Controls_Pager Pager2;
         
         /// <summary>
         /// PostContentColumn control.
@@ -127,6 +127,6 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVModules_Controls_ContentColumnControl PostContentColumn;
+        protected global::MerchantTribeStore.BVModules_Controls_ContentColumnControl PostContentColumn;
     }
 }

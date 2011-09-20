@@ -20,7 +20,7 @@ using MerchantTribe.Commerce.Security;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_Configuration_Fraud : BaseAdminPage

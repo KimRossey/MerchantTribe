@@ -3,7 +3,7 @@ using System.Web.UI;
 using MerchantTribe.Commerce.Catalog;
 using MerchantTribe.Commerce.Content;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVModules_Controls_CategorySortOrder : System.Web.UI.UserControl

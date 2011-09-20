@@ -1,7 +1,7 @@
 using MerchantTribe.Commerce;
 using System.Collections.Generic;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_Controls_UserPicker : MerchantTribe.Commerce.Content.BVUserControl

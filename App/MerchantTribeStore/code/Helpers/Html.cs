@@ -9,7 +9,7 @@ using System.Web.UI;
 using System.IO;
 using System.Text;
 
-namespace BVCommerce.Helpers
+namespace MerchantTribeStore.Helpers
 {
     public static class Html
     {

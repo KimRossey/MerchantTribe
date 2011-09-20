@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="True" Inherits="BVCommerce.BVAdmin_Controls_ProductEditingDisplay" Codebehind="ProductEditingDisplay.ascx.cs" %>
+﻿<%@ Control Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVAdmin_Controls_ProductEditingDisplay" Codebehind="ProductEditingDisplay.ascx.cs" %>
 <div class="editingnow">
     <asp:Image ID="productImage" runat="server" AlternateText="" EnableViewState="false" /><br />
     <h3><asp:Label ID="productLabel" runat="server"></asp:Label></h3>

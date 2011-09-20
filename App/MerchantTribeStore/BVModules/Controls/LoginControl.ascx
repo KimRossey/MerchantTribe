@@ -1,5 +1,5 @@
 <%@ Control Language="C#" AutoEventWireup="True"
-    Inherits="BVCommerce.BVModules_Controls_LoginControl" Codebehind="LoginControl.ascx.cs" %>
+    Inherits="MerchantTribeStore.BVModules_Controls_LoginControl" Codebehind="LoginControl.ascx.cs" %>
 <%@ Register Src="MessageBox.ascx" TagName="MessageBox" TagPrefix="uc1" %>
 <asp:ValidationSummary ID="valLoginSummary" CssClass="errormessage" EnableClientScript="True"
     runat="server" ValidationGroup="Login"></asp:ValidationSummary>

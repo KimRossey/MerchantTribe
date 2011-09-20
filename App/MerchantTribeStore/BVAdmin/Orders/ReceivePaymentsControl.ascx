@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="True" Inherits="BVCommerce.BVAdmin_Orders_ReceivePaymentsControl" Codebehind="ReceivePaymentsControl.ascx.cs" %>
+﻿<%@ Control Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVAdmin_Orders_ReceivePaymentsControl" Codebehind="ReceivePaymentsControl.ascx.cs" %>
 <%@ Register src="../Controls/MessageBox.ascx" tagname="MessageBox" tagprefix="uc1" %>
 <%@ Register src="../../BVModules/Controls/CreditCardInput.ascx" tagname="CreditCardInput" tagprefix="uc2" %>
 <uc1:messagebox ID="MessageBox1" runat="server" />                

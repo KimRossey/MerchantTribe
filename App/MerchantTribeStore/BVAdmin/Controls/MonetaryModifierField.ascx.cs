@@ -3,7 +3,7 @@ using System.Web.UI.WebControls;
 using MerchantTribe.Commerce;
 using MerchantTribe.Commerce.Controls;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_Controls_MonetaryModifierField : ModificationControl<decimal>, ITextBoxBasedControl

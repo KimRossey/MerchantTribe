@@ -5,48 +5,21 @@ using System.Web;
 using System.Web.Mvc;
 using MerchantTribe.Commerce;
 using MerchantTribe.Commerce.Content;
-using BVCommerce.Filters;
+using MerchantTribeStore.Filters;
 
-namespace BVCommerce.Controllers.Shared
+namespace MerchantTribeStore.Controllers.Shared
 {
     [StoreClosedFilter]
-    public class BaseStoreController : Controller, IMultiStorePage
+    public class BaseStoreController : BaseAppController
     {
-        // Initialize Store Specific Request Data
-        MerchantTribe.Commerce.RequestContext _BVRequestContext = new RequestContext();
-
-        public MerchantTribeApplication MTApp { get; set; }
-
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             base.OnActionExecuting(filterContext);
-            MTApp = MerchantTribeApplication.InstantiateForDataBase(new RequestContext());
 
-            // Check for non-www url and redirect if needed
-            //RedirectBVCommerceCom(System.Web.HttpContext.Current);
-
-            MTApp.CurrentRequestContext.RoutingContext = this.Request.RequestContext;
-
-            // Determine store id        
-            MTApp.CurrentStore = MerchantTribe.Commerce.Utilities.UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, MTApp.AccountServices);
-            if (MTApp.CurrentStore == null)
-            {
-                Response.Redirect("~/storenotfound");
-            }
-
-            if (MTApp.CurrentStore.Status == MerchantTribe.Commerce.Accounts.StoreStatus.Deactivated)
-            {
-                //if ((AvailableWhenInactive == false))
-                //{
-                Response.Redirect("~/storenotavailable");
-                //}
-            }
-
+            
             //Cart Count
-
             string itemCount = "0";
             string subTotal = "$0.00";
-
             if (SessionManager.CurrentUserHasCart())
             {
                 itemCount = SessionManager.GetCookieString(WebAppSettings.CookieNameCartItemCount(MTApp.CurrentStore.Id));
@@ -121,60 +94,9 @@ namespace BVCommerce.Controllers.Shared
                     }
                 }
             }
-
-            // Store data for admin panel
-            ViewBag.IsAdmin = IsCurrentUserAdmin(this.MTApp, this.Request.RequestContext.HttpContext);
-            ViewBag.RootUrlSecure = MTApp.CurrentStore.RootUrlSecure();
-            ViewBag.RootUrl = MTApp.CurrentStore.RootUrl();
-            ViewBag.StoreClosed = MTApp.CurrentStore.Settings.StoreClosed;
-
-
+            
             ViewBag.MetaKeywords = MTApp.CurrentStore.Settings.MetaKeywords;            
             ViewBag.MetaDescription = MTApp.CurrentStore.Settings.MetaDescription;                                            
-
-            // Integrations
-            IntegrationLoader.AddIntegrations(this.MTApp.CurrentRequestContext.IntegrationEvents, this.MTApp.CurrentStore);
         }
-
-        public bool IsCurrentUserAdmin(MerchantTribeApplication app, HttpContextBase httpContext)
-        {
-
-            Guid? tokenId = MerchantTribe.Web.Cookies.GetCookieGuid(
-                                WebAppSettings.CookieNameAuthenticationTokenAdmin(),
-                                httpContext, new EventLog());
-
-            // no token, return
-            if (!tokenId.HasValue) return false;
-
-            if (app.AccountServices.IsTokenValidForStore(app.CurrentStore.Id, tokenId.Value))
-            {
-                return true;
-            }
-
-            return false;
-        }
-
-
-        protected void FlashInfo(string message)
-        {
-            FlashMessage(message, "flash-message-info");
-        }
-        protected void FlashSuccess(string message)
-        {
-            FlashMessage(message, "flash-message-success");
-        }
-        protected void FlashFailure(string message)
-        {
-            FlashMessage(message, "flash-message-failure");
-        }
-        protected void FlashWarning(string message)
-        {
-            FlashMessage(message, "flash-message-warning");
-        }
-        private void FlashMessage(string message, string typeClass)
-        {
-            string format = "<div class=\"{0}\"><p>{1}</p></div>";
-            this.TempData["messages"] += string.Format(format, typeClass, message);
-        }        
     }
 }

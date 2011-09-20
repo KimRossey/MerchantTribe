@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/BVAdmin/BVAdminNav.master" AutoEventWireup="true" CodeBehind="Administrators.aspx.cs" Inherits="BVCommerce.BVAdmin.People.Administrators" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/BVAdmin/BVAdminNav.master" AutoEventWireup="true" CodeBehind="Administrators.aspx.cs" Inherits="MerchantTribeStore.BVAdmin.People.Administrators" %>
 <%@ Register src="../Controls/MessageBox.ascx" tagname="MessageBox" tagprefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="headcontent" runat="server">
 </asp:Content>

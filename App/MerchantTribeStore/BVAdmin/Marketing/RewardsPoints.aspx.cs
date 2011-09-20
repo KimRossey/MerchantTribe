@@ -10,7 +10,7 @@ using MerchantTribe.Commerce.Marketing;
 using MerchantTribe.Commerce.Utilities;
 using MerchantTribe.Commerce;
 
-namespace BVCommerce.BVAdmin.Marketing
+namespace MerchantTribeStore.BVAdmin.Marketing
 {
     public partial class RewardsPoints : BaseAdminPage
     {

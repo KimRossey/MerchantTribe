@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="True" Inherits="BVCommerce.BVAdmin_Configuration_ThemesNav" Codebehind="ThemesNav.ascx.cs" %>
+﻿<%@ Control Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVAdmin_Configuration_ThemesNav" Codebehind="ThemesNav.ascx.cs" %>
 <ul class="navmenu">
     <li><asp:Hyperlink ID="lnkEdit" runat="server" NavigateUrl="ThemesEdit.aspx">Theme Info</asp:Hyperlink></li>
     <li><asp:Hyperlink ID="lnkCss" runat="server" NavigateUrl="ThemesEditCSS.aspx">Style Sheet (CSS)</asp:Hyperlink></li>

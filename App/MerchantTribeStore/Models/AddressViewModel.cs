@@ -6,7 +6,7 @@ using MerchantTribe.Commerce.Contacts;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace BVCommerce.Models
+namespace MerchantTribeStore.Models
 {
     
     public class AddressViewModel

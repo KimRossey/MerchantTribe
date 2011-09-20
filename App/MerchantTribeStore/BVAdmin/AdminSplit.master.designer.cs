@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BVCommerce.BVAdmin {
+namespace MerchantTribeStore.BVAdmin {
     
     
     public partial class AdminSplit {
@@ -28,7 +28,7 @@ namespace BVCommerce.BVAdmin {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.JQueryInclude JQueryInclude1;
+        protected global::MerchantTribeStore.JQueryInclude JQueryInclude1;
         
         /// <summary>
         /// ContentPlaceHolder1 control.
@@ -55,7 +55,7 @@ namespace BVCommerce.BVAdmin {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Header Header1;
+        protected global::MerchantTribeStore.BVAdmin_Header Header1;
         
         /// <summary>
         /// SideA control.
@@ -91,6 +91,6 @@ namespace BVCommerce.BVAdmin {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_footer Footer1;
+        protected global::MerchantTribeStore.BVAdmin_footer Footer1;
     }
 }

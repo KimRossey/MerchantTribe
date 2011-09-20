@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BVCommerce {
+namespace MerchantTribeStore {
     
     
     public partial class BVAdmin_Default {
@@ -19,7 +19,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_MessageBox MessageBox1;
+        protected global::MerchantTribeStore.BVAdmin_Controls_MessageBox MessageBox1;
         
         /// <summary>
         /// DashboardAlerts1 control.
@@ -28,7 +28,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_DashboardAlerts DashboardAlerts1;
+        protected global::MerchantTribeStore.BVAdmin_Controls_DashboardAlerts DashboardAlerts1;
         
         /// <summary>
         /// DashboardOrderSummary1 control.
@@ -37,7 +37,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_DashboardOrderSummary DashboardOrderSummary1;
+        protected global::MerchantTribeStore.BVAdmin_Controls_DashboardOrderSummary DashboardOrderSummary1;
         
         /// <summary>
         /// pnlGettingStarted control.
@@ -73,7 +73,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_DashboardSalesSummary DashboardSalesSummary1;
+        protected global::MerchantTribeStore.BVAdmin_Controls_DashboardSalesSummary DashboardSalesSummary1;
         
         /// <summary>
         /// DashboardNews1 control.
@@ -82,6 +82,6 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_DashboardNews DashboardNews1;
+        protected global::MerchantTribeStore.BVAdmin_Controls_DashboardNews DashboardNews1;
     }
 }

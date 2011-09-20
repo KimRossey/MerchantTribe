@@ -14,7 +14,7 @@ using MerchantTribe.Shipping;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_Orders_ShipOrder : BaseAdminPage

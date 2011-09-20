@@ -9,7 +9,7 @@ using System.Collections.Specialized;
 
 using System.IO;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_Content_Columns_Edit : BaseAdminPage

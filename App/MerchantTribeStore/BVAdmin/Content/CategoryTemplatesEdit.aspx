@@ -1,4 +1,4 @@
-<%@ Page Language="C#" MasterPageFile="~/BVAdmin/BVAdmin.master" AutoEventWireup="True" Inherits="BVCommerce.BVAdmin_Content_CategoryTemplatesEdit" title="Untitled Page" Codebehind="CategoryTemplatesEdit.aspx.cs" %>
+<%@ Page Language="C#" MasterPageFile="~/BVAdmin/BVAdmin.master" AutoEventWireup="True" Inherits="MerchantTribeStore.BVAdmin_Content_CategoryTemplatesEdit" title="Untitled Page" Codebehind="CategoryTemplatesEdit.aspx.cs" %>
 
 <%@ Register Assembly="MerchantTribe.Commerce" Namespace="MerchantTribe.Commerce" TagPrefix="cc1" %>
 

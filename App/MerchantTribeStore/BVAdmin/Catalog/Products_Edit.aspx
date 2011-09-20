@@ -1,5 +1,5 @@
 <%@ Page ValidateRequest="false" Language="C#" MasterPageFile="~/BVAdmin/BVAdminNav.master"
-    AutoEventWireup="True" Inherits="BVCommerce.BVAdmin_Catalog_Products_Edit"
+    AutoEventWireup="True" Inherits="MerchantTribeStore.BVAdmin_Catalog_Products_Edit"
     Title="Untitled Page" Codebehind="Products_Edit.aspx.cs" %>
 <%@ Register Src="../Controls/MessageBox.ascx" TagName="MessageBox" TagPrefix="uc3" %>
 <%@ Register Src="../Controls/DatePicker.ascx" TagName="DatePicker" TagPrefix="uc2" %>

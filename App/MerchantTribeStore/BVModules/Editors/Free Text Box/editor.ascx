@@ -1,4 +1,4 @@
-<%@ Control Language="C#" AutoEventWireup="True" Inherits="BVCommerce.BVModules_Editors_Free_Text_Box_editor" Codebehind="editor.ascx.cs" %>
+<%@ Control Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVModules_Editors_Free_Text_Box_editor" Codebehind="editor.ascx.cs" %>
 <%@ Register TagPrefix="FTB" Namespace="FreeTextBoxControls" Assembly="FreeTextBox" %>
 <div>FREE TEXT BOX EDITOR</div>
 <FTB:FreeTextBox 

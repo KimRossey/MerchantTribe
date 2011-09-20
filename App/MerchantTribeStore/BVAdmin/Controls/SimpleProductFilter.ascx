@@ -1,4 +1,4 @@
-<%@ Control Language="C#" AutoEventWireup="True" Inherits="BVCommerce.BVAdmin_Controls_SimpleProductFilter" Codebehind="SimpleProductFilter.ascx.cs" %>
+<%@ Control Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVAdmin_Controls_SimpleProductFilter" Codebehind="SimpleProductFilter.ascx.cs" %>
 <asp:Panel ID="Panel1" runat="server" DefaultButton="btnGo">
     <div class="controlarea1">        
             Search Products by Keyword:<br />

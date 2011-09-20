@@ -1,7 +1,7 @@
 using System.Web.UI;
 using MerchantTribe.Commerce.Content;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVModules_Controls_CustomerServiceMenu : System.Web.UI.UserControl

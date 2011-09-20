@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using MerchantTribe.Commerce;
 using MerchantTribe.Commerce.Membership;
 
-namespace BVCommerce.json
+namespace MerchantTribeStore.json
 {
     public partial class IsEmailKnown : BaseStoreJsonPage
     {

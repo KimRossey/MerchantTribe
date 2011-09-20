@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Create New Order" Language="C#" MasterPageFile="~/BVAdmin/BVAdmin.master" AutoEventWireup="true" CodeBehind="CreateOrder.aspx.cs" Inherits="BVCommerce.BVAdmin.Orders.CreateOrder" %>
+﻿<%@ Page Title="Create New Order" Language="C#" MasterPageFile="~/BVAdmin/BVAdmin.master" AutoEventWireup="true" CodeBehind="CreateOrder.aspx.cs" Inherits="MerchantTribeStore.BVAdmin.Orders.CreateOrder" %>
 <%@ Register Src="../Controls/UserPicker.ascx" TagName="UserPicker" TagPrefix="uc5" %>
 <%@ Register Src="../../BVModules/Controls/CreditCardInput.ascx" TagName="CreditCardInput" TagPrefix="uc4" %>
 <%@ Register Src="../Controls/ProductPicker.ascx" TagName="ProductPicker" TagPrefix="uc3" %>

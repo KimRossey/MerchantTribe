@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BVCommerce {
+namespace MerchantTribeStore {
     
     
     public partial class BVAdmin_Orders_ViewOrder {
@@ -19,7 +19,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_MessageBox MessageBox1;
+        protected global::MerchantTribeStore.BVAdmin_Controls_MessageBox MessageBox1;
         
         /// <summary>
         /// OrderNumberField control.
@@ -55,7 +55,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Orders_OrderStatusDisplay OrderStatusDisplay1;
+        protected global::MerchantTribeStore.BVAdmin_Orders_OrderStatusDisplay OrderStatusDisplay1;
         
         /// <summary>
         /// OrderActions1 control.
@@ -64,7 +64,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Orders_OrderActions OrderActions1;
+        protected global::MerchantTribeStore.BVAdmin_Orders_OrderActions OrderActions1;
         
         /// <summary>
         /// BillingAddressField control.

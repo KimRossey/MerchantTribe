@@ -1,6 +1,6 @@
 using System.Web.Mvc;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
     public interface IStorePage
     {

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BVCommerce.BVAdmin {
+namespace MerchantTribeStore.BVAdmin {
     
     
     public partial class Logout {

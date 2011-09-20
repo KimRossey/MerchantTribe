@@ -1,5 +1,5 @@
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
     public enum ErrorTypes
     {

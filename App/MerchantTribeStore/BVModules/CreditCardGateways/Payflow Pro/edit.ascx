@@ -1,4 +1,4 @@
-<%@ Control Language="C#" AutoEventWireup="True" Inherits="BVCommerce.BVModules_CreditCardGateways_BV_PayFlowProNET_edit" Codebehind="edit.ascx.cs" %>
+<%@ Control Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVModules_CreditCardGateways_BV_PayFlowProNET_edit" Codebehind="edit.ascx.cs" %>
 <h1>Payflow Pro Options</h1>
 <asp:Panel ID="Panel1" DefaultButton="btnSave" runat="server">
 <table border="0" cellspacing="0" cellpadding="3" style="width: 364px">

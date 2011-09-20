@@ -5,7 +5,7 @@ using MerchantTribe.Commerce;
 using MerchantTribe.Commerce.Content;
 using System.Collections.Specialized;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_Header : BVUserControl

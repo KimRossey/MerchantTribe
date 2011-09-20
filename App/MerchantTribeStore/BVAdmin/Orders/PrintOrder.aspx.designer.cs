@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BVCommerce {
+namespace MerchantTribeStore {
     
     
     public partial class BVAdmin_Orders_PrintOrder {
@@ -46,7 +46,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Orders_OrderActions OrderActions1;
+        protected global::MerchantTribeStore.BVAdmin_Orders_OrderActions OrderActions1;
         
         /// <summary>
         /// DataList1 control.

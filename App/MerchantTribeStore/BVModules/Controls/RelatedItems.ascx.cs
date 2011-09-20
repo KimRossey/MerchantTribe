@@ -7,7 +7,7 @@ using MerchantTribe.Commerce.Content;
 using System.Collections.Generic;
 using System.Text;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVModules_Controls_RelatedItems : MerchantTribe.Commerce.Content.BVUserControl

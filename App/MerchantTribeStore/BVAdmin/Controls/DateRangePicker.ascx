@@ -1,4 +1,4 @@
-<%@ Control Language="C#" AutoEventWireup="True" Inherits="BVCommerce.BVAdmin_Controls_DateRangePicker" Codebehind="DateRangePicker.ascx.cs" %>
+<%@ Control Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVAdmin_Controls_DateRangePicker" Codebehind="DateRangePicker.ascx.cs" %>
 <%@ Register Src="DropDownDate.ascx" TagName="DropDownDate" TagPrefix="uc1" %>
 <div class="DateRangePicker">
 <asp:DropDownList runat="server" ID="lstRangeType" AutoPostBack="True" 

@@ -1,4 +1,4 @@
-<%@ Page Language="C#" MasterPageFile="~/BVAdmin/BVAdmin.master" AutoEventWireup="True" Inherits="BVCommerce.BVAdmin_Content_Default" Title="Untitled Page" Codebehind="Default.aspx.cs" %>
+<%@ Page Language="C#" MasterPageFile="~/BVAdmin/BVAdmin.master" AutoEventWireup="True" Inherits="MerchantTribeStore.BVAdmin_Content_Default" Title="Untitled Page" Codebehind="Default.aspx.cs" %>
 
 <%@ Register Src="../Controls/ContentColumnEditor.ascx" TagName="ContentColumnEditor"
     TagPrefix="uc1" %>

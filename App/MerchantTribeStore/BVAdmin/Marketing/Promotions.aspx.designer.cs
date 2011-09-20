@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BVCommerce.BVAdmin.Marketing {
+namespace MerchantTribeStore.BVAdmin.Marketing {
     
     
     public partial class Promotions {

@@ -1,6 +1,6 @@
 using MerchantTribe.Commerce;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_BVAdmin : System.Web.UI.MasterPage

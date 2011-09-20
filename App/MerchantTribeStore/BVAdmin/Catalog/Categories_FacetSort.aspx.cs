@@ -4,7 +4,7 @@ using MerchantTribe.Commerce.Catalog;
 using System;
 using System.Collections.ObjectModel;
 
-namespace BVCommerce.BVAdmin.Catalog
+namespace MerchantTribeStore.BVAdmin.Catalog
 {
     public partial class Categories_FacetSort : BaseAdminJsonPage
     {

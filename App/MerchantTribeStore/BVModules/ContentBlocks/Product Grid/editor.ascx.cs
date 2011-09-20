@@ -4,7 +4,7 @@ using MerchantTribe.Commerce.Catalog;
 using MerchantTribe.Commerce.Content;
 using MerchantTribe.Commerce.Utilities;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVModules_ContentBlocks_Product_Grid_editor : BVModule

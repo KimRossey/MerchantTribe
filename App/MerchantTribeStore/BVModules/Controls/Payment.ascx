@@ -1,4 +1,4 @@
-<%@ Control Language="C#" AutoEventWireup="True" Inherits="BVCommerce.BVModules_Controls_Payment" Codebehind="Payment.ascx.cs" %>
+<%@ Control Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVModules_Controls_Payment" Codebehind="Payment.ascx.cs" %>
 <%@ Register Src="CreditCardInput.ascx" TagName="CreditCardInput" TagPrefix="uc1" %>
 <table border="0" cellspacing="0" cellpadding="3" width="100%">
     <tr runat="server" id="rowNoPaymentNeeded" visible="false">

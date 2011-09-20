@@ -1,1 +1,1 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Inherits="BVCommerce.Global" Language="C#" %>
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="MerchantTribeStore.Global" Language="C#" %>

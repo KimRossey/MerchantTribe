@@ -8,7 +8,7 @@ using MerchantTribe.Commerce.Content;
 using MerchantTribe.Commerce.Catalog;
 using MerchantTribe.Commerce.Contacts;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
     public class BaseStorePage : System.Web.UI.Page, IStorePage, MerchantTribe.Commerce.IMultiStorePage
     {

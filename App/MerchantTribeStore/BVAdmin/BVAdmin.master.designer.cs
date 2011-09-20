@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BVCommerce {
+namespace MerchantTribeStore {
     
     
     public partial class BVAdmin_BVAdmin {
@@ -19,7 +19,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.JQueryInclude JQueryInclude1;
+        protected global::MerchantTribeStore.JQueryInclude JQueryInclude1;
         
         /// <summary>
         /// headcontent control.
@@ -46,7 +46,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Header Header1;
+        protected global::MerchantTribeStore.BVAdmin_Header Header1;
         
         /// <summary>
         /// MainContent control.
@@ -64,7 +64,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_footer Footer1;
+        protected global::MerchantTribeStore.BVAdmin_footer Footer1;
         
         /// <summary>
         /// PreBodyCloseContent control.

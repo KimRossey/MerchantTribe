@@ -1,4 +1,4 @@
-<%@ Control Language="C#" AutoEventWireup="True" Inherits="BVCommerce.BVModules_Controls_EmailThisPage" Codebehind="EmailThisPage.ascx.cs" %>
+<%@ Control Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVModules_Controls_EmailThisPage" Codebehind="EmailThisPage.ascx.cs" %>
 
 <div id="EmailThisPage">
     <a id="EmailLink" onclick="JavaScript:void(0)" runat="server">

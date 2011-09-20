@@ -1,4 +1,4 @@
-<%@ Page Language="C#" MasterPageFile="~/BVAdmin/BVAdmin.master" AutoEventWireup="True" Inherits="BVCommerce.BVAdmin_Orders_ReceivePayments"
+<%@ Page Language="C#" MasterPageFile="~/BVAdmin/BVAdmin.master" AutoEventWireup="True" Inherits="MerchantTribeStore.BVAdmin_Orders_ReceivePayments"
     Title="Payments" Codebehind="ReceivePayments.aspx.cs" %>
 
 <%@ Register Src="../../BVModules/Controls/CreditCardInput.ascx" TagName="CreditCardInput"

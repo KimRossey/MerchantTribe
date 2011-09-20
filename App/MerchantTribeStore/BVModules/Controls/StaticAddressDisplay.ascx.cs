@@ -1,6 +1,6 @@
 using MerchantTribe.Commerce.Contacts;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVModules_Controls_StaticAddressDisplay : System.Web.UI.UserControl

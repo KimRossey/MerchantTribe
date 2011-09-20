@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using MerchantTribe.Commerce.Reporting;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     public partial class BVAdmin_Controls_DashboardSalesSummary : MerchantTribe.Commerce.Content.BVUserControl

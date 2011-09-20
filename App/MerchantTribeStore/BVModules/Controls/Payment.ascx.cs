@@ -8,7 +8,7 @@ using MerchantTribe.Commerce.Orders;
 using MerchantTribe.Commerce.Payment;
 using MerchantTribe.Web.Validation;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVModules_Controls_Payment : MerchantTribe.Commerce.Content.BVModule, MerchantTribe.Web.Validation.IValidatable

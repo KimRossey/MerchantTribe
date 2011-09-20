@@ -8,7 +8,7 @@ using MerchantTribe.Commerce;
 using MerchantTribe.Commerce.Accounts;
 using MerchantTribe.Commerce.Catalog;
 
-namespace BVCommerce.BVAdmin
+namespace MerchantTribeStore.BVAdmin
 {
     public partial class ResetPassword : System.Web.UI.Page, IMultiStorePage
     {

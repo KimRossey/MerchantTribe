@@ -1,6 +1,6 @@
 using System.Web.UI;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVModules_Controls_EstimateShipping : MerchantTribe.Commerce.Content.BVUserControl

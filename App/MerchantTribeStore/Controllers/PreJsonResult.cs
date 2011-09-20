@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace BVCommerce.Controllers
+namespace MerchantTribeStore.Controllers
 {
     public class PreJsonResult: ActionResult
     {

@@ -10,7 +10,7 @@ using MerchantTribe.Commerce.Catalog;
 using MerchantTribe.Commerce.Membership;
 
 
-namespace BVCommerce.BVAdmin.Catalog
+namespace MerchantTribeStore.BVAdmin.Catalog
 {
     public partial class FileDownloads : BaseAdminPage
     {

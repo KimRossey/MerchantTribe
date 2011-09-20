@@ -1,4 +1,4 @@
-<%@ Control Language="C#" AutoEventWireup="True" Inherits="BVCommerce.BVAdmin_Controls_ProductModifications" Codebehind="ProductModifications.ascx.cs" %>
+<%@ Control Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVAdmin_Controls_ProductModifications" Codebehind="ProductModifications.ascx.cs" %>
 <%@ Register Src="EnumeratedValueModifierField.ascx" TagName="EnumeratedValueModifierField"
     TagPrefix="uc7" %>
 <%@ Register Src="HtmlModifierField.ascx" TagName="HtmlModifierField" TagPrefix="uc6" %>

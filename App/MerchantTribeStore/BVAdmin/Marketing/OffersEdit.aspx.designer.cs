@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BVCommerce {
+namespace MerchantTribeStore {
     
     
     public partial class BVAdmin_Marketing_OffersEdit {
@@ -19,7 +19,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_MessageBox MessageBox1;
+        protected global::MerchantTribeStore.BVAdmin_Controls_MessageBox MessageBox1;
         
         /// <summary>
         /// OfferNameTextBox control.
@@ -55,7 +55,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_DatePicker StartDatePicker;
+        protected global::MerchantTribeStore.BVAdmin_Controls_DatePicker StartDatePicker;
         
         /// <summary>
         /// EndDatePicker control.
@@ -64,7 +64,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_DatePicker EndDatePicker;
+        protected global::MerchantTribeStore.BVAdmin_Controls_DatePicker EndDatePicker;
         
         /// <summary>
         /// CustomValidator1 control.
@@ -217,7 +217,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_MessageBox MessageBox2;
+        protected global::MerchantTribeStore.BVAdmin_Controls_MessageBox MessageBox2;
         
         /// <summary>
         /// PreviousPage property.
@@ -225,9 +225,9 @@ namespace BVCommerce {
         /// <remarks>
         /// Auto-generated property.
         /// </remarks>
-        public new BVCommerce.BVAdmin_Catalog_Discounts PreviousPage {
+        public new MerchantTribeStore.BVAdmin_Catalog_Discounts PreviousPage {
             get {
-                return ((BVCommerce.BVAdmin_Catalog_Discounts)(base.PreviousPage));
+                return ((MerchantTribeStore.BVAdmin_Catalog_Discounts)(base.PreviousPage));
             }
         }
     }

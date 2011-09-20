@@ -24,7 +24,7 @@ using MerchantTribe.Commerce.Utilities;
 using System.Collections.ObjectModel;
 using MerchantTribe.Web.Geography;
 
-namespace BVCommerce.BVAdmin.Configuration
+namespace MerchantTribeStore.BVAdmin.Configuration
 {
     public partial class ShippingUpsLicense : BaseAdminPage
     {

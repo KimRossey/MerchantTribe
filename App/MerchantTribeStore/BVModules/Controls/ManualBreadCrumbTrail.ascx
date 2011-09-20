@@ -1,2 +1,2 @@
-<%@ Control Language="C#" AutoEventWireup="True" Inherits="BVCommerce.BVModules_Controls_ManualBreadCrumbTrail" Codebehind="ManualBreadCrumbTrail.ascx.cs" %>
+<%@ Control Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVModules_Controls_ManualBreadCrumbTrail" Codebehind="ManualBreadCrumbTrail.ascx.cs" %>
 <div class="breadcrumbs"><div class="links"><asp:PlaceHolder id="TrailPlaceholder" runat="server"></asp:PlaceHolder></div></div>

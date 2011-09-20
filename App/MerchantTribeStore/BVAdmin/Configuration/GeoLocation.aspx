@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/BVAdmin/BVAdminNav.master" AutoEventWireup="true" CodeBehind="GeoLocation.aspx.cs" Inherits="BVCommerce.BVAdmin.Configuration.GeoLocation" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/BVAdmin/BVAdminNav.master" AutoEventWireup="true" CodeBehind="GeoLocation.aspx.cs" Inherits="MerchantTribeStore.BVAdmin.Configuration.GeoLocation" %>
 <%@ Register Src="../Controls/MessageBox.ascx" TagName="MessageBox" TagPrefix="uc1" %>
 <%@ Register src="NavMenu.ascx" tagname="NavMenu" tagprefix="uc2" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="headcontent" runat="server">

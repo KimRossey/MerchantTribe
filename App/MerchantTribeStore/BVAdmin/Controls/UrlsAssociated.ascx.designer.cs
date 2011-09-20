@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BVCommerce.BVAdmin.Controls {
+namespace MerchantTribeStore.BVAdmin.Controls {
     
     
     public partial class UrlsAssociated {

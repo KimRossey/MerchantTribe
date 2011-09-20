@@ -1,6 +1,6 @@
 using MerchantTribe.Commerce;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVModules_Controls_EmailAddressEntry : MerchantTribe.Commerce.Content.BVUserControl

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/signup/SignUp.master" AutoEventWireup="True" Inherits="BVCommerce.signup_about" Codebehind="about.aspx.cs" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/signup/SignUp.master" AutoEventWireup="True" Inherits="MerchantTribeStore.signup_about" Codebehind="about.aspx.cs" %>
 
 <%@ Register src="SignUpMenu.ascx" tagname="SignUpMenu" tagprefix="uc1" %>
 

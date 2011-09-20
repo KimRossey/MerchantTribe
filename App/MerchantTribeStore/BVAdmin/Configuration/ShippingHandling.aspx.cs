@@ -17,7 +17,7 @@ using MerchantTribe.Commerce.Taxes;
 using MerchantTribe.Commerce.Utilities;
 using System.Collections.ObjectModel;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     public partial class BVAdmin_Configuration_ShippingHandling : BaseAdminPage

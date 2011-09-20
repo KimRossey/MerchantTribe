@@ -1,4 +1,4 @@
-﻿<%@ Page Title="FedEx Meter Number Registration" Language="C#" MasterPageFile="~/BVAdmin/BVAdmin.master" AutoEventWireup="true" CodeBehind="Shipping_FedEx_Meter.aspx.cs" Inherits="BVCommerce.BVAdmin.Configuration.Shipping_FedEx_Meter" %>
+﻿<%@ Page Title="FedEx Meter Number Registration" Language="C#" MasterPageFile="~/BVAdmin/BVAdmin.master" AutoEventWireup="true" CodeBehind="Shipping_FedEx_Meter.aspx.cs" Inherits="MerchantTribeStore.BVAdmin.Configuration.Shipping_FedEx_Meter" %>
 <%@ Register Src="../Controls/MessageBox.ascx" TagName="MessageBox" TagPrefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="headcontent" runat="server">
 </asp:Content>

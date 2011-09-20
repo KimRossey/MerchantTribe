@@ -3,7 +3,7 @@ using System.Text;
 using MerchantTribe.Commerce;
 using MerchantTribe.Commerce.Catalog;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_Controls_OptionItemEditor : MerchantTribe.Commerce.Content.BVUserControl

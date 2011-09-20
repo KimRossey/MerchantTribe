@@ -3,7 +3,7 @@ using MerchantTribe.Commerce;
 using MerchantTribe.Commerce.Payment;
 using MerchantTribe.Commerce.Content;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_Controls_PaymentMethodList : MerchantTribe.Commerce.Content.BVUserControl

@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="True" Inherits="BVCommerce.BVModules_Controls_ViewOrderItems" Codebehind="ViewOrderItems.ascx.cs" %>
+﻿<%@ Control Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVModules_Controls_ViewOrderItems" Codebehind="ViewOrderItems.ascx.cs" %>
 <asp:GridView Style="margin: 20px 0px 20px 0px; border-bottom: solid 1px #666;" GridLines="None"
                 ID="ItemsGridView" runat="server" AutoGenerateColumns="False" 
     Width="100%" DataKeyNames="Id" onrowdatabound="ItemsGridView_RowDataBound">

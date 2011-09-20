@@ -17,7 +17,7 @@ using MerchantTribe.Commerce.Taxes;
 using MerchantTribe.Commerce.Utilities;
 using MerchantTribe.Web.Geography;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class Taxes_Edit : BaseAdminPage

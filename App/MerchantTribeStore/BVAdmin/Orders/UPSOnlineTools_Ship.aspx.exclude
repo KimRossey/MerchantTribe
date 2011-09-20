@@ -1,5 +1,5 @@
 <%@ Page Language="C#" MasterPageFile="~/BVAdmin/BVAdmin.master" AutoEventWireup="false"
-    CodeFile="UPSOnlineTools_Ship.aspx.cs" Inherits="BVCommerce.BVAdmin_Orders_UPSOnlineTools_Ship"
+    CodeFile="UPSOnlineTools_Ship.aspx.cs" Inherits="MerchantTribeStore.BVAdmin_Orders_UPSOnlineTools_Ship"
     Title="Untitled Page" %>
 
 <%@ Register Src="../Controls/MessageBox.ascx" TagName="MessageBox" TagPrefix="uc1" %>

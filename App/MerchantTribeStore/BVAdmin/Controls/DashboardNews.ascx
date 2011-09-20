@@ -1,2 +1,2 @@
-﻿<%@ Control Language="C#" AutoEventWireup="True" Inherits="BVCommerce.BVAdmin_Controls_DashboardNews" Codebehind="DashboardNews.ascx.cs" %>
+﻿<%@ Control Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVAdmin_Controls_DashboardNews" Codebehind="DashboardNews.ascx.cs" %>
 <asp:Literal ID="litNews" runat="server" EnableViewState="false" />

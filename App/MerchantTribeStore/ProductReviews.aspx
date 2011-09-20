@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="True" Inherits="BVCommerce.ProductReviews" Codebehind="ProductReviews.aspx.cs" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="True" Inherits="MerchantTribeStore.ProductReviews" Codebehind="ProductReviews.aspx.cs" %>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
     <asp:Literal ID="litProduct" runat="server" EnableViewState="false"></asp:Literal>        
     <h1>Product Reviews: <asp:Literal ID="litProductName" runat="server" EnableViewState="false" /></h1>

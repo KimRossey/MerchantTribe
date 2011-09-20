@@ -1,6 +1,6 @@
 using System;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
     public enum AdminTabType
     {

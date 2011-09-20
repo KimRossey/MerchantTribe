@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Collections.Generic;
 using MerchantTribe.Commerce.Catalog;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
     public class CustomRouter: IRouteHandler
     {        
@@ -45,10 +45,10 @@ namespace BVCommerce
                     case CategorySourceType.ByRules:
                     case CategorySourceType.CustomLink:
                     case CategorySourceType.Manual:
-                        var catPage = System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath("~/category.aspx", typeof(BVCommerce.category)) as BVCommerce.category;
+                        var catPage = System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath("~/category.aspx", typeof(MerchantTribeStore.category)) as MerchantTribeStore.category;
                         return catPage as IHttpHandler;                        
                     case CategorySourceType.DrillDown:
-                        var filterPage = System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath("~/categorydrilldown.aspx", typeof(BVCommerce.categorydrilldown)) as BVCommerce.categorydrilldown;
+                        var filterPage = System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath("~/categorydrilldown.aspx", typeof(MerchantTribeStore.categorydrilldown)) as MerchantTribeStore.categorydrilldown;
                         return filterPage as IHttpHandler;                        
                     case CategorySourceType.FlexPage:
                         requestContext.RouteData.Values["controller"] = "FlexPage";
@@ -56,7 +56,7 @@ namespace BVCommerce
                         System.Web.Mvc.MvcHandler mvcHandler2 = new System.Web.Mvc.MvcHandler(requestContext);
                         return mvcHandler2;                        
                     case CategorySourceType.CustomPage:
-                        var customPage = System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath("~/custompage.aspx", typeof(BVCommerce.custompage)) as BVCommerce.custompage;
+                        var customPage = System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath("~/custompage.aspx", typeof(MerchantTribeStore.custompage)) as MerchantTribeStore.custompage;
                         return customPage as IHttpHandler;            
                 }
             }
@@ -64,7 +64,7 @@ namespace BVCommerce
             // Check for Product URL
             if (IsProductUrl(fullSlug, MTApp))
             {            
-                var page = System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath("~/product.aspx", typeof(BVCommerce.ProductPage)) as BVCommerce.ProductPage;
+                var page = System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath("~/product.aspx", typeof(MerchantTribeStore.ProductPage)) as MerchantTribeStore.ProductPage;
                 return page as IHttpHandler;
             }
 

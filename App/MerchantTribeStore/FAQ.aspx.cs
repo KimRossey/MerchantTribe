@@ -2,7 +2,7 @@ using System;
 using System.Web.UI;
 using MerchantTribe.Commerce.Content;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class FAQ : BaseStorePage

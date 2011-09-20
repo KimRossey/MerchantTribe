@@ -1,5 +1,5 @@
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_Configuration_ThemesNav : System.Web.UI.UserControl

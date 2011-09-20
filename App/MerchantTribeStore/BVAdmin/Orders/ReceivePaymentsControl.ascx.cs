@@ -9,7 +9,7 @@ using MerchantTribe.Commerce.Orders;
 using MerchantTribe.Commerce.Payment;
 using MerchantTribe.Payment;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     public partial class BVAdmin_Orders_ReceivePaymentsControl : MerchantTribe.Commerce.Content.BVUserControl

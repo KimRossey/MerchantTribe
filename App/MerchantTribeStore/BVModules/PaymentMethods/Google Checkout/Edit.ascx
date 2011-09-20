@@ -1,4 +1,4 @@
-<%@ Control Language="C#" AutoEventWireup="True" Inherits="BVCommerce.BVModules_PaymentMethods_Google_Checkout_Edit" Codebehind="Edit.ascx.cs" %>
+<%@ Control Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVModules_PaymentMethods_Google_Checkout_Edit" Codebehind="Edit.ascx.cs" %>
 <h1>Google Checkout Options</h1>
 <asp:Panel ID="pnlMain" DefaultButton="btnSave" runat="server">
 <asp:ValidationSummary ID="ValidationSummary1" runat="server" />

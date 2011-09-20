@@ -1,4 +1,4 @@
-﻿<%@ Page ValidateRequest="false" Title="Edit Product Tab" Language="C#" MasterPageFile="~/BVAdmin/BVAdminNav.master" AutoEventWireup="True" Inherits="BVCommerce.BVAdmin_Catalog_ProductsEdit_TabsEdit" Codebehind="ProductsEdit_TabsEdit.aspx.cs" %>
+﻿<%@ Page ValidateRequest="false" Title="Edit Product Tab" Language="C#" MasterPageFile="~/BVAdmin/BVAdminNav.master" AutoEventWireup="True" Inherits="MerchantTribeStore.BVAdmin_Catalog_ProductsEdit_TabsEdit" Codebehind="ProductsEdit_TabsEdit.aspx.cs" %>
 <%@ Register src="../Controls/ProductEditMenu.ascx" tagname="ProductEditMenu" tagprefix="uc5" %>
 <%@ Register src="../Controls/ProductEditingDisplay.ascx" tagname="ProductEditing" tagprefix="uc5" %>
 <%@ Register src="../Controls/OptionItemEditor.ascx" tagname="OptionItemEditor" tagprefix="uc3" %>

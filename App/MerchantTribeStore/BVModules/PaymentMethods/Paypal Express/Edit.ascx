@@ -1,4 +1,4 @@
-<%@ Control Language="C#" AutoEventWireup="True" Inherits="BVCommerce.BVModules_PaymentMethods_Paypal_Express_Edit" Codebehind="Edit.ascx.cs" %>
+<%@ Control Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVModules_PaymentMethods_Paypal_Express_Edit" Codebehind="Edit.ascx.cs" %>
 <h1>Paypal Express Options</h1>
 <asp:Panel ID="pnlMain" DefaultButton="btnSave" runat="server">
 <table class="formtable">

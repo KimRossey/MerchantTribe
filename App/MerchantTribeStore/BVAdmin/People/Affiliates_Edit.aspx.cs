@@ -5,7 +5,7 @@ using MerchantTribe.Commerce.Content;
 using MerchantTribe.Commerce;
 using System.Collections.Generic;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_People_Affiliates_Edit : BaseAdminPage

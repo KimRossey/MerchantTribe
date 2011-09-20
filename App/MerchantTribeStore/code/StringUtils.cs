@@ -2,7 +2,7 @@
 using System;
 using System.Web;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
     public class StringUtils
     {

@@ -1,4 +1,4 @@
-<%@ Page Language="C#" MasterPageFile="~/BVAdmin/BVAdminNav.master" AutoEventWireup="True" Inherits="BVCommerce.BVAdmin_Orders_Default" title="Untitled Page" Codebehind="Default.aspx.cs" %>
+<%@ Page Language="C#" MasterPageFile="~/BVAdmin/BVAdminNav.master" AutoEventWireup="True" Inherits="MerchantTribeStore.BVAdmin_Orders_Default" title="Untitled Page" Codebehind="Default.aspx.cs" %>
 <%@ Register Src="../Controls/MessageBox.ascx" TagName="MessageBox" TagPrefix="uc2" %>
 
 <%@ Register src="../Controls/DateRangePicker.ascx" tagname="DateRangePicker" tagprefix="uc1" %>

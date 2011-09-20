@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BVCommerce.BVAdmin.Content {
+namespace MerchantTribeStore.BVAdmin.Content {
     
     
     public partial class CustomUrlRemove {

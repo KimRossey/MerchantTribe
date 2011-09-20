@@ -7,7 +7,7 @@ using MerchantTribe.Commerce;
 using System.Configuration;
 using MerchantTribe.Commerce.Scheduling;
 
-namespace BVCommerce.Controllers
+namespace MerchantTribeStore.Controllers
 {
     public class ScheduledTasksController : Controller, IMultiStorePage
     {

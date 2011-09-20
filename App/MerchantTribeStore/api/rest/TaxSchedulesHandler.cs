@@ -7,7 +7,7 @@ using MerchantTribe.CommerceDTO.v1;
 using MerchantTribe.CommerceDTO.v1.Taxes;
 using MerchantTribe.Commerce.Taxes;
 
-namespace BVCommerce.api.rest
+namespace MerchantTribeStore.api.rest
 {
     public class TaxSchedulesHandler: BaseRestHandler
     {

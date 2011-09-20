@@ -1,4 +1,4 @@
-<%@ Page Language="C#" MasterPageFile="~/BVAdmin/BVAdmin.master" AutoEventWireup="True" Inherits="BVCommerce.BVAdmin_Reports_Default" Title="Sales By Date" Codebehind="View.aspx.cs" %>
+<%@ Page Language="C#" MasterPageFile="~/BVAdmin/BVAdmin.master" AutoEventWireup="True" Inherits="MerchantTribeStore.BVAdmin_Reports_Default" Title="Sales By Date" Codebehind="View.aspx.cs" %>
 
 <%@ Register Src="~/BVAdmin/Controls/DateRangePicker.ascx" TagName="DateRangePicker"
     TagPrefix="uc2" %>
