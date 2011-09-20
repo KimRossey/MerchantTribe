@@ -20,7 +20,7 @@ using MerchantTribe.Web.Geography;
 
 using System.Collections.ObjectModel;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_Configuration_Countries : BaseAdminPage

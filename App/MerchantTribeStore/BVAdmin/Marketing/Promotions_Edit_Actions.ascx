@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Promotions_Edit_Actions.ascx.cs" Inherits="BVCommerce.BVAdmin.Marketing.Promotions_Edit_Actions" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Promotions_Edit_Actions.ascx.cs" Inherits="MerchantTribeStore.BVAdmin.Marketing.Promotions_Edit_Actions" %>
 <div style="overflow:auto;height:500px;">
 <%@ Register src="../Controls/MessageBox.ascx" tagname="MessageBox" tagprefix="uc1" %>
 <uc1:MessageBox ID="MessageBox1" runat="server" />

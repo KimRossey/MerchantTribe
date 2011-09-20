@@ -1,4 +1,4 @@
-<%@ Control Language="C#" AutoEventWireup="True" Inherits="BVCommerce.BVModules_Controls_EmailAddressEntry" Codebehind="EmailAddressEntry.ascx.cs" %>
+<%@ Control Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVModules_Controls_EmailAddressEntry" Codebehind="EmailAddressEntry.ascx.cs" %>
 <table>
     <tr>
         <td class="formlabel">

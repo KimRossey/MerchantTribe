@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BVCommerce.BVAdmin.Configuration {
+namespace MerchantTribeStore.BVAdmin.Configuration {
     
     
     public partial class GeoLocation {
@@ -19,7 +19,7 @@ namespace BVCommerce.BVAdmin.Configuration {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Configuration_NavMenu NavMenu1;
+        protected global::MerchantTribeStore.BVAdmin_Configuration_NavMenu NavMenu1;
         
         /// <summary>
         /// MessageBox1 control.
@@ -28,7 +28,7 @@ namespace BVCommerce.BVAdmin.Configuration {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_MessageBox MessageBox1;
+        protected global::MerchantTribeStore.BVAdmin_Controls_MessageBox MessageBox1;
         
         /// <summary>
         /// lstTimeZone control.

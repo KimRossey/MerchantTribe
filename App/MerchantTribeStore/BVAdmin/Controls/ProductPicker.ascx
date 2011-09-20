@@ -1,4 +1,4 @@
-<%@ Control Language="C#" AutoEventWireup="True" Inherits="BVCommerce.BVAdmin_Controls_ProductPicker"
+<%@ Control Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVAdmin_Controls_ProductPicker"
     CodeBehind="ProductPicker.ascx.cs" %>
 <div id="productpicker">
     <asp:Panel ID="pnlMain" Width="300" runat="server" DefaultButton="btnGo">

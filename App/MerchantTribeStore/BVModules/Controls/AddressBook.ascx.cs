@@ -6,7 +6,7 @@ using MerchantTribe.Commerce.Contacts;
 using MerchantTribe.Commerce.Membership;
 using MerchantTribe.Commerce.Content;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVModules_Controls_AddressBook : MerchantTribe.Commerce.Content.BVUserControl

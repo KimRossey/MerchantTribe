@@ -4,14 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MerchantTribe.Commerce;
-using BVCommerce.Models;
+using MerchantTribeStore.Models;
 using MerchantTribe.Web.Geography;
 using System.Text;
 using MerchantTribe.Commerce.Orders;
 using MerchantTribe.Commerce.Shipping;
 using MerchantTribe.Commerce.Utilities;
 
-namespace BVCommerce.Controllers
+namespace MerchantTribeStore.Controllers
 {
     public class EstimateShippingController : Shared.BaseStoreController
     {

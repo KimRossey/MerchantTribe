@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BVCommerce.BVAdmin.Catalog {
+namespace MerchantTribeStore.BVAdmin.Catalog {
     
     
     public partial class RelatedItems_Sort {

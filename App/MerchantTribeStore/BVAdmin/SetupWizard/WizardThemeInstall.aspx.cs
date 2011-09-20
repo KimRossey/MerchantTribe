@@ -1,5 +1,5 @@
 ﻿
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     public partial class BVAdmin_SetupWizard_WizardThemeInstall : BaseAdminJsonPage

@@ -2,7 +2,7 @@ using System.Collections.ObjectModel;
 using MerchantTribe.Commerce.Content;
 using System.Collections.Generic;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVModules_ContentBlocks_Product_Grid_adminview : BVModule

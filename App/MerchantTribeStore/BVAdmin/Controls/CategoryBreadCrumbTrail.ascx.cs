@@ -5,7 +5,7 @@ using MerchantTribe.Commerce.Content;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_Controls_CategoryBreadCrumbTrail : MerchantTribe.Commerce.Content.BVUserControl

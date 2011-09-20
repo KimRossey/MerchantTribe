@@ -8,7 +8,7 @@ using MerchantTribe.Commerce.Membership;
 using MerchantTribe.Commerce.Accounts;
 using System.Text;
 
-namespace BVCommerce.BVAdmin.Configuration
+namespace MerchantTribeStore.BVAdmin.Configuration
 {
     public partial class Api : BaseAdminPage
     {

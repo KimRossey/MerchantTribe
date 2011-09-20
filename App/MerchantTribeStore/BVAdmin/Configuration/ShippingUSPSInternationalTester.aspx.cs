@@ -10,7 +10,7 @@ using MerchantTribe.Commerce.Shipping;
 using MerchantTribe.Shipping.USPostal;
 
 
-namespace BVCommerce.BVAdmin.Configuration
+namespace MerchantTribeStore.BVAdmin.Configuration
 {
     public partial class ShippingUSPSInternationalTester : BaseAdminPage
     {

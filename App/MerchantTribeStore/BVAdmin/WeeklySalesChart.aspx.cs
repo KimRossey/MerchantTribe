@@ -10,7 +10,7 @@ using System.Drawing;
 using System.Web.UI.DataVisualization;
 using System.Web.UI.DataVisualization.Charting;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     public partial class BVAdmin_WeeklySalesChart : BaseAdminJsonPage

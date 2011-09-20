@@ -10,7 +10,7 @@ using MerchantTribe.Commerce.Utilities;
 using System.Text;
 using System.Collections.Generic;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVModules_ContentBlocks_Last_Products_Viewed_view : BVModule

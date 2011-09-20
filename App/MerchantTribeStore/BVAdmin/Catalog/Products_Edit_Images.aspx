@@ -1,5 +1,5 @@
 <%@ Page MasterPageFile="~/BVAdmin/BVAdminNav.master" ValidateRequest="False"
-    Language="C#" AutoEventWireup="True" Inherits="BVCommerce.products_products_edit_images" Codebehind="Products_Edit_Images.aspx.cs" %>
+    Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.products_products_edit_images" Codebehind="Products_Edit_Images.aspx.cs" %>
 <%@ Register Src="../Controls/MessageBox.ascx" TagName="MessageBox" TagPrefix="uc1" %>
 <%@ Register src="../Controls/ProductEditMenu.ascx" tagname="ProductEditMenu" tagprefix="uc5" %>
 <%@ Register src="../Controls/ProductEditingDisplay.ascx" tagname="ProductEditing" tagprefix="uc5" %>

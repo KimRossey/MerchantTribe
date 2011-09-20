@@ -4,7 +4,7 @@ using System.Text;
 using MerchantTribe.Commerce;
 using MerchantTribe.Commerce.Orders;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class IPNHandler : BaseStorePage

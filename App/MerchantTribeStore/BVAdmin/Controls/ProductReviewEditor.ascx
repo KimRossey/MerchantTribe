@@ -1,4 +1,4 @@
-<%@ Control Language="C#" AutoEventWireup="True" Inherits="BVCommerce.BVAdmin_Controls_ProductReviewEditor" Codebehind="ProductReviewEditor.ascx.cs" %>
+<%@ Control Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVAdmin_Controls_ProductReviewEditor" Codebehind="ProductReviewEditor.ascx.cs" %>
         
 <table class="formtable" border="0" cellspacing="0" cellpadding="3">
     <tr>

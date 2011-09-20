@@ -7,7 +7,7 @@ using MerchantTribe.Commerce.Catalog;
 using MerchantTribe.Commerce.Utilities;
 using System.Collections.Generic;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class category : BaseStoreCategoryPage

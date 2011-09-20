@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace BVCommerce.BVAdmin.People
+namespace MerchantTribeStore.BVAdmin.People
 {
     public partial class Affiliates_Delete : BaseAdminPage
     {

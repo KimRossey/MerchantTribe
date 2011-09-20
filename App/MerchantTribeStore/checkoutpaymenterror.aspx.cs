@@ -11,7 +11,7 @@ using MerchantTribe.Commerce.Orders;
 using MerchantTribe.Commerce.Utilities;
 using MerchantTribe.Commerce.Payment;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
     public partial class checkoutpaymenterror : BaseStorePage
     {      

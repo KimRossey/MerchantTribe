@@ -8,7 +8,7 @@ using MerchantTribe.CommerceDTO.v1;
 using MerchantTribe.CommerceDTO.v1.Orders;
 using MerchantTribe.Commerce.Orders;
 
-namespace BVCommerce.api.rest
+namespace MerchantTribeStore.api.rest
 {
     public class OrderTransactionsHandler: BaseRestHandler
     {

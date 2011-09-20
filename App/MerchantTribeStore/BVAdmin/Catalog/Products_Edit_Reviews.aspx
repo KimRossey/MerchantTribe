@@ -1,5 +1,5 @@
 <%@ Page MasterPageFile="~/BVAdmin/BVAdminNav.Master" Language="C#"
-    AutoEventWireup="True" Inherits="BVCommerce.products_products_edit_reviews" Codebehind="Products_Edit_Reviews.aspx.cs" %>
+    AutoEventWireup="True" Inherits="MerchantTribeStore.products_products_edit_reviews" Codebehind="Products_Edit_Reviews.aspx.cs" %>
 <%@ Register src="../Controls/ProductEditMenu.ascx" tagname="ProductEditMenu" tagprefix="uc5" %>
 <%@ Register src="../Controls/ProductEditingDisplay.ascx" tagname="ProductEditing" tagprefix="uc5" %>
 <asp:Content ID="nav" ContentPlaceHolderID="NavContent" runat="server">

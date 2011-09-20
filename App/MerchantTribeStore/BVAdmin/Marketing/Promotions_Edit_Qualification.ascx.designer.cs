@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BVCommerce.BVAdmin.Marketing {
+namespace MerchantTribeStore.BVAdmin.Marketing {
     
     
     public partial class Promotions_Edit_Qualification {
@@ -19,7 +19,7 @@ namespace BVCommerce.BVAdmin.Marketing {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_MessageBox MessageBox1;
+        protected global::MerchantTribeStore.BVAdmin_Controls_MessageBox MessageBox1;
         
         /// <summary>
         /// MultiView1 control.
@@ -64,7 +64,7 @@ namespace BVCommerce.BVAdmin.Marketing {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_ProductPicker ProductPicker1;
+        protected global::MerchantTribeStore.BVAdmin_Controls_ProductPicker ProductPicker1;
         
         /// <summary>
         /// viewOrderHasProduct control.
@@ -118,7 +118,7 @@ namespace BVCommerce.BVAdmin.Marketing {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_ProductPicker ProductPickerOrderProducts;
+        protected global::MerchantTribeStore.BVAdmin_Controls_ProductPicker ProductPickerOrderProducts;
         
         /// <summary>
         /// viewOrderSubTotalIs control.
@@ -271,7 +271,7 @@ namespace BVCommerce.BVAdmin.Marketing {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_UserPicker UserPicker1;
+        protected global::MerchantTribeStore.BVAdmin_Controls_UserPicker UserPicker1;
         
         /// <summary>
         /// viewUserIsInGroup control.

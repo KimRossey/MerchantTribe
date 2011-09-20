@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using MerchantTribe.Commerce.Orders;
 using MerchantTribe.Commerce;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     public partial class BVAdmin_Orders_OrderActions : System.Web.UI.UserControl

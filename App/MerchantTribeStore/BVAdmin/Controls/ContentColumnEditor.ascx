@@ -1,5 +1,5 @@
 <%@ Control Language="C#" AutoEventWireup="True"
-    Inherits="BVCommerce.BVAdmin_Controls_ContentColumnEditor" Codebehind="ContentColumnEditor.ascx.cs" %>
+    Inherits="MerchantTribeStore.BVAdmin_Controls_ContentColumnEditor" Codebehind="ContentColumnEditor.ascx.cs" %>
 <div class="contentcolumneditor">
     <div style="margin: 0 0 10px 0;">
         <asp:DropDownList ID="lstBlocks" runat="server">

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="True" Inherits="BVCommerce.CheckoutPayPalExpress" Codebehind="CheckoutPayPalExpress.aspx.cs" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="True" Inherits="MerchantTribeStore.CheckoutPayPalExpress" Codebehind="CheckoutPayPalExpress.aspx.cs" %>
 
 <%@ Register src="BVModules/Controls/SiteTermsAgreement.ascx" tagname="SiteTermsAgreement" tagprefix="uc1" %>
 <%@ Register src="BVModules/Controls/MessageBox.ascx" tagname="MessageBox" tagprefix="uc2" %>

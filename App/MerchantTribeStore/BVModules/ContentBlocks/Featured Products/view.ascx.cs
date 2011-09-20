@@ -3,7 +3,7 @@ using System.Text;
 using MerchantTribe.Commerce.Catalog;
 using MerchantTribe.Commerce.Content;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVModules_ContentBlocks_Featured_Products_view : BVModule

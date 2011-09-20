@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using MerchantTribe.Commerce;
 using MerchantTribe.Commerce.Catalog;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_Catalog_ProductVariants_List : BaseAdminJsonPage

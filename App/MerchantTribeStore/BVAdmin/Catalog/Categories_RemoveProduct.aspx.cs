@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using MerchantTribe.Commerce.Catalog;
 
 
-namespace BVCommerce.BVAdmin.Catalog
+namespace MerchantTribeStore.BVAdmin.Catalog
 {
     public partial class Categories_RemoveProduct : BaseAdminJsonPage
     {

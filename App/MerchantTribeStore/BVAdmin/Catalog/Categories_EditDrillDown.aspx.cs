@@ -9,7 +9,7 @@ using MerchantTribe.Commerce.Utilities;
 using System.Text;
 using System.Collections.Generic;
 
-namespace BVCommerce.BVAdmin.Catalog
+namespace MerchantTribeStore.BVAdmin.Catalog
 {
     public partial class Categories_EditDrillDown : BaseAdminPage
     {

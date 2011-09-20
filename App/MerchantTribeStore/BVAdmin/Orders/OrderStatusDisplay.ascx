@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="True" Inherits="BVCommerce.BVAdmin_Orders_OrderStatusDisplay" Codebehind="OrderStatusDisplay.ascx.cs" %>
+﻿<%@ Control Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVAdmin_Orders_OrderStatusDisplay" Codebehind="OrderStatusDisplay.ascx.cs" %>
 <table border="0" cellspacing="0" cellpadding="3">
 <tr>
     <td><asp:Literal ID="litPay" runat="server"></asp:Literal> / </td>

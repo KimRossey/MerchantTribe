@@ -1,6 +1,6 @@
 
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
     partial class Site : System.Web.UI.MasterPage, IStorePage
     {

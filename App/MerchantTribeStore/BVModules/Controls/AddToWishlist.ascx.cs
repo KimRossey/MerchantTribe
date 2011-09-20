@@ -5,7 +5,7 @@ using MerchantTribe.Commerce.Content;
 using MerchantTribe.Commerce.Metrics;
 using MerchantTribe.Commerce.Orders;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVModules_Controls_AddToWishlist : MerchantTribe.Commerce.Content.BVUserControl

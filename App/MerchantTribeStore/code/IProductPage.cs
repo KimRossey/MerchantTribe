@@ -2,7 +2,7 @@ using System;
 using MerchantTribe.Commerce;
 using MerchantTribe.Commerce.Catalog;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
     public interface IProductPage
     {

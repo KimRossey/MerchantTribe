@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BVCommerce.BVModules.Shipping.US_Postal_Service___International {
+namespace MerchantTribeStore.BVModules.Shipping.US_Postal_Service___International {
     
     
     public partial class edit {

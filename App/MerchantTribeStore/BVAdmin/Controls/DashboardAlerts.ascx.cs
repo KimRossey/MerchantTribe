@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using MerchantTribe.Commerce.Catalog;
 using System.Collections.ObjectModel;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     public partial class BVAdmin_Controls_DashboardAlerts : MerchantTribe.Commerce.Content.BVUserControl

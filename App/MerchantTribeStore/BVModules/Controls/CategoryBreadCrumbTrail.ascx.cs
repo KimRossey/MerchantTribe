@@ -7,7 +7,7 @@ using MerchantTribe.Commerce.Catalog;
 using MerchantTribe.Commerce.Content;
 using MerchantTribe.Commerce.Utilities;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVModules_Controls_CategoryBreadCrumbTrail : MerchantTribe.Commerce.Content.BVUserControl

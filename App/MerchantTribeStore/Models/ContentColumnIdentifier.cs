@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace BVCommerce.Models
+namespace MerchantTribeStore.Models
 {
     public class ContentColumnIdentifier
     {

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BVCommerce {
+namespace MerchantTribeStore {
     
     
     public partial class ForgotPassword {
@@ -19,7 +19,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVModules_Controls_ManualBreadCrumbTrail ManualBreadCrumbTrail1;
+        protected global::MerchantTribeStore.BVModules_Controls_ManualBreadCrumbTrail ManualBreadCrumbTrail1;
         
         /// <summary>
         /// TitleLabel control.
@@ -46,7 +46,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVModules_Controls_MessageBox msg;
+        protected global::MerchantTribeStore.BVModules_Controls_MessageBox msg;
         
         /// <summary>
         /// pnlMain control.

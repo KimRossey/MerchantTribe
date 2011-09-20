@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using MerchantTribe.Commerce;
 using MerchantTribe.Commerce.Accounts;
 
-namespace BVCommerce.Controllers
+namespace MerchantTribeStore.Controllers
 {
     [HandleError]
     [ValidateInput(false)]

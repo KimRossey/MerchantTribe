@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/BVAdmin/BVAdmin.master" AutoEventWireup="true" CodeBehind="ShippingUpsThanks.aspx.cs" Inherits="BVCommerce.BVAdmin.Configuration.ShippingUpsThanks" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/BVAdmin/BVAdmin.master" AutoEventWireup="true" CodeBehind="ShippingUpsThanks.aspx.cs" Inherits="MerchantTribeStore.BVAdmin.Configuration.ShippingUpsThanks" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="headcontent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">

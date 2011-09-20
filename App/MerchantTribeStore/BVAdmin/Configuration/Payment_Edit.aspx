@@ -1,4 +1,4 @@
-<%@ Page Language="C#" MasterPageFile="~/BVAdmin/BVAdminNav.master" AutoEventWireup="True" Inherits="BVCommerce.BVAdmin_Configuration_Payment_Edit" title="Untitled Page" Codebehind="Payment_Edit.aspx.cs" %>
+<%@ Page Language="C#" MasterPageFile="~/BVAdmin/BVAdminNav.master" AutoEventWireup="True" Inherits="MerchantTribeStore.BVAdmin_Configuration_Payment_Edit" title="Untitled Page" Codebehind="Payment_Edit.aspx.cs" %>
 <%@ Register src="NavMenu.ascx" tagname="NavMenu" tagprefix="uc2" %>
 <asp:Content ID="nav" ContentPlaceHolderID="NavContent" runat="server">
     <uc2:NavMenu ID="NavMenu1" runat="server" />

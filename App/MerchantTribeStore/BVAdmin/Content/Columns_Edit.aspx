@@ -1,4 +1,4 @@
-<%@ Page ValidateRequest="false" Language="C#" MasterPageFile="~/BVAdmin/BVAdmin.master" AutoEventWireup="True" Inherits="BVCommerce.BVAdmin_Content_Columns_Edit" Title="Untitled Page" Codebehind="Columns_Edit.aspx.cs" %>
+<%@ Page ValidateRequest="false" Language="C#" MasterPageFile="~/BVAdmin/BVAdmin.master" AutoEventWireup="True" Inherits="MerchantTribeStore.BVAdmin_Content_Columns_Edit" Title="Untitled Page" Codebehind="Columns_Edit.aspx.cs" %>
 
 <%@ Register Src="../Controls/ContentColumnEditor.ascx" TagName="ContentColumnEditor"
     TagPrefix="uc2" %>

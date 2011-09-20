@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BVCommerce.BVModules.Shipping.Rate_Per_Weight_Formula {
+namespace MerchantTribeStore.BVModules.Shipping.Rate_Per_Weight_Formula {
     
     
     public partial class edit {

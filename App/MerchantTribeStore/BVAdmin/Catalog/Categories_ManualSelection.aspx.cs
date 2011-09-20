@@ -4,7 +4,7 @@ using System.Web.UI;
 using MerchantTribe.Commerce.Catalog;
 using System.Collections.Generic;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_Catalog_Categories_ManualSelection : BaseAdminPage

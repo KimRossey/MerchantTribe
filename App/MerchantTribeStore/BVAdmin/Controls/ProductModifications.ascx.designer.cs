@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BVCommerce {
+namespace MerchantTribeStore {
     
     
     public partial class BVAdmin_Controls_ProductModifications {
@@ -37,7 +37,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_StringModifierField ProductNameStringModifierField;
+        protected global::MerchantTribeStore.BVAdmin_Controls_StringModifierField ProductNameStringModifierField;
         
         /// <summary>
         /// ProductSkuCheckBox control.
@@ -55,7 +55,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_StringModifierField ProductSkuStringModifierField;
+        protected global::MerchantTribeStore.BVAdmin_Controls_StringModifierField ProductSkuStringModifierField;
         
         /// <summary>
         /// ProductTypeCheckBox control.
@@ -82,7 +82,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_MonetaryModifierField ListPriceMonetaryModifierField;
+        protected global::MerchantTribeStore.BVAdmin_Controls_MonetaryModifierField ListPriceMonetaryModifierField;
         
         /// <summary>
         /// SitePriceCheckBox control.
@@ -100,7 +100,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_MonetaryModifierField SitePriceMonetaryModifierField;
+        protected global::MerchantTribeStore.BVAdmin_Controls_MonetaryModifierField SitePriceMonetaryModifierField;
         
         /// <summary>
         /// SiteCostCheckBox control.
@@ -118,7 +118,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_MonetaryModifierField SiteCostMonetaryModifierField;
+        protected global::MerchantTribeStore.BVAdmin_Controls_MonetaryModifierField SiteCostMonetaryModifierField;
         
         /// <summary>
         /// MetaKeywordsCheckBox control.
@@ -136,7 +136,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_StringModifierField MetaKeywordsStringModifierField;
+        protected global::MerchantTribeStore.BVAdmin_Controls_StringModifierField MetaKeywordsStringModifierField;
         
         /// <summary>
         /// MetaDescriptionCheckBox control.
@@ -154,7 +154,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_StringModifierField MetaDescriptionStringModifierField;
+        protected global::MerchantTribeStore.BVAdmin_Controls_StringModifierField MetaDescriptionStringModifierField;
         
         /// <summary>
         /// MetaTitleCheckBox control.
@@ -172,7 +172,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_StringModifierField MetaTitleStringModifierField;
+        protected global::MerchantTribeStore.BVAdmin_Controls_StringModifierField MetaTitleStringModifierField;
         
         /// <summary>
         /// TaxExemptCheckBox control.
@@ -190,7 +190,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_BooleanModifierField TaxExemptBooleanModifierField;
+        protected global::MerchantTribeStore.BVAdmin_Controls_BooleanModifierField TaxExemptBooleanModifierField;
         
         /// <summary>
         /// TaxClassCheckBox control.
@@ -208,7 +208,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_EnumeratedValueModifierField TaxClassEnumeratedValueModifierField;
+        protected global::MerchantTribeStore.BVAdmin_Controls_EnumeratedValueModifierField TaxClassEnumeratedValueModifierField;
         
         /// <summary>
         /// NonShippingCheckBox control.
@@ -226,7 +226,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_BooleanModifierField NonShippingBooleanModifierField;
+        protected global::MerchantTribeStore.BVAdmin_Controls_BooleanModifierField NonShippingBooleanModifierField;
         
         /// <summary>
         /// ShipSeperatelyCheckBox1 control.
@@ -244,7 +244,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_BooleanModifierField ShipSeperatelyBooleanModifierField;
+        protected global::MerchantTribeStore.BVAdmin_Controls_BooleanModifierField ShipSeperatelyBooleanModifierField;
         
         /// <summary>
         /// ShippingModeCheckBox control.
@@ -271,7 +271,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_FloatModifierField ShippingWeightFloatModifierField;
+        protected global::MerchantTribeStore.BVAdmin_Controls_FloatModifierField ShippingWeightFloatModifierField;
         
         /// <summary>
         /// ShippingLengthCheckBox control.
@@ -289,7 +289,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_FloatModifierField ShippingLengthFloatModifierField;
+        protected global::MerchantTribeStore.BVAdmin_Controls_FloatModifierField ShippingLengthFloatModifierField;
         
         /// <summary>
         /// ShippingWidthCheckBox control.
@@ -307,7 +307,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_FloatModifierField ShippingWidthFloatModifierField;
+        protected global::MerchantTribeStore.BVAdmin_Controls_FloatModifierField ShippingWidthFloatModifierField;
         
         /// <summary>
         /// ShippingHeightCheckBox control.
@@ -325,7 +325,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_FloatModifierField ShippingHeightFloatModifierField;
+        protected global::MerchantTribeStore.BVAdmin_Controls_FloatModifierField ShippingHeightFloatModifierField;
         
         /// <summary>
         /// StatusCheckBox control.
@@ -343,7 +343,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_BooleanModifierField ProductStateBooleanModifierField;
+        protected global::MerchantTribeStore.BVAdmin_Controls_BooleanModifierField ProductStateBooleanModifierField;
         
         /// <summary>
         /// ImageFileSmallCheckBox control.
@@ -361,7 +361,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_StringModifierField ImageFileSmallStringModifierField;
+        protected global::MerchantTribeStore.BVAdmin_Controls_StringModifierField ImageFileSmallStringModifierField;
         
         /// <summary>
         /// ImageFileMediumCheckBox control.
@@ -379,7 +379,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_StringModifierField ImageFileMediumStringModifierField;
+        protected global::MerchantTribeStore.BVAdmin_Controls_StringModifierField ImageFileMediumStringModifierField;
         
         /// <summary>
         /// MinimumQuantityCheckBox control.
@@ -397,7 +397,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_IntegerModifierField MinimumQuantityIntegerModifierField;
+        protected global::MerchantTribeStore.BVAdmin_Controls_IntegerModifierField MinimumQuantityIntegerModifierField;
         
         /// <summary>
         /// VariantDisplayModeCheckBox control.
@@ -424,7 +424,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_StringModifierField ShortDescriptionStringModifierField;
+        protected global::MerchantTribeStore.BVAdmin_Controls_StringModifierField ShortDescriptionStringModifierField;
         
         /// <summary>
         /// LongDescriptionCheckBox control.
@@ -442,7 +442,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_HtmlModifierField LongDescriptionHtmlModifierField;
+        protected global::MerchantTribeStore.BVAdmin_Controls_HtmlModifierField LongDescriptionHtmlModifierField;
         
         /// <summary>
         /// ManufacturerCheckBox control.
@@ -460,7 +460,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_EnumeratedValueModifierField ManufacturerEnumeratedValueModifierField;
+        protected global::MerchantTribeStore.BVAdmin_Controls_EnumeratedValueModifierField ManufacturerEnumeratedValueModifierField;
         
         /// <summary>
         /// VendorCheckBox control.
@@ -478,7 +478,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_EnumeratedValueModifierField VendorEnumeratedValueModifierField;
+        protected global::MerchantTribeStore.BVAdmin_Controls_EnumeratedValueModifierField VendorEnumeratedValueModifierField;
         
         /// <summary>
         /// GiftWrapAllowedCheckBox control.
@@ -496,7 +496,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_BooleanModifierField GiftWrapAllowedBooleanModifierField;
+        protected global::MerchantTribeStore.BVAdmin_Controls_BooleanModifierField GiftWrapAllowedBooleanModifierField;
         
         /// <summary>
         /// ExtraShipFeeCheckBox control.
@@ -514,7 +514,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_MonetaryModifierField ExtraShipFeeMonetaryModifierField;
+        protected global::MerchantTribeStore.BVAdmin_Controls_MonetaryModifierField ExtraShipFeeMonetaryModifierField;
         
         /// <summary>
         /// KeyWordsCheckBox control.
@@ -532,7 +532,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_StringModifierField KeyWordsStringModifierField;
+        protected global::MerchantTribeStore.BVAdmin_Controls_StringModifierField KeyWordsStringModifierField;
         
         /// <summary>
         /// ProductTemplateCheckBox control.
@@ -550,7 +550,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_EnumeratedValueModifierField ProductTemplateEnumeratedValueModifierField;
+        protected global::MerchantTribeStore.BVAdmin_Controls_EnumeratedValueModifierField ProductTemplateEnumeratedValueModifierField;
         
         /// <summary>
         /// PreContentCheckBox control.
@@ -568,7 +568,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_EnumeratedValueModifierField PreContentColumnEnumeratedValueModifierField;
+        protected global::MerchantTribeStore.BVAdmin_Controls_EnumeratedValueModifierField PreContentColumnEnumeratedValueModifierField;
         
         /// <summary>
         /// PostContentCheckBox control.
@@ -586,7 +586,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_EnumeratedValueModifierField PostContentColumnEnumeratedValueModifierField;
+        protected global::MerchantTribeStore.BVAdmin_Controls_EnumeratedValueModifierField PostContentColumnEnumeratedValueModifierField;
         
         /// <summary>
         /// RewriteUrlCheckBox control.
@@ -604,7 +604,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_StringModifierField UrlToRewriteStringModifierField;
+        protected global::MerchantTribeStore.BVAdmin_Controls_StringModifierField UrlToRewriteStringModifierField;
         
         /// <summary>
         /// SitePriceOverrideCheckBox control.
@@ -622,6 +622,6 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_StringModifierField SitePriceOverrideStringModifierField;
+        protected global::MerchantTribeStore.BVAdmin_Controls_StringModifierField SitePriceOverrideStringModifierField;
     }
 }

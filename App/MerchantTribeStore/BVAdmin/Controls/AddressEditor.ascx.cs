@@ -1,7 +1,7 @@
 using MerchantTribe.Web.Geography;
 using MerchantTribe.Commerce;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_Controls_AddressEditor : MerchantTribe.Commerce.Content.BVUserControl

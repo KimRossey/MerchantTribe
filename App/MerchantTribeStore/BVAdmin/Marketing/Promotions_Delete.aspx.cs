@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace BVCommerce.BVAdmin.Marketing
+namespace MerchantTribeStore.BVAdmin.Marketing
 {
     public partial class Promotions_Delete : BaseAdminPage
     {

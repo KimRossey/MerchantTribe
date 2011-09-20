@@ -1,4 +1,4 @@
-<%@ Page Language="C#" MasterPageFile="~/BVAdmin/BVAdminNav.master" AutoEventWireup="True" Inherits="BVCommerce.BVAdmin_People_Vendors" title="Untitled Page" Codebehind="Vendors.aspx.cs" %>
+<%@ Page Language="C#" MasterPageFile="~/BVAdmin/BVAdminNav.master" AutoEventWireup="True" Inherits="MerchantTribeStore.BVAdmin_People_Vendors" title="Untitled Page" Codebehind="Vendors.aspx.cs" %>
 <asp:Content ID="nav" ContentPlaceHolderID="NavContent" runat="server">            
             <div class="controlarea1">
                         <asp:Panel ID="pnlFilter" runat="server" DefaultButton="btnGo">

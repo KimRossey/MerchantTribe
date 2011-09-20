@@ -11,7 +11,7 @@ using MerchantTribe.Commerce.Content;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_Orders_PrintOrder : BaseAdminPage

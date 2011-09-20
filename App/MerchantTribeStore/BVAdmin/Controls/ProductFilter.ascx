@@ -1,5 +1,5 @@
 <%@ Control Language="C#" AutoEventWireup="True"
-    Inherits="BVCommerce.BVAdmin_Controls_ProductFilter" Codebehind="ProductFilter.ascx.cs" %>
+    Inherits="MerchantTribeStore.BVAdmin_Controls_ProductFilter" Codebehind="ProductFilter.ascx.cs" %>
 <div id="filterDiv">
     <table align="right">
         <tr>

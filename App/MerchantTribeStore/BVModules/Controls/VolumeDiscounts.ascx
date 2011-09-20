@@ -1,4 +1,4 @@
-<%@ Control Language="C#" AutoEventWireup="True" Inherits="BVCommerce.BVModules_Controls_VolumeDiscounts" Codebehind="VolumeDiscounts.ascx.cs" %>
+<%@ Control Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVModules_Controls_VolumeDiscounts" Codebehind="VolumeDiscounts.ascx.cs" %>
 <asp:Panel ID="pnlVolumeDiscounts" runat="server">
     <div id="VolumeDiscounts">
         <h3><asp:Label ID="lblVolumeDiscounts" runat="server" CssClass="ProductPropertyLabel">Volume Discounts</asp:Label></h3>

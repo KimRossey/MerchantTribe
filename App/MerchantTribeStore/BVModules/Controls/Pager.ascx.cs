@@ -3,7 +3,7 @@ using System.Web.UI.WebControls;
 using MerchantTribe.Commerce.Content;
 using MerchantTribe.Commerce.Utilities;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVModules_Controls_Pager : System.Web.UI.UserControl

@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     public partial class signup_policies_terms : System.Web.UI.Page

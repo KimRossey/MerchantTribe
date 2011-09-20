@@ -10,8 +10,8 @@
     <ProjectTypeGuids>{E53F8FEA-EAE0-44A6-8774-FFD645390401};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BVCommerce</RootNamespace>
-    <AssemblyName>BVCommerce</AssemblyName>
+    <RootNamespace>MerchantTribeStore</RootNamespace>
+    <AssemblyName>MerchantTribeStore</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <SccProjectName>
@@ -642,13 +642,11 @@
     <Content Include="BVModules\ContentBlocks\Banner Ad\editor.ascx" />
     <Content Include="BVModules\ContentBlocks\Banner Ad\view.ascx" />
     <Content Include="BVModules\ContentBlocks\Category Menu\editor.ascx" />
-    <Content Include="BVModules\ContentBlocks\Category Menu\view.ascx" />
     <Content Include="BVModules\ContentBlocks\Category Rotator\editor.ascx" />
     <Content Include="BVModules\ContentBlocks\Category Rotator\view.ascx" />
     <Content Include="BVModules\ContentBlocks\Featured Products\view.ascx" />
     <Content Include="BVModules\ContentBlocks\Html\adminview.ascx" />
     <Content Include="BVModules\ContentBlocks\Html\editor.ascx" />
-    <Content Include="BVModules\ContentBlocks\Html\view.ascx" />
     <Content Include="BVModules\ContentBlocks\Last Products Viewed\adminview.ascx" />
     <Content Include="BVModules\ContentBlocks\Last Products Viewed\view.ascx" />
     <Content Include="BVModules\ContentBlocks\Product Grid\adminview.ascx" />
@@ -873,7 +871,6 @@
     <Content Include="content\demoimages\medium\indiana-jones-hat.jpg" />
     <Content Include="content\demoimages\medium\Laptop.png" />
     <Content Include="content\demoimages\medium\PurpleTop.jpg" />
-    <Content Include="content\demoimages\SampleProducts.xml" />
     <Content Include="content\demoimages\small\BraceletBlue.png" />
     <Content Include="content\demoimages\small\CupCake.jpg" />
     <Content Include="content\demoimages\small\Earrings.jpg" />
@@ -3855,13 +3852,6 @@
     <Compile Include="BVModules\ContentBlocks\Category Menu\editor.ascx.designer.cs">
       <DependentUpon>editor.ascx</DependentUpon>
     </Compile>
-    <Compile Include="BVModules\ContentBlocks\Category Menu\view.ascx.cs">
-      <DependentUpon>view.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="BVModules\ContentBlocks\Category Menu\view.ascx.designer.cs">
-      <DependentUpon>view.ascx</DependentUpon>
-    </Compile>
     <Compile Include="BVModules\ContentBlocks\Category Rotator\editor.ascx.cs">
       <DependentUpon>editor.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3896,13 +3886,6 @@
     </Compile>
     <Compile Include="BVModules\ContentBlocks\Html\editor.ascx.designer.cs">
       <DependentUpon>editor.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="BVModules\ContentBlocks\Html\view.ascx.cs">
-      <DependentUpon>view.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="BVModules\ContentBlocks\Html\view.ascx.designer.cs">
-      <DependentUpon>view.ascx</DependentUpon>
     </Compile>
     <Compile Include="BVModules\ContentBlocks\Last Products Viewed\adminview.ascx.cs">
       <DependentUpon>adminview.ascx</DependentUpon>
@@ -4585,6 +4568,7 @@
     <Compile Include="code\StringUtils.cs" />
     <Compile Include="code\ViewUtilities.cs" />
     <Compile Include="Controllers\ApiRestController.cs" />
+    <Compile Include="Controllers\ContentBlockController.cs" />
     <Compile Include="Controllers\ContentColumnController.cs" />
     <Compile Include="Controllers\EstimateShippingController.cs" />
     <Compile Include="Controllers\FileUploadController.cs" />
@@ -4597,6 +4581,7 @@
     <Compile Include="Controllers\RawResult.cs" />
     <Compile Include="Controllers\ScheduledTasksController.cs" />
     <Compile Include="Controllers\Shared\BaseAdminController.cs" />
+    <Compile Include="Controllers\Shared\BaseAppController.cs" />
     <Compile Include="Controllers\Shared\BaseStoreController.cs" />
     <Compile Include="Controllers\Shared\BaseSuperController.cs" />
     <Compile Include="Controllers\SiteMapController.cs" />
@@ -4613,6 +4598,7 @@
     <Compile Include="custompage.aspx.designer.cs">
       <DependentUpon>custompage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Models\ContentBlock\CategoryMenuViewModel.cs" />
     <Compile Include="Models\ContentColumnIdentifier.cs" />
     <Compile Include="OldDefault.aspx.cs">
       <DependentUpon>OldDefault.aspx</DependentUpon>
@@ -5067,14 +5053,13 @@
     <Content Include="Views\Shared\_AddressEditor.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\ContentColumn\Index.cshtml" />
-    <Content Include="Views\ContentBlocks\Category-Menu.cshtml" />
-    <Content Include="Views\ContentBlocks\Category-Rotator.cshtml" />
-    <Content Include="Views\ContentBlocks\Banner-Ad.cshtml" />
-    <Content Include="Views\ContentBlocks\Last-Products-Viewed.cshtml" />
-    <Content Include="Views\ContentBlocks\Html.cshtml" />
-    <Content Include="Views\ContentBlocks\Top-10-Products.cshtml" />
-    <Content Include="Views\ContentBlocks\Top-Weekly-Sellers.cshtml" />
-    <Content Include="Views\ContentBlocks\Featured-Products.cshtml" />
+    <Content Include="Views\ContentBlock\CategoryMenu.cshtml" />
+    <Content Include="Views\ContentBlock\CategoryRotator.cshtml" />
+    <Content Include="Views\ContentBlock\BannerAd.cshtml" />
+    <Content Include="Views\ContentBlock\LastProductsViewed.cshtml" />
+    <Content Include="Views\ContentBlock\Top10Products.cshtml" />
+    <Content Include="Views\ContentBlock\TopWeeklySellers.cshtml" />
+    <Content Include="Views\ContentBlock\FeaturedProducts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

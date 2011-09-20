@@ -3,7 +3,7 @@ using MerchantTribe.Commerce;
 using MerchantTribe.Commerce.Membership;
 using System;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVModules_Controls_AdminPanel : MerchantTribe.Commerce.Content.BVUserControl
@@ -23,7 +23,7 @@ namespace BVCommerce
                     + MyPage.MTApp.CurrentStore.RootUrlSecure() 
                     + "bvadmin\" style=\"display:block;float:left;font-size:13px;line-height:24px;padding:6px 0 0 0;margin:-6px 0 0 0;color:#333;text-decoration:none;\"><img src=\"" 
                     + Page.ResolveUrl("~/images/system/AdminPanelLogo.png") 
-                    + "\" alt=\"bvcommerce\" /></a>";
+                    + "\" alt=\"MerchantTribe\" /></a>";
 
 
                 if (MyPage.MTApp.CurrentStore.Settings.StoreClosed)

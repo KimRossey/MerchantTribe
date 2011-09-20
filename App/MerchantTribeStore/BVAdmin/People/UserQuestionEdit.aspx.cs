@@ -4,7 +4,7 @@ using System.Web.UI.WebControls;
 using MerchantTribe.Commerce.Membership;
 using MerchantTribe.Commerce;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_People_UserQuestionEdit : BaseAdminPage

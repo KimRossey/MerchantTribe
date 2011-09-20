@@ -19,7 +19,7 @@ using MerchantTribe.Commerce.Shipping;
 using MerchantTribe.Commerce.Taxes;
 using MerchantTribe.Commerce.Utilities;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_Configuration_MailServer : BaseAdminPage
@@ -118,7 +118,7 @@ namespace BVCommerce
 
             msg.ClearMessage();
 
-            System.Net.Mail.MailMessage m = new System.Net.Mail.MailMessage("testemail@bvcommerce.com", this.TestToField.Text.Trim());
+            System.Net.Mail.MailMessage m = new System.Net.Mail.MailMessage("testemail@merchanttribe.com", this.TestToField.Text.Trim());
             m.Subject = "Mail Server Test Message";
             m.Body = "Your mail server appears to be correctly configured!";
             m.IsBodyHtml = false;

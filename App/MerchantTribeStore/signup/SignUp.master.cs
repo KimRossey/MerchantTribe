@@ -1,7 +1,7 @@
 using MerchantTribe.Commerce;
 using System;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class signup_SignUp : System.Web.UI.MasterPage

@@ -5,7 +5,7 @@ using MerchantTribe.Commerce.Membership;
 using MerchantTribe.Commerce.Orders;
 using System.Linq;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_Reports_Sales_Day : BaseAdminPage

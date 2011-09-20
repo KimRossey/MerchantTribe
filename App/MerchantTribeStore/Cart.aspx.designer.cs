@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BVCommerce {
+namespace MerchantTribeStore {
     
     
     public partial class Cart {
@@ -37,7 +37,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVModules_Controls_MessageBox MessageBox1;
+        protected global::MerchantTribeStore.BVModules_Controls_MessageBox MessageBox1;
         
         /// <summary>
         /// ValidationSummary1 control.
@@ -145,7 +145,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVModules_Controls_EstimateShipping EstimateShipping1;
+        protected global::MerchantTribeStore.BVModules_Controls_EstimateShipping EstimateShipping1;
         
         /// <summary>
         /// btnContinueShopping control.
@@ -181,7 +181,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVModules_Controls_GoogleCheckoutButton GoogleCheckoutButton1;
+        protected global::MerchantTribeStore.BVModules_Controls_GoogleCheckoutButton GoogleCheckoutButton1;
         
         /// <summary>
         /// PaypalExpressCheckoutButton1 control.
@@ -190,7 +190,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVModules_Controls_PaypalExpressCheckoutButton PaypalExpressCheckoutButton1;
+        protected global::MerchantTribeStore.BVModules_Controls_PaypalExpressCheckoutButton PaypalExpressCheckoutButton1;
         
         /// <summary>
         /// pnlCoupons control.

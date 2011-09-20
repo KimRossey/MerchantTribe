@@ -1,4 +1,4 @@
-<%@ Control EnableViewState="false" Language="C#" AutoEventWireup="True" Inherits="BVCommerce.BVModules_ContentBlocks_Last_Products_Viewed_view" Codebehind="view.ascx.cs" %>
+<%@ Control EnableViewState="false" Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVModules_ContentBlocks_Last_Products_Viewed_view" Codebehind="view.ascx.cs" %>
 <div id="ProductGrid" runat="server" class="productgrid">
     <div class="decoratedblock">
         <div class="blockcontent">

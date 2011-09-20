@@ -5,7 +5,7 @@ using System.Web.UI.WebControls;
 using MerchantTribe.Commerce;
 using MerchantTribe.Commerce.Content;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVModules_Editors_Free_Text_Box_editor : TextEditorBase

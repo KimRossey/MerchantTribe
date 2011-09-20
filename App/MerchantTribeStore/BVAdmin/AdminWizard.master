@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="True" Inherits="BVCommerce.BVAdmin_AdminWizard" Codebehind="AdminWizard.master.cs" %>
+﻿<%@ Master Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVAdmin_AdminWizard" Codebehind="AdminWizard.master.cs" %>
 <%@ Register Src="../BVModules/Controls/MasterPageJavascript.ascx" TagName="MasterPageJavascript"
     TagPrefix="uc3" %>
 <%@ Register Src="footer.ascx" TagName="footer" TagPrefix="uc2" %>

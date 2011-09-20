@@ -5,7 +5,7 @@ using System.Web;
 using MerchantTribe.Commerce;
 using MerchantTribe.Commerce.Shipping;
 
-namespace BVCommerce.Models
+namespace MerchantTribeStore.Models
 {
     public class EstimateShippingViewModel
     {

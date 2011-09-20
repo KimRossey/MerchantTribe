@@ -1,4 +1,4 @@
-<%@ Control Language="C#" AutoEventWireup="True" Inherits="BVCommerce.BVModules_CreditCardGateways_PayPayPaymentsPro_Edit" Codebehind="Edit.ascx.cs" %>
+<%@ Control Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVModules_CreditCardGateways_PayPayPaymentsPro_Edit" Codebehind="Edit.ascx.cs" %>
 <h1>PayPal Payments Pro Options</h1>
 <asp:Panel ID="Panel1" DefaultButton="btnSave" runat="server">
 <table border="0" cellspacing="0" cellpadding="3">

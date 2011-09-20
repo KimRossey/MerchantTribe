@@ -10,7 +10,7 @@ using MerchantTribe.Commerce.Content;
 using System.Text;
 using MerchantTribe.Commerce.Content.Parts;
 
-namespace BVCommerce.Controllers
+namespace MerchantTribeStore.Controllers
 {
     public class FlexPageController : Shared.BaseStoreController
     {

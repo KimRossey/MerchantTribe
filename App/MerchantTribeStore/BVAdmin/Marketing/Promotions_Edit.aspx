@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/BVAdmin/BVAdmin.master" AutoEventWireup="true" CodeBehind="Promotions_Edit.aspx.cs" Inherits="BVCommerce.BVAdmin.Marketing.Promotions_Edit" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/BVAdmin/BVAdmin.master" AutoEventWireup="true" CodeBehind="Promotions_Edit.aspx.cs" Inherits="MerchantTribeStore.BVAdmin.Marketing.Promotions_Edit" %>
 <%@ Register src="../Controls/MessageBox.ascx" tagname="MessageBox" tagprefix="uc1" %>
 <%@ Register src="../Controls/DropDownDate.ascx" tagname="DropDownDate" tagprefix="uc2" %>
 <%@ Register src="Promotions_Edit_Qualification.ascx" tagname="Promotions_Edit_Qualification" tagprefix="uc3" %>

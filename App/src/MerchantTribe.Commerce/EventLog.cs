@@ -63,8 +63,8 @@ namespace MerchantTribe.Commerce
 
             if (context.ConnectionString == string.Empty)
             {
-                context.ConnectionString = "server=.;database=bvcommerce;uid=novaliduser;pwd=nopassword";
-                context.ConnectionStringForEntityFramework = "metadata=res://*/Data.EF.Models.csdl|res://*/Data.EF.Models.ssdl|res://*/Data.EF.Models.msl;provider=System.Data.SqlClient;provider connection string=\"server=.;database=bvcommerce;uid=novaliduser;pwd=nopassword;MultipleActiveResultSets=True\";";
+                context.ConnectionString = "server=.;database=merchanttribe;uid=novaliduser;pwd=nopassword";
+                context.ConnectionStringForEntityFramework = "metadata=res://*/Data.EF.Models.csdl|res://*/Data.EF.Models.ssdl|res://*/Data.EF.Models.msl;provider=System.Data.SqlClient;provider connection string=\"server=.;database=merchanttribe;uid=novaliduser;pwd=nopassword;MultipleActiveResultSets=True\";";
             }
 
             Metrics.EventLogRepository repository = new Metrics.EventLogRepository(context);

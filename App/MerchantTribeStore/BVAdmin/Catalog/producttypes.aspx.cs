@@ -3,7 +3,7 @@ using System.Web.UI.WebControls;
 using MerchantTribe.Commerce.Catalog;
 using MerchantTribe.Commerce.Membership;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class Products_ProductTypes : BaseAdminPage

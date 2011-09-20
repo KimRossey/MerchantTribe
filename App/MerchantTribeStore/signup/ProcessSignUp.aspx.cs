@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using System.Configuration;
 using MerchantTribe.Commerce;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     public partial class signup_ProcessSignUp : BaseSignupPage

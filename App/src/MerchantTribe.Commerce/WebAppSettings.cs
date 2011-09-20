@@ -47,8 +47,8 @@ namespace MerchantTribe.Commerce
         public const string ShippingUSPostalDomesticId = "B28F245B-8FE5-404E-A857-A6D01904A29A";
         public const string ShippingUSPostalInternationalId = "BD2CB7D9-CEF3-41D7-84A1-44FD420A1CF3";
 
-        public const string SessionId = "bvcommercesessionid";
-        public const string CartId = "bvcommercecartid";
+        public const string SessionId = "merchanttribesessionid";
+        public const string CartId = "merchanttribecartid";
 
         public const string WishlistItemSessionKey = "UserAddedWishlistItem";
 
@@ -227,11 +227,11 @@ namespace MerchantTribe.Commerce
         }                    
         public static string CartIdCookieName
         {
-            get { return "BVCommerceCartId"; }
+            get { return "MerchantTribeCartId"; }
         }
         public static string PendingPaymentCardIdCookieName
         {
-            get { return "BVCommerceCartIdPendingPayment"; }
+            get { return "MerchantTribeCartIdPendingPayment"; }
         }
         public static string Cryptography3DesKey
         {
@@ -314,7 +314,7 @@ namespace MerchantTribe.Commerce
         }
         public static string LastProductsViewedCookieName
         {
-            get { return "BVCommerceLastProductsViewed"; }
+            get { return "MerchantTribeLastProductsViewed"; }
         }
         public static int LastProductsViewedMaxResults
         {
@@ -482,7 +482,7 @@ namespace MerchantTribe.Commerce
         }
         public static string CustomerIdCookieName
         {
-            get { return "BVCommerceCustomerID"; }
+            get { return "MerchantTribeCustomerID"; }
         }        
         public static bool UseSsl
         {

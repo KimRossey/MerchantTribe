@@ -1,4 +1,4 @@
-<%@ Page Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="True" Inherits="BVCommerce.FAQ" Title="Frequently Asked Questions" Codebehind="FAQ.aspx.cs" %>
+<%@ Page Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="True" Inherits="MerchantTribeStore.FAQ" Title="Frequently Asked Questions" Codebehind="FAQ.aspx.cs" %>
 
 <%@ Register Src="BVModules/Controls/ManualBreadCrumbTrail.ascx" TagName="ManualBreadCrumbTrail"
     TagPrefix="uc2" %>

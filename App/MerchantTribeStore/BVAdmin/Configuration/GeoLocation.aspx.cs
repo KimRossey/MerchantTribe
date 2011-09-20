@@ -4,7 +4,7 @@ using System.Web.UI;
 using MerchantTribe.Commerce.Membership;
 using MerchantTribe.Web.Geography;
 
-namespace BVCommerce.BVAdmin.Configuration
+namespace MerchantTribeStore.BVAdmin.Configuration
 {
     public partial class GeoLocation : BaseAdminPage
     {

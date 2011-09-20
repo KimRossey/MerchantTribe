@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BVCommerce.BVAdmin.Catalog {
+namespace MerchantTribeStore.BVAdmin.Catalog {
     
     
     public partial class Categories_EditDrillDown {
@@ -19,7 +19,7 @@ namespace BVCommerce.BVAdmin.Catalog {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_MessageBox MessageBox1;
+        protected global::MerchantTribeStore.BVAdmin_Controls_MessageBox MessageBox1;
         
         /// <summary>
         /// lblError control.
@@ -37,7 +37,7 @@ namespace BVCommerce.BVAdmin.Catalog {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_CategoryBreadCrumbTrail CategoryBreadCrumbTrail1;
+        protected global::MerchantTribeStore.BVAdmin_Controls_CategoryBreadCrumbTrail CategoryBreadCrumbTrail1;
         
         /// <summary>
         /// pnlMain control.

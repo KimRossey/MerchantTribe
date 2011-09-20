@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace BVCommerce.api.rest
+namespace MerchantTribeStore.api.rest
 {
     public class RestHandlerFactory
     {

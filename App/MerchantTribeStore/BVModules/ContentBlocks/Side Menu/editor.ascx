@@ -1,4 +1,4 @@
-<%@ Control Language="C#" AutoEventWireup="True" Inherits="BVCommerce.BVModules_ContentBlocks_Side_Menu_editor" Codebehind="editor.ascx.cs" %>
+<%@ Control Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVModules_ContentBlocks_Side_Menu_editor" Codebehind="editor.ascx.cs" %>
 <div style="float: right;width:450px;margin-bottom:20px;text-align:left;">
  <h2>Modify/Create Link</h2>
  <asp:Panel id="pnlEditor" runat="server" DefaultButton="btnNew">

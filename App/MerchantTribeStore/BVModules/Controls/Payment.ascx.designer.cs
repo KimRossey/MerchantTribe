@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BVCommerce {
+namespace MerchantTribeStore {
     
     
     public partial class BVModules_Controls_Payment {
@@ -64,7 +64,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVModules_Controls_CreditCardInput CreditCardInput1;
+        protected global::MerchantTribeStore.BVModules_Controls_CreditCardInput CreditCardInput1;
         
         /// <summary>
         /// trPaypal control.

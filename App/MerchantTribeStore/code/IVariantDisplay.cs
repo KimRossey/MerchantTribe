@@ -3,7 +3,7 @@ using MerchantTribe.Commerce;
 using MerchantTribe.Commerce.Catalog;
 using MerchantTribe.Commerce.Orders;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
     public interface IVariantDisplay
     {

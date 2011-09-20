@@ -9,7 +9,7 @@ using System.IO;
 using System.Text;
 
 
-namespace BVCommerce.BVAdmin.Marketing
+namespace MerchantTribeStore.BVAdmin.Marketing
 {
     public partial class Promotions : BaseAdminPage
     {

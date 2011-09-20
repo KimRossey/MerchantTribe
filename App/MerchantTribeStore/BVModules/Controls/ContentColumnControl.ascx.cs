@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using MerchantTribe.Commerce.Content;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVModules_Controls_ContentColumnControl : MerchantTribe.Commerce.Content.BVUserControl

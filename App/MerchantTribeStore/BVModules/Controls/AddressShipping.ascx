@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="True" Inherits="BVCommerce.BVModules_Controls_AddressShipping" Codebehind="AddressShipping.ascx.cs" %>
+﻿<%@ Control Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVModules_Controls_AddressShipping" Codebehind="AddressShipping.ascx.cs" %>
 <table border="0" cellspacing="0" cellpadding="3" class="address-table">
 <tr>
     <td class="formlabel">&nbsp;</td>

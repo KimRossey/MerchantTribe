@@ -1,4 +1,4 @@
-<%@ Control Language="C#" AutoEventWireup="True" Inherits="BVCommerce.BVModules_ContentBlocks_RSS_Feed_Viewer_view" Codebehind="view.ascx.cs" %>
+<%@ Control Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVModules_ContentBlocks_RSS_Feed_Viewer_view" Codebehind="view.ascx.cs" %>
 <div class="rssfeedviewer">
     <div class="rssfeedviewerwrapper">
         <asp:Panel ID="pnlTitle" runat="server"><h4><asp:Label ID="lblTitle" runat="server" Text=""></asp:Label></h4></asp:Panel>

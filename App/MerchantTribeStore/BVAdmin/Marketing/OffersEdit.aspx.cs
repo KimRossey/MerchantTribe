@@ -8,7 +8,7 @@ using MerchantTribe.Commerce.Utilities;
 using MerchantTribe.Commerce.Content;
 using MerchantTribe.Commerce;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_Marketing_OffersEdit : BaseAdminPage

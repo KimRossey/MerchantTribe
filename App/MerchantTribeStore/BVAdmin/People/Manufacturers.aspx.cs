@@ -5,7 +5,7 @@ using MerchantTribe.Commerce.Contacts;
 using System.IO;
 using System.Text;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_People_Manufacturers : BaseAdminPage

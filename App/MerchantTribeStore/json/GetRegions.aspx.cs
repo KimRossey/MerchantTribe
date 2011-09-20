@@ -4,7 +4,7 @@ using MerchantTribe.Commerce;
 using MerchantTribe.Commerce.Content;
 using MerchantTribe.Web.Geography;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
     partial class json_GetRegions : BaseStoreJsonPage
     {

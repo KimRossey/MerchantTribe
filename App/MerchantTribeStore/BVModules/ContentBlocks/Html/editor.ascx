@@ -1,4 +1,4 @@
-<%@ Control Language="C#"  AutoEventWireup="True" Inherits="BVCommerce.BVModules_ContentBlocks_Html_editor" Codebehind="editor.ascx.cs" %>
+<%@ Control Language="C#"  AutoEventWireup="True" Inherits="MerchantTribeStore.BVModules_ContentBlocks_Html_editor" Codebehind="editor.ascx.cs" %>
 <%@ Register Src="../../../BVAdmin/Controls/HtmlEditor.ascx" TagName="HtmlEditor"
     TagPrefix="uc1" %>
 <asp:Panel ID="pnlMain" DefaultButton="btnSave" runat="server">

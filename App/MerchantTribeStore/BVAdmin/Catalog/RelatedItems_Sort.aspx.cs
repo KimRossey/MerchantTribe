@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace BVCommerce.BVAdmin.Catalog
+namespace MerchantTribeStore.BVAdmin.Catalog
 {
     public partial class RelatedItems_Sort : BaseAdminJsonPage
     {

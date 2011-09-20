@@ -10,7 +10,7 @@ using MerchantTribe.Commerce.Content;
 using MerchantTribe.Commerce.Utilities;
 using System.Text;
 
-namespace BVCommerce.Controllers
+namespace MerchantTribeStore.Controllers
 {    
     public class SiteMapController : Shared.BaseStoreController
     {

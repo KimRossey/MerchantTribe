@@ -1,4 +1,4 @@
-<%@ Control Language="C#" AutoEventWireup="True" Inherits="BVCommerce.BVAdmin_Controls_UserPicker" Codebehind="UserPicker.ascx.cs" %>
+<%@ Control Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVAdmin_Controls_UserPicker" Codebehind="UserPicker.ascx.cs" %>
 <%@ Reference Control="~/BVAdmin/Controls/MessageBox.ascx" %>
 <asp:Panel ID="wrapper" runat="server" DefaultButton="btnValidateUser">
     <span class="lightlabel">Email:</span><br />

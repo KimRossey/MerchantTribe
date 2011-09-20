@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using MerchantTribe.Commerce.Content;
 using System.Text;
 
-namespace BVCommerce.BVAdmin.Controls
+namespace MerchantTribeStore.BVAdmin.Controls
 {
     public partial class UrlsAssociated : MerchantTribe.Commerce.Content.BVUserControl
     {

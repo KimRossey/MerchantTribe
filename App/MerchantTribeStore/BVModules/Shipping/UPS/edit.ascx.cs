@@ -9,7 +9,7 @@ using MerchantTribe.Shipping.Ups;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVModules_Shipping_UPS_edit : BVShippingModule

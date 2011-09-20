@@ -7,7 +7,7 @@ using MerchantTribe.Commerce.Catalog;
 using MerchantTribe.Commerce.Content;
 using MerchantTribe.Web.Search;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class Search : BaseSearchPage

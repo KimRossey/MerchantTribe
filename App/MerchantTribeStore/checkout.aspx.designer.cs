@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BVCommerce {
+namespace MerchantTribeStore {
     
     
     public partial class checkout {
@@ -28,7 +28,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVModules_Controls_ContentColumnControl ContentColumnControl1;
+        protected global::MerchantTribeStore.BVModules_Controls_ContentColumnControl ContentColumnControl1;
         
         /// <summary>
         /// customeremail control.
@@ -64,7 +64,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVModules_Controls_LoginControl LoginControl1;
+        protected global::MerchantTribeStore.BVModules_Controls_LoginControl LoginControl1;
         
         /// <summary>
         /// AddressShipping1 control.
@@ -73,7 +73,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVModules_Controls_AddressShipping AddressShipping1;
+        protected global::MerchantTribeStore.BVModules_Controls_AddressShipping AddressShipping1;
         
         /// <summary>
         /// TempShippingRegion control.
@@ -91,7 +91,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVModules_Controls_Shipping Shipping;
+        protected global::MerchantTribeStore.BVModules_Controls_Shipping Shipping;
         
         /// <summary>
         /// chkBillSame control.
@@ -109,7 +109,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVModules_Controls_AddressBilling AddressBilling1;
+        protected global::MerchantTribeStore.BVModules_Controls_AddressBilling AddressBilling1;
         
         /// <summary>
         /// TempBillingRegion control.
@@ -145,7 +145,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVModules.Controls.PaymentRewardsPoints PaymentRewardsPoints1;
+        protected global::MerchantTribeStore.BVModules.Controls.PaymentRewardsPoints PaymentRewardsPoints1;
         
         /// <summary>
         /// Payment control.
@@ -154,7 +154,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVModules_Controls_Payment Payment;
+        protected global::MerchantTribeStore.BVModules_Controls_Payment Payment;
         
         /// <summary>
         /// SpecialInstructions control.
@@ -172,7 +172,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVModules_Controls_SiteTermsAgreement SiteTermsAgreement1;
+        protected global::MerchantTribeStore.BVModules_Controls_SiteTermsAgreement SiteTermsAgreement1;
         
         /// <summary>
         /// btnSubmit control.
@@ -199,7 +199,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVModules_Controls_ViewOrderItems ViewOrderItems1;
+        protected global::MerchantTribeStore.BVModules_Controls_ViewOrderItems ViewOrderItems1;
         
         /// <summary>
         /// orderbvin control.

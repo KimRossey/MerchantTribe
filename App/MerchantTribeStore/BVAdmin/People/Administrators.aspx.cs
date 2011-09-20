@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using MerchantTribe.Commerce.Accounts;
 using System.Text;
 
-namespace BVCommerce.BVAdmin.People
+namespace MerchantTribeStore.BVAdmin.People
 {
     public partial class Administrators : BaseAdminPage
     {

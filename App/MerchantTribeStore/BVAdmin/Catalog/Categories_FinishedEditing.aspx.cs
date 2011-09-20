@@ -8,7 +8,7 @@ using MerchantTribe.Commerce.Membership;
 using MerchantTribe.Commerce.Utilities;
 using MerchantTribe.Commerce;
 
-namespace BVCommerce.BVAdmin.Catalog
+namespace MerchantTribeStore.BVAdmin.Catalog
 {
     public partial class Categories_FinishedEditing : BaseAdminPage
     {

@@ -8,7 +8,7 @@ using MerchantTribe.Commerce;
 using MerchantTribe.Commerce.Orders;
 using MerchantTribe.Commerce.Membership;
 
-namespace BVCommerce.BVModules.Controls
+namespace MerchantTribeStore.BVModules.Controls
 {
     public partial class PaymentRewardsPoints : MerchantTribe.Commerce.Content.BVUserControl
     {

@@ -1,4 +1,4 @@
-<%@ Page Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="True" Inherits="BVCommerce.ForgotPassword" title="Forgot Password" Codebehind="ForgotPassword.aspx.cs" %>
+<%@ Page Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="True" Inherits="MerchantTribeStore.ForgotPassword" title="Forgot Password" Codebehind="ForgotPassword.aspx.cs" %>
 
 <%@ Register Src="BVModules/Controls/ManualBreadCrumbTrail.ascx" TagName="ManualBreadCrumbTrail"
     TagPrefix="uc2" %>

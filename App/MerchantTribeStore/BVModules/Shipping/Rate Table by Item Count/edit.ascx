@@ -1,4 +1,4 @@
-<%@ Control Language="C#" AutoEventWireup="True" Inherits="BVCommerce.BVModules_Shipping_By_Item_Count_edit" Codebehind="edit.ascx.cs" %>
+<%@ Control Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVModules_Shipping_By_Item_Count_edit" Codebehind="edit.ascx.cs" %>
 <h1>
     Edit Shipping Method - Rate Table By Total Item Count</h1>
 <asp:Panel ID="pnlMain" DefaultButton="btnSave" runat="server">

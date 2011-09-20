@@ -3,7 +3,7 @@ using MerchantTribe.Commerce.Catalog;
 using MerchantTribe.Commerce.Membership;
 using System.Linq;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_Catalog_ProductChoices_Edit : BaseProductAdminPage

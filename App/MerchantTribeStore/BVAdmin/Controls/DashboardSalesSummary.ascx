@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="True" Inherits="BVCommerce.BVAdmin_Controls_DashboardSalesSummary" Codebehind="DashboardSalesSummary.ascx.cs" %>
+﻿<%@ Control Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVAdmin_Controls_DashboardSalesSummary" Codebehind="DashboardSalesSummary.ascx.cs" %>
 <img src="WeeklySalesChart.aspx" width="600" height="200" alt="weekly sales chart" />
 <table class="salessummary">
 <tr>

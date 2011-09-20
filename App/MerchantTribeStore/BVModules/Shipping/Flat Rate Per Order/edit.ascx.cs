@@ -7,7 +7,7 @@ using MerchantTribe.Commerce.Shipping;
 using MerchantTribe.Commerce;
 using MerchantTribe.Shipping.Services;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVModules_Shipping_Per_Order_edit : BVShippingModule

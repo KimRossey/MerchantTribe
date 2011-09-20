@@ -10,7 +10,7 @@ using System.Collections.ObjectModel;
 using MerchantTribe.Web;
 using MerchantTribe.Commerce.Catalog;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
     /// <summary>
     /// Summary description for BaseSuperPage

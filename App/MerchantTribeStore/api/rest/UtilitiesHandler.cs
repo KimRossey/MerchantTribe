@@ -7,7 +7,7 @@ using MerchantTribe.CommerceDTO.v1;
 using MerchantTribe.CommerceDTO.v1.Contacts;
 using MerchantTribe.Commerce.Utilities;
 
-namespace BVCommerce.api.rest
+namespace MerchantTribeStore.api.rest
 {
     public class UtilitiesHandler: BaseRestHandler
     {

@@ -4,7 +4,7 @@ using MerchantTribe.Commerce;
 using System.Collections.ObjectModel;
 using MerchantTribe.Commerce.BusinessRules;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
     public partial class CurrentModules
     {

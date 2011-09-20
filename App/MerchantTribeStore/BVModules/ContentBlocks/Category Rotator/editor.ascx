@@ -1,4 +1,4 @@
-<%@ Control Language="C#" AutoEventWireup="True" Inherits="BVCommerce.BVModules_ContentBlocks_Category_Rotator_editor" Codebehind="editor.ascx.cs" %>
+<%@ Control Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVModules_ContentBlocks_Category_Rotator_editor" Codebehind="editor.ascx.cs" %>
 <%@ Register Src="../../../BVAdmin/Controls/CategoryPicker.ascx" TagName="CategoryPicker"
     TagPrefix="uc1" %>
 <asp:Panel ID="pnlMain" DefaultButton="btnOk" runat="server">

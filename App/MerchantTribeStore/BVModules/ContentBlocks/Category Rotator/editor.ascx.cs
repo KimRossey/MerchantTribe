@@ -21,7 +21,7 @@ using MerchantTribe.Commerce.Shipping;
 using MerchantTribe.Commerce.Taxes;
 using MerchantTribe.Commerce.Utilities;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVModules_ContentBlocks_Category_Rotator_editor : BVModule

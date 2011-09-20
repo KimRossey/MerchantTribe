@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/BVAdmin/AdminWizard.master" AutoEventWireup="True" Inherits="BVCommerce.BVAdmin_SetupWizard_WizardTheme" Codebehind="WizardTheme.aspx.cs" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/BVAdmin/AdminWizard.master" AutoEventWireup="True" Inherits="MerchantTribeStore.BVAdmin_SetupWizard_WizardTheme" Codebehind="WizardTheme.aspx.cs" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="headcontent" Runat="Server">
 </asp:Content>

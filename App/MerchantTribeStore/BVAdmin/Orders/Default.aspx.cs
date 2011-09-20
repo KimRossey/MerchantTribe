@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using MerchantTribe.Commerce;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_Orders_Default : BaseAdminPage

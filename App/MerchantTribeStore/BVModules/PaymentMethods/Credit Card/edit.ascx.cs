@@ -6,7 +6,7 @@ using MerchantTribe.Commerce.Payment;
 using MerchantTribe.Payment;
 using System.Collections.Generic;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVModules_PaymentMethods_Credit_Card_edit : BVModule

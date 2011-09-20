@@ -1,4 +1,4 @@
-<%@ Control Language="C#" AutoEventWireup="True" Inherits="BVCommerce.BVAdmin_Controls_HtmlModifierField" Codebehind="HtmlModifierField.ascx.cs" %>
+<%@ Control Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVAdmin_Controls_HtmlModifierField" Codebehind="HtmlModifierField.ascx.cs" %>
 <%@ Register Src="HtmlEditor.ascx" TagName="HtmlEditor" TagPrefix="uc1" %>
 <uc1:HtmlEditor ID="HtmlEditor" runat="server" />
 <asp:DropDownList ID="HtmlDropDownList"

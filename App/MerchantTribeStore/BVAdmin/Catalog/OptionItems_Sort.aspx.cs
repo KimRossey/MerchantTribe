@@ -2,7 +2,7 @@ using System.Web.UI;
 using System.Collections.Generic;
 using MerchantTribe.Commerce.Catalog;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_Catalog_OptionItems_Sort : BaseAdminJsonPage

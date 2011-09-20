@@ -8,7 +8,7 @@ using MerchantTribe.Commerce.Content;
 using MerchantTribe.Commerce.Accounts;
 using System.IO;
 
-namespace BVCommerce.Controllers
+namespace MerchantTribeStore.Controllers
 {
     public class StyleSheetsController : Controller
     {

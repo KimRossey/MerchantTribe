@@ -1,4 +1,4 @@
-<%@ Control Language="C#" AutoEventWireup="True" Inherits="BVCommerce.BVModules_Controls_PaypalExpressCheckoutButton" Codebehind="PaypalExpressCheckoutButton.ascx.cs" %>
+<%@ Control Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVModules_Controls_PaypalExpressCheckoutButton" Codebehind="PaypalExpressCheckoutButton.ascx.cs" %>
 <asp:Panel ID="PaypalExpress" runat="server">&nbsp;<br />
 <span style="padding:0 60px 0 0;">- OR - </span><br />&nbsp;<br />
     <asp:ImageButton ID="PaypalImageButton" runat="server" AlternateText="Checkout with Paypal"

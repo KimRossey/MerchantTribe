@@ -1,4 +1,4 @@
-﻿<%@ Page ValidateRequest="false" Title="" Language="C#" MasterPageFile="~/BVAdmin/BVAdmin.master" AutoEventWireup="true" CodeBehind="Categories_EditFlexPage.aspx.cs" Inherits="BVCommerce.BVAdmin.Catalog.Categories_EditFlexPage" %>
+﻿<%@ Page ValidateRequest="false" Title="" Language="C#" MasterPageFile="~/BVAdmin/BVAdmin.master" AutoEventWireup="true" CodeBehind="Categories_EditFlexPage.aspx.cs" Inherits="MerchantTribeStore.BVAdmin.Catalog.Categories_EditFlexPage" %>
 <%@ Register Src="../Controls/MessageBox.ascx" TagName="MessageBox" TagPrefix="uc3" %>
 <%@ Register Src="../Controls/CategoryBreadCrumbTrail.ascx" TagName="CategoryBreadCrumbTrail"
     TagPrefix="uc2" %>

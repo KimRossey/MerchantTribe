@@ -8,7 +8,7 @@ using System.Collections.ObjectModel;
 using MerchantTribe.Commerce.Content;
 using System.Text;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     public partial class BVModules_ContentBlocks_Banner_Ad_view : BVModule

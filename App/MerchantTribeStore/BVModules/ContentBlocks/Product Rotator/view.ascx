@@ -1,4 +1,4 @@
-<%@ Control EnableViewState="false" Language="C#" AutoEventWireup="True" Inherits="BVCommerce.BVModules_ContentBlocks_Product_Rotator_view" Codebehind="view.ascx.cs" %>
+<%@ Control EnableViewState="false" Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVModules_ContentBlocks_Product_Rotator_view" Codebehind="view.ascx.cs" %>
 <div class="productrotator">
     <div class="decoratedblock">
         <div class="blockcontent">

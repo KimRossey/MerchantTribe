@@ -4,7 +4,7 @@ using MerchantTribe.Commerce;
 using MerchantTribe.Commerce.Content;
 using MerchantTribe.Commerce.Payment;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVModules_PaymentMethods_Paypal_Express_Edit : BVModule

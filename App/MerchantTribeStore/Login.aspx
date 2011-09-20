@@ -1,5 +1,5 @@
 <%@ Page MasterPageFile="~/Site.master" Language="C#" AutoEventWireup="True"
-    Inherits="BVCommerce.login2" Codebehind="Login.aspx.cs" %>
+    Inherits="MerchantTribeStore.login2" Codebehind="Login.aspx.cs" %>
 
 <%@ Register Src="BVModules/Controls/ManualBreadCrumbTrail.ascx" TagName="ManualBreadCrumbTrail"
     TagPrefix="uc2" %>

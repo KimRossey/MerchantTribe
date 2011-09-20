@@ -2,7 +2,7 @@ using System.Web.UI;
 using MerchantTribe.Commerce;
 using MerchantTribe.Commerce.Content;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVModules_Controls_SiteTermsAgreement : MerchantTribe.Commerce.Content.BVModule

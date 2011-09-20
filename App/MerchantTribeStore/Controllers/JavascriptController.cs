@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.IO;
 
-namespace BVCommerce.Controllers
+namespace MerchantTribeStore.Controllers
 {
 
     // Used to rewrite URLs inside javascripts so that

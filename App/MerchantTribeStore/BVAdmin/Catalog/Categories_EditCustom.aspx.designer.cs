@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BVCommerce {
+namespace MerchantTribeStore {
     
     
     public partial class BVAdmin_Catalog_Categories_EditCustom {
@@ -19,7 +19,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_MessageBox MessageBox1;
+        protected global::MerchantTribeStore.BVAdmin_Controls_MessageBox MessageBox1;
         
         /// <summary>
         /// lblError control.
@@ -37,7 +37,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_CategoryBreadCrumbTrail CategoryBreadCrumbTrail1;
+        protected global::MerchantTribeStore.BVAdmin_Controls_CategoryBreadCrumbTrail CategoryBreadCrumbTrail1;
         
         /// <summary>
         /// pnlMain control.
@@ -91,7 +91,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_HtmlEditor DescriptionField;
+        protected global::MerchantTribeStore.BVAdmin_Controls_HtmlEditor DescriptionField;
         
         /// <summary>
         /// RewriteUrlField control.
@@ -109,7 +109,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin.Controls.UrlsAssociated UrlsAssociated1;
+        protected global::MerchantTribeStore.BVAdmin.Controls.UrlsAssociated UrlsAssociated1;
         
         /// <summary>
         /// MetaTitleField control.

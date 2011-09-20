@@ -9,7 +9,7 @@ using MerchantTribe.Billing;
 using System.Text;
 using System.Configuration;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     public partial class BVAdmin_Account : BaseAdminPage

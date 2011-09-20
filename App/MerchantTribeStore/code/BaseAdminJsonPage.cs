@@ -4,7 +4,7 @@ using MerchantTribe.Commerce.Accounts;
 using MerchantTribe.Commerce.Catalog;
 using MerchantTribe.Commerce.Contacts;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
     public class BaseAdminJsonPage : System.Web.UI.Page, MerchantTribe.Commerce.Controls.IBaseAdminPage, IMultiStorePage
     {

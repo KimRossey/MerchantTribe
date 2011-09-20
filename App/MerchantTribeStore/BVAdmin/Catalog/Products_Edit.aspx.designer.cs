@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BVCommerce {
+namespace MerchantTribeStore {
     
     
     public partial class BVAdmin_Catalog_Products_Edit {
@@ -19,7 +19,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_ProductEditMenu ProductEditMenu1;
+        protected global::MerchantTribeStore.BVAdmin_Controls_ProductEditMenu ProductEditMenu1;
         
         /// <summary>
         /// imgPreviewSmall control.
@@ -73,7 +73,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_MessageBox MessageBox1;
+        protected global::MerchantTribeStore.BVAdmin_Controls_MessageBox MessageBox1;
         
         /// <summary>
         /// lblError control.
@@ -334,7 +334,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_HtmlEditor LongDescriptionField;
+        protected global::MerchantTribeStore.BVAdmin_Controls_HtmlEditor LongDescriptionField;
         
         /// <summary>
         /// Keywords control.
@@ -613,7 +613,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin.Controls.UrlsAssociated UrlsAssociated1;
+        protected global::MerchantTribeStore.BVAdmin.Controls.UrlsAssociated UrlsAssociated1;
         
         /// <summary>
         /// MinimumQtyField control.

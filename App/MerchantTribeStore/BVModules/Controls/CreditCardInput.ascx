@@ -1,4 +1,4 @@
-<%@ Control Language="C#" AutoEventWireup="True" Inherits="BVCommerce.BVModules_Controls_CreditCardInput" Codebehind="CreditCardInput.ascx.cs" %>
+<%@ Control Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVModules_Controls_CreditCardInput" Codebehind="CreditCardInput.ascx.cs" %>
 <div class="creditcardinput">
     <table border="0" cellspacing="0" cellpadding="2">
         <tr>

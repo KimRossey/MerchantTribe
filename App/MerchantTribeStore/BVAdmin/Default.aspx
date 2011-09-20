@@ -1,4 +1,4 @@
-<%@ Page Language="C#" MasterPageFile="~/BVAdmin/BVAdmin.master" AutoEventWireup="True" Inherits="BVCommerce.BVAdmin_Default" title="Dashboard" Codebehind="Default.aspx.cs" %>
+<%@ Page Language="C#" MasterPageFile="~/BVAdmin/BVAdmin.master" AutoEventWireup="True" Inherits="MerchantTribeStore.BVAdmin_Default" title="Dashboard" Codebehind="Default.aspx.cs" %>
 
 <%@ Register Src="Controls/MessageBox.ascx" TagName="MessageBox" TagPrefix="uc2" %>
 <%@ Register Src="../BVModules/Controls/ContentColumnControl.ascx" TagName="ContentColumnControl"

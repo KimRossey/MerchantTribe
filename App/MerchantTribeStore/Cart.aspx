@@ -1,4 +1,4 @@
-<%@ Page Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="True" Inherits="BVCommerce.Cart" Title="Shopping Cart" Codebehind="Cart.aspx.cs" %>
+<%@ Page Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="True" Inherits="MerchantTribeStore.Cart" Title="Shopping Cart" Codebehind="Cart.aspx.cs" %>
 
 <%@ Register Src="BVModules/Controls/GoogleCheckoutButton.ascx" TagName="GoogleCheckoutButton"
     TagPrefix="uc5" %>

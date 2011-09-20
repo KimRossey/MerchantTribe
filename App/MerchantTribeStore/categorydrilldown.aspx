@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="categorydrilldown.aspx.cs" Inherits="BVCommerce.categorydrilldown" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="categorydrilldown.aspx.cs" Inherits="MerchantTribeStore.categorydrilldown" %>
 <%@ Register Src="BVModules/Controls/CategorySortOrder.ascx" TagName="CategorySortOrder"
     TagPrefix="uc4" %>
 <%@ Register Src="BVModules/Controls/Pager.ascx" TagName="Pager" TagPrefix="uc3" %>

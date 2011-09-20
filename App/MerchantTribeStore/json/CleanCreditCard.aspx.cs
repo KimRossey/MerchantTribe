@@ -2,7 +2,7 @@
 using System;
 using MerchantTribe.Payment;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
     partial class json_CleanCreditCard : BaseStoreJsonPage
     {

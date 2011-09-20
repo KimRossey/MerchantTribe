@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/BVAdmin/BVAdmin.master" AutoEventWireup="true" CodeBehind="RewardsPoints.aspx.cs" Inherits="BVCommerce.BVAdmin.Marketing.RewardsPoints" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/BVAdmin/BVAdmin.master" AutoEventWireup="true" CodeBehind="RewardsPoints.aspx.cs" Inherits="MerchantTribeStore.BVAdmin.Marketing.RewardsPoints" %>
 <%@ Register src="../Controls/MessageBox.ascx" tagname="MessageBox" tagprefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="headcontent" runat="server">
 <script type="text/javascript">

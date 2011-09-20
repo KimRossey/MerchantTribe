@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="True" Inherits="BVCommerce.BVAdmin_Controls_OptionItemEditor" Codebehind="OptionItemEditor.ascx.cs" %>
+﻿<%@ Control Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVAdmin_Controls_OptionItemEditor" Codebehind="OptionItemEditor.ascx.cs" %>
 <div class="padded">
     <asp:Literal ID="litItem" runat="server" EnableViewState="false"></asp:Literal>    
     <asp:Panel ID="pnlNewForm" runat="server" DefaultButton="btnNew" CssClass="editorcontrols">

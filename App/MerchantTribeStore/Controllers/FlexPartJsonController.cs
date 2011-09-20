@@ -8,7 +8,7 @@ using MerchantTribe.Commerce;
 using MerchantTribe.Commerce.Accounts;
 using MerchantTribe.Commerce.Catalog;
 
-namespace BVCommerce.Controllers
+namespace MerchantTribeStore.Controllers
 {
     public class FlexPartJsonController : Controller
     {

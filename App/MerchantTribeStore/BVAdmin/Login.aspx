@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="True" Inherits="BVCommerce.BVAdmin_Login" Codebehind="Login.aspx.cs" %>
+<%@ Page Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVAdmin_Login" Codebehind="Login.aspx.cs" %>
 
 <%@ Register Src="Controls/MessageBox.ascx" TagName="MessageBox" TagPrefix="uc1" %>
 

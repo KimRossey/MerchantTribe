@@ -8,7 +8,7 @@ using MerchantTribe.Commerce.Membership;
 using MerchantTribe.Commerce.Utilities;
 using System.Collections.Generic;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_Catalog_Categories_Edit : BaseAdminPage

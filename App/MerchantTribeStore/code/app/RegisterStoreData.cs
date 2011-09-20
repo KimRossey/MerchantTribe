@@ -7,7 +7,7 @@ using System.Web;
 /// Summary description for RegisterStoreData
 /// </summary>
 /// 
-namespace BVCommerce.app
+namespace MerchantTribeStore.app
 {
     public class RegisterStoreData
     {        

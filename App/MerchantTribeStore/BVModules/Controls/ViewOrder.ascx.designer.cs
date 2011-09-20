@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BVCommerce {
+namespace MerchantTribeStore {
     
     
     public partial class BVModules_Controls_ViewOrder {
@@ -46,7 +46,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVModules_Controls_PrintThisPage PrintThisPage1;
+        protected global::MerchantTribeStore.BVModules_Controls_PrintThisPage PrintThisPage1;
         
         /// <summary>
         /// StatusField control.
@@ -91,7 +91,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVModules_Controls_ViewOrderItems ViewOrderItems1;
+        protected global::MerchantTribeStore.BVModules_Controls_ViewOrderItems ViewOrderItems1;
         
         /// <summary>
         /// pnlInstructions control.

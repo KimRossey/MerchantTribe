@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using MerchantTribe.Commerce;
 
-namespace BVCommerce.Filters
+namespace MerchantTribeStore.Filters
 {
     public class StoreClosedFilterAttribute: ActionFilterAttribute
     {

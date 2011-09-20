@@ -74,11 +74,11 @@ namespace MerchantTribe.Commerce.Utilities
                 // Body Replacement
                 if (m.IsBodyHtml)
                 {
-                    m.Body = m.Body.Replace("</body>", "<div style=\"margin:0.25em;border-style:solid;border-width:1px 0 1px 3px;padding:0.5em 1em;font-face:arial;font-size:11px;color:#333;background-color: #fffffd;border-color: #B3B300;\">Sign up for a FREE <a href=\"http://www.bvcommerce.com\">BV Commerce Shopping Cart</a> today!</div>");
+                    m.Body = m.Body.Replace("</body>", "<div style=\"margin:0.25em;border-style:solid;border-width:1px 0 1px 3px;padding:0.5em 1em;font-face:arial;font-size:11px;color:#333;background-color: #fffffd;border-color: #B3B300;\">Get a <a href=\"http://www.MerchantTribe.com\">Free Shopping Cart by joining MerhantTribe</a> today!</div>");
                 }
                 else
                 {
-                    m.Body += System.Environment.NewLine + System.Environment.NewLine + "Sign up for a BV Commerce Shopping Cart today at www.bvcommerce.com!" + System.Environment.NewLine;
+                    m.Body += System.Environment.NewLine + System.Environment.NewLine + "Get a Free Shopping Cart by joining MerchantTribe.com!" + System.Environment.NewLine;
                 }
 
                 if ( WebAppSettings.ApplicationMailServerAsync)
@@ -329,7 +329,7 @@ namespace MerchantTribe.Commerce.Utilities
             sb.Append(RenderEmailHtmlStyles());
             sb.Append("</head><body><div style=\"padding:20px;\">");
             sb.Append("<h1>Account Information</h1>");
-            sb.Append("<p>Thank you for creating a store at BVCommerce.com. Your account information appears below:</p>");
+            sb.Append("<p>Thank you for creating a MerchantTribe store. Your account information appears below:</p>");
             sb.Append("<table border=\"0\" cellspacing=\"0\" cellpadding=\"3\">");
             sb.Append(RenderEmailTableRow("Email", u.Email));
             // Passwords are now hashed so we can't send them.

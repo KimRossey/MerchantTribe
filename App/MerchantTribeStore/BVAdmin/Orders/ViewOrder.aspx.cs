@@ -15,7 +15,7 @@ using System.Collections.Specialized;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_Orders_ViewOrder : BaseAdminPage

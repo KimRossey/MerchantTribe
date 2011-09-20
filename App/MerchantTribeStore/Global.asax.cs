@@ -9,7 +9,7 @@ using MerchantTribe.Commerce;
 using System.Web.Mvc;
 using System.Web.Caching;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
     public class Global : System.Web.HttpApplication
     {

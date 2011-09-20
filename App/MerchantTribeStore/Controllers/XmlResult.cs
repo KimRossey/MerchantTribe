@@ -7,7 +7,7 @@ using System.Text;
 using System.IO;
 using MerchantTribe.Web;
 
-namespace BVCommerce.Controllers
+namespace MerchantTribeStore.Controllers
 {
     public class XmlResult : ActionResult
     {

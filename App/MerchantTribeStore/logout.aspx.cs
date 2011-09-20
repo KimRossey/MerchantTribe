@@ -3,7 +3,7 @@ using System.Web.UI;
 using MerchantTribe.Commerce;
 using MerchantTribe.Commerce.Utilities;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class logout : BaseStorePage

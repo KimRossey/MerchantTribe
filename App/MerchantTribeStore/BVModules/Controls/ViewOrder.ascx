@@ -1,4 +1,4 @@
-<%@ Control Language="C#" AutoEventWireup="True" Inherits="BVCommerce.BVModules_Controls_ViewOrder" Codebehind="ViewOrder.ascx.cs" %>
+<%@ Control Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVModules_Controls_ViewOrder" Codebehind="ViewOrder.ascx.cs" %>
 <%@ Register Src="PrintThisPage.ascx" TagName="PrintThisPage" TagPrefix="uc1" %>
 <%@ Register src="ViewOrderItems.ascx" tagname="ViewOrderItems" tagprefix="uc2" %>
 

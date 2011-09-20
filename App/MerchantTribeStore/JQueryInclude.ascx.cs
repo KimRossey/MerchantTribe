@@ -4,7 +4,7 @@ using System.Web.UI;
 using System.Text;
 using System.IO;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class JQueryInclude : System.Web.UI.UserControl

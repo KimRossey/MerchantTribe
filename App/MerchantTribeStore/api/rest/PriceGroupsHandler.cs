@@ -7,7 +7,7 @@ using MerchantTribe.CommerceDTO.v1;
 using MerchantTribe.CommerceDTO.v1.Contacts;
 using MerchantTribe.Commerce.Contacts;
 
-namespace BVCommerce.api.rest
+namespace MerchantTribeStore.api.rest
 {
     public class PriceGroupsHandler: BaseRestHandler
     {

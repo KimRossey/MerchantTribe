@@ -9,7 +9,7 @@ using MerchantTribe.Commerce.Marketing.PromotionActions;
 using MerchantTribe.Commerce.Content;
 using System.Collections.ObjectModel;
 
-namespace BVCommerce.BVAdmin.Marketing
+namespace MerchantTribeStore.BVAdmin.Marketing
 {
     public partial class Promotions_Edit_Actions : BVUserControl
     {

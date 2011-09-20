@@ -1,4 +1,4 @@
-<%@ Control Language="C#" AutoEventWireup="True" Inherits="BVCommerce.BVModules_Shipping_Per_Order_edit" Codebehind="edit.ascx.cs" %>
+<%@ Control Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVModules_Shipping_Per_Order_edit" Codebehind="edit.ascx.cs" %>
 <h1>
     Edit Shipping Method - 
     Flat Rate Per Order</h1>

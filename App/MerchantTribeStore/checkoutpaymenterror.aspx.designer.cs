@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BVCommerce {
+namespace MerchantTribeStore {
     
     
     public partial class checkoutpaymenterror {
@@ -28,7 +28,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVModules_Controls_AddressBilling AddressBilling1;
+        protected global::MerchantTribeStore.BVModules_Controls_AddressBilling AddressBilling1;
         
         /// <summary>
         /// Payment control.
@@ -37,7 +37,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVModules_Controls_Payment Payment;
+        protected global::MerchantTribeStore.BVModules_Controls_Payment Payment;
         
         /// <summary>
         /// btnSubmit control.

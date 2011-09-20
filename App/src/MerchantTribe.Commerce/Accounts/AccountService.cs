@@ -391,7 +391,7 @@ namespace MerchantTribe.Commerce.Accounts
                 AddUserToStore(s.Id, userAccountId, StoreAccessMode.Owner);
 
                 s.Settings.FriendlyName = friendlyName;
-                s.Settings.MailServer.FromEmail = "no-reply@bvcommerce.com";
+                s.Settings.MailServer.FromEmail = "noreply@merchanttribe.com";
                 s.Settings.LastOrderNumber = 0;
                 s.Settings.LogoImage = "[[default]]";
                 s.Settings.LogoRevision = 0;
@@ -475,7 +475,7 @@ namespace MerchantTribe.Commerce.Accounts
             if (s != null)
             {
                 UserAccount mainAccount = new UserAccount();
-                mainAccount.Email = "admin@bvcommerce.com";
+                mainAccount.Email = "admin@merchanttribe.com";
                 mainAccount.HashedPassword = "password";
                 mainAccount.Status = UserAccountStatus.Active;
                 AdminUsers.Create(mainAccount);
@@ -483,8 +483,8 @@ namespace MerchantTribe.Commerce.Accounts
 
                 AddUserToStore(s.Id, mainAccount.Id, StoreAccessMode.Owner);
 
-                s.Settings.FriendlyName = "My BV Store";
-                s.Settings.MailServer.FromEmail = "no-reply@bvcommerce.com";
+                s.Settings.FriendlyName = "My MerchantTribe Store";
+                s.Settings.MailServer.FromEmail = "noreply@merchanttribe.com";
                 s.Settings.LastOrderNumber = 0;
                 s.Settings.LogoImage = "[[default]]";
                 s.Settings.LogoRevision = 0;
@@ -560,6 +560,7 @@ namespace MerchantTribe.Commerce.Accounts
             reservedWords.Add("bvc");
             reservedWords.Add("marcus");
             reservedWords.Add("bvcommerce");
+            reservedWords.Add("merchanttribe");
             reservedWords.Add("help");
             reservedWords.Add("support");
             reservedWords.Add("info");

@@ -7,7 +7,7 @@ using MerchantTribe.Commerce.Utilities;
 using MerchantTribe.Commerce.Content;
 using System.Collections.Generic;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_Catalog_GiftCertificateEdit : BaseAdminPage

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BVCommerce.BVAdmin.Orders {
+namespace MerchantTribeStore.BVAdmin.Orders {
     
     
     public partial class CreateOrder {
@@ -19,7 +19,7 @@ namespace BVCommerce.BVAdmin.Orders {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_MessageBox MessageBox1;
+        protected global::MerchantTribeStore.BVAdmin_Controls_MessageBox MessageBox1;
         
         /// <summary>
         /// StatusField control.
@@ -136,7 +136,7 @@ namespace BVCommerce.BVAdmin.Orders {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_ProductPicker ProductPicker1;
+        protected global::MerchantTribeStore.BVAdmin_Controls_ProductPicker ProductPicker1;
         
         /// <summary>
         /// btnProductPickerCancel control.
@@ -217,7 +217,7 @@ namespace BVCommerce.BVAdmin.Orders {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_AddressEditor ShipToAddress;
+        protected global::MerchantTribeStore.BVAdmin_Controls_AddressEditor ShipToAddress;
         
         /// <summary>
         /// chkBillToSame control.
@@ -271,7 +271,7 @@ namespace BVCommerce.BVAdmin.Orders {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_AddressEditor BillToAddress;
+        protected global::MerchantTribeStore.BVAdmin_Controls_AddressEditor BillToAddress;
         
         /// <summary>
         /// btnFindUsers control.
@@ -559,7 +559,7 @@ namespace BVCommerce.BVAdmin.Orders {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVModules_Controls_CreditCardInput CreditCardInput1;
+        protected global::MerchantTribeStore.BVModules_Controls_CreditCardInput CreditCardInput1;
         
         /// <summary>
         /// trPurchaseOrder control.

@@ -1,2 +1,2 @@
-﻿<%@ Control Language="C#" AutoEventWireup="True" Inherits="BVCommerce.BVAdmin_Controls_DashboardAlerts" Codebehind="DashboardAlerts.ascx.cs" %>
+﻿<%@ Control Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVAdmin_Controls_DashboardAlerts" Codebehind="DashboardAlerts.ascx.cs" %>
 <asp:Literal ID="litAlerts" runat="server" EnableViewState="false"></asp:Literal>

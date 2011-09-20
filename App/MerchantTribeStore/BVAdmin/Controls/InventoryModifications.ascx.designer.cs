@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BVCommerce {
+namespace MerchantTribeStore {
     
     
     public partial class BVAdmin_Controls_InventoryModifications {
@@ -46,7 +46,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_IntegerModifierField QuantityAvailableIntegerModifierField;
+        protected global::MerchantTribeStore.BVAdmin_Controls_IntegerModifierField QuantityAvailableIntegerModifierField;
         
         /// <summary>
         /// Tr10 control.
@@ -73,7 +73,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_IntegerModifierField QuantityOutOfStockPointIntegerModifierField;
+        protected global::MerchantTribeStore.BVAdmin_Controls_IntegerModifierField QuantityOutOfStockPointIntegerModifierField;
         
         /// <summary>
         /// Tr12 control.
@@ -100,6 +100,6 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_IntegerModifierField QuantityReserveIntegerModifierField;
+        protected global::MerchantTribeStore.BVAdmin_Controls_IntegerModifierField QuantityReserveIntegerModifierField;
     }
 }

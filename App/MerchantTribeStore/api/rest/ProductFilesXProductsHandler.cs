@@ -7,7 +7,7 @@ using MerchantTribe.CommerceDTO.v1;
 using MerchantTribe.CommerceDTO.v1.Catalog;
 using MerchantTribe.Commerce.Catalog;
 
-namespace BVCommerce.api.rest
+namespace MerchantTribeStore.api.rest
 {
     public class ProductFilesXProductsHandler: BaseRestHandler
     {

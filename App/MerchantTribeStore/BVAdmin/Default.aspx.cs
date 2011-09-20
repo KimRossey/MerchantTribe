@@ -1,7 +1,7 @@
 using System;
 using MerchantTribe.Commerce;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_Default : BaseAdminPage
@@ -21,7 +21,7 @@ namespace BVCommerce
             if (WebAppSettings.IsIndividualMode)
             {
                 // Simple pci check for default admin username
-                if (MTApp.CurrentRequestContext.CurrentAdministrator.Email == "admin@bvcommerce.com") Response.Redirect("ChangeEmail.aspx?pci=1");
+                if (MTApp.CurrentRequestContext.CurrentAdministrator.Email == "admin@merchanttribe.com") Response.Redirect("ChangeEmail.aspx?pci=1");
             }
 
             this.pnlGettingStarted.Visible = !MTApp.CurrentStore.Settings.HideGettingStarted;

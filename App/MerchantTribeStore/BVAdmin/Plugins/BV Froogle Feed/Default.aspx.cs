@@ -7,7 +7,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using MerchantTribe.Web;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_Plugins_Default : BaseAdminPage

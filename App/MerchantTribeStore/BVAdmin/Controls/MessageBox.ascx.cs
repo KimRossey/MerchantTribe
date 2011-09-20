@@ -5,7 +5,7 @@ using MerchantTribe.Commerce;
 using MerchantTribe.Commerce.Content;
 using System.Collections.Generic;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_Controls_MessageBox : MerchantTribe.Commerce.Content.BVUserControl, IMessageBox

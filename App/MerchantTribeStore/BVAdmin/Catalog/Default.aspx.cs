@@ -6,7 +6,7 @@ using MerchantTribe.Commerce.Catalog;
 using MerchantTribe.Commerce.Membership;
 using System.Collections.Generic;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_Catalog_Default : BaseAdminPage

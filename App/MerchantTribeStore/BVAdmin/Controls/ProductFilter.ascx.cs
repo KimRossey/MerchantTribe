@@ -3,7 +3,7 @@ using MerchantTribe.Commerce;
 using System.Xml.Serialization;
 using System.Collections.ObjectModel;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_Controls_ProductFilter : System.Web.UI.UserControl

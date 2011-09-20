@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ResetPassword2.aspx.cs" Inherits="BVCommerce.BVAdmin.ResetPassword2" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ResetPassword2.aspx.cs" Inherits="MerchantTribeStore.BVAdmin.ResetPassword2" %>
 
 <%@ Register Src="Controls/MessageBox.ascx" TagName="MessageBox" TagPrefix="uc1" %>
 

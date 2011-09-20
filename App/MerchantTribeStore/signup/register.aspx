@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/signup/SignUp.master" AutoEventWireup="True" Inherits="BVCommerce.signup_register" Codebehind="register.aspx.cs" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/signup/SignUp.master" AutoEventWireup="True" Inherits="MerchantTribeStore.signup_register" Codebehind="register.aspx.cs" %>
 <%@ Import Namespace="BVCommerce.Helpers" %>
 <%@ Import Namespace="BVCommerce.app" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">

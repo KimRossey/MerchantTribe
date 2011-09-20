@@ -10,7 +10,7 @@ using MerchantTribe.Shipping;
 using MerchantTribe.Shipping.Services;
 using System.Collections.Generic;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVModules_Shipping_By_Weight_edit : BVShippingModule

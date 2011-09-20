@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using BVCommerce.Models;
+using MerchantTribeStore.Models;
 using System.Text;
 using MerchantTribe.Commerce.Content;
 
-namespace BVCommerce.Controllers
+namespace MerchantTribeStore.Controllers
 {
-    public class ContentColumnController : Shared.BaseStoreController
+    public class ContentColumnController : Shared.BaseAppController
     {
         [ChildActionOnly]
         public ActionResult Index(string id)

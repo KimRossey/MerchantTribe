@@ -6,7 +6,7 @@ using MerchantTribe.Commerce.Membership;
 using MerchantTribe.Commerce;
 using System.Collections.Generic;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_People_Vendors_Edit : BaseAdminPage

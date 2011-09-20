@@ -8,7 +8,7 @@ using MerchantTribe.Commerce.Orders;
 using MerchantTribe.Commerce.Utilities;
 using MerchantTribe.Commerce.Content;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     public partial class BVAdmin_Orders_OrderStatusDisplay : BVUserControl

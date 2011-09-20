@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BVCommerce {
+namespace MerchantTribeStore {
     
     
     public partial class signup_tour {
@@ -19,6 +19,6 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.signup_SignUpMenu SignUpMenu1;
+        protected global::MerchantTribeStore.signup_SignUpMenu SignUpMenu1;
     }
 }

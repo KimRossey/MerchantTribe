@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Categories_FinishedEditing.aspx.cs" Inherits="BVCommerce.BVAdmin.Catalog.Categories_FinishedEditing" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Categories_FinishedEditing.aspx.cs" Inherits="MerchantTribeStore.BVAdmin.Catalog.Categories_FinishedEditing" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 

@@ -4,7 +4,7 @@ using System;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVModules_Editors_None_editor : TextEditorBase

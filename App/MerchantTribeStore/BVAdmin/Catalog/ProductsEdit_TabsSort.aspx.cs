@@ -6,7 +6,7 @@ using System.Web.UI.WebControls;
 using System.Web.UI;
 using MerchantTribe.Commerce.Catalog;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     public partial class BVAdmin_Catalog_ProductsEdit_TabsSort : BaseAdminJsonPage

@@ -1,2 +1,2 @@
-<%@ Control EnableViewState="false" Language="C#" AutoEventWireup="True" Inherits="BVCommerce.BVModules_Controls_MainMenu" Codebehind="MainMenu.ascx.cs" %>
+<%@ Control EnableViewState="false" Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVModules_Controls_MainMenu" Codebehind="MainMenu.ascx.cs" %>
 <asp:Literal EnableViewState="false" ID="litMain" runat="Server"></asp:Literal>

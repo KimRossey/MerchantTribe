@@ -1,7 +1,7 @@
 using System.Web.UI;
 using MerchantTribe.Commerce;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVModules_Controls_EmailThisPage : MerchantTribe.Commerce.Content.BVUserControl

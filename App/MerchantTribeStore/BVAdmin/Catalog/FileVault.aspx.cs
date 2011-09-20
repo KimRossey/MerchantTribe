@@ -9,7 +9,7 @@ using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using System.Text;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_Catalog_FileVault : BaseAdminPage

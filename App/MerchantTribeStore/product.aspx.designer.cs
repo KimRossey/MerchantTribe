@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BVCommerce {
+namespace MerchantTribeStore {
     
     
     public partial class ProductPage {
@@ -19,7 +19,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVModules_Controls_CategoryBreadCrumbTrail CategoryBreadCrumbTrail1;
+        protected global::MerchantTribeStore.BVModules_Controls_CategoryBreadCrumbTrail CategoryBreadCrumbTrail1;
         
         /// <summary>
         /// PreContentColumn control.
@@ -28,7 +28,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVModules_Controls_ContentColumnControl PreContentColumn;
+        protected global::MerchantTribeStore.BVModules_Controls_ContentColumnControl PreContentColumn;
         
         /// <summary>
         /// imgMain control.
@@ -145,7 +145,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVModules_Controls_VolumeDiscounts VolumeDiscounts1;
+        protected global::MerchantTribeStore.BVModules_Controls_VolumeDiscounts VolumeDiscounts1;
         
         /// <summary>
         /// lblDescription control.
@@ -163,7 +163,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVModules_Controls_ProductTypeDisplay ProductTypeDisplay1;
+        protected global::MerchantTribeStore.BVModules_Controls_ProductTypeDisplay ProductTypeDisplay1;
         
         /// <summary>
         /// TabNavReviews control.
@@ -217,7 +217,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVModules_Controls_ProductReviewDisplay ProductReviewDisplay1;
+        protected global::MerchantTribeStore.BVModules_Controls_ProductReviewDisplay ProductReviewDisplay1;
         
         /// <summary>
         /// pnlSuggested control.
@@ -244,7 +244,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVModules_Controls_RelatedItems RelatedItems1;
+        protected global::MerchantTribeStore.BVModules_Controls_RelatedItems RelatedItems1;
         
         /// <summary>
         /// litOtherTabs control.
@@ -262,7 +262,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVModules_Controls_ContentColumnControl PostContentColumn;
+        protected global::MerchantTribeStore.BVModules_Controls_ContentColumnControl PostContentColumn;
         
         /// <summary>
         /// productbvin control.

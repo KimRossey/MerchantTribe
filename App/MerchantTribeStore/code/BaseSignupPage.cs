@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using MerchantTribe.Commerce.Accounts;
 using MerchantTribe.Commerce;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
     /// <summary>
     /// Summary description for BaseSignupPage

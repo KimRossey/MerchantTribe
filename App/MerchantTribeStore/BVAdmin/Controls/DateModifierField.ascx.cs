@@ -3,7 +3,7 @@ using System.Web.UI.WebControls;
 using MerchantTribe.Commerce.Controls;
 using MerchantTribe.Commerce;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_Controls_DateModifierField : MerchantTribe.Commerce.Controls.ModificationControl<System.DateTime>

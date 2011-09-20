@@ -5,7 +5,7 @@ using MerchantTribe.Commerce.Catalog;
 using MerchantTribe.Commerce.Membership;
 using System.Collections.Generic;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class products_edit_categories : BaseProductAdminPage

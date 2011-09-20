@@ -12,7 +12,7 @@ using MerchantTribe.Shipping;
 using System.Collections.Generic;
 using MerchantTribe.Shipping.FedEx;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVModules_Shipping_FedEx_edit : BVShippingModule

@@ -5,7 +5,7 @@ using MerchantTribe.Commerce.Content;
 using System.Collections.Specialized;
 using System.Web.UI.WebControls;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_Controls_CategoryPicker : BVUserControl

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BVCommerce {
+namespace MerchantTribeStore {
     
     
     public partial class BVAdmin_Catalog_ProductSharedChoices_Edit {
@@ -19,7 +19,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_MessageBox MessageBox1;
+        protected global::MerchantTribeStore.BVAdmin_Controls_MessageBox MessageBox1;
         
         /// <summary>
         /// NameField control.
@@ -82,7 +82,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_HtmlEditor HtmlEditor1;
+        protected global::MerchantTribeStore.BVAdmin_Controls_HtmlEditor HtmlEditor1;
         
         /// <summary>
         /// viewTextInput control.
@@ -136,7 +136,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_OptionItemEditor ItemsEditor;
+        protected global::MerchantTribeStore.BVAdmin_Controls_OptionItemEditor ItemsEditor;
         
         /// <summary>
         /// btnSaveOption control.

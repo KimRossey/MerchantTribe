@@ -18,7 +18,7 @@ using MerchantTribe.Commerce.Utilities;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_Configuration_ThemesInstall : BaseAdminJsonPage

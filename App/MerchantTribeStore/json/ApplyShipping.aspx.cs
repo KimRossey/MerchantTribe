@@ -3,7 +3,7 @@ using System;
 using MerchantTribe.Commerce;
 using MerchantTribe.Commerce.Orders;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
     partial class json_ApplyShipping : BaseStoreJsonPage
     {

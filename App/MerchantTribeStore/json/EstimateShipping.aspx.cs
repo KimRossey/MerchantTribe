@@ -7,7 +7,7 @@ using MerchantTribe.Web.Geography;
 using MerchantTribe.Commerce.Shipping;
 using MerchantTribe.Commerce.Utilities;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
     partial class json_EstimateShipping : BaseStoreJsonPage
     {

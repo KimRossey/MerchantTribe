@@ -1,4 +1,4 @@
-<%@ Control Language="C#" AutoEventWireup="True" Inherits="BVCommerce.BVModules_Controls_AddressBook" Codebehind="AddressBook.ascx.cs" %>
+<%@ Control Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVModules_Controls_AddressBook" Codebehind="AddressBook.ascx.cs" %>
 <asp:Panel ID="AddressGridViewPanel" Cssclass="addressbookpanel" runat="server">
 <br />
     <asp:ImageButton ID="AddressBookImageButton" runat="server" AlternateText="Address Book" ImageUrl="~/BVModules/Themes/Bvc5/images/buttons/AddressBook.png" CausesValidation="false" /> <br /><br />

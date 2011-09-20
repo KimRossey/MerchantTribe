@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BVCommerce {
+namespace MerchantTribeStore {
     
     
     public partial class Site {
@@ -37,7 +37,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.JQueryInclude JQueryInclude1;
+        protected global::MerchantTribeStore.JQueryInclude JQueryInclude1;
         
         /// <summary>
         /// HeadContent control.
@@ -82,7 +82,7 @@ namespace BVCommerce {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVModules_Controls_AdminPanel AdminPanel1;
+        protected global::MerchantTribeStore.BVModules_Controls_AdminPanel AdminPanel1;
         
         /// <summary>
         /// litHeader control.

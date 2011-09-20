@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BVCommerce.BVAdmin.Marketing {
+namespace MerchantTribeStore.BVAdmin.Marketing {
     
     
     public partial class RewardsPoints {
@@ -19,7 +19,7 @@ namespace BVCommerce.BVAdmin.Marketing {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_MessageBox MessageBox1;
+        protected global::MerchantTribeStore.BVAdmin_Controls_MessageBox MessageBox1;
         
         /// <summary>
         /// lblPointsIssued control.

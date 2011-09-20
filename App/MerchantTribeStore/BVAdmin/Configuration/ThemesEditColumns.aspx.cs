@@ -9,7 +9,7 @@ using MerchantTribe.Commerce.Membership;
 using MerchantTribe.Commerce.Content;
 using MerchantTribe.Commerce.Storage;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     public partial class BVAdmin_Configuration_ThemesEditColumns : BaseAdminPage

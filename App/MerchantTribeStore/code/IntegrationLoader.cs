@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
     public static class IntegrationLoader
     {

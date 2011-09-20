@@ -6,7 +6,7 @@ using MerchantTribe.Commerce.Controls;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_Controls_InventoryModifications : System.Web.UI.UserControl

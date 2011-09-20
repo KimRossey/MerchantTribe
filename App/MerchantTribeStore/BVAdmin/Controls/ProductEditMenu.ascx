@@ -1,5 +1,5 @@
 <%@ Control Language="C#" AutoEventWireup="True"
-    Inherits="BVCommerce.BVAdmin_Controls_ProductEditMenu" Codebehind="ProductEditMenu.ascx.cs" %>
+    Inherits="MerchantTribeStore.BVAdmin_Controls_ProductEditMenu" Codebehind="ProductEditMenu.ascx.cs" %>
 <asp:Panel ID="pnlMenu" runat="server" DefaultButton="btnContinue">
 <ul class="navmenu">
     <li>

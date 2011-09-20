@@ -5,7 +5,7 @@ using MerchantTribe.Commerce.Metrics;
 using MerchantTribe.Commerce.Orders;
 using MerchantTribe.Commerce.Payment;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVModules_Controls_PaypalExpressCheckoutButton : MerchantTribe.Commerce.Content.BVUserControl

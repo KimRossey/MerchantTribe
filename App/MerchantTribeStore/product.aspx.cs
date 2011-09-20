@@ -9,7 +9,7 @@ using MerchantTribe.Commerce.Utilities;
 using System.Linq;
 using System.Collections.Generic;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class ProductPage : BaseStorePage, IProductPage

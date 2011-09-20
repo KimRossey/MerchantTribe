@@ -1,4 +1,4 @@
-<%@ Control Language="C#" AutoEventWireup="True" Inherits="BVCommerce.BVAdmin_Controls_DateModifierField" Codebehind="DateModifierField.ascx.cs" %>
+<%@ Control Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVAdmin_Controls_DateModifierField" Codebehind="DateModifierField.ascx.cs" %>
 <asp:TextBox ID="DateTextBox" runat="server"></asp:TextBox>
 <bvc5:BVCustomValidator ID="CustomValidator1" runat="server" 
     ErrorMessage="Field must be in a date format." Display="Dynamic" 

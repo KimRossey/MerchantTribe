@@ -1,4 +1,4 @@
-<%@ Page Language="C#" MasterPageFile="~/BVAdmin/BVAdminPopup.master" AutoEventWireup="True" Inherits="BVCommerce.BVAdmin_GettingStartedChecklist" title="Untitled Page" Codebehind="GettingStartedChecklist.aspx.cs" %>
+<%@ Page Language="C#" MasterPageFile="~/BVAdmin/BVAdminPopup.master" AutoEventWireup="True" Inherits="MerchantTribeStore.BVAdmin_GettingStartedChecklist" title="Untitled Page" Codebehind="GettingStartedChecklist.aspx.cs" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="BvcAdminPopupConent" Runat="Server">
 			<div id="popup">
 				<h3>Getting Started Checklist</h3>

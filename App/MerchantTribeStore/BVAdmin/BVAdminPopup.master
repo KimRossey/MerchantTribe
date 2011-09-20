@@ -1,4 +1,4 @@
-<%@ Master Language="C#" Inherits="BVCommerce.BVAdmin_BVAdminPopup" Codebehind="BVAdminPopup.master.cs" AutoEventWireup="True" %>
+<%@ Master Language="C#" Inherits="MerchantTribeStore.BVAdmin_BVAdminPopup" Codebehind="BVAdminPopup.master.cs" AutoEventWireup="True" %>
 <%@ Register Src="../BVModules/Controls/MasterPageJavascript.ascx" TagName="MasterPageJavascript"
     TagPrefix="uc3" %>
     <%@ Register src="../JQueryInclude.ascx" tagname="JQueryInclude" tagprefix="uc4" %>

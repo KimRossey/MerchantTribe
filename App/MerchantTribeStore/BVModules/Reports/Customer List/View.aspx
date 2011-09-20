@@ -1,4 +1,4 @@
-﻿<%@ Page MasterPageFile="~/BVAdmin/BVAdmin.master" Language="C#" AutoEventWireup="True" Inherits="BVCommerce.BVModules_Reports_Customer_List_View"
+﻿<%@ Page MasterPageFile="~/BVAdmin/BVAdmin.master" Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVModules_Reports_Customer_List_View"
 title="Custom List Report" Codebehind="View.aspx.cs" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">

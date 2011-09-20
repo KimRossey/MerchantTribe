@@ -8,7 +8,7 @@ using MerchantTribe.Commerce.Content;
 using MerchantTribe.Commerce;
 
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     public partial class BVModules_Editors_TinyMCE_editor : TextEditorBase

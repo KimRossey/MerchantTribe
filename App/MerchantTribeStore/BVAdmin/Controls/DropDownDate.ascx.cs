@@ -2,7 +2,7 @@ using System;
 using System.Globalization;
 using System.Web.UI.WebControls;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_Controls_DropDownDate : System.Web.UI.UserControl

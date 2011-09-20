@@ -1,4 +1,4 @@
-<%@ Page Language="C#" MasterPageFile="~/BVAdmin/BVAdminNav.master" AutoEventWireup="True" Inherits="BVCommerce.BVAdmin_Catalog_Default" Title="BV Commerce Admin" Codebehind="Default.aspx.cs" %>
+<%@ Page Language="C#" MasterPageFile="~/BVAdmin/BVAdminNav.master" AutoEventWireup="True" Inherits="MerchantTribeStore.BVAdmin_Catalog_Default" Title="BV Commerce Admin" Codebehind="Default.aspx.cs" %>
 
 <%@ Register Src="../Controls/SimpleProductFilter.ascx" TagName="SimpleProductFilter"
     TagPrefix="uc1" %>  

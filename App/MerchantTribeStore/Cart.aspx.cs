@@ -10,7 +10,7 @@ using MerchantTribe.Commerce.Catalog;
 using System.Linq;
 using MerchantTribe.Commerce.Marketing;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class Cart : BaseStorePage

@@ -1,2 +1,2 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Categories_RemoveProduct.aspx.cs" Inherits="BVCommerce.BVAdmin.Catalog.Categories_RemoveProduct" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Categories_RemoveProduct.aspx.cs" Inherits="MerchantTribeStore.BVAdmin.Catalog.Categories_RemoveProduct" %>
 <asp:Literal ID="litOutput" runat="server"></asp:Literal>

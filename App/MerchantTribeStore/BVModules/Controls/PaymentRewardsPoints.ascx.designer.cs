@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BVCommerce.BVModules.Controls {
+namespace MerchantTribeStore.BVModules.Controls {
     
     
     public partial class PaymentRewardsPoints {

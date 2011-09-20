@@ -1,4 +1,4 @@
-<%@ Control Language="C#" AutoEventWireup="True" Inherits="BVCommerce.BVAdmin_Controls_FilePicker" Codebehind="FilePicker.ascx.cs" %>
+<%@ Control Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVAdmin_Controls_FilePicker" Codebehind="FilePicker.ascx.cs" %>
 <%@ Register Src="TimespanPicker.ascx" TagName="TimespanPicker" TagPrefix="uc1" %>
 <%@ Reference Control="~/BVAdmin/Controls/MessageBox.ascx" %>
 <table>

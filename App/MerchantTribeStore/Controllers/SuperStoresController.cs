@@ -6,9 +6,9 @@ using System.Web.Mvc;
 using MerchantTribe.Commerce;
 using MerchantTribe.Commerce.Accounts;
 using System.Text;
-using BVCommerce.Models;
+using MerchantTribeStore.Models;
 
-namespace BVCommerce.Controllers
+namespace MerchantTribeStore.Controllers
 {
     public class SuperStoresController : Shared.BaseSuperController
     {

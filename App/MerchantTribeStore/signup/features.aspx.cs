@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Text;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     public partial class signup_features : System.Web.UI.Page

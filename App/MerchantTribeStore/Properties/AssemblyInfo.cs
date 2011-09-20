@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("BVCommerce")]
+[assembly: AssemblyTitle("MerchantTribeStore")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("BV Software")]
-[assembly: AssemblyProduct("BVCommerce")]
-[assembly: AssemblyCopyright("Copyright © BV Software 2002-2010")]
+[assembly: AssemblyCompany("BV Software LLC")]
+[assembly: AssemblyProduct("MerchantTribeStore")]
+[assembly: AssemblyCopyright("Copyright © 2001-2011 Marcus McConnell and BV Software LLC")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

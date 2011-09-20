@@ -2,7 +2,7 @@ using System;
 using MerchantTribe.Commerce.Controls;
 using MerchantTribe.Commerce.Utilities;
 
-namespace BVCommerce
+namespace MerchantTribeStore
 {
 
     partial class BVAdmin_Controls_DateRangePicker : System.Web.UI.UserControl

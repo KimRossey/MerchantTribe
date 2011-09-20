@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BVCommerce.BVAdmin.Orders {
+namespace MerchantTribeStore.BVAdmin.Orders {
     
     
     public partial class EditOrder {
@@ -19,7 +19,7 @@ namespace BVCommerce.BVAdmin.Orders {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_MessageBox MessageBox1;
+        protected global::MerchantTribeStore.BVAdmin_Controls_MessageBox MessageBox1;
         
         /// <summary>
         /// OrderNumberField control.
@@ -46,7 +46,7 @@ namespace BVCommerce.BVAdmin.Orders {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Orders_OrderStatusDisplay OrderStatusDisplay1;
+        protected global::MerchantTribeStore.BVAdmin_Orders_OrderStatusDisplay OrderStatusDisplay1;
         
         /// <summary>
         /// OrderActions1 control.
@@ -55,7 +55,7 @@ namespace BVCommerce.BVAdmin.Orders {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Orders_OrderActions OrderActions1;
+        protected global::MerchantTribeStore.BVAdmin_Orders_OrderActions OrderActions1;
         
         /// <summary>
         /// btnSaveChanges control.
@@ -73,7 +73,7 @@ namespace BVCommerce.BVAdmin.Orders {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_UserPicker UserPicker1;
+        protected global::MerchantTribeStore.BVAdmin_Controls_UserPicker UserPicker1;
         
         /// <summary>
         /// UserIdField control.
@@ -91,7 +91,7 @@ namespace BVCommerce.BVAdmin.Orders {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_AddressEditor BillingAddressEditor;
+        protected global::MerchantTribeStore.BVAdmin_Controls_AddressEditor BillingAddressEditor;
         
         /// <summary>
         /// ShippingAddressEditor control.
@@ -100,7 +100,7 @@ namespace BVCommerce.BVAdmin.Orders {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_AddressEditor ShippingAddressEditor;
+        protected global::MerchantTribeStore.BVAdmin_Controls_AddressEditor ShippingAddressEditor;
         
         /// <summary>
         /// ItemsGridView control.
@@ -235,7 +235,7 @@ namespace BVCommerce.BVAdmin.Orders {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVCommerce.BVAdmin_Controls_ProductPicker ProductPicker1;
+        protected global::MerchantTribeStore.BVAdmin_Controls_ProductPicker ProductPicker1;
         
         /// <summary>
         /// btnProductPickerCancel control.

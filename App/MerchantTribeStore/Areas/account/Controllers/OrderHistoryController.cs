@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using BVCommerce.Filters;
+using MerchantTribeStore.Filters;
 using MerchantTribe.Commerce;
 using MerchantTribe.Commerce.Orders;
 using MerchantTribe.Commerce.Catalog;
 using MerchantTribe.Web;
 using MerchantTribe.Commerce.Content;
 
-namespace BVCommerce.Areas.account.Controllers
+namespace MerchantTribeStore.Areas.account.Controllers
 {
     [CustomerSignedInFilter]
-    public class OrderHistoryController : BVCommerce.Controllers.Shared.BaseStoreController
+    public class OrderHistoryController : MerchantTribeStore.Controllers.Shared.BaseStoreController
     {
         //
         // GET: /account/OrderHistory/
