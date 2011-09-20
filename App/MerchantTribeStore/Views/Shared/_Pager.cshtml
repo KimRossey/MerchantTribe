@@ -1,0 +1,37 @@
+﻿@{ Layout = null;}
+@model MerchantTribeStore.Models.PagerViewModel
+           
+@helper RenderPager() 
+{     
+    int pages = Model.TotalPages;
+        <ul class="pager"> 
+        <li><a href="@String.Format(Model.PagerUrlFormat, 1)">|&lt;</a></li> 
+        @if (Model.CurrentPage > 1) 
+        { 
+            <li><a href="@String.Format(Model.PagerUrlFormat, Model.CurrentPage - 1)">&laquo;</a></li> 
+        } 
+        else         
+        { 
+            <li class="inactive">&nbsp;</li> 
+        }       
+    @for (int i = 1; i <= pages; i++) 
+    {         
+        <li @if (i == Model.CurrentPage) 
+            { <text>class="current"</text> }> 
+        <a href="@String.Format(Model.PagerUrlFormat, i)">@i</a></li>                     
+    }   
+        @if (Model.CurrentPage < pages) 
+        { 
+            <li><a href="@String.Format(Model.PagerUrlFormat, Model.CurrentPage + 1)">&raquo;</a></li> 
+        } 
+        else         
+        { 
+            <li class="inactive">&nbsp;</li> 
+        } 
+        <li><a href="@String.Format(Model.PagerUrlFormat, pages)">&gt;|</a></li> 
+    </ul> 
+} 
+
+@RenderPager() 
+           
+

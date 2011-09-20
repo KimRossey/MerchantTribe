@@ -98,8 +98,15 @@ namespace MerchantTribeStore
             routes.MapPageRoute("contact-route", "contact", "~/ContactUs.aspx");
             routes.MapPageRoute("giftcards-route", "giftcards", "~/GiftCards.aspx");
             routes.MapPageRoute("emailsignup-route", "emailsignup", "~/EmailSignUp.aspx");
-                                                                        
+                                      
+            // Products                      
             routes.MapPageRoute("productreview-route", "productreviews/{slug}", "~/productreviews.aspx");
+            routes.MapRoute("products-rendersingle", "products/rendersingleproduct/{*params}",
+                                new
+                                {
+                                    controller = "Products",
+                                    action = "RenderSingleProduct"
+                                });
                                                   
             // policies
             routes.MapRoute("policy-route", "policies/{policykind}",

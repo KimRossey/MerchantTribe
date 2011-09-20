@@ -1,2 +1,0 @@
-﻿<%@ Control Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVModules_ContentBlocks_Featured_Products_view" Codebehind="view.ascx.cs" %>
-<asp:literal ID="litMain" runat="server" EnableViewState="false"></asp:literal>

@@ -1,0 +1,24 @@
+﻿@{
+    Layout = null;
+}
+@model MerchantTribeStore.Areas.ContentBlocks.Models.RssFeedViewModel
+<div class="rssfeedviewer">
+    <div class="rssfeedviewerwrapper">
+        @if (Model.ShowTitle)
+        {
+            <h4>@Model.Channel.Title</h4>
+        }
+        @if (Model.ShowDescription)
+        {
+            @Model.Channel.Description
+        }
+        <ul>
+        @foreach (var item in Model.Channel.GetChannelItems(Model.MaxItems))
+        {
+            <li><a href="@item.Link">@item.Title</a><br />
+            @item.Description</li>
+        }   
+        </ul>             
+    </div>
+</div>           
+

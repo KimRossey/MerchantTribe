@@ -1,2 +1,0 @@
-﻿<%@ Control Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVModules_ContentBlocks_Banner_Ad_view" Codebehind="view.ascx.cs" %>
-<asp:Literal ID="litOutput" runat="server" EnableViewState="false"></asp:Literal>

@@ -1,0 +1,18 @@
+﻿@{
+    Layout = null;
+}
+@model MerchantTribeStore.Models.ProductListViewModel
+<div class="productgrid">
+    <div class="decoratedblock">
+        <div class="blockcontent">
+            <h4>@Model.Title</h4>            
+            <ul>               
+            @foreach (var p in Model.Items)
+            {
+                <li>@Html.Action("RenderSingleProduct", "Products", new { Area = "", Model = p })</li>
+            }   
+            </ul>                   
+        </div>
+    </div>
+</div>
+
