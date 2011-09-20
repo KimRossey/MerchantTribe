@@ -6,7 +6,6 @@
 
 @foreach (var b in Model.Blocks)
 {
-    <div style="border:solid 1px red;">
-    @Html.Action("DisplayBlock", "ContentBlock", b)    
-    </div>
+      @Html.Action("Index", b.ControlName.Replace(" ", ""), 
+                new { Area = "ContentBlocks", Model = b })     
 }

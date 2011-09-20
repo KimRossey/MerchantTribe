@@ -1,0 +1,14 @@
+﻿@{
+    Layout = null;
+}
+@model MerchantTribeStore.Models.ProductListViewModel
+
+<div class="featuredproducts">    
+  @foreach (var p in Model.Items)
+  {
+      @Html.Action("RenderSingleProduct", "Products", new { Area = "", Model = p })      
+  }
+  <div class="clear"></div>
+</div>
+            
+

@@ -1,0 +1,12 @@
+﻿@{
+    Layout = null;
+}
+@model MerchantTribe.Commerce.Catalog.Product
+<div class="productrotator">
+    <div class="decoratedblock">
+        <div class="blockcontent">
+            @Html.Action("RenderSingleProduct", "Products", new { Area = "", Model = Model })   
+        </div>
+    </div>
+</div>         
+
