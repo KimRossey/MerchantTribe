@@ -7,5 +7,5 @@
 @foreach (var b in Model.Blocks)
 {
       @Html.Action("Index", b.ControlName.Replace(" ", ""), 
-                new { Area = "ContentBlocks", Model = b })     
+                new { Area = "ContentBlocks", block = b })     
 }

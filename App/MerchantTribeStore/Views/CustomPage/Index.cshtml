@@ -1,0 +1,17 @@
+﻿@model MerchantTribe.Commerce.Catalog.Category
+@Html.Action("CategoryTrail", "BreadCrumb", new { cat = Model })
+@if (Model.CustomPageLayout == MerchantTribe.Commerce.Catalog.CustomPageLayoutType.WithSideBar)
+{
+    <text><div id="categoryleft">@Html.Action("Index", "ContentColumn", new {id="4"})</div>
+    <div id="categorymain"></text>
+}
+else
+{
+    <text><div class="onecolumnmain"></text>
+}
+@Html.Raw(ViewBag.DisplayHtml)
+</div>
+<div class="clear"></div>
+    
+    
+    

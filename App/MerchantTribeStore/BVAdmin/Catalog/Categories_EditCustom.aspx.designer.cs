@@ -67,15 +67,6 @@ namespace MerchantTribeStore {
         protected global::System.Web.UI.WebControls.TextBox NameField;
         
         /// <summary>
-        /// valName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::MerchantTribe.Commerce.Controls.BVRequiredFieldValidator valName;
-        
-        /// <summary>
         /// inStore control.
         /// </summary>
         /// <remarks>
