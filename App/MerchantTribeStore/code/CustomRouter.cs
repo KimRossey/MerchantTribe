@@ -56,8 +56,10 @@ namespace MerchantTribeStore
                         System.Web.Mvc.MvcHandler mvcHandler2 = new System.Web.Mvc.MvcHandler(requestContext);
                         return mvcHandler2;                        
                     case CategorySourceType.CustomPage:
-                        var customPage = System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath("~/custompage.aspx", typeof(MerchantTribeStore.custompage)) as MerchantTribeStore.custompage;
-                        return customPage as IHttpHandler;            
+                        requestContext.RouteData.Values["controller"] = "CustomPage";
+                        requestContext.RouteData.Values["action"] = "Index";
+                        System.Web.Mvc.MvcHandler mvcHandlerCustom = new MvcHandler(requestContext);
+                        return mvcHandlerCustom;                        
                 }
             }
 

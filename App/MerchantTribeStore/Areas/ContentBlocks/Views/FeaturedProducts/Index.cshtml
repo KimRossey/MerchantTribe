@@ -6,7 +6,7 @@
 <div class="featuredproducts">    
   @foreach (var p in Model.Items)
   {
-      @Html.Action("RenderSingleProduct", "Products", new { Area = "", Model = p })      
+      @Html.Action("RenderSingleProduct", "Products", new { Area = "", product = p })      
   }
   <div class="clear"></div>
 </div>

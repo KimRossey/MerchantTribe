@@ -50,8 +50,7 @@
                     Name:</td>
                 <td class="formfield">
                     <asp:TextBox ID="NameField" runat="server" ClientIDMode="Static" MaxLength="100" TabIndex="2000"
-                        Width="650px"></asp:TextBox><bvc5:BVRequiredFieldValidator ID="valName" runat="server"
-                            ErrorMessage="Please enter a name" ControlToValidate="NameField">*</bvc5:BVRequiredFieldValidator></td>
+                        Width="650px"></asp:TextBox><asp:RequiredFieldValidator ControlToValidate="NameField" ErrorMessage="Please enter a name">*</asp:RequiredFieldValidator></td>
                 <td><asp:PlaceHolder ID="inStore" runat="Server"></asp:PlaceHolder></td>
             </tr>
             <tr>

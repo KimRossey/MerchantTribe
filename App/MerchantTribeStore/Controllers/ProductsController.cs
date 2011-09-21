@@ -14,19 +14,19 @@ namespace MerchantTribeStore.Controllers
     {
         // GET: /products/rendersingleproduct
         [ChildActionOnly]
-        public ActionResult RenderSingleProduct(Product p)
+        public ActionResult RenderSingleProduct(Product product)
         {
-            if (p == null) return Content("");
+            if (product == null) return Content("");
             
             SingleProductViewModel model = new SingleProductViewModel();
-            model.Item = p;            
-            model.UserPrice = MTApp.PriceProduct(p, MTApp.CurrentCustomer, null);            
+            model.Item = product;            
+            model.UserPrice = MTApp.PriceProduct(product, MTApp.CurrentCustomer, null);            
             model.ImageUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductImageUrlSmall(
                              MTApp.CurrentStore.Id,                    
-                            p.Bvin,
-                            p.ImageFileSmall,
+                            product.Bvin,
+                            product.ImageFileSmall,
                             Request.IsSecureConnection);
-            model.ProductLink = UrlRewriter.BuildUrlForProduct(p, MTApp.CurrentRequestContext.RoutingContext, string.Empty);
+            model.ProductLink = UrlRewriter.BuildUrlForProduct(product, MTApp.CurrentRequestContext.RoutingContext, string.Empty);
 
             return View(model);
         }
