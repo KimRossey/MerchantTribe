@@ -28,7 +28,7 @@ namespace MerchantTribeStore {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::MerchantTribe.Commerce.Controls.BVCustomValidator DateCustomValidator;
+        protected global::System.Web.UI.WebControls.CustomValidator DateCustomValidator;
         
         /// <summary>
         /// DateRequiredValidator control.
@@ -37,7 +37,7 @@ namespace MerchantTribeStore {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::MerchantTribe.Commerce.Controls.BVRequiredFieldValidator DateRequiredValidator;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator DateRequiredValidator;
         
         /// <summary>
         /// CalendarShowImageButton control.

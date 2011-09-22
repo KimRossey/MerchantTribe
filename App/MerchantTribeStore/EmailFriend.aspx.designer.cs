@@ -64,7 +64,7 @@ namespace MerchantTribeStore {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::MerchantTribe.Commerce.Controls.BVRequiredFieldValidator Requiredfieldvalidator1;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator Requiredfieldvalidator1;
         
         /// <summary>
         /// Regularexpressionvalidator1 control.
@@ -73,7 +73,7 @@ namespace MerchantTribeStore {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::MerchantTribe.Commerce.Controls.BVRegularExpressionValidator Regularexpressionvalidator1;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator Regularexpressionvalidator1;
         
         /// <summary>
         /// toEmailField control.
@@ -91,7 +91,7 @@ namespace MerchantTribeStore {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::MerchantTribe.Commerce.Controls.BVRequiredFieldValidator valEmail;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator valEmail;
         
         /// <summary>
         /// valEmail2 control.
@@ -100,7 +100,7 @@ namespace MerchantTribeStore {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::MerchantTribe.Commerce.Controls.BVRegularExpressionValidator valEmail2;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator valEmail2;
         
         /// <summary>
         /// btnSend control.

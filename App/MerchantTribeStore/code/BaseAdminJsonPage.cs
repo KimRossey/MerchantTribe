@@ -6,7 +6,7 @@ using MerchantTribe.Commerce.Contacts;
 
 namespace MerchantTribeStore
 {
-    public class BaseAdminJsonPage : System.Web.UI.Page, MerchantTribe.Commerce.Controls.IBaseAdminPage, IMultiStorePage
+    public class BaseAdminJsonPage : System.Web.UI.Page, IMultiStorePage
     {
         private Guid? _AuthTokenGuid = null;
         public Guid? AuthTokenGuid

@@ -116,8 +116,8 @@
                 </td>
                 <td class="formfield">
                     <asp:Label ID="AddressStatusLabel" runat="server" Text=""></asp:Label>
-                    <bvc5:BVCustomValidator ID="CustomValidator1" runat="server" ErrorMessage="Paypal Address Must Be Confirmed."
-                        ForeColor=" " CssClass="errormessage" OnServerValidate="CustomValidator1_ServerValidate">*</bvc5:BVCustomValidator>
+                    <asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="Paypal Address Must Be Confirmed."
+                        ForeColor=" " CssClass="errormessage" OnServerValidate="CustomValidator1_ServerValidate">*</asp:CustomValidator>
                 </td>
             </tr>
             <tr>
@@ -133,9 +133,9 @@
             Shipping</h2>        
         <asp:RadioButtonList ID="ShippingRatesList" runat="server">
         </asp:RadioButtonList>
-        <bvc5:BVCustomValidator ID="BVRequiredFieldValidator1" runat="server" Display="Dynamic"
+        <asp:CustomValidator ID="BVRequiredFieldValidator1" runat="server" Display="Dynamic"
             ErrorMessage="A Shipping Method Must Be Selected." ForeColor=" " CssClass="errormessage"
-            OnServerValidate="BVRequiredFieldValidator1_ServerValidate">*</bvc5:BVCustomValidator>
+            OnServerValidate="BVRequiredFieldValidator1_ServerValidate">*</asp:CustomValidator>
         <asp:Label ID="ShippingMessage" runat="server" Text=""></asp:Label>
         </div>
         </asp:Panel>

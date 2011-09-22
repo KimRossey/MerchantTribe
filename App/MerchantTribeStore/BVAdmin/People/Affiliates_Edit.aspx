@@ -29,8 +29,8 @@
                     Name:</td>
                 <td class="formfield" style="width: 398px">
                     <asp:TextBox ID="DisplayNameField" runat="server" Columns="30" MaxLength="100" TabIndex="2000"
-                        Width="200px"></asp:TextBox><bvc5:BVRequiredFieldValidator ID="valName" runat="server"
-                            ErrorMessage="Please enter a Name" ControlToValidate="DisplayNameField">*</bvc5:BVRequiredFieldValidator></td>
+                        Width="200px"></asp:TextBox><asp:RequiredFieldValidator ID="valName" runat="server"
+                            ErrorMessage="Please enter a Name" ControlToValidate="DisplayNameField">*</asp:RequiredFieldValidator></td>
             </tr>
             <tr>
                 <td class="formlabel">

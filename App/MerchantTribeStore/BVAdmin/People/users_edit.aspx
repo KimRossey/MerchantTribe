@@ -121,11 +121,11 @@
                 <td class="formfield">
                     <asp:TextBox ID="EmailField" runat="server" Columns="30" MaxLength="100" TabIndex="2001"
                         Width="200px"></asp:TextBox>
-                    <bvc5:BVRequiredFieldValidator ID="val2Username" CssClass="errormessage" EnableClientScript="True"
+                    <asp:RequiredFieldValidator ID="val2Username" CssClass="errormessage" EnableClientScript="True"
                         runat="server" ControlToValidate="EmailField" Display="Dynamic" ErrorMessage="Please enter an email address"
-                        Visible="True">*</bvc5:BVRequiredFieldValidator><bvc5:BVRegularExpressionValidator ID="valUsername"
+                        Visible="True">*</asp:RequiredFieldValidator><asp:RegularExpressionValidator ID="valUsername"
                             CssClass="errormessage" runat="server" ControlToValidate="EmailField" Display="Dynamic"
-                            ErrorMessage="Please enter a valid email address" ValidationExpression="^(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6}$">*</bvc5:BVRegularExpressionValidator>
+                            ErrorMessage="Please enter a valid email address" ValidationExpression="^(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6}$">*</asp:RegularExpressionValidator>
                 </td>
             </tr>
             <tr>
@@ -134,9 +134,9 @@
                 <td class="formfield">
                     <asp:TextBox ID="FirstNameField" TabIndex="2002" runat="server" Columns="30" MaxLength="50"
                         Width="200px"></asp:TextBox>
-                    <bvc5:BVRequiredFieldValidator ID="valFirstName" CssClass="errormessage" EnableClientScript="True"
+                    <asp:RequiredFieldValidator ID="valFirstName" CssClass="errormessage" EnableClientScript="True"
                         runat="server" ControlToValidate="FirstNameField" Display="Dynamic" ErrorMessage="Please enter a first name or nickname"
-                        Visible="True">*</bvc5:BVRequiredFieldValidator></td>
+                        Visible="True">*</asp:RequiredFieldValidator></td>
             </tr>
             <tr>
                 <td class="formlabel">
@@ -144,9 +144,9 @@
                 <td class="formfield">
                     <asp:TextBox ID="LastNameField" TabIndex="2003" runat="server" Columns="30" MaxLength="50"
                         Width="200px"></asp:TextBox>
-                    <bvc5:BVRequiredFieldValidator ID="RequiredFieldValidator1" CssClass="errormessage"
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" CssClass="errormessage"
                         EnableClientScript="True" runat="server" ControlToValidate="LastNameField" Display="Dynamic"
-                        ErrorMessage="Please enter a last name" Visible="True">*</bvc5:BVRequiredFieldValidator></td>
+                        ErrorMessage="Please enter a last name" Visible="True">*</asp:RequiredFieldValidator></td>
             </tr>
             <tr>
                 <td class="formlabel">
@@ -165,10 +165,10 @@
                     Password:</td>
                 <td class="formfield">
                     <asp:TextBox ID="PasswordField" runat="server" Columns="30" Width="200px" TabIndex="2006"></asp:TextBox>
-                    <bvc5:BVRequiredFieldValidator ID="valPassword" runat="server" ControlToValidate="PasswordField"
-                        ErrorMessage="A password is required" Display="Dynamic">*</bvc5:BVRequiredFieldValidator>&nbsp;
-                    <bvc5:BVRegularExpressionValidator ID="PasswordRegularExpressionValidator" runat="server"
-                        ControlToValidate="PasswordField" Display="Dynamic" ErrorMessage="Password must be at least 6 characters long.">*</bvc5:BVRegularExpressionValidator></td>
+                    <asp:RequiredFieldValidator ID="valPassword" runat="server" ControlToValidate="PasswordField"
+                        ErrorMessage="A password is required" Display="Dynamic">*</asp:RequiredFieldValidator>&nbsp;
+                    <asp:RegularExpressionValidator ID="PasswordRegularExpressionValidator" runat="server"
+                        ControlToValidate="PasswordField" Display="Dynamic" ErrorMessage="Password must be at least 6 characters long.">*</asp:RegularExpressionValidator></td>
             </tr>          
             <tr>
                 <td class="formlabel">

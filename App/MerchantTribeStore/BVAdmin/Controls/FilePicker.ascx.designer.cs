@@ -46,7 +46,7 @@ namespace MerchantTribeStore {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::MerchantTribe.Commerce.Controls.BVCustomValidator FileHasBeenSelectedCustomValidator;
+        protected global::System.Web.UI.WebControls.CustomValidator FileHasBeenSelectedCustomValidator;
         
         /// <summary>
         /// FileIsUniqueToProductCustomValidator control.
@@ -55,7 +55,7 @@ namespace MerchantTribeStore {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::MerchantTribe.Commerce.Controls.BVCustomValidator FileIsUniqueToProductCustomValidator;
+        protected global::System.Web.UI.WebControls.CustomValidator FileIsUniqueToProductCustomValidator;
         
         /// <summary>
         /// browseButton control.
@@ -109,7 +109,7 @@ namespace MerchantTribeStore {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::MerchantTribe.Commerce.Controls.BVCustomValidator DescriptionIsUniqueToProductCustomValidator;
+        protected global::System.Web.UI.WebControls.CustomValidator DescriptionIsUniqueToProductCustomValidator;
         
         /// <summary>
         /// AvailableMinutesRow control.
@@ -154,6 +154,6 @@ namespace MerchantTribeStore {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::MerchantTribe.Commerce.Controls.BVRegularExpressionValidator RegularExpressionValidator1;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator1;
     }
 }

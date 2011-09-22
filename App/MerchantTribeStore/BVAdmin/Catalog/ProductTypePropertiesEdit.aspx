@@ -15,9 +15,9 @@
                 Property Name
             </td>
             <td class="FormLabel" align="left">
-                <asp:TextBox ID="PropertyNameField" runat="server" CssClass="FormInput" Columns="40"></asp:TextBox><bvc5:BVRequiredFieldValidator
+                <asp:TextBox ID="PropertyNameField" runat="server" CssClass="FormInput" Columns="40"></asp:TextBox><asp:RequiredFieldValidator
                     ID="RequiredFieldValidator1" runat="server" ErrorMessage="Property Name is Required"
-                    ControlToValidate="PropertyNameField">*</bvc5:BVRequiredFieldValidator></td>
+                    ControlToValidate="PropertyNameField">*</asp:RequiredFieldValidator></td>
         </tr>
         <tr>
             <td class="FormLabel" align="right">

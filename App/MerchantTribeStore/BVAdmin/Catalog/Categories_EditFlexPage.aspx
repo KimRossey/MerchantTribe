@@ -45,8 +45,8 @@
                     Name:</td>
                 <td class="formfield">
                     <asp:TextBox ID="NameField" runat="server" ClientIDMode="Static" MaxLength="100" TabIndex="2000"
-                        Width="650px"></asp:TextBox><bvc5:BVRequiredFieldValidator ID="valName" runat="server"
-                            ErrorMessage="Please enter a name" ControlToValidate="NameField">*</bvc5:BVRequiredFieldValidator></td>
+                        Width="650px"></asp:TextBox><asp:RequiredFieldValidator ID="valName" runat="server"
+                            ErrorMessage="Please enter a name" ControlToValidate="NameField">*</asp:RequiredFieldValidator></td>
             </tr>           
             <tr>
                 <td class="formlabel">URL:

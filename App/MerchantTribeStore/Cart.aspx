@@ -55,10 +55,10 @@
                             <ItemTemplate>
                                 <div>
                                     <asp:TextBox ID="QtyField" Width="50" runat="server" Text='<%# Bind("Quantity","{0:#}") %>'></asp:TextBox>
-                                    <bvc5:BVRequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Quantity Must Be Entered"
-                                    ControlToValidate="QtyField" Text="*" ForeColor=" " CssClass="errormessage"></bvc5:BVRequiredFieldValidator>                                    
-                                    <bvc5:BVRegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Quantity Must Be Numeric"
-                                        ControlToValidate="QtyField" ValidationExpression="\d{1,6}" ForeColor=" " CssClass="errormessage"></bvc5:BVRegularExpressionValidator>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Quantity Must Be Entered"
+                                    ControlToValidate="QtyField" Text="*" ForeColor=" " CssClass="errormessage"></asp:RequiredFieldValidator>                                    
+                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Quantity Must Be Numeric"
+                                        ControlToValidate="QtyField" ValidationExpression="\d{1,6}" ForeColor=" " CssClass="errormessage"></asp:RegularExpressionValidator>
                                 </div>
                             </ItemTemplate>                            
                         </asp:TemplateField>

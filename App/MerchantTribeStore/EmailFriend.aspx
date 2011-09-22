@@ -11,19 +11,19 @@
 							<TD class="FormLabel" vAlign="top" align="right">Your Email:</TD>
 							<TD vAlign="top" align="left">
 								<asp:Textbox id="FromEmailField" runat="server" Columns="30"></asp:Textbox>&nbsp;
-								<bvc5:BVRequiredFieldValidator id="Requiredfieldvalidator1" Visible="True" Runat="server" ForeColor=" " EnableClientScript="True"
-									CssClass="errormessage" ErrorMessage="Please enter an email address" Display="Dynamic" ControlToValidate="FromEmailField">*</bvc5:BVRequiredFieldValidator>
-								<bvc5:BVRegularExpressionValidator id="Regularexpressionvalidator1" Runat="server" ForeColor=" " CssClass="errormessage"
-									ErrorMessage="Please enter a valid email address" Display="Dynamic" ControlToValidate="FromEmailField" ValidationExpression="^(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6}$"></bvc5:BVRegularExpressionValidator></TD>
+								<asp:RequiredFieldValidator id="Requiredfieldvalidator1" Visible="True" Runat="server" ForeColor=" " EnableClientScript="True"
+									CssClass="errormessage" ErrorMessage="Please enter an email address" Display="Dynamic" ControlToValidate="FromEmailField">*</asp:RequiredFieldValidator>
+								<asp:RegularExpressionValidator id="Regularexpressionvalidator1" Runat="server" ForeColor=" " CssClass="errormessage"
+									ErrorMessage="Please enter a valid email address" Display="Dynamic" ControlToValidate="FromEmailField" ValidationExpression="^(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6}$"></asp:RegularExpressionValidator></TD>
 						</TR>
 						<TR>
 							<TD class="FormLabel" vAlign="top" align="right">Friend's Email:</TD>
 							<TD vAlign="top" align="left">
 								<asp:Textbox id="toEmailField" runat="server" Columns="30"></asp:Textbox>&nbsp;
-								<bvc5:BVRequiredFieldValidator id="valEmail" Visible="True" Runat="server" ForeColor=" " EnableClientScript="True"
-									CssClass="errormessage" ErrorMessage="Please enter an email address" Display="Dynamic" ControlToValidate="ToEmailField">*</bvc5:BVRequiredFieldValidator>
-								<bvc5:BVRegularExpressionValidator id="valEmail2" Runat="server" ForeColor=" " CssClass="errormessage" ErrorMessage="Please enter a valid email address"
-									Display="Dynamic" ControlToValidate="ToEmailField" ValidationExpression="^(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6}$"></bvc5:BVRegularExpressionValidator></TD>
+								<asp:RequiredFieldValidator id="valEmail" Visible="True" Runat="server" ForeColor=" " EnableClientScript="True"
+									CssClass="errormessage" ErrorMessage="Please enter an email address" Display="Dynamic" ControlToValidate="ToEmailField">*</asp:RequiredFieldValidator>
+								<asp:RegularExpressionValidator id="valEmail2" Runat="server" ForeColor=" " CssClass="errormessage" ErrorMessage="Please enter a valid email address"
+									Display="Dynamic" ControlToValidate="ToEmailField" ValidationExpression="^(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6}$"></asp:RegularExpressionValidator></TD>
 						</TR>
 						<TR>
 							<TD vAlign="top" align="left">&nbsp;</TD>

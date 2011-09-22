@@ -100,7 +100,7 @@ namespace MerchantTribeStore {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::MerchantTribe.Commerce.Controls.BVRequiredFieldValidator LastOrderNumberBVRequiredFieldValidator;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator LastOrderNumberBVRequiredFieldValidator;
         
         /// <summary>
         /// LastOrderNumberBVRegularExpressionValidator control.
@@ -109,7 +109,7 @@ namespace MerchantTribeStore {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::MerchantTribe.Commerce.Controls.BVRegularExpressionValidator LastOrderNumberBVRegularExpressionValidator;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator LastOrderNumberBVRegularExpressionValidator;
         
         /// <summary>
         /// ForceSiteTermsCheckBox control.

@@ -14,11 +14,11 @@
             <tr>
                 <td class="formlabel">Handling Fee Amount</td>
                 <td class="formfield"><asp:TextBox ID="HandlingFeeAmountTextBox" runat="server"></asp:TextBox>
-                    <bvc5:BVRequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Handling Fee Amount Is Required." ControlToValidate="HandlingFeeAmountTextBox" Display="Dynamic">*</bvc5:BVRequiredFieldValidator>
-                    <bvc5:BVCustomValidator ID="HandlingFeeAmountCustomValidator" runat="server" 
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Handling Fee Amount Is Required." ControlToValidate="HandlingFeeAmountTextBox" Display="Dynamic">*</asp:RequiredFieldValidator>
+                    <asp:CustomValidator ID="HandlingFeeAmountCustomValidator" runat="server" 
                         ErrorMessage="Handling Fee Must Be A Monetary Amount." 
                         ControlToValidate="HandlingFeeAmountTextBox" Display="Dynamic" 
-                        onservervalidate="HandlingFeeAmountCustomValidator_ServerValidate">*</bvc5:BVCustomValidator></td>
+                        onservervalidate="HandlingFeeAmountCustomValidator_ServerValidate">*</asp:CustomValidator></td>
             </tr>
             <tr>
                 <td class="formlabel"></td>

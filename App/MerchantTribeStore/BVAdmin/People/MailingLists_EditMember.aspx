@@ -11,8 +11,8 @@
                     Email Address:</td>
                 <td class="formfield">
                     <asp:TextBox ID="EmailAddressField" runat="server" Columns="30" TabIndex="2000"
-                        Width="200px"></asp:TextBox><bvc5:BVRequiredFieldValidator ID="valEmail" runat="server"
-                            ErrorMessage="Please enter an email address" ControlToValidate="EmailAddressField">*</bvc5:BVRequiredFieldValidator></td>
+                        Width="200px"></asp:TextBox><asp:RequiredFieldValidator ID="valEmail" runat="server"
+                            ErrorMessage="Please enter an email address" ControlToValidate="EmailAddressField">*</asp:RequiredFieldValidator></td>
             </tr>
             <tr>
                 <td class="formlabel">

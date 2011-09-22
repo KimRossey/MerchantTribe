@@ -75,11 +75,11 @@
                 To:</td>
             <td class="formfield">
                 <asp:TextBox ID="TestToField" runat="server" Columns="40" ></asp:TextBox>
-                <bvc5:BVRequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TestToField"
-                    ErrorMessage="E-mail address is required." ValidationGroup="TestEmail">*</bvc5:BVRequiredFieldValidator>
-                <bvc5:BVRegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="TestToField"
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TestToField"
+                    ErrorMessage="E-mail address is required." ValidationGroup="TestEmail">*</asp:RequiredFieldValidator>
+                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="TestToField"
                     ErrorMessage="E-mail address is not in proper format." ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"
-                    ValidationGroup="TestEmail">*</bvc5:BVRegularExpressionValidator></td>
+                    ValidationGroup="TestEmail">*</asp:RegularExpressionValidator></td>
         </tr>
         <tr>
             <td>

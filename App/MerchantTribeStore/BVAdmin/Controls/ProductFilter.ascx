@@ -22,8 +22,8 @@
             <td>
                 <span>New Filter:
                     <asp:TextBox ID="FilterNameTextBox" runat="server" ValidationGroup="Filter"></asp:TextBox>
-                    <bvc5:BVRequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="FilterNameTextBox"
-                        ErrorMessage="You must enter a name for the filter." ValidationGroup="Filter" CssClass="errormessage" ForeColor=" ">*</bvc5:BVRequiredFieldValidator></span>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="FilterNameTextBox"
+                        ErrorMessage="You must enter a name for the filter." ValidationGroup="Filter" CssClass="errormessage" ForeColor=" ">*</asp:RequiredFieldValidator></span>
             </td>
         </tr>
         <tr>
@@ -70,12 +70,12 @@
                 Price Range (leave blank for none)</td>
             <td class="formfield" style="width: 367px">
                 <asp:TextBox ID="FromPriceTextBox" runat="server"></asp:TextBox>
-                <bvc5:BVCustomValidator ID="MonetaryRegularExpressionValidator1" runat="server"
-                    ControlToValidate="FromPriceTextBox" Display="Dynamic" ErrorMessage='"From" price range must be a monetary value' CssClass="errormessage" ForeColor=" ">*</bvc5:BVCustomValidator>
+                <asp:CustomValidator ID="MonetaryRegularExpressionValidator1" runat="server"
+                    ControlToValidate="FromPriceTextBox" Display="Dynamic" ErrorMessage='"From" price range must be a monetary value' CssClass="errormessage" ForeColor=" ">*</asp:CustomValidator>
                 to
                 <asp:TextBox ID="ToPriceTextBox" runat="server"></asp:TextBox>
-                <bvc5:BVCustomValidator ID="MonetaryRegularExpressionValidator2" runat="server"
-                    ControlToValidate="ToPriceTextBox" Display="Dynamic" ErrorMessage='"To" price range must be a monetary value' CssClass="errormessage" ForeColor=" ">*</bvc5:BVCustomValidator></td>
+                <asp:CustomValidator ID="MonetaryRegularExpressionValidator2" runat="server"
+                    ControlToValidate="ToPriceTextBox" Display="Dynamic" ErrorMessage='"To" price range must be a monetary value' CssClass="errormessage" ForeColor=" ">*</asp:CustomValidator></td>
         </tr>
         <tr>
             <td class="formlabel" style="height: 26px">

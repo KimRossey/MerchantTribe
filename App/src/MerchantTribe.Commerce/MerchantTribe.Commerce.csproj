@@ -350,13 +350,6 @@
     <Compile Include="Content\ThemeManager.cs" />
     <Compile Include="Content\ThemeView.cs" />
     <Compile Include="Controls\AddressTypes.cs" />
-    <Compile Include="Controls\BVCompareValidator.cs" />
-    <Compile Include="Controls\BVCustomValidator.cs" />
-    <Compile Include="Controls\BVRangeValidator.cs" />
-    <Compile Include="Controls\BVRegularExpressionValidator.cs" />
-    <Compile Include="Controls\BVRequiredFieldValidator.cs" />
-    <Compile Include="Controls\BVValidationController.cs" />
-    <Compile Include="Controls\ContentColumnBoundField.cs" />
     <Compile Include="Controls\ControlNotFoundException.cs" />
     <Compile Include="Controls\GoogleDefaultShippingTypes.cs">
       <SubType>Code</SubType>
@@ -367,9 +360,6 @@
     <Compile Include="Controls\ModificationControlBase.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Controls\PagerModes.cs" />
-    <Compile Include="Controls\SingleProductDisplayModes.cs" />
-    <Compile Include="Controls\SplitButton.cs" />
     <Compile Include="Data\EF\Models.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -398,7 +388,6 @@
     <Compile Include="Membership\UserQuestionRepository.cs" />
     <Compile Include="Metrics\EventLogRepository.cs" />
     <Compile Include="GoogleCheckoutArgs.cs" />
-    <Compile Include="Controls\IBaseAdminPage.cs" />
     <Compile Include="Controls\ITextBoxBasedControl.cs" />
     <Compile Include="Controls\LoginCompleteEventArgs.cs" />
     <Compile Include="Controls\PageChangingEventArgs.cs" />

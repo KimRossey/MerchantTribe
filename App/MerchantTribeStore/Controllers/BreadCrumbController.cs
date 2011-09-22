@@ -15,7 +15,7 @@ namespace MerchantTribeStore.Controllers
         //
         // GET: /BreadCrumb/
         [ChildActionOnly]
-        public ActionResult CategoryTrail(Category cat)
+        public ActionResult CategoryTrail(Category cat, List<BreadCrumbItem> extras)
         {
             CategorySnapshot snap = new CategorySnapshot(cat);
 
@@ -24,9 +24,15 @@ namespace MerchantTribeStore.Controllers
 
             LoadTrailForCategory(model, snap);
 
+            if (extras != null)
+            {                
+                foreach (BreadCrumbItem item in extras)
+                {
+                    model.Items.Enqueue(item);
+                }                
+            }
             return View("BreadCrumb", model);
         }
-
         private void LoadTrailForCategory(BreadCrumbViewModel model, CategorySnapshot cat)
         {
             if (cat == null) return;
@@ -53,7 +59,6 @@ namespace MerchantTribeStore.Controllers
                 }
             }                                    
         }
-
         private BreadCrumbItem AddCategoryLink(CategorySnapshot c)
         {
             BreadCrumbItem result = new BreadCrumbItem();
@@ -63,5 +68,6 @@ namespace MerchantTribeStore.Controllers
                 MTApp.CurrentRequestContext.RoutingContext);
             return result;
         }
+                        
     }
 }

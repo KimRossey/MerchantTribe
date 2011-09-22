@@ -41,9 +41,9 @@
         </td>
         <td class="formfield">
             <asp:TextBox ID="AdjustmentTextBox" runat="server" Columns="5"></asp:TextBox>
-            &nbsp;<bvc5:BVCustomValidator ID="CustomValidator1" runat="server" ControlToValidate="AdjustmentTextBox"
+            &nbsp;<asp:CustomValidator ID="CustomValidator1" runat="server" ControlToValidate="AdjustmentTextBox"
                 ErrorMessage="Adjustment is not in the correct format." 
-                onservervalidate="CustomValidator1_ServerValidate">*</bvc5:BVCustomValidator>
+                onservervalidate="CustomValidator1_ServerValidate">*</asp:CustomValidator>
             <asp:DropDownList ID="AdjustmentDropDownList" runat="server">
                 <asp:ListItem Selected="True" Value="1">Amount</asp:ListItem>
                 <asp:ListItem Value="2">Percentage</asp:ListItem>

@@ -37,7 +37,7 @@ namespace MerchantTribeStore {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::MerchantTribe.Commerce.Controls.BVRequiredFieldValidator valFirstName;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator valFirstName;
         
         /// <summary>
         /// lastNameField control.
@@ -55,7 +55,7 @@ namespace MerchantTribeStore {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::MerchantTribe.Commerce.Controls.BVRequiredFieldValidator valLastName;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator valLastName;
         
         /// <summary>
         /// CompanyNameRow control.
@@ -82,7 +82,7 @@ namespace MerchantTribeStore {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::MerchantTribe.Commerce.Controls.BVRequiredFieldValidator valCompany;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator valCompany;
         
         /// <summary>
         /// address1Field control.
@@ -100,7 +100,7 @@ namespace MerchantTribeStore {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::MerchantTribe.Commerce.Controls.BVRequiredFieldValidator valAddress;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator valAddress;
         
         /// <summary>
         /// address2Field control.
@@ -136,7 +136,7 @@ namespace MerchantTribeStore {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::MerchantTribe.Commerce.Controls.BVRequiredFieldValidator valCity;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator valCity;
         
         /// <summary>
         /// lstState control.
@@ -172,7 +172,7 @@ namespace MerchantTribeStore {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::MerchantTribe.Commerce.Controls.BVRequiredFieldValidator valPostalCode;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator valPostalCode;
         
         /// <summary>
         /// lblStateError control.
@@ -208,7 +208,7 @@ namespace MerchantTribeStore {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::MerchantTribe.Commerce.Controls.BVRequiredFieldValidator valPhone;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator valPhone;
         
         /// <summary>
         /// AddressBvin control.

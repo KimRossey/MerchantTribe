@@ -13,9 +13,9 @@
                 Product Type&nbsp;Name&nbsp;
             </td>
             <td class="FormLabel" align="left">
-                <asp:TextBox ID="ProductTypeNameField" runat="server" CssClass="FormInput" Columns="40"></asp:TextBox><bvc5:BVRequiredFieldValidator
+                <asp:TextBox ID="ProductTypeNameField" runat="server" CssClass="FormInput" Columns="40"></asp:TextBox><asp:RequiredFieldValidator
                     ID="RequiredFieldValidator1" runat="server" ErrorMessage="Product Type Name is Required"
-                    ControlToValidate="ProductTypeNameField">*</bvc5:BVRequiredFieldValidator></td>
+                    ControlToValidate="ProductTypeNameField">*</asp:RequiredFieldValidator></td>
         </tr>
         <tr>
             <td class="FormLabel" colspan="2">

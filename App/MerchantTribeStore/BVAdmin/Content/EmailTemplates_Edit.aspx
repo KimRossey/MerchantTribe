@@ -22,8 +22,8 @@
                             </td>
                             <td class="formfield">
                                 <asp:TextBox ID="DisplayNameField" runat="server" Columns="50" Width="400px"></asp:TextBox>
-                                <bvc5:BVRequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="DisplayNameField"
-                                    ErrorMessage="A Template Name is Required">*</bvc5:BVRequiredFieldValidator></td>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="DisplayNameField"
+                                    ErrorMessage="A Template Name is Required">*</asp:RequiredFieldValidator></td>
                         </tr>
                         <tr>
                             <td class="formlabel">

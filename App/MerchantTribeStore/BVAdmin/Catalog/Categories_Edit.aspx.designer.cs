@@ -31,6 +31,15 @@ namespace MerchantTribeStore {
         protected global::System.Web.UI.WebControls.Label lblError;
         
         /// <summary>
+        /// TemplateList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList TemplateList;
+        
+        /// <summary>
         /// btnSelectProducts control.
         /// </summary>
         /// <remarks>
@@ -136,7 +145,7 @@ namespace MerchantTribeStore {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::MerchantTribe.Commerce.Controls.BVRequiredFieldValidator valName;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator valName;
         
         /// <summary>
         /// DescriptionField control.

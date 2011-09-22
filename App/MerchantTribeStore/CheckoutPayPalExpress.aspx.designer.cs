@@ -208,7 +208,7 @@ namespace MerchantTribeStore {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::MerchantTribe.Commerce.Controls.BVCustomValidator CustomValidator1;
+        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator1;
         
         /// <summary>
         /// EditAddressLinkButton control.
@@ -235,7 +235,7 @@ namespace MerchantTribeStore {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::MerchantTribe.Commerce.Controls.BVCustomValidator BVRequiredFieldValidator1;
+        protected global::System.Web.UI.WebControls.CustomValidator BVRequiredFieldValidator1;
         
         /// <summary>
         /// ShippingMessage control.

@@ -124,9 +124,9 @@ $(document).ready(function () {
                     <asp:DropDownList ID="lstProductType" TabIndex="1800" runat="server" Width="200px"
                         AutoPostBack="True">
                     </asp:DropDownList>
-                    <bvc5:BVCustomValidator ID="ProductTypeCustomValidator" runat="server" 
+                    <asp:CustomValidator ID="ProductTypeCustomValidator" runat="server" 
                         ErrorMessage="Test" 
-                        onservervalidate="ProductTypeCustomValidator_ServerValidate">*</bvc5:BVCustomValidator></td>
+                        onservervalidate="ProductTypeCustomValidator_ServerValidate">*</asp:CustomValidator></td>
             </tr>
             <asp:Literal ID="ProductTypePropertiesLiteral" runat="server">
             </asp:Literal><tr><td colspan="2"><h2>Pricing</h2></td></tr>
@@ -137,24 +137,24 @@ $(document).ready(function () {
                     <asp:TextBox ID="ListPriceField" TabIndex="2000" runat="server" Columns="10" CssClass="FormInput"></asp:TextBox>                    
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" CssClass="errormessage"
                         ControlToValidate="ListPriceField" ForeColor=" " ErrorMessage="List Price is required">*</asp:RequiredFieldValidator>
-                    <bvc5:BVCustomValidator ID="CustomValidator1" runat="server" ControlToValidate="ListPriceField"
-                        CssClass="errormessage" ErrorMessage="Msrp must be a currency value">*</bvc5:BVCustomValidator>
+                    <asp:CustomValidator ID="CustomValidator1" runat="server" ControlToValidate="ListPriceField"
+                        CssClass="errormessage" ErrorMessage="Msrp must be a currency value">*</asp:CustomValidator>
                     Cost:
                     <asp:TextBox ID="CostField" runat="server" Columns="10" CssClass="FormInput" TabIndex="2100"></asp:TextBox>                    
-                    <bvc5:BVRequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="CostField"
-                        CssClass="errormessage" ErrorMessage="Cost is required" ForeColor=" ">*</bvc5:BVRequiredFieldValidator>
-                    <bvc5:BVCustomValidator ID="CustomValidator2" runat="server" ControlToValidate="CostField"
-                        CssClass="errormessage" ErrorMessage="Cost must be a currency value">*</bvc5:BVCustomValidator></td>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="CostField"
+                        CssClass="errormessage" ErrorMessage="Cost is required" ForeColor=" ">*</asp:RequiredFieldValidator>
+                    <asp:CustomValidator ID="CustomValidator2" runat="server" ControlToValidate="CostField"
+                        CssClass="errormessage" ErrorMessage="Cost must be a currency value">*</asp:CustomValidator></td>
             </tr>
             <tr>
                 <td class="formlabel" align="right" valign="top">
                     Price:</td>
                 <td class="formfield" align="left">
                     <asp:TextBox ID="SitePriceField" TabIndex="2200" runat="server" Columns="10" CssClass="FormInput"></asp:TextBox>                    
-                    <bvc5:BVRequiredFieldValidator ID="RequiredFieldValidator4" runat="server" CssClass="errormessage"
-                        ControlToValidate="SitePriceField" ForeColor=" " ErrorMessage="Site Price is required">*</bvc5:BVRequiredFieldValidator>
-                    <bvc5:BVCustomValidator ID="CustomValidator3" runat="server" ControlToValidate="SitePriceField"
-                        CssClass="errormessage" ErrorMessage="Price must be a currency value">*</bvc5:BVCustomValidator>&nbsp;
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" CssClass="errormessage"
+                        ControlToValidate="SitePriceField" ForeColor=" " ErrorMessage="Site Price is required">*</asp:RequiredFieldValidator>
+                    <asp:CustomValidator ID="CustomValidator3" runat="server" ControlToValidate="SitePriceField"
+                        CssClass="errormessage" ErrorMessage="Price must be a currency value">*</asp:CustomValidator>&nbsp;
                         Text: <asp:TextBox ID="PriceOverrideTextBox" runat="server" Columns="10" TabIndex="2300"></asp:TextBox>&nbsp;
                     </td>
             </tr>
@@ -239,8 +239,8 @@ $(document).ready(function () {
                     Weight:</td>
                 <td class="formfield">
                     <asp:TextBox ID="WeightField" runat="server" Columns="5" Rows="1" TabIndex="5000"></asp:TextBox>                    
-                    <bvc5:BVRequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="WeightField"
-                        Display="Dynamic" ErrorMessage="Weight is required.">*</bvc5:BVRequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="WeightField"
+                        Display="Dynamic" ErrorMessage="Weight is required.">*</asp:RequiredFieldValidator>
                     <asp:CustomValidator ID="CustomValidator4" runat="server" ControlToValidate="WeightField"
                         Display="Dynamic" ErrorMessage="Weight must be a numeric value.">*</asp:CustomValidator></td>
             </tr>
@@ -249,18 +249,18 @@ $(document).ready(function () {
                     Dimensions:</td>
                 <td class="formfield">
                     <asp:TextBox ID="LengthField" runat="server" Columns="5" Rows="1" TabIndex="5100"></asp:TextBox>
-                    <bvc5:BVRequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="LengthField"
-                        Display="Dynamic" ErrorMessage="Length is required.">*</bvc5:BVRequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="LengthField"
+                        Display="Dynamic" ErrorMessage="Length is required.">*</asp:RequiredFieldValidator>
                     <asp:CustomValidator ID="CustomValidator5" runat="server" ControlToValidate="LengthField"
                         Display="Dynamic" ErrorMessage="Length must be a numeric value.">*</asp:CustomValidator>
                     L x <asp:TextBox ID="WidthField" runat="server" Columns="5" Rows="1" TabIndex="5200"></asp:TextBox>
-                    <bvc5:BVRequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="WidthField"
-                        Display="Dynamic" ErrorMessage="Width is required.">*</bvc5:BVRequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="WidthField"
+                        Display="Dynamic" ErrorMessage="Width is required.">*</asp:RequiredFieldValidator>
                     <asp:CustomValidator ID="CustomValidator6" runat="server" ControlToValidate="WidthField"
                         Display="Dynamic" ErrorMessage="Width must be a numeric value.">*</asp:CustomValidator>
                     W x <asp:TextBox ID="HeightField" runat="server" Columns="5" Rows="1" TabIndex="5300"></asp:TextBox>
-                    <bvc5:BVRequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="HeightField"
-                        Display="Dynamic" ErrorMessage="Height is required.">*</bvc5:BVRequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="HeightField"
+                        Display="Dynamic" ErrorMessage="Height is required.">*</asp:RequiredFieldValidator>
                     <asp:CustomValidator ID="CustomValidator7" runat="server" ControlToValidate="HeightField"
                         Display="Dynamic" ErrorMessage="Height must be a numeric value.">*</asp:CustomValidator>
                     H
@@ -271,8 +271,8 @@ $(document).ready(function () {
                     Extra Ship Fee:</td>
                 <td class="formfield">
                     <asp:TextBox ID="ExtraShipFeeField" runat="server" Columns="5" Rows="1" TabIndex="5400"></asp:TextBox>
-                    <bvc5:BVRequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="ExtraShipFeeField"
-                        Display="Dynamic" ErrorMessage="Extra Ship Fee is required.">*</bvc5:BVRequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="ExtraShipFeeField"
+                        Display="Dynamic" ErrorMessage="Extra Ship Fee is required.">*</asp:RequiredFieldValidator>
                     <asp:CustomValidator ID="CustomValidator8" runat="server" ControlToValidate="ExtraShipFeeField"
                         Display="Dynamic" ErrorMessage="Extra Ship Fee must be a numeric value.">*</asp:CustomValidator></td>
             </tr>
@@ -298,10 +298,10 @@ $(document).ready(function () {
             <tr style="display:none;">
                 <td class="formlabel">Gift Wrap Charge:</td>
                 <td class="formfield"><asp:TextBox ID="txtGiftWrapCharge" runat="server" Columns="5" Rows="1" TabIndex="6050" Text="0.00"></asp:TextBox>
-                    <bvc5:BVRequiredFieldValidator ID="BVRequiredFieldValidator1" runat="server" ControlToValidate="txtGiftWrapCharge"
-                        Display="Dynamic" ErrorMessage="Gift Wrap Charge is required.">*</bvc5:BVRequiredFieldValidator>
-                    <bvc5:BVCustomValidator ID="BVCustomValidator1" runat="server" ControlToValidate="txtGiftWrapCharge"
-                        CssClass="errormessage" ErrorMessage="Gift Wrap Charge must be a currency value">*</bvc5:BVCustomValidator></td>
+                    <asp:RequiredFieldValidator ID="BVRequiredFieldValidator1" runat="server" ControlToValidate="txtGiftWrapCharge"
+                        Display="Dynamic" ErrorMessage="Gift Wrap Charge is required.">*</asp:RequiredFieldValidator>
+                    <asp:CustomValidator ID="BVCustomValidator1" runat="server" ControlToValidate="txtGiftWrapCharge"
+                        CssClass="errormessage" ErrorMessage="Gift Wrap Charge must be a currency value">*</asp:CustomValidator></td>
             </tr>
             <tr><td colspan="2"><h2>Advanced</h2></td></tr>
             <tr>
@@ -322,10 +322,10 @@ $(document).ready(function () {
                     Minimum Qty:</td>
                 <td class="formfield">
                     <asp:TextBox ID="MinimumQtyField" runat="server" Columns="5" Rows="1" TabIndex="6050" Text="0"></asp:TextBox>
-                    <bvc5:BVRequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="MinimumQtyField"
-                        Display="Dynamic" ErrorMessage="Minimum Quantity is required.">*</bvc5:BVRequiredFieldValidator><bvc5:BVRegularExpressionValidator
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="MinimumQtyField"
+                        Display="Dynamic" ErrorMessage="Minimum Quantity is required.">*</asp:RequiredFieldValidator><asp:RegularExpressionValidator
                             ID="RegularExpressionValidator6" runat="server" ControlToValidate="MinimumQtyField"
-                            Display="Dynamic" ErrorMessage="Minimum Quantity must be numeric." ValidationExpression="[0-9]{1,6}">*</bvc5:BVRegularExpressionValidator></td>
+                            Display="Dynamic" ErrorMessage="Minimum Quantity must be numeric." ValidationExpression="[0-9]{1,6}">*</asp:RegularExpressionValidator></td>
             </tr>
              <tr>
                 <td class="formlabel">

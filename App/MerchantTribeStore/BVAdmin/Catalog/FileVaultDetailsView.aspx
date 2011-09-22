@@ -42,8 +42,8 @@
         <tr>
             <td class="formfield">
                 <asp:TextBox ID="DescriptionTextBox" runat="server"></asp:TextBox>
-                <bvc5:BVRequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="DescriptionTextBox"
-                    ErrorMessage="Description is required." ValidationGroup="UpdateDescription">*</bvc5:BVRequiredFieldValidator></td>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="DescriptionTextBox"
+                    ErrorMessage="Description is required." ValidationGroup="UpdateDescription">*</asp:RequiredFieldValidator></td>
         </tr>
         <tr>
             <td class="formfield" colspan="2">
@@ -69,9 +69,9 @@
             <asp:TemplateField HeaderText="Max Downloads">
                 <ItemTemplate>
                     <asp:TextBox ID="MaxDownloadsTextBox" runat="server" Columns="3"></asp:TextBox>
-                    <bvc5:BVRegularExpressionValidator ID="MaxDownloadsRegularExpressionValidator" runat="server"
+                    <asp:RegularExpressionValidator ID="MaxDownloadsRegularExpressionValidator" runat="server"
                         ErrorMessage="Max Downloads must be an integer" Text="*" ControlToValidate="MaxDownLoadsTextBox"
-                        ValidationExpression="\d{1,5}"></bvc5:BVRegularExpressionValidator>
+                        ValidationExpression="\d{1,5}"></asp:RegularExpressionValidator>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Available Time">

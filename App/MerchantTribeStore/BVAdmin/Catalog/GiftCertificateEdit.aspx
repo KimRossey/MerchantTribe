@@ -68,8 +68,8 @@
                 <td class="formfield" valign="top" align="left">
                     <asp:TextBox ID="SkuField" TabIndex="1650" runat="server" Columns="40" CssClass="FormInput"
                         Width="300px"></asp:TextBox>
-                    <bvc5:BVRequiredFieldValidator ID="RequiredFieldValidator5" runat="server" CssClass="errormessage"
-                        ControlToValidate="SkuField" ForeColor=" " ErrorMessage="SKU is required">*</bvc5:BVRequiredFieldValidator></td>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" CssClass="errormessage"
+                        ControlToValidate="SkuField" ForeColor=" " ErrorMessage="SKU is required">*</asp:RequiredFieldValidator></td>
             </tr>
             <tr>
                 <td class="formlabel" align="right" valign="top">
@@ -77,8 +77,8 @@
                 <td class="formfield" valign="top" align="left">
                     <asp:TextBox ID="ProductNameField" TabIndex="1700" runat="server" Columns="40" CssClass="FormInput"
                         Width="300px"></asp:TextBox>
-                    <bvc5:BVRequiredFieldValidator ID="valName" runat="server" CssClass="errormessage" ControlToValidate="ProductNameField"
-                        ForeColor=" " ErrorMessage="Product name is required">*</bvc5:BVRequiredFieldValidator></td>
+                    <asp:RequiredFieldValidator ID="valName" runat="server" CssClass="errormessage" ControlToValidate="ProductNameField"
+                        ForeColor=" " ErrorMessage="Product name is required">*</asp:RequiredFieldValidator></td>
             </tr>
             <%--<tr>
                 <td class="formlabel" align="right" valign="top">
@@ -91,29 +91,29 @@
                     MSRP:</td>
                 <td class="formfield" align="left">
                     <asp:TextBox ID="ListPriceField" TabIndex="1900" runat="server" Columns="10" CssClass="FormInput"></asp:TextBox>
-                    <bvc5:BVRequiredFieldValidator ID="RequiredFieldValidator3" runat="server" CssClass="errormessage"
-                        ControlToValidate="ListPriceField" ForeColor=" " ErrorMessage="List Price is required">*</bvc5:BVRequiredFieldValidator>
-                    <bvc5:BVRegularExpressionValidator ID="RegularExpressionValidator1" runat="server" CssClass="errormessage"
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" CssClass="errormessage"
+                        ControlToValidate="ListPriceField" ForeColor=" " ErrorMessage="List Price is required">*</asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" CssClass="errormessage"
                         ControlToValidate="ListPriceField" ForeColor=" " ErrorMessage="Msrp must be numeric."
-                        ValidationExpression="[0-9.,]+" Display="Dynamic">*</bvc5:BVRegularExpressionValidator>
+                        ValidationExpression="[0-9.,]+" Display="Dynamic">*</asp:RegularExpressionValidator>
                     Cost:
                     <asp:TextBox ID="CostField" runat="server" Columns="10" CssClass="FormInput" TabIndex="1900"></asp:TextBox>
-                    <bvc5:BVRequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="CostField"
-                        CssClass="errormessage" ErrorMessage="Cost is required" ForeColor=" ">*</bvc5:BVRequiredFieldValidator>
-                    <bvc5:BVRegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="CostField"
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="CostField"
+                        CssClass="errormessage" ErrorMessage="Cost is required" ForeColor=" ">*</asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="CostField"
                         CssClass="errormessage" Display="Dynamic" ErrorMessage="Cost must be numeric."
-                        ForeColor=" " ValidationExpression="[0-9.,]+">*</bvc5:BVRegularExpressionValidator></td>
+                        ForeColor=" " ValidationExpression="[0-9.,]+">*</asp:RegularExpressionValidator></td>
             </tr>--%>
             <tr id="PriceRow" runat="server">
                 <td class="formlabel" align="right" valign="top">
                     Price:</td>
                 <td class="formfield" align="left">
                     <asp:TextBox ID="SitePriceField" TabIndex="2000" runat="server" Columns="10" CssClass="FormInput"></asp:TextBox>
-                    <bvc5:BVRequiredFieldValidator ID="RequiredFieldValidator4" runat="server" CssClass="errormessage"
-                        ControlToValidate="SitePriceField" ForeColor=" " ErrorMessage="Site Price is required">*</bvc5:BVRequiredFieldValidator>
-                    <bvc5:BVCustomValidator ID="CustomValidator2" runat="server" CssClass="errormessage"
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" CssClass="errormessage"
+                        ControlToValidate="SitePriceField" ForeColor=" " ErrorMessage="Site Price is required">*</asp:RequiredFieldValidator>
+                    <asp:CustomValidator ID="CustomValidator2" runat="server" CssClass="errormessage"
                         ControlToValidate="SitePriceField" ForeColor=" " ErrorMessage="Price must be a monetary amount."
-                        Display="Dynamic" onservervalidate="CustomValidator2_ServerValidate">*</bvc5:BVCustomValidator></td>
+                        Display="Dynamic" onservervalidate="CustomValidator2_ServerValidate">*</asp:CustomValidator></td>
             </tr>
             <tr>
                 <td class="formlabel" align="right" valign="top">
@@ -182,9 +182,9 @@
                     Certificate Id Pattern:</td>
                 <td class="formfield">
                     <asp:TextBox ID="CertificateIdTextBox" runat="server" Columns="30" Width="300px" TabIndex="2600"></asp:TextBox>
-                    <bvc5:BVCustomValidator ID="CustomValidator1" runat="server" ControlToValidate="CertificateIdTextBox"
+                    <asp:CustomValidator ID="CustomValidator1" runat="server" ControlToValidate="CertificateIdTextBox"
                         Display="Dynamic" ErrorMessage="Certificate id pattern is invalid." 
-                        onservervalidate="CustomValidator1_ServerValidate">*</bvc5:BVCustomValidator></td>
+                        onservervalidate="CustomValidator1_ServerValidate">*</asp:CustomValidator></td>
             </tr>
             <tr>
                 <td class="formlabel">
