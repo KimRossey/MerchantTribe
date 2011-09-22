@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MerchantTribe.Commerce.Content;
+using MerchantTribeStore.Models;
 
 namespace MerchantTribeStore.Controllers
 {
@@ -45,6 +46,28 @@ namespace MerchantTribeStore.Controllers
             Policy p = MTApp.ContentServices.Policies.FindOrCreateByType(type);
             if (p == null) p = new Policy();
             return p;            
+        }
+
+        // Get: /Policies/Faq
+        public ActionResult Faq()
+        {
+            // Breadcrumbs
+            BreadCrumbViewModel crumbs = new BreadCrumbViewModel();
+            crumbs.HomeName = SiteTerms.GetTerm(SiteTermIds.Home);
+            crumbs.Items.Enqueue(new BreadCrumbItem()
+            {
+                Name = SiteTerms.GetTerm(SiteTermIds.CustomerService),
+                Link = Url.Content("~/ContactUs")
+            });
+            crumbs.Items.Enqueue(new BreadCrumbItem() { Name = SiteTerms.GetTerm(SiteTermIds.FAQ) });
+            ViewBag.BreadCrumbTrail = crumbs;
+
+            // Titles
+            ViewBag.Title = SiteTerms.GetTerm(SiteTermIds.FAQ);
+
+            Policy p = MTApp.ContentServices.Policies.FindOrCreateByType(PolicyType.Faq);
+            if (p == null) p = new Policy();
+            return View(p);
         }
 
     }

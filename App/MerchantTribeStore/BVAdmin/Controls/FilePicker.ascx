@@ -15,14 +15,14 @@
             <asp:DropDownList ID="FilesDropDownList" runat="server" AppendDataBoundItems="True">
                 <asp:ListItem>File Above</asp:ListItem>
             </asp:DropDownList><asp:TextBox ID="FileSelectedTextBox" runat="server" Visible="False"></asp:TextBox>
-            <bvc5:BVCustomValidator ID="FileHasBeenSelectedCustomValidator" runat="server" 
+            <asp:CustomValidator ID="FileHasBeenSelectedCustomValidator" runat="server" 
                 ErrorMessage="You must upload a file or select a file that has already been uploaded." 
                 CssClass="errormessage" ForeColor=" " 
-                onservervalidate="FileHasBeenSelectedCustomValidator_ServerValidate">*</bvc5:BVCustomValidator>
-            <bvc5:BVCustomValidator ID="FileIsUniqueToProductCustomValidator" 
+                onservervalidate="FileHasBeenSelectedCustomValidator_ServerValidate">*</asp:CustomValidator>
+            <asp:CustomValidator ID="FileIsUniqueToProductCustomValidator" 
                 runat="server" ErrorMessage="Physical file must be unique to product." 
                 CssClass="errormessage" ForeColor=" " 
-                onservervalidate="FileIsUniqueToProductCustomValidator_ServerValidate">*</bvc5:BVCustomValidator>
+                onservervalidate="FileIsUniqueToProductCustomValidator_ServerValidate">*</asp:CustomValidator>
             <a id="browseButton" runat="server" href="javascript:popUpWindow('?returnScript=SetSmallImage&WebMode=1');">
             <asp:Image runat="server" ImageUrl="~/BVAdmin/Images/Buttons/Browse.png" ID="imgSelect1" /></a><asp:HiddenField
                 ID="FileIdHiddenField" runat="server" />
@@ -33,12 +33,12 @@
             Short description:</td>
         <td class="formfield" colspan="4">
             <asp:TextBox ID="ShortDescriptionTextBox" runat="server" Width="304px"></asp:TextBox>
-            <bvc5:BVCustomValidator ID="DescriptionIsUniqueToProductCustomValidator" 
+            <asp:CustomValidator ID="DescriptionIsUniqueToProductCustomValidator" 
                 runat="server" 
                 ErrorMessage="Short description must be unique for files with the same name." 
                 ControlToValidate="ShortDescriptionTextBox" CssClass="errormessage" 
                 ForeColor=" " 
-                onservervalidate="DescriptionIsUniqueToProductCustomValidator_ServerValidate">*</bvc5:BVCustomValidator></td>
+                onservervalidate="DescriptionIsUniqueToProductCustomValidator_ServerValidate">*</asp:CustomValidator></td>
     </tr>
     <tr id="AvailableMinutesRow" runat="server">
         <td class="formlabel">
@@ -53,8 +53,8 @@
             Number of times file can be downloaded:</td>
         <td class="formfield" colspan="4">
             <asp:TextBox ID="NumberOfDownloadsTextBox" runat="server" Width="32px"></asp:TextBox>
-            (leave blank for unlimited)<bvc5:BVRegularExpressionValidator ID="RegularExpressionValidator1"
+            (leave blank for unlimited)<asp:RegularExpressionValidator ID="RegularExpressionValidator1"
                 runat="server" ControlToValidate="NumberOfDownloadsTextBox" ErrorMessage="Number of times file can be downloaded must be numeric"
-                ValidationExpression="\d{1,6}" CssClass="errormessage" ForeColor=" ">*</bvc5:BVRegularExpressionValidator></td>
+                ValidationExpression="\d{1,6}" CssClass="errormessage" ForeColor=" ">*</asp:RegularExpressionValidator></td>
     </tr>
 </table>

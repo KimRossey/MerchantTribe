@@ -60,8 +60,8 @@
                     &nbsp;Grid Columns</td>
                 <td class="forminput">
                     <asp:TextBox ID="GridColumnsField" runat="server" Columns="5"></asp:TextBox>
-                    <bvc5:BVRegularExpressionValidator ControlToValidate="GridColumnsField" runat="server" ID="valGridColumns" ForeColor=" " CssClass="errormessage"
-                    ValidationExpression="[1-9]" Display="dynamic" ErrorMessage="Please Enter a Numeric Value"></bvc5:BVRegularExpressionValidator>
+                    <asp:RegularExpressionValidator ControlToValidate="GridColumnsField" runat="server" ID="valGridColumns" ForeColor=" " CssClass="errormessage"
+                    ValidationExpression="[1-9]" Display="dynamic" ErrorMessage="Please Enter a Numeric Value"></asp:RegularExpressionValidator>
                 </td>
             </tr>
             <tr>

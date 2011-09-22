@@ -37,8 +37,8 @@
                     Name:</td>
                 <td class="formfield">
                     <asp:TextBox ID="NameField" runat="server" Columns="30" MaxLength="100" TabIndex="2000"
-                        Width="200px"></asp:TextBox><bvc5:BVRequiredFieldValidator ID="valName" runat="server"
-                            ErrorMessage="Please enter a Name" ControlToValidate="NameField">*</bvc5:BVRequiredFieldValidator></td>
+                        Width="200px"></asp:TextBox><asp:RequiredFieldValidator ID="valName" runat="server"
+                            ErrorMessage="Please enter a Name" ControlToValidate="NameField">*</asp:RequiredFieldValidator></td>
             </tr>
             <tr>
                 <td class="formlabel">
@@ -60,9 +60,9 @@
     </asp:Panel>
     <div style="margin:50px 0px 20px 0px;width:375px;">
     <h2>Import/Export</h2>    
-        <bvc5:BVCustomValidator ID="CustomValidator1" runat="server" ControlToValidate="ImportField"
+        <asp:CustomValidator ID="CustomValidator1" runat="server" ControlToValidate="ImportField"
             ErrorMessage="All E-mail Addresses Must Be Valid." 
-            ValidationGroup="Import" onservervalidate="CustomValidator1_ServerValidate"></bvc5:BVCustomValidator>&nbsp;
+            ValidationGroup="Import" onservervalidate="CustomValidator1_ServerValidate"></asp:CustomValidator>&nbsp;
     <asp:TextBox ID="ImportField" runat="server" Columns="40" Rows="10" TextMode="MultiLine" Wrap="False"></asp:TextBox>
     <br />
     <asp:ImageButton ID="btnImport" runat="server" 

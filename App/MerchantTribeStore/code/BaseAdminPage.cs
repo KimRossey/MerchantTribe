@@ -8,7 +8,7 @@ using MerchantTribe.Commerce.Contacts;
 
 namespace MerchantTribeStore
 {
-    public class BaseAdminPage : System.Web.UI.Page, MerchantTribe.Commerce.Controls.IBaseAdminPage, IMultiStorePage
+    public class BaseAdminPage : System.Web.UI.Page, IMultiStorePage
     {
         protected const string DefaultCatalogPage = "~/BVAdmin/Catalog/Default.aspx";
 

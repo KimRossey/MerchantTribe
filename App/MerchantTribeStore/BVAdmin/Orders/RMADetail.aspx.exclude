@@ -76,8 +76,8 @@
             <asp:TemplateField HeaderText="Quantity Received">
                 <ItemTemplate>
                     <asp:TextBox ID="QuantityTextBox" runat="server" Text="0" Width="30px"></asp:TextBox>
-                    <bvc5:BVRequiredFieldValidator ID="QuantityRequiredFieldValidator" runat="server" ErrorMessage="Must enter a quantity" Text="*" ControlToValidate="QuantityTextBox" Display="Dynamic" ></bvc5:BVRequiredFieldValidator>                    
-                    <bvc5:BVCustomValidator ID="QuantityCustomValidator" runat="server" OnServerValidate="IsNumeric_ServerValidate" ControlToValidate="QuantityTextBox" Text="*" ErrorMessage="Must be numeric" Display="Dynamic"></bvc5:BVCustomValidator>
+                    <asp:RequiredFieldValidator ID="QuantityRequiredFieldValidator" runat="server" ErrorMessage="Must enter a quantity" Text="*" ControlToValidate="QuantityTextBox" Display="Dynamic" ></asp:RequiredFieldValidator>                    
+                    <asp:CustomValidator ID="QuantityCustomValidator" runat="server" OnServerValidate="IsNumeric_ServerValidate" ControlToValidate="QuantityTextBox" Text="*" ErrorMessage="Must be numeric" Display="Dynamic"></asp:CustomValidator>
                 </ItemTemplate>
                 <ItemStyle CssClass="highlightedcolumn" />
             </asp:TemplateField>

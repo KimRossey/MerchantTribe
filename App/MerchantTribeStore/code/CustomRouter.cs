@@ -44,12 +44,16 @@ namespace MerchantTribeStore
                 {
                     case CategorySourceType.ByRules:
                     case CategorySourceType.CustomLink:
-                    case CategorySourceType.Manual:
-                        var catPage = System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath("~/category.aspx", typeof(MerchantTribeStore.category)) as MerchantTribeStore.category;
-                        return catPage as IHttpHandler;                        
+                    case CategorySourceType.Manual:      
+                        requestContext.RouteData.Values["controller"] = "Category";
+                        requestContext.RouteData.Values["action"] = "Index";
+                        System.Web.Mvc.MvcHandler mvcHandlerCat = new MvcHandler(requestContext);
+                        return mvcHandlerCat;                        
                     case CategorySourceType.DrillDown:
-                        var filterPage = System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath("~/categorydrilldown.aspx", typeof(MerchantTribeStore.categorydrilldown)) as MerchantTribeStore.categorydrilldown;
-                        return filterPage as IHttpHandler;                        
+                        requestContext.RouteData.Values["controller"] = "Category";
+                        requestContext.RouteData.Values["action"] = "DrillDownIndex";
+                        System.Web.Mvc.MvcHandler mvcHandlerCatDrill = new MvcHandler(requestContext);
+                        return mvcHandlerCatDrill;                        
                     case CategorySourceType.FlexPage:
                         requestContext.RouteData.Values["controller"] = "FlexPage";
                         requestContext.RouteData.Values["action"] = "Index";

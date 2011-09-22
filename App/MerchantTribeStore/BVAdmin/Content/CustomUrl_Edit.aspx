@@ -13,17 +13,17 @@
                 <td class="formlabel">
                     Requested Url:</td>
                 <td class="formfield">
-                    <asp:TextBox ID="RequestedUrlField" runat="server" Columns="80" TabIndex="2000" Width="500px"></asp:TextBox><bvc5:BVRequiredFieldValidator
+                    <asp:TextBox ID="RequestedUrlField" runat="server" Columns="80" TabIndex="2000" Width="500px"></asp:TextBox><asp:RequiredFieldValidator
                         ID="RequiredVal1" runat="server" ErrorMessage="Please enter a Requested Url"
-                        ControlToValidate="RequestedUrlField">*</bvc5:BVRequiredFieldValidator></td>
+                        ControlToValidate="RequestedUrlField">*</asp:RequiredFieldValidator></td>
             </tr>
             <tr>
                 <td class="formlabel">
                     Redirect To Url:</td>
                 <td class="formfield">
-                    <asp:TextBox ID="RedirectToUrlField" runat="server" Columns="80" TabIndex="2010" Width="500px"></asp:TextBox><bvc5:BVRequiredFieldValidator
+                    <asp:TextBox ID="RedirectToUrlField" runat="server" Columns="80" TabIndex="2010" Width="500px"></asp:TextBox><asp:RequiredFieldValidator
                         ID="RequiredVal2" runat="server" ErrorMessage="Please enter a Redirect To Url"
-                        ControlToValidate="RedirectToUrlField">*</bvc5:BVRequiredFieldValidator></td>
+                        ControlToValidate="RedirectToUrlField">*</asp:RequiredFieldValidator></td>
             </tr>
             <tr>
                 <td class="formlabel">&nbsp;</td>

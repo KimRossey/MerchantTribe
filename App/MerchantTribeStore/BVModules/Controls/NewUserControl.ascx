@@ -11,12 +11,12 @@
         <td class="formfield">
             <asp:TextBox ID="EmailField" CssClass="forminput required" runat="server" Columns="30"
                 MaxLength="100" TabIndex="2001"></asp:TextBox>
-            <bvc5:BVRequiredFieldValidator ValidationGroup="NewUser" ID="val2Username"  ForeColor=" " CssClass="errormessage"
+            <asp:RequiredFieldValidator ValidationGroup="NewUser" ID="val2Username"  ForeColor=" " CssClass="errormessage"
                 EnableClientScript="True" runat="server" ControlToValidate="EmailField" Display="Dynamic"
-                ErrorMessage="Please enter an email address" Visible="True">*</bvc5:BVRequiredFieldValidator>
-            <bvc5:BVRegularExpressionValidator ValidationGroup="NewUser" ID="valUsername"  ForeColor=" " CssClass="errormessage"
+                ErrorMessage="Please enter an email address" Visible="True">*</asp:RequiredFieldValidator>
+            <asp:RegularExpressionValidator ValidationGroup="NewUser" ID="valUsername"  ForeColor=" " CssClass="errormessage"
                 runat="server" ControlToValidate="EmailField" Display="Dynamic" ErrorMessage="Please enter a valid email address"
-                ValidationExpression="^(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6}$"></bvc5:BVRegularExpressionValidator>
+                ValidationExpression="^(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6}$"></asp:RegularExpressionValidator>
         </td>
     </tr>
     <tr>
@@ -26,9 +26,9 @@
         <td class="formfield">
             <asp:TextBox ID="FirstNameField" CssClass="forminput required" TabIndex="2002" runat="server"
                 Columns="30" MaxLength="50"></asp:TextBox>
-            <bvc5:BVRequiredFieldValidator ValidationGroup="NewUser" ID="valFirstName"  ForeColor=" " CssClass="errormessage"
+            <asp:RequiredFieldValidator ValidationGroup="NewUser" ID="valFirstName"  ForeColor=" " CssClass="errormessage"
                 EnableClientScript="True" runat="server" ControlToValidate="FirstNameField" Display="Dynamic"
-                ErrorMessage="Please enter a first name or nickname" Visible="True">*</bvc5:BVRequiredFieldValidator></td>
+                ErrorMessage="Please enter a first name or nickname" Visible="True">*</asp:RequiredFieldValidator></td>
     </tr>
     <tr>
         <td class="formlabel">
@@ -37,9 +37,9 @@
         <td class="formfield">
             <asp:TextBox ID="LastNameField" CssClass="forminput required" TabIndex="2003" runat="server"
                 Columns="30" MaxLength="50"></asp:TextBox>
-            <bvc5:BVRequiredFieldValidator ValidationGroup="NewUser" ID="RequiredFieldValidator1"
+            <asp:RequiredFieldValidator ValidationGroup="NewUser" ID="RequiredFieldValidator1"
                 ForeColor=" " CssClass="errormessage" EnableClientScript="True" runat="server" ControlToValidate="LastNameField"
-                Display="Dynamic" ErrorMessage="Please enter a last name" Visible="True">*</bvc5:BVRequiredFieldValidator></td>
+                Display="Dynamic" ErrorMessage="Please enter a last name" Visible="True">*</asp:RequiredFieldValidator></td>
     </tr>   
     <tr>
         <td class="formlabel">            
@@ -58,11 +58,11 @@
         <td class="formfield">
             <asp:TextBox ID="PasswordConfirmField" CssClass="forminput required" runat="server"
                 Columns="30" TabIndex="2007" TextMode="Password"></asp:TextBox>
-            <bvc5:BVRequiredFieldValidator ValidationGroup="NewUser" ID="RequiredFieldValidator2"
-                runat="server" ControlToValidate="PasswordConfirmField" ErrorMessage="A password confirmation is required" ForeColor=" " CssClass="errormessage">*</bvc5:BVRequiredFieldValidator>
-            <bvc5:BVCompareValidator ID="CompareValidator1" runat="server" ControlToCompare="PasswordField"
+            <asp:RequiredFieldValidator ValidationGroup="NewUser" ID="RequiredFieldValidator2"
+                runat="server" ControlToValidate="PasswordConfirmField" ErrorMessage="A password confirmation is required" ForeColor=" " CssClass="errormessage">*</asp:RequiredFieldValidator>
+            <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="PasswordField"
                 ControlToValidate="PasswordConfirmField" Display="Dynamic" ErrorMessage="Password and Confirmation Must Match."
-                ValidationGroup="NewUser" ForeColor=" " CssClass="errormessage">*</bvc5:BVCompareValidator></td>
+                ValidationGroup="NewUser" ForeColor=" " CssClass="errormessage">*</asp:CompareValidator></td>
     </tr>
     <tr>
         <td>&nbsp;</td>

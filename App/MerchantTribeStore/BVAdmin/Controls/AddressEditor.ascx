@@ -16,8 +16,8 @@
             <td class="formfield">
                 <asp:TextBox ID="firstNameField" TabIndex="103" runat="server"
                     Columns="10" Width="100px"></asp:TextBox>
-                <bvc5:BVRequiredFieldValidator ID="valFirstName"
-                        runat="server" ErrorMessage="First Name is Required" ForeColor=" " ControlToValidate="firstNameField" CssClass="errormessage">*</bvc5:BVRequiredFieldValidator>
+                <asp:RequiredFieldValidator ID="valFirstName"
+                        runat="server" ErrorMessage="First Name is Required" ForeColor=" " ControlToValidate="firstNameField" CssClass="errormessage">*</asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr>
@@ -26,8 +26,8 @@
             </td>
             <td class="formfield">
                 <asp:TextBox ID="lastNameField" TabIndex="105" runat="server"
-                    Columns="20" Width="150px"></asp:TextBox><bvc5:BVRequiredFieldValidator ID="valLastName" runat="server"
-                        ErrorMessage="Last Name is Required" ForeColor=" " ControlToValidate="lastNameField" CssClass="errormessage">*</bvc5:BVRequiredFieldValidator></td>
+                    Columns="20" Width="150px"></asp:TextBox><asp:RequiredFieldValidator ID="valLastName" runat="server"
+                        ErrorMessage="Last Name is Required" ForeColor=" " ControlToValidate="lastNameField" CssClass="errormessage">*</asp:RequiredFieldValidator></td>
         </tr>
         <tr id="CompanyNameRow" runat="server">
             <td class="formlabel">
@@ -35,9 +35,9 @@
             <td class="formfield">
                 <asp:TextBox ID="CompanyField" TabIndex="106" runat="server"
                     Columns="20" Width="150px"></asp:TextBox>
-                <bvc5:BVRequiredFieldValidator ID="valCompany" runat="server" ControlToValidate="CompanyField"
+                <asp:RequiredFieldValidator ID="valCompany" runat="server" ControlToValidate="CompanyField"
                     ForeColor=" " ErrorMessage="Company is Required" Enabled="False" CssClass="errormessage">
-				    *</bvc5:BVRequiredFieldValidator></td>
+				    *</asp:RequiredFieldValidator></td>
         </tr>
         <tr>
             <td class="formlabel">
@@ -45,8 +45,8 @@
             </td>
             <td class="formfield">
                 <asp:TextBox ID="address1Field" TabIndex="107" runat="server"
-                    Columns="20" Width="150px"></asp:TextBox><bvc5:BVRequiredFieldValidator ID="valAddress" runat="server"
-                        ErrorMessage="Address is Required" ForeColor=" " ControlToValidate="address1Field" CssClass="errormessage">*</bvc5:BVRequiredFieldValidator></td>
+                    Columns="20" Width="150px"></asp:TextBox><asp:RequiredFieldValidator ID="valAddress" runat="server"
+                        ErrorMessage="Address is Required" ForeColor=" " ControlToValidate="address1Field" CssClass="errormessage">*</asp:RequiredFieldValidator></td>
         </tr>
         <tr>
             <td class="formlabel">
@@ -69,8 +69,8 @@
                 City:
             </td>
             <td class="formfield">
-                <asp:TextBox ID="cityField" TabIndex="109" runat="server" Columns="20" Width="150px"></asp:TextBox><bvc5:BVRequiredFieldValidator
-                    ID="valCity" runat="server" ErrorMessage="City is Required" ForeColor=" " ControlToValidate="cityField" CssClass="errormessage">*</bvc5:BVRequiredFieldValidator></td>
+                <asp:TextBox ID="cityField" TabIndex="109" runat="server" Columns="20" Width="150px"></asp:TextBox><asp:RequiredFieldValidator
+                    ID="valCity" runat="server" ErrorMessage="City is Required" ForeColor=" " ControlToValidate="cityField" CssClass="errormessage">*</asp:RequiredFieldValidator></td>
         </tr>
         <tr>
             <td class="formlabel">
@@ -80,8 +80,8 @@
                 </asp:DropDownList> <asp:TextBox ID="stateField" TabIndex="111"
                     runat="server" Columns="10" Visible="False"></asp:TextBox>&nbsp;
                 <asp:TextBox ID="postalCodeField" TabIndex="112" runat="server"
-                    Columns="10"></asp:TextBox><bvc5:BVRequiredFieldValidator ID="valPostalCode" runat="server"
-                        ErrorMessage="Postal Code is Required" ForeColor=" " ControlToValidate="postalCodeField" CssClass="errormessage">*</bvc5:BVRequiredFieldValidator>
+                    Columns="10"></asp:TextBox><asp:RequiredFieldValidator ID="valPostalCode" runat="server"
+                        ErrorMessage="Postal Code is Required" ForeColor=" " ControlToValidate="postalCodeField" CssClass="errormessage">*</asp:RequiredFieldValidator>
                 <asp:Label ID="lblStateError" runat="server" Visible="False">
 				    *</asp:Label>
             </td>
@@ -93,9 +93,9 @@
             <td class="formfield">
                 <asp:TextBox ID="PhoneNumberField" TabIndex="114" runat="server"
                     Columns="20" Width="150px"></asp:TextBox>
-                <bvc5:BVRequiredFieldValidator ID="valPhone" runat="server" ControlToValidate="PhoneNumberField"
+                <asp:RequiredFieldValidator ID="valPhone" runat="server" ControlToValidate="PhoneNumberField"
                     ForeColor=" " ErrorMessage="Phone Number is Required" Enabled="False" CssClass="errormessage">
-				    *</bvc5:BVRequiredFieldValidator></td>
+				    *</asp:RequiredFieldValidator></td>
         </tr>
     </table>
     <asp:HiddenField ID="AddressBvin" runat="server" />

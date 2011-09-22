@@ -46,7 +46,7 @@ namespace MerchantTribeStore {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::MerchantTribe.Commerce.Controls.BVRequiredFieldValidator RequiredFieldValidator1;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
         
         /// <summary>
         /// HandlingFeeAmountCustomValidator control.
@@ -55,7 +55,7 @@ namespace MerchantTribeStore {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::MerchantTribe.Commerce.Controls.BVCustomValidator HandlingFeeAmountCustomValidator;
+        protected global::System.Web.UI.WebControls.CustomValidator HandlingFeeAmountCustomValidator;
         
         /// <summary>
         /// HandlingRadioButtonList control.

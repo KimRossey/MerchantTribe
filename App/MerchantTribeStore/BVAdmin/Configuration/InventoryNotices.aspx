@@ -14,17 +14,17 @@
             <td class="formlabel">Send Low Stock Notice Every</td>
             <td class="formfield">
                 <asp:TextBox ID="LowStockHoursTextBox" runat="server"></asp:TextBox> Hours
-                <bvc5:BVRequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Low Stock Hours Required. Enter 0 To Turn Off." Text="*" Display="Dynamic" ControlToValidate="LowStockHoursTextBox" CssClass="errormessage"></bvc5:BVRequiredFieldValidator>                
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Low Stock Hours Required. Enter 0 To Turn Off." Text="*" Display="Dynamic" ControlToValidate="LowStockHoursTextBox" CssClass="errormessage"></asp:RequiredFieldValidator>                
             </td>
         </tr>                
         <tr>
             <td class="formlabel">Email Report To:</td>
             <td class="formfield">
                 <asp:TextBox ID="EmailReportToTextBox" runat="server"></asp:TextBox>
-                <bvc5:BVRequiredFieldValidator ID="BVRequiredFieldValidator3" runat="server" ControlToValidate="EmailReportToTextBox" EnableClientScript="True" ErrorMessage="E-mail Address Is Required." ForeColor=" " CssClass="errormessage" Display="Dynamic"></bvc5:BVRequiredFieldValidator>
-                <bvc5:BVRegularExpressionValidator ID="BVRegularExpressionValidator4" ForeColor=" " CssClass="errormessage"
+                <asp:RequiredFieldValidator ID="BVRequiredFieldValidator3" runat="server" ControlToValidate="EmailReportToTextBox" EnableClientScript="True" ErrorMessage="E-mail Address Is Required." ForeColor=" " CssClass="errormessage" Display="Dynamic"></asp:RequiredFieldValidator>
+                <asp:RegularExpressionValidator ID="BVRegularExpressionValidator4" ForeColor=" " CssClass="errormessage"
                     runat="server" ControlToValidate="EmailReportToTextBox" Display="Dynamic" ErrorMessage="Please enter a valid email address"
-                    ValidationExpression="^(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6}$"></bvc5:BVRegularExpressionValidator>    
+                    ValidationExpression="^(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6}$"></asp:RegularExpressionValidator>    
             </td>
         </tr>
         <tr>

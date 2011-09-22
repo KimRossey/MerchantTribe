@@ -839,8 +839,6 @@
     <Content Include="content\themes\theme-bv-summerstore\buttons\Yes.png" />
     <Content Include="Scripts\fileuploader\Test.html" />
     <Content Include="Cart.aspx" />
-    <Content Include="category.aspx" />
-    <Content Include="categorydrilldown.aspx" />
     <Content Include="checkout.aspx" />
     <Content Include="Checkout.js" />
     <Content Include="CheckoutPayPalExpress.aspx" />
@@ -1310,12 +1308,9 @@
     <Content Include="content\themes\theme-bv-fashionista\preview.png" />
     <Content Include="content\themes\theme-bv-fashionista\preview_big.png" />
     <Content Include="content\themes\theme-bv-fashionista\styles.css" />
-    <Content Include="OldDefault.aspx" />
     <Content Include="EmailFriend.aspx" />
     <Content Include="Error.aspx" />
-    <Content Include="FAQ.aspx" />
     <Content Include="ForgotPassword.aspx" />
-    <Content Include="GiftCertificate.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Images\minus.png" />
     <Content Include="Images\plus.png" />
@@ -1411,7 +1406,6 @@
     <Content Include="json\IsEmailKnown.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="logout.aspx" />
-    <Content Include="MyAccount_AddressBook.aspx" />
     <Content Include="nopermissions.aspx" />
     <Content Include="product.aspx" />
     <Content Include="ProductReviews.aspx" />
@@ -2179,7 +2173,6 @@
     <Compile Include="Areas\ContentBlocks\Controllers\TopWeeklySellersController.cs" />
     <Compile Include="Areas\ContentBlocks\Models\BannerAdViewModel.cs" />
     <Compile Include="Areas\ContentBlocks\Models\CategoryMenuViewModel.cs" />
-    <Compile Include="Areas\ContentBlocks\Models\CategoryRotatorViewModel.cs" />
     <Compile Include="Areas\ContentBlocks\Models\RssFeedViewModel.cs" />
     <Compile Include="Areas\ContentBlocks\Models\SideMenuItem.cs" />
     <Compile Include="Areas\ContentBlocks\Models\SideMenuViewModel.cs" />
@@ -4416,20 +4409,6 @@
     <Compile Include="Cart.aspx.designer.cs">
       <DependentUpon>Cart.aspx</DependentUpon>
     </Compile>
-    <Compile Include="category.aspx.cs">
-      <DependentUpon>category.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="category.aspx.designer.cs">
-      <DependentUpon>category.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="categorydrilldown.aspx.cs">
-      <DependentUpon>categorydrilldown.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="categorydrilldown.aspx.designer.cs">
-      <DependentUpon>categorydrilldown.aspx</DependentUpon>
-    </Compile>
     <Compile Include="checkout.aspx.cs">
       <DependentUpon>checkout.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -4496,6 +4475,7 @@
     <Compile Include="code\ViewUtilities.cs" />
     <Compile Include="Controllers\ApiRestController.cs" />
     <Compile Include="Controllers\BreadCrumbController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\ContentColumnController.cs" />
     <Compile Include="Controllers\CustomPageController.cs" />
     <Compile Include="Controllers\EstimateShippingController.cs" />
@@ -4521,17 +4501,12 @@
     <Compile Include="Controllers\ToDoController.cs" />
     <Compile Include="Controllers\XmlResult.cs" />
     <Compile Include="Models\BreadCrumbViewModel.cs" />
+    <Compile Include="Models\CategoryPageViewModel.cs" />
     <Compile Include="Models\ContentColumnIdentifier.cs" />
     <Compile Include="Models\PagerViewModel.cs" />
     <Compile Include="Models\ProductListViewModel.cs" />
+    <Compile Include="Models\SingleCategoryViewModel.cs" />
     <Compile Include="Models\SingleProductViewModel.cs" />
-    <Compile Include="OldDefault.aspx.cs">
-      <DependentUpon>OldDefault.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="OldDefault.aspx.designer.cs">
-      <DependentUpon>OldDefault.aspx</DependentUpon>
-    </Compile>
     <Compile Include="EmailFriend.aspx.cs">
       <DependentUpon>EmailFriend.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -4546,13 +4521,6 @@
     <Compile Include="Error.aspx.designer.cs">
       <DependentUpon>Error.aspx</DependentUpon>
     </Compile>
-    <Compile Include="FAQ.aspx.cs">
-      <DependentUpon>FAQ.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="FAQ.aspx.designer.cs">
-      <DependentUpon>FAQ.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Filters\CustomerSignedInFilterAttribute.cs" />
     <Compile Include="Filters\StoreClosedFilterAttribute.cs" />
     <Compile Include="ForgotPassword.aspx.cs">
@@ -4561,13 +4529,6 @@
     </Compile>
     <Compile Include="ForgotPassword.aspx.designer.cs">
       <DependentUpon>ForgotPassword.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="GiftCertificate.aspx.cs">
-      <DependentUpon>GiftCertificate.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="GiftCertificate.aspx.designer.cs">
-      <DependentUpon>GiftCertificate.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -4638,13 +4599,6 @@
     <Compile Include="Models\AddressViewModel.cs" />
     <Compile Include="Models\EstimateShippingViewModel.cs" />
     <Compile Include="Models\SuperStoreViewModel.cs" />
-    <Compile Include="MyAccount_AddressBook.aspx.cs">
-      <DependentUpon>MyAccount_AddressBook.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="MyAccount_AddressBook.aspx.designer.cs">
-      <DependentUpon>MyAccount_AddressBook.aspx</DependentUpon>
-    </Compile>
     <Compile Include="nopermissions.aspx.cs">
       <DependentUpon>nopermissions.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -4952,6 +4906,11 @@
     <Content Include="Views\Products\RenderSingleProduct.cshtml" />
     <Content Include="Views\BreadCrumb\BreadCrumb.cshtml" />
     <Content Include="Views\CustomPage\Index.cshtml" />
+    <Content Include="Views\Policies\Faq.cshtml" />
+    <Content Include="Views\Category\Grid.cshtml" />
+    <Content Include="Views\Category\SimpleList.cshtml" />
+    <Content Include="Views\Products\RenderSingleProductSimple.cshtml" />
+    <Content Include="Views\Category\DrillDown.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

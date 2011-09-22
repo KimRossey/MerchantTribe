@@ -1,9 +1,9 @@
 <%@ Control Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVAdmin_Controls_DatePicker" Codebehind="DatePicker.ascx.cs" %>
 <asp:TextBox ID="DateTextBox" runat="server"></asp:TextBox>
-<bvc5:BVCustomValidator ID="DateCustomValidator" runat="server" 
+<asp:CustomValidator ID="DateCustomValidator" runat="server" 
     ControlToValidate="DateTextBox" CssClass="errormessage" ForeColor=" " 
-    onservervalidate="DateCustomValidator_ServerValidate">*</bvc5:BVCustomValidator>
-<bvc5:BVRequiredFieldValidator ID="DateRequiredValidator" runat="server" ControlToValidate="DateTextBox" CssClass="errormessage" ForeColor=" ">*</bvc5:BVRequiredFieldValidator>
+    onservervalidate="DateCustomValidator_ServerValidate">*</asp:CustomValidator>
+<asp:RequiredFieldValidator ID="DateRequiredValidator" runat="server" ControlToValidate="DateTextBox" CssClass="errormessage" ForeColor=" ">*</asp:RequiredFieldValidator>
 <asp:ImageButton ID="CalendarShowImageButton" runat="server" 
     ImageUrl="~/BVAdmin/Images/Buttons/Calendar.png" CausesValidation="False" 
     onclick="CalendarShowImageButton_Click" />

@@ -55,7 +55,7 @@ namespace MerchantTribeStore {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::MerchantTribe.Commerce.Controls.BVRequiredFieldValidator EmailAddressRequiredFieldValidator;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator EmailAddressRequiredFieldValidator;
         
         /// <summary>
         /// BVRegularExpressionValidator1 control.
@@ -64,7 +64,7 @@ namespace MerchantTribeStore {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::MerchantTribe.Commerce.Controls.BVRegularExpressionValidator BVRegularExpressionValidator1;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator BVRegularExpressionValidator1;
         
         /// <summary>
         /// OrderNotificationEmailField control.
@@ -82,7 +82,7 @@ namespace MerchantTribeStore {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::MerchantTribe.Commerce.Controls.BVRequiredFieldValidator BVRequiredFieldValidator3;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator BVRequiredFieldValidator3;
         
         /// <summary>
         /// BVRegularExpressionValidator4 control.
@@ -91,7 +91,7 @@ namespace MerchantTribeStore {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::MerchantTribe.Commerce.Controls.BVRegularExpressionValidator BVRegularExpressionValidator4;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator BVRegularExpressionValidator4;
         
         /// <summary>
         /// btnSave control.

@@ -62,18 +62,18 @@
     <td class="formlabel">Number Of Minutes For A User's Google Cart To Stay valid.<br /> (0 = does not expire)</td>
     <td class="formfield">        
         <asp:TextBox ID="CartValidMinutesTextBox" runat="server"></asp:TextBox>
-        <bvc5:BVRequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="CartValidMinutesTextBox" Text="*" ErrorMessage="Cart Valid Minutes Is Required."></bvc5:BVRequiredFieldValidator>
-        <bvc5:BVRegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="CartValidMinutesTextBox" Text="*" ErrorMessage="Cart Valid Minutes Must Be Numeric" ValidationExpression="\d+"></bvc5:BVRegularExpressionValidator>
-        <bvc5:BVRangeValidator ID="RangeValidator1" runat="server" ControlToValidate="CartValidMinutesTextBox" Text="*" ErrorMessage="Cart Valid Minutes Must Be A Positive Numeric Value" MinimumValue="0" MaximumValue="999999"></bvc5:BVRangeValidator>
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="CartValidMinutesTextBox" Text="*" ErrorMessage="Cart Valid Minutes Is Required."></asp:RequiredFieldValidator>
+        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="CartValidMinutesTextBox" Text="*" ErrorMessage="Cart Valid Minutes Must Be Numeric" ValidationExpression="\d+"></asp:RegularExpressionValidator>
+        <asp:RangeValidator ID="RangeValidator1" runat="server" ControlToValidate="CartValidMinutesTextBox" Text="*" ErrorMessage="Cart Valid Minutes Must Be A Positive Numeric Value" MinimumValue="0" MaximumValue="999999"></asp:RangeValidator>
     </td>
 </tr>
 <tr>
     <td class="formlabel">Put Orders On Hold When Google Account Is Less Than</td>
     <td class="formfield">        
         <asp:TextBox ID="DaysOldTextBox" runat="server"></asp:TextBox> days old.
-        <bvc5:BVRequiredFieldValidator ID="DaysOldRequiredFieldValidator" runat="server" ControlToValidate="DaysOldTextBox" Text="*" ErrorMessage="Account Days Old Is Required."></bvc5:BVRequiredFieldValidator>
-        <bvc5:BVRegularExpressionValidator ID="DaysOldRegularExpressionValidator" runat="server" ControlToValidate="DaysOldTextBox" Text="*" ErrorMessage="Account Days Old Must Be Numeric" ValidationExpression="\d+"></bvc5:BVRegularExpressionValidator>
-        <bvc5:BVRangeValidator ID="DaysOldRangeValidator" runat="server" ControlToValidate="DaysOldTextBox" Text="*" ErrorMessage="Account Days Old Must Be A Positive Numeric Value" MinimumValue="0" MaximumValue="999999"></bvc5:BVRangeValidator>
+        <asp:RequiredFieldValidator ID="DaysOldRequiredFieldValidator" runat="server" ControlToValidate="DaysOldTextBox" Text="*" ErrorMessage="Account Days Old Is Required."></asp:RequiredFieldValidator>
+        <asp:RegularExpressionValidator ID="DaysOldRegularExpressionValidator" runat="server" ControlToValidate="DaysOldTextBox" Text="*" ErrorMessage="Account Days Old Must Be Numeric" ValidationExpression="\d+"></asp:RegularExpressionValidator>
+        <asp:RangeValidator ID="DaysOldRangeValidator" runat="server" ControlToValidate="DaysOldTextBox" Text="*" ErrorMessage="Account Days Old Must Be A Positive Numeric Value" MinimumValue="0" MaximumValue="999999"></asp:RangeValidator>
     </td>
 </tr>
 <tr>
@@ -158,8 +158,8 @@
     <td class="formlabel">Base Default Shipping Amount: <br />(Used if a value is not supplied below)</td>
     <td class="formfield">
       <asp:TextBox ID="BaseDefaultShippingTextBox" runat="server"></asp:TextBox>
-      <bvc5:BVCustomValidator ID="BaseDefaultShippingCustomValidator" runat="server" ControlToValidate="BaseDefaultShippingTextBox"
-          ErrorMessage="Base Default Shipping Amount Must Be A Valid Monetary Amount." Text="*"></bvc5:BVCustomValidator></td>
+      <asp:CustomValidator ID="BaseDefaultShippingCustomValidator" runat="server" ControlToValidate="BaseDefaultShippingTextBox"
+          ErrorMessage="Base Default Shipping Amount Must Be A Valid Monetary Amount." Text="*"></asp:CustomValidator></td>
 </tr>
 <asp:PlaceHolder ID="ShippingSettingsPlaceHolder" runat="server"></asp:PlaceHolder>
 <tr>

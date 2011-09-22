@@ -19,10 +19,10 @@
                         Name</td>
                     <td class="formfield" colspan="2">
                         <asp:TextBox ID="OfferNameTextBox" runat="server"></asp:TextBox>
-                        <bvc5:BVRegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="OfferNameTextBox"
-                            ErrorMessage="Name must be between 1 and 50 characters" ValidationExpression=".{1,50}">*</bvc5:BVRegularExpressionValidator>
-                        <bvc5:BVRequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="OfferNameTextBox"
-                            ErrorMessage="Offer Name Is Required.">*</bvc5:BVRequiredFieldValidator></td>
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="OfferNameTextBox"
+                            ErrorMessage="Name must be between 1 and 50 characters" ValidationExpression=".{1,50}">*</asp:RegularExpressionValidator>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="OfferNameTextBox"
+                            ErrorMessage="Offer Name Is Required.">*</asp:RequiredFieldValidator></td>
                 </tr>
                 <tr>
                     <td class="formlabel">
@@ -36,9 +36,9 @@
                         End Date</td>
                     <td class="formfield" colspan="2">
                         <uc2:DatePicker ID="EndDatePicker" runat="server" />
-                        <bvc5:BVCustomValidator ID="CustomValidator1" runat="server" 
+                        <asp:CustomValidator ID="CustomValidator1" runat="server" 
                             ErrorMessage="End date must be greater than start date." 
-                            onservervalidate="CustomValidator1_ServerValidate">*</bvc5:BVCustomValidator></td>
+                            onservervalidate="CustomValidator1_ServerValidate">*</asp:CustomValidator></td>
                 </tr>
                 <tr>
                     <td colspan="3"><h2>Settings</h2></td>
@@ -82,17 +82,17 @@
                         <div><asp:RadioButton ID="PerCustomerRadioButton" runat="server" GroupName="UseType" Text="Per customer" />
                         <asp:TextBox ID="UsePerPersonTextBox" runat="server" Width="77px"></asp:TextBox>
                             <asp:Label ID="Label1" runat="server" Text="time(s)"></asp:Label>
-                            <bvc5:BVCustomValidator ID="PerCustomerCustomValidator" runat="server" ControlToValidate="UsePerPersonTextBox"
+                            <asp:CustomValidator ID="PerCustomerCustomValidator" runat="server" ControlToValidate="UsePerPersonTextBox"
                                 
                                 ErrorMessage="Number of times per customer must be set and has to be greater than 0." 
-                                onservervalidate="PerCustomerCustomValidator_ServerValidate">*</bvc5:BVCustomValidator></div>
+                                onservervalidate="PerCustomerCustomValidator_ServerValidate">*</asp:CustomValidator></div>
                         <div><asp:RadioButton ID="PerStoreRadioButton" runat="server" GroupName="UseType" Text="Per store" />
                             <asp:TextBox ID="UsePerStoreTextBox" runat="server" Width="73px"></asp:TextBox>
                             <asp:Label ID="Label2" runat="server" Text="time(s)"></asp:Label>
-                            <bvc5:BVCustomValidator ID="PerStoreCustomValidator" runat="server" ControlToValidate="UsePerStoreTextBox"
+                            <asp:CustomValidator ID="PerStoreCustomValidator" runat="server" ControlToValidate="UsePerStoreTextBox"
                                 
                                 ErrorMessage="Number of times per store must be set and has to be greater than 0." 
-                                onservervalidate="PerStoreCustomValidator_ServerValidate">*</bvc5:BVCustomValidator></div>
+                                onservervalidate="PerStoreCustomValidator_ServerValidate">*</asp:CustomValidator></div>
                     </td>
                 </tr>                
                 <tr>

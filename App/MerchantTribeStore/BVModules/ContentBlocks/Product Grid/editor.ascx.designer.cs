@@ -82,7 +82,7 @@ namespace MerchantTribeStore {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::MerchantTribe.Commerce.Controls.BVRegularExpressionValidator valGridColumns;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator valGridColumns;
         
         /// <summary>
         /// btnOkay control.

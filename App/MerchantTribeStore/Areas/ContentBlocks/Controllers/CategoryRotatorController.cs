@@ -7,6 +7,7 @@ using MerchantTribe.Commerce.Catalog;
 using MerchantTribe.Commerce.Content;
 using MerchantTribe.Commerce.Utilities;
 using MerchantTribeStore.Controllers.Shared;
+using MerchantTribeStore.Models;
 using MerchantTribeStore.Areas.ContentBlocks.Models;
 
 namespace MerchantTribeStore.Areas.ContentBlocks.Controllers
@@ -17,7 +18,7 @@ namespace MerchantTribeStore.Areas.ContentBlocks.Controllers
         // GET: /ContentBlocks/CategoryRotator/
         public ActionResult Index(ContentBlock block)
         {
-            CategoryRotatorViewModel model = new CategoryRotatorViewModel();
+            SingleCategoryViewModel model = new SingleCategoryViewModel();
             
             bool showInOrder = false;
             if (block != null)
@@ -71,7 +72,7 @@ namespace MerchantTribeStore.Areas.ContentBlocks.Controllers
             return View(model);
         }
   
-        private void LoadCategory(CategoryRotatorViewModel model, string categoryId)
+        private void LoadCategory(SingleCategoryViewModel model, string categoryId)
         {
             Category c = MTApp.CatalogServices.Categories.Find(categoryId);
             if (c != null)

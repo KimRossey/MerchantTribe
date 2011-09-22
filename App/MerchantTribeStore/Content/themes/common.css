@@ -308,6 +308,28 @@ h4 {font-weight:bold;font-size:14px;line-height:1.286em;margin:0 9px;padding:7px
 .list-header-pager a:hover, .list-header-pager .current {background-color:#353535;color:#fff;}                      
 .list-header-pager a b {font-weight:normal;padding:2px 6px;display:block;}
 
+/* Simple & Bulk Order Lists */
+/*.categorysimplelisttemplate, .categorybulkorderlisttemplate {margin:20px 0 0 0;}*/
+.categorysimplelisttemplate {padding:0 0 10px 0;}
+.categorysimplelisttemplate .record {display:block;margin:0 0 0.5em 0;width:700px;}
+.categorysimplelisttemplate .recordsku, .categorybulkorderlisttemplate .recordsku {float:left;text-align:left;width:20%;}
+.categorysimplelisttemplate .recordname, .categorybulkorderlisttemplate .recordname {text-align:left;float:left;width:45%;margin:0 10px 0 0;}
+.categorysimplelisttemplate .recordprice, .categorybulkorderlisttemplate .recordprice {text-align:right;float:right;width:30%;margin:0;}
+
+.categorybulkorderlisttemplate .record { padding: 0 0 10px 10px; margin: 0 0 8px 0; border-bottom: 1px solid #eee; float: left; }
+.categorybulkorderlisttemplate table td { vertical-align: top; }
+.categorybulkorderlisttemplate .checkbox { background: #eee; }
+.categorybulkorderlisttemplate .addtocartcontrols {margin:20px 0 20px 3px;}
+
+.categorybulkqtylisttemplate .record { padding: 0 0 15px 0; margin: 0 0 10px 5px; border-bottom: 1px solid #eee; float: left; }
+.categorybulkqtylisttemplate table td { vertical-align: top; }
+.categorybulkqtylisttemplate .addtocartcontrols {margin:20px 0 20px 3px;}
+.categorybulkqtylisttemplate .recordname {float:left;width:615px;margin:0 10px 0 0;}
+.categorybulkqtylisttemplate .recordprice {font-size:100%;float:left;text-align:right;width:100px;margin:0;border:none;}
+.categorybulkqtylisttemplate .qtycell { background: #eee; padding: 5px;}
+.categorybulkqtylisttemplate .quantityfield {margin: 0 auto;width:25px;border:1px solid #ccc;text-align: center;font-size: 110%;font-weight: bold; color: #666;}
+
+
 
 
 /* Featured Products */

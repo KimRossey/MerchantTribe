@@ -15,7 +15,7 @@ namespace MerchantTribeStore
     /// <summary>
     /// Summary description for BaseSuperPage
     /// </summary>
-    public class BaseSuperPage : System.Web.UI.Page, IBaseAdminPage, IMultiStorePage
+    public class BaseSuperPage : System.Web.UI.Page, IMultiStorePage
     {
         private Guid? _AuthTokenGuid = null;
         private RequestContext _CurrentRequestContext = new RequestContext();

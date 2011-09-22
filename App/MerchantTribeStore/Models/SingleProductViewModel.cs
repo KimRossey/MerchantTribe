@@ -24,6 +24,7 @@ namespace MerchantTribeStore.Models
             UserPrice = null;
             ImageUrl = string.Empty;
             ProductLink = string.Empty;
-        }        
+        }
+        
     }
 }

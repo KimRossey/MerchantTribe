@@ -109,7 +109,7 @@ namespace MerchantTribeStore {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::MerchantTribe.Commerce.Controls.BVRequiredFieldValidator RequiredFieldValidator1;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
         
         /// <summary>
         /// RegularExpressionValidator1 control.
@@ -118,7 +118,7 @@ namespace MerchantTribeStore {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::MerchantTribe.Commerce.Controls.BVRegularExpressionValidator RegularExpressionValidator1;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator1;
         
         /// <summary>
         /// RangeValidator1 control.
@@ -127,7 +127,7 @@ namespace MerchantTribeStore {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::MerchantTribe.Commerce.Controls.BVRangeValidator RangeValidator1;
+        protected global::System.Web.UI.WebControls.RangeValidator RangeValidator1;
         
         /// <summary>
         /// DaysOldTextBox control.
@@ -145,7 +145,7 @@ namespace MerchantTribeStore {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::MerchantTribe.Commerce.Controls.BVRequiredFieldValidator DaysOldRequiredFieldValidator;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator DaysOldRequiredFieldValidator;
         
         /// <summary>
         /// DaysOldRegularExpressionValidator control.
@@ -154,7 +154,7 @@ namespace MerchantTribeStore {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::MerchantTribe.Commerce.Controls.BVRegularExpressionValidator DaysOldRegularExpressionValidator;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator DaysOldRegularExpressionValidator;
         
         /// <summary>
         /// DaysOldRangeValidator control.
@@ -163,7 +163,7 @@ namespace MerchantTribeStore {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::MerchantTribe.Commerce.Controls.BVRangeValidator DaysOldRangeValidator;
+        protected global::System.Web.UI.WebControls.RangeValidator DaysOldRangeValidator;
         
         /// <summary>
         /// AVSFailsCheckBox control.
@@ -262,7 +262,7 @@ namespace MerchantTribeStore {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::MerchantTribe.Commerce.Controls.BVCustomValidator BaseDefaultShippingCustomValidator;
+        protected global::System.Web.UI.WebControls.CustomValidator BaseDefaultShippingCustomValidator;
         
         /// <summary>
         /// ShippingSettingsPlaceHolder control.

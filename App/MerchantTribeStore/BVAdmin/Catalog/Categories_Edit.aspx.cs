@@ -130,10 +130,12 @@ namespace MerchantTribeStore
                     this.chkHidden.Checked = c.Hidden;
                     //Me.chkShowInTopMenu.Checked = c.ShowInTopMenu
 
-                    //If TemplateList.Items.FindByValue(c.TemplateName) IsNot Nothing Then
-                    //Me.TemplateList.ClearSelection()
-                    //Me.TemplateList.Items.FindByValue(c.TemplateName).Selected = True
-                    //End If
+                    if (TemplateList.Items.FindByValue(c.TemplateName) != null)
+                    {
+                        TemplateList.ClearSelection();
+                        TemplateList.Items.FindByValue(c.TemplateName).Selected = true;
+                    }
+                    
                     if (c.PreContentColumnId.Trim() != string.Empty)
                     {
                         if (this.PreContentColumnIdField.Items.FindByValue(c.PreContentColumnId) != null)
@@ -281,11 +283,9 @@ namespace MerchantTribeStore
                 //else if ((CategorySourceType)ViewState["type"] == CategorySourceType.CustomPage) {
                 //    c.SourceType = CategorySourceType.CustomPage;
                 //}
-                //If Me.TemplateList.SelectedValue IsNot Nothing Then
-                //c.TemplateName = Me.TemplateList.SelectedValue
-                //Else
-                //c.TemplateName = String.Empty
-                //End If
+                string templateName = this.TemplateList.SelectedItem.Value;
+                if (string.IsNullOrEmpty(templateName)) { templateName = "Grid"; }
+                c.TemplateName = templateName;                
                 c.PreContentColumnId = this.PreContentColumnIdField.SelectedValue;
                 c.PostContentColumnId = this.PostContentColumnIdField.SelectedValue;
                 c.DisplaySortOrder = (CategorySortOrder)int.Parse(this.SortOrderDropDownList.SelectedValue);

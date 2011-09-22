@@ -37,9 +37,9 @@
             <td class="formlabel">Last Order Number:</td>
             <td class="formfield">
                 <asp:TextBox ID="LastOrderNumberField" Columns="9" runat="server"></asp:TextBox>
-                <bvc5:BVRequiredFieldValidator ID="LastOrderNumberBVRequiredFieldValidator" 
-                    runat="server" ControlToValidate="LastOrderNumberField" ErrorMessage="Required"></bvc5:BVRequiredFieldValidator> 
-                <bvc5:BVRegularExpressionValidator ID="LastOrderNumberBVRegularExpressionValidator" runat="server" ControlToValidate="LastOrderNumberField" ValidationExpression="\d{1,10}" ErrorMessage="Last order number must be numeric."></bvc5:BVRegularExpressionValidator>
+                <asp:RequiredFieldValidator ID="LastOrderNumberBVRequiredFieldValidator" 
+                    runat="server" ControlToValidate="LastOrderNumberField" ErrorMessage="Required"></asp:RequiredFieldValidator> 
+                <asp:RegularExpressionValidator ID="LastOrderNumberBVRegularExpressionValidator" runat="server" ControlToValidate="LastOrderNumberField" ValidationExpression="\d{1,10}" ErrorMessage="Last order number must be numeric."></asp:RegularExpressionValidator>
             </td>
         </tr>        
         <tr>

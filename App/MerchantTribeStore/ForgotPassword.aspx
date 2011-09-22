@@ -18,10 +18,10 @@
         an email with your new password.</p>
     <asp:Label ID="lblUsername" CssClass="FormLabel" runat="server">Email:</asp:Label><asp:TextBox
         CssClass="FormInput" ID="inUsername" TabIndex="3000" runat="server" Columns="30"></asp:TextBox>&nbsp;
-        <bvc5:BVRequiredFieldValidator
+        <asp:RequiredFieldValidator
             ID="val2Username" runat="server" EnableClientScript="True" CssClass="errormessage"
             Visible="True" ErrorMessage="Please enter an email address" Display="Dynamic"
-            ControlToValidate="inUsername" ForeColor=" ">*</bvc5:BVRequiredFieldValidator>&nbsp;<br/>
+            ControlToValidate="inUsername" ForeColor=" ">*</asp:RequiredFieldValidator>&nbsp;<br/>
     &nbsp;<br/>
     <asp:LinkButton ID="lnkClose" TabIndex="3002" runat="server" 
         CausesValidation="False" runat="server" onclick="lnkClose_Click">Continue</asp:LinkButton>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

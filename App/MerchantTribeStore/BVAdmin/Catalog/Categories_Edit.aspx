@@ -39,8 +39,14 @@
     <uc3:MessageBox ID="MessageBox1" runat="server" />
     <asp:Label ID="lblError" runat="server" CssClass="errormessage"></asp:Label>
     <div style="float: right;margin-bottom:50px;">
-        
-        
+        <h2>
+            Display Template</h2>        
+        <asp:DropDownList ID="TemplateList" runat="server" AutoPostBack="True" TabIndex="2011">
+            <asp:ListItem Value="Grid">Grid</asp:ListItem>
+            <asp:ListItem Value="SimpleList">Simple List</asp:ListItem>
+            <!--<asp:ListItem Value="BulkOrderList">Bulk Order List</asp:ListItem>-->
+        </asp:DropDownList><br />
+        &nbsp;        
         <h2>Select Products</h2>
         <asp:ImageButton ID="btnSelectProducts" runat="server" 
             ImageUrl="~/BVAdmin/Images/Buttons/Select.png" TabIndex="2017" 
@@ -50,8 +56,7 @@
         <h2>Page Name</h2>
         /<asp:TextBox ID="RewriteUrlField" ClientIDMode="Static" runat="server" Columns="30" Width="250px" TabIndex="2022"></asp:TextBox><br />
         <uc4:UrlsAssociated ID="UrlsAssociated1" runat="server" /><br />
-        &nbsp;<br />
-&nbsp;<h2>Images</h2>
+        <h2>Images</h2>
         <table border="0" cellspacing="0" cellpadding="3">
             <tr>
                 <td class="formlabel">
@@ -86,8 +91,8 @@
                     Name:</td>
                 <td class="formfield">
                     <asp:TextBox ID="NameField" runat="server" ClientIDMode="Static" Columns="30" MaxLength="100" TabIndex="2000"
-                        Width="300px"></asp:TextBox><bvc5:BVRequiredFieldValidator ID="valName" runat="server"
-                            ErrorMessage="Please enter a name" ControlToValidate="NameField">*</bvc5:BVRequiredFieldValidator></td>
+                        Width="300px"></asp:TextBox><asp:RequiredFieldValidator ID="valName" runat="server"
+                            ErrorMessage="Please enter a name" ControlToValidate="NameField">*</asp:RequiredFieldValidator></td>
             </tr>
             <tr>
                 <td class="formlabel">
@@ -130,7 +135,7 @@
                     Pre-Content Column</td>
                 <td class="formfield">
                     <asp:DropDownList ID="PreContentColumnIdField" runat="server" TabIndex="2006">
-                        <asp:ListItem> - None -</asp:ListItem>
+                        <asp:ListItem Value=""> - None -</asp:ListItem>
                     </asp:DropDownList></td>
             </tr>
                <tr>
@@ -138,7 +143,7 @@
                     Post-Content Column</td>
                 <td class="formfield">
                     <asp:DropDownList ID="PostContentColumnIdField" runat="server" TabIndex="2007">
-                        <asp:ListItem> - None -</asp:ListItem>
+                        <asp:ListItem Value=""> - None -</asp:ListItem>
                     </asp:DropDownList></td>
             </tr>            
             <tr>
