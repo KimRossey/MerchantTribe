@@ -308,18 +308,18 @@ namespace MerchantTribe.Commerce.Utilities
             return sb.ToString();
         }
 
-        public static string SearchForm(Accounts.Store currentStore)
+        public static string SearchForm(MerchantTribeApplication app)
         {
             StringBuilder sb = new StringBuilder();
 
-            string rootUrl = currentStore.RootUrl();
-            string rootUrlSecure = currentStore.RootUrlSecure();
+            string rootUrl = app.CurrentStore.RootUrl();
+            string buttonUrl = app.ThemeManager().ButtonUrl("Go", app.CurrentRequestContext.RoutingContext.HttpContext.Request.IsSecureConnection);
+            
+            sb.Append("<form class=\"searchform\" action=\"" + rootUrl + "search\" method=\"get\">");
 
-            sb.Append("<div class=\"searchform\">");
+            sb.Append("<input type=\"textbox\" name=\"q\" class=\"searchinput\" /> <input class=\"searchgo\" type=\"image\" src=\"" + buttonUrl + "\" alt=\"Search\" />");
 
-            sb.Append("<input type=\"textbox\" id=\"headersearchbox\" /> <a href=\"/search\" id=\"headersearchlink\"><span>Search</span></a>");
-
-            sb.Append("</div>");            
+            sb.Append("</form>");            
 
             return sb.ToString();
         }

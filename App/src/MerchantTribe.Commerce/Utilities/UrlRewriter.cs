@@ -381,13 +381,13 @@ namespace MerchantTribe.Commerce.Utilities
 		public static void RedirectToErrorPage(ErrorTypes errorType, System.Web.HttpResponse response)
 		{
 			if (errorType == ErrorTypes.Generic) {
-				response.Redirect("~/Error.aspx");
+				response.Redirect("~/Error");
 			}
 			else if (errorType == ErrorTypes.Product) {
-				response.Redirect("~/Error.aspx?type=product");
+				response.Redirect("~/Error?type=product");
 			}
 			else if (errorType == ErrorTypes.Category) {
-				response.Redirect("~/Error.aspx?type=category");
+				response.Redirect("~/Error?type=category");
 			}
 		}
 	}

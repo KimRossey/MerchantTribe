@@ -68,6 +68,21 @@ namespace MerchantTribeStore.Controllers
                 MTApp.CurrentRequestContext.RoutingContext);
             return result;
         }
+
+        [ChildActionOnly]
+        public ActionResult ManualTrail(List<BreadCrumbItem> extras)
+        {
+            BreadCrumbViewModel model = new BreadCrumbViewModel();
+            model.HomeName = MerchantTribe.Commerce.Content.SiteTerms.GetTerm(MerchantTribe.Commerce.Content.SiteTermIds.Home);
+            if (extras != null)
+            {
+                foreach (BreadCrumbItem item in extras)
+                {
+                    model.Items.Enqueue(item);
+                }
+            }
+            return View("BreadCrumb", model);
+        }
                         
     }
 }

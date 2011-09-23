@@ -175,15 +175,6 @@ namespace MerchantTribeStore {
         protected global::System.Web.UI.WebControls.ImageButton btnCheckout;
         
         /// <summary>
-        /// GoogleCheckoutButton1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::MerchantTribeStore.BVModules_Controls_GoogleCheckoutButton GoogleCheckoutButton1;
-        
-        /// <summary>
         /// PaypalExpressCheckoutButton1 control.
         /// </summary>
         /// <remarks>

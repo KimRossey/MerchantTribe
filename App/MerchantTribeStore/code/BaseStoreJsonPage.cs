@@ -101,7 +101,7 @@ namespace MerchantTribeStore
                 {
                     string nameOfPage = Request.AppRelativeCurrentExecutionFilePath;
                     // Check to make sure we're not going to end up in an endless loop of redirects
-                    if ((!nameOfPage.ToLower().StartsWith("~/login.aspx")) && (!nameOfPage.ToLower().StartsWith("~/forgotpassword.aspx")) && (!nameOfPage.ToLower().StartsWith("~/contactus.aspx")))
+                    if ((!nameOfPage.ToLower().StartsWith("~/login.aspx")) && (!nameOfPage.ToLower().StartsWith("~/account/forgotpassword")) && (!nameOfPage.ToLower().StartsWith("~/contactus")))
                     {
                         Response.Redirect("~/Login.aspx?ReturnUrl=" + System.Web.HttpUtility.UrlEncode(this.Request.RawUrl));
                     }

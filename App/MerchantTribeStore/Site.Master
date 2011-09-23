@@ -7,8 +7,6 @@
     <asp:Literal ID="litAdditionalMetaTags" runat="server" EnableViewState="false"></asp:Literal>
     <asp:Literal ID="litCss" runat="server" EnableViewState="false"></asp:Literal>    
     <uc4:JQueryInclude ID="JQueryInclude1" runat="server" />
-    <script type="text/javascript" src="<%=SearchFormScriptSource%>"></script>   
-
     <asp:ContentPlaceHolder ID="HeadContent" runat="server"></asp:ContentPlaceHolder>
     <asp:Literal ID="litAnaltyicsTop" runat="server" EnableViewState="false"></asp:Literal>
 </head>

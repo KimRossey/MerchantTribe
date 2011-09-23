@@ -5,7 +5,7 @@ Disallow: /bvadmin/
 Disallow: /myaccount/
 Disallow: /account/
 Disallow: /cart/
-Disallow: /forgotpassword/
+Disallow: /account/forgotpassword/
 Disallow: /paypalipn/
 Disallow: /paypalexpresscheckout/
 Disallow: /flexpartjson/
