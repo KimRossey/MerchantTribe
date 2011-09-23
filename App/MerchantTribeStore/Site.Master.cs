@@ -10,15 +10,11 @@ namespace MerchantTribeStore
         {
             get { return _ViewData; }
             set { _ViewData = value; }
-        }
-
-        protected string SearchFormScriptSource = string.Empty;
+        }        
 
         protected override void OnLoad(System.EventArgs e)        
         {
             base.OnLoad(e);
-
-            SearchFormScriptSource = GetRouteUrl("js", new { filename = "searchform.js" });
 
             this.litAdditionalMetaTags.Text = (string)ViewData["AdditionalMetaTags"];
             this.litCss.Text = "<link href=\"" + (string)ViewData["css"] + "\" rel=\"stylesheet\" type=\"text/css\" />";

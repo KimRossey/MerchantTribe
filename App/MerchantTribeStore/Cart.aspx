@@ -1,7 +1,5 @@
 <%@ Page Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="True" Inherits="MerchantTribeStore.Cart" Title="Shopping Cart" Codebehind="Cart.aspx.cs" %>
 
-<%@ Register Src="BVModules/Controls/GoogleCheckoutButton.ascx" TagName="GoogleCheckoutButton"
-    TagPrefix="uc5" %>
 <%@ Register Src="BVModules/Controls/PaypalExpressCheckoutButton.ascx" TagName="PaypalExpressCheckoutButton"
     TagPrefix="uc4" %>
 <%@ Register Src="BVModules/Controls/EstimateShipping.ascx" TagName="EstimateShipping"
@@ -105,8 +103,7 @@
                 </div>
                 <div id="cartactioncheckout" runat="server">
                     <asp:ImageButton ID="btnCheckout" runat="server" ImageUrl="~/content/themes/theme-914951ab-fc9b-46aa-8e99-ac76be3f8a5b/buttons/placeorder.png"
-                        AlternateText="Checkout" onclick="btnCheckout_Click" />
-                    <uc5:GoogleCheckoutButton ID="GoogleCheckoutButton1" runat="server" />
+                        AlternateText="Checkout" onclick="btnCheckout_Click" />                    
                     <uc4:PaypalExpressCheckoutButton ID="PaypalExpressCheckoutButton1" runat="server"
                         DisplayText="false" />
                 </div>

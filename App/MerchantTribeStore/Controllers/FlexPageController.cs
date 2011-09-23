@@ -47,7 +47,7 @@ namespace MerchantTribeStore.Controllers
             if (cat.SourceType != CategorySourceType.FlexPage)
             {
                 CheckFor301("/" + slug);                
-                return Redirect("~/Error.aspx?type=category");
+                return Redirect("~/Error?type=category");
             }
 
             ViewBag.Title = cat.MetaTitle;            

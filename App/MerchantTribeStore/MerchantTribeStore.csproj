@@ -664,11 +664,9 @@
     <Content Include="BVModules\Controls\CreditCardInput.ascx" />
     <Content Include="BVModules\Controls\CustomerServiceMenu.ascx" />
     <Content Include="BVModules\Controls\EmailAddressEntry.ascx" />
-    <Content Include="BVModules\Controls\EmailThisPage.ascx" />
     <Content Include="BVModules\Controls\EstimateShipping.ascx" />
     <Content Include="BVModules\Controls\GoogleCheckoutButton.ascx" />
     <Content Include="BVModules\Controls\LoginControl.ascx" />
-    <Content Include="BVModules\Controls\LoginMenu.ascx" />
     <Content Include="BVModules\Controls\MainMenu.ascx" />
     <Content Include="BVModules\Controls\ManualBreadCrumbTrail.ascx" />
     <Content Include="BVModules\Controls\MasterPageJavascript.ascx" />
@@ -1308,9 +1306,6 @@
     <Content Include="content\themes\theme-bv-fashionista\preview.png" />
     <Content Include="content\themes\theme-bv-fashionista\preview_big.png" />
     <Content Include="content\themes\theme-bv-fashionista\styles.css" />
-    <Content Include="EmailFriend.aspx" />
-    <Content Include="Error.aspx" />
-    <Content Include="ForgotPassword.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Images\minus.png" />
     <Content Include="Images\plus.png" />
@@ -1405,8 +1400,6 @@
     <Content Include="json\GetRegions.aspx" />
     <Content Include="json\IsEmailKnown.aspx" />
     <Content Include="Login.aspx" />
-    <Content Include="logout.aspx" />
-    <Content Include="nopermissions.aspx" />
     <Content Include="product.aspx" />
     <Content Include="ProductReviews.aspx" />
     <Content Include="product_validate.aspx" />
@@ -2089,8 +2082,6 @@
     <Content Include="Scripts\tinymce\utils\mctabs.js" />
     <Content Include="Scripts\tinymce\utils\validate.js" />
     <Content Include="Scripts\togglebox.js" />
-    <Content Include="search.aspx" />
-    <Content Include="SearchForm.js" />
     <Content Include="signup\about.aspx" />
     <Content Include="signup\default.aspx" />
     <Content Include="signup\design.aspx" />
@@ -2155,6 +2146,7 @@
     <Compile Include="api\rest\UtilitiesHandler.cs" />
     <Compile Include="api\rest\VendorsHandler.cs" />
     <Compile Include="Areas\account\accountAreaRegistration.cs" />
+    <Compile Include="Areas\account\Controllers\AuthenticationController.cs" />
     <Compile Include="Areas\account\Controllers\ManagementController.cs" />
     <Compile Include="Areas\account\Controllers\AddressBookController.cs" />
     <Compile Include="Areas\account\Controllers\OrderHistoryController.cs" />
@@ -4024,13 +4016,6 @@
     <Compile Include="BVModules\Controls\EmailAddressEntry.ascx.designer.cs">
       <DependentUpon>EmailAddressEntry.ascx</DependentUpon>
     </Compile>
-    <Compile Include="BVModules\Controls\EmailThisPage.ascx.cs">
-      <DependentUpon>EmailThisPage.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="BVModules\Controls\EmailThisPage.ascx.designer.cs">
-      <DependentUpon>EmailThisPage.ascx</DependentUpon>
-    </Compile>
     <Compile Include="BVModules\Controls\EstimateShipping.ascx.cs">
       <DependentUpon>EstimateShipping.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -4051,13 +4036,6 @@
     </Compile>
     <Compile Include="BVModules\Controls\LoginControl.ascx.designer.cs">
       <DependentUpon>LoginControl.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="BVModules\Controls\LoginMenu.ascx.cs">
-      <DependentUpon>LoginMenu.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="BVModules\Controls\LoginMenu.ascx.designer.cs">
-      <DependentUpon>LoginMenu.ascx</DependentUpon>
     </Compile>
     <Compile Include="BVModules\Controls\MainMenu.ascx.cs">
       <DependentUpon>MainMenu.ascx</DependentUpon>
@@ -4489,6 +4467,7 @@
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\RawResult.cs" />
     <Compile Include="Controllers\ScheduledTasksController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\Shared\BaseAdminController.cs" />
     <Compile Include="Controllers\Shared\BaseAppController.cs" />
     <Compile Include="Controllers\Shared\BaseStoreController.cs" />
@@ -4507,29 +4486,8 @@
     <Compile Include="Models\ProductListViewModel.cs" />
     <Compile Include="Models\SingleCategoryViewModel.cs" />
     <Compile Include="Models\SingleProductViewModel.cs" />
-    <Compile Include="EmailFriend.aspx.cs">
-      <DependentUpon>EmailFriend.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="EmailFriend.aspx.designer.cs">
-      <DependentUpon>EmailFriend.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Error.aspx.cs">
-      <DependentUpon>Error.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Error.aspx.designer.cs">
-      <DependentUpon>Error.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Filters\CustomerSignedInFilterAttribute.cs" />
     <Compile Include="Filters\StoreClosedFilterAttribute.cs" />
-    <Compile Include="ForgotPassword.aspx.cs">
-      <DependentUpon>ForgotPassword.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ForgotPassword.aspx.designer.cs">
-      <DependentUpon>ForgotPassword.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -4589,23 +4547,9 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="logout.aspx.cs">
-      <DependentUpon>logout.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="logout.aspx.designer.cs">
-      <DependentUpon>logout.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Models\AddressViewModel.cs" />
     <Compile Include="Models\EstimateShippingViewModel.cs" />
     <Compile Include="Models\SuperStoreViewModel.cs" />
-    <Compile Include="nopermissions.aspx.cs">
-      <DependentUpon>nopermissions.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="nopermissions.aspx.designer.cs">
-      <DependentUpon>nopermissions.aspx</DependentUpon>
-    </Compile>
     <Compile Include="product.aspx.cs">
       <DependentUpon>product.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -4634,13 +4578,6 @@
     </Compile>
     <Compile Include="Receipt.aspx.designer.cs">
       <DependentUpon>Receipt.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="search.aspx.cs">
-      <DependentUpon>search.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="search.aspx.designer.cs">
-      <DependentUpon>search.aspx</DependentUpon>
     </Compile>
     <Compile Include="signup\about.aspx.cs">
       <DependentUpon>about.aspx</DependentUpon>
@@ -4834,6 +4771,7 @@
     <Content Include="Areas\ContentBlocks\Views\SideMenu\Index.cshtml" />
     <Content Include="Areas\ContentBlocks\Views\Top10Products\Index.cshtml" />
     <Content Include="Areas\ContentBlocks\Views\TopWeeklySellers\Index.cshtml" />
+    <Content Include="Areas\account\Views\Authentication\ForgotPassword.cshtml" />
     <None Include="BVAdmin\Orders\RMA.aspx.cs.exclude" />
     <None Include="BVAdmin\Orders\RMA.aspx.exclude" />
     <None Include="BVAdmin\Orders\RMADetail.aspx.cs.exclude" />
@@ -4911,6 +4849,9 @@
     <Content Include="Views\Category\SimpleList.cshtml" />
     <Content Include="Views\Products\RenderSingleProductSimple.cshtml" />
     <Content Include="Views\Category\DrillDown.cshtml" />
+    <Content Include="Views\Store\NoPermission.cshtml" />
+    <Content Include="Views\Search\Index.cshtml" />
+    <Content Include="Views\Store\Error.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

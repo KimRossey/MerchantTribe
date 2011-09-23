@@ -22,8 +22,6 @@ namespace MerchantTribeStore
             this.Title = SiteTerms.GetTerm(SiteTermIds.ShoppingCart);
 
             this.PaypalExpressCheckoutButton1.CheckoutButtonClicked += this.PaypalExpressCheckoutClicked;
-            this.GoogleCheckoutButton1.CheckoutButtonClicked += this.GoogleCheckoutClicked;
-            this.GoogleCheckoutButton1.WorkflowFailed += this.GoogleWorkflowFailed;
         }
 
         protected override void OnInit(System.EventArgs e)

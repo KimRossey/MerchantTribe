@@ -84,7 +84,7 @@ namespace MerchantTribeStore
 
             // Default Tags
             Replaceable defaultTags = new Replaceable();
-            defaultTags.Tags.AddRange(new HtmlTemplate().DefaultReplacementTags());
+            defaultTags.Tags.AddRange(new HtmlTemplate().DefaultReplacementTags(app));
             items.Add(defaultTags);
 
             // Objects with tags

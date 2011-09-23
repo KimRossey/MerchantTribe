@@ -2,6 +2,7 @@ using System.Web.UI;
 using MerchantTribe.Commerce;
 using MerchantTribe.Commerce.Content;
 using MerchantTribe.Commerce.Membership;
+using System.Web;
 
 namespace MerchantTribeStore
 {
@@ -150,13 +151,12 @@ namespace MerchantTribeStore
 
         protected void btnForgotPassword_Click(object sender, System.EventArgs e)
         {
+            string email = this.UsernameField.Text.Trim();
+            
             string c = "0";
-            if (CheckoutMode) c = "1";
-                                              
-            string destination = Page.GetRouteUrl("forgotpassword-route", new { email = this.UsernameField.Text, checkout = c });
-
-            if (destination == null) destination = string.Empty;
-            if (destination == string.Empty) destination = "~/forgotpassword/@/" + c;
+            if (CheckoutMode) c = "1"; 
+                                                         
+            string destination = "~/account/forgotpassword/" + HttpUtility.UrlEncode(email) + "/" + c;
 
             Response.Redirect(destination);                                           
         }

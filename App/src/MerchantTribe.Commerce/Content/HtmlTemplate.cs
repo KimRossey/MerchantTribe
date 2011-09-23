@@ -66,7 +66,7 @@ namespace MerchantTribe.Commerce.Content
             HtmlTemplate copy = this.Clone();            
 
             // Replace Store Defaults
-            foreach (HtmlTemplateTag tag in this.DefaultReplacementTags())
+            foreach (HtmlTemplateTag tag in this.DefaultReplacementTags(app))
             {
                 copy.Subject = tag.ReplaceTags(copy.Subject);
                 copy.Body = tag.ReplaceTags(copy.Body);
@@ -112,24 +112,20 @@ namespace MerchantTribe.Commerce.Content
             return result;
         }
 
-        public List<HtmlTemplateTag> DefaultReplacementTags()
+        public List<HtmlTemplateTag> DefaultReplacementTags(MerchantTribeApplication app)
         {
             List<HtmlTemplateTag> result = new List<HtmlTemplateTag>();
 
-            RequestContext context = RequestContext.GetCurrentRequestContext();
-            if (context != null)
-            {
-                Accounts.Store currentStore = context.CurrentStore;
-                Contacts.ContactService ContactServices = Contacts.ContactService.InstantiateForDatabase(context);
-                result.Add(new HtmlTemplateTag("[[Store.Address]]", ContactServices.Addresses.FindStoreContactAddress().ToHtmlString()));
-                result.Add(new HtmlTemplateTag("[[Store.ContactEmail]]", currentStore.Settings.MailServer.EmailForGeneral));                                
-                result.Add(new HtmlTemplateTag("[[Store.Logo]]", Utilities.HtmlRendering.Logo(currentStore, false)));
-                result.Add(new HtmlTemplateTag("[[Store.SecureUrl]]", currentStore.RootUrlSecure()));
-                result.Add(new HtmlTemplateTag("[[Store.StoreName]]", currentStore.StoreName));
-                result.Add(new HtmlTemplateTag("[[Store.StandardUrl]]", currentStore.RootUrl()));
-                result.Add(new HtmlTemplateTag("[[Store.CurrentLocalTime]]", DateTime.Now.ToString()));
-                result.Add(new HtmlTemplateTag("[[Store.CurrentUtcTime]]", DateTime.UtcNow.ToString()));
-            }
+            Accounts.Store currentStore = app.CurrentStore; 
+            result.Add(new HtmlTemplateTag("[[Store.Address]]", app.ContactServices.Addresses.FindStoreContactAddress().ToHtmlString()));
+            result.Add(new HtmlTemplateTag("[[Store.ContactEmail]]", currentStore.Settings.MailServer.EmailForGeneral));                                
+            result.Add(new HtmlTemplateTag("[[Store.Logo]]", Utilities.HtmlRendering.Logo(currentStore, false)));
+            result.Add(new HtmlTemplateTag("[[Store.SecureUrl]]", currentStore.RootUrlSecure()));
+            result.Add(new HtmlTemplateTag("[[Store.StoreName]]", currentStore.StoreName));
+            result.Add(new HtmlTemplateTag("[[Store.StandardUrl]]", currentStore.RootUrl()));
+            result.Add(new HtmlTemplateTag("[[Store.CurrentLocalTime]]", DateTime.Now.ToString()));
+            result.Add(new HtmlTemplateTag("[[Store.CurrentUtcTime]]", DateTime.UtcNow.ToString()));
+            
             return result;
         }
 

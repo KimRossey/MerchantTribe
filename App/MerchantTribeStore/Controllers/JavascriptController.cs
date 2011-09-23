@@ -19,9 +19,6 @@ namespace MerchantTribeStore.Controllers
 
             switch (filename.Trim().ToLowerInvariant())
             {
-                case "searchform.js":
-                    sourcecode = LoadPhysical("~/SearchForm.js");
-                    break;
                 case "checkout.js":
                     sourcecode = LoadPhysical("~/Checkout.js");
                     break;              

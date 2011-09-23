@@ -89,10 +89,7 @@ namespace MerchantTribeStore
             routes.MapPageRoute("adminlogout", "account/logout", "~/BVAdmin/logout.aspx");
             
             routes.MapPageRoute("customerlogin", "signin", "~/Login.aspx");
-            routes.MapPageRoute("customlogout", "signout", "~/Logout.aspx"); 
-           
-            routes.MapPageRoute("forgotpassword-route", "forgotpassword/{email}/{checkout}", "~/ForgotPassword.aspx", 
-                                false, new RouteValueDictionary(new {email="",checkout="0"}));
+            
 
             routes.MapPageRoute("cart-route", "cart", "~/cart.aspx");
             routes.MapPageRoute("contact-route", "contact", "~/ContactUs.aspx");
@@ -123,11 +120,14 @@ namespace MerchantTribeStore
             routes.MapPageRoute("checkout-google-route", "checkout/google", "~/checkout-google.aspx");
 
             // Search
-            routes.MapPageRoute("search-route", "search", "~/search.aspx");
+            routes.MapRoute("search-route", "search", new { controller = "Search", action = "Index" });
 
+            // Store Systems
             routes.MapRoute("notfound", "storenotfound", new { controller = "Store", action = "NotFound" });
             routes.MapRoute("notavailable", "storenotavailable", new { controller = "Store", action = "NotAvailable" });
             routes.MapRoute("storeclosed", "storeclosed", new { controller = "Store", action = "Closed" });
+            routes.MapRoute("nopermisssion", "nopermission", new { controller = "Store", action = "NoPermission" });
+            routes.MapRoute("error-route", "error", new { controller = "Store", action = "Error" });
 
             // Admin
             routes.MapPageRoute("admin", "admin", "~/bvadmin/default.aspx");
