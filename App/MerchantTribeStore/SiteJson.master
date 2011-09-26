@@ -1,2 +1,0 @@
-﻿<%@ Master Language="C#" Inherits="MerchantTribeStore.SiteJson" Codebehind="SiteJson.master.cs" AutoEventWireup="True" %>
-<asp:ContentPlaceHolder ID="MainContent" runat="server" />

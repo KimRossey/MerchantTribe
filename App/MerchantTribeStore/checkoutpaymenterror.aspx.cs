@@ -116,7 +116,7 @@ namespace MerchantTribeStore
                     MerchantTribe.Commerce.BusinessRules.Workflow.RunByName(c, MerchantTribe.Commerce.BusinessRules.WorkflowNames.ProcessNewOrderAfterPayments);
                     Order tempOrder = MTApp.OrderServices.Orders.FindForCurrentStore(Basket.bvin);
                     MerchantTribe.Commerce.Integration.Current().OrderReceived(tempOrder, MTApp);
-                    Response.Redirect("~/Receipt.aspx?id=" + Basket.bvin);                    
+                    Response.Redirect("~/checkout/receipt?id=" + Basket.bvin);                    
                 }
                 else
                 {

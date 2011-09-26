@@ -14,7 +14,7 @@ function ClearTotals() {
 
 function CleanCC() {
     var notclean = $('#cccardnumber').val();
-    $.post('~/JSON/CleanCreditCard.aspx',
+    $.post('~/checkout/CleanCreditCard',
    { "CardNumber": notclean },
     function (data) {
         $('#cccardnumber').val(data.CardNumber);
@@ -24,7 +24,7 @@ function CleanCC() {
 
 function IsEmailKnown() {
     var emailfield = $('#customeremail').val();
-    $.post('~/JSON/IsEmailKnown.aspx',
+    $.post('~/checkout/IsEmailKnown',
             { "email": emailfield },
             function (data) {
                 if (data.success == "1") {
@@ -60,7 +60,7 @@ function RefreshShipping() {
 
     $.ajax(
                         { type: "POST",
-                            url: '~/json/estimateshipping.aspx',
+                            url: '~/estimateshipping/GetRatesAsRadioButtons',
                             data: {
                                 country: $('#shippingcountryname :selected').val(),
                                 firstname: $('#shippingfirstname').val(),
@@ -109,7 +109,7 @@ function ApplyShippingMethod(methodid) {
     var orderid = $('#orderbvin').val();
 
     $.ajax({ type: 'POST',
-        url: '~/json/applyshipping.aspx',
+        url: '~/checkout/applyshipping',
         data: { MethodId: methodid,
             OrderId: orderid
         },
@@ -141,17 +141,6 @@ function BindShippingRadioButtons() {
     function () { ApplyCurrentShippingRate(); }
     );
 }
-
-function LoadRegions(countrylist, regionlist, countryname) {
-    $.post('~/JSON/GetRegions.aspx',
-          { "bvin": countryname },
-          function (data) {
-              regionlist.html(data.Regions);
-              BindStateDropDownLists();
-          },
-         "json"
-         );
-      }
 
       function LoadRegionsWithSelection(regionlist, countryid, selectedregion) {
             $.post('~/estimateshipping/getregions/' + countryid,

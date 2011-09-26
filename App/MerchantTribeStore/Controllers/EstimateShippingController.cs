@@ -137,5 +137,89 @@ namespace MerchantTribeStore.Controllers
                 }
             }
         }
+
+        public class ShippingRatesJsonResponse
+        {
+            public string totalsastable = string.Empty;
+            public string rates = "";
+        }
+
+        [HttpPost]
+        public ActionResult GetRatesAsRadioButtons(FormCollection form)
+        {
+            ShippingRatesJsonResponse result = new ShippingRatesJsonResponse();
+
+            string country = form["country"] ?? string.Empty;
+            string firstname = form["firstname"] ?? string.Empty;
+            string lastname = form["lastname"] ?? string.Empty;
+            string address = form["address"] ?? string.Empty;
+            string city = form["city"] ?? string.Empty;
+            string state = form["state"] ?? string.Empty;
+            string zip = form["zip"] ?? string.Empty;
+            string orderid = form["orderid"] ?? string.Empty;
+
+            Order o = MTApp.OrderServices.Orders.FindForCurrentStore(orderid);
+            o.ShippingAddress.FirstName = firstname;
+            o.ShippingAddress.LastName = lastname;
+            o.ShippingAddress.Line1 = address;
+            o.ShippingAddress.City = city;
+            o.ShippingAddress.PostalCode = zip;
+            Country c = Country.FindByBvin(country);
+            if ((c != null))
+            {
+                o.ShippingAddress.CountryBvin = country;
+                o.ShippingAddress.CountryName = c.DisplayName;
+                foreach (Region r in c.Regions)
+                {
+                    if ((r.Abbreviation == state))
+                    {
+                        o.ShippingAddress.RegionBvin = r.Abbreviation;
+                        o.ShippingAddress.RegionName = r.Name;
+                    }
+                }
+            }
+
+            SortableCollection<ShippingRateDisplay> rates = MTApp.OrderServices.FindAvailableShippingRates(o);
+
+            string rateKey = o.ShippingMethodUniqueKey;
+            bool rateIsAvailable = false;
+
+            // See if rate is available
+            if ((rateKey.Length > 0))
+            {
+                foreach (MerchantTribe.Commerce.Shipping.ShippingRateDisplay r in rates)
+                {
+                    if ((r.UniqueKey == rateKey))
+                    {
+                        rateIsAvailable = true;
+                        MTApp.OrderServices.OrdersRequestShippingMethod(r, o);
+                    }
+                }
+            }
+
+            // if it's not availabe, pick the first one or default
+            if ((rateIsAvailable == false))
+            {
+                if ((rates.Count > 0))
+                {
+                    MTApp.OrderServices.OrdersRequestShippingMethod(rates[0], o);
+                    rateKey = rates[0].UniqueKey;
+                }
+                else
+                {
+                    o.ClearShippingPricesAndMethod();
+                }
+            }
+
+            result.rates = HtmlRendering.ShippingRatesToRadioButtons(rates, 300, o.ShippingMethodUniqueKey);
+
+            MTApp.CalculateOrderAndSave(o);
+            SessionManager.SaveOrderCookies(o);
+
+            result.totalsastable = o.TotalsAsTable();
+
+            //System.Threading.Thread.Sleep(500)
+            return new PreJsonResult(MerchantTribe.Web.Json.ObjectToJson(result));            
+        }
     }
 }

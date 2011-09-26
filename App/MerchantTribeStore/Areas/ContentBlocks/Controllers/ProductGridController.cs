@@ -57,18 +57,10 @@ namespace MerchantTribeStore.Areas.ContentBlocks.Controllers
                             {
                                 column += 1;
                             }
-                            UserSpecificPrice price = MTApp.PriceProduct(p, MTApp.CurrentCustomer, null);
-                            SingleProductViewModel vm = new SingleProductViewModel();                            
+                            
+                            SingleProductViewModel vm = new SingleProductViewModel(p, MTApp);                            
                             vm.IsFirstItem = isFirstInRow;
-                            vm.IsLastItem = isLastInRow;
-                            vm.Item = p;                            
-                            vm.UserPrice = price;
-                            vm.ImageUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductImageUrlSmall(
-                             MTApp.CurrentStore.Id,
-                            p.Bvin,
-                            p.ImageFileSmall,
-                            Request.IsSecureConnection);
-                            vm.ProductLink = UrlRewriter.BuildUrlForProduct(p, MTApp.CurrentRequestContext.RoutingContext, string.Empty);
+                            vm.IsLastItem = isLastInRow;                            
 
                             result.Add(vm);
                         }

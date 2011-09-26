@@ -50,7 +50,7 @@ namespace MerchantTribeStore
                 this.imgAverageRating.Visible = true;
                 this.lnkAllReviews.Visible = true;
                 this.lnkAllReviews.Text = "View All " + reviews.Count + " Reviews";
-                this.lnkAllReviews.NavigateUrl = Page.ResolveUrl("~/ProductReviews/" + p.UrlSlug);
+                this.lnkAllReviews.NavigateUrl = Page.ResolveUrl("~/Products/Reviews/" + p.UrlSlug);
             }
 
             int AverageRating = 3;

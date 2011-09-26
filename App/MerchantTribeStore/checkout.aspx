@@ -10,7 +10,6 @@
 <%@ Register Src="BVModules/Controls/ContentColumnControl.ascx" TagName="ContentColumnControl" TagPrefix="uc11" %>
 <%@ Register src="BVModules/Controls/ViewOrderItems.ascx" tagname="ViewOrderItems" tagprefix="uc12" %>
 
-<%@ Register src="BVModules/Controls/LoginControl.ascx" tagname="LoginControl" tagprefix="uc1" %>
 
 <%@ Register src="BVModules/Controls/PaymentRewardsPoints.ascx" tagname="PaymentRewardsPoints" tagprefix="uc5" %>
 
@@ -33,7 +32,7 @@
                 </asp:Panel>
                 <asp:Panel ID="pnlNotLoggedIn" runat="server" Visible="true">
                     It looks like you have an account already. Please login:<br />
-                    <uc1:LoginControl ID="LoginControl1" CheckoutMode="true" runat="server" />
+                    LOGIN CONTROL HERE
                 </asp:Panel>
             </div>&nbsp;
         </div>    
