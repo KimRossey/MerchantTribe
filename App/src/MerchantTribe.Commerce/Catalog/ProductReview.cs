@@ -26,6 +26,11 @@ namespace MerchantTribe.Commerce.Catalog
             return TimeZoneInfo.ConvertTimeFromUtc(ReviewDateUtc, tz);
         }
 		public ProductReviewRating Rating {get;set;}
+        public int RatingAsInteger
+        {
+            get { return (int)Rating; }
+        }
+
 		public int Karma {get;set;}
 		public string Description {get;set;}
 		public bool Approved {get;set;}

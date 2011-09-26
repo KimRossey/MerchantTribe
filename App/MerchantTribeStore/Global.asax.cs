@@ -83,59 +83,6 @@ namespace MerchantTribeStore
             //routes.IgnoreRoute("bvadmin/*");
             //routes.IgnoreRoute("{resource}.aspx/{*pathInfo}");
 
-            routes.MapPageRoute("adminlogin", "account/login", "~/BVAdmin/Login.aspx");
-            routes.MapPageRoute("adminresetpassword", "account/resetpassword", "~/BVAdmin/ResetPassword.aspx");
-            routes.MapPageRoute("adminresetpassword2", "account/resetpassword2", "~/BVAdmin/ResetPassword2.aspx");
-            routes.MapPageRoute("adminlogout", "account/logout", "~/BVAdmin/logout.aspx");
-            
-            routes.MapPageRoute("customerlogin", "signin", "~/Login.aspx");
-            
-
-            routes.MapPageRoute("cart-route", "cart", "~/cart.aspx");
-            routes.MapPageRoute("contact-route", "contact", "~/ContactUs.aspx");
-            routes.MapPageRoute("giftcards-route", "giftcards", "~/GiftCards.aspx");
-            routes.MapPageRoute("emailsignup-route", "emailsignup", "~/EmailSignUp.aspx");
-                                      
-            // Products                      
-            routes.MapPageRoute("productreview-route", "productreviews/{slug}", "~/productreviews.aspx");
-            routes.MapRoute("products-rendersingle", "products/rendersingleproduct/{*params}",
-                                new
-                                {
-                                    controller = "Products",
-                                    action = "RenderSingleProduct"
-                                });
-                                                  
-            // policies
-            routes.MapRoute("policy-route", "policies/{policykind}",
-                                new { controller = "Policies", action="Index" });
-            routes.MapRoute("faq-route", "faq", new { controller = "Policies", action = "Faq" });
-
-            // estimate shipping
-            routes.MapRoute("estimate-shipping", "estimateshipping/{action}/{id}",
-                                new { controller = "EstimateShipping", action = "index", id = "0" });
-            // checkouts
-            routes.MapPageRoute("checkout-route", "checkout", "~/checkout.aspx");
-            routes.MapPageRoute("checkout-paypal-route", "paypalexpresscheckout", "~/CheckoutPayPalExpress.aspx");
-            routes.MapPageRoute("paypal-ipn-route", "paypalipn", "~/IPNHandler.aspx");
-            routes.MapPageRoute("checkout-google-route", "checkout/google", "~/checkout-google.aspx");
-
-            // Search
-            routes.MapRoute("search-route", "search", new { controller = "Search", action = "Index" });
-
-            // Store Systems
-            routes.MapRoute("notfound", "storenotfound", new { controller = "Store", action = "NotFound" });
-            routes.MapRoute("notavailable", "storenotavailable", new { controller = "Store", action = "NotAvailable" });
-            routes.MapRoute("storeclosed", "storeclosed", new { controller = "Store", action = "Closed" });
-            routes.MapRoute("nopermisssion", "nopermission", new { controller = "Store", action = "NoPermission" });
-            routes.MapRoute("error-route", "error", new { controller = "Store", action = "Error" });
-
-            // Admin
-            routes.MapPageRoute("admin", "admin", "~/bvadmin/default.aspx");
-
-
-            // Third Party Checkouts
-            routes.MapPageRoute("googlenotify", "googlenotify", "~/googlenotify.aspx");
-
             // Signup Routes
             routes.MapPageRoute("signup-paypal", "paypaloffer", "~/signup/paypaloffer.aspx");
             routes.MapPageRoute("signup-tour", "signup/tour", "~/signup/tour.aspx");
@@ -153,11 +100,61 @@ namespace MerchantTribeStore
             routes.MapPageRoute("signup-refund", "signup/policies/refund", "~/signup/policies/refund.aspx");
             routes.MapPageRoute("signup-terms", "signup/policies/terms", "~/signup/policies/terms.aspx");
 
+            routes.MapPageRoute("adminlogin", "account/login", "~/BVAdmin/Login.aspx");
+            routes.MapPageRoute("adminresetpassword", "account/resetpassword", "~/BVAdmin/ResetPassword.aspx");
+            routes.MapPageRoute("adminresetpassword2", "account/resetpassword2", "~/BVAdmin/ResetPassword2.aspx");
+            routes.MapPageRoute("adminlogout", "account/logout", "~/BVAdmin/logout.aspx");
+                        
+            
+                                                  
+            // Products
+            routes.MapRoute("products-rendersingle", "products/rendersingleproduct/{*params}",
+                                new {controller = "Products",action = "RenderSingleProduct"});
+            routes.MapRoute("products-validate", "products/validate/{*params}",
+                                new { controller = "Products", action = "Validate" });
+            // Product Reviews                      
+            routes.MapRoute("productreview-route", "products/reviews/{slug}",
+                                new { controller = "ProductReviews", action = "Index" });
+            routes.MapRoute("productreviews", "productreviews/{action}/{id}",
+                                new { controller = "ProductReviews", action = "index", id = "" });
+                                      
+            // policies
+            routes.MapRoute("policy-route", "policies/{policykind}",
+                                new { controller = "Policies", action="Index" });
+            routes.MapRoute("faq-route", "faq", new { controller = "Policies", action = "Faq" });
+
+            // estimate shipping
+            routes.MapRoute("estimate-shipping", "estimateshipping/{action}/{id}",
+                                new { controller = "EstimateShipping", action = "index", id = "0" });
+
+            // Cart
+            routes.MapPageRoute("cart-route", "cart", "~/cart.aspx");                      
+
+            // checkouts
+            routes.MapRoute("checkout-route", "checkout/{action}/{*params}",
+                                new { controller = "Checkout", action = "Index" });
+            
+            routes.MapPageRoute("checkout-paypal-route", "paypalexpresscheckout", "~/CheckoutPayPalExpress.aspx");
+            routes.MapRoute("paypal-ipn-route", "paypalipn", 
+                                new {controller = "PayPalIpn", action="Index" });
+
+            // Search
+            routes.MapRoute("search-route", "search", new { controller = "Search", action = "Index" });
+
+            // Store Systems
+            routes.MapRoute("notfound", "storenotfound", new { controller = "Store", action = "NotFound" });
+            routes.MapRoute("notavailable", "storenotavailable", new { controller = "Store", action = "NotAvailable" });
+            routes.MapRoute("storeclosed", "storeclosed", new { controller = "Store", action = "Closed" });
+            routes.MapRoute("nopermisssion", "nopermission", new { controller = "Store", action = "NoPermission" });
+            routes.MapRoute("error-route", "error", new { controller = "Store", action = "Error" });
+
+            // Admin
+            routes.MapPageRoute("admin", "admin", "~/bvadmin/default.aspx");
+                                    
             // Home page
             routes.MapRoute("homepage", "", new { controller = "Home", action = "Index" });
-            routes.MapRoute("oldhomepage", "default.aspx", new { controller = "Home", action = "ToIndex" });            
 
-            // MVC Page Routes
+            // Other Routes
             routes.MapRoute("fileuploadhandler", "fileuploadhandler/{typecode}/{*details}", new { controller = "FileUpload", action = "Index" });
             routes.MapRoute("flexpartjson", "flexpartjson/{pageid}/{partid}", new { controller = "FlexPartJson", action = "Index" });
             routes.MapRoute("todo", "todo/{action}/{id}/{*params}", new { controller = "ToDo", Action = "Index", id = 0 });
@@ -165,17 +162,19 @@ namespace MerchantTribeStore
             routes.MapRoute("js", "js/{filename}", new { controller = "Javascript", action = "Index" });
             routes.MapRoute("scheduledtasks", "scheduledtasks/{storekey}", new { controller = "ScheduledTasks", action = "Index" });
 
+            // Site Map
             routes.MapRoute("sitemap-route", "sitemap/{*params}", new { controller = "SiteMap", action = "Index" });
             routes.MapRoute("sitemapxml", "sitemap.xml", new { controller = "SiteMap", action = "Xml"});
             
+            // Api
             routes.MapRoute("apirest", "api/rest/v{version}/{modelname}/{*parameters}", new { controller = "ApiRest", action = "Index", version=1 });
             
-            // MVC Super             
+            // Multi-Store Super Routes          
             routes.MapRoute("superstores", "super/stores/{action}/{*params}", new { controller = "SuperStores", Action = "Index" });
             routes.MapRoute("superhome", "super/{action}/{*params}", new { controller = "Super", Action = "Index" });
 
             // Custom Router
-            // This should stop anything
+            // This should catch anything
             routes.Add("bvroute", new Route("{*slug}", new CustomRouter()));            
                         
         }
@@ -213,56 +212,6 @@ namespace MerchantTribeStore
 
         void Session_Start(object sender, EventArgs e)
         {
-            // Code that runs when a new session is started
-            /*
-                'Try
-                'If MerchantTribe.Commerce.WebAppSettings.AutomaticallyRegenerateDynamicCategories Then
-                'If ((DateTime.Now() - MerchantTribe.Commerce.WebAppSettings.AutomaticallyRegenerateDynamicCategoriesLastDateTimeRun).Ticks / TimeSpan.TicksPerHour) > _
-                'MerchantTribe.Commerce.WebAppSettings.AutomaticallyRegenerateDynamicCategoriesIntervalInHours Then
-                'MerchantTribe.Commerce.WebAppSettings.AutomaticallyRegenerateDynamicCategoriesLastDateTimeRun = DateTime.Now()
-                'System.Threading.ThreadPool.QueueUserWorkItem(New System.Threading.WaitCallback(AddressOf MerchantTribe.Commerce.Catalog.Category.RegenerateDynamicCategories))
-                'End If
-                'End If
-                'Catch ex As Exception
-                'MerchantTribe.Commerce.EventLog.LogEvent(ex)
-                'End Try
-        
-                'Try
-                'If ((DateTime.Now() - MerchantTribe.Commerce.WebAppSettings.CartCleanupLastTimeRun).Ticks / TimeSpan.TicksPerHour) > _
-                'MerchantTribe.Commerce.WebAppSettings.CartCleanupIntervalInHours Then
-                'MerchantTribe.Commerce.WebAppSettings.CartCleanupLastTimeRun = DateTime.Now()
-                'System.Threading.ThreadPool.QueueUserWorkItem(New System.Threading.WaitCallback(AddressOf MerchantTribe.Commerce.Orders.Order.CleanupCarts))
-                'End If
-                'Catch ex As Exception
-                'MerchantTribe.Commerce.EventLog.LogEvent(ex)
-                'End Try
-        
-                'Try
-                'If (MerchantTribe.Commerce.WebAppSettings.InventoryLowHours > 0) AndAlso (Not MerchantTribe.Commerce.WebAppSettings.DisableInventory) Then
-                'If ((DateTime.Now() - MerchantTribe.Commerce.WebAppSettings.InventoryLowLastTimeRun).Ticks / TimeSpan.TicksPerHour) > _
-                'MerchantTribe.Commerce.WebAppSettings.InventoryLowHours Then
-                'MerchantTribe.Commerce.WebAppSettings.InventoryLowLastTimeRun = DateTime.Now()
-                'System.Threading.ThreadPool.QueueUserWorkItem(New System.Threading.WaitCallback(AddressOf MerchantTribe.Commerce.Catalog.ProductInventory.EmailLowStockReport))
-                'End If
-                'End If
-                'Catch ex As Exception
-                'MerchantTribe.Commerce.EventLog.LogEvent(ex)
-                'End Try
-        
-                'Try
-                'If (MerchantTribe.Commerce.WebAppSettings.CCSHours > 0) Then
-                'If ((DateTime.Now() - MerchantTribe.Commerce.WebAppSettings.CCSLastTimeRun).Ticks / TimeSpan.TicksPerHour) > 24 Then
-                'Dim lastTimeRun As DateTime = MerchantTribe.Commerce.WebAppSettings.CCSLastTimeRun
-                'MerchantTribe.Commerce.WebAppSettings.CCSLastTimeRun = DateTime.Now()
-                'System.Threading.ThreadPool.QueueUserWorkItem(New System.Threading.WaitCallback(AddressOf MerchantTribe.Commerce.Orders.Order.CleanUpCCNumbers), lastTimeRun)
-                'End If
-                'End If
-                'Catch ex As Exception
-                'MerchantTribe.Commerce.EventLog.LogEvent(ex)
-                'End Try
-            */
-
-
         }
 
         void Session_End(object sender, EventArgs e)

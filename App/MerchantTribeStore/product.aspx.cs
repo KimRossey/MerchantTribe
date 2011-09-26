@@ -296,7 +296,7 @@ namespace MerchantTribeStore
                     }
                 }
 
-                sb.Append("$.post('" + Page.ResolveUrl("~/product_validate.aspx") + "'," + System.Environment.NewLine);
+                sb.Append("$.post('" + Page.ResolveUrl("~/products/validate") + "'," + System.Environment.NewLine);
                 sb.Append(" {\"productbvin\":\"" + LocalProduct.Bvin + "\"" + System.Environment.NewLine);
                 foreach (Option opt in LocalProduct.Options)
                 {

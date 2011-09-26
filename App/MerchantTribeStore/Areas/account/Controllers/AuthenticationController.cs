@@ -9,11 +9,164 @@ using MerchantTribe.Commerce.Membership;
 using MerchantTribe.Commerce.Utilities;
 using MerchantTribeStore.Models;
 using MerchantTribeStore.Controllers.Shared;
+using MerchantTribeStore.Areas.account.Models;
 
 namespace MerchantTribeStore.Areas.account.Controllers
 {
     public class AuthenticationController : BaseStoreController
     {
+
+        private void SignInSetup()
+        {
+            ViewBag.Title = SiteTerms.GetTerm(SiteTermIds.Login);
+            
+            List<BreadCrumbItem> extraCrumbs = new List<BreadCrumbItem>();
+            extraCrumbs.Add(new BreadCrumbItem() { Name = ViewBag.Title });
+            ViewBag.ExtraCrumbs = extraCrumbs;
+
+            ViewBag.IsPrivateStore = MTApp.CurrentStore.Settings.IsPrivateStore;
+            ViewBag.PrivateStoreMessage = SiteTerms.GetTerm(SiteTermIds.PrivateStoreNewUser);
+
+            ViewBag.LoginButtonUrl = MTApp.ThemeManager().ButtonUrl("Login", Request.IsSecureConnection);
+            ViewBag.CreateButtonUrl = MTApp.ThemeManager().ButtonUrl("createaccount", Request.IsSecureConnection);            
+        }
+
+        // GET: /account/signin
+        public ActionResult SignIn()
+        {
+            SignInSetup();
+            SignInViewModel model = new SignInViewModel();
+
+            // Find email view cookie
+            string uid = SessionManager.GetCookieString(WebAppSettings.CustomerIdCookieName);
+            if (uid != string.Empty)
+            {
+                CustomerAccount u = MTApp.MembershipServices.Customers.Find(uid);
+                if (u != null)
+                {
+                    model.Email = u.Email;
+                }
+            }
+
+            return View(model);
+        }
+
+        // POST: /account/signin
+        [ActionName("SignIn")]
+        [HttpPost]
+        public ActionResult SignInPost(SignInViewModel posted)
+        {
+            SignInSetup();
+
+            if (ValidateLoginModel(posted, false))
+            {
+                string errorMessage = string.Empty;
+                string userId = string.Empty;
+                if (MTApp.MembershipServices.LoginCustomer(posted.Email.Trim(),
+                                        posted.Password.Trim(),
+                                        ref errorMessage,
+                                        this.Request.RequestContext.HttpContext,
+                                        ref userId))
+                {
+                    MerchantTribe.Commerce.Orders.Order cart = SessionManager.CurrentShoppingCart(MTApp.OrderServices);
+                    if (cart != null && !string.IsNullOrEmpty(cart.bvin))
+                    {
+                        cart.UserEmail = posted.Email.Trim();
+                        cart.UserID = userId;
+                        MTApp.CalculateOrderAndSave(cart);
+                        SessionManager.SaveOrderCookies(cart);
+                    }
+                    return Redirect("~/account");
+                }
+                else
+                {
+                    string errorMessage2 = string.Empty;
+                    // Failed to Login as Customer, Try admin account
+                    if (MTApp.AccountServices.LoginAdminUser(posted.Email.Trim(), posted.Password.Trim(),
+                                                                               ref errorMessage2, this.Request.RequestContext.HttpContext))
+                    {
+                        return Redirect("~/bvadmin");
+                    }
+                    this.FlashWarning(errorMessage);
+                }
+            }
+            
+            return View(posted);
+        }
+
+        // POST: /account/authentication/create
+        [HttpPost]
+        public ActionResult CreateAccount(SignInViewModel posted)
+        {
+            SignInSetup();
+            SignInViewModel model = new SignInViewModel();
+
+            // bail out if this is a private store that doesn't allow registrations
+            if (ViewBag.IsPrivateStore) return View("SignIn", model);
+
+            // Process Requrest
+            if (ValidateLoginModel(posted, true))
+            {
+                bool result = false;
+              
+                CustomerAccount u = new CustomerAccount();
+
+                if (u != null)
+                {
+                    u.Email = posted.Email.Trim();
+                    CreateUserStatus s = CreateUserStatus.None;
+                    // Create new user
+                    result = MTApp.MembershipServices.CreateCustomer(u, ref s, posted.Password.Trim());
+
+                    if (result == false)
+                    {
+                        switch (s)
+                        {
+                            case CreateUserStatus.DuplicateUsername:                                
+                                FlashWarning("That email already exists. Select another email or login to your current account.");
+                                break;
+                            default:                                
+                                FlashWarning("Unable to save user. Unknown error.");
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        // Update bvin field so that next save will call updated instead of create
+                        MerchantTribe.Web.Cookies.SetCookieString(MerchantTribe.Commerce.WebAppSettings.CookieNameAuthenticationTokenCustomer(),
+                                                                  u.Bvin,
+                                                                  this.Request.RequestContext.HttpContext, false, new EventLog());
+                        Redirect("~/account");
+                    }
+                }
+            }
+            return View("SignIn", model);
+        }
+        private bool ValidateLoginModel(SignInViewModel posted, bool isCreate)
+        {
+            bool result = true;
+            if (posted == null) return false;
+            if (!MerchantTribe.Web.Validation.EmailValidation.MeetsEmailFormatRequirements(posted.Email))
+            {
+                result = false;
+                FlashWarning("Please enter a valid email address");
+            }
+            if (posted.Password.Trim().Length < WebAppSettings.PasswordMinimumLength)
+            {
+                result = false;
+                FlashWarning("Password must be at least " + WebAppSettings.PasswordMinimumLength + " characters long.");
+            }
+
+            if (isCreate)
+            {
+                if (posted.PasswordConfirm != posted.Password)
+                {
+                    result = false;
+                    FlashWarning("Passwords don't match. Please try again.");
+                }
+            }
+            return result;
+        }
 
         public ActionResult SignOut()
         {

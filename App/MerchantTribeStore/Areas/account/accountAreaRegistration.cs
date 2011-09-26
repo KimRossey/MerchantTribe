@@ -14,7 +14,8 @@ namespace MerchantTribeStore.Areas.account
 
         public override void RegisterArea(AreaRegistrationContext context)
         {
-
+            context.MapRoute("customerlogin", "signin",
+                new { controller = "Authentication", action="SignIn"});
             context.MapRoute("customerlogout", "signout", 
                 new { controller = "Authentication", action = "SignOut" });
 

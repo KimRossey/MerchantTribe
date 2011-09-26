@@ -408,6 +408,20 @@ namespace MerchantTribe.Commerce.Orders
             BusinessRules.Workflow.RunByName(context, BusinessRules.WorkflowNames.PaymentChanged);
         }
 
+        public List<OrderTransaction> FindTransactionsByThirdPartyOrderId(string thirdPartyId)
+        {
+            List<OrderTransaction> result = new List<OrderTransaction>();
+
+            string oid = string.Empty;
+            Order o = Orders.FindByThirdPartyOrderId(thirdPartyId);
+            if (o != null)
+            {
+                result = Transactions.FindForOrder(o.bvin);
+            }
+
+            return result;
+        }
+
         public bool OrdersRequestShippingMethod(Shipping.ShippingRateDisplay r, Order o)
 		{
 			bool result = false;            
@@ -454,6 +468,8 @@ namespace MerchantTribe.Commerce.Orders
         {
             return MerchantTribe.Commerce.Orders.OrderNumberGenerator.GenerateNewOrderNumber(storeId);
         }
+
+        
 
     }
 }

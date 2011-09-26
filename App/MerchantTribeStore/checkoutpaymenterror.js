@@ -1,6 +1,6 @@
 ﻿function CleanCC() {
     var notclean = $('#cccardnumber').val();
-    $.post('~/JSON/CleanCreditCard.aspx',
+    $.post('~/checkout/CleanCreditCard',
    { "CardNumber": notclean },
     function (data) {
         $('#cccardnumber').val(data.CardNumber);
@@ -9,8 +9,8 @@
 }
 
 function LoadRegions(countrylist, regionlist, countryname) {
-    $.post('~/JSON/GetRegions.aspx',
-          { "bvin": countryname },
+    $.post('~/estimateshipping/getregions/' + countryid,
+          { "regionid": '' },
           function (data) {
               regionlist.html(data.Regions);
           },

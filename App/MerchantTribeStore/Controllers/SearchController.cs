@@ -80,7 +80,7 @@ namespace MerchantTribeStore.Controllers
 
             foreach (Product p in products)
             {
-                SingleProductViewModel model = new SingleProductViewModel();
+                SingleProductViewModel model = new SingleProductViewModel(p, MTApp);
 
                 bool isLastInRow = false;
                 bool isFirstInRow = false;
@@ -98,19 +98,10 @@ namespace MerchantTribeStore.Controllers
                 {
                     columnCount += 1;
                 }
-
-                model.UserPrice = MTApp.PriceProduct(p, MTApp.CurrentCustomer, null);
+                
                 model.IsFirstItem = isFirstInRow;
                 model.IsLastItem = isLastInRow;
-                model.Item = p;
-                model.ImageUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductImageUrlSmall(
-                    MTApp.CurrentStore.Id,
-                    p.Bvin,
-                    p.ImageFileSmall,
-                    Request.IsSecureConnection);
-                model.ProductLink = UrlRewriter.BuildUrlForProduct(p,
-                                                MTApp.CurrentRequestContext.RoutingContext,
-                                                string.Empty);
+                
                 result.Add(model);
             }
 

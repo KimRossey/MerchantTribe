@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using MerchantTribe.Commerce.Accounts;
+using System.ComponentModel.DataAnnotations;
 
 namespace MerchantTribeStore.Models
 {

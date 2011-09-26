@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using MerchantTribe.Commerce.Catalog;
 using MerchantTribe.Web;
+using System.ComponentModel.DataAnnotations;
 
 namespace MerchantTribeStore.Models
 {
