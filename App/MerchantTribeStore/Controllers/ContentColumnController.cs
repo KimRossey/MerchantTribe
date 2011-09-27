@@ -13,7 +13,9 @@ namespace MerchantTribeStore.Controllers
     {
         [ChildActionOnly]
         public ActionResult Index(string id)
-        {                                    
+        {
+            if (string.IsNullOrEmpty(id)) return Content("");
+         
             ContentColumn col = null;            
             col = MTApp.ContentServices.Columns.Find(id);            
             if (col == null)

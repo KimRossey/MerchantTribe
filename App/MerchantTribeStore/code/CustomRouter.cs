@@ -69,9 +69,11 @@ namespace MerchantTribeStore
 
             // Check for Product URL
             if (IsProductUrl(fullSlug, MTApp))
-            {            
-                var page = System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath("~/product.aspx", typeof(MerchantTribeStore.ProductPage)) as MerchantTribeStore.ProductPage;
-                return page as IHttpHandler;
+            {
+                requestContext.RouteData.Values["controller"] = "Products";
+                requestContext.RouteData.Values["action"] = "Index";
+                System.Web.Mvc.MvcHandler mvcHandlerProducts = new MvcHandler(requestContext);
+                return mvcHandlerProducts;
             }
 
             // no match on product or category so do a 301 check

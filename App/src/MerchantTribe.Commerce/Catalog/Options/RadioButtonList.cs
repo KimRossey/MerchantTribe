@@ -33,7 +33,7 @@ namespace MerchantTribe.Commerce.Catalog.Options
             foreach (OptionItem o in baseOption.Items)
             {
                 sb.Append("<input type=\"radio\" name=\"opt" + baseOption.Bvin.Replace("-", "") + "\" value=\"" + o.Bvin.Replace("-", "") + "\"");                
-                sb.Append(" class=\"isoption\" ");
+                sb.Append(" class=\"isoption radio\" ");
 
                 string cleaned = OptionSelection.CleanBvin(o.Bvin);
                 if (cleaned == selected)
@@ -79,6 +79,30 @@ namespace MerchantTribe.Commerce.Catalog.Options
                     if (rb != null)
                     {
                         if (rb.Checked)
+                        {
+                            result.SelectionData = o.Bvin;
+                            return result;
+                        }
+                    }
+                }
+            }
+
+            return result;
+        }
+        public Catalog.OptionSelection ParseFromForm(Option baseOption, System.Collections.Specialized.NameValueCollection form)
+        {
+            OptionSelection result = new OptionSelection();
+            result.OptionBvin = baseOption.Bvin;
+
+            foreach (OptionItem o in baseOption.Items)
+            {
+                if (!o.IsLabel)
+                {
+                    string radioId = "opt" + o.Bvin.Replace("-", "");
+                    string value = form[radioId];                    
+                    if (value != null)
+                    {
+                        if (value.Trim().Length > 0)
                         {
                             result.SelectionData = o.Bvin;
                             return result;

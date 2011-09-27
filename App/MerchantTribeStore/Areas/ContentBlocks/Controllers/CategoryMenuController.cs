@@ -82,44 +82,7 @@ namespace MerchantTribeStore.Areas.ContentBlocks.Controllers
             }
             else
             {
-                if (this is IProductPage)
-                {
-                    Product p = ((IProductPage)this).LocalProduct;
-                    if (p != null)
-                    {
-                        CatalogService CatalogServices = MTApp.CatalogServices;
-                        List<CategorySnapshot> categories = CatalogServices.FindCategoriesForProduct(p.Bvin);
-                        if (categories != null)
-                        {
-                            if (categories.Count > 0)
-                            {
-
-                                bool found = false;
-
-                                // scan category list to see if the last visited is in the collection
-                                foreach (CategorySnapshot c in categories)
-                                {
-                                    if (c.Bvin == MerchantTribe.Commerce.SessionManager.CategoryLastId)
-                                    {
-                                        result = c.Bvin;
-                                        found = true;
-                                        break;
-                                    }
-                                }
-
-                                if (found == false)
-                                {
-                                    result = categories[0].Bvin;
-                                }
-
-                            }
-                        }
-                    }
-                }
-                else
-                {
-                    result = MerchantTribe.Commerce.SessionManager.CategoryLastId;
-                }
+                result = MerchantTribe.Commerce.SessionManager.CategoryLastId;
             }
 
             // Always reset to zero if we can't find anything

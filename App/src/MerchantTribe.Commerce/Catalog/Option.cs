@@ -101,6 +101,10 @@ namespace MerchantTribe.Commerce.Catalog
         {
             return this.Processor.ParseFromPlaceholder(this, ph);
         }
+        public Catalog.OptionSelection ParseFromForm(System.Collections.Specialized.NameValueCollection form)
+        {
+            return this.Processor.ParseFromForm(this, form);
+        }
         public void SetSelectionsInPlaceholder(System.Web.UI.WebControls.PlaceHolder ph, Catalog.OptionSelectionList selections)
         {
             this.Processor.SetSelectionsInPlaceholder(this, ph, selections);

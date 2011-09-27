@@ -655,7 +655,6 @@
     <Content Include="BVModules\Controls\AddressBilling.ascx" />
     <Content Include="BVModules\Controls\AddressBook.ascx" />
     <Content Include="BVModules\Controls\AddressShipping.ascx" />
-    <Content Include="BVModules\Controls\AddToWishlist.ascx" />
     <Content Include="BVModules\Controls\AdminPanel.ascx" />
     <Content Include="BVModules\Controls\CategoryBreadCrumbTrail.ascx" />
     <Content Include="BVModules\Controls\CategorySortOrder.ascx" />
@@ -675,16 +674,12 @@
     <Content Include="BVModules\Controls\PaypalExpressCheckoutButton.ascx" />
     <Content Include="BVModules\Controls\PoweredBy.ascx" />
     <Content Include="BVModules\Controls\PrintThisPage.ascx" />
-    <Content Include="BVModules\Controls\ProductReviewDisplay.ascx" />
-    <Content Include="BVModules\Controls\ProductTypeDisplay.ascx" />
-    <Content Include="BVModules\Controls\RelatedItems.ascx" />
     <Content Include="BVModules\Controls\Search.ascx" />
     <Content Include="BVModules\Controls\Shipping.ascx" />
     <Content Include="BVModules\Controls\SiteTermsAgreement.ascx" />
     <Content Include="BVModules\Controls\StaticAddressDisplay.ascx" />
     <Content Include="BVModules\Controls\ViewOrder.ascx" />
     <Content Include="BVModules\Controls\ViewOrderItems.ascx" />
-    <Content Include="BVModules\Controls\VolumeDiscounts.ascx" />
     <Content Include="BVModules\CreditCardGateways\Authorize.Net\Edit.ascx" />
     <Content Include="BVModules\CreditCardGateways\BV Secure Gateway\Edit.ascx" />
     <Content Include="BVModules\CreditCardGateways\Payflow Pro\edit.ascx" />
@@ -1390,7 +1385,6 @@
     <Content Include="Images\System\Trashcan.png" />
     <Content Include="Images\System\UnChecked.png" />
     <Content Include="JQueryInclude.ascx" />
-    <Content Include="product.aspx" />
     <Content Include="robots.txt" />
     <Content Include="Scripts\bv-extensions.js" />
     <Content Include="Scripts\center.js" />
@@ -1821,6 +1815,7 @@
     <Content Include="Scripts\MicrosoftMvcValidation.js" />
     <Content Include="Scripts\modernizr-1.7.js" />
     <Content Include="Scripts\modernizr-1.7.min.js" />
+    <Content Include="Scripts\ProductPage.js" />
     <Content Include="Scripts\tinymce\bvinit.js" />
     <Content Include="Scripts\tinymce\jquery.tinymce.js" />
     <Content Include="Scripts\tinymce\langs\en.js" />
@@ -2088,7 +2083,7 @@
     <Content Include="signup\SignUpMenu.ascx" />
     <Content Include="signup\tour.aspx" />
     <Content Include="Scripts\Silverlight.js" />
-    <Content Include="tabs.js" />
+    <Content Include="Scripts\tabs.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -3941,13 +3936,6 @@
     <Compile Include="BVModules\Controls\AddressShipping.ascx.designer.cs">
       <DependentUpon>AddressShipping.ascx</DependentUpon>
     </Compile>
-    <Compile Include="BVModules\Controls\AddToWishlist.ascx.cs">
-      <DependentUpon>AddToWishlist.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="BVModules\Controls\AddToWishlist.ascx.designer.cs">
-      <DependentUpon>AddToWishlist.ascx</DependentUpon>
-    </Compile>
     <Compile Include="BVModules\Controls\AdminPanel.ascx.cs">
       <DependentUpon>AdminPanel.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -4081,27 +4069,6 @@
     <Compile Include="BVModules\Controls\PrintThisPage.ascx.designer.cs">
       <DependentUpon>PrintThisPage.ascx</DependentUpon>
     </Compile>
-    <Compile Include="BVModules\Controls\ProductReviewDisplay.ascx.cs">
-      <DependentUpon>ProductReviewDisplay.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="BVModules\Controls\ProductReviewDisplay.ascx.designer.cs">
-      <DependentUpon>ProductReviewDisplay.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="BVModules\Controls\ProductTypeDisplay.ascx.cs">
-      <DependentUpon>ProductTypeDisplay.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="BVModules\Controls\ProductTypeDisplay.ascx.designer.cs">
-      <DependentUpon>ProductTypeDisplay.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="BVModules\Controls\RelatedItems.ascx.cs">
-      <DependentUpon>RelatedItems.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="BVModules\Controls\RelatedItems.ascx.designer.cs">
-      <DependentUpon>RelatedItems.ascx</DependentUpon>
-    </Compile>
     <Compile Include="BVModules\Controls\Search.ascx.cs">
       <DependentUpon>Search.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -4143,13 +4110,6 @@
     </Compile>
     <Compile Include="BVModules\Controls\ViewOrderItems.ascx.designer.cs">
       <DependentUpon>ViewOrderItems.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="BVModules\Controls\VolumeDiscounts.ascx.cs">
-      <DependentUpon>VolumeDiscounts.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="BVModules\Controls\VolumeDiscounts.ascx.designer.cs">
-      <DependentUpon>VolumeDiscounts.ascx</DependentUpon>
     </Compile>
     <Compile Include="BVModules\CreditCardGateways\Authorize.Net\Edit.ascx.cs">
       <DependentUpon>Edit.ascx</DependentUpon>
@@ -4375,8 +4335,6 @@
     <Compile Include="CheckoutPayPalExpress.aspx.designer.cs">
       <DependentUpon>CheckoutPayPalExpress.aspx</DependentUpon>
     </Compile>
-    <Compile Include="code\AddToCartClickedEventArgs.cs" />
-    <Compile Include="code\AddToWishlistClickedEventArgs.cs" />
     <Compile Include="code\AdminTabType.cs" />
     <Compile Include="code\app\RegisterStoreData.cs" />
     <Compile Include="code\BaseAdminJsonPage.cs">
@@ -4411,7 +4369,6 @@
     <Compile Include="code\Helpers\Html.cs" />
     <Compile Include="code\IMessageBox.cs" />
     <Compile Include="code\IntegrationLoader.cs" />
-    <Compile Include="code\IProductPage.cs" />
     <Compile Include="code\IStorePage.cs" />
     <Compile Include="code\IVariantDisplay.cs" />
     <Compile Include="code\RouteEvaluator.cs" />
@@ -4454,6 +4411,7 @@
     <Compile Include="Models\ContentColumnIdentifier.cs" />
     <Compile Include="Models\PagerViewModel.cs" />
     <Compile Include="Models\ProductListViewModel.cs" />
+    <Compile Include="Models\ProductPageViewModel.cs" />
     <Compile Include="Models\ProductReviewsViewModel.cs" />
     <Compile Include="Models\SingleCategoryViewModel.cs" />
     <Compile Include="Models\SingleProductViewModel.cs" />
@@ -4472,13 +4430,6 @@
     <Compile Include="Models\AddressViewModel.cs" />
     <Compile Include="Models\EstimateShippingViewModel.cs" />
     <Compile Include="Models\SuperStoreViewModel.cs" />
-    <Compile Include="product.aspx.cs">
-      <DependentUpon>product.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="product.aspx.designer.cs">
-      <DependentUpon>product.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="signup\about.aspx.cs">
       <DependentUpon>about.aspx</DependentUpon>
@@ -4749,6 +4700,8 @@
     <Content Include="Views\ProductReviews\Index.cshtml" />
     <Content Include="Views\ProductReviews\_SingleReview.cshtml" />
     <Content Include="Views\Checkout\Receipt.cshtml" />
+    <Content Include="Views\Products\Index.cshtml" />
+    <Content Include="Views\ProductReviews\TopReviews.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
