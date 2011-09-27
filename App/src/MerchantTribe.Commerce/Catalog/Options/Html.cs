@@ -32,6 +32,10 @@ namespace MerchantTribe.Commerce.Catalog.Options
         {
             return null;
         }
+        public Catalog.OptionSelection ParseFromForm(Option baseOption, System.Collections.Specialized.NameValueCollection form)
+        {
+            return null;
+        }
 
         public void SetSelectionsInPlaceholder(Option baseOption, System.Web.UI.WebControls.PlaceHolder ph, Catalog.OptionSelectionList selections)
         {

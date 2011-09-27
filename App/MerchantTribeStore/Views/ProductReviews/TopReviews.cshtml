@@ -1,0 +1,14 @@
+﻿@{
+    Layout = null;
+}
+@model MerchantTribeStore.Models.ProductReviewsViewModel
+
+    <div class="ProductReviewRating">
+        @ViewBag.AvgLabel <img src="@ViewBag.AvgImage" alt="Average Rating @ViewBag.Avg" />        
+    </div>
+    @foreach (var review in Model.Reviews)
+    {
+        @Html.Partial("~/Views/ProductReviews/_SingleReview.cshtml", review)
+    }
+    <div class="clear"></div>
+    

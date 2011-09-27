@@ -36,20 +36,7 @@ namespace MerchantTribeStore
             if ((Page is BaseStoreCategoryPage))
             {
                 currentCategory = new CategorySnapshot(((BaseStoreCategoryPage)Page).LocalCategory);
-            }
-            else if ((Page is IProductPage))
-            {
-                Product p = ((IProductPage)Page).LocalProduct;
-                if ((p != null))
-                {
-                    List<CategorySnapshot> cats = MyPage.MTApp.CatalogServices.FindCategoriesForProduct(p.Bvin);
-                    if ((cats.Count > 0))
-                    {
-                        categoryId = cats[0].Bvin;
-                        currentCategory = cats[0];
-                    }
-                }
-            }
+            }           
             else
             {
                 currentCategory = new CategorySnapshot(MyPage.MTApp.CatalogServices.Categories.Find(categoryId));

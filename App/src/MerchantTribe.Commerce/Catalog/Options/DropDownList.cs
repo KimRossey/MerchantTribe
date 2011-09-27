@@ -100,6 +100,18 @@ namespace MerchantTribe.Commerce.Catalog.Options
 
             return result;
         }
+        public Catalog.OptionSelection ParseFromForm(Option baseOption, System.Collections.Specialized.NameValueCollection form)
+        {
+            OptionSelection result = new OptionSelection();
+            result.OptionBvin = baseOption.Bvin;
+            string formid = "opt" + baseOption.Bvin.Replace("-", "");
+            string value = form[formid];
+            if (value != null)
+            {
+                result.SelectionData = value;
+            }
+            return result;
+        }
 
         public void SetSelectionsInPlaceholder(Option baseOption, System.Web.UI.WebControls.PlaceHolder ph, Catalog.OptionSelectionList selections)
         {

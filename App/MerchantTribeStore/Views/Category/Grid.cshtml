@@ -8,10 +8,7 @@
     {
         <h1>@Model.LocalCategory.Name</h1>
     }
-    @if (Model.LocalCategory.PreContentColumnId != string.Empty)
-    {
-        @Html.Action("Index", "ContentColumn", new {id=Model.LocalCategory.PreContentColumnId})
-    }                    
+    @Html.Action("Index", "ContentColumn", new {id=Model.LocalCategory.PreContentColumnId})
     @if (ViewBag.ShowBanner == true)
     {
         <div id="categorybanner">
@@ -53,9 +50,6 @@
             <div class="clear"></div>
         </div>
     </div>
-    @if (Model.LocalCategory.PostContentColumnId.Trim().Length > 0)
-    {
-        @Html.Action("Index", "ContentColumn", new { id = Model.LocalCategory.PostContentColumnId })        
-    }
+    @Html.Action("Index", "ContentColumn", new { id = Model.LocalCategory.PostContentColumnId })        
 </div>
 <div class="clear"></div>

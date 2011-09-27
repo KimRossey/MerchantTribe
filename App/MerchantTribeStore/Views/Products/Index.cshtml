@@ -1,0 +1,164 @@
+﻿@model MerchantTribeStore.Models.ProductPageViewModel
+@section HeadContent
+{
+    <script src="@Url.Content("~/scripts/tabs.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/scripts/ProductPage.js")" type="text/javascript"></script>
+    @Html.Raw(Model.JavaScripts)
+}
+<div id="productpage">
+    @Html.Action("ProductTrail", "BreadCrumb", new { product = Model.LocalProduct })
+    @Html.Action("Index", "ContentColumn", new { id = Model.LocalProduct.PreContentColumnId })
+    <div class="productpagemain">
+        <div class="imagecolumn">
+            <div class="productimage">
+                <img id="imgMain" src="@Model.MainImageUrl" alt="@Model.MainImageAltText" />
+                <input type="hidden" id="imgMainLast" value="" />
+            </div>
+            @Html.Raw(Model.PreRenderedImages)
+        </div>
+        <div class="actioncolumn">
+            <h1>
+                <span>@Model.LocalProduct.ProductName</span></h1>
+            @Html.Raw((string)TempData["messages"])
+            <span id="sku">@Model.LocalProduct.Sku</span> <span class="stockdisplay">@Html.Raw(Model.StockMessage)</span>
+            <div id="productcontrols">
+                <form action="@Url.Content("~/" + Model.LocalProduct.UrlSlug)" method="post">
+                @Html.Raw(Model.PreRenderedOptions)
+                <div id="pricewrapper">@Html.Raw(Model.PreRenderedPrices)</div>
+                <label for="quantityfield">
+                    Quantity</label>
+                <span class="choice">
+                    @if (Model.IsAvailableForSale)
+                    {
+                        <input type="text" name="qty" value="@Model.InitialQuantity" class="forminput short" />
+                    }
+                </span>
+                <div id="localmessage">
+                    @Html.Raw(Model.ValidationMessage)
+                </div>
+                <div class="buttons">
+                    @if (Model.IsAvailableForSale)
+                    {
+                        <input id="addtocartbutton" type="image" src="@ViewBag.AddToCartButtonUrl" alt="Add To Cart" />                            
+                    }
+                </div>
+
+                <input type="hidden" id="productbvin" name="productbvin" value="@Model.LocalProduct.Bvin" />
+                <!--VOLUME DISCOUNTS HERE-->
+                <div class="clear">
+                </div>
+                </form>
+            </div>
+            @Html.Raw(Model.LocalProduct.LongDescription)
+            <!--PRODUCT TYPE DISPLAY HERE-->
+        </div>
+        <div class="clear">
+            &nbsp;</div>
+    </div>
+    <div class="informationcolumn">
+        <ul class="tabnavigation">
+            @if (Model.LocalProduct.AllowReviews)
+            {
+                <li id="TabNavReviews"><a href="#tabreviews">Reviews</a></li>
+            }
+            <li id="TabNavSuggested"><a href="#tabsuggesteditems">@ViewBag.RelatedItemsTitle</a></li>
+            @foreach (MerchantTribe.Commerce.Catalog.ProductDescriptionTab t in Model.LocalProduct.Tabs.OrderBy(y => y.SortOrder))
+            {
+                <li id="@("TabNav" + t.Bvin)"><a href="@("#Tab" + t.Bvin)">@t.TabTitle</a></li>
+            }
+        </ul>
+        <div class="tabs">            
+            <div id="tabreviews">
+                <div class="padded">
+                    <h2>
+                        Reviews</h2>
+                    <div class="reviews">
+                        <div class="reviewlist">
+                            @Html.Action("TopReviews", "ProductReviews", new { howMany = 3, reviews = Model.LocalProduct.ReviewsApproved })
+                            <div class="ProductReviewLinks">
+                                <a href="@Url.Content("~/Products/Reviews/" + Model.LocalProduct.UrlSlug)">View All
+                                    Reviews</a><br />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reviewform">
+                        @if (Model.LocalProduct.AllowReviews)
+                        {                            
+                            <h3>
+                                Write a Review for this Product</h3>
+                            <form action="@Url.Content("~/productreviews/create")" method="post">
+                                <table class="formtable">
+                                <tr>
+                                    <td class="formlabel" valign="top" align="right">
+                                        Rating
+                                    </td>
+                                    <td>
+                                        <select name="rating">
+                                            <option value="5" selected="selected">5 Stars</option>
+                                            <option value="4">4 Stars</option>
+                                            <option value="3">3 Stars</option>
+                                            <option value="2">2 Stars</option>
+                                            <option value="1">1 Star</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="formlabel" valign="top" align="right">
+                                        Your Review
+                                    </td>
+                                    <td>
+                                        <textarea name="newreview" class="forminput" rows="6" cols="30">
+                                                </textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="formlabel">
+                                        &nbsp;
+                                    </td>
+                                    <td>
+                                        <input type="image" src="@ViewBag.SubmitButtonUrl" alt="Submit" />
+                                    </td>
+                                </tr>
+                            </table>
+                                <input type="hidden" name="productbvin" value="@Model.LocalProduct.Bvin" />
+                            </form>
+                        }
+                    </div>
+                    <div class="clear">
+                    </div>
+                </div>
+            </div>
+            <div id="tabsuggesteditems">
+                <div class="padded">
+                    <h2>@ViewBag.RelatedItemsTitle</h2>
+                    <div class="relateditems">
+                        @foreach (var item in Model.RelatedItems)
+                        {
+                            @Html.Partial("RenderSingleProduct", item);
+                        }
+                        <div class="clear">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @foreach (MerchantTribe.Commerce.Catalog.ProductDescriptionTab t in Model.LocalProduct.Tabs.OrderBy(y => y.SortOrder))
+            {                                
+                <div id="@("Tab" + t.Bvin)">
+                    <div class="padded">
+                        <h2>@t.TabTitle</h2>
+                        @Html.Raw(t.HtmlData)
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    @Html.Action("Index", "ContentColumn", new { id = Model.LocalProduct.PostContentColumnId })
+</div>
+<div class="modal2">
+    <div class="popoverframe2">
+        <a id="dialogclose" href="#">Close</a><br />
+        <iframe id="popoverpage2"></iframe>
+        <br />
+        <a id="dialogclose2" href="#">Close</a>
+    </div>
+</div>

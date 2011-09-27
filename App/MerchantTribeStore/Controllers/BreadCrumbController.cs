@@ -22,7 +22,7 @@ namespace MerchantTribeStore.Controllers
             BreadCrumbViewModel model = new BreadCrumbViewModel();
             model.HomeName = MerchantTribe.Commerce.Content.SiteTerms.GetTerm(MerchantTribe.Commerce.Content.SiteTermIds.Home);
 
-            LoadTrailForCategory(model, snap);
+            LoadTrailForCategory(model, snap, false);
 
             if (extras != null)
             {                
@@ -33,7 +33,7 @@ namespace MerchantTribeStore.Controllers
             }
             return View("BreadCrumb", model);
         }
-        private void LoadTrailForCategory(BreadCrumbViewModel model, CategorySnapshot cat)
+        private void LoadTrailForCategory(BreadCrumbViewModel model, CategorySnapshot cat, bool linkAll)
         {
             if (cat == null) return;
             if (cat.Hidden) return;
@@ -49,7 +49,7 @@ namespace MerchantTribeStore.Controllers
             // Walk list backwards
             for (int j = trail.Count - 1; j >= 0; j += -1)
             {
-                if (j != 0)
+                if (j != 0 || linkAll == true)
                 {
                     model.Items.Enqueue(AddCategoryLink(trail[j]));                    
                 }
@@ -68,6 +68,36 @@ namespace MerchantTribeStore.Controllers
                 MTApp.CurrentRequestContext.RoutingContext);
             return result;
         }
+
+        [ChildActionOnly]
+        public ActionResult ProductTrail(Product product, List<BreadCrumbItem> extras)
+        {
+            BreadCrumbViewModel model = new BreadCrumbViewModel();
+            model.HomeName = MerchantTribe.Commerce.Content.SiteTerms.GetTerm(MerchantTribe.Commerce.Content.SiteTermIds.Home);
+
+            LoadTrailForProduct(model, product);
+
+            if (extras != null)
+            {
+                foreach (BreadCrumbItem item in extras)
+                {
+                    model.Items.Enqueue(item);
+                }
+            }
+            return View("BreadCrumb", model);
+        }
+        private void LoadTrailForProduct(BreadCrumbViewModel model, Product p)
+        {
+            if (p == null) return;           
+            CategorySnapshot currentCategory = null;
+            List<CategorySnapshot> cats = MTApp.CatalogServices.FindCategoriesForProduct(p.Bvin);
+            if ((cats.Count > 0))
+            {
+                currentCategory = cats[0];
+            }
+            LoadTrailForCategory(model, currentCategory, true);                  
+            model.Items.Enqueue(new BreadCrumbItem() { Name = p.ProductName });                        
+        }        
 
         [ChildActionOnly]
         public ActionResult ManualTrail(List<BreadCrumbItem> extras)

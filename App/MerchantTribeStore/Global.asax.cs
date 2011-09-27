@@ -112,6 +112,7 @@ namespace MerchantTribeStore
                                 new {controller = "Products",action = "RenderSingleProduct"});
             routes.MapRoute("products-validate", "products/validate/{*params}",
                                 new { controller = "Products", action = "Validate" });
+
             // Product Reviews                      
             routes.MapRoute("productreview-route", "products/reviews/{slug}",
                                 new { controller = "ProductReviews", action = "Index" });

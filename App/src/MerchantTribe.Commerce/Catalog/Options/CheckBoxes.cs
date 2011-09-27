@@ -32,7 +32,7 @@ namespace MerchantTribe.Commerce.Catalog.Options
             StringBuilder sb = new StringBuilder();
             foreach (OptionItem o in baseOption.Items)
             {
-                sb.Append("<input type=\"checkbox\" class=\"isoption\" name=\"opt" + baseOption.Bvin.Replace("-", "") + "\" value=\"" + o.Bvin.Replace("-", "") + "\"");
+                sb.Append("<input type=\"checkbox\" class=\"isoption check\" name=\"opt" + baseOption.Bvin.Replace("-", "") + "\" value=\"" + o.Bvin.Replace("-", "") + "\"");
                 string cleaned = OptionSelection.CleanBvin(o.Bvin);
                 if (cleaned == selected)
                 {
@@ -96,6 +96,40 @@ namespace MerchantTribe.Commerce.Catalog.Options
 
             result.SelectionData = val;
      
+            return result;
+        }
+        public Catalog.OptionSelection ParseFromForm(Option baseOption, System.Collections.Specialized.NameValueCollection form)
+        {
+            OptionSelection result = new OptionSelection();
+            result.OptionBvin = baseOption.Bvin;
+
+            string val = string.Empty;
+
+            foreach (OptionItem o in baseOption.Items)
+            {
+
+                if (!o.IsLabel)
+                {
+                    string checkId = "opt" + o.Bvin.Replace("-", "");
+                    string value = form[checkId];
+                    if (value != null)
+                    {
+                        if (value.Trim().Length > 0)
+                        {
+                            string temp = "";
+                            if (val.Length > 0)
+                            {
+                                temp += ",";
+                            }
+                            temp += o.Bvin;
+                            val += temp;
+                        }
+                    }
+                }
+            }
+
+            result.SelectionData = val;
+
             return result;
         }
 

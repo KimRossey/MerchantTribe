@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
 
-    var tabContainers = $('div.tabs > div > div');
+    var tabContainers = $('div.tabs > div');
 
     $('ul.tabnavigation a').click(function () {
         tabContainers.hide().filter(this.hash).show();
