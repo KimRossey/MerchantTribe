@@ -32,6 +32,7 @@ namespace MerchantTribe.Commerce.Catalog.Options
             StringBuilder sb = new StringBuilder();
 
             sb.Append("<select id=\"opt" + baseOption.Bvin.Replace("-", "") + "\" ");
+            sb.Append(" name=\"opt" + baseOption.Bvin.Replace("-", "") + "\" ");
             sb.Append(" class=\"isoption\" >");
 
             foreach (OptionItem o in baseOption.Items)
@@ -43,7 +44,7 @@ namespace MerchantTribe.Commerce.Catalog.Options
                 else
                 {
                     sb.Append("<option value=\"" + o.Bvin.Replace("-", "") + "\"");
-                    if (o.Bvin == selected)
+                    if (o.Bvin.Replace("-","") == selected)
                     {
                         sb.Append(" selected ");
                     }
