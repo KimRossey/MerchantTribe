@@ -19,30 +19,29 @@ namespace MerchantTribe.Commerce.Catalog.Options
 
         public string RenderWithSelection(Option baseOption, OptionSelectionList selections)
         {
-            string selected = string.Empty;
-            if (selections != null)
-            {
-                OptionSelection sel = selections.FindByOptionId(baseOption.Bvin);
-                if (sel != null)
-                {
-                    selected = sel.SelectionData;
-                }
-            }
-
             StringBuilder sb = new StringBuilder();
             foreach (OptionItem o in baseOption.Items)
             {
                 sb.Append("<input type=\"radio\" name=\"opt" + baseOption.Bvin.Replace("-", "") + "\" value=\"" + o.Bvin.Replace("-", "") + "\"");                
-                sb.Append(" class=\"isoption radio\" ");
-
-                string cleaned = OptionSelection.CleanBvin(o.Bvin);
-                if (cleaned == selected)
+                sb.Append(" class=\"isoption radio" + baseOption.Bvin.Replace("-", "") + "\" ");                                
+                if (IsSelected(o, selections))
                 {
                     sb.Append(" checked=\"checked\" ");
                 }
                 sb.Append("/>" + o.Name + "<br />");
             }
             return sb.ToString();
+        }
+        private bool IsSelected(OptionItem item, OptionSelectionList selections)
+        {
+            bool result = false;
+
+            OptionSelection val = selections.FindByOptionId(item.OptionBvin);
+            if (val == null) return result;
+
+            if (val.SelectionData == item.Bvin.Replace("-","")) return true;
+            
+            return result;
         }
 
         public void RenderAsControl(Option baseOption, System.Web.UI.WebControls.PlaceHolder ph)
@@ -93,24 +92,13 @@ namespace MerchantTribe.Commerce.Catalog.Options
         {
             OptionSelection result = new OptionSelection();
             result.OptionBvin = baseOption.Bvin;
-
-            foreach (OptionItem o in baseOption.Items)
+                        
+            string formid = "opt" + baseOption.Bvin.Replace("-", "");
+            string value = form[formid];
+            if (value != null)
             {
-                if (!o.IsLabel)
-                {
-                    string radioId = "opt" + o.Bvin.Replace("-", "");
-                    string value = form[radioId];                    
-                    if (value != null)
-                    {
-                        if (value.Trim().Length > 0)
-                        {
-                            result.SelectionData = o.Bvin;
-                            return result;
-                        }
-                    }
-                }
+                result.SelectionData = value;
             }
-
             return result;
         }
 

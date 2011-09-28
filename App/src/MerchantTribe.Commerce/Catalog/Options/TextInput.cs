@@ -64,13 +64,16 @@ namespace MerchantTribe.Commerce.Catalog.Options
             
             if (r != "1")
             {
-                sb.Append("<textarea id=\"opt" + baseOption.Bvin + "\" cols=\"" + c + "\" rows=\"" + r + "\" >");
+                sb.Append("<textarea id=\"opt" + baseOption.Bvin.Replace("-","") + "\" cols=\"" + c + "\" rows=\"" + r + "\" ");
+                sb.Append(" name=\"opt" + baseOption.Bvin.Replace("-", "") + "\" ");
+                sb.Append(">");
                 sb.Append(selected);
                 sb.Append("</textarea>");
             }
             else
             {                
-                sb.Append("<input type=\"text\" id=\"opt" + baseOption.Bvin + "\" cols=\"" + c + "\" maxlength=\"" + this.GetMaxLength(baseOption) + "\"");
+                sb.Append("<input type=\"text\" id=\"opt" + baseOption.Bvin.Replace("-","") + "\" cols=\"" + c + "\" maxlength=\"" + this.GetMaxLength(baseOption) + "\"");
+                sb.Append(" name=\"opt" + baseOption.Bvin.Replace("-", "") + "\" ");
                 sb.Append(" value=\"" + selected + "\"");
                 sb.Append("/>");
             }

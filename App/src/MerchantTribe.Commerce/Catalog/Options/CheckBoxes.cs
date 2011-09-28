@@ -18,29 +18,36 @@ namespace MerchantTribe.Commerce.Catalog.Options
         }
 
         public string RenderWithSelection(Option baseOption, OptionSelectionList selections)
-        {
-            string selected = string.Empty;
-            if (selections != null)
-            {
-                OptionSelection sel = selections.FindByOptionId(baseOption.Bvin);
-                if (sel != null)
-                {
-                    selected = sel.SelectionData;
-                }
-            }
-
+        {                             
             StringBuilder sb = new StringBuilder();
             foreach (OptionItem o in baseOption.Items)
             {
-                sb.Append("<input type=\"checkbox\" class=\"isoption check\" name=\"opt" + baseOption.Bvin.Replace("-", "") + "\" value=\"" + o.Bvin.Replace("-", "") + "\"");
-                string cleaned = OptionSelection.CleanBvin(o.Bvin);
-                if (cleaned == selected)
+                sb.Append("<input type=\"checkbox\"");
+                sb.Append(" class=\"isoption check" + baseOption.Bvin.Replace("-","") + "\" name=\"opt" + baseOption.Bvin.Replace("-", "") + "\" value=\"" + o.Bvin.Replace("-", "") + "\"");                
+                if (IsSelected(o, selections))
                 {
                     sb.Append(" checked=\"checked\" ");
                 }
                 sb.Append("/>" + o.Name + "<br />");
             }
             return sb.ToString();
+        }
+        private bool IsSelected(OptionItem item, OptionSelectionList selections)
+        {
+            bool result = false;
+
+            OptionSelection val = selections.FindByOptionId(item.OptionBvin);
+            if (val == null) return result;
+
+            string[] vals = val.SelectionData.Split(',');
+            foreach (string s in vals)
+            {
+                if (s == item.Bvin.Replace("-", ""))
+                {
+                    return true;
+                }                
+            }                       
+            return result;
         }
 
         public void RenderAsControl(Option baseOption, System.Web.UI.WebControls.PlaceHolder ph)
@@ -103,33 +110,12 @@ namespace MerchantTribe.Commerce.Catalog.Options
             OptionSelection result = new OptionSelection();
             result.OptionBvin = baseOption.Bvin;
 
-            string val = string.Empty;
-
-            foreach (OptionItem o in baseOption.Items)
+            string formid = "opt" + baseOption.Bvin.Replace("-", "");
+            string value = form[formid];
+            if (value != null)
             {
-
-                if (!o.IsLabel)
-                {
-                    string checkId = "opt" + o.Bvin.Replace("-", "");
-                    string value = form[checkId];
-                    if (value != null)
-                    {
-                        if (value.Trim().Length > 0)
-                        {
-                            string temp = "";
-                            if (val.Length > 0)
-                            {
-                                temp += ",";
-                            }
-                            temp += o.Bvin;
-                            val += temp;
-                        }
-                    }
-                }
+                result.SelectionData = value;
             }
-
-            result.SelectionData = val;
-
             return result;
         }
 
