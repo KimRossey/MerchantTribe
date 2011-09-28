@@ -15,11 +15,11 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
 
         public override bool Execute(OrderTaskContext context)
         {
-            int      maxItems  = context.CurrentRequest.CurrentStore.Settings.MaxItemsPerOrder;
+            int      maxItems  = context.MTApp.CurrentRequestContext.CurrentStore.Settings.MaxItemsPerOrder;
             if (maxItems <= 0) maxItems = 99999;
-            decimal maxWeight  = context.CurrentRequest.CurrentStore.Settings.MaxWeightPerOrder;
+            decimal maxWeight = context.MTApp.CurrentRequestContext.CurrentStore.Settings.MaxWeightPerOrder;
             if (maxWeight <= 0) maxWeight = 99999;
-            string  maxMessage = context.CurrentRequest.CurrentStore.Settings.MaxOrderMessage;
+            string maxMessage = context.MTApp.CurrentRequestContext.CurrentStore.Settings.MaxOrderMessage;
 
             int totalItems = context.Order.Items.Sum(y => y.Quantity);
             decimal totalWeight = context.Order.TotalWeightOfShippingItems();

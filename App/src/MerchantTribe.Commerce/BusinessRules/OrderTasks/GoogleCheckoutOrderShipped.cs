@@ -18,7 +18,7 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
 
 		public override bool Execute(OrderTaskContext context)
 		{
-            Accounts.Store currentStore = context.CurrentRequest.CurrentStore;
+            Accounts.Store currentStore = context.MTApp.CurrentRequestContext.CurrentStore;
 
 			bool googleCheckoutUsed = false;
 			string googleOrderNumber = string.Empty;

@@ -41,7 +41,7 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
                             t.Card = p.CreditCard;
                             t.Amount = p.Amount;
 
-                            if (context.CurrentRequest.CurrentStore.Settings.PaymentCreditCardAuthorizeOnly == true)
+                            if (context.MTApp.CurrentRequestContext.CurrentStore.Settings.PaymentCreditCardAuthorizeOnly == true)
                             {
                                 t.Action = MerchantTribe.Payment.ActionType.CreditCardHold;
                             }
@@ -50,7 +50,7 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
                                 t.Action = MerchantTribe.Payment.ActionType.CreditCardCharge;
                             }
 
-                            MerchantTribe.Payment.Method proc = context.CurrentRequest.CurrentStore.Settings.PaymentCurrentCreditCardProcessor();
+                            MerchantTribe.Payment.Method proc = context.MTApp.CurrentRequestContext.CurrentStore.Settings.PaymentCurrentCreditCardProcessor();
                             proc.ProcessTransaction(t);
 
                             Orders.OrderTransaction ot = new Orders.OrderTransaction(t);
@@ -92,7 +92,7 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
 
 				// Add Error
 				bool throwErrors = false;
-                throwErrors = context.CurrentRequest.CurrentStore.Settings.RejectFailedCreditCardOrdersAutomatically;
+                throwErrors = context.MTApp.CurrentRequestContext.CurrentStore.Settings.RejectFailedCreditCardOrdersAutomatically;
 				if (throwErrors == true) {
 					if (result == false) {
                         string errorString = string.Empty; // this.SettingsManager.GetSetting("CustomerErrorMessage");

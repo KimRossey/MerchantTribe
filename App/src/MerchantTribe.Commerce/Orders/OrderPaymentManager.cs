@@ -31,11 +31,11 @@ namespace MerchantTribe.Commerce.Orders
             this.contacts = this.MTApp.ContactServices;
             this.content = this.MTApp.ContentServices;
 
-            Accounts.Store CurrentStore = RequestContext.GetCurrentRequestContext().CurrentStore;
+            Accounts.Store CurrentStore = app.CurrentRequestContext.CurrentStore;
 
             pointsManager = CustomerPointsManager.InstantiateForDatabase(CurrentStore.Settings.RewardsPointsIssuedPerDollarSpent,
                                                         CurrentStore.Settings.RewardsPointsNeededPerDollarCredit,
-                                                        RequestContext.GetCurrentRequestContext().CurrentStore.Id);
+                                                       app.CurrentRequestContext.CurrentStore.Id);
         }
 
         private List<OrderTransaction> FindAllTransactionsOfType(ActionType type)
@@ -349,7 +349,7 @@ namespace MerchantTribe.Commerce.Orders
                 return svc.AddPaymentTransactionToOrder(o, ot, this.MTApp);
             }
             
-            RequestContext context = RequestContext.GetCurrentRequestContext();
+            RequestContext context = this.MTApp.CurrentRequestContext;
             Method processor = context.CurrentStore.Settings.PaymentCurrentCreditCardProcessor();
             if (processor != null)
             {
@@ -455,7 +455,7 @@ namespace MerchantTribe.Commerce.Orders
                 return svc.AddPaymentTransactionToOrder(o, ot, this.MTApp);
             }
 
-            RequestContext context = RequestContext.GetCurrentRequestContext();
+            RequestContext context = this.MTApp.CurrentRequestContext;
             Method processor = context.CurrentStore.Settings.PaymentCurrentCreditCardProcessor();
             if (processor != null)
             {
@@ -487,7 +487,7 @@ namespace MerchantTribe.Commerce.Orders
                 return svc.AddPaymentTransactionToOrder(o, ot, this.MTApp);
             }
 
-            RequestContext context = RequestContext.GetCurrentRequestContext();
+            RequestContext context = this.MTApp.CurrentRequestContext;
             Method processor = context.CurrentStore.Settings.PaymentCurrentCreditCardProcessor();
             if (processor != null)
             {
@@ -524,7 +524,7 @@ namespace MerchantTribe.Commerce.Orders
                 return svc.AddPaymentTransactionToOrder(o, ot, this.MTApp);
             }
 
-            RequestContext context = RequestContext.GetCurrentRequestContext();
+            RequestContext context = this.MTApp.CurrentRequestContext;
             Method processor = context.CurrentStore.Settings.PaymentCurrentCreditCardProcessor();
             if (processor != null)
             {
@@ -558,7 +558,7 @@ namespace MerchantTribe.Commerce.Orders
                 return svc.AddPaymentTransactionToOrder(o, ot, this.MTApp);
             }
 
-            RequestContext context = RequestContext.GetCurrentRequestContext();
+            RequestContext context = this.MTApp.CurrentRequestContext;
             Method processor = context.CurrentStore.Settings.PaymentCurrentCreditCardProcessor();
             if (processor != null)
             {
@@ -579,7 +579,7 @@ namespace MerchantTribe.Commerce.Orders
         {
             bool result = true;
 
-            RequestContext currentContext = RequestContext.GetCurrentRequestContext();
+            RequestContext currentContext = this.MTApp.CurrentRequestContext;
 
             foreach (Orders.OrderTransaction p in svc.Transactions.FindForOrder(o.bvin))
             {

@@ -44,6 +44,7 @@
                 </div>
 
                 <input type="hidden" id="productbvin" name="productbvin" value="@Model.LocalProduct.Bvin" />
+                <input type="hidden" id="lineitemid" name="lineitemid" value="@Model.LineItemId" />
                 <!--VOLUME DISCOUNTS HERE-->
                 <div class="clear">
                 </div>
@@ -57,7 +58,7 @@
     </div>
     <div class="informationcolumn">
         <ul class="tabnavigation">
-            @if (Model.LocalProduct.AllowReviews)
+            @if (Model.LocalProduct.Reviews.Count > 0 || Model.LocalProduct.AllowReviews)
             {
                 <li id="TabNavReviews"><a href="#tabreviews">Reviews</a></li>
             }
@@ -75,18 +76,21 @@
                     <div class="reviews">
                         <div class="reviewlist">
                             @Html.Action("TopReviews", "ProductReviews", new { howMany = 3, reviews = Model.LocalProduct.ReviewsApproved })
-                            <div class="ProductReviewLinks">
+                            @if (Model.LocalProduct.Reviews.Count > 0)
+                            {
+                                <div class="ProductReviewLinks">
                                 <a href="@Url.Content("~/Products/Reviews/" + Model.LocalProduct.UrlSlug)">View All
                                     Reviews</a><br />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="reviewform">
-                        @if (Model.LocalProduct.AllowReviews)
-                        {                            
-                            <h3>
-                                Write a Review for this Product</h3>
-                            <form action="@Url.Content("~/productreviews/create")" method="post">
+                                </div>
+                            }
+                        </div>                    
+                        <div class="reviewform">
+                            @if (Model.LocalProduct.AllowReviews)
+                            {                            
+                                <h3>
+                                    Write a Review for this Product</h3>
+                                <div id="submitreviewmessage"></div>
+                                <form action="@Url.Content("~/productreviews/create")" method="post" id="submitreviewform">
                                 <table class="formtable">
                                 <tr>
                                     <td class="formlabel" valign="top" align="right">
@@ -107,8 +111,7 @@
                                         Your Review
                                     </td>
                                     <td>
-                                        <textarea name="newreview" class="forminput" rows="6" cols="30">
-                                                </textarea>
+                                        <textarea name="newreview" class="forminput" rows="6" cols="30"></textarea>
                                     </td>
                                 </tr>
                                 <tr>
@@ -116,15 +119,16 @@
                                         &nbsp;
                                     </td>
                                     <td>
-                                        <input type="image" src="@ViewBag.SubmitButtonUrl" alt="Submit" />
+                                        <input type="image" src="@ViewBag.SubmitButtonUrl" alt="Submit" id="submitreviewbutton" />
                                     </td>
                                 </tr>
                             </table>
                                 <input type="hidden" name="productbvin" value="@Model.LocalProduct.Bvin" />
                             </form>
-                        }
-                    </div>
-                    <div class="clear">
+                            }
+                        </div>
+                        <div class="clear">
+                        </div>
                     </div>
                 </div>
             </div>

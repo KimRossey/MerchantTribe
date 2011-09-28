@@ -19,9 +19,9 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
             bool result = true;
             if (context.MTApp.OrderServices.PaymentSummary(context.Order).AmountDue > 0)
             {
-                CustomerPointsManager pointsManager = CustomerPointsManager.InstantiateForDatabase(context.CurrentRequest.CurrentStore.Settings.RewardsPointsIssuedPerDollarSpent,
-                                                                                context.CurrentRequest.CurrentStore.Settings.RewardsPointsNeededPerDollarCredit,
-                                                                                context.CurrentRequest.CurrentStore.Id);
+                CustomerPointsManager pointsManager = CustomerPointsManager.InstantiateForDatabase(context.MTApp.CurrentRequestContext.CurrentStore.Settings.RewardsPointsIssuedPerDollarSpent,
+                                                                                context.MTApp.CurrentRequestContext.CurrentStore.Settings.RewardsPointsNeededPerDollarCredit,
+                                                                                context.MTApp.CurrentRequestContext.CurrentStore.Id);
                 Orders.OrderPaymentManager payManager = new Orders.OrderPaymentManager(context.Order,
                                                                                        context.MTApp);
 

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using MerchantTribe.Commerce;
 using MerchantTribe.Commerce.Catalog;
+using System.ComponentModel.DataAnnotations;
 
 namespace MerchantTribeStore.Models
 {
@@ -14,6 +15,7 @@ namespace MerchantTribeStore.Models
         public string JavaScripts { get; set; }
         public bool IsAvailableForSale { get; set; }
         public string StockMessage { get; set; }
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
         public int Quantity { get; set; }
         public string InitialQuantity 
         {
@@ -26,6 +28,10 @@ namespace MerchantTribeStore.Models
         public string PreRenderedImages { get; set; }
         public List<SingleProductViewModel> RelatedItems { get; set; }
         public string ValidationMessage { get; set; }
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
+        public string LineItemId { get; set; }
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
+        public string OrderId { get; set; }
 
         public ProductPageViewModel()
         {
@@ -42,6 +48,8 @@ namespace MerchantTribeStore.Models
             this.PreRenderedImages = string.Empty;
             this.RelatedItems = new List<SingleProductViewModel>();
             this.ValidationMessage = string.Empty;
+            this.LineItemId = string.Empty;
+            this.OrderId = string.Empty;
         }
     }
 }

@@ -40,9 +40,9 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
                 // Don't issue points when paying with points
                 if (hasPointsPayment) return true;
 
-                CustomerPointsManager pointsManager = CustomerPointsManager.InstantiateForDatabase(context.CurrentRequest.CurrentStore.Settings.RewardsPointsIssuedPerDollarSpent,
-                                                                                context.CurrentRequest.CurrentStore.Settings.RewardsPointsNeededPerDollarCredit,
-                                                                                context.CurrentRequest.CurrentStore.Id);
+                CustomerPointsManager pointsManager = CustomerPointsManager.InstantiateForDatabase(context.MTApp.CurrentRequestContext.CurrentStore.Settings.RewardsPointsIssuedPerDollarSpent,
+                                                                                context.MTApp.CurrentRequestContext.CurrentStore.Settings.RewardsPointsNeededPerDollarCredit,
+                                                                                context.MTApp.CurrentRequestContext.CurrentStore.Id);
                 int pointsToIssue = pointsManager.PointsToIssueForSpend(context.Order.TotalOrderAfterDiscounts);
 
                 pointsManager.IssuePoints(context.Order.UserID, pointsToIssue);

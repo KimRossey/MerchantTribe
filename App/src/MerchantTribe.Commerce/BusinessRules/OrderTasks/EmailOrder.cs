@@ -25,7 +25,7 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
 		
 			switch (EmailSelection) {
 				case "Admin":
-					toEmail = context.CurrentRequest.CurrentStore.Settings.MailServer.EmailForNewOrder;
+                    toEmail = context.MTApp.CurrentRequestContext.CurrentStore.Settings.MailServer.EmailForNewOrder;
                     break;			
 				case "Custom":
                     toEmail = CustomEmail;

@@ -40,16 +40,6 @@ namespace MerchantTribe.Commerce.BusinessRules
 			}
 			return result;
 		}
-        public RequestContext CurrentRequest
-        {
-            get
-            {
-                if (_CurrentRequest != null) return _CurrentRequest;
-
-                _CurrentRequest = RequestContext.GetCurrentRequestContext();
-                return _CurrentRequest;
-            }
-        }
 
         public TaskContext()
         {

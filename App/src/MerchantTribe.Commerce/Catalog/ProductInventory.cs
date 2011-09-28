@@ -52,7 +52,7 @@ namespace MerchantTribe.Commerce.Catalog
 
         public static void EmailLowStockReport(object State, MerchantTribeApplication app)
         {
-            RequestContext context = RequestContext.GetCurrentRequestContext();
+            RequestContext context = app.CurrentRequestContext;
             if (context == null) return;
 
             if (!EmailLowStockReport(context.CurrentStore.Settings.MailServer.EmailForGeneral, context.CurrentStore.StoreName, app))

@@ -834,7 +834,7 @@ namespace MerchantTribe.Commerce.Orders
 
         public List<Content.HtmlTemplateTag> GetReplaceableTags(MerchantTribeApplication app)
         {
-            Accounts.Store currentStore = RequestContext.GetCurrentRequestContext().CurrentStore;
+            Accounts.Store currentStore = app.CurrentRequestContext.CurrentStore;
 
             List<Content.HtmlTemplateTag> result = new List<Content.HtmlTemplateTag>();
             result.Add(new Content.HtmlTemplateTag("[[Order.AdminLink]]", System.IO.Path.Combine(currentStore.RootUrl(), "BVAdmin/Orders/ViewOrder.aspx?id=" + this.bvin)));

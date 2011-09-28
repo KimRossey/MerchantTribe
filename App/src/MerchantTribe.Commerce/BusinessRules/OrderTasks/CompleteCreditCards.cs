@@ -45,7 +45,7 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
                             t.Action = MerchantTribe.Payment.ActionType.CreditCardCharge;
                         }
 
-                        MerchantTribe.Payment.Method proc = context.CurrentRequest.CurrentStore.Settings.PaymentCurrentCreditCardProcessor();
+                        MerchantTribe.Payment.Method proc = context.MTApp.CurrentRequestContext.CurrentStore.Settings.PaymentCurrentCreditCardProcessor();
                         proc.ProcessTransaction(t);
 
                         Orders.OrderTransaction ot = new Orders.OrderTransaction(t);

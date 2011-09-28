@@ -26,16 +26,17 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
 
                             string cartReturnUrl = string.Empty;
                             string cartCancelUrl = string.Empty;
-                            if (context.CurrentRequest != null)
+                            if (context.MTApp.CurrentRequestContext != null)
                             {
-                                cartReturnUrl = context.CurrentRequest.CurrentStore.RootUrlSecure() + "paypalexpresscheckout";
-                                cartCancelUrl = context.CurrentRequest.CurrentStore.RootUrlSecure() + "checkout";
+                                cartReturnUrl = context.MTApp.CurrentRequestContext.CurrentStore.RootUrlSecure() + "paypalexpresscheckout";
+                                cartCancelUrl = context.MTApp.CurrentRequestContext.CurrentStore.RootUrlSecure() + "checkout";
                             }
 
 							SetExpressCheckoutResponseType expressResponse;
 							PaymentActionCodeType mode = PaymentActionCodeType.None;
 
-							if (context.CurrentRequest.CurrentStore.Settings.PayPal.ExpressAuthorizeOnly) {
+                            if (context.MTApp.CurrentRequestContext.CurrentStore.Settings.PayPal.ExpressAuthorizeOnly)
+                            {
 								mode = PaymentActionCodeType.Order;
 							}
 							else {
@@ -43,7 +44,7 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
 							}
 
                             // Accelerated boarding
-                            if (context.CurrentRequest.CurrentStore.Settings.PayPal.UserName.Trim().Length < 1) mode = PaymentActionCodeType.Sale;
+                            if (context.MTApp.CurrentRequestContext.CurrentStore.Settings.PayPal.UserName.Trim().Length < 1) mode = PaymentActionCodeType.Sale;
 
 
 							bool addressSupplied = false;
@@ -65,8 +66,8 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
                                         amountToPayPal, 
                                         cartReturnUrl, 
                                         cartCancelUrl, 
-                                        mode, 
-                                        PayPalAPI.GetCurrencyCodeType(context.CurrentRequest.CurrentStore.Settings.PayPal.Currency), 
+                                        mode,
+                                        PayPalAPI.GetCurrencyCodeType(context.MTApp.CurrentRequestContext.CurrentStore.Settings.PayPal.Currency), 
                                         address.FirstName + " " + address.LastName, 
                                         country.IsoCode, 
                                         address.Line1, 
@@ -86,8 +87,8 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
                                 expressResponse = ppAPI.SetExpressCheckout(amountToPayPal, 
                                                                         cartReturnUrl, 
                                                                         cartCancelUrl, 
-                                                                        mode, 
-                                                                        PayPalAPI.GetCurrencyCodeType(context.CurrentRequest.CurrentStore.Settings.PayPal.Currency), 
+                                                                        mode,
+                                                                        PayPalAPI.GetCurrencyCodeType(context.MTApp.CurrentRequestContext.CurrentStore.Settings.PayPal.Currency), 
                                                                         context.Order.OrderNumber + System.Guid.NewGuid().ToString());
 							}
 
@@ -105,7 +106,8 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
 								context.Order.Notes.Add(note);
                                 if (context.MTApp.OrderServices.Orders.Update(context.Order))
                                 {
-									if (string.Compare(context.CurrentRequest.CurrentStore.Settings.PayPal.Mode, "Live", true) == 0) {
+                                    if (string.Compare(context.MTApp.CurrentRequestContext.CurrentStore.Settings.PayPal.Mode, "Live", true) == 0)
+                                    {
 										HttpContext.Current.Response.Redirect("https://www.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=" + expressResponse.Token, false);
 									}
 									else {

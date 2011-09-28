@@ -156,7 +156,7 @@ namespace MerchantTribe.Commerce.Content
             c.IsPermanentRedirect = true;
             c.RedirectToUrl = redirectUrl;
             c.RequestedUrl = requestedUrl;
-            c.StoreId = RequestContext.GetCurrentRequestContext().CurrentStore.Id;
+            c.StoreId = app.CurrentRequestContext.CurrentStore.Id;
             c.SystemData = objectId;
             c.SystemDataType = customUrlType;
             Create(c);

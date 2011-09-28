@@ -13,9 +13,9 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
 		public override bool Execute(OrderTaskContext context)
 		{
             bool allowed = false;
-            if (context.CurrentRequest != null)
+            if (context.MTApp.CurrentRequestContext != null)
             {
-                allowed = context.CurrentRequest.CurrentStore.Settings.AllowZeroDollarOrders;
+                allowed = context.MTApp.CurrentRequestContext.CurrentStore.Settings.AllowZeroDollarOrders;
             }
 			if (!allowed) {
 				if (context.Order.TotalOrderBeforeDiscounts - context.Order.TotalOrderDiscounts <= 0) {
