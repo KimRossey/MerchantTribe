@@ -81,13 +81,13 @@ namespace MerchantTribeStore
         //}
 
 
-        public static bool DownloadFile(MerchantTribe.Commerce.Catalog.ProductFile file)
+        public static bool DownloadFile(MerchantTribe.Commerce.Catalog.ProductFile file, MerchantTribeApplication app)
         {
             string extension = System.IO.Path.GetExtension(file.FileName);
             string name = System.IO.Path.GetFileName(file.FileName);
             double fileSize = 0;
 
-            long storeId = RequestContext.GetCurrentRequestContext().CurrentStore.Id;
+            long storeId = app.CurrentRequestContext.CurrentStore.Id;
             string diskFileName = file.Bvin + "_" + file.FileName + ".config";
             if (!MerchantTribe.Commerce.Storage.DiskStorage.FileVaultFileExists(storeId, diskFileName)) return false;
 

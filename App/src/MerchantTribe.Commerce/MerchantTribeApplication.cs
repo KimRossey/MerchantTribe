@@ -904,7 +904,7 @@ namespace MerchantTribe.Commerce
         {
             List<ProductRelationship> relationships = new List<ProductRelationship>();
 
-            long storeId = RequestContext.GetCurrentRequestContext().CurrentStore.Id;
+            long storeId = this.CurrentRequestContext.CurrentStore.Id;
 
             var db = new Data.EF.EntityFrameworkDevConnectionString(WebAppSettings.ApplicationConnectionStringForEntityFramework);
 
@@ -916,13 +916,13 @@ namespace MerchantTribe.Commerce
                                     where
                                         o.IsPlaced == 1 &&
                                         p.IsAvailableForSale == true &&
-                                        p.StoreId == 2 &&
+                                        p.StoreId == storeId &&
                                         p.bvin != bvin &&
 
                                     (from bvc_lineitem in db.bvc_LineItem
                                      where
                                          bvc_lineitem.ProductId == bvin &&
-                                         bvc_lineitem.StoreId == 2
+                                         bvc_lineitem.StoreId == storeId
                                      select new
                                      {
                                          bvc_lineitem.OrderBvin

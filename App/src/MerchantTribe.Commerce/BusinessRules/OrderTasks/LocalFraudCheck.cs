@@ -20,7 +20,7 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
 				Security.FraudCheckData d = new Security.FraudCheckData();
 				PopulateFraudData(d, context);
 
-                FraudScorer scorer = new FraudScorer(context.CurrentRequest);
+                FraudScorer scorer = new FraudScorer(context.MTApp.CurrentRequestContext);
 
                 context.Order.FraudScore = scorer.ScoreData(d);
 

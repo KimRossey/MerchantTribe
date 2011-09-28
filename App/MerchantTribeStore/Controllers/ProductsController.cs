@@ -41,6 +41,13 @@ namespace MerchantTribeStore.Controllers
         {
             ProductPageViewModel model = IndexSetup(slug);
 
+            // see if we're editing a line item instead of a new add
+            string lineItemString = Request.Form["lineitemid"];
+            if (!string.IsNullOrEmpty(lineItemString))
+            {
+                if (model.LineItemId == string.Empty) model.LineItemId = lineItemString;
+            }
+
             ParseSelections(model);            
             bool IsPurchasable = ValidateSelections(model);
             if ((IsPurchasable))
@@ -60,11 +67,10 @@ namespace MerchantTribeStore.Controllers
                         Basket.UserID = SessionManager.GetCurrentUserId();
                     }
 
-                    if (Request.QueryString["LineItemId"] != null)
-                    {
-                        string lineItemString = Request.QueryString["LineItemId"];
+                    if (model.LineItemId.Trim().Length > 0)
+                    {                        
                         long lineItemId = 0;
-                        long.TryParse(lineItemString, out lineItemId);
+                        long.TryParse(model.LineItemId, out lineItemId);
                         var toRemove = Basket.Items.Where(y => y.Id == lineItemId).SingleOrDefault();
                         if (toRemove != null) Basket.Items.Remove(toRemove);
                     }
@@ -129,6 +135,12 @@ namespace MerchantTribeStore.Controllers
 
             LoadRelatedItems(model);
             RenderAdditionalImages(model);
+
+            if (Request.QueryString["LineItemId"] != null)
+            {
+                model.OrderId = Request.QueryString["OrderBvin"];
+                model.LineItemId = Request.QueryString["LineItemId"];
+            }
 
             return model;
         }
@@ -271,12 +283,10 @@ namespace MerchantTribeStore.Controllers
         }
         private void LoadLineItemValues(ProductPageViewModel model)
         {            
-            if (Request.QueryString["LineItemId"] != null)
+            if (model.LineItemId.Trim().Length > 0)
             {
-                string orderBvin = Request.QueryString["OrderBvin"];
-                string lineItemString = Request.QueryString["LineItemId"];
                 long lineItemId = 0;
-                long.TryParse(lineItemString, out lineItemId);
+                long.TryParse(model.LineItemId, out lineItemId);
 
                 Order o = SessionManager.CurrentShoppingCart(MTApp.OrderServices);
                 if (o != null)

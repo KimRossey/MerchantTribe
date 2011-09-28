@@ -42,7 +42,7 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
 
                             bool transactionSuccess = false;
 
-                            if (context.CurrentRequest.CurrentStore.Settings.PayPal.ExpressAuthorizeOnly)
+                            if (context.MTApp.CurrentRequestContext.CurrentStore.Settings.PayPal.ExpressAuthorizeOnly)
                             {
                                 transactionSuccess = payManager.PayPalExpressHold(p, context.MTApp.OrderServices.PaymentSummary(context.Order).AmountDue);
                             }

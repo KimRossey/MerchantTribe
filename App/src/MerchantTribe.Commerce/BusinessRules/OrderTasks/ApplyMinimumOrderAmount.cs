@@ -12,8 +12,8 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
 
 		public override bool Execute(OrderTaskContext context)
 		{
-			if (context.Order.TotalOrderBeforeDiscounts < context.CurrentRequest.CurrentStore.Settings.MinumumOrderAmount) {
-                context.Errors.Add(new BusinessRules.WorkflowMessage("Minimum Order Amount", context.CurrentRequest.CurrentStore.Settings.MinumumOrderAmount.ToString("c"), true));
+			if (context.Order.TotalOrderBeforeDiscounts < context.MTApp.CurrentRequestContext.CurrentStore.Settings.MinumumOrderAmount) {
+                context.Errors.Add(new BusinessRules.WorkflowMessage("Minimum Order Amount", context.MTApp.CurrentRequestContext.CurrentStore.Settings.MinumumOrderAmount.ToString("c"), true));
 				return false;
 			}
 			else {

@@ -85,7 +85,7 @@ namespace MerchantTribe.Commerce.Orders
             }
 
             bool tagsEntered = false;
-            MerchantTribe.Commerce.Accounts.Store currentStore = RequestContext.GetCurrentRequestContext().CurrentStore;
+            MerchantTribe.Commerce.Accounts.Store currentStore = app.CurrentRequestContext.CurrentStore;
             foreach (MerchantTribe.Shipping.IShippingService item in Shipping.AvailableServices.FindAll(currentStore))
             {
                 if (item.Id.ToString() == this.ShippingProviderId)

@@ -64,7 +64,7 @@ namespace MerchantTribeStore.BVAdmin.Catalog
         {            
                 string primaryKey = (string)(FileGrid.DataKeys[e.NewEditIndex].Value);
                 ProductFile file = MTApp.CatalogServices.ProductFiles.Find(primaryKey);
-                if (!ViewUtilities.DownloadFile(file))
+                if (!ViewUtilities.DownloadFile(file, this.MTApp))
                 {
                     MessageBox1.ShowWarning("The file to download could not be found.");
                 }            
