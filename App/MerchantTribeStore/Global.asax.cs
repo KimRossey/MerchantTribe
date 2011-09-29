@@ -82,31 +82,13 @@ namespace MerchantTribeStore
             routes.IgnoreRoute("images/{*imagedata}");
             //routes.IgnoreRoute("bvadmin/*");
             //routes.IgnoreRoute("{resource}.aspx/{*pathInfo}");
-
-            // Signup Routes
-            routes.MapPageRoute("signup-paypal", "paypaloffer", "~/signup/paypaloffer.aspx");
-            routes.MapPageRoute("signup-tour", "signup/tour", "~/signup/tour.aspx");
-            routes.MapPageRoute("signup-design", "signup/design", "~/signup/design.aspx");
-            routes.MapPageRoute("signup-about", "signup/about", "~/signup/about.aspx");
-            routes.MapPageRoute("signup-pricing", "signup", "~/signup/default.aspx");
-            routes.MapPageRoute("signup-featured", "signup/features", "~/signup/features.aspx");
-            routes.MapPageRoute("signup-themes", "signup/premiumthemes", "~/signup/premiumthemes.aspx");
-            routes.MapPageRoute("signup-promote", "signup/promote", "~/signup/promote.aspx");
-            routes.MapPageRoute("signup-register", "signup/register/{id}", "~/signup/register.aspx");
-            routes.MapPageRoute("signup-processsignup", "signup/processsignup", "~/signup/processsignup.aspx");
-            routes.MapPageRoute("signup-sell", "signup/sell", "~/signup/sell.aspx");
-            routes.MapPageRoute("signup-secure", "signup/secure", "~/signup/secure.aspx");
-            routes.MapPageRoute("signup-privacy", "signup/policies/privacy", "~/signup/policies/privacy.aspx");
-            routes.MapPageRoute("signup-refund", "signup/policies/refund", "~/signup/policies/refund.aspx");
-            routes.MapPageRoute("signup-terms", "signup/policies/terms", "~/signup/policies/terms.aspx");
-
+            
+            // Admin Routes
             routes.MapPageRoute("adminlogin", "account/login", "~/BVAdmin/Login.aspx");
             routes.MapPageRoute("adminresetpassword", "account/resetpassword", "~/BVAdmin/ResetPassword.aspx");
             routes.MapPageRoute("adminresetpassword2", "account/resetpassword2", "~/BVAdmin/ResetPassword2.aspx");
             routes.MapPageRoute("adminlogout", "account/logout", "~/BVAdmin/logout.aspx");
-                        
-            
-                                                  
+                                                                                      
             // Products
             routes.MapRoute("products-rendersingle", "products/rendersingleproduct/{*params}",
                                 new {controller = "Products",action = "RenderSingleProduct"});

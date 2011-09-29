@@ -1,0 +1,67 @@
+﻿@{
+    ViewBag.Title = "MerchantTribe Tour | Online Stores & Hosted Shopping Carts";
+    ViewBag.MetaDescription = "Take a quick feature tour of MerchantTribe Shopping Cart Software for Online Stores";
+    ViewBag.MetaKeywords = "Tour,MerchantTribe,Merchant,Tribe,Commerce,Shopping,Carts,Stores,Online";
+    Layout = "~/Areas/signup/Views/Shared/_SignUpLayout.cshtml";
+}
+@section HeroPlaceHolder{
+    <div class="superh1">
+        <h1>
+            Setting Up Your Store</h1>
+    </div>
+}
+<div class="column-main">
+    <div class="block">
+        <h1 class="c">
+            Finish Your To Do List in Just 5 Steps</h1>
+        <a href="@Url.Content("~/SignUp")">
+            <img src="@Url.Content("~/content/images/system/tour1.jpg")" alt="Just 5 Steps to Create Your Store"
+                border="0" width="680" height="335" /></a>
+    </div>
+    <div class="block">
+        <div class="pager">
+            <div class="last">
+                <a href="@Url.Content("~/")">&laquo; Home</a></div>
+            <div class="next">
+                <a href="@Url.Content("~/signup/design")">Creating Your Theme &raquo;</a></div>
+        </div>
+    </div>
+    <div class="block">
+        <div class="col-3sub-a">
+            <h3>
+                Master of Your Domain</h3>
+            <p>
+                Use your own domain name or use our provided bvcommerce.com domain name.<br />
+                <a href="@Url.Content("~/signup/features")" title="MerchantTribe Hosted Shopping Cart Features">Feature
+                    List &raquo;</a>
+            </p>
+        </div>
+        <div class="col-3sub-b">
+            <h3>
+                Always Up-To-Date</h3>
+            <p>
+                Whenever new features and upgrades are added to the software, they will be automatically
+                added to your store.<br />
+                <a href="@Url.Content("~/signup/features")" title="MerchantTribe Hosted Shopping Cart Features">Feature
+                    List &raquo;</a>
+            </p>
+        </div>
+        <div class="col-3sub-c">
+            <h3>
+                Search Engine Love</h3>
+            <p>
+                Get to the top of Google with built-in SEO—including meta tags, page titles, heading
+                tags and SEO friendly URLs.
+                <br />
+                <a href="@Url.Content("~/signup/features")" title="MerchantTribe Hosted Shopping Cart Features">Feature
+                    List &raquo;</a></p>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+</div>
+<div class="column-side">
+    @Html.Partial("~/Areas/SignUp/Views/Shared/_SignUpMenu")    
+</div>
+<div class="clear">
+    &nbsp;</div>

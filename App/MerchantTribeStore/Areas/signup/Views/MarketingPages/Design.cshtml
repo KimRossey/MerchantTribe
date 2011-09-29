@@ -1,0 +1,76 @@
+﻿@{
+    ViewBag.Title = "MerchantTribe Design | Online Stores and Hosted Shopping Carts";
+    ViewBag.MetaDescription = "Design options for MerchantTribe shopping cart software and hosted online stores. Choose from free and custom premium design templates";
+    ViewBag.MetaKeywords = "Design, Theme, Template, Ecommerce, MerchantTribe, merchant, tribe, hosted, shopping cart, carts, shopping, stores";
+    Layout = "~/Areas/signup/Views/Shared/_SignUpLayout.cshtml";
+}
+@section HeroPlaceHolder {
+    <div class="superh1">
+    <h1>Creating Your Theme</h1>
+</div>
+}
+    <div class="column-main">
+        <div class="block">
+            <h1 class="c">You’re Only Limited by Your Imagination</h1>
+            <h2 class="c">Pick a Theme. Build a Theme. Buy a Theme.</h2>
+        
+<div class="tour-design-2">
+    <div class="premium">
+        <a href="@Url.Content("~/signup/premiumthemes")">
+        <img src="@Url.Content("~/content/images/system/TourDesign2.png")" alt="Buy Premium Themes for MerchantTribe" border="0" /></a>
+    </div>
+    <div class="feature">
+        <h3>Choose from FREE Themes</h3>
+        <p>MerchantTribe includes lots of free online store themes that you can easily customize.<br />
+        <a href="@Url.Content("~/signup/premiumthemes")" title="MerchantTribe Themes">See Some Example Themes</a></p>
+        
+    </div>
+</div>
+
+<div class="tour-design-3">
+    
+        <div class="feature">
+        <h3>Create Your Own Themes!</h3>
+        <p>You can create a unique online store theme in a few hours with basic knowledge of Photoshop and a little HTML. Not only is it fast, it’s fun. <a href="http://help.bvcommerce.com/pages/creating-themes-a-basic-guide">Learn How</a></p>        
+
+        <h3>Buy a Theme</h3>
+        <p>We can make you a totally unique online store theme or create a low-cost semi-customized theme based on one of our included layouts. Call us at @ViewBag.PhoneNumber to find out more.</p>        
+        </div>        
+</div>
+
+            <div class="clear"></div>
+        </div>
+        
+        <div class="block">
+            <div class="pager">
+                <div class="last"><a href="@Url.Content("~/signup/tour")">&laquo; Setting Up Your Store</a></div>
+                <div class="next"><a href="@Url.Content("~/signup/sell")">Sell Your Products &raquo;</a></div>
+            </div>
+        </div>
+        
+        <div class="block">
+            <div class="col-3sub-a">
+                <h3>Need a Custom Theme?</h3>
+                <p>Want a custom theme? Call @ViewBag.PhoneNumber or e-mail us and we’ll create an original theme for your store!</p>
+            </div>                            
+
+            <div class="col-3sub-b">
+                <h3>See Our Theme Tutorial</h3>
+                <p>See our quick Create a <a href="http://help.bvcommerce.com/pages/creating-themes-a-basic-guide">Theme Tutorial</a> to learn how to create themes for MerchantTribe.</p>
+            </div>
+            
+            <div class="col-3sub-c">
+                <h3>Browse Example Themes</h3>
+                <p>It's easy to create your own theme or modify one of our <a href="@Url.Content("~/signup/premiumthemes")" title="Free Shopping Cart Themes">FREE Shopping Cart Themes</a> or call @ViewBag.PhoneNumber. </p>
+            </div>        
+            <div class="clear"></div>            
+            <p>*There is a 3-5 five day processing period for semi-custom themes, but you can start selling immediately and simply update your theme later with the click of a button. </p>
+        </div>
+    
+    </div>
+    <div class="column-side">
+        @Html.Partial("~/Areas/SignUp/Views/Shared/_SignUpMenu")
+    </div>
+    <div class="clear">
+        &nbsp;</div>
+

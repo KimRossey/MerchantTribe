@@ -26,7 +26,7 @@ namespace MerchantTribeStore.Controllers
             {
                 if (MTApp.CurrentStore.StoreName == "www")
                 {
-                    return Redirect("/signup/home.aspx");
+                    return Redirect("/signup/home");
                 }
             }
 

@@ -13,9 +13,6 @@ namespace MerchantTribeStore.Controllers.Shared
     [StoreClosedFilter]
     public class BaseAppController : Controller, IMultiStorePage
     {
-        // Initialize Store Specific Request Data
-        MerchantTribe.Commerce.RequestContext _BVRequestContext = new RequestContext();
-
         public MerchantTribeApplication MTApp { get; set; }
 
         protected override void OnActionExecuting(ActionExecutingContext filterContext)

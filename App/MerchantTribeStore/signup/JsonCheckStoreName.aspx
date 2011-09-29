@@ -1,2 +1,0 @@
-﻿<%@ Page Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.signup_JsonCheckStoreName" Codebehind="JsonCheckStoreName.aspx.cs" %>
-<asp:Literal id="litOutput" runat="Server" EnableViewState="false" />

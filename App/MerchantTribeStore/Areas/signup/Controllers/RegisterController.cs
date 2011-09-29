@@ -2,36 +2,33 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+using System.Web.Mvc;
 using MerchantTribe.Web;
-using MerchantTribe.Billing;
-using MerchantTribe.Commerce.Accounts;
 
-namespace MerchantTribeStore
+namespace MerchantTribeStore.Areas.signup.Controllers
 {
-
-    public partial class signup_JsonCheckStoreName : System.Web.UI.Page
+    public class RegisterController : BaseSignupController
     {
+        //
+        // GET: /signup/Register/
+
+        public ActionResult Index()
+        {
+            return View();
+        }
 
         private class JsonCheckStoreNameRequest
         {
             public string storename { get; set; }
         }
-
         private class JsonOut
         {
             public string cleanstorename { get; set; }
             public string message { get; set; }
         }
 
-        protected override void OnLoad(EventArgs e)
-        {
-            base.OnLoad(e);
-
-            MerchantTribe.Commerce.RequestContext context = new MerchantTribe.Commerce.RequestContext();
-            AccountService accountServices = AccountService.InstantiateForDatabase(context);
-
+        public ActionResult JsonCheckStoreName()
+        {                        
             JsonCheckStoreNameRequest data = MerchantTribe.Web.Json.ObjectFromJson<JsonCheckStoreNameRequest>(Request.InputStream);
 
             string clean = "";
@@ -41,7 +38,7 @@ namespace MerchantTribeStore
                 clean = Text.ForceAlphaNumericOnly(clean);
             }
             string msg = "";
-            if (accountServices.StoreNameExists(clean))
+            if (MTApp.AccountServices.StoreNameExists(clean))
             {
                 msg = "<div class=\"flash-message-failure\"><strong>" + clean + ".bvcommerce.com</strong><br />Store name is already taken.</div>";
             }
@@ -59,7 +56,7 @@ namespace MerchantTribeStore
 
             string json = MerchantTribe.Web.Json.ObjectToJson(result);
 
-            this.litOutput.Text = json;
+            return new MerchantTribeStore.Controllers.PreJsonResult(json);            
         }
 
     }

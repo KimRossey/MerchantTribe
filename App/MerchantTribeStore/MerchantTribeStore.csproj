@@ -2064,24 +2064,12 @@
     <Content Include="Scripts\tinymce\utils\mctabs.js" />
     <Content Include="Scripts\tinymce\utils\validate.js" />
     <Content Include="Scripts\togglebox.js" />
-    <Content Include="signup\about.aspx" />
-    <Content Include="signup\default.aspx" />
-    <Content Include="signup\design.aspx" />
     <Content Include="signup\features.aspx" />
-    <Content Include="signup\home.aspx" />
-    <Content Include="signup\JsonCheckStoreName.aspx" />
-    <Content Include="signup\PayPalOffer.aspx" />
     <Content Include="signup\policies\privacy.aspx" />
     <Content Include="signup\policies\refund.aspx" />
     <Content Include="signup\policies\terms.aspx" />
-    <Content Include="signup\premiumthemes.aspx" />
     <Content Include="signup\ProcessSignUp.aspx" />
-    <Content Include="signup\promote.aspx" />
     <Content Include="signup\register.aspx" />
-    <Content Include="signup\secure.aspx" />
-    <Content Include="signup\sell.aspx" />
-    <Content Include="signup\SignUpMenu.ascx" />
-    <Content Include="signup\tour.aspx" />
     <Content Include="Scripts\Silverlight.js" />
     <Content Include="Scripts\tabs.js" />
     <Content Include="Web.config">
@@ -2151,6 +2139,10 @@
     <Compile Include="Areas\ContentBlocks\Models\RssFeedViewModel.cs" />
     <Compile Include="Areas\ContentBlocks\Models\SideMenuItem.cs" />
     <Compile Include="Areas\ContentBlocks\Models\SideMenuViewModel.cs" />
+    <Compile Include="Areas\signup\Controllers\BaseSignupController.cs" />
+    <Compile Include="Areas\signup\Controllers\MarketingPagesController.cs" />
+    <Compile Include="Areas\signup\Controllers\RegisterController.cs" />
+    <Compile Include="Areas\signup\signupAreaRegistration.cs" />
     <Compile Include="BVAdmin\Account.aspx.cs">
       <DependentUpon>Account.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -4431,54 +4423,12 @@
     <Compile Include="Models\EstimateShippingViewModel.cs" />
     <Compile Include="Models\SuperStoreViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="signup\about.aspx.cs">
-      <DependentUpon>about.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="signup\about.aspx.designer.cs">
-      <DependentUpon>about.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="signup\default.aspx.cs">
-      <DependentUpon>default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="signup\default.aspx.designer.cs">
-      <DependentUpon>default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="signup\design.aspx.cs">
-      <DependentUpon>design.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="signup\design.aspx.designer.cs">
-      <DependentUpon>design.aspx</DependentUpon>
-    </Compile>
     <Compile Include="signup\features.aspx.cs">
       <DependentUpon>features.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="signup\features.aspx.designer.cs">
       <DependentUpon>features.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="signup\home.aspx.cs">
-      <DependentUpon>home.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="signup\home.aspx.designer.cs">
-      <DependentUpon>home.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="signup\JsonCheckStoreName.aspx.cs">
-      <DependentUpon>JsonCheckStoreName.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="signup\JsonCheckStoreName.aspx.designer.cs">
-      <DependentUpon>JsonCheckStoreName.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="signup\PayPalOffer.aspx.cs">
-      <DependentUpon>PayPalOffer.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="signup\PayPalOffer.aspx.designer.cs">
-      <DependentUpon>PayPalOffer.aspx</DependentUpon>
     </Compile>
     <Compile Include="signup\policies\privacy.aspx.cs">
       <DependentUpon>privacy.aspx</DependentUpon>
@@ -4501,13 +4451,6 @@
     <Compile Include="signup\policies\terms.aspx.designer.cs">
       <DependentUpon>terms.aspx</DependentUpon>
     </Compile>
-    <Compile Include="signup\premiumthemes.aspx.cs">
-      <DependentUpon>premiumthemes.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="signup\premiumthemes.aspx.designer.cs">
-      <DependentUpon>premiumthemes.aspx</DependentUpon>
-    </Compile>
     <Compile Include="signup\ProcessSignUp.aspx.cs">
       <DependentUpon>ProcessSignUp.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -4515,54 +4458,12 @@
     <Compile Include="signup\ProcessSignUp.aspx.designer.cs">
       <DependentUpon>ProcessSignUp.aspx</DependentUpon>
     </Compile>
-    <Compile Include="signup\promote.aspx.cs">
-      <DependentUpon>promote.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="signup\promote.aspx.designer.cs">
-      <DependentUpon>promote.aspx</DependentUpon>
-    </Compile>
     <Compile Include="signup\register.aspx.cs">
       <DependentUpon>register.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="signup\register.aspx.designer.cs">
       <DependentUpon>register.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="signup\secure.aspx.cs">
-      <DependentUpon>secure.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="signup\secure.aspx.designer.cs">
-      <DependentUpon>secure.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="signup\sell.aspx.cs">
-      <DependentUpon>sell.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="signup\sell.aspx.designer.cs">
-      <DependentUpon>sell.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="signup\SignUp.master.cs">
-      <DependentUpon>SignUp.master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="signup\SignUp.master.designer.cs">
-      <DependentUpon>SignUp.master</DependentUpon>
-    </Compile>
-    <Compile Include="signup\SignUpMenu.ascx.cs">
-      <DependentUpon>SignUpMenu.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="signup\SignUpMenu.ascx.designer.cs">
-      <DependentUpon>SignUpMenu.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="signup\tour.aspx.cs">
-      <DependentUpon>tour.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="signup\tour.aspx.designer.cs">
-      <DependentUpon>tour.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -4575,6 +4476,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\ContentBlocks\Views\Shared\" />
+    <Folder Include="Areas\signup\Models\" />
     <Folder Include="aspnet_client\system_web\4_0_30128\" />
     <Folder Include="content\themes\theme-bv-simpleblue\assets\" />
     <Folder Include="content\themes\theme-bv-simplegray\assets\" />
@@ -4617,6 +4519,19 @@
     <Content Include="Areas\ContentBlocks\Views\TopWeeklySellers\Index.cshtml" />
     <Content Include="Areas\account\Views\Authentication\ForgotPassword.cshtml" />
     <Content Include="Areas\account\Views\Authentication\SignIn.cshtml" />
+    <Content Include="Areas\signup\Views\Web.config" />
+    <Content Include="Areas\signup\Views\Shared\_SignUpLayout.cshtml" />
+    <Content Include="Areas\signup\Views\MarketingPages\Tour.cshtml" />
+    <Content Include="Areas\signup\Views\Shared\_SignUpMenu.cshtml" />
+    <Content Include="Areas\signup\Views\MarketingPages\Sell.cshtml" />
+    <Content Include="Areas\signup\Views\MarketingPages\Secure.cshtml" />
+    <Content Include="Areas\signup\Views\MarketingPages\Promote.cshtml" />
+    <Content Include="Areas\signup\Views\MarketingPages\Themes.cshtml" />
+    <Content Include="Areas\signup\Views\MarketingPages\PayPalOffer.cshtml" />
+    <Content Include="Areas\signup\Views\MarketingPages\About.cshtml" />
+    <Content Include="Areas\signup\Views\MarketingPages\Design.cshtml" />
+    <Content Include="Areas\signup\Views\MarketingPages\Pricing.cshtml" />
+    <Content Include="Areas\signup\Views\MarketingPages\Home.cshtml" />
     <None Include="BVAdmin\Orders\RMA.aspx.cs.exclude" />
     <None Include="BVAdmin\Orders\RMA.aspx.exclude" />
     <None Include="BVAdmin\Orders\RMADetail.aspx.cs.exclude" />
@@ -4636,7 +4551,6 @@
     <None Include="content\images\system\toursell5.psd" />
     <None Include="content\themes\Buttons.psd" />
     <None Include="content\themes\ButtonsBig.psd" />
-    <Content Include="signup\SignUp.master" />
     <Content Include="Views\Web.config">
       <SubType>Designer</SubType>
     </Content>
