@@ -1,0 +1,58 @@
+﻿@{
+    ViewBag.Title = "About MerchantTribe | Free Open Source Online Stores & Hosted Shopping Carts";
+    ViewBag.MetaDescription = "About MerchantTribe, makers of hosted shopping cart software and solutions in Richmond, VA. Small business ecommerce solutions by BV Software including MerchantTribe.";
+    ViewBag.MetaKeywords = "MerchantTribe, BVSoftware, BV Commerce, BVCommerce, About, Richmond, Virginia, VA, Small Business, Ecommerce, Hosted, Shopping, Cart";
+    Layout = "~/Areas/signup/Views/Shared/_SignUpLayout.cshtml";
+}
+@section HeroPlaceHolder {
+<div class="superh1">
+    <h1>About BV Software</h1>
+</div>
+}
+<div class="column-main">
+        <div class="block">
+            <h1 class="c">About BV Software</h1>
+            <h2 class="c">Powerful Online Stores that are Easy to Use</h2>
+            &nbsp;<br />
+            <img src="@Url.Content("~/content/images/system/RichmondMap.jpg")" style="float:right;border:solid 1px #666;margin:0 0 20px 20px;" />            
+            <p>
+                MerchantTribe is a new hosted shopping cart solution from BV Software, and is a robust shopping cart platform with over 1,000 features. Five versions of BV Software's award winning ecommerce software have been released over the last eight years and it continues to win awards and strong praise from small businesses. MerchantTribe is used by large and small businesses including: <em>Pebble Beach Resorts</em>, <em>Chesapeake Energy (CHK)</em> and <em>Susan G. Komen for the Cure.</em></p>
+            <p>
+                MerchantTribe is designed to be both easy to use and powerful. It takes just minutes to set up an online store with MerchantTribe. You can choose from our selection of free online store themes, but it’s also really easy to create your own unique theme. Or we can make one for you. And we have tons of features that online merchants need, from unlimited products and categories to sales and discounts, the ability to add product variations and more. The best part is that we manage the store for you, so you can concentrate on selling.</p>
+
+            <p>MerchantTribe is the brainchild of Marcus McConnell, an eCommerce specialist with experience building shopping cart solutions for international retailers such as EddieBauer.com, Godiva.com and 1-800-Flowers.com. Marcus created BV Software in 2001 after frustrating experiences working with existing shopping cart software for small businesses. He saw an opportunity to deliver a world-class shopping cart solution to small businesses on the Microsoft platform at a price they could afford.</p>
+            
+            <p>Learn more about BV Software and see our <a href="http://www.bvsoftware.com">
+                company home page</a>. Or call us at @ViewBag.PhoneNumber and talk to us directly.</p>            
+        </div>
+        
+         <div class="block">
+            <div class="pager">
+                <div class="last"><a href="@Url.Content("~/signup/secure")">&laquo; All About Hosting</a></div>
+                <div class="next"><a href="@Url.Content("~/signup/")">Pricing &amp; Sign Up &raquo;</a></div>
+            </div>
+        </div>
+        
+        
+        <div class="block" style="text-align:center;">
+            <div class="col-3sub-a">
+                <a href="http://blog.bvsoftware.com" target="_blank"><img src="@Url.Content("~/content/images/system/feed_48x48.png")" alt="BV Blog" border="0" /><br />Read Our Blog</a>
+            </div>                            
+
+            <div class="col-3sub-b">
+                <a href="http://twitter.com/MarcusMcConnell" target="_blank"><img src="/content/images/system/twitter_48x48.png" alt="Follow BV Software on Twitter" border="0" /><br />Follow Us on Twitter</a>
+            </div>
+            
+            <div class="col-3sub-c">
+                <a href="http://www.facebook.com/home.php#/pages/BV-Software-Shopping-Carts-and-Ecommerce-Solutions/129473117862?ref=nf" target="_blank"><img src="/content/images/system/facebook_48x48.png" alt="facebook" border="0" /><br />Become Our Facebook Friend</a>
+            </div>        
+            <div class="clear"></div>            
+        </div>
+        
+       
+    </div>
+    <div class="column-side">
+            @Html.Partial("~/Areas/SignUp/Views/Shared/_SignUpMenu")    
+    </div>
+    <div class="clear">
+        &nbsp;</div>

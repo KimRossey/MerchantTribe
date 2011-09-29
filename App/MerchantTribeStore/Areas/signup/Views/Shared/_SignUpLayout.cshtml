@@ -1,0 +1,81 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <meta name="keywords" content="@Html.Raw(ViewBag.MetaKeywords)" />
+    <meta name="description" content="@Html.Raw(ViewBag.MetaDescription)" />
+    <link href="@Url.Content("~/content/Signup2.css?v=7")" rel="stylesheet" type="text/css" />
+    @Html.Raw((string)ViewData["jqueryinclude"])
+    @RenderSection("HeadContent", false)
+</head>
+<body @if (!String.IsNullOrEmpty(ViewBag.BodyClass)) { <text>class="@ViewBag.BodyClass"</text> } >
+    <div id="header">
+        <div id="headerwrapper" class="max-width">
+            <div id="bv-logo">
+                <a href="@Url.Content("~/")" title="Hosted Shopping Cart | MerchantTribe">
+                    <img src="@Url.Content("~/content/images/system/logo4.png")" alt="MerchantTribe Hosted Shopping Cart" /></a>
+            </div>
+            <div id="action-links">
+                <ul>
+                    <li><a href="@Url.Content("~/")" title="Hosted Shopping Cart | MerchantTribe">Home</a></li>
+                    <li><a href="@Url.Content("~/signup/tour")" title="Feature Tour">Tour</a></li>
+                    <li><a href="@Url.Content("~/signup/design")" title="Build a Theme / Design">Design</a></li>
+                    <li><a href="@Url.Content("~/signup/about")" title="About MerchantTribe">About Us</a></li>
+                    <li><a class="hottab" href="/signup" title="Sign Up and Pricing">Pricing &amp; Sign
+                        Up</a></li>
+                </ul>
+            </div>
+            <div id="phone">
+                <span>Start Selling Now <strong>@ViewBag.PhoneNumber</strong></span>
+            </div>
+        </div>
+    </div>
+    <div class="headertabs max-blockwidth">
+        <ul>
+            <li><a href="@Url.Content("~/signup/tour")" title="Feature Tour">
+                <img src="@Url.Content("~/content/images/system/TabsTour.png")" border="0" alt="Feature Tour" /></a></li>
+            <li><a href="@Url.Content("~/signup/design")" title="Build a Theme / Design">
+                <img src="@Url.Content("~/content/images/system/TabsDesign.png")" border="0" alt="Design Your Store" /></a>
+            </li>
+            <li><a href="@Url.Content("~/signup")" title="Sign Up and Pricing">
+                <img src="@Url.Content("~/content/images/system/TabSignUpNow.png")" border="0" alt="Sign Up Now" /></a></li>
+        </ul>
+        <div class="nocreditcard">
+            <span>No Credit Card Required</span></div>
+    </div>
+    <div id="maintext-wrapper">
+        @RenderSection("HeroPlaceHolder", false)
+        <div id="main-text" class="padded">
+            @RenderBody()
+        </div>
+    </div>
+    <div id="footer">
+        <div id="footer-wrapper">
+            <div class="block2">
+                <div id="footermenu">
+                    <a href="@Url.Content("~/")" title="Hosted Shopping Cart | MerchantTribe">Home</a> 
+                    <a href="@Url.Content("~/signup/tour")" title="Feature Tour">Tour</a> 
+                    <a href="@Url.Content("~/signup")" title="Pricing & Sign Up">Sign Up</a>
+                </div>
+                <div id="footer-extra">
+                    &copy; Copyright 2002-@DateTime.Now.Year by <a href="http://www.bvsoftware.com">
+                        BV Software, LLC</a>. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+        try {
+            var pageTracker = _gat._getTracker("@ViewBag.SignUpGoogleId");
+            pageTracker._trackPageview();
+        } catch (err) { }</script>
+    @RenderSection("EndOfPage", false)
+</body>
+</html>

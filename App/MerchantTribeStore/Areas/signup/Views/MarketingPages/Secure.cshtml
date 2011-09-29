@@ -1,16 +1,14 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/signup/SignUp.master" AutoEventWireup="True" Inherits="MerchantTribeStore.signup_secure" Codebehind="secure.aspx.cs" %>
-
-<%@ Register src="SignUpMenu.ascx" tagname="SignUpMenu" tagprefix="uc1" %>
-
-<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="HeroPlaceHolder" Runat="Server">
+﻿@{
+    ViewBag.Title = "Secure Hosted for MerchantTribe | Online Stores & Hosted Shopping Carts";
+    ViewBag.MetaDescription = "With secure, managed hosting for MerchantTribe, you can concentrate on sales while we worry about the technical details.";
+    ViewBag.MetaKeywords = "hosting,secure,MerchantTribe,Merchant,tribe,commerce,ecommerce,carts,shopping,ssl,stores,online";
+    Layout = "~/Areas/signup/Views/Shared/_SignUpLayout.cshtml";
+}
+@section HeroPlaceHolder{
     <div class="superh1">
-        <h1>
-            All About Hosting</h1>
+        <h1>All About Hosting</h1>
     </div>
-</asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="MainContent" Runat="Server">
+}
 <div class="column-main">
         <div class="block">
             <h1 class="c">Hosting</h1>
@@ -56,7 +54,7 @@
                     <h3>
                         Automatically Get Free Updates</h3>
                     <p>
-                        You automatically receive every new feature added to BV Commerce Hosted.
+                        You automatically receive every new feature added to MerchantTribe Hosted.
                     </p>
                 </div>
                 <div class="col-3sub-c">
@@ -102,9 +100,9 @@
     <div class="block">
         <div class="pager">
             <div class="last">
-                <a href="/signup/promote">&laquo; Tracking and Promoting</a></div>
+                <a href="@Url.Content("~/signup/promote")">&laquo; Tracking and Promoting</a></div>
             <div class="next">
-                <a href="/signup/about">About BV &raquo;</a></div>
+                <a href="@Url.Content("~/signup/about")">About Us &raquo;</a></div>
         </div>
     </div>
     
@@ -112,11 +110,7 @@
     
     </div>
     <div class="column-side">
-        <uc1:SignUpMenu ID="SignUpMenu1" runat="server" />        
+        @Html.Partial("~/Areas/SignUp/Views/Shared/_SignUpMenu")
     </div>
     <div class="clear">
         &nbsp;</div>
-</asp:Content>
-<asp:Content ID="Content4" ContentPlaceHolderID="EndOfForm" Runat="Server">
-</asp:Content>
-

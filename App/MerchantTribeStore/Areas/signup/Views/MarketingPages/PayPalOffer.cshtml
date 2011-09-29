@@ -1,21 +1,31 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/signup/SignUp.master" AutoEventWireup="True" Inherits="MerchantTribeStore.signup_PayPalOffer" Codebehind="PayPalOffer.aspx.cs" %>
+﻿@{
+    ViewBag.Title = "Online Stores Hosted Shopping Carts | PayPal";
+    ViewBag.MetaDescription = "Special offer for PayPal Shopping Cart Users and PayPal Online Store Customers";
+    ViewBag.MetaKeywords = "PayPal, Ecommerce, BV Commerce, BVCommerce, hosted, shopping cart, carts, shopping, stores";
 
-<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
+    ViewBag.PhoneNumber = "1-877-896-0295";
+    
+    Layout = "~/Areas/signup/Views/Shared/_SignUpLayout.cshtml";
+}
+
+@section EndOfPage{
+    <script>        offer_date('date');</script>
+}
+@section HeadContent {
     <script type="text/javascript" src="https://www.paypal-marketing.com/paypal/html/hosted/offer_date.js"></script>
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="HeroPlaceHolder" Runat="Server">
+}
+@section HeroPlaceHolder {
     <div class="superh1">
         <h1>
             Special PayPal Offer</h1>
     </div>
-</asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="MainContent" Runat="Server">
+}
 <div class="col-2w-a">
-    <a href="/signup/register/starter"><img src="/content/images/system/PayPalAd2.png" alt="Sign Up for a Free Store" /></a>    
+    <a href="@Url.Content("~/signup/register/starter")"><img src="@Url.Content("~/content/images/system/PayPalAd2.png")" alt="Sign Up for a Free Store" /></a>    
     <div style="height:20px;"></div>
 </div>
 <div class="col-2w-b">
-    <a href="/signup"><img src="/content/images/system/PayPalOfferAd.png" alt="Special Limited-Time PayPal Offer" /></a>
+    <a href="@Url.Content("~/signup")"><img src="@Url.Content("~/content/images/system/PayPalOfferAd.png")" alt="Special Limited-Time PayPal Offer" /></a>
             <div id="expires">
                 <table>
                 <tr><td align="right">Offer Expires: </td><td align="left"><div id="date"></div></td></tr></table>
@@ -40,30 +50,30 @@
     <div class="col-3-b">
         <div class="block" style="height: 300px;">
             <h3>
-                BV Software Customers</h3>
+                MerchantTribe Customers</h3>
             <p>
                 Our professionals have worked with some of the best online retailers using our toolkit
                 software and hosted services. Here are a few samples:</p>
-            <img class="awards" src="/content/images/system/ClientLogos.png" alt="BV Software Client Sample"
+            <img class="awards" src="@Url.Content("~/content/images/system/ClientLogos.png")" alt="MerchantTribe Client Sample"
                 border="0" />
         </div>
     </div>
       <div class="col-3-c">
         <div class="block" style="height: 300px;">
             <h2>
-                Grow a Store With BV Commerce</h2>
+                Grow a Store With MerchantTribe</h2>
             <p>
-                BV Software offers a complete range of shopping cart solutions from all-in-one hosted
-                ecommerce to licensed software with source code. From hosted to custom carts, BV
+                MerchantTribe offers a complete range of shopping cart solutions from all-in-one hosted
+                ecommerce to licensed software with source code. From hosted to custom carts, MerchantTribe
                 grows with your business.</p>
             <h2>
                 How to Get Started</h2>
             <p>
-                It only takes a minute to create a store with BV Commerce. Upload your logo, pick
+                It only takes a minute to create a store with MerchantTribe. Upload your logo, pick
                 your colors and populate your products. You can try out your store for Free! There
                 are no setup fees, no long term contracts, cancel at any time.</p>
-            <a href="/signup">
-                <img alt="Sign Up for Basic Plan" src="/content/images/system/SignUpSmall.png"></a><br />
+            <a href="@Url.Content("~/signup")">
+                <img alt="Sign Up for Basic Plan" src="@Url.Content("~/content/images/system/SignUpSmall.png")"></a><br />
             &nbsp;
         </div>
     </div>
@@ -78,8 +88,6 @@
 (5) AC Nielsen Q3 Customer Relationship Assessment (Buyers); sample frame: used PayPal once in past 3 months, twice in past year.&#8221;<br>
 </div>
     </div>
-</asp:Content>
-<asp:Content ID="Content4" ContentPlaceHolderID="EndOfForm" Runat="Server">
-    <script>    offer_date('date');</script>
-</asp:Content>
+
+
 
