@@ -1,15 +1,14 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/signup/SignUp.master" AutoEventWireup="True" Inherits="MerchantTribeStore.signup_policies_terms" Codebehind="terms.aspx.cs" %>
-
-<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="HeroPlaceHolder" Runat="Server">
-</asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="MainContent" Runat="Server">
+﻿@{    
+    ViewBag.Title = "MerchantTribe Terms & Conditions | Online Stores and Hosted Shopping Carts";
+    ViewBag.MetaDescription = "MerchantTribe Terms & Conditions | Online Stores and Hosted Shopping Carts";
+    ViewBag.MetaKeywords = "Terms,Conditions,MerchantTribe,Commerce,Merchant,Tribe,BV Software";
+    Layout = "~/Areas/signup/Views/Shared/_SignUpLayout.cshtml";
+}
 <div class="block">
-            <h1>BV Commerce Service Terms of Service</h1>            
+            <h1>MerchantTribe Service Terms of Service</h1>            
                     
                 <p>
-                    As a customer of the BV Commerce Service (Service) you (Client) agree to be bound
+                    As a customer of the MerchantTribe Service (Service) you (Client) agree to be bound
                     by the following terms of service provided by BV Software (Provider):</p>
                 <p>
                     BV Software reserves the right to update and change the Terms of Service from time
@@ -114,7 +113,7 @@
                     <li>BV Software does not pre-screen Content, but BV Software and its designee have the right
                         (but not the obligation) in their sole discretion to refuse or remove any Content
                         that is available via the Service.</li>
-                    <li>The look and feel of the Service is copyright©1999-<%=DateTime.Now.Year %> BV Software, LLC. All rights
+                    <li>The look and feel of the Service is copyright©1999-@DateTime.Now.Year BV Software, LLC. All rights
                         reserved. You may not duplicate, copy, or reuse any portion of the HTML/CSS, Javascript,
                         or visual design elements or concepts without express written permission from BV Software.</li>
                 </ol>
@@ -181,7 +180,3 @@
                 </ol>
                 &nbsp;
             </div>
-</asp:Content>
-<asp:Content ID="Content4" ContentPlaceHolderID="EndOfForm" Runat="Server">
-</asp:Content>
-

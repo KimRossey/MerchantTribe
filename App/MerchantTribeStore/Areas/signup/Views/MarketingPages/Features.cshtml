@@ -1,0 +1,38 @@
+﻿@model List<MerchantTribeStore.Areas.signup.Models.FeatureSection>
+@using MerchantTribeStore.Areas.signup.Models;           
+@{
+    ViewBag.Title = "MerchantTribe Features | Online Stores & Hosted Shopping Carts";
+    ViewBag.MetaDescription = "MerchantTribe Shopping Cart Features for Small Business Ecommerce.";
+    ViewBag.MetaKeywords = "MerchantTribe,Merchant,Tribe,Features,Shopping Cart,Ecommerce,Business,Benefits";
+    Layout = "~/Areas/signup/Views/Shared/_SignUpLayout.cshtml";
+}
+@section HeroPlaceHolder{
+    <div class="superh1">
+        <h1>
+            MerchantTribe Hosted Features</h1>
+    </div>
+}
+<div class="column-main">
+    <div class="block">
+        <h1 class="c">
+            MerchantTribe Hosted Features</h1>
+        <h2 class="c">
+            ...and more are on their way</h2>
+        @foreach (var sec in Model)
+        {
+            <h3 class="featurelist">@sec.Name</h3>
+            <ul class="featurelist">
+                @foreach (FeatureDetails f in sec.Features)
+                {
+                    <li><strong>@f.Name</strong><br />
+                    @f.Description</li>
+                }
+            </ul>
+        }
+    </div>
+</div>
+<div class="column-side">
+    @Html.Partial("~/Areas/SignUp/Views/Shared/_SignUpMenu")
+</div>
+<div class="clear">
+    &nbsp;</div>

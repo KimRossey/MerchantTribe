@@ -2064,12 +2064,6 @@
     <Content Include="Scripts\tinymce\utils\mctabs.js" />
     <Content Include="Scripts\tinymce\utils\validate.js" />
     <Content Include="Scripts\togglebox.js" />
-    <Content Include="signup\features.aspx" />
-    <Content Include="signup\policies\privacy.aspx" />
-    <Content Include="signup\policies\refund.aspx" />
-    <Content Include="signup\policies\terms.aspx" />
-    <Content Include="signup\ProcessSignUp.aspx" />
-    <Content Include="signup\register.aspx" />
     <Content Include="Scripts\Silverlight.js" />
     <Content Include="Scripts\tabs.js" />
     <Content Include="Web.config">
@@ -2141,7 +2135,11 @@
     <Compile Include="Areas\ContentBlocks\Models\SideMenuViewModel.cs" />
     <Compile Include="Areas\signup\Controllers\BaseSignupController.cs" />
     <Compile Include="Areas\signup\Controllers\MarketingPagesController.cs" />
+    <Compile Include="Areas\signup\Controllers\PoliciesController.cs" />
     <Compile Include="Areas\signup\Controllers\RegisterController.cs" />
+    <Compile Include="Areas\signup\Models\FeatureDetails.cs" />
+    <Compile Include="Areas\signup\Models\FeatureSection.cs" />
+    <Compile Include="Areas\signup\Models\RegisterViewModel.cs" />
     <Compile Include="Areas\signup\signupAreaRegistration.cs" />
     <Compile Include="BVAdmin\Account.aspx.cs">
       <DependentUpon>Account.aspx</DependentUpon>
@@ -4423,48 +4421,6 @@
     <Compile Include="Models\EstimateShippingViewModel.cs" />
     <Compile Include="Models\SuperStoreViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="signup\features.aspx.cs">
-      <DependentUpon>features.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="signup\features.aspx.designer.cs">
-      <DependentUpon>features.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="signup\policies\privacy.aspx.cs">
-      <DependentUpon>privacy.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="signup\policies\privacy.aspx.designer.cs">
-      <DependentUpon>privacy.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="signup\policies\refund.aspx.cs">
-      <DependentUpon>refund.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="signup\policies\refund.aspx.designer.cs">
-      <DependentUpon>refund.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="signup\policies\terms.aspx.cs">
-      <DependentUpon>terms.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="signup\policies\terms.aspx.designer.cs">
-      <DependentUpon>terms.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="signup\ProcessSignUp.aspx.cs">
-      <DependentUpon>ProcessSignUp.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="signup\ProcessSignUp.aspx.designer.cs">
-      <DependentUpon>ProcessSignUp.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="signup\register.aspx.cs">
-      <DependentUpon>register.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="signup\register.aspx.designer.cs">
-      <DependentUpon>register.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -4476,7 +4432,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\ContentBlocks\Views\Shared\" />
-    <Folder Include="Areas\signup\Models\" />
     <Folder Include="aspnet_client\system_web\4_0_30128\" />
     <Folder Include="content\themes\theme-bv-simpleblue\assets\" />
     <Folder Include="content\themes\theme-bv-simplegray\assets\" />
@@ -4532,6 +4487,12 @@
     <Content Include="Areas\signup\Views\MarketingPages\Design.cshtml" />
     <Content Include="Areas\signup\Views\MarketingPages\Pricing.cshtml" />
     <Content Include="Areas\signup\Views\MarketingPages\Home.cshtml" />
+    <Content Include="Areas\signup\Views\Policies\Privacy.cshtml" />
+    <Content Include="Areas\signup\Views\Policies\Refund.cshtml" />
+    <Content Include="Areas\signup\Views\Policies\Terms.cshtml" />
+    <Content Include="Areas\signup\Views\MarketingPages\Features.cshtml" />
+    <Content Include="Areas\signup\Views\Register\ProcessSignup.cshtml" />
+    <Content Include="Areas\signup\Views\Register\Index.cshtml" />
     <None Include="BVAdmin\Orders\RMA.aspx.cs.exclude" />
     <None Include="BVAdmin\Orders\RMA.aspx.exclude" />
     <None Include="BVAdmin\Orders\RMADetail.aspx.cs.exclude" />
