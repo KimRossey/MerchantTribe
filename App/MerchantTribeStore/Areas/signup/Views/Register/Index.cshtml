@@ -1,0 +1,247 @@
+﻿@model MerchantTribeStore.Areas.signup.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Sign Up for MerchantTribe Hosted Ecommerce Service";
+    Layout = "~/Areas/signup/Views/Shared/_SignUpLayout.cshtml";
+}
+@helper IsErr(string id)
+{
+    if (Model.InvalidFields.Contains(id))
+    {
+        <text> class="input-validation-error"</text>
+    }
+}
+@section HeadContent{
+    <script type="text/javascript">
+
+    // Jquery Setup
+    $(document).ready(function () {
+
+        $('#storename').blur(
+            function () {
+
+                $('#storename-results').html('<img src="@Url.Content("~/content/images/system/ajax-loader.gif")" alt="Loading..." />');
+                $('#storename-results').show();
+
+                var name = $('#storename').attr('value');
+                var jsondata = "{storename:'" + name.replace("'", "") + "'}";
+                $.ajax(
+                { type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    url: "@Url.Content("~/signup/JsonCheckStoreName")",
+                    data: jsondata,
+                    dataType: "json",
+                    success: function (data) {
+                        $('#storename').attr('value', data.cleanstorename);
+                        $('#storename-results').html(data.message);
+                    },
+                    error: function () { $('#storename-results').html(''); }
+                });
+
+                return;
+            }
+            );
+
+        $('#chkagree').click(
+                function () {
+                    if ($('#chkagree').is(':checked')) {
+                        $('#submitbutton').removeAttr('disabled');
+                    }
+                    else {
+                        $('#submitbutton').attr('disabled', true);
+                    }
+                    return;
+                }
+             );
+
+    });
+    </script>
+}
+<div class="col-1">
+    <div class="block registration">
+        <h1 class="c">
+            Sign Up Form</h1>
+        <h2 class="c">
+            No long-term contracts. Cancel at any time risk free.</h2>
+        @Html.Raw((string)TempData["messages"])
+        <form action="@Url.Content("~/signup/register")" method="post">
+        <div class="registration-section">
+            <div class="registration-form-area">
+                <h3>
+                    User Account</h3>
+                <fieldset>
+                    <table border="0" cellspacing="0" cellpadding="3">
+                        <tr>
+                            <td class="r vt">
+                                Email:
+                            </td>
+                            <td>
+                                <input type="text" id="email" name="email" @IsErr("email") value="@Model.RegistrationData.email" size="20" />                                
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="r vt">
+                                Password:
+                            </td>
+                            <td>
+                                <input type="password" id="password" name="password" @IsErr("password") value="@Model.RegistrationData.password" size="20" />                                
+                            </td>
+                        </tr>
+                    </table>
+                </fieldset>
+            </div>
+            <div class="registration-instructions">
+                <p class="first">
+                    Create a user account or use your existing account to add more stores. If you don't
+                    have an account you'll need to create your own password.</p>
+            </div>
+            <p class="clear">
+            </p>
+        </div>
+        <div class="registration-section">
+            <div class="registration-form-area">
+                <h3>
+                    Store Name</h3>
+                <fieldset>
+                    <p>
+                        Every MerchantTribe store needs a unique name which becomes the store's address. Later,
+                        you'll be able to create a diplay name or use your own domain name.<br />
+                        <strong>Use only letters and numbers - no spaces</strong></p>
+                    <strong>http://
+                        <input type="text" id="storename" name="storename" @IsErr("storename") value="@Model.RegistrationData.storename" class="" size="20" />.bvcommerce.com</strong><br />
+                    <div id="storename-results">
+                    </div>
+                </fieldset>
+            </div>
+            <div class="registration-instructions">
+                <p class="first">
+                    Name your store. Use only letters and numbers. Try using a short name to make it
+                    easier for customers to remember your store. You will have the option to upgrade
+                    to your own custom domain name later.</p>
+            </div>
+            <p class="clear">
+            </p>
+        </div>
+        @if (Model.HideCreditCard == false)
+        {
+        <div class="registration-section" id="creditcarddiv">
+            <div class="registration-form-area">
+                <h3>
+                    Secure Billing Information</h3>
+                <fieldset>
+                    <table border="0" cellspacing="0" cellpadding="3">
+                        <tr>
+                            <td class="r vt">
+                                Card Number:
+                            </td>
+                            <td>
+                                <input type="text" id="cardnumber" @IsErr("cardnumber") name="cardnumber" size="20" />                                
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="r vt">
+                                Expiration:
+                            </td>
+                            <td>
+                                <select id="expmonth" name="expmonth">
+                                    <option value="1" @if (Model.RegistrationData.expmonth == 1)
+                                                      { <text> selected="selected"</text> }>Jan (1)</option>
+                                    <option value="2" @if (Model.RegistrationData.expmonth == 2)
+                                                      { <text> selected="selected"</text> }>Feb (1)</option>
+                                    <option value="3" @if (Model.RegistrationData.expmonth == 3)
+                                                      { <text> selected="selected"</text> }>Mar (1)</option>
+                                    <option value="4" @if (Model.RegistrationData.expmonth == 4)
+                                                      { <text> selected="selected"</text> }>Apr (1)</option>
+                                    <option value="5" @if (Model.RegistrationData.expmonth == 5)
+                                                      { <text> selected="selected"</text> }>May (1)</option>
+                                    <option value="6" @if (Model.RegistrationData.expmonth == 6)
+                                                      { <text> selected="selected"</text> }>Jun (1)</option>
+                                    <option value="7" @if (Model.RegistrationData.expmonth == 7)
+                                                      { <text> selected="selected"</text> }>Jul (1)</option>
+                                    <option value="8" @if (Model.RegistrationData.expmonth == 8)
+                                                      { <text> selected="selected"</text> }>Aug (1)</option>
+                                    <option value="9" @if (Model.RegistrationData.expmonth == 9)
+                                                      { <text> selected="selected"</text> }>Sep (1)</option>
+                                    <option value="10" @if (Model.RegistrationData.expmonth == 10)
+                                                       { <text> selected="selected"</text> }>Oct (1)</option>
+                                    <option value="11" @if (Model.RegistrationData.expmonth == 11)
+                                                       { <text> selected="selected"</text> }>Nov (1)</option>
+                                    <option value="12" @if (Model.RegistrationData.expmonth == 12)
+                                                       { <text> selected="selected"</text> }>Dec (1)</option>
+                                </select>
+                                / 
+                                <select id="expyear" name="expyear">
+                                    @for (int i = DateTime.Now.Year; i < DateTime.Now.AddYears(10).Year; i++)
+                                    {
+                                        <option value="@i.ToString()" @if (i == Model.RegistrationData.expyear)
+                                                                      {
+                                                                          <text> selected="selected"</text>
+                                                                      }>@i.ToString()</option>                                        
+                                    }                   
+                                </select>                                                                                                                       
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="r vt">
+                                Name on Card:
+                            </td>
+                            <td>
+                                <input type="text" id="cardholder" name="cardholder" @IsErr("cardholder") value="@Model.RegistrationData.cardholder" size="20" />                                
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="r vt">
+                                Billing Zip Code:
+                            </td>
+                            <td>
+                                <input type="text" id="billingzipcode" name="billingzipcode" @IsErr("billingzipcode") value="@Model.RegistrationData.billingzipcode" size="20" />                                
+                            </td>
+                        </tr>
+                    </table>
+                </fieldset>
+            </div>
+            <div class="registration-instructions">
+                <p class="first">
+                    Enter a credit card for secure billing. Your card will be charged today and each
+                    month thereafter on this day of the month until you cancel. If you do not wish your
+                    card to be charge you can choose the free plan to test out the service.</p>
+            </div>
+            <p class="clear">
+            </p>
+        </div>
+        }
+        <div class="registration-section">
+            <div class="registration-form-area">
+                <h3>
+                    Terms and Conditions</h3>
+                <fieldset class="terms">
+                    <p>
+                        @Html.Raw(Model.RegistrationData.plandetails)
+                    </p>
+                    <p>
+                        MerchantTribe Service is billed monthly and may be cancelled at any time. Please see
+                        our <a href="@Url.Content("~/signup/policies/refund")" target="_blank">Refund Policy</a>, 
+                        <a href="@Url.Content("~/signup/policies/privacy")"
+                            target="_blank">Privacy Policy</a> and 
+                            <a href="@Url.Content("~/signup/policies/terms")" target="_blank">
+                                Terms of Service</a> for more information.</p>
+                    <p>
+                        If you have questions please <a href="http://www.bvsoftware.com/company/contact.aspx"
+                            target="_blank">contact us</a>.</p>
+                    <p>
+                        <input type="checkbox" id="chkagree" name="chkagree"
+                        @if (Model.Agreed) {
+                            <text> checked="checked"</text> 
+                            }/>                        
+                        I agree to the Refund Policy, Privacy Privacy and Terms of Service.</p>
+                        <input type="submit" name="submitbutton" id="submitbutton"
+                        @if (!Model.Agreed) {
+                            <text> disabled="disabled"</text>
+                            } value="Submit Order &amp; Sign Up for BV Commerce" />
+                </fieldset>
+            </div>
+            <p class="clear">
+            </p>
+        </div>
+        </form>
+    </div>
+</div>
