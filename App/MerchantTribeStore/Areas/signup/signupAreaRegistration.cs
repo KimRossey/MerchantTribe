@@ -29,7 +29,7 @@ namespace MerchantTribeStore.Areas.signup
 
             // Registration Routes
             context.MapRoute("signup-register", "signup/register/{id}", new { controller = "Register", action = "register" });
-            context.MapRoute("signup-register", "signup/register/JsonCheckStoreName", new { controller = "Register", action = "JsonCheckStoreName" });
+            context.MapRoute("signup-checkstorename", "signup/register/JsonCheckStoreName", new { controller = "Register", action = "JsonCheckStoreName" });
             context.MapRoute("signup-processsignup", "signup/processsignup", new { controller = "Register", action = "processsignup" });
 
             // Wildcard

@@ -111,7 +111,10 @@ namespace MerchantTribeStore
                                 new { controller = "EstimateShipping", action = "index", id = "0" });
 
             // Cart
-            routes.MapPageRoute("cart-route", "cart", "~/cart.aspx");                      
+            routes.MapRoute("cart-route", "cart", new { controller = "Cart", action = "index" });
+            routes.MapRoute("cart-addcoupon", "cart/addcoupon", new { controller = "Cart", action = "AddCoupon" });
+            routes.MapRoute("cart-removecoupont", "cart/removecoupon", new { controller = "Cart", action = "RemoveCoupon" });
+            routes.MapRoute("cart-removeitem", "cart/removelineitem", new { controller = "Cart", action = "RemoveLineItem" });
 
             // checkouts
             routes.MapRoute("checkout-route", "checkout/{action}/{*params}",

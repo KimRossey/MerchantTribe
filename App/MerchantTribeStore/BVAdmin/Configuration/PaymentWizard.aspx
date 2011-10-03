@@ -137,8 +137,7 @@
                                     <blockquote>
                                   <em>According to Jupiter Research, 23% of online shoppers consider PayPal one of their favorite ways to pay online. * Accepting PayPal in addition to credit cards is proven to increase your sales **</em>
                                   <br /><a href="#">See Quick Demo</a>
-                                  </blockquote>                  </asp:ListItem>
-                    <asp:ListItem><b>Google Checkout</b></asp:ListItem>
+                                  </blockquote>                  </asp:ListItem>                    
                     <asp:ListItem><b>Cash on Delivery</b></asp:ListItem>
                     <asp:ListItem><b>eCheck</b></asp:ListItem>
                 </asp:CheckBoxList>

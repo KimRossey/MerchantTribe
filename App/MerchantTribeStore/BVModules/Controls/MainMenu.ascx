@@ -1,2 +1,0 @@
-<%@ Control EnableViewState="false" Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVModules_Controls_MainMenu" Codebehind="MainMenu.ascx.cs" %>
-<asp:Literal EnableViewState="false" ID="litMain" runat="Server"></asp:Literal>

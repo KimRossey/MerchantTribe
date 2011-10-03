@@ -358,7 +358,6 @@ namespace MerchantTribeStore.Areas.signup.Controllers
         {
             List<FeatureDetails> result = new List<FeatureDetails>();
             result.Add(new FeatureDetails() { Name = "Credit Cards", Description = "Receive credit card payments from more than 25 common credit card gateways.", ImageId = "L1" });
-            //result.Add(new FeatureDetails() { Name = "Google Checkout", Description = "Fully integrated with Google Checkout. Enable with just a few clicks.", ImageId = "L2" });
             result.Add(new FeatureDetails() { Name = "PayPal Express Checkout", Description = "Allow customers to checkout through the PayPal website.", ImageId = "L3" });
             result.Add(new FeatureDetails() { Name = "PayPal Website Payments Pro", Description = "Process credit cards through PayPal.", ImageId = "L4" });
             result.Add(new FeatureDetails() { Name = "PayPal Website Payments Standard", Description = "Process credit cards on PayPal.com", ImageId = "L4" });

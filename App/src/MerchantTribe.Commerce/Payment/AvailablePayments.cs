@@ -23,7 +23,6 @@ namespace MerchantTribe.Commerce.Payment
             _Methods.Add(new Payment.Method.CashOnDelivery());
             //_Methods.Add(new Payment.Method.GiftCertificate());
             _Methods.Add(new Payment.Method.PaypalExpress());
-            //_Methods.Add(new Payment.Method.GoogleCheckout());
         }
         private Collection<DisplayPaymentMethod> _Methods = new Collection<DisplayPaymentMethod>();
 
