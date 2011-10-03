@@ -17,8 +17,7 @@ namespace MerchantTribe.Commerce.Accounts
             this._Store = s;
             AllSettings = new List<StoreSetting>();
             Acumatica = new StoreSettingsAcumatica(this);
-            Analytics = new StoreSettingsAnalytics(this);
-            GoogleCheckout = new StoreSettingsGoogleCheckout(this);
+            Analytics = new StoreSettingsAnalytics(this);            
             MailServer = new StoreSettingsMailServer(this);
             PayPal = new StoreSettingsPayPal(this);
         }
@@ -147,7 +146,6 @@ namespace MerchantTribe.Commerce.Accounts
 
         public StoreSettingsAcumatica Acumatica { get; private set; }
         public StoreSettingsAnalytics Analytics { get; private set; }        
-        public StoreSettingsGoogleCheckout GoogleCheckout { get; private set; }
         public StoreSettingsMailServer MailServer { get; private set; }
         public StoreSettingsPayPal PayPal { get; private set; }
 

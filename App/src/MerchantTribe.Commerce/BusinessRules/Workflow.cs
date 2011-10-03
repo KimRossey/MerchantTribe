@@ -81,8 +81,7 @@ namespace MerchantTribe.Commerce.BusinessRules
                     break;
                 case WorkflowNames.OrderEdited:
                     break;
-                case WorkflowNames.PackageShipped:
-                    wf._Tasks.Add(new OrderTasks.GoogleCheckoutSendTrackingInfo());
+                case WorkflowNames.PackageShipped:                    
                     break;
                 case WorkflowNames.PaymentChanged:
                     wf._Tasks.Add(new OrderTasks.RunWorkFlowIfPaid());
@@ -145,12 +144,10 @@ namespace MerchantTribe.Commerce.BusinessRules
                     wf._Tasks.Add(new OrderTasks.RunShippingCompleteWorkFlow());
                     break;
                 case WorkflowNames.ShippingComplete:
-                    wf._Tasks.Add(new OrderTasks.EmailShippingInfo());
-                    wf._Tasks.Add(new OrderTasks.GoogleCheckoutOrderShipped());
+                    wf._Tasks.Add(new OrderTasks.EmailShippingInfo());                    
                     break;
                 case WorkflowNames.ThirdPartyCheckoutSelected:
                     wf._Tasks.Add(new OrderTasks.StartPaypalExpressCheckout());
-                    //wf._Tasks.Add(new OrderTasks.StartGoogleCheckout());
                     break;
             }
 

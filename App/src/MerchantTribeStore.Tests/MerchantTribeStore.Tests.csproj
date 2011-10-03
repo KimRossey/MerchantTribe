@@ -159,10 +159,6 @@
       <Project>{4EFF0D3E-99D4-4A8D-A672-B88E5E47CBAA}</Project>
       <Name>MerchantTribe.Commerce</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MerchantTribe.GoogleCheckout\MerchantTribe.GoogleCheckout.csproj">
-      <Project>{EE651FCB-FE6E-4940-B887-60C54369DB6C}</Project>
-      <Name>MerchantTribe.GoogleCheckout</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MerchantTribe.Payment\MerchantTribe.Payment.csproj">
       <Project>{4C223AD8-685A-4AAC-8610-1BEC50636203}</Project>
       <Name>MerchantTribe.Payment</Name>

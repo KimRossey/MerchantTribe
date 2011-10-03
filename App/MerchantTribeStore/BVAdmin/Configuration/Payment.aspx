@@ -38,10 +38,7 @@
                     <legend>Sign Up For:</legend>
                     <a href="http://altfarm.mediaplex.com/ad/ck/3484-23890-3840-92" target="_blank" style="display: block;">
                         <img src="http://images.paypal.com/en_US/i/bnr/paypal_mrb_banner.gif" alt="Sign up for Paypal" style="border: 0px none; margin-top: 10px;">
-                    </a>                                                    
-                    <div class="hide"><a href="http://checkout.google.com/sell?promo=sebvsoft" target="_blank" style="display: block;">
-                        <img src="../../BVAdmin/Images/google_checkout.gif" alt="Sign up for Google Checkout" style="border: 0px; margin-top: 10px;" />
-                    </a></div>
+                    </a>                                                                        
                 </fieldset>
              </td>
         </tr>
