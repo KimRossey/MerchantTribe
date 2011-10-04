@@ -3,7 +3,6 @@
 
 <%@ Register Src="~/BVModules/Controls/Payment.ascx" TagName="Payment" TagPrefix="uc8" %>
 
-<%@ Register Src="BVModules/Controls/AddressBilling.ascx" TagName="AddressBilling" TagPrefix="uc4" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="Server">    
 </asp:Content>
@@ -16,7 +15,7 @@
     <div class="sections">        
         <div class="section-billing">
             <h2>Billing Address</h2>
-            <uc4:AddressBilling ID="AddressBilling1" runat="server" />                    
+            BILLING ADDRESS HERE
         </div>
         <div class="section-payment">
             <h2>Payment Method</h2>

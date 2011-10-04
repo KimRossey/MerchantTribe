@@ -1,5 +1,5 @@
 ﻿function CheckChanged() {
-    var chk = $('#chkBillSame');
+    var chk = $('#chkbillsame');
     if (chk.attr('checked')) {
         $('#billingwrapper').hide();
     }
@@ -147,8 +147,8 @@ function BindShippingRadioButtons() {
           { "regionid": selectedregion },
           function (data) {
               regionlist.html(data.Regions);
-              $('#TempShippingRegion').val('');
-              $('#TempBillingRegion').val('');
+              $('#tempshippingregion').val('');
+              $('#tempbillingregion').val('');
               BindStateDropDownLists();
           },
          "json"
@@ -177,17 +177,17 @@ function OpenDialog(lnk) {
 
         BindStateDropDownLists();
 
-        $('#chkBillSame').click(function () { CheckChanged(); return true; });
+        $('#chkbillsame').click(function () { CheckChanged(); return true; });
         $('#cccardnumber').change(function () { CleanCC(); });
         $('#billingcountryname').change(function () {
-            LoadRegionsWithSelection($('#billingstate'), $('#billingcountryname option:selected').val(), $('#TempBillingRegion').val());
+            LoadRegionsWithSelection($('#billingstate'), $('#billingcountryname option:selected').val(), $('#tempbillingregion').val());
         });
         $('#shippingcountryname').change(function () {
-            LoadRegionsWithSelection($('#shippingstate'), $('#shippingcountryname option:selected').val(), $('#TempShippingRegion').val());
+            LoadRegionsWithSelection($('#shippingstate'), $('#shippingcountryname option:selected').val(), $('#tempshippingregion').val());
             ShippingAddressChanged();
         });
         // Trigger First Change
-        LoadRegionsWithSelection($('#shippingstate'), $('#shippingcountryname option:selected').val(), $('#TempShippingRegion').val());
+        LoadRegionsWithSelection($('#shippingstate'), $('#shippingcountryname option:selected').val(), $('#tempshippingregion').val());
 
         $('#shippingregionname').change(function () { ShippingAddressChanged(); });
         $('#shippingfirstname').change(function () { ShippingAddressChanged(); });

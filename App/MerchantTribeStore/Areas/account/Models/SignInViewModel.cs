@@ -14,12 +14,15 @@ namespace MerchantTribeStore.Areas.account.Models
         public string Password { get; set; }
         [DisplayFormat(ConvertEmptyStringToNull = false)]
         public string PasswordConfirm { get; set; }
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
+        public string Mode { get; set; }
 
         public SignInViewModel()
         {
             this.Email = string.Empty;
             this.Password = string.Empty;
             this.PasswordConfirm = string.Empty;
+            this.Mode = string.Empty;
         }
     }
 }

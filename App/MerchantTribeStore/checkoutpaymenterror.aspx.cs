@@ -54,7 +54,7 @@ namespace MerchantTribeStore
        
         private MerchantTribe.Commerce.Contacts.Address GetBillingAddress()
         {
-            return this.AddressBilling1.GetAsAddress();
+            return null; //**************** this.AddressBilling1.GetAsAddress();
         }
 
         private Order LoadBasket()
@@ -70,7 +70,7 @@ namespace MerchantTribeStore
                     Response.Redirect("~/cart");
                 }
 
-                this.AddressBilling1.LoadFromAddress(Basket.BillingAddress);                                
+                //*******************this.AddressBilling1.LoadFromAddress(Basket.BillingAddress);                                
                 Payment.LoadPaymentMethods(Basket.TotalGrand);                
             }
             return Basket;
@@ -153,7 +153,7 @@ namespace MerchantTribeStore
 
             List<MerchantTribe.Web.Validation.RuleViolation> violations = new List<MerchantTribe.Web.Validation.RuleViolation>();
 
-            violations.AddRange(this.AddressBilling1.GetRuleViolations());
+            //**********************violations.AddRange(this.AddressBilling1.GetRuleViolations());
                                     
             if (!Payment.IsValid())
             {

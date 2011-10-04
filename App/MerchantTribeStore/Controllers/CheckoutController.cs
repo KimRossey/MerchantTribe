@@ -9,12 +9,324 @@ using MerchantTribeStore.Controllers.Shared;
 using MerchantTribe.Commerce.Orders;
 using MerchantTribeStore.Filters;
 using MerchantTribe.Commerce.Catalog;
-using MerchantTribe.Commerce.Orders;
+using MerchantTribeStore.Models;
+using MerchantTribe.Commerce.Content;
+using MerchantTribe.Commerce.Contacts;
+using MerchantTribe.Commerce.BusinessRules;
 
 namespace MerchantTribeStore.Controllers
 {
     public class CheckoutController : BaseStoreController
     {
+        private CheckoutViewModel IndexSetup()
+        {
+            ViewBag.Title = "Checkout";
+            ViewBag.BodyClass = "store-checkout-page";
+
+            CheckoutViewModel model = new CheckoutViewModel();
+            LoadOrder(model);
+            CheckForPoints(model);
+
+            // Buttons
+            ThemeManager themes = MTApp.ThemeManager();
+            model.ButtonCheckoutUrl = themes.ButtonUrl("PlaceOrder", Request.IsSecureConnection);
+            model.ButtonLoginUrl = MTApp.ThemeManager().ButtonUrl("Login", Request.IsSecureConnection);
+
+            // Labels
+            model.LabelRewardPoints = MTApp.CurrentStore.Settings.RewardsPointsName;
+
+            // Agree Checkbox
+            if (MTApp.CurrentStore.Settings.ForceTermsAgreement)
+            {
+                model.ShowAgreeToTerms = true;
+                model.AgreedToTerms = false;
+                model.AgreedToTermsDescription = SiteTerms.GetTerm(SiteTermIds.TermsAndConditionsAgreement);
+                model.LabelTerms = SiteTerms.GetTerm(SiteTermIds.TermsAndConditions);                                
+            }
+            else
+            {
+                model.ShowAgreeToTerms = false;
+                model.AgreedToTerms = true;
+            }
+
+            // Populate Countries
+            model.Countries = MTApp.CurrentStore.Settings.FindActiveCountries();
+
+            return model;
+        }
+        private void LoadOrder(CheckoutViewModel model)
+        {
+            Order result = SessionManager.CurrentShoppingCart(MTApp.OrderServices);
+            if (result == null) Response.Redirect("~/cart");           
+            model.CurrentOrder = result;
+
+            if (result.Items.Count == 0)
+            {
+                Response.Redirect("~/cart");
+            }
+
+            // Email
+            model.IsLoggedIn = false;
+            if (SessionManager.IsUserAuthenticated(this.MTApp))
+            {
+                model.IsLoggedIn = true;
+                model.CurrentCustomer = MTApp.CurrentCustomer;
+                if (model.CurrentCustomer != null)
+                {
+                    model.CurrentOrder.UserEmail = model.CurrentCustomer.Email;
+                }
+
+                model.CurrentOrder.BillingAddress = model.CurrentCustomer.GetBillingAddress();
+                model.CurrentOrder.ShippingAddress = model.CurrentCustomer.GetShippingAddress();                
+            }
+            
+            // Payment
+            //***************Payment.LoadPaymentMethods(result.TotalGrand);
+
+        }
+        void CheckForPoints(CheckoutViewModel model)
+        {
+            model.ShowRewards = false;
+
+            if (model.CurrentCustomer == null || model.CurrentCustomer.Bvin == string.Empty) return;
+
+            string uid = model.CurrentCustomer.Bvin;            
+            if (MTApp.CustomerPointsManager.FindAvailablePoints(uid) > 0 
+                && MTApp.CurrentStore.Settings.RewardsPointsOnPurchasesActive)
+            {
+                model.ShowRewards = true;
+                //*********************this.PaymentRewardsPoints1.Populate(o);
+            }
+        }
+
+        // GET: /checkout
+        [NonCacheableResponseFilter]
+        public ActionResult Index()
+        {
+            CheckoutViewModel model = IndexSetup();            
+            
+            return View(model);
+        }
+
+        // POST: /checkout
+        [NonCacheableResponseFilter]
+        [ActionName("Index")]
+        [HttpPost]
+        public ActionResult IndexPost()
+        {
+            CheckoutViewModel model = IndexSetup();
+            TagOrderWithAffiliate(model);                        
+            LoadValuesFromForm(model);
+            if (ValidateOrder(model))
+            {
+                ProcessOrder(model);
+            }
+
+            // Render Error Summary
+            foreach (var v in model.Violations)
+            {
+                FlashFailure(v.ErrorMessage);
+            }
+
+            return View(model);
+        }
+        private void TagOrderWithAffiliate(CheckoutViewModel model)
+        {
+            string affid = MTApp.ContactServices.GetValidAffiliateId().ToString();
+            if (!string.IsNullOrEmpty(affid))
+            {
+                model.CurrentOrder.AffiliateID = affid;
+            }
+        }        
+        private void LoadValuesFromForm(CheckoutViewModel model)
+        {            
+            // Email
+            model.CurrentOrder.UserEmail = Request.Form["customeremail"];
+                 
+            // Addresses            
+            model.BillShipSame = (Request.Form["chkbillsame"] != null);            
+           
+            LoadAddressFromForm("shipping", model.CurrentOrder.ShippingAddress);
+            if (model.BillShipSame)
+            {
+                model.CurrentOrder.ShippingAddress.CopyTo(model.CurrentOrder.BillingAddress);
+            }
+            else
+            {
+                LoadAddressFromForm("billing", model.CurrentOrder.BillingAddress);
+            }            
+            
+            //Shipping
+            string shippingRateKey = Request.Form["shippingrate"];
+            MTApp.OrderServices.OrdersRequestShippingMethodByUniqueKey(shippingRateKey, model.CurrentOrder);
+
+            // Save Values so far in case of later errors
+            MTApp.CalculateOrder(model.CurrentOrder);
+            
+            // Save Payment Information                    
+            //***************PaymentRewardsPoints1.ApplyInfoToOrder(model.CurrentOrder);
+            //***************Payment.SavePaymentInfo(model.CurrentOrder);
+
+            model.CurrentOrder.Instructions = Request.Form["specialinstructions"];
+
+            // Save all the changes to the order
+            MTApp.OrderServices.Orders.Update(model.CurrentOrder);
+            SessionManager.SaveOrderCookies(model.CurrentOrder);
+        }
+        private void LoadAddressFromForm(string prefix, Address address)
+        {
+            address.Bvin = Request.Form[prefix + "addressbvin"] ?? address.Bvin;
+            address.CountryBvin = Request.Form[prefix + "country"] ?? address.CountryBvin;
+            address.FirstName = Request.Form[prefix + "firstname"] ?? address.FirstName;
+            address.LastName = Request.Form[prefix + "lastname"] ?? address.LastName;
+            address.Company = Request.Form[prefix + "company"] ?? address.Company;
+            address.Line1 = Request.Form[prefix + "address"] ?? address.Line1;
+            address.City = Request.Form[prefix + "city"] ?? address.City;
+            address.RegionBvin = Request.Form[prefix + "state"] ?? address.RegionBvin;
+            address.PostalCode = Request.Form[prefix + "zip"] ?? address.PostalCode;
+            address.Phone = Request.Form[prefix + "phone"] ?? address.Phone;                
+        }
+        private bool ValidateOrder(CheckoutViewModel model)
+        {
+            bool result = true;
+
+            if (model.AgreedToTerms == false && model.ShowAgreeToTerms == true)
+            {
+                model.Violations.Add(new MerchantTribe.Web.Validation.RuleViolation("Terms", "Terms", SiteTerms.GetTerm(SiteTermIds.SiteTermsAgreementError)));
+                result = false;
+            }
+
+            // Validate Email
+            MerchantTribe.Web.Validation.ValidationHelper.ValidEmail("Email Address", model.CurrentOrder.UserEmail, model.Violations, "customeremail");
+
+            // Validate Shipping Address
+            model.Violations.AddRange(ValidateAddress(model.CurrentOrder.ShippingAddress, "Shipping"));
+
+            // Validate Billing Address
+            if (model.BillShipSame == false)
+            {
+                model.Violations.AddRange(ValidateAddress(model.CurrentOrder.BillingAddress, "Billing"));
+            }
+
+            Order Basket = SessionManager.CurrentShoppingCart(MTApp.OrderServices);
+            //Collection<GiftCertificate> gcs = Basket.GetGiftCertificates();
+            //decimal totalValue = 0m;
+            //foreach (GiftCertificate item in gcs) {
+            //    totalValue += item.CurrentAmount;
+            //}
+
+            // If Gift Certs are Included in the order, we may not need
+            // additional payment information
+            bool paymentFound = false;
+            //Basket.CalculateGrandTotalOnly(false, false);
+            //if ((totalValue >= Basket.TotalGrand)) {
+            //	paymentFound = true;
+            //}
+
+            // Make sure a shipping method is selected
+            // Basket validation checks for shipping method unique key
+            if (!Basket.IsValid())
+            {
+                model.Violations.AddRange(Basket.GetRuleViolations());
+            }
+
+            //*******************if ((!Payment.IsValid()) && (!paymentFound))
+            //*******************{
+            //*******************    model.Violations.AddRange(Payment.GetRuleViolations());
+            //*******************}
+
+            if ((model.Violations.Count > 0))
+            {
+                result = false;
+            }
+            return result;
+        }
+        private List<MerchantTribe.Web.Validation.RuleViolation> ValidateAddress(Address a, string prefix)
+        {
+            List<MerchantTribe.Web.Validation.RuleViolation> result = new List<MerchantTribe.Web.Validation.RuleViolation>();
+
+            string pre = prefix.Trim().ToLowerInvariant();
+
+            MerchantTribe.Web.Validation.ValidationHelper.Required(prefix + " Country Name", a.CountryData.Name, result, pre + "countryname");
+            MerchantTribe.Web.Validation.ValidationHelper.Required(prefix + " First Name", a.FirstName, result, pre + "firstname");
+            MerchantTribe.Web.Validation.ValidationHelper.Required(prefix + " Last Name", a.LastName, result, pre + "lastname");
+            MerchantTribe.Web.Validation.ValidationHelper.Required(prefix + " Street", a.Line1, result, pre + "address");
+            MerchantTribe.Web.Validation.ValidationHelper.Required(prefix + " City", a.City, result, pre + "city");
+            MerchantTribe.Web.Validation.ValidationHelper.Required(prefix + " Postal Code", a.PostalCode, result, pre + "zip");
+
+            MerchantTribe.Web.Validation.ValidationHelper.Required(prefix + " Region/State",
+                                                                a.RegionData.Abbreviation,
+                                                                result, pre + "state");
+            return result;
+        }
+        private void ProcessOrder(CheckoutViewModel model)
+        {
+            // Save as Order
+            OrderTaskContext c = new OrderTaskContext(MTApp);
+            c.UserId = SessionManager.GetCurrentUserId();
+            c.Order = model.CurrentOrder;
+
+            // Check for PayPal Request
+            //OrderPaymentManager payManager = new OrderPaymentManager(Basket);
+
+            bool paypalCheckoutSelected = false; //************* this.Payment.PayPalSelected;
+            
+            //bool paypalCheckoutSelected = payManager.PayPalExpressHasInfo();
+
+            if (paypalCheckoutSelected)
+            {
+                c.Inputs.Add("bvsoftware", "Mode", "PaypalExpress");
+                c.Inputs.Add("bvsoftware", "AddressSupplied", "1");
+                if (!Workflow.RunByName(c, WorkflowNames.ThirdPartyCheckoutSelected))
+                {
+                    EventLog.LogEvent("Paypal Express Checkout Failed", "Specific Errors to follow", MerchantTribe.Commerce.Metrics.EventLogSeverity.Error);
+                    // Show Errors     
+                    List<MerchantTribe.Web.Validation.RuleViolation> violations = new List<MerchantTribe.Web.Validation.RuleViolation>();
+                    foreach (WorkflowMessage item in c.GetCustomerVisibleErrors())
+                    {
+                        violations.Add(new MerchantTribe.Web.Validation.RuleViolation("Workflow", item.Name, item.Description));
+                    }
+                }
+            }
+            else
+            {
+                if (Workflow.RunByName(c, WorkflowNames.ProcessNewOrder) == true)
+                {
+                    // Clear Cart ID because we're now an order
+                    SessionManager.CurrentCartID = string.Empty;
+
+                    // Process Payment
+                    if (MerchantTribe.Commerce.BusinessRules.Workflow.RunByName(c, MerchantTribe.Commerce.BusinessRules.WorkflowNames.ProcessNewOrderPayments))
+                    {
+                        MerchantTribe.Commerce.BusinessRules.Workflow.RunByName(c, MerchantTribe.Commerce.BusinessRules.WorkflowNames.ProcessNewOrderAfterPayments);
+                        Order tempOrder = MTApp.OrderServices.Orders.FindForCurrentStore(model.CurrentOrder.bvin);
+                        MerchantTribe.Commerce.Integration.Current().OrderReceived(tempOrder, MTApp);
+                        Response.Redirect("~/checkout/receipt?id=" + model.CurrentOrder.bvin);
+                    }
+                    else
+                    {
+                        // Redirect to Payment Error
+                        SessionManager.CurrentPaymentPendingCartId = model.CurrentOrder.bvin;
+                        Response.Redirect("~/checkout/paymenterror");
+                    }
+                }
+                else
+                {
+                    // Show Errors      
+                    List<MerchantTribe.Web.Validation.RuleViolation> violations = new List<MerchantTribe.Web.Validation.RuleViolation>();
+                    foreach (WorkflowMessage item in c.GetCustomerVisibleErrors())
+                    {
+                        violations.Add(new MerchantTribe.Web.Validation.RuleViolation("Workflow", item.Name, item.Description));
+                    }
+                    if (violations.Count < 1)
+                    {
+                        violations.Add(new MerchantTribe.Web.Validation.RuleViolation("Workflow", "Internal Error",
+                            "An internal error occured while attempting to place your order. Please contact the store owner directly to complete your order."));
+                    }
+                }
+            }
+        }
+
         //GET: /checkout/receipt
         [NonCacheableResponseFilter]
         public ActionResult Receipt()

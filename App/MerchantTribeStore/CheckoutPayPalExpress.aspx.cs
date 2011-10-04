@@ -36,7 +36,7 @@ namespace MerchantTribeStore
         {
             if (Page.IsValid)
             {
-                if (!SiteTermsAgreement1.IsValid)
+                if (false) //*********!SiteTermsAgreement1.IsValid
                 {
                     MessageBox1.ShowError(SiteTerms.GetTerm(SiteTermIds.SiteTermsAgreementError));
                 }

@@ -103,7 +103,7 @@ namespace MerchantTribeStore
                                       
             // policies
             routes.MapRoute("policy-route", "policies/{policykind}",
-                                new { controller = "Policies", action="Index" });
+                                new { controller = "Policies", action="Index", area="" });
             routes.MapRoute("faq-route", "faq", new { controller = "Policies", action = "Faq" });
 
             // estimate shipping
@@ -118,8 +118,7 @@ namespace MerchantTribeStore
 
             // checkouts
             routes.MapRoute("checkout-route", "checkout/{action}/{*params}",
-                                new { controller = "Checkout", action = "Index" });
-            
+                                new { controller = "Checkout", action = "Index" });            
             routes.MapPageRoute("checkout-paypal-route", "paypalexpresscheckout", "~/CheckoutPayPalExpress.aspx");
             routes.MapRoute("paypal-ipn-route", "paypalipn", 
                                 new {controller = "PayPalIpn", action="Index" });

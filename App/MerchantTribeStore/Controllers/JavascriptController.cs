@@ -20,7 +20,7 @@ namespace MerchantTribeStore.Controllers
             switch (filename.Trim().ToLowerInvariant())
             {
                 case "checkout.js":
-                    sourcecode = LoadPhysical("~/Checkout.js");
+                    sourcecode = LoadPhysical("~/scripts/Checkout.js");
                     break;
             }
 

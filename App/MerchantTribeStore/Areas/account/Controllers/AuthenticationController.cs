@@ -58,6 +58,11 @@ namespace MerchantTribeStore.Areas.account.Controllers
         {
             SignInSetup();
 
+            if (Request.QueryString["mode"] != null)
+            {
+                posted.Mode = Request.QueryString["mode"];
+            }
+
             if (ValidateLoginModel(posted, false))
             {
                 string errorMessage = string.Empty;
@@ -76,6 +81,13 @@ namespace MerchantTribeStore.Areas.account.Controllers
                         MTApp.CalculateOrderAndSave(cart);
                         SessionManager.SaveOrderCookies(cart);
                     }
+
+                    // if we got here from checkout, return to checkout
+                    if (posted.Mode.Trim().ToLowerInvariant() == "checkout")
+                    {
+                        return Redirect("~/checkout");
+                    }
+                    // otherwise send to account home
                     return Redirect("~/account");
                 }
                 else

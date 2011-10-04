@@ -7,6 +7,7 @@ using MerchantTribe.Commerce.Catalog;
 using MerchantTribe.Commerce.Contacts;
 using MerchantTribe.Commerce.Content;
 using MerchantTribe.Commerce.Orders;
+using MerchantTribe.Commerce.Membership;
 
 namespace MerchantTribe.Commerce
 {
@@ -185,6 +186,31 @@ namespace MerchantTribe.Commerce
                     }
                 }
                 return _MetricsServices;
+            }
+        }
+        private CustomerPointsManager _CustomerPointsManager = null;
+        public CustomerPointsManager CustomerPointsManager
+        {
+            get
+            {
+                if (_CustomerPointsManager == null)
+                {
+                    if (_IsForMemoryOnly)
+                    {
+                        _CustomerPointsManager = CustomerPointsManager.InstantiateForMemory(
+                                CurrentStore.Settings.RewardsPointsIssuedPerDollarSpent,
+                                CurrentStore.Settings.RewardsPointsNeededPerDollarCredit,
+                                CurrentStore.Id);
+                    }
+                    else
+                    {
+                        _CustomerPointsManager = CustomerPointsManager.InstantiateForDatabase(
+                                CurrentStore.Settings.RewardsPointsIssuedPerDollarSpent,
+                                CurrentStore.Settings.RewardsPointsNeededPerDollarCredit,
+                                CurrentStore.Id);
+                    }
+                }
+                return _CustomerPointsManager;
             }
         }
 
@@ -1112,6 +1138,6 @@ namespace MerchantTribe.Commerce
             }
             return MembershipServices.Customers.FindMany(ids);
         }
-
+        
     }
 }
