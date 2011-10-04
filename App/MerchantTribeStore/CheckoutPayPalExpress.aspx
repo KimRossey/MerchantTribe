@@ -1,6 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="True" Inherits="MerchantTribeStore.CheckoutPayPalExpress" Codebehind="CheckoutPayPalExpress.aspx.cs" %>
 
-<%@ Register src="BVModules/Controls/SiteTermsAgreement.ascx" tagname="SiteTermsAgreement" tagprefix="uc1" %>
 <%@ Register src="BVModules/Controls/MessageBox.ascx" tagname="MessageBox" tagprefix="uc2" %>
 <%@ Register Src="BVModules/Controls/ContentColumnControl.ascx" TagName="ContentColumnControl" TagPrefix="uc11" %>
 
@@ -140,7 +139,7 @@
         </div>
         </asp:Panel>
     <div class="section-actions">
-        <uc1:SiteTermsAgreement ID="SiteTermsAgreement1" runat="server" />
+        AGREE TERMS HERE
         <asp:ImageButton ID="CheckoutImageButton" runat="server" OnClick="CheckoutImageButton_Click" />
     </div>
     </div>

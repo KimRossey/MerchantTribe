@@ -247,15 +247,6 @@ namespace MerchantTribeStore {
         protected global::System.Web.UI.WebControls.Label ShippingMessage;
         
         /// <summary>
-        /// SiteTermsAgreement1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::MerchantTribeStore.BVModules_Controls_SiteTermsAgreement SiteTermsAgreement1;
-        
-        /// <summary>
         /// CheckoutImageButton control.
         /// </summary>
         /// <remarks>

@@ -652,8 +652,6 @@
     <Content Include="BVModules\ContentBlocks\Side Menu\editor.ascx" />
     <Content Include="BVModules\ContentBlocks\Top 10 Products\adminview.ascx" />
     <Content Include="BVModules\ContentBlocks\Top Weekly Sellers\adminview.ascx" />
-    <Content Include="BVModules\Controls\AddressBilling.ascx" />
-    <Content Include="BVModules\Controls\AddressShipping.ascx" />
     <Content Include="BVModules\Controls\CategoryBreadCrumbTrail.ascx" />
     <Content Include="BVModules\Controls\ContentColumnControl.ascx" />
     <Content Include="BVModules\Controls\CreditCardInput.ascx" />
@@ -663,8 +661,6 @@
     <Content Include="BVModules\Controls\Payment.ascx" />
     <Content Include="BVModules\Controls\PaymentRewardsPoints.ascx" />
     <Content Include="BVModules\Controls\Shipping.ascx" />
-    <Content Include="BVModules\Controls\SiteTermsAgreement.ascx" />
-    <Content Include="BVModules\Controls\ViewOrderItems.ascx" />
     <Content Include="BVModules\CreditCardGateways\Authorize.Net\Edit.ascx" />
     <Content Include="BVModules\CreditCardGateways\BV Secure Gateway\Edit.ascx" />
     <Content Include="BVModules\CreditCardGateways\Payflow Pro\edit.ascx" />
@@ -812,8 +808,7 @@
     <Content Include="content\themes\theme-bv-summerstore\buttons\Stars5.png" />
     <Content Include="content\themes\theme-bv-summerstore\buttons\Yes.png" />
     <Content Include="Scripts\fileuploader\Test.html" />
-    <Content Include="checkout.aspx" />
-    <Content Include="Checkout.js" />
+    <Content Include="Scripts\Checkout.js" />
     <Content Include="CheckoutPayPalExpress.aspx" />
     <Content Include="content\admin\images\AdminHeaderBackground.png" />
     <Content Include="content\admin\images\cside.png" />
@@ -3888,20 +3883,6 @@
     <Compile Include="BVModules\ContentBlocks\Top Weekly Sellers\adminview.ascx.designer.cs">
       <DependentUpon>adminview.ascx</DependentUpon>
     </Compile>
-    <Compile Include="BVModules\Controls\AddressBilling.ascx.cs">
-      <DependentUpon>AddressBilling.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="BVModules\Controls\AddressBilling.ascx.designer.cs">
-      <DependentUpon>AddressBilling.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="BVModules\Controls\AddressShipping.ascx.cs">
-      <DependentUpon>AddressShipping.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="BVModules\Controls\AddressShipping.ascx.designer.cs">
-      <DependentUpon>AddressShipping.ascx</DependentUpon>
-    </Compile>
     <Compile Include="BVModules\Controls\CategoryBreadCrumbTrail.ascx.cs">
       <DependentUpon>CategoryBreadCrumbTrail.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3964,20 +3945,6 @@
     </Compile>
     <Compile Include="BVModules\Controls\Shipping.ascx.designer.cs">
       <DependentUpon>Shipping.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="BVModules\Controls\SiteTermsAgreement.ascx.cs">
-      <DependentUpon>SiteTermsAgreement.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="BVModules\Controls\SiteTermsAgreement.ascx.designer.cs">
-      <DependentUpon>SiteTermsAgreement.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="BVModules\Controls\ViewOrderItems.ascx.cs">
-      <DependentUpon>ViewOrderItems.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="BVModules\Controls\ViewOrderItems.ascx.designer.cs">
-      <DependentUpon>ViewOrderItems.ascx</DependentUpon>
     </Compile>
     <Compile Include="BVModules\CreditCardGateways\Authorize.Net\Edit.ascx.cs">
       <DependentUpon>Edit.ascx</DependentUpon>
@@ -4168,13 +4135,6 @@
     <Compile Include="BVModules\Shipping\US Postal Service - International\edit.ascx.designer.cs">
       <DependentUpon>edit.ascx</DependentUpon>
     </Compile>
-    <Compile Include="checkout.aspx.cs">
-      <DependentUpon>checkout.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="checkout.aspx.designer.cs">
-      <DependentUpon>checkout.aspx</DependentUpon>
-    </Compile>
     <Compile Include="checkoutpaymenterror.aspx.cs">
       <DependentUpon>checkoutpaymenterror.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -4265,6 +4225,8 @@
     <Compile Include="Models\CartLineItemViewModel.cs" />
     <Compile Include="Models\CartViewModel.cs" />
     <Compile Include="Models\CategoryPageViewModel.cs" />
+    <Compile Include="Models\CheckoutAddressViewModel.cs" />
+    <Compile Include="Models\CheckoutViewModel.cs" />
     <Compile Include="Models\ContentColumnIdentifier.cs" />
     <Compile Include="Models\PagerViewModel.cs" />
     <Compile Include="Models\ProductListViewModel.cs" />
@@ -4444,6 +4406,8 @@
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\ProductReviews\TopReviews.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Checkout\Index.cshtml" />
+    <Content Include="Views\Checkout\_CheckoutAddress.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

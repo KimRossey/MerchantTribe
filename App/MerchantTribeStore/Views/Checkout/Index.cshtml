@@ -1,0 +1,160 @@
+﻿@model MerchantTribeStore.Models.CheckoutViewModel
+@using MerchantTribeStore.Models;           
+@section HeadContent{
+    <script type="text/javascript" src="@Url.Content("~/js/checkout.js")" ></script>
+}
+<div class="checkout">
+    @Html.Raw((string)TempData["messages"])
+    <h1>
+        Checkout</h1>
+    <div class="section-sidebar">
+        @Html.Action("Index", "ContentColumn", new { id = "601" })
+    </div>
+    <div class="sections">
+        <form action="@Url.Content("~/checkout")" method="post">
+        <div class="section-email">
+            <h2>
+                Email Address</h2>
+            <input type="text" id="customeremail" name="customeremail"
+                   tabindex="100" size="50" value="@Model.CurrentOrder.UserEmail" /><span class="requiredfield">*</span><br />
+            <div id="loginform">
+                @if (Model.IsLoggedIn)
+                {
+                    <p>
+                        You are logged into your account. Thank You.</p>
+                }
+                else
+                {
+                    <p>
+                        It looks like you have an account already. Please login:</p>
+                    <form action="@Url.Content("~/signin?mode=checkout")" method="post">
+                    <table id="CurrentUserTable" cellspacing="0" cellpadding="3">
+                        <tr>
+                            <td class="formlabel">
+                                Email:
+                            </td>
+                            <td class="formfield">
+                                <input type="text" class="forminput required logincontroltemailfield"
+                                            name="email" value="@Model.CurrentOrder.UserEmail" tabindex="150" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="formlabel">
+                                Password:
+                            </td>
+                            <td class="formfield">
+                                <input type="password" class="forminput required" title="Enter Your Password" tabindex="151"
+                                    name="password" value="">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="formlabel">
+                                &nbsp;
+                            </td>
+                            <td class="formfield">
+                                <input type="image" alt="Login" src="@Model.ButtonLoginUrl" tabindex="152" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="formlabel">
+                            </td>
+                            <td>
+                                <a href="@Url.Content("~/account/forgotpassword/" + (Model.CurrentOrder.UserEmail ?? ".") + "/1")" tabindex="153" class="BVSmallText forgot">
+                                    Forgot Your Password? Click Here.</a>
+                            </td>
+                        </tr>
+                    </table>
+                    </form>        
+                }
+            </div>
+            &nbsp;
+        </div>
+        <div class="section-shipping">
+            <h2>
+                Shipping Address</h2>
+            @Html.Partial("_CheckoutAddress", new CheckoutAddressViewModel() 
+                                                { 
+                                                    Address=Model.CurrentOrder.ShippingAddress,
+                                                    Prefix = "shipping",
+                                                    TabIndex = 200,
+                                                    ShowPhone = true,
+                                                    Countries = Model.Countries,
+                                                    Violations = Model.Violations
+                                                })
+                                                    
+            <input type="hidden" id="tempshippingregion" value="@Model.CurrentOrder.ShippingAddress.RegionBvin" />
+        </div>
+        <div class="section-delivery">
+            <h2>
+                Delivery Options</h2>
+            SHIPPING METHODS - TAB 300
+        </div>
+        <div class="section-billing">
+            <h2>
+                Billing Address</h2>
+            <input type="checkbox" id="chkbillsame" name="chkbillsame" @if (Model.BillShipSame)
+                                                                       { <text> checked="checked"</text> } tabindex="400" />
+            My billing address is the same as my shipping address
+            <div id="billingwrapper">
+                @Html.Partial("_CheckoutAddress", new CheckoutAddressViewModel() 
+                                                { 
+                                                    Address=Model.CurrentOrder.BillingAddress,
+                                                    Prefix = "billing",
+                                                    TabIndex = 450,
+                                                    ShowPhone = false,
+                                                    Countries = Model.Countries,
+                                                    Violations = Model.Violations
+                                                })
+                <input type="hidden" id="tempbillingregion" value="@Model.CurrentOrder.BillingAddress.RegionBvin" />
+            </div>
+        </div>
+        <asp:panel id="pnlRewardsPoints" visible="false" runat="server">
+            <div class="section-payment">
+                <h2>@Model.LabelRewardPoints</h2>
+                REWARDS CONTROLS
+            </div>
+        </asp:panel>
+        <div class="section-payment">
+            <h2>
+                Payment Method</h2>
+            PAYMENT CONTROLS - TAB 500
+        </div>
+        <div class="section-extras">
+            <h2>
+                Special Instructions</h2>
+            <textarea id="specialinstructions" name="specialinstructions" cols="80" rows="4"
+                tabindex="600">@Model.CurrentOrder.Instructions</textarea>
+        </div>
+        <div class="section-actions">
+            @if (Model.ShowAgreeToTerms)
+            {
+                <input type="checkbox" id="agreed" name="agreed" @if (Model.AgreedToTerms)
+                                                                 { <text>checked="checked"</text> } />
+                @Model.AgreedToTermsDescription
+                <p><a href="@Url.Content("~/policies/terms")" class="viewSiteTerms">View @Model.LabelTerms</a></p>
+            }            
+            <input type="image" id="btnsubmit" alt="Place Order" src="@Model.ButtonCheckoutUrl" tabindex="3001" />            
+        </div>
+        <div class="section-totals">
+            <h2>
+                Order Summary</h2>
+            <div id="totalsastable">
+                @Html.Raw(Model.CurrentOrder.TotalsAsTable())
+            </div>
+        </div>
+        <div class="section-cart">
+            @Html.Partial("_ViewOrderItems", Model.CurrentOrder.Items)
+        </div>
+        </form>
+    </div>
+    <div class="clear">
+        &nbsp;</div>
+</div>
+<input type="hidden" id="orderbvin" name="orderbvin" value="@Model.CurrentOrder.bvin" />
+<div class="modal">
+    <div class="popoverframe">
+        <iframe id="popoverpage"></iframe>
+        <br />
+        <a id="dialogclose" href="#">Close</a>
+    </div>
+</div>
