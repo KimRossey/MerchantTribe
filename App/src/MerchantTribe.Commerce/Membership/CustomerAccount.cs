@@ -8,8 +8,10 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using MerchantTribe.Web.Cryptography;
 using MerchantTribe.Web;
+using MerchantTribe.Commerce.Contacts;
 using MerchantTribe.CommerceDTO.v1.Membership;
 using MerchantTribe.CommerceDTO.v1.Contacts;
+using System.Linq;
 
 namespace MerchantTribe.Commerce.Membership
 {    
@@ -24,17 +26,18 @@ namespace MerchantTribe.Commerce.Membership
         public string LastName {get;set;}
         public string Password {get;set;}
         public string Salt {get;set;}
-        
+        public Address ShippingAddress { get; set; }
+        public Address BillingAddress { get; set; }
 
         // Addresses        
-        private Contacts.AddressList _Addresses = new Contacts.AddressList();
-        private Contacts.PhoneNumberList _Phones = new Contacts.PhoneNumberList();        
-        public Contacts.AddressList Addresses
+        private AddressList _Addresses = new Contacts.AddressList();
+        private PhoneNumberList _Phones = new Contacts.PhoneNumberList();        
+        public AddressList Addresses
         {
             get { return _Addresses; }
             set { _Addresses = value; }
         }        
-        public Contacts.PhoneNumberList Phones
+        public PhoneNumberList Phones
         {
             get { return _Phones; }
             set { _Phones = value; }
@@ -77,8 +80,10 @@ namespace MerchantTribe.Commerce.Membership
             this.LastUpdatedUtc = DateTime.UtcNow;
             this.CreationDateUtc = DateTime.UtcNow;
             this.LastLoginDateUtc = DateTime.UtcNow;
+            this.BillingAddress = new Address();
+            this.ShippingAddress = new Address();
 		}	
-					
+	    
         public List<Content.HtmlTemplateTag> GetReplaceableTags(MerchantTribeApplication app)
         {
             List<Content.HtmlTemplateTag> result = new List<Content.HtmlTemplateTag>();
@@ -170,37 +175,7 @@ namespace MerchantTribe.Commerce.Membership
             string result = string.Empty;
             result = Hashing.Md5Hash(password, this.Salt);
             return result;
-        }
-
-
-        public Contacts.Address GetShippingAddress()
-        {
-            Contacts.Address result = new Contacts.Address();
-
-            foreach (Contacts.Address a in this.Addresses)
-            {
-                if (a.IsShipping())
-                {
-                    return a;
-                }
-            }
-
-            return result;
-        }
-        public Contacts.Address GetBillingAddress()
-        {
-            Contacts.Address result = new Contacts.Address();
-
-            foreach (Contacts.Address a in this.Addresses)
-            {
-                if (a.IsBilling())
-                {
-                    return a;
-                }
-            }
-
-            return result;
-        }
+        }               
 
         //DTO
         public CustomerAccountDTO ToDto()
@@ -229,6 +204,8 @@ namespace MerchantTribe.Commerce.Membership
                 dto.Addresses.Add(a.ToDto());
             }
 
+            dto.ShippingAddress = this.ShippingAddress.ToDto();
+            dto.BillingAddress = this.BillingAddress.ToDto();
             return dto;
         }
         public void FromDto(CustomerAccountDTO dto)
@@ -256,6 +233,9 @@ namespace MerchantTribe.Commerce.Membership
                 addr.FromDto(a);
                 this.Addresses.Add(addr);
             }
+
+            this.ShippingAddress.FromDto(dto.ShippingAddress);
+            this.BillingAddress.FromDto(dto.BillingAddress);
         }
 							                
     }

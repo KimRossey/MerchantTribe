@@ -2,6 +2,7 @@ using System;
 using System.Configuration;
 using System.Collections.ObjectModel;
 using System.Data;
+using log4net;
 
 namespace MerchantTribe.Commerce
 {
@@ -21,23 +22,31 @@ namespace MerchantTribe.Commerce
         /// <returns>True if the event was recorded, otherwise false</returns>
         public static bool LogEvent(string source, string message, Metrics.EventLogSeverity severity)
         {
-            bool ret = false;
-            Metrics.EventLogEntry e = new Metrics.EventLogEntry(source, message, severity);
+            ILog Log = LogManager.GetLogger(source);
 
-            RequestContext context = null;
-            try
+            switch (severity)
             {
-                context = RequestContext.GetCurrentRequestContext();
-            }
-            catch
-            {
-                // nothing
+                case Metrics.EventLogSeverity.Debug:
+                    Log.Debug(message);
+                    break;
+                case Metrics.EventLogSeverity.Error:
+                    Log.Error(message);
+                    break;
+                case Metrics.EventLogSeverity.Fatal:
+                    Log.Error(message);
+                    break;
+                case Metrics.EventLogSeverity.Information:
+                    Log.Info(message);
+                    break;
+                case Metrics.EventLogSeverity.None:
+                    Log.Info(message);
+                    break;
+                case Metrics.EventLogSeverity.Warning:
+                    Log.Warn(message);
+                    break;
             }
 
-            Metrics.EventLogRepository repository = new Metrics.EventLogRepository(context);
-            ret = repository.Create(e);
-            
-            return ret;
+            return true;    
         }
 
         /// <summary>
@@ -47,29 +56,10 @@ namespace MerchantTribe.Commerce
         /// <returns>True if the exception was recorded, otherwise false</returns>
         public static bool LogEvent(Exception ex)
         {
-            bool ret = false;
-            Metrics.EventLogEntry e = new Metrics.EventLogEntry(ex);
-
-            RequestContext context = null;
-            try
-            {
-                context = RequestContext.GetCurrentRequestContext();
-            }
-            catch
-            {
-                // nothing
-                context = new RequestContext();                
-            }
-
-            if (context.ConnectionString == string.Empty)
-            {
-                context.ConnectionString = "server=.;database=merchanttribe;uid=novaliduser;pwd=nopassword";
-                context.ConnectionStringForEntityFramework = "metadata=res://*/Data.EF.Models.csdl|res://*/Data.EF.Models.ssdl|res://*/Data.EF.Models.msl;provider=System.Data.SqlClient;provider connection string=\"server=.;database=merchanttribe;uid=novaliduser;pwd=nopassword;MultipleActiveResultSets=True\";";
-            }
-
-            Metrics.EventLogRepository repository = new Metrics.EventLogRepository(context);
-            ret = repository.Create(e);
-            return ret;
+            ILog Log = LogManager.GetLogger("MerchantTribe.System");
+            Log.Error("Exception", ex);
+            return true;
+  
         }
                             
 

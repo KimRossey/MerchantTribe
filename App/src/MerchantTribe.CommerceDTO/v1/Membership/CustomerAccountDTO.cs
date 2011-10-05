@@ -38,6 +38,10 @@ namespace MerchantTribe.CommerceDTO.v1.Membership
 		public System.DateTime CreationDateUtc {get;set;}
         [DataMember]
 		public System.DateTime LastLoginDateUtc {get;set;}
+        [DataMember]
+        public AddressDTO ShippingAddress { get; set; }
+        [DataMember]
+        public AddressDTO BillingAddress { get; set; }
 	        
 		// Constructor			
 		public CustomerAccountDTO()
@@ -55,7 +59,9 @@ namespace MerchantTribe.CommerceDTO.v1.Membership
             this.Password = string.Empty;
             this.PricingGroupId = string.Empty;
             this.Salt = string.Empty;
-            this.TaxExempt = false;            
+            this.TaxExempt = false;
+            this.ShippingAddress = new AddressDTO();
+            this.BillingAddress = new AddressDTO();
 		}	
 	
 	

@@ -380,7 +380,6 @@
     <Compile Include="Membership\CustomerAccountRepository.cs" />
     <Compile Include="Membership\MembershipServices.cs" />
     <Compile Include="Membership\UserQuestionRepository.cs" />
-    <Compile Include="Metrics\EventLogRepository.cs" />
     <Compile Include="Controls\ITextBoxBasedControl.cs" />
     <Compile Include="Controls\LoginCompleteEventArgs.cs" />
     <Compile Include="Controls\PageChangingEventArgs.cs" />
@@ -524,7 +523,6 @@
     <Compile Include="Membership\SystemPermissions.cs" />
     <Compile Include="Membership\CustomerAccount.cs" />
     <Compile Include="Membership\UserPasswordFormat.cs" />
-    <Compile Include="Metrics\EventLogEntry.cs" />
     <Compile Include="Metrics\EventLogSeverity.cs" />
     <Compile Include="Metrics\SearchQuery.cs" />
     <Compile Include="Orders\GiftWrapDetails.cs" />

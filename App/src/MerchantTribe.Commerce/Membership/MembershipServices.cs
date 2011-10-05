@@ -263,64 +263,7 @@ namespace MerchantTribe.Commerce.Membership
             bool addressWasAdded = a.CheckIfNewAddressAndAddNoUpdate(address);
             if (addressWasAdded) UpdateCustomer(a);
             return addressWasAdded;
-        }
-        
-        public void CustomerSetBillingAddress(CustomerAccount c, Contacts.Address a)
-        {
-            if (a.Bvin == string.Empty) a.Bvin = System.Guid.NewGuid().ToString();
-
-            string id = a.Bvin;
-
-            CheckIfNewAddressAndAddWithUpdate(c, a);
-
-            foreach (Contacts.Address ad in c.Addresses)
-            {
-                ad.ClearBillingSetting();
-                if (ad.Bvin == id)
-                {
-                    ad.MakeBilling();
-                }
-            }
-        }
-        public void CustomerSetShippingAddress(CustomerAccount c, Contacts.Address a)
-        {
-            if (a.Bvin == string.Empty) a.Bvin = System.Guid.NewGuid().ToString();
-
-            string id = a.Bvin;
-
-            CheckIfNewAddressAndAddWithUpdate(c, a);
-
-            foreach (Contacts.Address ad in c.Addresses)
-            {
-                ad.ClearShippingSetting();
-                if (ad.Bvin == id)
-                {
-                    ad.MakeShipping();
-                }
-            }
-        }
-        public void CustomerMakeAddressShipping(CustomerAccount c, string bvin)
-        {
-            foreach (Contacts.Address a in c.Addresses)
-            {
-                if (a.Bvin == bvin)
-                {
-                    CustomerSetShippingAddress(c, a);
-                    break;
-                }
-            }
-        }
-        public void CustomerMakeAddressBilling(CustomerAccount c, string bvin)
-        {
-            foreach (Contacts.Address a in c.Addresses)
-            {
-                if (a.Bvin == bvin)
-                {
-                    CustomerSetBillingAddress(c, a);
-                    break;
-                }
-            }
-        }
+        }                                        
         public void UnlockCustomer(CustomerAccount c)
         {
             c.Locked = false;

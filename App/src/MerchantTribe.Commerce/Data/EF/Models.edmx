@@ -730,13 +730,13 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="ProductFileId" Type="varchar" Nullable="false" MaxLength="36" />
           <Property Name="ProductId" Type="varchar" Nullable="false" MaxLength="36" />
           <Property Name="AvailableMinutes" Type="int" Nullable="false" />
           <Property Name="MaxDownloads" Type="int" Nullable="false" />
           <Property Name="LastUpdated" Type="datetime" Nullable="false" />
           <Property Name="StoreId" Type="bigint" Nullable="false" />
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
         </EntityType>
         <EntityType Name="bvc_ProductFilter">
           <Key>
@@ -832,11 +832,11 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="ProductBvin" Type="varchar" Nullable="false" MaxLength="36" />
           <Property Name="PropertyId" Type="bigint" Nullable="false" />
           <Property Name="PropertyValue" Type="nvarchar(max)" Nullable="false" />
           <Property Name="StoreId" Type="bigint" Nullable="false" />
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
         </EntityType>
         <EntityType Name="bvc_ProductRelationships">
           <Key>
@@ -880,11 +880,11 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="ProductTypeBvin" Type="varchar" Nullable="false" MaxLength="36" />
           <Property Name="PropertyId" Type="bigint" Nullable="false" />
           <Property Name="SortOrder" Type="int" Nullable="false" />
           <Property Name="StoreId" Type="bigint" Nullable="false" />
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
         </EntityType>
         <EntityType Name="bvc_ProductVolumeDiscounts">
           <Key>
@@ -1026,6 +1026,8 @@
           <Property Name="PricingGroup" Type="varchar" Nullable="false" MaxLength="36" />
           <Property Name="CustomQuestionAnswers" Type="nvarchar(max)" Nullable="false" />
           <Property Name="StoreId" Type="bigint" Nullable="false" />
+          <Property Name="ShippingAddress" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="BillingAddress" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="bvc_UserQuestions">
           <Key>
@@ -1265,6 +1267,7 @@
           <Property Name="AvailableEndDateUtc" Type="datetime" Nullable="false" />
           <Property Name="SerializedContent" Type="nvarchar(max)" Nullable="false" />
           <Property Name="PublishedStatus" Type="int" Nullable="false" />
+          <Property Name="Areas" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="QueuedTasks">
           <Key>
@@ -2478,6 +2481,8 @@
           <Property Type="String" Name="CustomQuestionAnswers" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Type="Int64" Name="StoreId" Nullable="false" />
           <NavigationProperty Name="bvc_UserXContact" Relationship="EfModels.FK_bvc_UserXAffiliate_bvc_User" FromRole="bvc_User" ToRole="bvc_UserXContact" />
+          <Property Type="String" Name="ShippingAddress" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="BillingAddress" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="bvc_UserQuestions">
           <Key>
@@ -2641,6 +2646,7 @@
           <Property Type="DateTime" Name="AvailableEndDateUtc" Nullable="false" />
           <Property Type="String" Name="SerializedContent" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Type="Int32" Name="PublishedStatus" Nullable="false" />
+          <Property Type="String" Name="Areas" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_bv_SearchObjectWords_bv_SearchLexicon">
           <End Type="EfModels.bv_SearchLexicon" Role="bv_SearchLexicon" Multiplicity="1" />
@@ -3970,6 +3976,8 @@
           <EntitySetMapping Name="bvc_User">
             <EntityTypeMapping TypeName="EfModels.bvc_User">
               <MappingFragment StoreEntitySet="bvc_User">
+                <ScalarProperty Name="BillingAddress" ColumnName="BillingAddress" />
+                <ScalarProperty Name="ShippingAddress" ColumnName="ShippingAddress" />
                 <ScalarProperty Name="StoreId" ColumnName="StoreId" />
                 <ScalarProperty Name="CustomQuestionAnswers" ColumnName="CustomQuestionAnswers" />
                 <ScalarProperty Name="PricingGroup" ColumnName="PricingGroup" />
@@ -4142,6 +4150,7 @@
           <EntitySetMapping Name="PageVersions">
             <EntityTypeMapping TypeName="EfModels.PageVersion">
               <MappingFragment StoreEntitySet="PageVersions">
+                <ScalarProperty Name="Areas" ColumnName="Areas" />
                 <ScalarProperty Name="PublishedStatus" ColumnName="PublishedStatus" />
                 <ScalarProperty Name="SerializedContent" ColumnName="SerializedContent" />
                 <ScalarProperty Name="AvailableEndDateUtc" ColumnName="AvailableEndDateUtc" />
@@ -4575,7 +4584,7 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="Models" ZoomLevel="24">
+      <Diagram Name="Models" ZoomLevel="46" ShowGrid="true">
         <EntityTypeShape EntityType="EfModels.bv_SearchLexicon" Width="1.875" PointX="7.75" PointY="14.375" Height="1.5956835937499818" />
         <EntityTypeShape EntityType="EfModels.bv_SearchObjects" Width="1.875" PointX="7.375" PointY="17" Height="2.3648893229166106" />
         <EntityTypeShape EntityType="EfModels.bv_SearchObjectWords" Width="2" PointX="10.25" PointY="16.875" Height="2.1725878906249818" />

@@ -8,6 +8,7 @@ using System.Web.Routing;
 using MerchantTribe.Commerce;
 using System.Web.Mvc;
 using System.Web.Caching;
+using log4net;
 
 namespace MerchantTribeStore
 {
@@ -166,6 +167,9 @@ namespace MerchantTribeStore
         
         void Application_Start(object sender, EventArgs e)
         {            
+            // Log4Net
+            log4net.Config.XmlConfigurator.Configure();
+
             // routing
             AreaRegistration.RegisterAllAreas();
             RegisterGlobalFilters(GlobalFilters.Filters);

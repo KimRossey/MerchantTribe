@@ -75,10 +75,15 @@ namespace MerchantTribeStore.Controllers
                 {
                     model.CurrentOrder.UserEmail = model.CurrentCustomer.Email;
                 }
-
-                model.CurrentOrder.BillingAddress = model.CurrentCustomer.GetBillingAddress();
-                model.CurrentOrder.ShippingAddress = model.CurrentCustomer.GetShippingAddress();                
-            }
+                
+                // Copy customer addresses to order
+                model.CurrentCustomer.ShippingAddress.CopyTo(model.CurrentOrder.ShippingAddress);                
+                if (model.BillShipSame == false)
+                {
+                    Address billAddr = model.CurrentCustomer.BillingAddress;
+                    billAddr.CopyTo(model.CurrentOrder.BillingAddress);
+                }                                
+            }            
             
             // Payment
             //***************Payment.LoadPaymentMethods(result.TotalGrand);
@@ -116,7 +121,7 @@ namespace MerchantTribeStore.Controllers
         {
             CheckoutViewModel model = IndexSetup();
             TagOrderWithAffiliate(model);                        
-            LoadValuesFromForm(model);
+            LoadValuesFromForm(model);            
             if (ValidateOrder(model))
             {
                 ProcessOrder(model);
@@ -154,8 +159,19 @@ namespace MerchantTribeStore.Controllers
             else
             {
                 LoadAddressFromForm("billing", model.CurrentOrder.BillingAddress);
-            }            
-            
+            }
+            // Save addresses to customer account
+            if (model.IsLoggedIn)
+            {
+                
+                model.CurrentOrder.ShippingAddress.CopyTo(model.CurrentOrder.ShippingAddress);
+                if (model.BillShipSame == false)
+                {
+                    model.CurrentOrder.BillingAddress.CopyTo(model.CurrentCustomer.BillingAddress);
+                }
+                MTApp.MembershipServices.Customers.Update(model.CurrentCustomer);
+            }
+
             //Shipping
             string shippingRateKey = Request.Form["shippingrate"];
             MTApp.OrderServices.OrdersRequestShippingMethodByUniqueKey(shippingRateKey, model.CurrentOrder);

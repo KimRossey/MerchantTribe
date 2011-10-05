@@ -13,14 +13,14 @@ namespace MerchantTribe.Commerce.Orders
         public static LineItemRepository InstantiateForMemory(RequestContext c)
         {
             LineItemRepository result = null;
-            ILogger logger = new MerchantTribe.Web.Logging.TextLogger();
+            ILogger logger = new MerchantTribe.Commerce.EventLog();
             result = new LineItemRepository(new MemoryStrategy<Data.EF.bvc_LineItem>(PrimaryKeyType.Long), logger);
             return result;
         }
         public static LineItemRepository InstantiateForDatabase(RequestContext c)
         {
             LineItemRepository result = null;
-            ILogger logger = new MerchantTribe.Web.Logging.TextLogger();
+            ILogger logger = new MerchantTribe.Commerce.EventLog();
             result = new LineItemRepository(new EntityFrameworkRepository<Data.EF.bvc_LineItem>(
                     new Data.EF.EntityFrameworkDevConnectionString(c.ConnectionStringForEntityFramework)), logger);
             return result;

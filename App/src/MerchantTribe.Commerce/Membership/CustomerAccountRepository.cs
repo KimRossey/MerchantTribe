@@ -54,7 +54,13 @@ namespace MerchantTribe.Commerce.Membership
             model.Phones = Contacts.PhoneNumberList.FromJson(data.Phones);
             model.PricingGroupId = data.PricingGroup;
             model.Salt = data.Salt;
-            model.TaxExempt = data.TaxExempt == 1;         
+            model.TaxExempt = data.TaxExempt == 1;
+            
+            Contacts.Address shipAddr = MerchantTribe.Web.Json.ObjectFromJson<Contacts.Address>(data.ShippingAddress);
+            model.ShippingAddress = shipAddr ?? new Contacts.Address();
+
+            Contacts.Address billAddr = MerchantTribe.Web.Json.ObjectFromJson<Contacts.Address>(data.BillingAddress);
+            model.BillingAddress = billAddr ?? new Contacts.Address();
         }
         protected override void CopyModelToData(Data.EF.bvc_User data, CustomerAccount model)
         {
@@ -77,6 +83,8 @@ namespace MerchantTribe.Commerce.Membership
             data.Salt = model.Salt;
             data.TaxExempt = model.TaxExempt ? 1 : 0;
             data.CustomQuestionAnswers = string.Empty; // To Be Remove Soon
+            data.ShippingAddress = MerchantTribe.Web.Json.ObjectToJson(model.ShippingAddress);
+            data.BillingAddress = MerchantTribe.Web.Json.ObjectToJson(model.BillingAddress);
         }
       
         public CustomerAccount Find(string bvin)

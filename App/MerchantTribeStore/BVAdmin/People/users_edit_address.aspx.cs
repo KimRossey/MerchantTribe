@@ -35,18 +35,7 @@ namespace MerchantTribeStore
 
                 if (Request.QueryString["id"] != null)
                 {
-                    switch (Request.QueryString["id"])
-                    {
-                        case "b":
-                            LoadBilling();
-                            break;
-                        case "s":
-                            LoadShipping();
-                            break;
-                        default:
-                            LoadAddressForUser(Request.QueryString["id"]);
-                            break;
-                    }
+                    LoadAddressForUser(Request.QueryString["id"]);
                 }
                 else
                 {
@@ -97,17 +86,16 @@ namespace MerchantTribeStore
             CustomerAccount u = MTApp.MembershipServices.Customers.Find(this.UserIDField.Value);
             if (u != null)
             {
-                this.AddressEditor1.LoadFromAddress(u.GetBillingAddress());
+                this.AddressEditor1.LoadFromAddress(u.BillingAddress);
             }
             u = null;
         }
-
         private void LoadShipping()
         {
             CustomerAccount u = MTApp.MembershipServices.Customers.Find(this.UserIDField.Value);
             if (u != null)
             {
-                this.AddressEditor1.LoadFromAddress(u.GetShippingAddress());
+                this.AddressEditor1.LoadFromAddress(u.ShippingAddress);
             }
             u = null;
         }
@@ -142,25 +130,15 @@ namespace MerchantTribeStore
             if (u != null)
             {
                 Address temp = this.AddressEditor1.GetAsAddress();
-                switch (Request.QueryString["id"])
+                
+                if (temp.Bvin == null || temp.Bvin == string.Empty)
+                {                                                        
+                    temp.Bvin = System.Guid.NewGuid().ToString();
+                    MTApp.MembershipServices.CheckIfNewAddressAndAddWithUpdate(u,temp);
+                }
+                else
                 {
-                    case "b":
-                        MTApp.MembershipServices.CustomerSetBillingAddress(u,temp);
-                        break;
-                    case "s":
-                        MTApp.MembershipServices.CustomerSetShippingAddress(u,temp);
-                        break;
-                    default:
-                        if (temp.Bvin == null || temp.Bvin == string.Empty)
-                        {                                                        
-                            temp.Bvin = System.Guid.NewGuid().ToString();
-                            MTApp.MembershipServices.CheckIfNewAddressAndAddWithUpdate(u,temp);
-                        }
-                        else
-                        {
-                            u.UpdateAddress(temp);
-                        }
-                        break;
+                    u.UpdateAddress(temp);
                 }
 
                 CreateUserStatus s = CreateUserStatus.None;

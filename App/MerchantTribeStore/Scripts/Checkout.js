@@ -188,6 +188,7 @@ function OpenDialog(lnk) {
         });
         // Trigger First Change
         LoadRegionsWithSelection($('#shippingstate'), $('#shippingcountryname option:selected').val(), $('#tempshippingregion').val());
+        LoadRegionsWithSelection($('#billingstate'), $('#billingcountryname option:selected').val(), $('#tempbillingregion').val());
 
         $('#shippingregionname').change(function () { ShippingAddressChanged(); });
         $('#shippingfirstname').change(function () { ShippingAddressChanged(); });
@@ -217,6 +218,6 @@ function OpenDialog(lnk) {
         });
 
         CloseDialog();
-    });          // End Document Ready
+    });           // End Document Ready
         
 

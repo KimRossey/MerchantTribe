@@ -875,8 +875,8 @@ namespace MerchantTribeStore.BVAdmin.Orders
 
             MTApp.OrderServices.Orders.Update(o);            
 
-            this.BillToAddress.LoadFromAddress(args.UserAccount.GetBillingAddress());
-            this.ShipToAddress.LoadFromAddress(args.UserAccount.GetShippingAddress());
+            this.BillToAddress.LoadFromAddress(args.UserAccount.BillingAddress);
+            this.ShipToAddress.LoadFromAddress(args.UserAccount.ShippingAddress);
             if (this.BillToAddress.FirstName == string.Empty)
             {
                 this.BillToAddress.FirstName = args.UserAccount.FirstName;

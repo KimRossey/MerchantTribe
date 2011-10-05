@@ -10,10 +10,9 @@
                         <!--<li><a href="Users.aspx">Customers</a></li>-->
                         <!--<li><a href="AdminDisplay.aspx">Display</a></li>-->
                         <li><a href="Email.aspx">Email Addresses</a></li>
-                        <li><a href="Acumatica.aspx">ERP Integration</a></li>
                         <li><a href="MailServer.aspx">Email Server</a></li>
-                        <li><a href="GeoLocation.aspx">Geo-Location</a></li>
-                        <!--<li><a href="Fraud.aspx">Fraud Checks</a></li>-->
+                        <li><a href="Fraud.aspx">Fraud Screening</a></li>
+                        <li><a href="GeoLocation.aspx">Geo-Location</a></li>                        
                         <!--<li><a href="GiftCertificates.aspx">Gift Certificates</a></li>-->
                         <!--<li><a href="GiftWrap.aspx">Gift Wrap</a></li>-->
                         <!--<li><a href="InventoryNotices.aspx">Inventory</a></li>-->
@@ -22,8 +21,9 @@
                         <li><a href="ProductReviews.aspx">Reviews</a></li>
                         <!--<li><a href="Returns.aspx">Returns</a></li>-->
                         <li><a href="ScheduledTasks.aspx">Scheduled Tasks</a></li>                        
-                        <li><a href="Shipping.aspx">Shipping | Methods</a></li>                        
-                        <li><a href="Shipping_Zones.aspx">Shipping | Zones</a></li>
-                        <li><a href="ShippingHandling.aspx">Shipping | Handling</a></li>
-                        <li><a href="TaxClasses.aspx">Tax Schedules</a></li>                        
+                        <li><a href="Shipping.aspx">Shipping: Methods</a></li>                        
+                        <li><a href="Shipping_Zones.aspx">Shipping: Zones</a></li>
+                        <li><a href="ShippingHandling.aspx">Shipping: Handling</a></li>
+                        <li><a href="TaxClasses.aspx">Tax Schedules</a></li>
+                        <li><a href="Themes.aspx">Themes</a></li>                        
                     </ul>

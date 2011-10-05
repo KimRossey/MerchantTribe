@@ -113,6 +113,9 @@
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.4.1.10331.0\lib\EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="MerchantTribe.Web, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\MerchantTribe.Web.1.3.0.0\lib\net4\MerchantTribe.Web.dll</HintPath>
@@ -236,7 +239,6 @@
     <Content Include="BVAdmin\Configuration\Countries.aspx" />
     <Content Include="BVAdmin\Configuration\Default.aspx" />
     <Content Include="BVAdmin\Configuration\Email.aspx" />
-    <Content Include="BVAdmin\Configuration\EventLog.aspx" />
     <Content Include="BVAdmin\Configuration\Fraud.aspx" />
     <Content Include="BVAdmin\Configuration\General.aspx" />
     <Content Include="BVAdmin\Configuration\GeneralRemoveDomain.aspx" />
@@ -290,7 +292,6 @@
     <Content Include="BVAdmin\Configuration\ThemesNav.ascx" />
     <Content Include="BVAdmin\Configuration\ThemesSelect.aspx" />
     <Content Include="BVAdmin\Configuration\Users.aspx" />
-    <Content Include="BVAdmin\Configuration\Wallpaper.aspx" />
     <Content Include="BVAdmin\Content\CategoryTemplates.aspx" />
     <Content Include="BVAdmin\Content\CategoryTemplatesEdit.aspx" />
     <Content Include="BVAdmin\Content\Columns.aspx" />
@@ -2651,13 +2652,6 @@
     <Compile Include="BVAdmin\Configuration\Email.aspx.designer.cs">
       <DependentUpon>Email.aspx</DependentUpon>
     </Compile>
-    <Compile Include="BVAdmin\Configuration\EventLog.aspx.cs">
-      <DependentUpon>EventLog.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="BVAdmin\Configuration\EventLog.aspx.designer.cs">
-      <DependentUpon>EventLog.aspx</DependentUpon>
-    </Compile>
     <Compile Include="BVAdmin\Configuration\Fraud.aspx.cs">
       <DependentUpon>Fraud.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2993,13 +2987,6 @@
     </Compile>
     <Compile Include="BVAdmin\Configuration\Users.aspx.designer.cs">
       <DependentUpon>Users.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="BVAdmin\Configuration\Wallpaper.aspx.cs">
-      <DependentUpon>Wallpaper.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="BVAdmin\Configuration\Wallpaper.aspx.designer.cs">
-      <DependentUpon>Wallpaper.aspx</DependentUpon>
     </Compile>
     <Compile Include="BVAdmin\Content\CategoryTemplates.aspx.cs">
       <DependentUpon>CategoryTemplates.aspx</DependentUpon>
