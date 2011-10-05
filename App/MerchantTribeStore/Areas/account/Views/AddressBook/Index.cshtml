@@ -12,8 +12,6 @@
     @foreach (MerchantTribe.Commerce.Contacts.Address a in Model)
     {
         <div class="address">
-            @if (a.IsBilling()) { <strong>Bill To:</strong> }&nbsp;
-            @if (a.IsShipping()) { <strong>Ship To:</strong> }<br />
             <span class="BVSmallText">@Html.Raw(a.ToHtmlString())</span>
             <div class="buttonrow">
                 <table border="0" cellspacing="0" cellpadding="0">

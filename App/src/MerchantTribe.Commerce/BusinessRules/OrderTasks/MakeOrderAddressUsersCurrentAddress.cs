@@ -10,8 +10,11 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
 				Membership.CustomerAccount user = context.MTApp.MembershipServices.Customers.Find(context.UserId);
                 if (user == null) return true;
 
-                context.MTApp.MembershipServices.CustomerSetShippingAddress(user,context.Order.ShippingAddress);
-                context.MTApp.MembershipServices.CustomerSetBillingAddress(user,context.Order.BillingAddress);
+                context.Order.ShippingAddress.CopyTo(user.ShippingAddress);
+                if (!context.Order.BillingAddress.IsEqualTo(context.Order.ShippingAddress))
+                {
+                    context.Order.BillingAddress.CopyTo(user.BillingAddress);
+                }
 				context.MTApp.MembershipServices.UpdateCustomer(user);
 			}
 			return true;

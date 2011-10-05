@@ -13,14 +13,14 @@ namespace MerchantTribe.Commerce.Orders
         public static OrderPackageRepository InstantiateForMemory(RequestContext c)
         {
             OrderPackageRepository result = null;
-            ILogger logger = new MerchantTribe.Web.Logging.TextLogger();
+            ILogger logger = new MerchantTribe.Commerce.EventLog();
             result = new OrderPackageRepository(new MemoryStrategy<Data.EF.bvc_OrderPackage>(PrimaryKeyType.Long), logger);
             return result;
         }
         public static OrderPackageRepository InstantiateForDatabase(RequestContext c)
         {
             OrderPackageRepository result = null;
-            ILogger logger = new MerchantTribe.Web.Logging.TextLogger();
+            ILogger logger = new MerchantTribe.Commerce.EventLog();
             result = new OrderPackageRepository(new EntityFrameworkRepository<Data.EF.bvc_OrderPackage>(
                     new Data.EF.EntityFrameworkDevConnectionString(c.ConnectionStringForEntityFramework)), logger);
             return result;

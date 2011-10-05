@@ -34,8 +34,8 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
             if (context.MTApp.MembershipServices.CreateCustomer(n, n.Password))
             {
                 // Update Addresses for Customer
-                context.MTApp.MembershipServices.CustomerSetBillingAddress(n, context.Order.BillingAddress);
-                context.MTApp.MembershipServices.CustomerSetShippingAddress(n, context.Order.ShippingAddress);
+                context.Order.BillingAddress.CopyTo(n.BillingAddress);
+                context.Order.ShippingAddress.CopyTo(n.ShippingAddress);                
                 context.MTApp.MembershipServices.UpdateCustomer(n);
 
                 // Email Password to Customer

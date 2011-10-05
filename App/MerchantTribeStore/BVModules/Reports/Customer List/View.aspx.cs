@@ -153,7 +153,7 @@ namespace MerchantTribeStore
                 }
                 else
                 {
-                    MerchantTribe.Commerce.Contacts.Address ship = u.GetShippingAddress();
+                    MerchantTribe.Commerce.Contacts.Address ship = u.ShippingAddress;
                     if (ship != null)
                     {
                         if (ship.Line1.Trim().Length > 0)

@@ -12,15 +12,15 @@ namespace MerchantTribe.Commerce.Content
 
         public static ContentBlockRepository InstantiateForMemory(RequestContext c)
         {
-            ContentBlockRepository result = null;            
-            ILogger logger = new MerchantTribe.Web.Logging.TextLogger();
+            ContentBlockRepository result = null;
+            ILogger logger = new MerchantTribe.Commerce.EventLog();
             result = new ContentBlockRepository(c, new MemoryStrategy<Data.EF.bvc_ContentBlock>(PrimaryKeyType.Bvin), logger);
             return result;
         }
         public static ContentBlockRepository InstantiateForDatabase(RequestContext c)
         {            
             ContentBlockRepository result = null;
-            ILogger logger = new MerchantTribe.Web.Logging.TextLogger();
+            ILogger logger = new MerchantTribe.Commerce.EventLog();
             result = new ContentBlockRepository(c, new EntityFrameworkRepository<Data.EF.bvc_ContentBlock>(
                     new Data.EF.EntityFrameworkDevConnectionString(c.ConnectionStringForEntityFramework)), logger);
             return result;

@@ -317,14 +317,11 @@ namespace MerchantTribeStore.Helpers
             sb.Append(OpenMenu("Options", selected, AdminTabType.Configuration));
             sb.Append(AddMenuItem("Store Name &amp; Logo", "configuration/General.aspx", root));
             sb.Append(AddMenuItem("Store's Address", "configuration/StoreInfo.aspx", root));
-            sb.Append(AddMenuItem("Admin Wallpaper", "configuration/Wallpaper.aspx", root));
             sb.Append(AddMenuItem("Analytics", "configuration/Analytics.aspx", root));
             sb.Append(AddMenuItem("Api", "configuration/Api.aspx", root));
-            sb.Append(AddMenuItem("Audit Log", "configuration/eventlog.aspx", root));
             sb.Append(AddMenuItem("Countries", "configuration/countries.aspx", root));
             sb.Append(AddMenuItem("Email Addresses", "configuration/Email.aspx", root));
             sb.Append(AddMenuItem("Email Server", "configuration/MailServer.aspx", root));
-            sb.Append(AddMenuItem("ERP Integration", "configuration/Acumatica.aspx", root));
             sb.Append(AddMenuItem("Fraud Screening", "configuration/Fraud.aspx", root));
             sb.Append(AddMenuItem("Geo-Location", "configuration/GeoLocation.aspx", root));
             sb.Append(AddMenuItem("Orders", "configuration/Orders.aspx", root));

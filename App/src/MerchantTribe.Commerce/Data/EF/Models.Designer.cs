@@ -18871,7 +18871,9 @@ namespace MerchantTribe.Commerce.Data.EF
         /// <param name="pricingGroup">Initial value of the PricingGroup property.</param>
         /// <param name="customQuestionAnswers">Initial value of the CustomQuestionAnswers property.</param>
         /// <param name="storeId">Initial value of the StoreId property.</param>
-        public static bvc_User Createbvc_User(global::System.String bvin, global::System.String email, global::System.String firstName, global::System.String lastName, global::System.String password, global::System.String salt, global::System.Int32 taxExempt, global::System.DateTime creationDate, global::System.DateTime lastLoginDate, global::System.String comment, global::System.String addressBook, global::System.DateTime lastUpdated, global::System.Int32 locked, global::System.DateTime lockedUntil, global::System.Int32 failedLoginCount, global::System.String phones, global::System.String pricingGroup, global::System.String customQuestionAnswers, global::System.Int64 storeId)
+        /// <param name="shippingAddress">Initial value of the ShippingAddress property.</param>
+        /// <param name="billingAddress">Initial value of the BillingAddress property.</param>
+        public static bvc_User Createbvc_User(global::System.String bvin, global::System.String email, global::System.String firstName, global::System.String lastName, global::System.String password, global::System.String salt, global::System.Int32 taxExempt, global::System.DateTime creationDate, global::System.DateTime lastLoginDate, global::System.String comment, global::System.String addressBook, global::System.DateTime lastUpdated, global::System.Int32 locked, global::System.DateTime lockedUntil, global::System.Int32 failedLoginCount, global::System.String phones, global::System.String pricingGroup, global::System.String customQuestionAnswers, global::System.Int64 storeId, global::System.String shippingAddress, global::System.String billingAddress)
         {
             bvc_User bvc_User = new bvc_User();
             bvc_User.bvin = bvin;
@@ -18893,6 +18895,8 @@ namespace MerchantTribe.Commerce.Data.EF
             bvc_User.PricingGroup = pricingGroup;
             bvc_User.CustomQuestionAnswers = customQuestionAnswers;
             bvc_User.StoreId = storeId;
+            bvc_User.ShippingAddress = shippingAddress;
+            bvc_User.BillingAddress = billingAddress;
             return bvc_User;
         }
 
@@ -19357,6 +19361,54 @@ namespace MerchantTribe.Commerce.Data.EF
         private global::System.Int64 _StoreId;
         partial void OnStoreIdChanging(global::System.Int64 value);
         partial void OnStoreIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String ShippingAddress
+        {
+            get
+            {
+                return _ShippingAddress;
+            }
+            set
+            {
+                OnShippingAddressChanging(value);
+                ReportPropertyChanging("ShippingAddress");
+                _ShippingAddress = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("ShippingAddress");
+                OnShippingAddressChanged();
+            }
+        }
+        private global::System.String _ShippingAddress;
+        partial void OnShippingAddressChanging(global::System.String value);
+        partial void OnShippingAddressChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String BillingAddress
+        {
+            get
+            {
+                return _BillingAddress;
+            }
+            set
+            {
+                OnBillingAddressChanging(value);
+                ReportPropertyChanging("BillingAddress");
+                _BillingAddress = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("BillingAddress");
+                OnBillingAddressChanged();
+            }
+        }
+        private global::System.String _BillingAddress;
+        partial void OnBillingAddressChanging(global::System.String value);
+        partial void OnBillingAddressChanged();
 
         #endregion
     
@@ -23934,7 +23986,8 @@ namespace MerchantTribe.Commerce.Data.EF
         /// <param name="availableEndDateUtc">Initial value of the AvailableEndDateUtc property.</param>
         /// <param name="serializedContent">Initial value of the SerializedContent property.</param>
         /// <param name="publishedStatus">Initial value of the PublishedStatus property.</param>
-        public static PageVersion CreatePageVersion(global::System.Int64 id, global::System.String pageId, global::System.String adminName, global::System.Int64 availableScheduleId, global::System.DateTime availableStartDateUtc, global::System.DateTime availableEndDateUtc, global::System.String serializedContent, global::System.Int32 publishedStatus)
+        /// <param name="areas">Initial value of the Areas property.</param>
+        public static PageVersion CreatePageVersion(global::System.Int64 id, global::System.String pageId, global::System.String adminName, global::System.Int64 availableScheduleId, global::System.DateTime availableStartDateUtc, global::System.DateTime availableEndDateUtc, global::System.String serializedContent, global::System.Int32 publishedStatus, global::System.String areas)
         {
             PageVersion pageVersion = new PageVersion();
             pageVersion.Id = id;
@@ -23945,6 +23998,7 @@ namespace MerchantTribe.Commerce.Data.EF
             pageVersion.AvailableEndDateUtc = availableEndDateUtc;
             pageVersion.SerializedContent = serializedContent;
             pageVersion.PublishedStatus = publishedStatus;
+            pageVersion.Areas = areas;
             return pageVersion;
         }
 
@@ -24145,6 +24199,30 @@ namespace MerchantTribe.Commerce.Data.EF
         private global::System.Int32 _PublishedStatus;
         partial void OnPublishedStatusChanging(global::System.Int32 value);
         partial void OnPublishedStatusChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Areas
+        {
+            get
+            {
+                return _Areas;
+            }
+            set
+            {
+                OnAreasChanging(value);
+                ReportPropertyChanging("Areas");
+                _Areas = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Areas");
+                OnAreasChanged();
+            }
+        }
+        private global::System.String _Areas;
+        partial void OnAreasChanging(global::System.String value);
+        partial void OnAreasChanged();
 
         #endregion
     

@@ -14,14 +14,14 @@ namespace MerchantTribe.Commerce.Content
         public static PolicyBlockRepository InstantiateForMemory(RequestContext c)
         {
             PolicyBlockRepository result = null;            
-            ILogger logger = new MerchantTribe.Web.Logging.TextLogger();
+            ILogger logger = new MerchantTribe.Commerce.EventLog();
             result = new PolicyBlockRepository(c, new MemoryStrategy<Data.EF.bvc_PolicyBlock>(PrimaryKeyType.Bvin), logger);
             return result;
         }
         public static PolicyBlockRepository InstantiateForDatabase(RequestContext c)
         {            
             PolicyBlockRepository result = null;
-            ILogger logger = new MerchantTribe.Web.Logging.TextLogger();
+            ILogger logger = new MerchantTribe.Commerce.EventLog();
             result = new PolicyBlockRepository(c, new EntityFrameworkRepository<Data.EF.bvc_PolicyBlock>(
                     new Data.EF.EntityFrameworkDevConnectionString(c.ConnectionStringForEntityFramework)), logger);
             return result;

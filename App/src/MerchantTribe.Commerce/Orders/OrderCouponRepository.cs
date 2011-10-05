@@ -12,14 +12,14 @@ namespace MerchantTribe.Commerce.Orders
         public static OrderCouponRepository InstantiateForMemory(RequestContext c)
         {
             OrderCouponRepository result = null;
-            ILogger logger = new MerchantTribe.Web.Logging.TextLogger();
+            ILogger logger = new MerchantTribe.Commerce.EventLog();
             result = new OrderCouponRepository(new MemoryStrategy<Data.EF.bvc_OrderCoupon>(PrimaryKeyType.Long), logger);
             return result;
         }
         public static OrderCouponRepository InstantiateForDatabase(RequestContext c)
         {
             OrderCouponRepository result = null;
-            ILogger logger = new MerchantTribe.Web.Logging.TextLogger();
+            ILogger logger = new MerchantTribe.Commerce.EventLog();
             result = new OrderCouponRepository(new EntityFrameworkRepository<Data.EF.bvc_OrderCoupon>(
                     new Data.EF.EntityFrameworkDevConnectionString(c.ConnectionStringForEntityFramework)), logger);
             return result;

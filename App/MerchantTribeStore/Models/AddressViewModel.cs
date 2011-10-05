@@ -71,21 +71,6 @@ namespace MerchantTribeStore.Models
         [DisplayFormat(ConvertEmptyStringToNull = false)]
         public AddressTypes AddressType { get; set; }
 
-        public bool IsShipping()
-        {
-            if (AddressType == AddressTypes.Shipping ||
-                AddressType == AddressTypes.BillingAndShipping)
-                return true;
-            return false;
-        }
-        public bool IsBilling()
-        {
-            if (AddressType == AddressTypes.Billing ||
-                AddressType == AddressTypes.BillingAndShipping)
-                return true;
-            return false;
-        }
-
         public AddressViewModel()
         {
             this.Init();
