@@ -84,7 +84,7 @@ namespace MerchantTribeStore.Controllers.Shared
             // Jquery
             ViewData["JQueryInclude"] = Helpers.Html.JQueryIncludes(Url.Content("~/scripts"), this.Request.IsSecureConnection);
 
-            ViewData["headerhtml"] = Helpers.Html.AdminHeader(CurrentStore, AdminTabType.None);
+            //ViewData["headerhtml"] = Helpers.Html.AdminHeader(CurrentStore, AdminTabType.None);
         }
 
         public void ValidateAdminLogin()

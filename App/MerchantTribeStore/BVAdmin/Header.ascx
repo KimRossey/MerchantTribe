@@ -1,3 +1,19 @@
 <%@ Control Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVAdmin_Header" Codebehind="Header.ascx.cs" %>
-<%@ Register Src="HelpWithThisPage.ascx" TagName="HelpWithThisPage" TagPrefix="uc1" %>
-<asp:Literal ID="output" runat="server" EnableViewState="false"></asp:Literal>
+
+<div id="header">
+    <div id="branding">
+        <div id="brand">
+            <%=StoreName%> - <em><%=AppVersion %></em>
+        </div>
+    </div>
+    <div id="mainmenu">
+        <div class="menu">
+            <%=RenderedMenu %>
+        </div>       
+        <div id="gotolinks">
+            <a href="<%=BaseUrl%>bvadmin/Account.aspx">My Account</a>&nbsp;&nbsp;
+            <a href="<%=BaseUrl%>account/logout">Log Out</a>&nbsp;&nbsp;
+            <a href="<%=BaseStoreUrl%>">Go To Store</a>
+        </div>
+    </div>
+</div>

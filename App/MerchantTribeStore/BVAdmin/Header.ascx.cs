@@ -30,13 +30,23 @@ namespace MerchantTribeStore
             set { Session["ActiveAdminTab"] = value; }
         }
 
+        protected string StoreName { get; set; }
+        protected string AppVersion { get; set; }
+        protected string BaseUrl { get; set; }
+        protected string BaseStoreUrl { get; set; }
+        protected string RenderedMenu { get; set; }
+
         protected override void OnLoad(System.EventArgs e)
         {
             base.OnLoad(e);
             
             if (!HideMenu)
             {
-                this.output.Text = Helpers.Html.AdminHeader(MyPage.MTApp.CurrentStore, SelectedTab);                
+                this.BaseUrl = MyPage.MTApp.CurrentStore.RootUrlSecure();
+                this.BaseStoreUrl = MyPage.MTApp.CurrentStore.RootUrl();
+                this.AppVersion = WebAppSettings.SystemVersionNumber;
+                this.StoreName = MyPage.MTApp.CurrentStore.Settings.FriendlyName;
+                this.RenderedMenu = Helpers.Html.RenderMenu(SelectedTab, MyPage.MTApp.CurrentStore);                
             }            
 
         }

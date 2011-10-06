@@ -808,6 +808,7 @@
     <Content Include="content\themes\theme-bv-summerstore\buttons\Stars4.png" />
     <Content Include="content\themes\theme-bv-summerstore\buttons\Stars5.png" />
     <Content Include="content\themes\theme-bv-summerstore\buttons\Yes.png" />
+    <Content Include="Images\System\AdminBackground.png" />
     <Content Include="Scripts\fileuploader\Test.html" />
     <Content Include="Scripts\Checkout.js" />
     <Content Include="CheckoutPayPalExpress.aspx" />

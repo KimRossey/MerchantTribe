@@ -130,29 +130,7 @@ namespace MerchantTribeStore.Helpers
             return sb.ToString();
         }
 
-        public static string SuperHeader(MerchantTribe.Commerce.Accounts.Store currentStore)
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("<div id=\"header\">");
-            sb.Append("<div id=\"branding\">");
-            sb.Append("<div id=\"brand\">");
-            sb.Append(LoadVersion(currentStore) + "</div>");
-            sb.Append("</div>");
-
-            sb.Append("<div id=\"mainmenu\">");
-            sb.Append("<div class=\"menu\">");
-            sb.Append(RenderSuperMenu(currentStore));
-            sb.Append("</div>");
-
-            sb.Append("<div id=\"gotolinks\">");            
-            sb.Append("<a href=\"" + currentStore.RootUrlSecure() + "account/logout\">Log Out</a>");
-            sb.Append("</div>");
-            sb.Append("</div>");
-            sb.Append("</div>");
-
-            return sb.ToString();
-        }
-        private static string RenderSuperMenu(MerchantTribe.Commerce.Accounts.Store currentStore)
+        public static string RenderSuperMenu(MerchantTribe.Commerce.Accounts.Store currentStore)
         {
             StringBuilder sb = new StringBuilder();
             AdminTabType tab = AdminTabType.None;
@@ -178,41 +156,8 @@ namespace MerchantTribeStore.Helpers
 
             return sb.ToString();
         }
-        public static string AdminHeader(MerchantTribe.Commerce.Accounts.Store currentStore, AdminTabType selectedTab)
-        {                        
-            StringBuilder sb = new StringBuilder();
-            sb.Append("<div id=\"header\">");
-            sb.Append("<div id=\"branding\">");
-            sb.Append("<div id=\"brand\">");
-            sb.Append(LoadVersion(currentStore) + "</div>");
-            sb.Append("</div>");
 
-            sb.Append("<div id=\"mainmenu\">");
-            sb.Append("<div class=\"menu\">");
-            sb.Append(RenderMenu(selectedTab, currentStore));
-            sb.Append("</div>");
-       
-            sb.Append("<div id=\"gotolinks\">");
-            sb.Append("<a href=\"" + currentStore.RootUrlSecure() + "bvadmin/Account.aspx\">My Account</a>");
-            sb.Append("| ");
-            sb.Append("<a href=\"" + currentStore.RootUrlSecure() + "account/logout\">Log Out</a>");
-            sb.Append("|");
-            sb.Append("<a href=\"" + currentStore.RootUrl() + "\">Go To Store</a>");
-            sb.Append("</div>");
-            sb.Append("</div>");
-            sb.Append("</div>");
-
-            return sb.ToString();
-        }
-
-        private static string LoadVersion(MerchantTribe.Commerce.Accounts.Store currentStore)        
-        {            
-            string result = "Admin for " + currentStore.Settings.FriendlyName + ": ";
-            result += WebAppSettings.SystemProductName + " " + WebAppSettings.SystemVersionNumber;
-            return result;
-        }
-
-        private static string RenderMenu(AdminTabType selected, MerchantTribe.Commerce.Accounts.Store currentStore)
+        public static string RenderMenu(AdminTabType selected, MerchantTribe.Commerce.Accounts.Store currentStore)
         {
             StringBuilder sb = new StringBuilder();
 
