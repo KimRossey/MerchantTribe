@@ -86,8 +86,13 @@
         </div>
         <div class="section-delivery">
             <h2>
-                Delivery Options</h2>
-            SHIPPING METHODS - TAB 300
+                Delivery Options</h2>            
+            <div id="lstShipping"></div>
+            <span class="shipping-changing" style="display: none;">
+                <img src="@Url.Content("~/content/images/system/ajax-loader-small.gif")" border="0" AlternateText="Loading..." />
+            </span>
+            <div id="shipping-not-valid">Enter a shipping address first</div>
+            <div id="shipping-needs-refresh"></div>                    
         </div>
         <div class="section-billing">
             <h2>
@@ -108,12 +113,19 @@
                 <input type="hidden" id="tempbillingregion" value="@Model.CurrentOrder.BillingAddress.RegionBvin" />
             </div>
         </div>
-        <asp:panel id="pnlRewardsPoints" visible="false" runat="server">
-            <div class="section-payment">
-                <h2>@Model.LabelRewardPoints</h2>
-                REWARDS CONTROLS
+        
+        @if (Model.ShowRewards)
+        {
+        <div id="pnlRewardsPoints">
+            <div class="section-payment">                
+                    <h2>@Model.LabelRewardPoints</h2>
+                    @Model.RewardPointsAvailable<br />
+                    <input type="radio" @if (!Model.UseRewardsPoints) { <text>checked="checked"</text> } name="userewardspoints" title="Do Not Use Points" value="0" /> Do Not Use Points<br />                    
+                    <input type="radio" @if (Model.UseRewardsPoints) { <text>checked="checked"</text> } name="userewardspoints" title="Use Points" value="1" /> @Model.LabelRewardsUse<br />                                        
             </div>
-        </asp:panel>
+        </div>
+        }
+        
         <div class="section-payment">
             <h2>
                 Payment Method</h2>

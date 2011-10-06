@@ -1,8 +1,5 @@
 <%@ Page Language="C#" MasterPageFile="~/BVAdmin/BVAdmin.master" AutoEventWireup="True" Inherits="MerchantTribeStore.BVAdmin_Default" title="Dashboard" Codebehind="Default.aspx.cs" %>
-
 <%@ Register Src="Controls/MessageBox.ascx" TagName="MessageBox" TagPrefix="uc2" %>
-<%@ Register Src="../BVModules/Controls/ContentColumnControl.ascx" TagName="ContentColumnControl"
-    TagPrefix="uc1" %>
 <%@ Register src="Controls/DashboardOrderSummary.ascx" tagname="DashboardOrderSummary" tagprefix="uc4" %>
 <%@ Register src="Controls/DashboardAlerts.ascx" tagname="DashboardAlerts" tagprefix="uc5" %>
 <%@ Register src="Controls/DashboardNews.ascx" tagname="DashboardNews" tagprefix="uc6" %>

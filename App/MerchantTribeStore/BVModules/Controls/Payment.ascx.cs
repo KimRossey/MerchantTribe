@@ -210,39 +210,6 @@ namespace MerchantTribeStore
                 //payManager.PayPalExpressAddInfo(o.TotalGrand);
             }
 
-            //if (o.GiftCertificates.Count > 0) {
-            //    foreach (string item in o.GiftCertificates) {
-            //        p = new OrderPayment();
-            //        p.OrderID = o.Bvin;
-            //        p.AuditDate = DateTime.Now;
-            //        p.GiftCertificateNumber = item;
-            //        p.PaymentMethodName = "Gift Certificate";
-            //        p.PaymentMethodId = WebAppSettings.PaymentIdGiftCertificate;
-            //        o.AddPayment(p);
-            //    }
-            //}
-        }
-
-        protected override void OnLoad(System.EventArgs e)
-        {
-            base.OnLoad(e);
-
-            if (!Page.IsPostBack)
-            {
-                if (this.TabIndex != -1)
-                {
-                    rbNoPayment.TabIndex = (short)this.TabIndex;
-                    rbCreditCard.TabIndex = (short)(this.TabIndex + 1);
-                    this.CreditCardInput1.TabIndex = (short)(this.TabIndex + 2);
-                    this.rbPaypal.TabIndex = (short)(this.TabIndex + 9);
-                    rbPurchaseOrder.TabIndex = (short)(this.TabIndex + 10);
-                    ponumber.TabIndex = (short)(this.TabIndex + 11);
-                    accountnumber.TabIndex = (short)(this.TabIndex + 11);
-                    rbCheck.TabIndex = (short)(this.TabIndex + 12);
-                    rbTelephone.TabIndex = (short)(this.TabIndex + 13);
-                    rbCOD.TabIndex = (short)(this.TabIndex + 14);
-                }
-            }
         }
 
         public System.Collections.Generic.List<MerchantTribe.Web.Validation.RuleViolation> GetRuleViolations()

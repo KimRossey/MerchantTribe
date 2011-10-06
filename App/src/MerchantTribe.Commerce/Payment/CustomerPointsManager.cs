@@ -36,7 +36,7 @@ namespace MerchantTribe.Commerce.Membership
         {
             decimal result = 0;
 
-            result = ((decimal)points / (decimal)_pointsNeededForOneDollarCredit);
+            result = (decimal)points / (decimal)_pointsNeededForOneDollarCredit;
             result = Math.Round(result, 2);
             
             return result;
@@ -45,7 +45,7 @@ namespace MerchantTribe.Commerce.Membership
         {
             int result = int.MaxValue;
 
-            decimal r1 = purchaseAmount * _pointsNeededForOneDollarCredit;
+            decimal r1 = purchaseAmount * (decimal)_pointsNeededForOneDollarCredit;
             result = (int)Math.Ceiling(r1);
 
             return result;

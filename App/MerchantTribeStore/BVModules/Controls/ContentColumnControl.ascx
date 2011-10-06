@@ -1,2 +1,0 @@
-<%@ Control Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVModules_Controls_ContentColumnControl" Codebehind="ContentColumnControl.ascx.cs" %>
-<asp:PlaceHolder id="phColumn" runat="server"></asp:PlaceHolder>

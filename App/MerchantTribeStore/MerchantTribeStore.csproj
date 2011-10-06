@@ -654,14 +654,10 @@
     <Content Include="BVModules\ContentBlocks\Top 10 Products\adminview.ascx" />
     <Content Include="BVModules\ContentBlocks\Top Weekly Sellers\adminview.ascx" />
     <Content Include="BVModules\Controls\CategoryBreadCrumbTrail.ascx" />
-    <Content Include="BVModules\Controls\ContentColumnControl.ascx" />
     <Content Include="BVModules\Controls\CreditCardInput.ascx" />
-    <Content Include="BVModules\Controls\EmailAddressEntry.ascx" />
     <Content Include="BVModules\Controls\MasterPageJavascript.ascx" />
     <Content Include="BVModules\Controls\MessageBox.ascx" />
     <Content Include="BVModules\Controls\Payment.ascx" />
-    <Content Include="BVModules\Controls\PaymentRewardsPoints.ascx" />
-    <Content Include="BVModules\Controls\Shipping.ascx" />
     <Content Include="BVModules\CreditCardGateways\Authorize.Net\Edit.ascx" />
     <Content Include="BVModules\CreditCardGateways\BV Secure Gateway\Edit.ascx" />
     <Content Include="BVModules\CreditCardGateways\Payflow Pro\edit.ascx" />
@@ -809,6 +805,8 @@
     <Content Include="content\themes\theme-bv-summerstore\buttons\Stars5.png" />
     <Content Include="content\themes\theme-bv-summerstore\buttons\Yes.png" />
     <Content Include="Images\System\AdminBackground.png" />
+    <Content Include="Images\System\AdminMenuBarBackground.png" />
+    <Content Include="Images\System\AdminMenuBarBackgroundOn.png" />
     <Content Include="Scripts\fileuploader\Test.html" />
     <Content Include="Scripts\Checkout.js" />
     <Content Include="CheckoutPayPalExpress.aspx" />
@@ -3878,26 +3876,12 @@
     <Compile Include="BVModules\Controls\CategoryBreadCrumbTrail.ascx.designer.cs">
       <DependentUpon>CategoryBreadCrumbTrail.ascx</DependentUpon>
     </Compile>
-    <Compile Include="BVModules\Controls\ContentColumnControl.ascx.cs">
-      <DependentUpon>ContentColumnControl.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="BVModules\Controls\ContentColumnControl.ascx.designer.cs">
-      <DependentUpon>ContentColumnControl.ascx</DependentUpon>
-    </Compile>
     <Compile Include="BVModules\Controls\CreditCardInput.ascx.cs">
       <DependentUpon>CreditCardInput.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="BVModules\Controls\CreditCardInput.ascx.designer.cs">
       <DependentUpon>CreditCardInput.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="BVModules\Controls\EmailAddressEntry.ascx.cs">
-      <DependentUpon>EmailAddressEntry.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="BVModules\Controls\EmailAddressEntry.ascx.designer.cs">
-      <DependentUpon>EmailAddressEntry.ascx</DependentUpon>
     </Compile>
     <Compile Include="BVModules\Controls\MasterPageJavascript.ascx.cs">
       <DependentUpon>MasterPageJavascript.ascx</DependentUpon>
@@ -3919,20 +3903,6 @@
     </Compile>
     <Compile Include="BVModules\Controls\Payment.ascx.designer.cs">
       <DependentUpon>Payment.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="BVModules\Controls\PaymentRewardsPoints.ascx.cs">
-      <DependentUpon>PaymentRewardsPoints.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="BVModules\Controls\PaymentRewardsPoints.ascx.designer.cs">
-      <DependentUpon>PaymentRewardsPoints.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="BVModules\Controls\Shipping.ascx.cs">
-      <DependentUpon>Shipping.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="BVModules\Controls\Shipping.ascx.designer.cs">
-      <DependentUpon>Shipping.ascx</DependentUpon>
     </Compile>
     <Compile Include="BVModules\CreditCardGateways\Authorize.Net\Edit.ascx.cs">
       <DependentUpon>Edit.ascx</DependentUpon>
@@ -4214,6 +4184,7 @@
     <Compile Include="Models\CartViewModel.cs" />
     <Compile Include="Models\CategoryPageViewModel.cs" />
     <Compile Include="Models\CheckoutAddressViewModel.cs" />
+    <Compile Include="Models\CheckoutPaymentViewModel.cs" />
     <Compile Include="Models\CheckoutViewModel.cs" />
     <Compile Include="Models\ContentColumnIdentifier.cs" />
     <Compile Include="Models\PagerViewModel.cs" />
