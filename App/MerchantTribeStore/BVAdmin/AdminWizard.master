@@ -16,7 +16,7 @@
     
     </asp:ContentPlaceHolder>
 </head>
-<body  style="background: url('<%=Page.ResolveUrl("~/images/system/" + wallpaper)%>') top left;">
+<body>
     <form id="form1" runat="server">
         <div id="header">
             <uc1:Header ID="Header1" HideMenu="True" runat="server" />
