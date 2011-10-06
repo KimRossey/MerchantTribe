@@ -104,7 +104,8 @@ namespace MerchantTribeStore
                                       
             // policies
             routes.MapRoute("policy-route", "policies/{policykind}",
-                                new { controller = "Policies", action="Index", area="" });
+                                new { controller = "Policies", action="Index", area="" },
+                                new[] {"MerchantTribeStore.Controllers"});
             routes.MapRoute("faq-route", "faq", new { controller = "Policies", action = "Faq" });
 
             // estimate shipping

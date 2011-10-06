@@ -1,8 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="True" Inherits="MerchantTribeStore.CheckoutPayPalExpress" Codebehind="CheckoutPayPalExpress.aspx.cs" %>
 
 <%@ Register src="BVModules/Controls/MessageBox.ascx" tagname="MessageBox" tagprefix="uc2" %>
-<%@ Register Src="BVModules/Controls/ContentColumnControl.ascx" TagName="ContentColumnControl" TagPrefix="uc11" %>
-
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
@@ -10,11 +8,9 @@
         <uc2:MessageBox ID="MessageBox1" runat="server" />
         <asp:ValidationSummary ID="ValidationSummary1" runat="server" CssClass="errormessage" />    
 
-
-
         <h1>PayPal Express Checkout</h1>
-        <div class="section-sidebar">
-            <uc11:ContentColumnControl ID="ContentColumnControl1" runat="server" ColumnID="601" />
+        <div class="section-sidebar">            
+            CONTENT COLUMN 601
         </div>
 
         <div class="sections">

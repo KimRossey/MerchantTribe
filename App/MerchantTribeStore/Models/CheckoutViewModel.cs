@@ -19,10 +19,13 @@ namespace MerchantTribeStore.Models
         public bool IsLoggedIn { get; set; }
         public string ButtonCheckoutUrl { get; set; }
         public string ButtonLoginUrl { get; set; }
+        public string LabelRewardsUse { get; set; }
         public string LabelRewardPoints { get; set; }
         public string LabelTerms { get; set; }
         public bool BillShipSame { get; set; }
         public bool ShowRewards { get; set; }
+        public bool UseRewardsPoints { get; set; }
+        public string RewardPointsAvailable { get; set; }
         public List<MerchantTribe.Web.Geography.Country> Countries { get; set; }
         public List<MerchantTribe.Web.Validation.RuleViolation> Violations { get; set; }
 
@@ -37,7 +40,10 @@ namespace MerchantTribeStore.Models
             this.LabelRewardPoints = "Reward Points";
             this.BillShipSame = true;
             this.ShowRewards = false;
+            this.UseRewardsPoints = false;
+            this.RewardPointsAvailable = string.Empty;
             this.ShowAgreeToTerms = false;
+            this.LabelRewardsUse = string.Empty;
             this.LabelTerms = string.Empty;
             this.AgreedToTermsDescription = string.Empty;
             this.Countries = new List<MerchantTribe.Web.Geography.Country>();

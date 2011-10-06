@@ -95,12 +95,24 @@ namespace MerchantTribeStore.Controllers
 
             if (model.CurrentCustomer == null || model.CurrentCustomer.Bvin == string.Empty) return;
 
-            string uid = model.CurrentCustomer.Bvin;            
-            if (MTApp.CustomerPointsManager.FindAvailablePoints(uid) > 0 
-                && MTApp.CurrentStore.Settings.RewardsPointsOnPurchasesActive)
+            string uid = model.CurrentCustomer.Bvin;
+            int points = MTApp.CustomerPointsManager.FindAvailablePoints(uid);
+            if (points > 0 && MTApp.CurrentStore.Settings.RewardsPointsOnPurchasesActive)
             {
-                model.ShowRewards = true;
-                //*********************this.PaymentRewardsPoints1.Populate(o);
+                model.ShowRewards = true;                
+                int potentialPointsToUse = MTApp.CustomerPointsManager.PointsNeededForPurchaseAmount(model.CurrentOrder.TotalOrderAfterDiscounts);
+                int amountToUse = 0;
+                if (points > potentialPointsToUse)
+                {
+                    amountToUse = potentialPointsToUse;
+                }
+                else
+                {
+                    amountToUse = points;
+                }               
+                model.RewardPointsAvailable = "You have " + points.ToString() + " " + model.LabelRewardPoints + " available.";
+                decimal dollarValue = MTApp.CustomerPointsManager.DollarCreditForPoints(amountToUse);
+                model.LabelRewardsUse = "Use " + amountToUse.ToString() + " [" + dollarValue.ToString("C") + "] " + model.LabelRewardPoints;                
             }
         }
 
@@ -178,9 +190,11 @@ namespace MerchantTribeStore.Controllers
 
             // Save Values so far in case of later errors
             MTApp.CalculateOrder(model.CurrentOrder);
-            
+
             // Save Payment Information                    
-            //***************PaymentRewardsPoints1.ApplyInfoToOrder(model.CurrentOrder);
+            model.UseRewardsPoints = Request.Form["userewardspoints"] == "1";
+            ApplyRewardsPoints(model);
+
             //***************Payment.SavePaymentInfo(model.CurrentOrder);
 
             model.CurrentOrder.Instructions = Request.Form["specialinstructions"];
@@ -188,6 +202,43 @@ namespace MerchantTribeStore.Controllers
             // Save all the changes to the order
             MTApp.OrderServices.Orders.Update(model.CurrentOrder);
             SessionManager.SaveOrderCookies(model.CurrentOrder);
+        }
+        private void ApplyRewardsPoints(CheckoutViewModel model)
+        {
+            // Remove any current points info transactions
+            foreach (OrderTransaction t in MTApp.OrderServices.Transactions.FindForOrder(model.CurrentOrder.bvin))
+            {
+                if (t.Action == MerchantTribe.Payment.ActionType.RewardPointsInfo)
+                {
+                    MTApp.OrderServices.Transactions.Delete(t.Id);
+                }
+            }
+
+            // Don't add if we're not using points
+            if (!model.UseRewardsPoints) return;
+
+            // Apply Info to Order
+            OrderPaymentManager payManager = new OrderPaymentManager(model.CurrentOrder, MTApp);
+            payManager.RewardsPointsAddInfo(RewardsPotentialCredit(model));
+        }
+        private decimal RewardsPotentialCredit(CheckoutViewModel model)
+        {
+            decimal result = 0;
+            if (!model.UseRewardsPoints) return result;
+
+            int points = MTApp.CustomerPointsManager.FindAvailablePoints(model.CurrentCustomer.Bvin);
+            int potentialPointsToUse = MTApp.CustomerPointsManager.PointsNeededForPurchaseAmount(model.CurrentOrder.TotalOrderAfterDiscounts);
+            int amountToUse = 0;
+            if (points > potentialPointsToUse)
+            {
+                amountToUse = potentialPointsToUse;
+            }
+            else
+            {
+                amountToUse = points;
+            }
+            result = MTApp.CustomerPointsManager.DollarCreditForPoints(amountToUse);
+            return result;
         }
         private void LoadAddressFromForm(string prefix, Address address)
         {
@@ -508,6 +559,13 @@ namespace MerchantTribeStore.Controllers
         public class IsEmailKnownResponse
         {
             public string success = "0";
-        }        
+        }
+
+        [ChildActionOnly]
+        public ActionResult DisplayPaymentMethods(Order o)
+        {
+
+            return View();
+        }
     }
 }
