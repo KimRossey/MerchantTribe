@@ -67,19 +67,13 @@ namespace MerchantTribeStore.Controllers.Shared
 
             ValidateSuperLogin();
 
-            // Wallpaper
-            string wallpaper = "BrownStripes.jpg";
-            string wall = SessionManager.GetCookieString("AdminWallpaper");
-            if (wall != string.Empty)
-            {
-                wallpaper = wall;
-            }
-            ViewData["wallpaper"] = Url.Content("~/images/system/" + wallpaper);
-
             // Jquery
             ViewData["JQueryInclude"] = Helpers.Html.JQueryIncludes(Url.Content("~/scripts"), this.Request.IsSecureConnection);
+            
+            ViewBag["AppVersion"] = WebAppSettings.SystemVersionNumber;
+            ViewBag["StoreName"] = MTApp.CurrentStore.Settings.FriendlyName;
+            ViewBag["RenderedMenu"] = Helpers.Html.RenderSuperMenu(MTApp.CurrentStore);                
 
-            ViewData["headerhtml"] = Helpers.Html.SuperHeader(CurrentStore);
         }
 
         public void ValidateSuperLogin()

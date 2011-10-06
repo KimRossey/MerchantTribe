@@ -16,6 +16,22 @@
     else
     {
         @Html.Raw((string)ViewData["headerhtml"])
+
+        <div id="header">
+            <div id="branding">
+                <div id="brand">
+                    @ViewBag["StoreName"] - <em>@ViewBag["AppVersion"]</em>
+                </div>
+            </div>
+            <div id="mainmenu">
+                <div class="menu">
+                    @Html.Raw((string)ViewBag["RenderedMenu"])
+                </div>
+                <div id="gotolinks">
+                    <a href="@Url.Content("~/account/logout")">Log Out</a>
+                </div>
+            </div>
+        </div>
     }
     <div id="wrapper">
         <div id="content">
