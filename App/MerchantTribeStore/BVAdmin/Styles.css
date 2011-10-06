@@ -20,7 +20,7 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 td {vertical-align:top;}
 strong {font-weight:bold;}
 
-body {background: #45270f url('~/images/system/BrownStripes.jpg'); font-family: Arial, Verdana, Sans-Serif; color:#000;font-size: 13px;line-height:1.385em;}
+body {background: #cbd2db url('~/images/system/AdminBackground.png'); font-family: Arial, Verdana, Sans-Serif; color:#000;font-size: 13px;line-height:1.385em;}
 
 pre {font-family:Courier New, Courier, Fixedsys, System, Fixed-Width;}
 #wrapper, #navwrapper {width:940px;margin:0 auto;
