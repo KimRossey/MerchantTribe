@@ -15,6 +15,7 @@ using MerchantTribe.Commerce.Metrics;
 using MerchantTribe.Commerce.Payment;
 using MerchantTribe.Commerce.Utilities;
 using MerchantTribe.Commerce.BusinessRules;
+using MerchantTribe.Web.Logging;
 
 namespace MerchantTribeStore.Controllers
 {
@@ -262,7 +263,7 @@ namespace MerchantTribeStore.Controllers
                 bool customerMessageFound = false;
                 foreach (WorkflowMessage msg in c.Errors)
                 {
-                    EventLog.LogEvent(msg.Name, msg.Description, MerchantTribe.Commerce.Metrics.EventLogSeverity.Error);
+                    EventLog.LogEvent(msg.Name, msg.Description, EventLogSeverity.Error);
                     if (msg.CustomerVisible)
                     {
                         customerMessageFound = true;
@@ -271,7 +272,7 @@ namespace MerchantTribeStore.Controllers
                 }
                 if (!customerMessageFound)
                 {
-                    EventLog.LogEvent("Checkout Selected Workflow", "Checkout failed but no errors were recorded.", MerchantTribe.Commerce.Metrics.EventLogSeverity.Error);
+                    EventLog.LogEvent("Checkout Selected Workflow", "Checkout failed but no errors were recorded.", EventLogSeverity.Error);
                     this.FlashFailure("Checkout Failed. If problem continues, please contact customer support.");
                 }
             }

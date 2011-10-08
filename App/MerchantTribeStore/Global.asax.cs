@@ -170,6 +170,7 @@ namespace MerchantTribeStore
         {            
             // Log4Net
             log4net.Config.XmlConfigurator.Configure();
+            EventLog.LogEvent("System", "Application Startup", MerchantTribe.Web.Logging.EventLogSeverity.Information);
 
             // routing
             AreaRegistration.RegisterAllAreas();
@@ -185,15 +186,15 @@ namespace MerchantTribeStore
         }
 
         void Application_End(object sender, EventArgs e)
-        {            
+        {
+            EventLog.LogEvent("System", "Application Shutdown", MerchantTribe.Web.Logging.EventLogSeverity.Information);
         }
 
         void Application_Error(object sender, EventArgs e)
         {
             // Code that runs when an unhandled error occurs
-            Exception ex = Server.GetLastError().GetBaseException();
-            MerchantTribe.Commerce.EventLog.LogEvent("Error", StringUtils.SessionInfo(), MerchantTribe.Commerce.Metrics.EventLogSeverity.Error);
-            MerchantTribe.Commerce.EventLog.LogEvent(ex);
+            Exception ex = Server.GetLastError().GetBaseException();            
+            MerchantTribe.Commerce.EventLog.LogEvent(ex, MerchantTribe.Web.Logging.EventLogSeverity.Error);
             while (ex.InnerException != null)
             {
                 MerchantTribe.Commerce.EventLog.LogEvent(ex);

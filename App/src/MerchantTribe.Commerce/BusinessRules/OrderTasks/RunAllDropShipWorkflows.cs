@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using MerchantTribe.Web.Logging;
+
 namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
 {	
 	public class RunAllDropShipWorkflows : BusinessRules.OrderTask
@@ -24,7 +26,7 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
 								}
 							}
 							else {
-								EventLog.LogEvent("RunAllDropShipWorkflows.bv", "Item with sku " + item.ProductSku + " is marked as Ship From Manufacturer, but contains no Manufacturer Id", Metrics.EventLogSeverity.Warning);
+								EventLog.LogEvent("RunAllDropShipWorkflows.bv", "Item with sku " + item.ProductSku + " is marked as Ship From Manufacturer, but contains no Manufacturer Id", EventLogSeverity.Warning);
 							}
 						}
 						else if (item.ShipFromMode == Shipping.ShippingMode.ShipFromVendor) {
@@ -34,7 +36,7 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
 								}
 							}
 							else {
-								EventLog.LogEvent("RunAllDropShipWorkflows.bv", "Item with sku " + item.ProductSku + " is marked as Ship From Vendor, but contains no Vendor Id", Metrics.EventLogSeverity.Warning);
+								EventLog.LogEvent("RunAllDropShipWorkflows.bv", "Item with sku " + item.ProductSku + " is marked as Ship From Vendor, but contains no Vendor Id", EventLogSeverity.Warning);
 							}
 						}
 					

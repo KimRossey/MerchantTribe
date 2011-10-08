@@ -5,6 +5,7 @@ using System.Text;
 using MerchantTribe.Commerce.Membership;
 using MerchantTribe.Commerce.Content;
 using MerchantTribe.Commerce.Utilities;
+using MerchantTribe.Web.Logging;
 
 namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
 {
@@ -53,7 +54,7 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
                     
                     if (MailServices.SendMail(m) == false)
                     {
-                        EventLog.LogEvent("Create Account During Checkout", "Failed to send email to new customer " + n.Email, Metrics.EventLogSeverity.Warning);
+                        EventLog.LogEvent("Create Account During Checkout", "Failed to send email to new customer " + n.Email, EventLogSeverity.Warning);
                     }
                 }
             }

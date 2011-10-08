@@ -14,6 +14,7 @@ using MerchantTribe.PaypalWebServices;
 using MerchantTribe.Web.Geography;
 using com.paypal.soap.api;
 using MerchantTribe.Commerce.Catalog;
+using MerchantTribe.Web.Logging;
 
 namespace MerchantTribeStore
 {
@@ -107,10 +108,10 @@ namespace MerchantTribeStore
                         if (!GetExpressCheckoutDetails(ppAPI, ref ppResponse))
                         {
                             failed = true;
-                            EventLog.LogEvent("Paypal Express Checkout", "GetExpressCheckoutDetails call failed. Detailed Errors will follow. ", MerchantTribe.Commerce.Metrics.EventLogSeverity.Error);
+                            EventLog.LogEvent("Paypal Express Checkout", "GetExpressCheckoutDetails call failed. Detailed Errors will follow. ", EventLogSeverity.Error);
                             foreach (ErrorType ppError in ppResponse.Errors)
                             {
-                                EventLog.LogEvent("Paypal error number: " + ppError.ErrorCode, "Paypal Error: '" + ppError.ShortMessage + "' Message: '" + ppError.LongMessage + "' " + " Values passed to GetExpressCheckoutDetails: Token: " + Request.QueryString["token"], MerchantTribe.Commerce.Metrics.EventLogSeverity.Error);
+                                EventLog.LogEvent("Paypal error number: " + ppError.ErrorCode, "Paypal Error: '" + ppError.ShortMessage + "' Message: '" + ppError.LongMessage + "' " + " Values passed to GetExpressCheckoutDetails: Token: " + Request.QueryString["token"], EventLogSeverity.Error);
                             }
                             MessageBox1.ShowError("An error occurred during the Paypal Express checkout. No charges have been made. Please try again.");
                             CheckoutImageButton.Visible = false;
@@ -431,7 +432,7 @@ namespace MerchantTribeStore
                 {
                     foreach (ErrorType ppError in expressResponse.Errors)
                     {
-                        EventLog.LogEvent("Paypal error number: " + ppError.ErrorCode, "Paypal Error: '" + ppError.ShortMessage + "' Message: '" + ppError.LongMessage + "' " + " Values passed to SetExpressCheckout: Total=" + string.Format("{0:c}", o.TotalOrderBeforeDiscounts) + " Cart Return Url: " + cartReturnUrl + " Cart Cancel Url: " + cartCancelUrl, MerchantTribe.Commerce.Metrics.EventLogSeverity.Error);
+                        EventLog.LogEvent("Paypal error number: " + ppError.ErrorCode, "Paypal Error: '" + ppError.ShortMessage + "' Message: '" + ppError.LongMessage + "' " + " Values passed to SetExpressCheckout: Total=" + string.Format("{0:c}", o.TotalOrderBeforeDiscounts) + " Cart Return Url: " + cartReturnUrl + " Cart Cancel Url: " + cartCancelUrl, EventLogSeverity.Error);
                     }
                 }
             }

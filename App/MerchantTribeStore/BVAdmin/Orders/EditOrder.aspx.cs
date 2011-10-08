@@ -14,6 +14,7 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Collections.Generic;
 using System.Linq;
+using MerchantTribe.Web.Logging;
 
 namespace MerchantTribeStore.BVAdmin.Orders
 {
@@ -270,7 +271,7 @@ namespace MerchantTribeStore.BVAdmin.Orders
             {
                 foreach (MerchantTribe.Commerce.BusinessRules.WorkflowMessage msg in c.Errors)
                 {
-                    EventLog.LogEvent("Order Edited Workflow", msg.Description, MerchantTribe.Commerce.Metrics.EventLogSeverity.Error);
+                    EventLog.LogEvent("Order Edited Workflow", msg.Description, EventLogSeverity.Warning);
                 }
                 if (!String.IsNullOrEmpty(saveResult.Message))
                 {

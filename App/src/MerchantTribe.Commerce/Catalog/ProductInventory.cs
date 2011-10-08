@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using System.Linq;
 using MerchantTribe.CommerceDTO.v1.Catalog;
+using MerchantTribe.Web.Logging;
 
 namespace MerchantTribe.Commerce.Catalog
 {
@@ -57,7 +58,7 @@ namespace MerchantTribe.Commerce.Catalog
 
             if (!EmailLowStockReport(context.CurrentStore.Settings.MailServer.EmailForGeneral, context.CurrentStore.StoreName, app))
             {
-                EventLog.LogEvent("Low Stock Report", "Low Stock Report Failed", Metrics.EventLogSeverity.Error);
+                EventLog.LogEvent("Low Stock Report", "Low Stock Report Failed", EventLogSeverity.Error);
             }
         }
         public static bool EmailLowStockReport(string recipientEmail, string storeName, MerchantTribeApplication app)

@@ -110,7 +110,7 @@ namespace MerchantTribeStore
                     }
 
                     // No custom found, go to error
-                    EventLog.LogEvent("Category Page", "Requested Category " + slug + " was not found", MerchantTribe.Commerce.Metrics.EventLogSeverity.Error);
+                    EventLog.LogEvent("Category Page", "Requested Category " + slug + " was not found", MerchantTribe.Web.Logging.EventLogSeverity.Warning);
                     MerchantTribe.Commerce.Utilities.UrlRewriter.RedirectToErrorPage(MerchantTribe.Commerce.ErrorTypes.Category, Response);
                 }
             }

@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using MerchantTribe.Commerce;
 using System.Configuration;
 using MerchantTribe.Commerce.Scheduling;
+using MerchantTribe.Web.Logging;
 
 namespace MerchantTribeStore.Controllers
 {
@@ -61,7 +62,7 @@ namespace MerchantTribeStore.Controllers
             string AcutalKey = WebAppSettings.StoreKey;
             if (AcutalKey != storekey)
             {
-                EventLog.LogEvent("Scheduled Tasks", "Store Key Mismatch on Scheduled Task Call for Store " + MTApp.CurrentStore.Id, MerchantTribe.Commerce.Metrics.EventLogSeverity.Warning);
+                EventLog.LogEvent("Scheduled Tasks", "Store Key Mismatch on Scheduled Task Call for Store " + MTApp.CurrentStore.Id, EventLogSeverity.Warning);
                 return View();
             }
 
@@ -69,7 +70,7 @@ namespace MerchantTribeStore.Controllers
             QueuedTask task = MTApp.ScheduleServices.QueuedTasks.PopATaskForRun(MTApp.CurrentStore.Id);
             if (task == null)
             {
-                EventLog.LogEvent("Scheduled Tasks", "No Task found on call to store " + MTApp.CurrentStore.Id, MerchantTribe.Commerce.Metrics.EventLogSeverity.Information);
+                EventLog.LogEvent("Scheduled Tasks", "No Task found on call to store " + MTApp.CurrentStore.Id, EventLogSeverity.Information);
                 return View();
             }
 

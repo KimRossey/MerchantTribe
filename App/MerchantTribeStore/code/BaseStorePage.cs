@@ -7,6 +7,7 @@ using MerchantTribe.Commerce.Accounts;
 using MerchantTribe.Commerce.Content;
 using MerchantTribe.Commerce.Catalog;
 using MerchantTribe.Commerce.Contacts;
+using MerchantTribe.Web.Logging;
 
 namespace MerchantTribeStore
 {
@@ -183,7 +184,7 @@ namespace MerchantTribeStore
                 }
                 catch (System.Exception ex)
                 {
-                    EventLog.LogEvent("BaseStorePage - Page_Init", "Error loading affiliate " + ex.Message, MerchantTribe.Commerce.Metrics.EventLogSeverity.Warning);
+                    EventLog.LogEvent("BaseStorePage - Page_Init", "Error loading affiliate " + ex.Message, EventLogSeverity.Warning);
                 }
             }
             

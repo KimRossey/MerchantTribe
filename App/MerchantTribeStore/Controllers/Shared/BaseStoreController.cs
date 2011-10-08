@@ -75,7 +75,7 @@ namespace MerchantTribeStore.Controllers.Shared
                 }
                 catch (System.Exception ex)
                 {
-                    EventLog.LogEvent("BaseStorePage - Page_Init", "Error loading affiliate " + ex.Message, MerchantTribe.Commerce.Metrics.EventLogSeverity.Warning);
+                    EventLog.LogEvent("BaseStorePage - Page_Init", "Error loading affiliate " + ex.Message, MerchantTribe.Web.Logging.EventLogSeverity.Warning);
                 }
             }
 

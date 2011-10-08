@@ -3,7 +3,7 @@ using MerchantTribe.PaypalWebServices;
 using com.paypal.sdk.services;
 using com.paypal.soap.api;
 using com.paypal;
-
+using MerchantTribe.Web.Logging;
 
 namespace MerchantTribe.Commerce.Utilities
 {
@@ -59,12 +59,12 @@ namespace MerchantTribe.Commerce.Utilities
                 else
                 {
                     EventLog.LogEvent("Paypal API", "Paypal com.paypal.sdk.profiles.ProfileFactory.CreateAPIProfile has failed.",
-                        Metrics.EventLogSeverity.Warning);
+                        EventLogSeverity.Error);
                 }
             }
             catch (Exception ex)
             {
-                EventLog.LogEvent("PayPal Utilities", ex.Message + " | " + ex.StackTrace, Metrics.EventLogSeverity.Warning);
+                EventLog.LogEvent("PayPal Utilities", ex.Message + " | " + ex.StackTrace, EventLogSeverity.Warning);
             }
 
 			return profile;

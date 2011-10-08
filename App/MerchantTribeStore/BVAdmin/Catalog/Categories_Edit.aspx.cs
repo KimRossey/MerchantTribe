@@ -7,6 +7,7 @@ using MerchantTribe.Commerce.Content;
 using MerchantTribe.Commerce.Membership;
 using MerchantTribe.Commerce.Utilities;
 using System.Collections.Generic;
+using MerchantTribe.Web.Logging;
 
 namespace MerchantTribeStore
 {
@@ -40,7 +41,7 @@ namespace MerchantTribeStore
                     {
                         MerchantTribe.Commerce.EventLog.LogEvent("Edit Category Page", 
                                                               "Could not find category with bvin " + this.BvinField.Value, 
-                                                              MerchantTribe.Commerce.Metrics.EventLogSeverity.Error);
+                                                              EventLogSeverity.Warning);
                         Response.Redirect("categories.aspx");
                     }
 

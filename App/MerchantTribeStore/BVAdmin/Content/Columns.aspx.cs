@@ -7,6 +7,7 @@ using MerchantTribe.Commerce;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Collections.Generic;
+using MerchantTribe.Web.Logging;
 
 namespace MerchantTribeStore
 {
@@ -73,7 +74,7 @@ namespace MerchantTribeStore
                 else
                 {
                     msg.ShowError("Unable to create column. Please see event log for details");
-                    EventLog.LogEvent("Create Content Column Button", "Unable to create column", MerchantTribe.Commerce.Metrics.EventLogSeverity.Error);
+                    EventLog.LogEvent("Create Content Column Button", "Unable to create column", EventLogSeverity.Error);
                 }
             }
 
