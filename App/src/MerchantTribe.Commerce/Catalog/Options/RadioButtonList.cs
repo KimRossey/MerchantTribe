@@ -35,6 +35,7 @@ namespace MerchantTribe.Commerce.Catalog.Options
         private bool IsSelected(OptionItem item, OptionSelectionList selections)
         {
             bool result = false;
+            if (selections == null) return false;
 
             OptionSelection val = selections.FindByOptionId(item.OptionBvin);
             if (val == null) return result;
