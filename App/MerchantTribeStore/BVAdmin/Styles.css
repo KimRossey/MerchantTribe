@@ -52,7 +52,7 @@ a.hugelink {font-size:36px;}
 fieldset { border: solid 1px #ccc}
 
 #branding {width:960px;margin: 0 auto;height: 60px;color:#303B4C;text-align:right;
-           background: url('~/images/system/brand.png') no-repeat 8px 10px;
+           background: url('~/images/system/brand.png') no-repeat 0px 0px;
            text-shadow: 0 1px 0 rgba(255,255,255,0.5);}
 #brand {padding:20px 10px 0 0;}
 #header {width:960px;height:100px;margin:20px auto 0 auto;background: url('~/images/system/h.png') repeat-x 0 0px;
