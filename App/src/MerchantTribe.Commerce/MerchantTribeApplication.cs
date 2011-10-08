@@ -8,6 +8,7 @@ using MerchantTribe.Commerce.Contacts;
 using MerchantTribe.Commerce.Content;
 using MerchantTribe.Commerce.Orders;
 using MerchantTribe.Commerce.Membership;
+using MerchantTribe.Web.Logging;
 
 namespace MerchantTribe.Commerce
 {
@@ -450,7 +451,7 @@ namespace MerchantTribe.Commerce
                     {
                         errors.Add("Item " + li.ProductName + " did not have enough quantity to complete order.");
                     }
-                    EventLog.LogEvent("Reserve Inventory For All Items", "Unable to reserve quantity of " + li.Quantity + " for product " + li.ProductId, Metrics.EventLogSeverity.Error);
+                    EventLog.LogEvent("Reserve Inventory For All Items", "Unable to reserve quantity of " + li.Quantity + " for product " + li.ProductId, EventLogSeverity.Debug);
                     result = false;
                 }
             }
@@ -463,7 +464,7 @@ namespace MerchantTribe.Commerce
             {
                 if (CatalogServices.InventoryLineItemUnreserveInventory(li) == false)
                 {
-                    EventLog.LogEvent("Unreserve Inventory For All Items", "Unable to unreserve quantity of " + li.Quantity + " for product " + li.ProductId, Metrics.EventLogSeverity.Error);
+                    EventLog.LogEvent("Unreserve Inventory For All Items", "Unable to unreserve quantity of " + li.Quantity + " for product " + li.ProductId, EventLogSeverity.Debug);
                 }
             }
             return result;
@@ -491,10 +492,10 @@ namespace MerchantTribe.Commerce
             c.UserId = SessionManager.GetCurrentUserId();
             if (!BusinessRules.Workflow.RunByName(c, BusinessRules.WorkflowNames.PackageShipped))
             {
-                EventLog.LogEvent("PackageShippedWorkflow", "Package Shipped Workflow Failed", Metrics.EventLogSeverity.Error);
+                EventLog.LogEvent("PackageShippedWorkflow", "Package Shipped Workflow Failed", EventLogSeverity.Debug);
                 foreach (BusinessRules.WorkflowMessage item in c.Errors)
                 {
-                    EventLog.LogEvent("PackageShippedWorkflow", item.Description, Metrics.EventLogSeverity.Error);
+                    EventLog.LogEvent("PackageShippedWorkflow", item.Description, EventLogSeverity.Debug);
                 }
             }
             return true;

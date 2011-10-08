@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using MerchantTribe.Web.Logging;
 
 namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
 {
@@ -27,7 +28,7 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
         {
             EventLog.LogEvent("Order Workflow",
                               "Order number " + context.Order.OrderNumber + " was assigned but the order was not completed. The cart ID is " + context.Order.bvin,
-                               Metrics.EventLogSeverity.Information);            
+                               EventLogSeverity.Information);            
             return true;
         }
 

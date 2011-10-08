@@ -7,6 +7,7 @@ using MerchantTribe.Commerce;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Collections.Generic;
+using MerchantTribe.Web.Logging;
 
 namespace MerchantTribeStore
 {
@@ -78,7 +79,7 @@ namespace MerchantTribeStore
                 else
                 {
                     msg.ShowError("Unable to create policy. Please see event log for details");
-                    EventLog.LogEvent("Create New Policy Button", "Unable to create policy", MerchantTribe.Commerce.Metrics.EventLogSeverity.Error);
+                    EventLog.LogEvent("Create New Policy Button", "Unable to create policy", EventLogSeverity.Error);
                 }
             }
         }

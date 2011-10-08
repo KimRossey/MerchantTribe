@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using MerchantTribe.Billing;
 using MerchantTribe.Web;
+using MerchantTribe.Web.Logging;
 
 namespace MerchantTribe.Commerce.Accounts
 {
@@ -57,7 +58,7 @@ namespace MerchantTribe.Commerce.Accounts
                 foreach (DateTime date in localDates)
                 {
                     GenerateInvoicesForSingleDay(date, app);
-                    EventLog.LogEvent("Invoice Generator", "Generating Orders for Day " + date.Day, Metrics.EventLogSeverity.Information);
+                    EventLog.LogEvent("Invoice Generator", "Generating Orders for Day " + date.Day, EventLogSeverity.Information);
                 }
             }
         }

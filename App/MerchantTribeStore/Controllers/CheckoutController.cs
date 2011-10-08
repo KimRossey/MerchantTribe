@@ -13,6 +13,7 @@ using MerchantTribeStore.Models;
 using MerchantTribe.Commerce.Content;
 using MerchantTribe.Commerce.Contacts;
 using MerchantTribe.Commerce.BusinessRules;
+using MerchantTribe.Web.Logging;
 
 namespace MerchantTribeStore.Controllers
 {
@@ -346,7 +347,7 @@ namespace MerchantTribeStore.Controllers
                 c.Inputs.Add("bvsoftware", "AddressSupplied", "1");
                 if (!Workflow.RunByName(c, WorkflowNames.ThirdPartyCheckoutSelected))
                 {
-                    EventLog.LogEvent("Paypal Express Checkout Failed", "Specific Errors to follow", MerchantTribe.Commerce.Metrics.EventLogSeverity.Error);
+                    EventLog.LogEvent("Paypal Express Checkout Failed", "Specific Errors to follow", EventLogSeverity.Error);
                     // Show Errors     
                     List<MerchantTribe.Web.Validation.RuleViolation> violations = new List<MerchantTribe.Web.Validation.RuleViolation>();
                     foreach (WorkflowMessage item in c.GetCustomerVisibleErrors())

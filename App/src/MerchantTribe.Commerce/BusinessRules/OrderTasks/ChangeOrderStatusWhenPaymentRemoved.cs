@@ -1,3 +1,4 @@
+using MerchantTribe.Web.Logging;
 
 namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
 {
@@ -18,7 +19,7 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
 							context.Order.StatusName = orderStatus.StatusName;
 						}
 						else {
-							EventLog.LogEvent("Change Order Status When Payment Removed", "Could not find order status with id of " + statusCode, Metrics.EventLogSeverity.Error);
+							EventLog.LogEvent("Change Order Status When Payment Removed", "Could not find order status with id of " + statusCode, EventLogSeverity.Error);
 						}
 					}
 				}

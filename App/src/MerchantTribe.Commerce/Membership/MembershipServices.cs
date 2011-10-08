@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using MerchantTribe.Web;
+using MerchantTribe.Web.Logging;
 
 namespace MerchantTribe.Commerce.Membership
 {
@@ -187,7 +188,7 @@ namespace MerchantTribe.Commerce.Membership
 
             if (result.Success == false)
             {
-                EventLog.LogEvent("Membership", "Login Failed for User: " + email, Metrics.EventLogSeverity.Information);
+                EventLog.LogEvent("Membership", "Login Failed for User: " + email, EventLogSeverity.Information);
             }
 
             return result;
@@ -291,7 +292,7 @@ namespace MerchantTribe.Commerce.Membership
                 if (c.FailedLoginCount >= WebAppSettings.UserLockoutAttempts)
                 {
                     LockCustomer(c);
-                    EventLog.LogEvent("Membership", "User Account " + c.Email + " was locked.", Metrics.EventLogSeverity.Warning);
+                    EventLog.LogEvent("Membership", "User Account " + c.Email + " was locked.", EventLogSeverity.Warning);
                 }
             }
         }

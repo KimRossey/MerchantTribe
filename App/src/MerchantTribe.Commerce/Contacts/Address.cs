@@ -197,7 +197,7 @@ namespace MerchantTribe.Commerce.Contacts
 			}			
 
 			catch (XmlException XmlEx) {
-                EventLog.LogEvent(XmlEx);
+                //EventLog.LogEvent(XmlEx);
 				results = false;
 			}
 

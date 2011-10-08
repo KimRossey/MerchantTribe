@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using MerchantTribe.Commerce;
 using MerchantTribe.Commerce.Catalog;
 using MerchantTribe.Commerce.Membership;
+using MerchantTribe.Web.Logging;
 
 namespace MerchantTribeStore
 {
@@ -248,7 +249,7 @@ namespace MerchantTribeStore
                 else
                 {
                     this.MessageBox1.ShowError("Unable to associate choice with product. An Administrator has been alerted to the issue.");
-                    EventLog.LogEvent("ProductChoices.aspx", "Could not associate choice " + opt.Bvin + " with product " + productBvin, MerchantTribe.Commerce.Metrics.EventLogSeverity.Error);
+                    EventLog.LogEvent("ProductChoices.aspx", "Could not associate choice " + opt.Bvin + " with product " + productBvin, EventLogSeverity.Error);
                 }
             }
 

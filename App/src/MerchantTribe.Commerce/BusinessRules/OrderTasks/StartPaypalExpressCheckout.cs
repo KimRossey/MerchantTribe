@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using MerchantTribe.PaypalWebServices;
 using com.paypal.soap.api;
 using System.Web;
+using MerchantTribe.Web.Logging;
 
 namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
 {	
@@ -79,7 +80,7 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
                                         context.Order.OrderNumber + System.Guid.NewGuid().ToString());
 								}
 								else {
-									EventLog.LogEvent("StartPaypalExpressCheckout", "Country with bvin " + address.CountryBvin + " was not found.", Metrics.EventLogSeverity.Error);
+									EventLog.LogEvent("StartPaypalExpressCheckout", "Country with bvin " + address.CountryBvin + " was not found.", EventLogSeverity.Error);
 									return false;
 								}
 							}
@@ -128,14 +129,14 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
 									note.Note = "Paypal error number: " + ppError.ErrorCode + " Paypal Error: '" + ppError.ShortMessage + "' Message: '" + ppError.LongMessage;
 									context.Order.Notes.Add(note);
 
-									EventLog.LogEvent("Paypal error number: " + ppError.ErrorCode, "Paypal Error: '" + ppError.ShortMessage + "' Message: '" + ppError.LongMessage + "' " + " Values passed to SetExpressCheckout: Total=" + string.Format("{0:c}", context.Order.TotalOrderBeforeDiscounts) + " Cart Return Url: " + cartReturnUrl + " Cart Cancel Url: " + cartCancelUrl, Metrics.EventLogSeverity.Error);
+									EventLog.LogEvent("Paypal error number: " + ppError.ErrorCode, "Paypal Error: '" + ppError.ShortMessage + "' Message: '" + ppError.LongMessage + "' " + " Values passed to SetExpressCheckout: Total=" + string.Format("{0:c}", context.Order.TotalOrderBeforeDiscounts) + " Cart Return Url: " + cartReturnUrl + " Cart Cancel Url: " + cartCancelUrl, EventLogSeverity.Error);
 								}
 								context.Errors.Add(new WorkflowMessage("Paypal checkout error", Content.SiteTerms.GetTerm(Content.SiteTermIds.PaypalCheckoutCustomerError), true));
 								return false;
 							}
 						}
 						catch (Exception ex) {
-							EventLog.LogEvent("Paypal Express Checkout", "Exception occurred during call to Paypal: " + ex.ToString(), Metrics.EventLogSeverity.Error);
+							EventLog.LogEvent("Paypal Express Checkout", "Exception occurred during call to Paypal: " + ex.ToString(), EventLogSeverity.Error);
 							context.Errors.Add(new WorkflowMessage("Paypal checkout error", Content.SiteTerms.GetTerm(Content.SiteTermIds.PaypalCheckoutCustomerError), true));
 							return false;
 						}
