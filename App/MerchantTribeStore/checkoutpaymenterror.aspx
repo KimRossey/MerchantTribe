@@ -1,11 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="checkoutpaymenterror.aspx.cs" Inherits="MerchantTribeStore.checkoutpaymenterror" %>
 
 
-<%@ Register Src="~/BVModules/Controls/Payment.ascx" TagName="Payment" TagPrefix="uc8" %>
-
-
-<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="Server">    
-</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
 <div class="checkout">
     <asp:Literal ID="litValidationSummary" EnableViewState="false" runat="server" ClientIDMode="Static" /></asp:Literal>
@@ -19,7 +14,7 @@
         </div>
         <div class="section-payment">
             <h2>Payment Method</h2>
-            <uc8:Payment ID="Payment" runat="server" TabIndex="500" />
+            PAYMENT HERE
         </div>
         <div class="section-actions">
             <asp:ImageButton ID="btnSubmit" runat="server" AlternateText="Place Order" ImageUrl="~/BVModules/Themes/Bvc5/Images/Buttons/PlaceOrder.png"
