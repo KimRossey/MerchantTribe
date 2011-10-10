@@ -71,7 +71,7 @@ namespace MerchantTribeStore
                 }
 
                 //*******************this.AddressBilling1.LoadFromAddress(Basket.BillingAddress);                                
-                Payment.LoadPaymentMethods(Basket.TotalGrand);                
+                //*******************Payment.LoadPaymentMethods(Basket.TotalGrand);                
             }
             return Basket;
         }
@@ -88,7 +88,7 @@ namespace MerchantTribeStore
 
             // Update Order Info
             Basket.BillingAddress = GetBillingAddress();            
-            Payment.SavePaymentInfo(Basket);
+            //***************************Payment.SavePaymentInfo(Basket);
             MTApp.OrderServices.Orders.Update(Basket);
 
             if ((!Page.IsValid))
@@ -155,10 +155,10 @@ namespace MerchantTribeStore
 
             //**********************violations.AddRange(this.AddressBilling1.GetRuleViolations());
                                     
-            if (!Payment.IsValid())
-            {
-                violations.AddRange(Payment.GetRuleViolations());
-            }
+            //************************if (!Payment.IsValid())
+            //************************{
+            //************************    violations.AddRange(Payment.GetRuleViolations());
+            //************************}
 
             if ((violations.Count > 0))
             {

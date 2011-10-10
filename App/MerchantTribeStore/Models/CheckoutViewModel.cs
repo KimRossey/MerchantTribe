@@ -28,6 +28,8 @@ namespace MerchantTribeStore.Models
         public string RewardPointsAvailable { get; set; }
         public List<MerchantTribe.Web.Geography.Country> Countries { get; set; }
         public List<MerchantTribe.Web.Validation.RuleViolation> Violations { get; set; }
+        public CheckoutPaymentViewModel PaymentViewModel { get; set; }
+        public string ErrorCssClass { get; set; }
 
         public CheckoutViewModel()
         {
@@ -48,6 +50,23 @@ namespace MerchantTribeStore.Models
             this.AgreedToTermsDescription = string.Empty;
             this.Countries = new List<MerchantTribe.Web.Geography.Country>();
             this.Violations = new List<MerchantTribe.Web.Validation.RuleViolation>();
+            this.PaymentViewModel = new CheckoutPaymentViewModel();
+            this.ErrorCssClass = "input-validation-error";
+        }
+
+        public string IsErr(string nameWithoutPrefix)
+        {
+            string result = string.Empty;
+
+            if (this.Violations != null)
+            {
+                var v = this.Violations.Where(y => y.ControlName == (nameWithoutPrefix)).FirstOrDefault();
+                if (v != null)
+                {
+                    return this.ErrorCssClass;
+                }
+            }
+            return result;
         }
     }
 }

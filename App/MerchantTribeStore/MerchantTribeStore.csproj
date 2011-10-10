@@ -657,7 +657,6 @@
     <Content Include="BVModules\Controls\CreditCardInput.ascx" />
     <Content Include="BVModules\Controls\MasterPageJavascript.ascx" />
     <Content Include="BVModules\Controls\MessageBox.ascx" />
-    <Content Include="BVModules\Controls\Payment.ascx" />
     <Content Include="BVModules\CreditCardGateways\Authorize.Net\Edit.ascx" />
     <Content Include="BVModules\CreditCardGateways\BV Secure Gateway\Edit.ascx" />
     <Content Include="BVModules\CreditCardGateways\Payflow Pro\edit.ascx" />
@@ -3897,13 +3896,6 @@
     <Compile Include="BVModules\Controls\MessageBox.ascx.designer.cs">
       <DependentUpon>MessageBox.ascx</DependentUpon>
     </Compile>
-    <Compile Include="BVModules\Controls\Payment.ascx.cs">
-      <DependentUpon>Payment.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="BVModules\Controls\Payment.ascx.designer.cs">
-      <DependentUpon>Payment.ascx</DependentUpon>
-    </Compile>
     <Compile Include="BVModules\CreditCardGateways\Authorize.Net\Edit.ascx.cs">
       <DependentUpon>Edit.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -4367,6 +4359,8 @@
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Checkout\Index.cshtml" />
     <Content Include="Views\Checkout\_CheckoutAddress.cshtml" />
+    <Content Include="Views\Checkout\DisplayPaymentMethods.cshtml" />
+    <Content Include="Views\Checkout\_CreditCardInput.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

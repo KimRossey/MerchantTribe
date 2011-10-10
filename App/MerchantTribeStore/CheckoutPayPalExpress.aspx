@@ -10,14 +10,11 @@
 
         <h1>PayPal Express Checkout</h1>
         <div class="section-sidebar">            
-            CONTENT COLUMN 601
+            CONTENT COLUMN 601            
         </div>
 
         <div class="sections">
-        
-
-
-
+                
        <asp:Panel ID="FixedInfoPanel" runat="server">
         <div class="section-shipping">
         <h2>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -12,8 +13,11 @@ using MerchantTribe.Commerce.Catalog;
 using MerchantTribeStore.Models;
 using MerchantTribe.Commerce.Content;
 using MerchantTribe.Commerce.Contacts;
+using MerchantTribe.Commerce.Payment;
 using MerchantTribe.Commerce.BusinessRules;
 using MerchantTribe.Web.Logging;
+using MerchantTribe.Web.Validation;
+using MerchantTribe.Payment;
 
 namespace MerchantTribeStore.Controllers
 {
@@ -52,6 +56,7 @@ namespace MerchantTribeStore.Controllers
 
             // Populate Countries
             model.Countries = MTApp.CurrentStore.Settings.FindActiveCountries();
+            model.PaymentViewModel.AcceptedCardTypes = MTApp.CurrentStore.Settings.PaymentAcceptedCards;
 
             return model;
         }
@@ -84,11 +89,10 @@ namespace MerchantTribeStore.Controllers
                     Address billAddr = model.CurrentCustomer.BillingAddress;
                     billAddr.CopyTo(model.CurrentOrder.BillingAddress);
                 }                                
-            }            
+            }  
             
             // Payment
-            //***************Payment.LoadPaymentMethods(result.TotalGrand);
-
+            DisplayPaymentMethods(model);
         }
         void CheckForPoints(CheckoutViewModel model)
         {
@@ -114,6 +118,93 @@ namespace MerchantTribeStore.Controllers
                 model.RewardPointsAvailable = "You have " + points.ToString() + " " + model.LabelRewardPoints + " available.";
                 decimal dollarValue = MTApp.CustomerPointsManager.DollarCreditForPoints(amountToUse);
                 model.LabelRewardsUse = "Use " + amountToUse.ToString() + " [" + dollarValue.ToString("C") + "] " + model.LabelRewardPoints;                
+            }
+        }
+        void DisplayPaymentMethods(CheckoutViewModel model)
+        {
+            MerchantTribe.Commerce.Payment.AvailablePayments availablePayments = new MerchantTribe.Commerce.Payment.AvailablePayments();
+            Collection<DisplayPaymentMethod> enabledMethods;
+            enabledMethods = availablePayments.EnabledMethods(MTApp.CurrentStore);
+
+            model.PaymentViewModel.CheckDescription = WebAppSettings.PaymentCheckDescription;
+            model.PaymentViewModel.CodDescription = WebAppSettings.PaymentCODDescription;
+            model.PaymentViewModel.CompanyAccountDescription = WebAppSettings.PaymentCompanyAccountName;            
+            model.PaymentViewModel.PurchaseOrderDescription = WebAppSettings.PaymentPurchaseOrderName;
+            model.PaymentViewModel.TelephoneDescription = WebAppSettings.PaymentTelephoneDescription;
+            
+            if ((model.CurrentOrder.TotalOrderAfterDiscounts > 0) || (!MTApp.CurrentStore.Settings.AllowZeroDollarOrders))
+            {
+                model.PaymentViewModel.NoPaymentNeeded = false;
+                foreach (DisplayPaymentMethod m in enabledMethods)
+                {
+                    switch (m.MethodId)
+                    {
+                        case WebAppSettings.PaymentIdCheck:
+                            model.PaymentViewModel.IsCheckActive = true;
+                            break;
+                        case WebAppSettings.PaymentIdCreditCard:
+                            model.PaymentViewModel.IsCreditCardActive = true;
+                            break;
+                        case WebAppSettings.PaymentIdTelephone:
+                            model.PaymentViewModel.IsTelephoneActive = true;
+                            break;
+                        case WebAppSettings.PaymentIdPurchaseOrder:
+                            model.PaymentViewModel.IsPurchaseOrderActive = true;
+                            break;
+                        case WebAppSettings.PaymentIdCompanyAccount:
+                            model.PaymentViewModel.IsCompanyAccountActive = true;
+                            break;
+                        case WebAppSettings.PaymentIdCashOnDelivery:
+                            model.PaymentViewModel.IsCodActive = true;
+                            break;
+                        case WebAppSettings.PaymentIdPaypalExpress:
+                            model.PaymentViewModel.IsPayPalActive = true;
+                            break;
+                        default:
+                            // do nothing
+                            break;
+                    }
+                }
+
+                if (enabledMethods.Count == 1)
+                {
+                    switch (enabledMethods[0].MethodId)
+                    {
+                        case WebAppSettings.PaymentIdCheck:
+                            model.PaymentViewModel.SelectedPayment = "check";
+                            break;
+                        case WebAppSettings.PaymentIdCreditCard:
+                            model.PaymentViewModel.SelectedPayment = "creditcard";
+                            break;
+                        case WebAppSettings.PaymentIdTelephone:
+                            model.PaymentViewModel.SelectedPayment = "telephone";
+                            break;
+                        case WebAppSettings.PaymentIdPurchaseOrder:
+                            model.PaymentViewModel.SelectedPayment = "purchaseorder";
+                            break;
+                        case WebAppSettings.PaymentIdCompanyAccount:
+                            model.PaymentViewModel.SelectedPayment = "companyaccount";
+                            break;
+                        case WebAppSettings.PaymentIdCashOnDelivery:
+                            model.PaymentViewModel.SelectedPayment = "cod";
+                            break;
+                        case WebAppSettings.PaymentIdPaypalExpress:
+                            model.PaymentViewModel.SelectedPayment = "paypal";
+                            break;
+                    }
+                }
+                else
+                {
+                    if (model.PaymentViewModel.IsCreditCardActive)
+                    {
+                        model.PaymentViewModel.SelectedPayment = "creditcard";
+                    }
+                }
+            }
+            else
+            {
+                model.PaymentViewModel.NoPaymentNeeded = true;
+                model.PaymentViewModel.NoPaymentNeededDescription = WebAppSettings.PaymentNoPaymentNeededDescription;                                
             }
         }
 
@@ -195,14 +286,81 @@ namespace MerchantTribeStore.Controllers
             // Save Payment Information                    
             model.UseRewardsPoints = Request.Form["userewardspoints"] == "1";
             ApplyRewardsPoints(model);
-
-            //***************Payment.SavePaymentInfo(model.CurrentOrder);
+            
+            // Payment Methods
+            LoadPaymentFromForm(model);
+            SavePaymentSelections(model);
 
             model.CurrentOrder.Instructions = Request.Form["specialinstructions"];
 
             // Save all the changes to the order
             MTApp.OrderServices.Orders.Update(model.CurrentOrder);
             SessionManager.SaveOrderCookies(model.CurrentOrder);
+        }
+        private void LoadPaymentFromForm(CheckoutViewModel model)
+        {
+            model.PaymentViewModel.SelectedPayment = Request.Form["paymethod"] ?? string.Empty;
+            model.PaymentViewModel.DataPurchaseOrderNumber = Request.Form["purchaseorder"] ?? string.Empty;
+            model.PaymentViewModel.DataCompanyAccountNumber = Request.Form["companyaccount"] ?? string.Empty;
+            model.PaymentViewModel.DataCreditCard.CardHolderName = Request.Form["cccardholder"] ?? string.Empty;
+            model.PaymentViewModel.DataCreditCard.CardNumber = MerchantTribe.Payment.CardValidator.CleanCardNumber(Request.Form["cccardnumber"] ?? string.Empty);
+            int expMonth = -1;
+            int.TryParse(Request.Form["ccexpmonth"] ?? string.Empty, out expMonth);
+            model.PaymentViewModel.DataCreditCard.ExpirationMonth = expMonth;
+            int expYear = -1;
+            int.TryParse(Request.Form["ccexpyear"] ?? string.Empty, out expYear);
+            model.PaymentViewModel.DataCreditCard.ExpirationYear = expYear;
+            model.PaymentViewModel.DataCreditCard.SecurityCode = Request.Form["ccsecuritycode"] ?? string.Empty;
+        }
+        private void SavePaymentSelections(CheckoutViewModel model)
+        {
+            OrderPaymentManager payManager = new OrderPaymentManager(model.CurrentOrder, MTApp);
+            payManager.ClearAllNonStoreCreditTransactions();
+
+            bool found = false;
+
+            if (model.PaymentViewModel.SelectedPayment == "creditcard")
+            {
+                found = true;
+                payManager.CreditCardAddInfo(model.PaymentViewModel.DataCreditCard, model.CurrentOrder.TotalGrandAfterStoreCredits(MTApp.OrderServices));
+            }
+
+            if ((found == false) && (model.PaymentViewModel.SelectedPayment == "check"))
+            {
+                found = true;
+                payManager.OfflinePaymentAddInfo(model.CurrentOrder.TotalGrandAfterStoreCredits(MTApp.OrderServices), "Customer will pay by check.");
+            }
+
+            if ((found == false) && (model.PaymentViewModel.SelectedPayment == "telephone"))
+            {
+                found = true;
+                payManager.OfflinePaymentAddInfo(model.CurrentOrder.TotalGrandAfterStoreCredits(MTApp.OrderServices), "Customer will call with payment info.");
+            }
+
+            if ((found == false) && (model.PaymentViewModel.SelectedPayment == "purchaseorder"))
+            {
+                found = true;
+                payManager.PurchaseOrderAddInfo(model.PaymentViewModel.DataPurchaseOrderNumber.Trim(), model.CurrentOrder.TotalGrandAfterStoreCredits(MTApp.OrderServices));
+            }
+            if ((found == false) && (model.PaymentViewModel.SelectedPayment == "companyaccount"))
+            {
+                found = true;
+                payManager.CompanyAccountAddInfo(model.PaymentViewModel.DataCompanyAccountNumber.Trim(), model.CurrentOrder.TotalGrandAfterStoreCredits(MTApp.OrderServices));
+            }
+
+            if ((found == false) && (model.PaymentViewModel.SelectedPayment == "cod"))
+            {
+                found = true;
+                payManager.OfflinePaymentAddInfo(model.CurrentOrder.TotalGrandAfterStoreCredits(MTApp.OrderServices), "Customer will pay cash on delivery.");
+            }
+
+            if ((found == false) && (model.PaymentViewModel.SelectedPayment == "paypal"))
+            {
+                found = true;
+                // Need token and id before we can add this to the order
+                // Handled on the checkout page.
+                //payManager.PayPalExpressAddInfo(o.TotalGrand);
+            }
         }
         private void ApplyRewardsPoints(CheckoutViewModel model)
         {
@@ -298,10 +456,8 @@ namespace MerchantTribeStore.Controllers
                 model.Violations.AddRange(Basket.GetRuleViolations());
             }
 
-            //*******************if ((!Payment.IsValid()) && (!paymentFound))
-            //*******************{
-            //*******************    model.Violations.AddRange(Payment.GetRuleViolations());
-            //*******************}
+            // Payment Validation
+            model.Violations.AddRange(ValidatePayment(model));
 
             if ((model.Violations.Count > 0))
             {
@@ -327,6 +483,87 @@ namespace MerchantTribeStore.Controllers
                                                                 result, pre + "state");
             return result;
         }
+        private List<MerchantTribe.Web.Validation.RuleViolation> ValidatePayment(CheckoutViewModel model)
+        {
+            List<MerchantTribe.Web.Validation.RuleViolation> violations = new List<MerchantTribe.Web.Validation.RuleViolation>();
+
+            // Nothing to validate if no payment is needed
+            if (model.PaymentViewModel.NoPaymentNeeded)
+            {
+                return violations;
+            }
+
+            if (model.PaymentViewModel.SelectedPayment == "creditcard")
+            {
+                return ValidateCreditCard(model);
+            }
+            if (model.PaymentViewModel.SelectedPayment == "check")
+            {
+                return violations;
+            }
+            if (model.PaymentViewModel.SelectedPayment == "telephone")
+            {
+                return violations;
+            }
+            if (model.PaymentViewModel.SelectedPayment == "purchaseorder")
+            {
+                ValidationHelper.Required("Purchase Order Number", model.PaymentViewModel.DataPurchaseOrderNumber.Trim(), violations, "purchaseorder");
+                return violations;
+            }
+            if (model.PaymentViewModel.SelectedPayment == "companyaccount")
+            {
+                ValidationHelper.Required("Company Account Number", model.PaymentViewModel.DataCompanyAccountNumber.Trim(), violations, "companyaccount");
+                return violations;
+            }
+            if (model.PaymentViewModel.SelectedPayment == "cod")
+            {
+                return violations;
+            }
+            if (model.PaymentViewModel.SelectedPayment == "paypal")
+            {
+                return violations;
+            }
+
+            // We haven't return anything so nothing is selected.
+            // Try CC as default payment method        
+            if (model.PaymentViewModel.DataCreditCard.CardNumber.Length > 12)
+            {
+                model.PaymentViewModel.SelectedPayment = "creditcard";
+                return ValidateCreditCard(model);
+            }
+
+            // nothing selected, trial of cc failed
+            violations.Add(new RuleViolation("Payment Method", "", "Please select a payment method", ""));
+
+            return violations;
+        }
+        private List<RuleViolation> ValidateCreditCard(CheckoutViewModel model)
+        {
+            List<RuleViolation> violations = new List<RuleViolation>();
+            
+            if ((!MerchantTribe.Payment.CardValidator.IsCardNumberValid(model.PaymentViewModel.DataCreditCard.CardNumber)))
+            {
+                violations.Add(new RuleViolation("Credit Card Number", "", "Please enter a valid credit card number", "cccardnumber"));
+            }
+            MerchantTribe.Payment.CardType cardTypeCheck = MerchantTribe.Payment.CardValidator.GetCardTypeFromNumber(model.PaymentViewModel.DataCreditCard.CardNumber);
+            List<CardType> acceptedCards = MTApp.CurrentStore.Settings.PaymentAcceptedCards;
+            if (!acceptedCards.Contains(cardTypeCheck))
+            {
+                violations.Add(new RuleViolation("Card Type Not Accepted", "", "That card type is not accepted by this store. Please use a different card.", "cccardnumber"));
+            }
+
+            ValidationHelper.RequiredMinimum(1, "Card Expiration Year", model.PaymentViewModel.DataCreditCard.ExpirationYear, violations, "ccexpyear");
+            ValidationHelper.RequiredMinimum(1, "Card Expiration Month", model.PaymentViewModel.DataCreditCard.ExpirationMonth, violations, "ccexpmonth");
+            ValidationHelper.Required("Name on Card", model.PaymentViewModel.DataCreditCard.CardHolderName, violations, "cccardholder");
+
+            if (MTApp.CurrentStore.Settings.PaymentCreditCardRequireCVV == true)
+            {
+                ValidationHelper.RequiredMinimum(3, "Card Security Code", model.PaymentViewModel.DataCreditCard.SecurityCode.Length, violations, "ccsecuritycode");
+            }
+
+            return violations;
+        }
+
         private void ProcessOrder(CheckoutViewModel model)
         {
             // Save as Order
@@ -334,13 +571,8 @@ namespace MerchantTribeStore.Controllers
             c.UserId = SessionManager.GetCurrentUserId();
             c.Order = model.CurrentOrder;
 
-            // Check for PayPal Request
-            //OrderPaymentManager payManager = new OrderPaymentManager(Basket);
-
-            bool paypalCheckoutSelected = false; //************* this.Payment.PayPalSelected;
-            
-            //bool paypalCheckoutSelected = payManager.PayPalExpressHasInfo();
-
+            // Check for PayPal Request            
+            bool paypalCheckoutSelected = model.PaymentViewModel.SelectedPayment == "paypal";                        
             if (paypalCheckoutSelected)
             {
                 c.Inputs.Add("bvsoftware", "Mode", "PaypalExpress");
@@ -520,8 +752,7 @@ namespace MerchantTribeStore.Controllers
             SessionManager.SaveOrderCookies(o);
 
             result.totalsastable = o.TotalsAsTable();
-
-            //System.Threading.Thread.Sleep(500)
+            
             return new PreJsonResult(MerchantTribe.Web.Json.ObjectToJson(result));
         }
         public class ApplyShippingResponse
@@ -560,13 +791,6 @@ namespace MerchantTribeStore.Controllers
         public class IsEmailKnownResponse
         {
             public string success = "0";
-        }
-
-        [ChildActionOnly]
-        public ActionResult DisplayPaymentMethods(Order o)
-        {
-
-            return View();
-        }
+        }             
     }
 }
