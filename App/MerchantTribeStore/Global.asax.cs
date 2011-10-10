@@ -119,9 +119,12 @@ namespace MerchantTribeStore
             routes.MapRoute("cart-removeitem", "cart/removelineitem", new { controller = "Cart", action = "RemoveLineItem" });
 
             // checkouts
-            routes.MapRoute("checkout-route", "checkout/{action}/{*params}",
-                                new { controller = "Checkout", action = "Index" });            
-            routes.MapPageRoute("checkout-paypal-route", "paypalexpresscheckout", "~/CheckoutPayPalExpress.aspx");
+            routes.MapRoute("checkout-route", "checkout/{action}/{*slug}",
+                                new { controller = "Checkout", action = "Index" });
+            routes.MapRoute("checkout-paypal-route", "paypalexpresscheckout",
+                                new { controller = "PayPalExpressCheckout", action = "Index" });
+            routes.MapRoute("checkout-paypal-edit", "paypalexpresscheckout/edit",
+                                new { controller = "PayPalExpressCheckout", action = "Edit" });
             routes.MapRoute("paypal-ipn-route", "paypalipn", 
                                 new {controller = "PayPalIpn", action="Index" });
 

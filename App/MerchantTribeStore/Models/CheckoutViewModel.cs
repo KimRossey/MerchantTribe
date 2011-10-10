@@ -19,6 +19,7 @@ namespace MerchantTribeStore.Models
         public bool IsLoggedIn { get; set; }
         public string ButtonCheckoutUrl { get; set; }
         public string ButtonLoginUrl { get; set; }
+        public string ButtonCancelUrl { get; set; }
         public string LabelRewardsUse { get; set; }
         public string LabelRewardPoints { get; set; }
         public string LabelTerms { get; set; }
@@ -39,6 +40,7 @@ namespace MerchantTribeStore.Models
             this.IsLoggedIn = false;
             this.ButtonCheckoutUrl = string.Empty;
             this.ButtonLoginUrl = string.Empty;
+            this.ButtonCancelUrl = string.Empty;
             this.LabelRewardPoints = "Reward Points";
             this.BillShipSame = true;
             this.ShowRewards = false;

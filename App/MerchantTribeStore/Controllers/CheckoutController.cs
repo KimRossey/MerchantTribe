@@ -791,6 +791,150 @@ namespace MerchantTribeStore.Controllers
         public class IsEmailKnownResponse
         {
             public string success = "0";
-        }             
+        }
+
+
+        private CheckoutViewModel PaymentErrorSetup()
+        {
+            ViewBag.Title = "Checkout Payment Error";
+            ViewBag.BodyClass = "store-checkout-page";
+
+            CheckoutViewModel model = new CheckoutViewModel();
+            LoadPendingOrder(model);
+
+            // Buttons
+            ThemeManager themes = MTApp.ThemeManager();
+            model.ButtonCheckoutUrl = themes.ButtonUrl("PlaceOrder", Request.IsSecureConnection);
+            model.ButtonCancelUrl = themes.ButtonUrl("Cancel", Request.IsSecureConnection);
+
+            // Populate Countries
+            model.Countries = MTApp.CurrentStore.Settings.FindActiveCountries();
+            model.PaymentViewModel.AcceptedCardTypes = MTApp.CurrentStore.Settings.PaymentAcceptedCards;
+
+            return model;
+        }
+        private void LoadPendingOrder(CheckoutViewModel model)
+        {
+            string bvin = SessionManager.CurrentPaymentPendingCartId;
+            if (bvin.Trim().Length < 1) Response.Redirect("~/cart");
+
+            Order result = MTApp.OrderServices.Orders.FindForCurrentStore(bvin);
+            if (result == null) Response.Redirect("~/cart");
+            model.CurrentOrder = result;
+
+            if (result.Items.Count == 0)
+            {
+                Response.Redirect("~/cart");
+            }
+
+            // Email
+            model.IsLoggedIn = false;
+            if (SessionManager.IsUserAuthenticated(this.MTApp))
+            {
+                model.IsLoggedIn = true;
+                model.CurrentCustomer = MTApp.CurrentCustomer;
+                if (model.CurrentCustomer != null)
+                {
+                    model.CurrentOrder.UserEmail = model.CurrentCustomer.Email;
+                }
+
+                // Copy customer addresses to order
+                model.CurrentCustomer.ShippingAddress.CopyTo(model.CurrentOrder.ShippingAddress);
+                if (model.BillShipSame == false)
+                {
+                    Address billAddr = model.CurrentCustomer.BillingAddress;
+                    billAddr.CopyTo(model.CurrentOrder.BillingAddress);
+                }
+            }
+
+            // Payment
+            DisplayPaymentMethods(model);
+
+        }
+
+        [HttpGet]
+        [NonCacheableResponseFilter]
+        public ActionResult PaymentError()
+        {
+            CheckoutViewModel model = PaymentErrorSetup();
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [NonCacheableResponseFilter]
+        [ActionName("PaymentError")]
+        public ActionResult PaymentErrorPost()
+        {
+            CheckoutViewModel model = PaymentErrorSetup();
+
+            // Load Post Data and Update Order
+            LoadAddressFromForm("billing", model.CurrentOrder.BillingAddress);            
+            LoadPaymentFromForm(model);
+            SavePaymentSelections(model);                                   
+            MTApp.OrderServices.Orders.Update(model.CurrentOrder);            
+            
+            // Validate Data
+            if (ValidatePaymentErrorOrder(model))
+            {
+                ProcessPaymentErrorOrder(model);
+            }
+
+            // Render Error Summary
+            foreach (var v in model.Violations)
+            {
+                FlashFailure(v.ErrorMessage);
+            }
+
+            return View(model);
+        }
+        private bool ValidatePaymentErrorOrder(CheckoutViewModel model)
+        {            
+            model.Violations.AddRange(ValidateAddress(model.CurrentOrder.BillingAddress, "Billing"));            
+            model.Violations.AddRange(ValidatePayment(model));
+            return (model.Violations.Count <= 0);            
+        }
+        private void ProcessPaymentErrorOrder(CheckoutViewModel model)
+        {
+            // Save as Order
+            OrderTaskContext c = new OrderTaskContext(MTApp);
+            c.UserId = SessionManager.GetCurrentUserId();
+            c.Order = model.CurrentOrder;
+
+            if (Workflow.RunByName(c, WorkflowNames.ProcessNewOrderPayments) == true)
+            {
+                // Clear Pending Cart ID because payment is good
+                SessionManager.CurrentPaymentPendingCartId = string.Empty;
+
+                // Process Post Payment Stuff                    
+                MerchantTribe.Commerce.BusinessRules.Workflow.RunByName(c, MerchantTribe.Commerce.BusinessRules.WorkflowNames.ProcessNewOrderAfterPayments);
+                Order tempOrder = MTApp.OrderServices.Orders.FindForCurrentStore(model.CurrentOrder.bvin);
+                MerchantTribe.Commerce.Integration.Current().OrderReceived(tempOrder, MTApp);
+                Response.Redirect("~/checkout/receipt?id=" + model.CurrentOrder.bvin);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Cancel()
+        {
+            string bvin = SessionManager.CurrentPaymentPendingCartId;
+            if (bvin.Trim().Length < 1) Response.Redirect("~/cart");
+
+            Order Basket = MTApp.OrderServices.Orders.FindForCurrentStore(bvin);
+            if (Basket != null)
+            {
+                Basket.StatusCode = OrderStatusCode.Cancelled;
+                Basket.StatusName = "Cancelled";
+
+                OrderNote n = new OrderNote();
+                n.IsPublic = true;
+                n.Note = "Cancelled by Customer";
+                Basket.Notes.Add(n);
+
+                MTApp.OrderServices.Orders.Update(Basket);
+                SessionManager.CurrentPaymentPendingCartId = string.Empty;                
+            }            
+            return Redirect("~/cart");
+        }
     }
 }

@@ -8,22 +8,27 @@
    "json");
 }
 
-function LoadRegions(countrylist, regionlist, countryname) {
-    $.post('~/estimateshipping/getregions/' + countryid,
-          { "regionid": '' },
+
+      function LoadRegionsWithSelection(regionlist, countryid, selectedregion) {
+            $.post('~/estimateshipping/getregions/' + countryid,
+          { "regionid": selectedregion },
           function (data) {
               regionlist.html(data.Regions);
+              $('#tempshippingregion').val('');
+              $('#tempbillingregion').val('');
+              BindStateDropDownLists();
           },
          "json"
          );
-}
+      } 
+      
 
 // Document Ready Function
 $(document).ready(function () {
 
     $('#cccardnumber').change(function () { CleanCC(); });
     $('#billingcountryname').change(function () {
-        LoadRegions($('#billingcountryname'), $('#billingstate'), $('#billingcountryname option:selected').val());
+         LoadRegionsWithSelection($('#billingstate'), $('#billingcountryname option:selected').val(), $('#tempbillingregion').val());
     });
 
 });        // End Document Ready

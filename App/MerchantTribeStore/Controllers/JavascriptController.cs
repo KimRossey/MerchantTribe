@@ -22,6 +22,9 @@ namespace MerchantTribeStore.Controllers
                 case "checkout.js":
                     sourcecode = LoadPhysical("~/scripts/Checkout.js");
                     break;
+                case "checkoutpaymenterror.js":
+                    sourcecode = LoadPhysical("~/scripts/CheckoutPaymentError.js");
+                    break;
             }
 
             string baseUrl = Url.Content("~");
