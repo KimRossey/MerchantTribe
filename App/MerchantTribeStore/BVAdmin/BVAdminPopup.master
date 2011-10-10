@@ -1,7 +1,7 @@
 <%@ Master Language="C#" Inherits="MerchantTribeStore.BVAdmin_BVAdminPopup" Codebehind="BVAdminPopup.master.cs" AutoEventWireup="True" %>
 <%@ Register Src="../BVModules/Controls/MasterPageJavascript.ascx" TagName="MasterPageJavascript"
     TagPrefix="uc3" %>
-    <%@ Register src="../JQueryInclude.ascx" tagname="JQueryInclude" tagprefix="uc4" %>
+    <%@ Register src="JQueryInclude.ascx" tagname="JQueryInclude" tagprefix="uc4" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">

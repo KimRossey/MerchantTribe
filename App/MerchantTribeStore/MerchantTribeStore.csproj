@@ -684,8 +684,7 @@
     <Content Include="BVModules\Shipping\UPS\edit.ascx" />
     <Content Include="BVModules\Shipping\US Postal Service - Domestic\edit.ascx" />
     <Content Include="BVModules\Shipping\US Postal Service - International\edit.ascx" />
-    <Content Include="checkoutpaymenterror.aspx" />
-    <Content Include="checkoutpaymenterror.js" />
+    <Content Include="Scripts\checkoutpaymenterror.js" />
     <Content Include="ClientBin\BVSoftware.SilverlightFileUpload.xap" />
     <Content Include="ClientBin\MerchantTribe.SilverlightFileUpload.xap" />
     <Content Include="content\themes\common.css" />
@@ -808,7 +807,6 @@
     <Content Include="Images\System\AdminMenuBarBackgroundOn.png" />
     <Content Include="Scripts\fileuploader\Test.html" />
     <Content Include="Scripts\Checkout.js" />
-    <Content Include="CheckoutPayPalExpress.aspx" />
     <Content Include="content\admin\images\AdminHeaderBackground.png" />
     <Content Include="content\admin\images\cside.png" />
     <Content Include="content\admin\images\ctop.png" />
@@ -1361,7 +1359,7 @@
     <Content Include="Images\System\transparent75.png" />
     <Content Include="Images\System\Trashcan.png" />
     <Content Include="Images\System\UnChecked.png" />
-    <Content Include="JQueryInclude.ascx" />
+    <Content Include="BVAdmin\JQueryInclude.ascx" />
     <Content Include="robots.txt" />
     <Content Include="Scripts\bv-extensions.js" />
     <Content Include="Scripts\center.js" />
@@ -4085,20 +4083,6 @@
     <Compile Include="BVModules\Shipping\US Postal Service - International\edit.ascx.designer.cs">
       <DependentUpon>edit.ascx</DependentUpon>
     </Compile>
-    <Compile Include="checkoutpaymenterror.aspx.cs">
-      <DependentUpon>checkoutpaymenterror.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="checkoutpaymenterror.aspx.designer.cs">
-      <DependentUpon>checkoutpaymenterror.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="CheckoutPayPalExpress.aspx.cs">
-      <DependentUpon>CheckoutPayPalExpress.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="CheckoutPayPalExpress.aspx.designer.cs">
-      <DependentUpon>CheckoutPayPalExpress.aspx</DependentUpon>
-    </Compile>
     <Compile Include="code\AdminTabType.cs" />
     <Compile Include="code\app\RegisterStoreData.cs" />
     <Compile Include="code\BaseAdminJsonPage.cs">
@@ -4151,6 +4135,7 @@
     <Compile Include="Controllers\FlexPartJsonController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JavascriptController.cs" />
+    <Compile Include="Controllers\PayPalExpressCheckoutController.cs" />
     <Compile Include="Controllers\PayPalIpnController.cs" />
     <Compile Include="Controllers\PoliciesController.cs" />
     <Compile Include="Controllers\PreJsonResult.cs" />
@@ -4190,24 +4175,17 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="JQueryInclude.ascx.cs">
+    <Compile Include="BVAdmin\JQueryInclude.ascx.cs">
       <DependentUpon>JQueryInclude.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="JQueryInclude.ascx.designer.cs">
+    <Compile Include="BVAdmin\JQueryInclude.ascx.designer.cs">
       <DependentUpon>JQueryInclude.ascx</DependentUpon>
     </Compile>
     <Compile Include="Models\AddressViewModel.cs" />
     <Compile Include="Models\EstimateShippingViewModel.cs" />
     <Compile Include="Models\SuperStoreViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Site.Master.cs">
-      <DependentUpon>Site.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Site.Master.designer.cs">
-      <DependentUpon>Site.Master</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -4220,9 +4198,6 @@
     <Folder Include="content\themes\theme-bv-simplered\assets\" />
     <Folder Include="Files\" />
     <Folder Include="Scripts\tinymce\plugins\autosave\images\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Site.Master" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="BVAdmin\AdminWizard.master" />
@@ -4361,6 +4336,8 @@
     <Content Include="Views\Checkout\_CheckoutAddress.cshtml" />
     <Content Include="Views\Checkout\DisplayPaymentMethods.cshtml" />
     <Content Include="Views\Checkout\_CreditCardInput.cshtml" />
+    <Content Include="Views\Checkout\PaymentError.cshtml" />
+    <Content Include="Views\PayPalExpressCheckout\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
