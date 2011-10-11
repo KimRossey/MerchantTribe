@@ -490,7 +490,8 @@ fieldset#affiliateform td.formlabel { width: 150px; }
   left:0; filter:alpha(opacity=70); opacity: 0.70; top:0; width:100%; z-index:50; display:none; position:fixed; -moz-background-clip: -moz-initial;
   -moz-background-origin: -moz-initial;-moz-background-inline-policy: -moz-initial;    
 }
-.modal{position:absolute;left:30%;top:15%;z-index:51;display: none;}
+.modal{position:absolute;left:50%;top:50%;z-index:51;display: none;
+       width:620px;height:420px;margin-left:-310px;margin-top:-210px;}
 .popoverframe {background:#fff;width:600px;height:400px;padding:10px;-moz-border-radius:10px;-webkit-border-radius:10px;border-radius:10px;}
 #popoverpage {width:600px;height:380px;}
 
