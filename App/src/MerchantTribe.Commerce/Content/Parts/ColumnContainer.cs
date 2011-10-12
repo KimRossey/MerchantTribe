@@ -423,7 +423,10 @@ namespace MerchantTribe.Commerce.Content.Parts
             {
 
                 sb.Append("<div class=\"coltools\">");
-                sb.Append("<div class=\"coledittools\"><a href=\"#\" class=\"deletecols\" id=\"dp" + this.Id + "\"><span>x</span></a></div>");
+                sb.Append("<div class=\"coledittools\">");                                
+                sb.Append("  <a href=\"#\" class=\"deletecols\" id=\"dp" + this.Id + "\">&nbsp;</a>");
+                sb.Append("  <a href=\"#\" class=\"sorthandle\">&nbsp;</a>");                                                
+                sb.Append("</div>");
                 sb.Append("<strong>Columns</strong></div>");                
             }
 

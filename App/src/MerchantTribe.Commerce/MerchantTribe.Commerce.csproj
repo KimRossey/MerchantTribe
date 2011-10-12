@@ -8,8 +8,8 @@
     <ProjectGuid>{4EFF0D3E-99D4-4A8D-A672-B88E5E47CBAA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BVSoftware.Commerce</RootNamespace>
-    <AssemblyName>BVSoftware.Commerce</AssemblyName>
+    <RootNamespace>MerchantTribe.Commerce</RootNamespace>
+    <AssemblyName>MerchantTribe.Commerce</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>
@@ -333,6 +333,7 @@
     <Compile Include="Content\Parts\Image.cs" />
     <Compile Include="Content\Parts\ImageDisplayFile.cs" />
     <Compile Include="Content\Parts\PartFactory.cs" />
+    <Compile Include="Content\Parts\PartHelper.cs" />
     <Compile Include="Content\Parts\PartJsonResult.cs" />
     <Compile Include="Content\Parts\RootColumn.cs" />
     <Compile Include="Content\PolicyBlockRepository.cs" />
