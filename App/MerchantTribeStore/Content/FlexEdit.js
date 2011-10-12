@@ -46,6 +46,7 @@ function BindJsonForms() {
 function BindEditable() {
     $('.editable').unbind();
     $('.coltools').unbind();
+    $('.edithandle').unbind();
 
     $('.coltools').hover(
         function () { $(this).addClass('formhover'); $(this).find('.coledittools').show(); },
@@ -62,9 +63,9 @@ function BindEditable() {
             ShowEditor(div);
         }
     );
-    $('.editable').click(
+    $('.edithandle').click(
         function () {
-            var div = $(this);
+            var div = $(this).parent().parent();
             ShowEditor(div);            
         }
     );
@@ -207,8 +208,18 @@ function BindEverything() {
     BindDroppable();
     BindCancelFormButtons();
     BindEditable();
+    BindSortable();
     $('.edittools').hide();
-    $('.coledittools').hide();  
+    $('.coledittools').hide();
+}
+
+function BindSortable() {
+    $(".droppable").sortable({
+        items: '.issortable',
+        handle: '.sorthandle',
+        revert: true,
+        connectWith: '.droppable'
+    });  
 }
 
 function ImageWasUploaded(resultMessage) {
@@ -261,10 +272,7 @@ if (args.lineNumber != 0) {
 
 $(document).ready(function () {
 
-    //    $(".sortable").sortable({
-    //       revert: true
-    //    });
-    //connectToSortable: ".sortable",      
+      
 
     // Popup Close
     $('#editorclose').click(function () {

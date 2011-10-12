@@ -56,9 +56,9 @@ namespace MerchantTribe.Commerce.Content.Parts
 
         public string RenderForEdit(RequestContext context, Catalog.Category cat)
         {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("<div id=\"part" + Id + "\" class=\"editable\">");
-            sb.Append("<div class=\"edittools\"><a href=\"#\" class=\"deletepart\" id=\"dp" + this.Id + "\"><span>x</span></a></div>");
+            StringBuilder sb = new StringBuilder();            
+            sb.Append("<div id=\"part" + Id + "\" class=\"editable issortable\">");
+            sb.Append(PartHelper.RenderEditTools(this.Id));
             sb.Append(RenderForDisplay(context, cat));
             sb.Append("</div>");
 

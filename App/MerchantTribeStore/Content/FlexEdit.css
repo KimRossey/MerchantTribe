@@ -23,17 +23,16 @@
             }             
 .coltools strong {font-weight:bold;opacity:1;}
 
-.edittools, .coledittools {position:relative;top:0;left:0;            
-            width:24px;height:24px;
-            z-index:255;background:#900;color:#fff;
-            margin:0 0 -24px 0px;
-            border-radius:12px;
-             -webkit-border-radius:12px;
-             -moz-border-radius:12px;                          	         	         
-             }    
-.edittools a, .coledittools a {display:block;width:24px;height:24px;color:#fff;text-decoration:none;
-              font-size:20px;font-weight:bold;text-align:center;line-height:22px;
-              font-family:arial,verdana, sans-serif;}
+.edittools, .coledittools {position:relative;
+                           top:0;left:0;            
+                           width:60px;height:40px;
+                          z-index:255;color:#fff;
+                          margin:0 0 -40px 0px;                                    
+                          }    
+.edittools a, .coledittools a {text-decoration:none;}                          
+.deletepart {display:inline-block;width:20px;height:20px; background: #f66 url('~/images/system/trashcan.png') no-repeat;}              
+.sorthandle {display:inline-block;margin:0 0 0 20px;width:20px;height:20px; background: #f0f0f0 url('~/images/system/draghandle.png') no-repeat;}              
+.edithandle {display:block;width:60px;height:20px; background: #333; color:#fff;}
 #flexedit .hidden {display:none;}
 
 .formhover {background:#ff9;/*border:solid 1px #667;*/}
