@@ -33,14 +33,7 @@ namespace MerchantTribeStore
             string categoryId = SessionManager.CategoryLastId;
             CategorySnapshot currentCategory = null;
             
-            if ((Page is BaseStoreCategoryPage))
-            {
-                currentCategory = new CategorySnapshot(((BaseStoreCategoryPage)Page).LocalCategory);
-            }           
-            else
-            {
-                currentCategory = new CategorySnapshot(MyPage.MTApp.CatalogServices.Categories.Find(categoryId));
-            }
+            currentCategory = new CategorySnapshot(MyPage.MTApp.CatalogServices.Categories.Find(categoryId));
 
             LoadTrail(currentCategory);
 
@@ -89,15 +82,7 @@ namespace MerchantTribeStore
                             }
                             else
                             {
-                                if (this.Page is BaseStoreCategoryPage)
-                                {
-                                    AddCategoryName(trail[j]);
-                                }
-                                else
-                                {
-                                    AddCategoryLink(trail[j]);
-                                }
-
+                                AddCategoryLink(trail[j]);
                             }
                         }
                     }

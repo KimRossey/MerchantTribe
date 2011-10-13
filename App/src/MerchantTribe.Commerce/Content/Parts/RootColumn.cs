@@ -95,7 +95,7 @@ namespace MerchantTribe.Commerce.Content.Parts
             foreach (IContentPart p in this.Parts)
             {
                 if (p.Id == partId)
-                {
+                {                    
                     return p;
                 }
                 if (p is IColumnContainer)
@@ -138,7 +138,48 @@ namespace MerchantTribe.Commerce.Content.Parts
             if (toRemove != null) this.Parts.Remove(toRemove);            
             return true;
         }
-        
+
+        public string MovePart(string fromPart, string toPart, string partId, 
+                            List<string> sortedIds,
+                            RequestContext context, 
+                            MerchantTribe.Commerce.Catalog.Category baseCategory)
+        {
+            string result = string.Empty;
+            IContentPart toMove = FindPart(partId);
+            RemovePart(partId);
+            IContentPart destination = FindPart(toPart);
+            if (destination is IColumn)
+            {
+                IColumn container = destination as IColumn;
+                container.AddPart(toMove);
+                container.SortParts(sortedIds);
+                result = toMove.RenderForEdit(context, baseCategory);
+            }
+            return result;
+        }
+
+        public bool SortParts(List<string> sortedIds)
+        {
+            List<IContentPart> output = new List<IContentPart>();
+
+            foreach (string id in sortedIds)
+            {
+                var part = this.Parts.Where(y => y.Id == id).FirstOrDefault();
+                if (part != null)
+                {
+                    this.Parts.Remove(part);
+                    output.Add(part);
+                }
+            }
+            foreach (var remainingPart in this.Parts)
+            {
+                output.Add(remainingPart);
+            }
+            this.Parts = output;
+
+            return true;
+        }
+
         public string Id {get;set;}
 
         public ColumnSize MinimumSize()
@@ -147,11 +188,9 @@ namespace MerchantTribe.Commerce.Content.Parts
         }
 
         public PartJsonResult ProcessJsonRequest(System.Collections.Specialized.NameValueCollection form,
-                                          MerchantTribe.Commerce.RequestContext context, Catalog.Category containerCategory)
+                                          MerchantTribeApplication app, Catalog.Category containerCategory)
         {
-            PartJsonResult result = new PartJsonResult();
-
-            Catalog.CatalogService CatalogServices = Catalog.CatalogService.InstantiateForDatabase(context);
+            PartJsonResult result = new PartJsonResult();            
 
             string action = form["partaction"];
             switch (action.ToLowerInvariant())
@@ -162,17 +201,43 @@ namespace MerchantTribe.Commerce.Content.Parts
                     if (part != null)
                     {
                         this.AddPart(part);
-                        CatalogServices.Categories.Update(containerCategory);
-                        result.ResultHtml = part.RenderForEdit(context, containerCategory);
+                        app.CatalogServices.Categories.Update(containerCategory);
+                        result.ResultHtml = part.RenderForEdit(app.CurrentRequestContext, containerCategory);
                     }
                     break;
                 case "deletepart":
                     string deleteid = form["partid"];
                     this.RemovePart(deleteid);
-                    CatalogServices.Categories.Update(containerCategory);
+                    app.CatalogServices.Categories.Update(containerCategory);
                     result.Success = true;
                     break;
-                    
+                case "movepart":
+                    string fromId = form["fromId"];
+                    string toId = form["toId"];
+                    string movedId = form["movedId"];
+                    string sortedIds2 = form["sortedIds[]"];
+                    string[] ids2 = sortedIds2.Split(',');
+                    List<string> idList2 = new List<string>();
+                    foreach (string s in ids2)
+                    {
+                        idList2.Add(s.Trim().Replace("part", ""));
+                    }
+                    result.ResultHtml = this.MovePart(fromId, toId, movedId, idList2,
+                                        app.CurrentRequestContext, containerCategory);
+                    app.CatalogServices.Categories.Update(containerCategory);
+                    result.Success = true;                    
+                    break;
+                case "resort":
+                    string sortedIds = form["sortedIds[]"];
+                    string[] ids = sortedIds.Split(',');
+                    List<string> idList = new List<string>();
+                    foreach (string s in ids)
+                    {
+                        idList.Add(s.Trim().Replace("part", ""));
+                    }
+                    result.Success = this.SortParts(idList);
+                    app.CatalogServices.Categories.Update(containerCategory);                    
+                    break;
             }
             return result;
         }

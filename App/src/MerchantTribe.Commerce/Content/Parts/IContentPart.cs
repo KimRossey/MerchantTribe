@@ -17,7 +17,7 @@ namespace MerchantTribe.Commerce.Content.Parts
         ColumnSize MinimumSize();
 
         PartJsonResult ProcessJsonRequest(System.Collections.Specialized.NameValueCollection form,
-                                          MerchantTribe.Commerce.RequestContext context,
+                                          MerchantTribe.Commerce.MerchantTribeApplication app,
                                           Catalog.Category currentCategory);
 
         void SerializeToXml(ref System.Xml.XmlWriter xw);

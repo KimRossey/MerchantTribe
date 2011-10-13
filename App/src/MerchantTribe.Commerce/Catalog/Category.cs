@@ -286,7 +286,14 @@ namespace MerchantTribe.Commerce.Catalog
             IContentPart result = null;
             if (Versions.Count > 0)
             {
-                result = Versions[0].Root.FindPart(partId);
+                if (partId == "0")
+                {
+                    result = Versions[0].Root;
+                }
+                else
+                {
+                    result = Versions[0].Root.FindPart(partId);
+                }
             }
             return result;
         }
