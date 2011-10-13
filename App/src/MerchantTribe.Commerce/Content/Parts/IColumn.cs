@@ -13,6 +13,7 @@ namespace MerchantTribe.Commerce.Content.Parts
                 
         bool AddPart(IContentPart part);        
         bool RemovePart(string partId);
+        bool SortParts(List<string> sortedIds);        
                                         
     }
 }

@@ -53,11 +53,9 @@ namespace MerchantTribe.Commerce.Content.Parts
 
 
        public PartJsonResult ProcessJsonRequest(System.Collections.Specialized.NameValueCollection form,
-                                          MerchantTribe.Commerce.RequestContext context, Catalog.Category containerCategory)
+                                          MerchantTribeApplication app, Catalog.Category containerCategory)
         {
             PartJsonResult result = new PartJsonResult();
-
-            Catalog.CatalogService CatalogServices = Catalog.CatalogService.InstantiateForDatabase(context);
 
             string action = form["partaction"];            
 
@@ -80,17 +78,17 @@ namespace MerchantTribe.Commerce.Content.Parts
                     this.RawHtml = form["changedtext"];
                     result.IsFinishedEditing = true;                    
                     result.Success = true;
-                    result.ResultHtml = this.RenderForEdit(context, containerCategory);
-                    CatalogServices.Categories.Update(containerCategory);
+                    result.ResultHtml = this.RenderForEdit(app.CurrentRequestContext, containerCategory);
+                    app.CatalogServices.Categories.Update(containerCategory);
                     break;
                 case "canceledit":
                     result.Success = true;
                     result.IsFinishedEditing = true;
-                    result.ResultHtml = this.RenderForEdit(context, containerCategory);
+                    result.ResultHtml = this.RenderForEdit(app.CurrentRequestContext, containerCategory);
                     break;
                 case "deletepart":
                     containerCategory.GetCurrentVersion().Root.RemovePart(this.Id);
-                    CatalogServices.Categories.Update(containerCategory);
+                    app.CatalogServices.Categories.Update(containerCategory);
                     break;
             }
 

@@ -703,6 +703,7 @@
       <LastGenOutput>Models.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\MerchantTribe.Commerce.Data.EF.EntityFrameworkDevConnectionString.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -64,6 +64,27 @@ namespace MerchantTribe.Commerce.Content.Parts
             }
             return false;
         }
+        public bool SortParts(List<string> sortedIds)
+        {
+            List<IContentPart> output = new List<IContentPart>();
+
+            foreach (string id in sortedIds)
+            {
+                var part = this.Parts.Where(y => y.Id == id).FirstOrDefault();
+                if (part != null)
+                {
+                    this.Parts.Remove(part);
+                    output.Add(part);
+                }                
+            }
+            foreach (var remainingPart in this.Parts)
+            {
+                output.Add(remainingPart);
+            }
+            this._Parts = output;
+
+            return true;
+        }
 
         public string Id { get; set; }
 
@@ -105,13 +126,11 @@ namespace MerchantTribe.Commerce.Content.Parts
 
 
         public PartJsonResult ProcessJsonRequest(System.Collections.Specialized.NameValueCollection form, 
-                                                RequestContext context, Catalog.Category containerCategory)
+                                                MerchantTribeApplication app, Catalog.Category containerCategory)
         {
 
             PartJsonResult result = new PartJsonResult();
-
-            Catalog.CatalogService CatalogServices = Catalog.CatalogService.InstantiateForDatabase(context);
-
+            
             string action = form["partaction"];
             switch(action.ToLowerInvariant())
             {
@@ -121,9 +140,20 @@ namespace MerchantTribe.Commerce.Content.Parts
                     if (part != null)
                     {
                         this.AddPart(part);
-                        CatalogServices.Categories.Update(containerCategory);
-                        result.ResultHtml = part.RenderForEdit(context, containerCategory);
+                        app.CatalogServices.Categories.Update(containerCategory);
+                        result.ResultHtml = part.RenderForEdit(app.CurrentRequestContext, containerCategory);
                     }
+                    break;
+                case "resort":
+                    string sortedIds = form["sortedIds[]"];
+                    string[] ids = sortedIds.Split(',');
+                    List<string> idList = new List<string>();
+                    foreach (string s in ids)
+                    {
+                        idList.Add(s.Trim().Replace("part",""));
+                    }
+                    result.Success = this.SortParts(idList);
+                    app.CatalogServices.Categories.Update(containerCategory);                    
                     break;
             }
             return result;

@@ -207,7 +207,7 @@ function BindEverything() {
     BindDraggable();
     BindDroppable();
     BindCancelFormButtons();
-    BindEditable();
+    BindEditable();    
     BindSortable();
     $('.edittools').hide();
     $('.coledittools').hide();
@@ -218,7 +218,53 @@ function BindSortable() {
         items: '.issortable',
         handle: '.sorthandle',
         revert: true,
-        connectWith: '.droppable'
+        connectWith: '.droppable',
+        scroll: true,
+        receive: function (event, ui) {
+            var currentId = $(this).attr('id');
+
+            // This prevents duplicate calls from source and destination
+            if (currentId === ui.item.parent().attr('id')) {
+                currentId = currentId.replace('part', '');
+
+                var fromId = ui.sender.attr('id').replace('part', '');
+                var itemId = ui.item.attr('id').replace('part', '');
+                var sortedIds = $(this).sortable('toArray');
+                
+                var url = $('#flexjsonurl').html();
+                url += "/0";
+                $.post(url,
+                { "partaction": "movepart",
+                    "fromId": fromId,
+                    "toId": currentId,
+                    "movedId": itemId,
+                    "sortedIds": sortedIds
+                },
+                function (data) {
+                    var newHtml = data.ResultHtml;
+                    $('#part' + itemId).replaceWith(newHtml);                    
+                },
+                "json"
+                );
+            }
+        },
+        update: function (event, ui) {
+            var currentId = $(this).attr('id').replace('part', '');
+            var sortedIds = $(this).sortable('toArray');
+            if (this === ui.item.parent()[0]) {                
+                var url = $('#flexjsonurl').html();
+                url += "/" + currentId;
+                $.post(url,
+                { "partaction": "resort",
+                    "sortedIds": sortedIds
+                },
+                function (data) {                    
+                    BindEverything();
+                },
+                "json"
+                );
+            }
+        }
     });  
 }
 
