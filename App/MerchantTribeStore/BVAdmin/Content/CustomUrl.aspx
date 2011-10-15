@@ -17,10 +17,10 @@
         </tr>
     </table>
     &nbsp;
+    <asp:Literal id="litPager1" runat="server" EnableViewState="false"></asp:Literal>            
     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="bvin"
         BorderColor="#CCCCCC" CellPadding="3" GridLines="None" Width="100%" 
-        AllowPaging="True" DataSourceID="ObjectDataSource1" 
-        onrowdeleting="GridView1_RowDeleting" onrowediting="GridView1_RowEditing">
+        AllowPaging="False" onrowdeleting="GridView1_RowDeleting" onrowediting="GridView1_RowEditing">
         <Columns>
             <asp:TemplateField HeaderText="Url">
                 <ItemTemplate>
@@ -42,13 +42,6 @@
         <AlternatingRowStyle CssClass="alternaterow" />
         <PagerSettings Position="TopAndBottom" />
     </asp:GridView>
-    <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" EnablePaging="True" OldValuesParameterFormatString="original_{0}"
-        SelectCountMethod="GetRowCount" SelectMethod="FindAll" 
-        TypeName="MerchantTribe.Commerce.Content.CustomUrl" 
-        onselected="ObjectDataSource1_Selected" 
-        onselecting="ObjectDataSource1_Selecting">
-        <SelectParameters>            
-            <asp:Parameter Direction="Output" Name="rowCount" Type="Int32" />
-        </SelectParameters>
-    </asp:ObjectDataSource>
+    <asp:Literal id="litPager2" runat="server" EnableViewState="false"></asp:Literal>
+
 </asp:Content>

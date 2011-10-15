@@ -82,6 +82,7 @@ namespace MerchantTribeStore
             
             CustomUrl c;
             c = MTApp.ContentServices.CustomUrls.Find(this.BvinField.Value);
+            if (c == null) c = new CustomUrl();
             if (c != null)
             {
                 c.RequestedUrl = this.RequestedUrlField.Text.Trim();

@@ -6,12 +6,17 @@ using MerchantTribe.Commerce.Content;
 using MerchantTribe.Commerce;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
+using System.Collections.Generic;
 
 namespace MerchantTribeStore
 {
 
     partial class BVAdmin_Content_CustomUrl : BaseAdminPage
     {
+
+        private int pageSize = 50;
+        private int rowCount = 0;
+        private int currentPage = 1;
 
         protected override void OnPreInit(EventArgs e)
         {
@@ -34,7 +39,23 @@ namespace MerchantTribeStore
 
         private void LoadUrls()
         {
+            if ((Request.QueryString["page"] != null))
+            {
+                int.TryParse(Request.QueryString["page"], out currentPage);
+                if ((currentPage < 1))
+                {
+                    currentPage = 1;
+                }
+            }
+
+            List<CustomUrl> urls = MTApp.ContentServices.CustomUrls.FindAllPaged(currentPage, pageSize,ref rowCount);
+            this.lblResults.Text = rowCount.ToString() + " Urls Found";
+            this.GridView1.DataSource = urls;
             this.GridView1.DataBind();
+
+            this.litPager1.Text = MerchantTribe.Web.Paging.RenderPagerWithLimits("CustomUrl.aspx?page={0}", currentPage, rowCount, pageSize, 20);            
+            this.litPager2.Text = this.litPager1.Text;
+
         }
 
         protected void GridView1_RowDeleting(object sender, System.Web.UI.WebControls.GridViewDeleteEventArgs e)
@@ -62,23 +83,6 @@ namespace MerchantTribeStore
             Response.Redirect("CustomUrl_Edit.aspx?id=" + bvin);
         }
 
-        protected void ObjectDataSource1_Selecting(object sender, System.Web.UI.WebControls.ObjectDataSourceSelectingEventArgs e)
-        {
-            if (e.ExecutingSelectCount)
-            {
-                e.InputParameters["rowCount"] = HttpContext.Current.Items["RowCount"];
-                this.lblResults.Text = (int)HttpContext.Current.Items["RowCount"] + " Urls found";
-                HttpContext.Current.Items["RowCount"] = null;
-            }
-        }
-
-        protected void ObjectDataSource1_Selected(object sender, System.Web.UI.WebControls.ObjectDataSourceStatusEventArgs e)
-        {
-            if (e.OutputParameters["RowCount"] != null)
-            {
-                HttpContext.Current.Items["RowCount"] = e.OutputParameters["RowCount"];
-            }
-        }
     }
 
 }
