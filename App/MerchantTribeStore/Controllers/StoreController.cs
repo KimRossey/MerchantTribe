@@ -27,6 +27,11 @@ namespace MerchantTribeStore.Controllers
 
         public ActionResult Closed()
         {
+            if (MTApp.CurrentStore.Settings.StoreClosed == false)
+            {
+                return Redirect(MTApp.CurrentStore.RootUrl());
+            }
+
             string message = MTApp.CurrentRequestContext.CurrentStore.Settings.StoreClosedDescription;
             if (string.IsNullOrEmpty(message))
             {
