@@ -297,30 +297,40 @@ h4 {font-weight:bold;font-size:14px;line-height:1.286em;margin:0 9px;
 
 .productgrid .decoratedblock {margin:0;padding:0;}
 
+/* Simple & Bulk Order Lists */
+/*.categorysimplelisttemplate, .categorybulkorderlisttemplate {margin:20px 0 0 0;}*/
+.categorysimplelisttemplate {padding:0 0 10px 0;}
+.categorysimplelisttemplate .record {display:block;margin:0 0 0.5em 0;width:700px;}
+.categorysimplelisttemplate .recordsku, 
+.categorybulkorderlisttemplate .recordsku,
+.categorybulkquantitylisttemplate .recordsku {float:left;text-align:left;width:20%;}
+.categorysimplelisttemplate .recordname, 
+.categorybulkorderlisttemplate .recordname,
+.categorybulkquantitylisttemplate .recordname {text-align:left;float:left;width:45%;margin:0 10px 0 0;}
+.categorysimplelisttemplate .recordprice, 
+.categorybulkorderlisttemplate .recordprice,
+.categorybulkquantitylisttemplate .recordprice {text-align:right;float:right;width:30%;margin:0;}
 
-/* Sub Category Menu */
-#categorygridsubtemplate .recordname {font-size:16px;text-align:center;}
-#subcategorymenu {margin:20px 0;}
-#subcategorymenu .record {width:220px;margin:0 auto;text-align:left;}
-#subcategorymenu .recordname {font-weight:bold;font-size:110%;text-align:center;}
-#subcategorymenu .recordname a {font-size:inherit;text-decoration: none;}
-#subcategorymenu ul {padding:5px;margin:5px 10px;border-top:2px solid #ddd;border-bottom:2px solid #ddd;}
-#subcategorymenu li {padding: 2px;list-style:none;}
-#subcategorymenu li a {text-decoration:none;font-size:90%;}
-#subcategorymenu li a:hover {text-decoration:underline;}
+.categorybulkorderlisttemplate .record { width:600px; padding: 0 0 10px 10px; margin: 0 0 8px 0; border-bottom: 1px solid #eee; float: left; }
+.categorybulkorderlisttemplate table td { vertical-align: top; }
+.categorybulkorderlisttemplate .checkbox {width:50px;text-align:center;}
 
-/* Sub Category Menu 2 */
-#subcategorymenu2featured {width: 440px; float: left;}
-#subcategorymenu2featured .featuredImage {display: block;text-align: center; }
-#subcategorymenu2main {width: 440px; float: right;}
-#subcategorymenu2 {margin:20px 0;}
-#subcategorymenu2 .record {width:200px;margin:0 auto;}
-#subcategorymenu2 .recordname {font-weight:bold;font-size:110%;text-align:center;}
-#subcategorymenu2 .recordname a {font-size:inherit;text-decoration: none;}
-#subcategorymenu2 ul {padding:5px;margin:5px 10px;border-top:2px solid #ddd;border-bottom:2px solid #ddd;}
-#subcategorymenu2 li {padding: 2px;list-style:none;}
-#subcategorymenu2 li a {text-decoration:none;font-size:90%;}
-#subcategorymenu2 li a:hover {text-decoration:underline;}
+.categorybulkquantitylisttemplate .record { width:600px; padding: 0 0 10px 0; margin: 0 0 8px 0px; border-bottom: 1px solid #eee; float: left; }
+.categorybulkquantitylisttemplate table td { vertical-align: top; }
+.categorybulkquantitylisttemplate .quantityfield {width:50px;text-align:center;}
+
+
+/* Details List */
+/* Detailed List */
+.categorydetailedlisttemplate {}
+.categorydetailedlisttemplate .record {margin:0 0 10px 0px;padding-bottom:10px;width:700px;float:left;border-bottom: 1px solid #ddd;
+                                       text-align:left;}
+.categorydetailedlisttemplate .recordimage {float:left;margin:0 20px 0 0;text-align: center;}
+.categorydetailedlisttemplate .recordname {text-align:left;}
+.categorydetailedlisttemplate .recordsku {text-align:left;}
+.categorydetailedlisttemplate .recordprice {text-align:left;}
+.categorydetailedlisttemplate .recordshortdescription {text-align:left;}
+
 
 /* ------ Product Pages ------ */
 #wait { position: absolute; top: 0; right: 0; font-weight: bold; font-size: 80%; padding: 0 10px; background: #c00; color: #fff; }

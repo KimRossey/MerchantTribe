@@ -10,8 +10,7 @@
     <asp:Literal ID="litInstalled" runat="server" EnableViewState="false"></asp:Literal>
 </div>
 <div class="sidebyside2">
-    <h1>Available Themes</h1>
-    <div class="flash-message-info">Need help customizing a theme?<br />Need a custom theme? Call us at 1-804-476-0030.</div>
+    <h1>Available Themes</h1>    
     <div class="controlarea1">
     <asp:Literal ID="litAvailable" runat="server" EnableViewState="false"></asp:Literal>
     </div>

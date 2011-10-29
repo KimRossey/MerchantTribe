@@ -30,6 +30,9 @@ namespace MerchantTribeStore.Controllers
                                                                  "",
                                                                  Request.IsSecureConnection);
 
+            ViewBag.AddToCartButton = this.MTApp.ThemeManager().ButtonUrl("AddToCart", Request.IsSecureConnection);
+            ViewBag.DetailsButton = this.MTApp.ThemeManager().ButtonUrl("View", Request.IsSecureConnection);
+
             int pageNumber = GetPageNumber();
             int pageSize = 9;
             int totalItems = 0;
@@ -71,16 +74,8 @@ namespace MerchantTribeStore.Controllers
             // Record Category View
             MerchantTribe.Commerce.SessionManager.CategoryLastId = cat.Bvin;
 
-            string viewName = "Grid";
-            switch (cat.TemplateName.Trim().ToLowerInvariant())
-            {
-                case "simplelist":
-                    viewName = "SimpleList";
-                    break;
-                default:
-                    viewName = "Grid";
-                    break;
-            }
+            if (cat.TemplateName == "BV Grid") cat.TemplateName = "Grid"; // Safety Check from older versions
+            string viewName = cat.TemplateName.Trim();
             return View(viewName, model);
         }
         private int GetPageNumber()
@@ -97,6 +92,8 @@ namespace MerchantTribeStore.Controllers
         {
             List<SingleCategoryViewModel> result = new List<SingleCategoryViewModel>();
 
+            int columnCount = 1;
+
             foreach (CategorySnapshot snap in snaps)
             {
                 SingleCategoryViewModel model = new SingleCategoryViewModel();
@@ -110,6 +107,28 @@ namespace MerchantTribeStore.Controllers
                                                                 Request.IsSecureConnection);
                 model.AltText = snap.Name;
                 model.Name = snap.Name;
+
+
+                bool isLastInRow = false;
+                bool isFirstInRow = false;
+                if ((columnCount == 1))
+                {
+                    isFirstInRow = true;
+                }
+
+                if ((columnCount == 3))
+                {
+                    isLastInRow = true;
+                    columnCount = 1;
+                }
+                else
+                {
+                    columnCount += 1;
+                }
+
+                model.IsFirstItem = isFirstInRow;
+                model.IsLastItem = isLastInRow;
+
                 result.Add(model);
             }
 

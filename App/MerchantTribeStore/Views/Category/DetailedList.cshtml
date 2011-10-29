@@ -21,16 +21,16 @@
             @Html.Raw(ViewBag.DisplayHtml)
         </div>
     }
-    <div id="categorygridtemplate">            
-        <div id="categorygridtemplaterecords">
-            @Html.Partial("~/Views/Shared/_Pager.cshtml", Model.PagerData)
+    <div class="categorydetailedlisttemplate">            
+        @Html.Partial("~/Views/Shared/_Pager.cshtml", Model.PagerData)
+        <div class="categorydetailedlisttemplaterecords">            
             @foreach (var item in Model.Products)
             {
-                @Html.Partial("~/Views/Products/RenderSingleProduct.cshtml", item)
-            }
-            @Html.Partial("~/Views/Shared/_Pager.cshtml", Model.PagerData)
-            <div class="clear"></div>
+                @Html.Partial("~/Views/Products/RenderSingleProductDetailed.cshtml", item)
+            } 
+            <div class="clear"></div>           
         </div>
+        @Html.Partial("~/Views/Shared/_Pager.cshtml", Model.PagerData)
     </div>
     @Html.Action("Index", "ContentColumn", new { id = Model.LocalCategory.PostContentColumnId })        
 </div>

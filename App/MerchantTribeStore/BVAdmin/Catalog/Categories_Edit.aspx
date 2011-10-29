@@ -43,8 +43,7 @@
             Display Template</h2>        
         <asp:DropDownList ID="TemplateList" runat="server" AutoPostBack="True" TabIndex="2011">
             <asp:ListItem Value="Grid">Grid</asp:ListItem>
-            <asp:ListItem Value="SimpleList">Simple List</asp:ListItem>
-            <!--<asp:ListItem Value="BulkOrderList">Bulk Order List</asp:ListItem>-->
+            <asp:ListItem Value="SimpleList">Simple List</asp:ListItem>            
         </asp:DropDownList><br />
         &nbsp;        
         <h2>Select Products</h2>

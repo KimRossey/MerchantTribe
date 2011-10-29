@@ -20,25 +20,35 @@ namespace MerchantTribe.Commerce.Content
 
 #region " Category Templates "
 
-		public static StringCollection FindCategoryTemplates()
+		public static List<string> FindCategoryTemplates()
 		{
-			StringCollection result = new StringCollection();
-			result = ListFolders("BVModules\\CategoryTemplates", "Category.aspx");
+            List<string> result = new List<string>();
+
+            List<string> raw = ListFiles("Views\\Category");
+            foreach (string s in raw)
+            {
+                string temp = Path.GetFileNameWithoutExtension(s);
+                if (temp.ToLowerInvariant() != "drilldown")
+                {                    
+                    result.Add(temp);
+                }
+            }
+			
 			return result;
 		}
 
-		public static StringCollection FindCategoryTemplateEditors()
-		{
-			StringCollection result = new StringCollection();
-			result = ListFolders("BVModules\\CategoryTemplates", "Edit.ascx");
-			return result;
-		}
+        //public static StringCollection FindCategoryTemplateEditors()
+        //{
+        //    StringCollection result = new StringCollection();
+        //    result = ListFolders("BVModules\\CategoryTemplates", "Edit.ascx");
+        //    return result;
+        //}
 
-		public static CategoryEditorTemplate LoadCategoryEditor(string templateName, System.Web.UI.Page p)
-		{
-			string fullName = "BVModules\\CategoryTemplates\\" + templateName + "\\Edit.ascx";
-			return (CategoryEditorTemplate)LoadSingleControl(fullName,ref p);
-		}
+        //public static CategoryEditorTemplate LoadCategoryEditor(string templateName, System.Web.UI.Page p)
+        //{
+        //    string fullName = "BVModules\\CategoryTemplates\\" + templateName + "\\Edit.ascx";
+        //    return (CategoryEditorTemplate)LoadSingleControl(fullName,ref p);
+        //}
 
 #endregion
 
@@ -277,6 +287,26 @@ namespace MerchantTribe.Commerce.Content
 
 			return result;
 		}
+
+        private static List<string> ListFiles(string startingFolder)
+        {
+            List<string> result = new List<string>();
+
+            if (HttpContext.Current != null)
+            {
+                string rootAppPath = HttpContext.Current.Request.PhysicalApplicationPath;
+                rootAppPath = Path.Combine(rootAppPath, startingFolder);
+                if (Directory.Exists(rootAppPath))
+                {
+                    foreach (string s in Directory.EnumerateFiles(rootAppPath))
+                    {
+                        result.Add(s);
+                    }
+                }
+            }
+
+            return result;
+        }
 
 		private static System.Web.UI.Control LoadSingleControl(string blockName, ref System.Web.UI.Page p)
 		{

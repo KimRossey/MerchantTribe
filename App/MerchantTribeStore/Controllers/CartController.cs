@@ -105,6 +105,58 @@ namespace MerchantTribeStore.Controllers
             return View(model);
         }
 
+        // POST: /Cart/BulkAdd
+        [HttpPost]
+        public ActionResult BulkAdd(FormCollection form)
+        {
+            if (form["bulkitem"] != null)
+            {
+                string allIds = form["bulkitem"];
+                string[] ids = allIds.Split(',');
+                foreach (string single in ids)
+                {
+                    Product p = MTApp.CatalogServices.Products.Find(single);
+                    if (p != null)
+                    {
+                        AddSingleProduct(p, 1);
+                    }
+                }
+            }                
+            foreach (string key in form.AllKeys)
+            {                
+                if (key.StartsWith("bulkqty"))
+                {
+                    string id = key.Substring(7, key.Length-7);
+                    string qtyString = form[key];
+                    int qty = 1;
+                    int.TryParse(qtyString, out qty);
+                    if (qty >= 1)
+                    {
+                        Product p = MTApp.CatalogServices.Products.Find(id);
+                        if (p != null)
+                        {
+                            AddSingleProduct(p, qty);
+                        }
+                    }
+                }
+            }
+            return Redirect("~/cart");
+        }
+
+        private void AddSingleProduct(Product p, int quantity)
+        {
+            int qty = quantity;
+            if (qty < 1) qty = 1;            
+            if (p != null)
+            {             
+                Order o = SessionManager.CurrentShoppingCart(MTApp.OrderServices);
+                LineItem li = MTApp.CatalogServices.ConvertProductToLineItem(p, new OptionSelectionList(), qty, MTApp);
+                li.Quantity = qty;
+                MTApp.AddToOrderWithCalculateAndSave(o, li);
+                SessionManager.SaveOrderCookies(o);
+            }
+        }
+
         private void CheckForQuickAdd()
         {
             if (this.Request.QueryString["quickaddid"] != null)
@@ -122,10 +174,7 @@ namespace MerchantTribeStore.Controllers
                             quantity = val;
                         }
                     }
-                    Order o = SessionManager.CurrentShoppingCart(MTApp.OrderServices);
-                    LineItem li = MTApp.CatalogServices.ConvertProductToLineItem(prod, new OptionSelectionList(), quantity, MTApp);
-                    MTApp.AddToOrderWithCalculateAndSave(o, li);
-                    SessionManager.SaveOrderCookies(o);
+                    AddSingleProduct(prod, quantity);                    
                 }
             }
             else if (this.Request.QueryString["quickaddsku"] != null)
@@ -143,11 +192,7 @@ namespace MerchantTribeStore.Controllers
                             quantity = val;
                         }
                     }
-                    Order o = SessionManager.CurrentShoppingCart(MTApp.OrderServices);
-                    LineItem li = MTApp.CatalogServices.ConvertProductToLineItem(prod, new OptionSelectionList(), quantity, MTApp);
-                    li.Quantity = quantity;
-                    MTApp.AddToOrderWithCalculateAndSave(o, li);
-                    SessionManager.SaveOrderCookies(o);
+                    AddSingleProduct(prod, quantity);                    
                 }
             }
             else if (this.Request.QueryString["multi"] != null)
@@ -175,9 +220,7 @@ namespace MerchantTribeStore.Controllers
                             {
                                 qty = 1;
                             }
-                            LineItem li = MTApp.CatalogServices.ConvertProductToLineItem(p, new OptionSelectionList(), qty, MTApp);
-                            li.Quantity = qty;
-                            Basket.Items.Add(li);
+                            AddSingleProduct(p, qty);                            
                             addedParts = true;
                         }
                     }

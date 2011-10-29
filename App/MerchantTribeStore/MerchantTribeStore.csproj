@@ -292,8 +292,6 @@
     <Content Include="BVAdmin\Configuration\ThemesNav.ascx" />
     <Content Include="BVAdmin\Configuration\ThemesSelect.aspx" />
     <Content Include="BVAdmin\Configuration\Users.aspx" />
-    <Content Include="BVAdmin\Content\CategoryTemplates.aspx" />
-    <Content Include="BVAdmin\Content\CategoryTemplatesEdit.aspx" />
     <Content Include="BVAdmin\Content\Columns.aspx" />
     <Content Include="BVAdmin\Content\Columns_Edit.aspx" />
     <Content Include="BVAdmin\Content\Columns_EditBlock.aspx" />
@@ -2105,6 +2103,7 @@
     <Compile Include="Areas\ContentBlocks\Controllers\TopWeeklySellersController.cs" />
     <Compile Include="Areas\ContentBlocks\Models\BannerAdViewModel.cs" />
     <Compile Include="Areas\ContentBlocks\Models\CategoryMenuViewModel.cs" />
+    <Compile Include="Areas\ContentBlocks\Models\FeaturedProductsViewModel.cs" />
     <Compile Include="Areas\ContentBlocks\Models\RssFeedViewModel.cs" />
     <Compile Include="Areas\ContentBlocks\Models\SideMenuItem.cs" />
     <Compile Include="Areas\ContentBlocks\Models\SideMenuViewModel.cs" />
@@ -2983,20 +2982,6 @@
     </Compile>
     <Compile Include="BVAdmin\Configuration\Users.aspx.designer.cs">
       <DependentUpon>Users.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="BVAdmin\Content\CategoryTemplates.aspx.cs">
-      <DependentUpon>CategoryTemplates.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="BVAdmin\Content\CategoryTemplates.aspx.designer.cs">
-      <DependentUpon>CategoryTemplates.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="BVAdmin\Content\CategoryTemplatesEdit.aspx.cs">
-      <DependentUpon>CategoryTemplatesEdit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="BVAdmin\Content\CategoryTemplatesEdit.aspx.designer.cs">
-      <DependentUpon>CategoryTemplatesEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="BVAdmin\Content\Columns.aspx.cs">
       <DependentUpon>Columns.aspx</DependentUpon>
@@ -4326,6 +4311,11 @@
     <Content Include="Views\Checkout\_CreditCardInput.cshtml" />
     <Content Include="Views\Checkout\PaymentError.cshtml" />
     <Content Include="Views\PayPalExpressCheckout\Index.cshtml" />
+    <Content Include="Views\Category\GridWithSubs.cshtml" />
+    <Content Include="Views\Category\DetailedList.cshtml" />
+    <Content Include="Views\Products\RenderSingleProductDetailed.cshtml" />
+    <Content Include="Views\Category\BulkOrderList.cshtml" />
+    <Content Include="Views\Category\BulkQuantityList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

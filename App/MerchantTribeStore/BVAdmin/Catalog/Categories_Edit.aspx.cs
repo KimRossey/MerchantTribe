@@ -24,7 +24,7 @@ namespace MerchantTribeStore
 
             if (!Page.IsPostBack)
             {
-                //PopulateTemplates()
+                PopulateTemplates();
                 PopulateColumns();
 
                 this.NameField.Focus();
@@ -93,10 +93,14 @@ namespace MerchantTribeStore
             ValidateCurrentUserHasPermission(SystemPermissions.CatalogView);
         }
 
-        //Private Sub PopulateTemplates()
-        //Me.TemplateList.DataSource = Content.ModuleController.FindCategoryTemplates
-        //Me.TemplateList.DataBind()
-        //End Sub
+        private void PopulateTemplates()
+        {
+            this.TemplateList.Items.Clear();
+            foreach(string s in MerchantTribe.Commerce.Content.ModuleController.FindCategoryTemplates())
+            {
+                this.TemplateList.Items.Add(new ListItem(s, s));
+            }            
+        }
 
         private void PopulateColumns()
         {
@@ -131,6 +135,7 @@ namespace MerchantTribeStore
                     this.chkHidden.Checked = c.Hidden;
                     //Me.chkShowInTopMenu.Checked = c.ShowInTopMenu
 
+                    if (c.TemplateName == "BV Grid") c.TemplateName = "Grid";
                     if (TemplateList.Items.FindByValue(c.TemplateName) != null)
                     {
                         TemplateList.ClearSelection();

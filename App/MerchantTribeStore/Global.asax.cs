@@ -117,6 +117,7 @@ namespace MerchantTribeStore
             routes.MapRoute("cart-addcoupon", "cart/addcoupon", new { controller = "Cart", action = "AddCoupon" });
             routes.MapRoute("cart-removecoupont", "cart/removecoupon", new { controller = "Cart", action = "RemoveCoupon" });
             routes.MapRoute("cart-removeitem", "cart/removelineitem", new { controller = "Cart", action = "RemoveLineItem" });
+            routes.MapRoute("cart-bulkadd", "cart/bulkadd", new { controller = "Cart", action = "BulkAdd" });
 
             // checkouts
             routes.MapRoute("checkout-route", "checkout/{action}/{*slug}",
