@@ -625,7 +625,7 @@ namespace MerchantTribe.Commerce.Orders
                 dto.DiscountDetails.Add(detail.ToDto());
             }
             dto.OrderBvin = this.OrderBvin ?? string.Empty;
-            dto.ProductId = this.OrderBvin ?? string.Empty;
+            dto.ProductId = this.ProductId ?? string.Empty;
             dto.VariantId = this.VariantId ?? string.Empty;
             dto.ProductName = this.ProductName ?? string.Empty;
             dto.ProductSku = this.ProductSku ?? string.Empty;
@@ -678,7 +678,7 @@ namespace MerchantTribe.Commerce.Orders
                 }
             }
             this.OrderBvin = dto.OrderBvin ?? string.Empty;
-            this.ProductId = dto.OrderBvin ?? string.Empty;
+            this.ProductId = dto.ProductId ?? string.Empty;
             this.VariantId = dto.VariantId ?? string.Empty;
             this.ProductName = dto.ProductName ?? string.Empty;
             this.ProductSku = dto.ProductSku ?? string.Empty;

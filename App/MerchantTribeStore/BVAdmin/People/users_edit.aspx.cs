@@ -42,7 +42,7 @@ namespace MerchantTribeStore
                         LoadUser();
                         LoadOrders();
                         LoadSearchResults();
-                        //LoadWishList();
+                        LoadWishList();
                     }
                     else
                     {
@@ -148,23 +148,20 @@ namespace MerchantTribeStore
 
         }
 
-        //private void LoadWishList()
-        //{
-        //    Collection<WishList> w = new Collection<WishList>();
-        //    Collection<Product> p = new Collection<Product>();
+        private void LoadWishList()
+        {
+            List<WishListItem> w = MTApp.CatalogServices.WishListItems.FindByCustomerIdPaged(Request.QueryString["id"], 1, 100);
+            List<Product> p = new List<Product>();
 
-        //    w = WishList.FindByUserBvin(Request.QueryString["id"]);
+            foreach (WishListItem item in w)
+            {
+                Product n = MTApp.CatalogServices.Products.Find(item.ProductId);
+                p.Add(n);
+            }
 
-        //    foreach (WishList item in w)
-        //    {
-        //        Product n = MTApp.CatalogServices.Products.Find(item.ProductBvin);
-        //        p.Add(n);
-        //    }
-
-        //    this.DataList1.DataSource = p;
-        //    this.DataList1.DataBind();
-
-        //}
+            this.DataList1.DataSource = p;
+            this.DataList1.DataBind();
+        }
 
         protected void dgOrders_EditCommand(object source, System.Web.UI.WebControls.DataGridCommandEventArgs e)
         {

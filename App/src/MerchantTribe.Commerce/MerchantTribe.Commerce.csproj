@@ -278,6 +278,8 @@
     <Compile Include="BusinessRules\OrderTask.cs" />
     <Compile Include="BusinessRules\OrderTaskContext.cs" />
     <Compile Include="Catalog\VariantRepository.cs" />
+    <Compile Include="Catalog\WishListItem.cs" />
+    <Compile Include="Catalog\WishListItemRepository.cs" />
     <Compile Include="Contacts\AddressList.cs" />
     <Compile Include="Contacts\AddressRepository.cs" />
     <Compile Include="Contacts\AddressTypes.cs" />

@@ -48,39 +48,51 @@ namespace MerchantTribeStore.Controllers
                 if (model.LineItemId == string.Empty) model.LineItemId = lineItemString;
             }
 
-            ParseSelections(model);            
-            bool IsPurchasable = ValidateSelections(model);
-            if ((IsPurchasable))
+            ParseSelections(model);
+
+            if (Request.Form["savelaterbutton.x"] != null)
             {
-
-                DetermineQuantityToAdd(model);
-                if (model.Quantity > 0)
+                // Save for Later
+                MTApp.CatalogServices.SaveProductToWishList(model.LocalProduct, model.Selections,1,  MTApp);
+                return Redirect("~/account/saveditems");
+            }
+            else
+            {
+                // Add to Cart
+                bool IsPurchasable = ValidateSelections(model);
+                if ((IsPurchasable))
                 {
-                    LineItem li = MTApp.CatalogServices.ConvertProductToLineItem(model.LocalProduct,
-                                                                                    model.Selections,
-                                                                                    model.Quantity,
-                                                                                    MTApp);
 
-                    Order Basket = SessionManager.CurrentShoppingCart(MTApp.OrderServices);
-                    if (Basket.UserID != SessionManager.GetCurrentUserId())
+                    DetermineQuantityToAdd(model);
+                    if (model.Quantity > 0)
                     {
-                        Basket.UserID = SessionManager.GetCurrentUserId();
-                    }
+                        LineItem li = MTApp.CatalogServices.ConvertProductToLineItem(model.LocalProduct,
+                                                                                        model.Selections,
+                                                                                        model.Quantity,
+                                                                                        MTApp);
 
-                    if (model.LineItemId.Trim().Length > 0)
-                    {                        
-                        long lineItemId = 0;
-                        long.TryParse(model.LineItemId, out lineItemId);
-                        var toRemove = Basket.Items.Where(y => y.Id == lineItemId).SingleOrDefault();
-                        if (toRemove != null) Basket.Items.Remove(toRemove);
-                    }
+                        Order Basket = SessionManager.CurrentShoppingCart(MTApp.OrderServices);
+                        if (Basket.UserID != SessionManager.GetCurrentUserId())
+                        {
+                            Basket.UserID = SessionManager.GetCurrentUserId();
+                        }
 
-                    MTApp.AddToOrderWithCalculateAndSave(Basket, li);
-                    SessionManager.SaveOrderCookies(Basket);
-                    
-                    return Redirect("~/cart");
+                        if (model.LineItemId.Trim().Length > 0)
+                        {
+                            long lineItemId = 0;
+                            long.TryParse(model.LineItemId, out lineItemId);
+                            var toRemove = Basket.Items.Where(y => y.Id == lineItemId).SingleOrDefault();
+                            if (toRemove != null) Basket.Items.Remove(toRemove);
+                        }
+
+                        MTApp.AddToOrderWithCalculateAndSave(Basket, li);
+                        SessionManager.SaveOrderCookies(Basket);
+
+                        return Redirect("~/cart");
+                    }
                 }
             }
+            
 
             // Load Selections from form here
             // Do checks and add
@@ -142,6 +154,10 @@ namespace MerchantTribeStore.Controllers
                 model.LineItemId = Request.QueryString["LineItemId"];
             }
 
+            if (SessionManager.IsUserAuthenticated(MTApp))
+            {
+                model.IsAvailableForWishList = true;
+            }
             return model;
         }
         private Product ParseProductFromSlug(string slug)

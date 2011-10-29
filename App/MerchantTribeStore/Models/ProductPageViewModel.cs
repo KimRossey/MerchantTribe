@@ -32,6 +32,7 @@ namespace MerchantTribeStore.Models
         public string LineItemId { get; set; }
         [DisplayFormat(ConvertEmptyStringToNull = false)]
         public string OrderId { get; set; }
+        public bool IsAvailableForWishList { get; set; }
 
         public ProductPageViewModel()
         {
@@ -50,6 +51,7 @@ namespace MerchantTribeStore.Models
             this.ValidationMessage = string.Empty;
             this.LineItemId = string.Empty;
             this.OrderId = string.Empty;
+            this.IsAvailableForWishList = false;
         }
     }
 }

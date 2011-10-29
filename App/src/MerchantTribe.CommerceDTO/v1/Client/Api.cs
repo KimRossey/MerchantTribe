@@ -934,6 +934,32 @@ namespace MerchantTribe.CommerceDTO.v1.Client
             result = RestHelper.PostRequest<ApiResponse<string>>(this.fullApiUri + "utilities/slugify?key=" + Enc(key), input);
             return result;
         }
+
+        // Wish List Items
+        public ApiResponse<WishListItemDTO> WishListItemsFind(long id)
+        {
+            ApiResponse<WishListItemDTO> result = new ApiResponse<WishListItemDTO>();
+            result = RestHelper.GetRequest<ApiResponse<WishListItemDTO>>(this.fullApiUri + "wishlistitems/" + id + "?key=" + Enc(key));
+            return result;
+        }
+        public ApiResponse<WishListItemDTO> WishListItemsCreate(WishListItemDTO item)
+        {
+            ApiResponse<WishListItemDTO> result = new ApiResponse<WishListItemDTO>();
+            result = RestHelper.PostRequest<ApiResponse<WishListItemDTO>>(this.fullApiUri + "wishlistitems/?key=" + Enc(key), MerchantTribe.Web.Json.ObjectToJson(item));
+            return result;
+        }
+        public ApiResponse<WishListItemDTO> WishListItemsUpdate(WishListItemDTO item)
+        {
+            ApiResponse<WishListItemDTO> result = new ApiResponse<WishListItemDTO>();
+            result = RestHelper.PostRequest<ApiResponse<WishListItemDTO>>(this.fullApiUri + "wishlistitems/" + item.Id + "?key=" + Enc(key), MerchantTribe.Web.Json.ObjectToJson(item));
+            return result;
+        }
+        public ApiResponse<bool> WishListItemsDelete(long id)
+        {
+            ApiResponse<bool> result = new ApiResponse<bool>();
+            result = RestHelper.DeleteRequest<ApiResponse<bool>>(this.fullApiUri + "wishlistitems/" + id + "?key=" + Enc(key), string.Empty);
+            return result;
+        }
        
     }
 

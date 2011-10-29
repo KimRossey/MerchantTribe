@@ -91,6 +91,7 @@
     <Compile Include="v1\Catalog\ProductVolumeDiscountTypeDTO.cs" />
     <Compile Include="v1\Catalog\SelectionDTO.cs" />
     <Compile Include="v1\Catalog\VariantDTO.cs" />
+    <Compile Include="v1\Catalog\WishListItemDTO.cs" />
     <Compile Include="v1\Client\Api.cs" />
     <Compile Include="v1\Client\RestHelper.cs" />
     <Compile Include="v1\Contacts\AddressDTO.cs" />

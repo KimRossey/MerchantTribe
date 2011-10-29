@@ -22,6 +22,8 @@ namespace MerchantTribeStore.Areas.account
             context.MapRoute("forgotpassword-route", "account/forgotpassword/{email}/{returnmode}",
                 new { controller = "Authentication", action = "ForgotPassword", email = "", returnmode = "" });            
 
+            context.MapRoute("saveditems-route", "account/saveditems/{action}",
+                              new { controller = "WishList", action="Index"});
             context.MapRoute(
                 "account_default",
                 "account/{controller}/{action}/{id}",

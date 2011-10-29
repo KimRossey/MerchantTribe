@@ -40,6 +40,11 @@
                     @if (Model.IsAvailableForSale)
                     {
                         <input id="addtocartbutton" type="image" src="@ViewBag.AddToCartButtonUrl" alt="Add To Cart" />                            
+                        if (Model.IsAvailableForWishList)
+                        {
+                           <text><br />&nbsp;<br /></text>
+                           <input id="savelaterbutton" name="savelaterbutton" type="image" src="@ViewBag.SaveLaterButtonUrl" alt="Save For Later" value="SaveLater" />
+                        }
                     }
                 </div>
 

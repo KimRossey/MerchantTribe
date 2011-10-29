@@ -26,6 +26,7 @@ namespace MerchantTribe.Commerce.Catalog
         public ProductTypeRepository ProductTypes { get; private set; }
         public ProductTypePropertyAssociationRepository ProductTypesXProperties { get; private set; }
         public ProductPropertyRepository ProductProperties { get; private set; }
+        public WishListItemRepository WishListItems { get; private set; }
 
         public static CatalogService InstantiateForMemory(RequestContext c)
         {
@@ -45,7 +46,8 @@ namespace MerchantTribe.Commerce.Catalog
                                      ProductInventoryRepository.InstantiateForMemory(c),
                                      ProductTypeRepository.InstantiateForMemory(c),
                                      ProductTypePropertyAssociationRepository.InstantiateForMemory(c),
-                                     ProductPropertyRepository.InstantiateForMemory(c));
+                                     ProductPropertyRepository.InstantiateForMemory(c),
+                                     WishListItemRepository.InstantiateForMemory(c));
         }
         public static CatalogService InstantiateForDatabase(RequestContext c)
         {
@@ -65,7 +67,8 @@ namespace MerchantTribe.Commerce.Catalog
                                      ProductInventoryRepository.InstantiateForDatabase(c),
                                      ProductTypeRepository.InstantiateForDatabase(c),
                                      ProductTypePropertyAssociationRepository.InstantiateForDatabase(c),
-                                     ProductPropertyRepository.InstantiateForDatabase(c));
+                                     ProductPropertyRepository.InstantiateForDatabase(c),
+                                     WishListItemRepository.InstantiateForDatabase(c));
         }
         public CatalogService(RequestContext c,
                               CategoryRepository categories,
@@ -83,7 +86,8 @@ namespace MerchantTribe.Commerce.Catalog
                               ProductInventoryRepository inventory,
                               ProductTypeRepository types,
                               ProductTypePropertyAssociationRepository typesXProperties,
-                              ProductPropertyRepository properties)
+                              ProductPropertyRepository properties,
+                              WishListItemRepository wishItems)
         {
             context = c;
             Categories = categories;
@@ -102,6 +106,7 @@ namespace MerchantTribe.Commerce.Catalog
             this.ProductTypes = types;
             this.ProductTypesXProperties = typesXProperties;
             this.ProductProperties = properties;
+            this.WishListItems = wishItems;
         }
 
         //public bool DoesCategoryNameExist(string categoryName, string parentId)
@@ -132,10 +137,7 @@ namespace MerchantTribe.Commerce.Catalog
         //    return result;
         //}
 
-      
-
-        
-
+              
         public List<CategorySnapshot> FindCategoriesForProduct(string productBvin)
         {
             List<CategoryProductAssociation> crosses = CategoriesXProducts.FindForProduct(productBvin, 1, int.MaxValue);
@@ -197,7 +199,23 @@ namespace MerchantTribe.Commerce.Catalog
 
             return li;
         }
-
+        
+        public bool SaveProductToWishList(Orders.IPurchasable p, OptionSelectionList selections, int quantity, MerchantTribeApplication app)
+        {
+            WishListItem wi = new WishListItem();            
+            if (p != null)
+            {
+                Orders.PurchasableSnapshot snapshot = p.AsPurchasable(selections, app, true);
+                if (snapshot != null)
+                {                    
+                    wi.ProductId = snapshot.ProductId;
+                    wi.Quantity = quantity;
+                    wi.SelectionData = snapshot.SelectionData;
+                    wi.CustomerId = SessionManager.GetCurrentUserId(); 
+                }
+            }
+            return WishListItems.Create(wi);
+        }
         
 
         //Variants

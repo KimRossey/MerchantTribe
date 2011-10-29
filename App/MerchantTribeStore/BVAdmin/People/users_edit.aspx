@@ -94,7 +94,7 @@
             </tr>
         </table>
         <h2>
-            Favorite Items</h2>
+            Saved Items</h2>
         <table border="0" cellpadding="5">
             <tr>
                 <td class="FormLabel">

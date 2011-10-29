@@ -1345,6 +1345,22 @@ namespace MerchantTribe.Commerce.Data.EF
             }
         }
         private ObjectSet<bvc_ProductPropertyValue> _bvc_ProductPropertyValue;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<WishListItem> WishListItems
+        {
+            get
+            {
+                if ((_WishListItems == null))
+                {
+                    _WishListItems = base.CreateObjectSet<WishListItem>("WishListItems");
+                }
+                return _WishListItems;
+            }
+        }
+        private ObjectSet<WishListItem> _WishListItems;
 
         #endregion
         #region AddTo Methods
@@ -1971,6 +1987,14 @@ namespace MerchantTribe.Commerce.Data.EF
         public void AddTobvc_ProductPropertyValue(bvc_ProductPropertyValue bvc_ProductPropertyValue)
         {
             base.AddObject("bvc_ProductPropertyValue", bvc_ProductPropertyValue);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the WishListItems EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToWishListItems(WishListItem wishListItem)
+        {
+            base.AddObject("WishListItems", wishListItem);
         }
 
         #endregion
@@ -24671,6 +24695,217 @@ namespace MerchantTribe.Commerce.Data.EF
         private global::System.String _Details;
         partial void OnDetailsChanging(global::System.String value);
         partial void OnDetailsChanged();
+
+        #endregion
+    
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="EfModels", Name="WishListItem")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class WishListItem : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new WishListItem object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="storeId">Initial value of the StoreId property.</param>
+        /// <param name="customerId">Initial value of the CustomerId property.</param>
+        /// <param name="lastUpdated">Initial value of the LastUpdated property.</param>
+        /// <param name="productId">Initial value of the ProductId property.</param>
+        /// <param name="quantity">Initial value of the Quantity property.</param>
+        /// <param name="selectionData">Initial value of the SelectionData property.</param>
+        public static WishListItem CreateWishListItem(global::System.Int64 id, global::System.Int64 storeId, global::System.String customerId, global::System.DateTime lastUpdated, global::System.String productId, global::System.Int32 quantity, global::System.String selectionData)
+        {
+            WishListItem wishListItem = new WishListItem();
+            wishListItem.Id = id;
+            wishListItem.StoreId = storeId;
+            wishListItem.CustomerId = customerId;
+            wishListItem.LastUpdated = lastUpdated;
+            wishListItem.ProductId = productId;
+            wishListItem.Quantity = quantity;
+            wishListItem.SelectionData = selectionData;
+            return wishListItem;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int64 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int64 _Id;
+        partial void OnIdChanging(global::System.Int64 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int64 StoreId
+        {
+            get
+            {
+                return _StoreId;
+            }
+            set
+            {
+                OnStoreIdChanging(value);
+                ReportPropertyChanging("StoreId");
+                _StoreId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("StoreId");
+                OnStoreIdChanged();
+            }
+        }
+        private global::System.Int64 _StoreId;
+        partial void OnStoreIdChanging(global::System.Int64 value);
+        partial void OnStoreIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String CustomerId
+        {
+            get
+            {
+                return _CustomerId;
+            }
+            set
+            {
+                OnCustomerIdChanging(value);
+                ReportPropertyChanging("CustomerId");
+                _CustomerId = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("CustomerId");
+                OnCustomerIdChanged();
+            }
+        }
+        private global::System.String _CustomerId;
+        partial void OnCustomerIdChanging(global::System.String value);
+        partial void OnCustomerIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime LastUpdated
+        {
+            get
+            {
+                return _LastUpdated;
+            }
+            set
+            {
+                OnLastUpdatedChanging(value);
+                ReportPropertyChanging("LastUpdated");
+                _LastUpdated = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("LastUpdated");
+                OnLastUpdatedChanged();
+            }
+        }
+        private global::System.DateTime _LastUpdated;
+        partial void OnLastUpdatedChanging(global::System.DateTime value);
+        partial void OnLastUpdatedChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String ProductId
+        {
+            get
+            {
+                return _ProductId;
+            }
+            set
+            {
+                OnProductIdChanging(value);
+                ReportPropertyChanging("ProductId");
+                _ProductId = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("ProductId");
+                OnProductIdChanged();
+            }
+        }
+        private global::System.String _ProductId;
+        partial void OnProductIdChanging(global::System.String value);
+        partial void OnProductIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Quantity
+        {
+            get
+            {
+                return _Quantity;
+            }
+            set
+            {
+                OnQuantityChanging(value);
+                ReportPropertyChanging("Quantity");
+                _Quantity = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Quantity");
+                OnQuantityChanged();
+            }
+        }
+        private global::System.Int32 _Quantity;
+        partial void OnQuantityChanging(global::System.Int32 value);
+        partial void OnQuantityChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String SelectionData
+        {
+            get
+            {
+                return _SelectionData;
+            }
+            set
+            {
+                OnSelectionDataChanging(value);
+                ReportPropertyChanging("SelectionData");
+                _SelectionData = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("SelectionData");
+                OnSelectionDataChanged();
+            }
+        }
+        private global::System.String _SelectionData;
+        partial void OnSelectionDataChanging(global::System.String value);
+        partial void OnSelectionDataChanged();
 
         #endregion
     

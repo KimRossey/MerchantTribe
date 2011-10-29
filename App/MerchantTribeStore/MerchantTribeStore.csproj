@@ -2082,11 +2082,14 @@
     <Compile Include="api\rest\TaxSchedulesHandler.cs" />
     <Compile Include="api\rest\UtilitiesHandler.cs" />
     <Compile Include="api\rest\VendorsHandler.cs" />
+    <Compile Include="api\rest\WishListItemsHandler.cs" />
     <Compile Include="Areas\account\accountAreaRegistration.cs" />
     <Compile Include="Areas\account\Controllers\AuthenticationController.cs" />
     <Compile Include="Areas\account\Controllers\ManagementController.cs" />
     <Compile Include="Areas\account\Controllers\AddressBookController.cs" />
     <Compile Include="Areas\account\Controllers\OrderHistoryController.cs" />
+    <Compile Include="Areas\account\Controllers\WishListController.cs" />
+    <Compile Include="Areas\account\Models\SavedItemViewModel.cs" />
     <Compile Include="Areas\account\Models\SignInViewModel.cs" />
     <Compile Include="Areas\ContentBlocks\ContentBlocksAreaRegistration.cs" />
     <Compile Include="Areas\ContentBlocks\Controllers\BannerAdController.cs" />
@@ -4220,6 +4223,7 @@
     <Content Include="Areas\signup\Views\MarketingPages\Features.cshtml" />
     <Content Include="Areas\signup\Views\Register\ProcessSignup.cshtml" />
     <Content Include="Areas\signup\Views\Register\Index.cshtml" />
+    <Content Include="Areas\account\Views\WishList\Index.cshtml" />
     <None Include="BVAdmin\Orders\RMA.aspx.cs.exclude" />
     <None Include="BVAdmin\Orders\RMA.aspx.exclude" />
     <None Include="BVAdmin\Orders\RMADetail.aspx.cs.exclude" />

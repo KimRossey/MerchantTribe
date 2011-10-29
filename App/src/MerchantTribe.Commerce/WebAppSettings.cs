@@ -50,8 +50,6 @@ namespace MerchantTribe.Commerce
         public const string SessionId = "merchanttribesessionid";
         public const string CartId = "merchanttribecartid";
 
-        public const string WishlistItemSessionKey = "UserAddedWishlistItem";
-
         public const string VersioningFolder = "\\bvadmin\\versioning\\";
         public const string SqlVersioningFolder = "\\bvadmin\\versioning\\sql\\";
         public const string SqlFolder = "\\bvadmin\\bvsql\\";

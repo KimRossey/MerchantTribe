@@ -1021,6 +1021,7 @@ namespace MerchantTribe.Commerce
         }
         public bool DestroyCustomerAccount(string bvin)
         {
+            CatalogServices.WishListItems.DeleteForCustomerId(bvin);
             ContactServices.Affiliates.DeleteAffiliateContactsForCustomer(bvin);
             return MembershipServices.Customers.Delete(bvin);
         }           
@@ -1072,6 +1073,7 @@ namespace MerchantTribe.Commerce
             if (CatalogServices.CategoriesXProducts.DeleteAllForProduct(bvin) == false) return false;
 
             // WishList
+            CatalogServices.WishListItems.DeleteForProductId(bvin);
 
             // Files   
             CatalogServices.ProductFiles.DeleteForProductId(bvin);
