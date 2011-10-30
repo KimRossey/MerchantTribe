@@ -100,8 +100,8 @@ namespace MerchantTribeStore
 
             PolicyBlock b;
             b = MTApp.ContentServices.Policies.FindBlock(this.BvinField.Value);
-            if (b != null)
-            {
+            if (b == null) b = new PolicyBlock();
+            
                 b.Name = this.NameField.Text.Trim();
                 b.Description = this.DescriptionField.Text.Trim();
                 b.DescriptionPreTransform = this.DescriptionField.PreTransformText;
@@ -114,7 +114,7 @@ namespace MerchantTribeStore
                     if (p != null)
                     {
                         p.Blocks.Add(b);
-                        MTApp.ContentServices.Policies.Update(p);
+                        result = MTApp.ContentServices.Policies.Update(p);                        
                     }                    
                 }
                 else
@@ -127,8 +127,7 @@ namespace MerchantTribeStore
                     // Update bvin field so that next save will call updated instead of create
                     this.BvinField.Value = b.Bvin;
                 }
-            }
-
+            
             return result;
         }
 
