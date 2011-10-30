@@ -468,8 +468,8 @@ namespace MerchantTribe.Commerce.Catalog
             totalCount = this.ProductPropertyValues.FindCountProductIdsMatchingKey(key);            
             List<string> matches = this.ProductPropertyValues.FindProductIdsMatchingKey(key, pageNumber, pageSize);
             return Products.FindMany(matches);
-        }
-        
+        }                
+
         //Product Inventory
         public void UpdateProductVisibleStatusAndSave(string productBvin)
         {

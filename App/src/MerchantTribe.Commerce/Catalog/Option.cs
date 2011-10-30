@@ -137,7 +137,30 @@ namespace MerchantTribe.Commerce.Catalog
 
             return false;
         }
-   
+
+
+        public Option Clone()
+        {
+            Option result = Catalog.Option.Factory(this.OptionType);
+
+            result.Bvin = string.Empty;
+            result.IsShared = this.IsShared;
+            result.IsVariant = this.IsVariant;            
+            foreach (OptionItem oi in this.Items)
+            {
+                result.Items.Add(oi.Clone());
+            }
+            result.Name = this.Name;
+            result.NameIsHidden = this.NameIsHidden;
+            foreach (var set in this.Settings)
+            {
+                result.Settings.AddOrUpdate(set.Key, set.Value);
+            }
+            result.StoreId = this.StoreId;
+
+            return result;
+        }
+
         //DTO
         public OptionDTO ToDto()
         {

@@ -283,6 +283,8 @@ namespace MerchantTribeStore
                     this.txtGiftWrapCharge.Text = p.GiftWrapPrice.ToString("C");
 
                     this.lnkViewInStore.NavigateUrl = MerchantTribe.Commerce.Utilities.UrlRewriter.BuildUrlForProduct(p, this.Page);
+                    
+                    this.lnkClone.NavigateUrl = "ProductClone.aspx?id=" + p.Bvin;
 
                     this.chkAllowReviews.Checked = p.AllowReviews;
                 }

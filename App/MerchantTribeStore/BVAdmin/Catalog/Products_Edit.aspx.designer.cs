@@ -58,6 +58,15 @@ namespace MerchantTribeStore {
         protected global::System.Web.UI.WebControls.HyperLink lnkViewInStore;
         
         /// <summary>
+        /// lnkClone control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink lnkClone;
+        
+        /// <summary>
         /// pnlMain control.
         /// </summary>
         /// <remarks>

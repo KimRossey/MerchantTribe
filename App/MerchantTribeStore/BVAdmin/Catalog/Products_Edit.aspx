@@ -58,6 +58,8 @@ $(document).ready(function () {
             <asp:TextBox ID="SmallImageAlternateTextField" runat="server" Columns="25" CssClass="FormInput" Width="220px" TabIndex="6601"></asp:TextBox>
         </div>        
         <asp:HyperLink ID="lnkViewInStore" runat="server" Target="_blank" NavigateUrl="" ImageUrl="~/BVAdmin/Images/Buttons/ViewInStore.png"></asp:HyperLink>                                
+        <br />&nbsp;<br />&nbsp;<br />
+        <asp:HyperLink ID="lnkClone" runat="server" class="btn" NavigateUrl=""><b>Clone This Product</b></asp:HyperLink>
     </div>
 
     <asp:Panel ID="pnlMain" runat="server" CssClass="producteditpanel">

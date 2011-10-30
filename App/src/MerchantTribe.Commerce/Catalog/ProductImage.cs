@@ -29,6 +29,22 @@ namespace MerchantTribe.Commerce.Catalog
             this.StoreId = 0;
         }
 
+        public ProductImage Clone()
+        {
+            ProductImage result = new ProductImage();
+
+            result.AlternateText = this.AlternateText;
+            result.Bvin = string.Empty;
+            result.Caption = this.Caption;
+            result.FileName = this.FileName;
+            result.LastUpdatedUtc = this.LastUpdatedUtc;
+            result.ProductId = this.ProductId;
+            result.SortOrder = this.SortOrder;
+            result.StoreId = this.StoreId;
+
+            return result;
+        }
+
         // DTO
         public ProductImageDTO ToDto()
         {

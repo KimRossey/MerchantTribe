@@ -30,6 +30,22 @@ namespace MerchantTribe.Commerce.Catalog
             this.SortOrder = 0;
         }
 
+        public OptionItem Clone()
+        {
+            OptionItem result = new OptionItem();
+
+            result.Bvin = string.Empty;
+            result.IsLabel = this.IsLabel;
+            result.Name = this.Name;
+            result.OptionBvin = this.OptionBvin;
+            result.PriceAdjustment = this.PriceAdjustment;
+            result.SortOrder = this.SortOrder;
+            result.StoreId = this.StoreId;
+            result.WeightAdjustment = this.WeightAdjustment;
+
+            return result;
+        }
+
         //DTO
         public OptionItemDTO ToDto()
         {

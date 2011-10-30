@@ -56,6 +56,14 @@ namespace MerchantTribeStore
             {
                 if (product.Bvin != string.Empty)
                 {
+                    // SKU Check
+                    Product existing = MTApp.CatalogServices.Products.FindBySku(SkuTextBox.Text);
+                    if (existing != null && existing.Bvin != string.Empty)
+                    {
+                        MessageBox1.ShowError("That SKU is already in use by another product!");
+                        return false;
+                    }
+
                     Product newProduct = product.Clone(ProductChoicesCheckBox.Checked, ImagesCheckBox.Checked);
                     if (InactiveCheckBox.Checked)
                     {
@@ -75,13 +83,19 @@ namespace MerchantTribeStore
                             }
                         }
 
-                        //if (CategoryPlacementCheckBox.Checked)
-                        //{
-                        //    if (!Product.CopyCategoryPlacement(product.Bvin, newProduct.Bvin))
-                        //    {
-                        //        MessageBox1.ShowError("An error occurred while trying to copy the category placement.");
-                        //    }
-                        //}
+                        if (CategoryPlacementCheckBox.Checked)
+                        {
+                            List<CategoryProductAssociation> cats = MTApp.CatalogServices.CategoriesXProducts.FindForProduct(product.Bvin, 1, 100);
+                            foreach (CategoryProductAssociation a in cats)
+                            {
+                                MTApp.CatalogServices.CategoriesXProducts.AddProductToCategory(newProduct.Bvin, a.CategoryId);
+                            }
+                        }
+
+                        if (ImagesCheckBox.Checked)
+                        {                            
+                            MerchantTribe.Commerce.Storage.DiskStorage.CloneAllProductFiles(MTApp.CurrentStore.Id, product.Bvin, newProduct.Bvin);
+                        }
 
                         Response.Redirect("~/BVAdmin/Catalog/default.aspx");
                     }

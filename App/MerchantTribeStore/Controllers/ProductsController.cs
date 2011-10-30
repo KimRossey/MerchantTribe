@@ -136,6 +136,7 @@ namespace MerchantTribeStore.Controllers
             ViewBag.RelatedItemsTitle = SiteTerms.GetTerm(SiteTermIds.RelatedItems);
             ViewBag.AddToCartButtonUrl = MTApp.ThemeManager().ButtonUrl("addtocart", Request.IsSecureConnection);
             ViewBag.SubmitButtonUrl = MTApp.ThemeManager().ButtonUrl("submit", Request.IsSecureConnection);
+            ViewBag.SaveLaterButton = MTApp.ThemeManager().ButtonUrl("SaveForLater", Request.IsSecureConnection);
 
             CheckForBackOrder(model);
 
