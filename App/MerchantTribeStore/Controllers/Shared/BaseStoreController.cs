@@ -96,7 +96,25 @@ namespace MerchantTribeStore.Controllers.Shared
             }
             
             ViewBag.MetaKeywords = MTApp.CurrentStore.Settings.MetaKeywords;            
-            ViewBag.MetaDescription = MTApp.CurrentStore.Settings.MetaDescription;                                            
+            ViewBag.MetaDescription = MTApp.CurrentStore.Settings.MetaDescription;    
+            
+            
+            // Save current URL for facebook like, etc.
+            ViewBag.RawUrl = Request.Url.ToString();
+            ViewBag.CurrentUrl = MTApp.CurrentStore.RootUrl() + Request.Path.TrimStart('/');
+
+            // Social Media Globals
+            ViewBag.UseFaceBook = MTApp.CurrentStore.Settings.FaceBook.UseFaceBook;
+            ViewBag.FaceBookAdmins = MTApp.CurrentStore.Settings.FaceBook.Admins;
+            ViewBag.FaceBookAppId = MTApp.CurrentStore.Settings.FaceBook.AppId;
+            
+            ViewBag.UseTwitter = MTApp.CurrentStore.Settings.Twitter.UseTwitter;            
+            ViewBag.TwitterHandle = MTApp.CurrentStore.Settings.Twitter.TwitterHandle;
+            ViewBag.TwitterDefaultTweetText = MTApp.CurrentStore.Settings.Twitter.DefaultTweetText;
+
+            ViewBag.UseGooglePlus = MTApp.CurrentStore.Settings.GooglePlus.UseGooglePlus;
+            
         }
+
     }
 }

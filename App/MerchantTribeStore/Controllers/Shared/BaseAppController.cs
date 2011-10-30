@@ -45,6 +45,7 @@ namespace MerchantTribeStore.Controllers.Shared
             ViewBag.RootUrlSecure = MTApp.CurrentStore.RootUrlSecure();
             ViewBag.RootUrl = MTApp.CurrentStore.RootUrl();
             ViewBag.StoreClosed = MTApp.CurrentStore.Settings.StoreClosed;
+            ViewBag.StoreName = MTApp.CurrentStore.Settings.FriendlyName;
 
             // Integrations
             IntegrationLoader.AddIntegrations(this.MTApp.CurrentRequestContext.IntegrationEvents, this.MTApp.CurrentStore);

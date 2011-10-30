@@ -24,6 +24,7 @@
                         <li><a href="Shipping.aspx">Shipping: Methods</a></li>                        
                         <li><a href="Shipping_Zones.aspx">Shipping: Zones</a></li>
                         <li><a href="ShippingHandling.aspx">Shipping: Handling</a></li>
+                        <li><a href="SocialMedia.aspx">Social Media</a></li>
                         <li><a href="TaxClasses.aspx">Tax Schedules</a></li>
                         <li><a href="Themes.aspx">Themes</a></li>                        
                     </ul>

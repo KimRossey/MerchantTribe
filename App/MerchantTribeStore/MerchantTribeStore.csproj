@@ -164,6 +164,7 @@
   <ItemGroup>
     <Content Include="BVAdmin\Account.aspx" />
     <Content Include="BVAdmin\BVAdmin.js" />
+    <Content Include="BVAdmin\Configuration\SocialMedia.aspx" />
     <Content Include="BVAdmin\SqlScripts\Full\CreateProcedures.sql" />
     <Content Include="BVAdmin\SqlScripts\Full\CreateTables.sql" />
     <Content Include="BVAdmin\SqlScripts\Full\PopulateData.sql" />
@@ -2863,6 +2864,13 @@
     <Compile Include="BVAdmin\Configuration\Shipping_Zones_Edit.aspx.designer.cs">
       <DependentUpon>Shipping_Zones_Edit.aspx</DependentUpon>
     </Compile>
+    <Compile Include="BVAdmin\Configuration\SocialMedia.aspx.cs">
+      <DependentUpon>SocialMedia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BVAdmin\Configuration\SocialMedia.aspx.designer.cs">
+      <DependentUpon>SocialMedia.aspx</DependentUpon>
+    </Compile>
     <Compile Include="BVAdmin\Configuration\StoreInfo.aspx.cs">
       <DependentUpon>StoreInfo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -4164,6 +4172,8 @@
     <Compile Include="Models\CheckoutPaymentViewModel.cs" />
     <Compile Include="Models\CheckoutViewModel.cs" />
     <Compile Include="Models\ContentColumnIdentifier.cs" />
+    <Compile Include="Models\FaceBookLikeModel.cs" />
+    <Compile Include="Models\GooglePlusOneViewModel.cs" />
     <Compile Include="Models\PagerViewModel.cs" />
     <Compile Include="Models\ProductListViewModel.cs" />
     <Compile Include="Models\ProductPageViewModel.cs" />
@@ -4185,6 +4195,7 @@
     <Compile Include="Models\AddressViewModel.cs" />
     <Compile Include="Models\EstimateShippingViewModel.cs" />
     <Compile Include="Models\SuperStoreViewModel.cs" />
+    <Compile Include="Models\TwitterViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -4344,6 +4355,10 @@
     <Content Include="Views\Products\RenderSingleProductDetailed.cshtml" />
     <Content Include="Views\Category\BulkOrderList.cshtml" />
     <Content Include="Views\Category\BulkQuantityList.cshtml" />
+    <Content Include="Views\Shared\_FaceBookSetup.cshtml" />
+    <Content Include="Views\Shared\_FaceBookLike.cshtml" />
+    <Content Include="Views\Shared\_Twitter.cshtml" />
+    <Content Include="Views\Shared\_GooglePlusOne.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

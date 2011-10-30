@@ -276,6 +276,7 @@ namespace MerchantTribeStore.Helpers
             sb.Append(AddMenuItem("Shipping: Methods", "configuration/Shipping.aspx", root));
             sb.Append(AddMenuItem("Shipping: Zones", "configuration/Shipping_Zones.aspx", root));
             sb.Append(AddMenuItem("Shipping: Handling", "configuration/ShippingHandling.aspx", root));
+            sb.Append(AddMenuItem("Social Media", "configuration/SocialMedia.aspx", root));
             sb.Append(AddMenuItem("Tax Schedules", "configuration/TaxClasses.aspx", root));
             sb.Append(AddMenuItem("Themes", "configuration/themes.aspx", root));
 
