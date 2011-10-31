@@ -38,7 +38,7 @@ namespace MerchantTribeStore.Areas.account.Controllers
             SignInViewModel model = new SignInViewModel();
 
             // Find email view cookie
-            string uid = SessionManager.GetCookieString(WebAppSettings.CustomerIdCookieName);
+            string uid = SessionManager.GetCookieString(WebAppSettings.CustomerIdCookieName, MTApp.CurrentStore);
             if (uid != string.Empty)
             {
                 CustomerAccount u = MTApp.MembershipServices.Customers.Find(uid);
@@ -71,15 +71,15 @@ namespace MerchantTribeStore.Areas.account.Controllers
                                         posted.Password.Trim(),
                                         ref errorMessage,
                                         this.Request.RequestContext.HttpContext,
-                                        ref userId))
+                                        ref userId, MTApp))
                 {
-                    MerchantTribe.Commerce.Orders.Order cart = SessionManager.CurrentShoppingCart(MTApp.OrderServices);
+                    MerchantTribe.Commerce.Orders.Order cart = SessionManager.CurrentShoppingCart(MTApp.OrderServices, MTApp.CurrentStore);
                     if (cart != null && !string.IsNullOrEmpty(cart.bvin))
                     {
                         cart.UserEmail = posted.Email.Trim();
                         cart.UserID = userId;
                         MTApp.CalculateOrderAndSave(cart);
-                        SessionManager.SaveOrderCookies(cart);
+                        SessionManager.SaveOrderCookies(cart, MTApp.CurrentStore);
                     }
 
                     // if we got here from checkout, return to checkout
@@ -94,8 +94,11 @@ namespace MerchantTribeStore.Areas.account.Controllers
                 {
                     string errorMessage2 = string.Empty;
                     // Failed to Login as Customer, Try admin account
-                    if (MTApp.AccountServices.LoginAdminUser(posted.Email.Trim(), posted.Password.Trim(),
-                                                                               ref errorMessage2, this.Request.RequestContext.HttpContext))
+                    if (MTApp.AccountServices.LoginAdminUser(posted.Email.Trim(), 
+                                                posted.Password.Trim(),
+                                                ref errorMessage2, 
+                                                this.Request.RequestContext.HttpContext,
+                                                MTApp))
                     {
                         return Redirect("~/bvadmin");
                     }
@@ -145,7 +148,7 @@ namespace MerchantTribeStore.Areas.account.Controllers
                     else
                     {
                         // Update bvin field so that next save will call updated instead of create
-                        MerchantTribe.Web.Cookies.SetCookieString(MerchantTribe.Commerce.WebAppSettings.CookieNameAuthenticationTokenCustomer(),
+                        MerchantTribe.Web.Cookies.SetCookieString(MerchantTribe.Commerce.WebAppSettings.CookieNameAuthenticationTokenCustomer(MTApp.CurrentStore.Id),
                                                                   u.Bvin,
                                                                   this.Request.RequestContext.HttpContext, false, new EventLog());
                         Redirect("~/account");
@@ -182,7 +185,7 @@ namespace MerchantTribeStore.Areas.account.Controllers
 
         public ActionResult SignOut()
         {
-            MTApp.MembershipServices.LogoutCustomer(Request.RequestContext.HttpContext);
+            MTApp.MembershipServices.LogoutCustomer(Request.RequestContext.HttpContext, MTApp);
             return Redirect("~/");
         }
 

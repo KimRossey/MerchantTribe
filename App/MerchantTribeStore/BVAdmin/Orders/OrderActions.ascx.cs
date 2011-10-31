@@ -10,7 +10,7 @@ using MerchantTribe.Commerce;
 namespace MerchantTribeStore
 {
 
-    public partial class BVAdmin_Orders_OrderActions : System.Web.UI.UserControl
+    public partial class BVAdmin_Orders_OrderActions : MerchantTribe.Commerce.Content.BVUserControl
     {
         protected override void OnLoad(EventArgs e)
         {
@@ -25,7 +25,7 @@ namespace MerchantTribeStore
                 this.lnkPrint.NavigateUrl = "PrintOrder.aspx?id=" + id;
                 this.lnkShipping.NavigateUrl = "ShipOrder.aspx?id=" + id;
 
-                string lastManagerPage = SessionManager.GetCookieString("AdminLastManager");
+                string lastManagerPage = SessionManager.GetCookieString("AdminLastManager", MyPage.MTApp.CurrentStore);
                 if (!String.IsNullOrEmpty(lastManagerPage))
                 {
                     this.lnkManager.NavigateUrl = lastManagerPage;

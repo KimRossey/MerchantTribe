@@ -25,7 +25,7 @@ namespace MerchantTribeStore.Controllers
             }
             
             List<ToDoItem> items = new List<ToDoItem>();
-            UserAccount adminUser = CurrentRequestContext.CurrentAdministrator;
+            UserAccount adminUser = CurrentRequestContext.CurrentAdministrator(MTApp);
             if (adminUser != null)
             {
                 ToDoItemRepository repository = new ToDoItemRepository(CurrentRequestContext);
@@ -54,7 +54,7 @@ namespace MerchantTribeStore.Controllers
             {
                 ToDoItem item = new ToDoItem()
                 {
-                    AccountId = CurrentRequestContext.CurrentAdministrator.Id,
+                    AccountId = CurrentRequestContext.CurrentAdministrator(MTApp).Id,
                     Details = details,
                     IsComplete = false,
                     Title = title
@@ -93,7 +93,7 @@ namespace MerchantTribeStore.Controllers
             try
             {
 
-                long accountId = CurrentRequestContext.CurrentAdministrator.Id;
+                long accountId = CurrentRequestContext.CurrentAdministrator(MTApp).Id;
                 ToDoItemRepository repository = new ToDoItemRepository(CurrentRequestContext);
                 ToDoItem item = repository.Find(id);
                 if (item != null)
@@ -122,7 +122,7 @@ namespace MerchantTribeStore.Controllers
             try
             {
 
-                long accountId = CurrentRequestContext.CurrentAdministrator.Id;
+                long accountId = CurrentRequestContext.CurrentAdministrator(MTApp).Id;
                 ToDoItemRepository repository = new ToDoItemRepository(CurrentRequestContext);
                 ToDoItem item = repository.Find(id);
                 if (item != null)
@@ -161,7 +161,7 @@ namespace MerchantTribeStore.Controllers
                 }
             }
 
-            long accountId = CurrentRequestContext.CurrentAdministrator.Id;
+            long accountId = CurrentRequestContext.CurrentAdministrator(MTApp).Id;
             ToDoItemRepository repository = new ToDoItemRepository(CurrentRequestContext);
 
             List<ToDoItem> items = repository.FindByAccountId(accountId);

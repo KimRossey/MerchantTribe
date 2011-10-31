@@ -23,7 +23,7 @@ namespace MerchantTribeStore.BVAdmin.Catalog
         protected void Page_Load(object sender, EventArgs e)
         {
             string bvin = Request.QueryString["id"];
-            MTApp.CurrentRequestContext.IsEditMode = false;
+            MTApp.IsEditMode = false;
             Response.Redirect("Categories_EditFlexPage.aspx?id=" + bvin);
         }
     }

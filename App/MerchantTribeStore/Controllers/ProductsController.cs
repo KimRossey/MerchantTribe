@@ -30,7 +30,7 @@ namespace MerchantTribeStore.Controllers
             model.PreRenderedOptions = HtmlRendering.ProductOptions(model.LocalProduct.Options, model.Selections);
             
             // Record and Return view
-            PersonalizationServices.RecordProductViews(model.LocalProduct.Bvin);
+            PersonalizationServices.RecordProductViews(model.LocalProduct.Bvin, MTApp);
             return View(model);
         }
 
@@ -71,10 +71,10 @@ namespace MerchantTribeStore.Controllers
                                                                                         model.Quantity,
                                                                                         MTApp);
 
-                        Order Basket = SessionManager.CurrentShoppingCart(MTApp.OrderServices);
-                        if (Basket.UserID != SessionManager.GetCurrentUserId())
+                        Order Basket = SessionManager.CurrentShoppingCart(MTApp.OrderServices, MTApp.CurrentStore);
+                        if (Basket.UserID != SessionManager.GetCurrentUserId(MTApp.CurrentStore))
                         {
-                            Basket.UserID = SessionManager.GetCurrentUserId();
+                            Basket.UserID = SessionManager.GetCurrentUserId(MTApp.CurrentStore);
                         }
 
                         if (model.LineItemId.Trim().Length > 0)
@@ -86,7 +86,7 @@ namespace MerchantTribeStore.Controllers
                         }
 
                         MTApp.AddToOrderWithCalculateAndSave(Basket, li);
-                        SessionManager.SaveOrderCookies(Basket);
+                        SessionManager.SaveOrderCookies(Basket, MTApp.CurrentStore);
 
                         return Redirect("~/cart");
                     }
@@ -305,7 +305,7 @@ namespace MerchantTribeStore.Controllers
                 long lineItemId = 0;
                 long.TryParse(model.LineItemId, out lineItemId);
 
-                Order o = SessionManager.CurrentShoppingCart(MTApp.OrderServices);
+                Order o = SessionManager.CurrentShoppingCart(MTApp.OrderServices, MTApp.CurrentStore);
                 if (o != null)
                 {
                     var li = o.Items.Where(y => y.Id == lineItemId).SingleOrDefault();
@@ -319,7 +319,7 @@ namespace MerchantTribeStore.Controllers
         }
         private void RenderPrices(ProductPageViewModel model)
         {
-            string userId = SessionManager.GetCurrentUserId();
+            string userId = SessionManager.GetCurrentUserId(MTApp.CurrentStore);
             StringBuilder sb = new StringBuilder();
 
             sb.Append("<div class=\"prices\">");

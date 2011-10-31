@@ -201,7 +201,7 @@ namespace MerchantTribeStore.BVAdmin.Catalog
             if (Save())
             {
                 Category c = MTApp.CatalogServices.Categories.Find(this.BvinField.Value);
-                MTApp.CurrentRequestContext.IsEditMode = true;
+                MTApp.IsEditMode = true;
                 string destination = UrlRewriter.BuildUrlForCategory(new CategorySnapshot(c), MTApp.CurrentRequestContext.RoutingContext);
                 if (destination.StartsWith("http"))
                 {

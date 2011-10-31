@@ -55,7 +55,7 @@ namespace MerchantTribeStore.Controllers.Shared
         {
 
             Guid? tokenId = MerchantTribe.Web.Cookies.GetCookieGuid(
-                                WebAppSettings.CookieNameAuthenticationTokenAdmin(),
+                                WebAppSettings.CookieNameAuthenticationTokenAdmin(app.CurrentStore.Id),
                                 httpContext, new EventLog());
 
             // no token, return

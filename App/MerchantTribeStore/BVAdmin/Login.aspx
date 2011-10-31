@@ -30,7 +30,7 @@
                         <td class="formfield">
                             <asp:TextBox ID="PasswordField" runat="server" TextMode="Password" ToolTip="Username"
                                 Width="200px"></asp:TextBox><br />
-                                <asp:HyperLink ID="lnkForgot" runat="server" EnableViewState="false" NavigateUrl="~/account/resetpassword">Forgot Password? Need to Reset?</asp:HyperLink></td>
+                                <asp:HyperLink ID="lnkForgot" runat="server" EnableViewState="false" NavigateUrl="~/adminaccount/resetpassword">Forgot Password? Need to Reset?</asp:HyperLink></td>
                     </tr>
                     <tr>
                         <td class="formlabel">&nbsp;</td>

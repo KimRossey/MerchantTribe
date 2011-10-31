@@ -149,11 +149,11 @@ namespace MerchantTribeStore.Controllers
             if (qty < 1) qty = 1;            
             if (p != null)
             {             
-                Order o = SessionManager.CurrentShoppingCart(MTApp.OrderServices);
+                Order o = SessionManager.CurrentShoppingCart(MTApp.OrderServices, MTApp.CurrentStore);
                 LineItem li = MTApp.CatalogServices.ConvertProductToLineItem(p, new OptionSelectionList(), qty, MTApp);
                 li.Quantity = qty;
                 MTApp.AddToOrderWithCalculateAndSave(o, li);
-                SessionManager.SaveOrderCookies(o);
+                SessionManager.SaveOrderCookies(o, MTApp.CurrentStore);
             }
         }
 
@@ -198,7 +198,7 @@ namespace MerchantTribeStore.Controllers
             else if (this.Request.QueryString["multi"] != null)
             {
                 string[] skus = Request.QueryString["multi"].Split(';');
-                Order Basket = SessionManager.CurrentShoppingCart(MTApp.OrderServices);
+                Order Basket = SessionManager.CurrentShoppingCart(MTApp.OrderServices, MTApp.CurrentStore);
                 bool addedParts = false;
 
                 foreach (string s in skus)
@@ -228,13 +228,13 @@ namespace MerchantTribeStore.Controllers
                 if (addedParts)
                 {
                     MTApp.CalculateOrderAndSave(Basket);
-                    SessionManager.SaveOrderCookies(Basket);
+                    SessionManager.SaveOrderCookies(Basket, MTApp.CurrentStore);
                 }
             }
         }
         private void LoadCart(CartViewModel model)
         {
-            Order Basket = SessionManager.CurrentShoppingCart(MTApp.OrderServices);
+            Order Basket = SessionManager.CurrentShoppingCart(MTApp.OrderServices, MTApp.CurrentStore);
             if (Basket == null) return;
             model.CurrentOrder = Basket;
 
@@ -295,7 +295,7 @@ namespace MerchantTribeStore.Controllers
             }
 
             OrderTaskContext c = new OrderTaskContext(MTApp);
-            c.UserId = SessionManager.GetCurrentUserId();
+            c.UserId = SessionManager.GetCurrentUserId(MTApp.CurrentStore);
             c.Order = model.CurrentOrder;
             if (Workflow.RunByName(c, WorkflowNames.CheckoutSelected))
             {
@@ -326,7 +326,7 @@ namespace MerchantTribeStore.Controllers
             // Save as Order
             MerchantTribe.Commerce.BusinessRules.OrderTaskContext c
                 = new MerchantTribe.Commerce.BusinessRules.OrderTaskContext(MTApp);
-            c.UserId = SessionManager.GetCurrentUserId();
+            c.UserId = SessionManager.GetCurrentUserId(MTApp.CurrentStore);
             c.Order = Basket;
             bool checkoutFailed = false;
             if (!MerchantTribe.Commerce.BusinessRules.Workflow.RunByName(c, MerchantTribe.Commerce.BusinessRules.WorkflowNames.CheckoutSelected))
@@ -383,7 +383,7 @@ namespace MerchantTribeStore.Controllers
 
             string orderBvin = Request["orderbvin"] ?? string.Empty;
 
-            Order Basket = SessionManager.CurrentShoppingCart(MTApp.OrderServices);
+            Order Basket = SessionManager.CurrentShoppingCart(MTApp.OrderServices, MTApp.CurrentStore);
             if (Basket != null)
             {
                 if (Basket.bvin == orderBvin)
@@ -393,7 +393,7 @@ namespace MerchantTribeStore.Controllers
                     {
                         Basket.Items.Remove(li);
                         MTApp.CalculateOrderAndSave(Basket);
-                        SessionManager.SaveOrderCookies(Basket);
+                        SessionManager.SaveOrderCookies(Basket, MTApp.CurrentStore);
                     }
                 }
             }
@@ -403,11 +403,11 @@ namespace MerchantTribeStore.Controllers
         [HttpPost]
         public ActionResult AddCoupon()
         {
-            Order Basket = SessionManager.CurrentShoppingCart(MTApp.OrderServices);
+            Order Basket = SessionManager.CurrentShoppingCart(MTApp.OrderServices, MTApp.CurrentStore);
             string code = Request["couponcode"] ?? string.Empty;
             Basket.AddCouponCode(code.Trim());
             MTApp.CalculateOrderAndSave(Basket);
-            SessionManager.SaveOrderCookies(Basket);
+            SessionManager.SaveOrderCookies(Basket, MTApp.CurrentStore);
             return Redirect("~/cart");
         }
 
@@ -418,10 +418,10 @@ namespace MerchantTribeStore.Controllers
             long tempid = 0;
             long.TryParse(couponid, out tempid);
 
-            Order Basket = SessionManager.CurrentShoppingCart(MTApp.OrderServices);
+            Order Basket = SessionManager.CurrentShoppingCart(MTApp.OrderServices, MTApp.CurrentStore);
             Basket.RemoveCouponCode(tempid);
             MTApp.CalculateOrderAndSave(Basket);
-            SessionManager.SaveOrderCookies(Basket);
+            SessionManager.SaveOrderCookies(Basket, MTApp.CurrentStore);
 
             return Redirect("~/cart");
         }

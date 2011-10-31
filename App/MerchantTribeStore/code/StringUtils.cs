@@ -13,7 +13,7 @@ namespace MerchantTribeStore
                 string sessionInfos;
 
                 string goingto = ToStr(HttpContext.Current.Request.Url);
-                sessionInfos = "<br>Session:" + SessionID() + "<br>To:" + goingto + "\r\n<br>From:" + ToStr(HttpContext.Current.Request.UrlReferrer);
+                sessionInfos = "<br>To:" + goingto + "\r\n<br>From:" + ToStr(HttpContext.Current.Request.UrlReferrer);
                 sessionInfos = sessionInfos + "<br>User:" + HttpContext.Current.Request.UserHostName + "(" + HttpContext.Current.Request.UserHostAddress + ")";
                 sessionInfos = sessionInfos + "<br>Agent:" + HttpContext.Current.Request.UserAgent;
                 return sessionInfos;
@@ -37,9 +37,5 @@ namespace MerchantTribeStore
             }
         }
 
-        public static string SessionID()
-        {
-            return ToStr(MerchantTribe.Commerce.SessionManager.CurrentCartID);
-        }
     }
 }

@@ -211,7 +211,7 @@ namespace MerchantTribe.Commerce.Catalog
                     wi.ProductId = snapshot.ProductId;
                     wi.Quantity = quantity;
                     wi.SelectionData = snapshot.SelectionData;
-                    wi.CustomerId = SessionManager.GetCurrentUserId(); 
+                    wi.CustomerId = SessionManager.GetCurrentUserId(app.CurrentStore); 
                 }
             }
             return WishListItems.Create(wi);

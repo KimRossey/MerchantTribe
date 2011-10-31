@@ -99,7 +99,7 @@ namespace MerchantTribeStore
             ProductReview pr = new ProductReview();
             pr.Approved = true;
             pr.Description = "New Review";
-            pr.UserID = SessionManager.GetCurrentUserId();
+            pr.UserID = SessionManager.GetCurrentUserId(MTApp.CurrentStore);
             pr.ReviewDateUtc = System.DateTime.UtcNow;
             pr.ProductBvin = Request.QueryString["ID"];
             //If Datalayer.ProductReviewMapper.SaveAsNew(pr) = True Then

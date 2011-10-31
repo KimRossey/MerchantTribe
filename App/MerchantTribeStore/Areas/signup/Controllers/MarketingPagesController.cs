@@ -14,7 +14,7 @@ namespace MerchantTribeStore.Areas.signup.Controllers
         public ActionResult Pricing()
         {            
             bool IsPayPalLead = false;
-            if (MerchantTribe.Commerce.SessionManager.GetCookieString("PayPalLead") != string.Empty)
+            if (MerchantTribe.Commerce.SessionManager.GetCookieString("PayPalLead", MTApp.CurrentStore) != string.Empty)
             {
                 IsPayPalLead = true;
             }
@@ -469,7 +469,7 @@ namespace MerchantTribeStore.Areas.signup.Controllers
         // GET: /signup/paypal
         public ActionResult PayPalOffer()
         {
-            SessionManager.SetCookieString("PayPalLead", "PayPalLead");
+            SessionManager.SetCookieString("PayPalLead", "PayPalLead", MTApp.CurrentStore);
             return View();
         }
 

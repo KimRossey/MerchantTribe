@@ -58,7 +58,7 @@ namespace MerchantTribeStore.Areas.signup.Controllers
             if (thePlan != null)
             {
                 string PayPalLead = string.Empty;
-                PayPalLead = MerchantTribe.Commerce.SessionManager.GetCookieString("PayPalLead");
+                PayPalLead = MerchantTribe.Commerce.SessionManager.GetCookieString("PayPalLead", MTApp.CurrentStore);
 
                 if (thePlan.Id == 0)
                 {
@@ -234,7 +234,7 @@ namespace MerchantTribeStore.Areas.signup.Controllers
                     billingAccount.CreditCard.CardHolderName = model.RegistrationData.cardholder;
 
                     bool isPayPalLead = false;
-                    if (MerchantTribe.Commerce.SessionManager.GetCookieString("PayPalLead") != string.Empty)
+                    if (MerchantTribe.Commerce.SessionManager.GetCookieString("PayPalLead", MTApp.CurrentStore) != string.Empty)
                     {
                         isPayPalLead = true;
                     }
@@ -272,7 +272,7 @@ namespace MerchantTribeStore.Areas.signup.Controllers
                         //this.completeemail.Text = u.Email;
                         //this.completestorelink.Text = "<a href=\"" + s.RootUrl() + "\">" + s.RootUrl() + "</a>";
                         //this.completestorelinkadmin.Text = "<a href=\"" + s.RootUrlSecure() + "bvadmin\">" + s.RootUrlSecure() + "bvadmin</a>";
-                        //this.completebiglogin.Text = "<a href=\"" + s.RootUrlSecure() + "account/login?wizard=1&username=" + u.Email + "\">Next Step &raquo; Choose a Theme</a>";
+                        //this.completebiglogin.Text = "<a href=\"" + s.RootUrlSecure() + "adminaccount/login?wizard=1&username=" + u.Email + "\">Next Step &raquo; Choose a Theme</a>";
                         //this.pnlComplete.Visible = true;
                         //this.pnlMain.Visible = false;                                                                                
                     }
@@ -316,7 +316,7 @@ namespace MerchantTribeStore.Areas.signup.Controllers
             ViewBag.RootUrl = rootUrl;
             ViewBag.RootUrlSecure = rootUrlSecure;
             ViewBag.CompleteEmail = email;
-            ViewBag.LoginUrl = rootUrlSecure + "account/login?wizard=1&username="
+            ViewBag.LoginUrl = rootUrlSecure + "adminaccount/login?wizard=1&username="
                                             + System.Web.HttpUtility.UrlEncode(email);            
             return View();
         }

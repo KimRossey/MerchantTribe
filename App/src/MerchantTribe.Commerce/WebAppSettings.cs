@@ -223,14 +223,7 @@ namespace MerchantTribe.Commerce
         {
             get { return true; }
         }                    
-        public static string CartIdCookieName
-        {
-            get { return "MerchantTribeCartId"; }
-        }
-        public static string PendingPaymentCardIdCookieName
-        {
-            get { return "MerchantTribeCartIdPendingPayment"; }
-        }
+        
         public static string Cryptography3DesKey
         {
             get { return "EDBE6BF8A92A417cBCD3DB23120861B5DE780BA44DB44166888707607A2A16FBBADFD3E111D54396A5701CE43E0EC3FFAE5543370AF54228B65CB87D7E346048"; }

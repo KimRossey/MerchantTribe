@@ -34,7 +34,7 @@ namespace MerchantTribeStore.Filters
                                 hasPass = true;
                             }
                         }
-                        if (app.CurrentRequestContext.IsAdmin() == false && hasPass == false)
+                        if (app.CurrentRequestContext.IsAdmin(app) == false && hasPass == false)
                         {
                             filterContext.Result = new RedirectResult("~/storeclosed");
                         }

@@ -44,7 +44,7 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
 			if (c != null) {
 				context.Order.StatusName = c.StatusName;
 				context.Order.StatusCode = c.Bvin;
-                context.Order.AffiliateID = context.MTApp.ContactServices.GetValidAffiliateId().ToString();
+                context.Order.AffiliateID = context.MTApp.ContactServices.GetValidAffiliateId(context.MTApp).ToString();
 			}
 			return true;
 		}

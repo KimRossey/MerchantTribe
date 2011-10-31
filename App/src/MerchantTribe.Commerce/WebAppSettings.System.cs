@@ -73,6 +73,11 @@ namespace MerchantTribe.Commerce
             }
         }
 
+
+        public static string CookieNameCartIdPaymentPending(long storeId)
+        {
+            return "merchanttribe-cartid-pendingpayment-" + storeId.ToString();
+        }
         public static string CookieNameCartId(long storeId)
         {
             return "merchanttribe-cartid-" + storeId.ToString();
@@ -85,13 +90,13 @@ namespace MerchantTribe.Commerce
         {
             return "merchanttribe-cartsubtotal-" + storeId.ToString();
         }
-        public static string CookieNameAuthenticationTokenAdmin()
+        public static string CookieNameAuthenticationTokenAdmin(long storeId)
         {
-            return "merchanttribe-authtoken";
+            return "merchanttribe-authtoken-" + storeId.ToString();
         }
-        public static string CookieNameAuthenticationTokenCustomer()
+        public static string CookieNameAuthenticationTokenCustomer(long storeId)
         {
-            return "merchanttribe-authtokencustomer";
+            return "merchanttribe-authtokencustomer-" + storeId.ToString();
         }
         public static string CookieNameLastCategory(long storeId)
         {

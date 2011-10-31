@@ -59,9 +59,9 @@ namespace MerchantTribe.Commerce.Contacts
         }
 
 
-        public void RecordAffiliateReferral(string referrerId, string referralUrl)
+        public void RecordAffiliateReferral(string referrerId, string referralUrl, MerchantTribeApplication app)
         {
-            long current = SessionManager.CurrentAffiliateID;
+            long current = SessionManager.CurrentAffiliateID(app.CurrentStore);
 
             // Need to Set if Mode is Force New Affiliate
             bool NeedToSet = (this.context.CurrentStore.Settings.AffiliateConflictMode == Contacts.AffiliateConflictMode.FavorNewAffiliate);            
@@ -71,7 +71,7 @@ namespace MerchantTribe.Commerce.Contacts
 
             if (NeedToSet)
             {
-                SetNewAffiliate(referrerId, referralUrl);
+                SetNewAffiliate(referrerId, referralUrl, app);
             }                            
             else
             {
@@ -79,14 +79,14 @@ namespace MerchantTribe.Commerce.Contacts
             }
 
         }
-        private bool SetNewAffiliate(string referrerId, string referrerUrl)
+        private bool SetNewAffiliate(string referrerId, string referrerUrl, MerchantTribeApplication app)
         {
 
             Contacts.Affiliate aff = Affiliates.FindByReferralId(referrerId);
             if (aff == null) return false;
             if (!aff.Enabled) return false;
 
-            if (aff.Id != SessionManager.CurrentAffiliateID)
+            if (aff.Id != SessionManager.CurrentAffiliateID(app.CurrentStore))
             {
                 System.DateTime expires = System.DateTime.UtcNow;
                 if (aff.ReferralDays > 0)
@@ -98,7 +98,7 @@ namespace MerchantTribe.Commerce.Contacts
                 {
                     expires = System.DateTime.UtcNow.AddYears(50);
                 }
-                SessionManager.SetCurrentAffiliateId(aff.Id, expires);
+                SessionManager.SetCurrentAffiliateId(aff.Id, expires, app.CurrentStore);
 
             }
             return LogReferral(aff.Id, referrerUrl);
@@ -116,9 +116,9 @@ namespace MerchantTribe.Commerce.Contacts
             return AffiliateReferrals.Create(r);                        
         }
 
-        public long GetValidAffiliateId()
+        public long GetValidAffiliateId(MerchantTribeApplication app)
         {            
-            long current = SessionManager.CurrentAffiliateID;
+            long current = SessionManager.CurrentAffiliateID(app.CurrentStore);
             if (current < 0) return 0;
             
             Contacts.Affiliate aff = Affiliates.Find(current);

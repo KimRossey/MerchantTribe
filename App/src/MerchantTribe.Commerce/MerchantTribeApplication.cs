@@ -249,7 +249,7 @@ namespace MerchantTribe.Commerce
         {
             get
             {
-                return SessionManager.GetCurrentUserId();
+                return SessionManager.GetCurrentUserId(this.CurrentStore);
             }
         }
         public Membership.CustomerAccount CurrentCustomer
@@ -489,7 +489,7 @@ namespace MerchantTribe.Commerce
             OrdersShipItems(p, o);
             BusinessRules.OrderTaskContext c = new BusinessRules.OrderTaskContext(this);
             c.Order = o;
-            c.UserId = SessionManager.GetCurrentUserId();
+            c.UserId = SessionManager.GetCurrentUserId(this.CurrentStore);
             if (!BusinessRules.Workflow.RunByName(c, BusinessRules.WorkflowNames.PackageShipped))
             {
                 EventLog.LogEvent("PackageShippedWorkflow", "Package Shipped Workflow Failed", EventLogSeverity.Debug);
@@ -1140,6 +1140,35 @@ namespace MerchantTribe.Commerce
                 ids.Add(rel.UserId);
             }
             return MembershipServices.Customers.FindMany(ids);
+        }
+
+
+        // Flex Page Status
+        public bool IsEditMode
+        {
+            get
+            {
+                bool result = false;
+                if (SessionManager.GetCookieString("IsEditMode", this.CurrentStore) == "1")
+                {
+                    if (this.CurrentRequestContext.IsAdmin(this))
+                    {
+                        result = true;
+                    }
+                }
+                return result;
+            }
+            set
+            {
+                if (value == true)
+                {
+                    SessionManager.SetCookieString("IsEditMode", "1", this.CurrentStore);
+                }
+                else
+                {
+                    SessionManager.SetCookieString("IsEditMode", "0", this.CurrentStore);
+                }
+            }
         }
         
     }

@@ -367,7 +367,7 @@ namespace MerchantTribe.Commerce.Utilities
             sb.Append("<h1>Password Reset Instructions</h1>");
             sb.Append("<p>Your Reset Key = " + u.ResetKey + "</p>");
             sb.Append("<p>Use the link below to reset your password.</p>");
-            sb.Append("<p><a href=\"" + s.RootUrlSecure() + "account/ResetPassword2?email=" + u.Email + "&resetkey=" + u.ResetKey + "\">");
+            sb.Append("<p><a href=\"" + s.RootUrlSecure() + "adminaccount/ResetPassword2?email=" + u.Email + "&resetkey=" + u.ResetKey + "\">");
             sb.Append("Click Here to Reset Your Password</a></p>");            
             sb.Append("&nbsp;<br />");
             sb.Append("&nbsp;<br />");

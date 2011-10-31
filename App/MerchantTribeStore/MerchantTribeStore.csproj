@@ -165,6 +165,7 @@
     <Content Include="BVAdmin\Account.aspx" />
     <Content Include="BVAdmin\BVAdmin.js" />
     <Content Include="BVAdmin\Configuration\SocialMedia.aspx" />
+    <Content Include="BVAdmin\Logout.aspx" />
     <Content Include="BVAdmin\SqlScripts\Full\CreateProcedures.sql" />
     <Content Include="BVAdmin\SqlScripts\Full\CreateTables.sql" />
     <Content Include="BVAdmin\SqlScripts\Full\PopulateData.sql" />
@@ -3436,6 +3437,13 @@
     </Compile>
     <Compile Include="BVAdmin\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BVAdmin\Logout.aspx.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BVAdmin\Logout.aspx.designer.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
     </Compile>
     <Compile Include="BVAdmin\Marketing\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

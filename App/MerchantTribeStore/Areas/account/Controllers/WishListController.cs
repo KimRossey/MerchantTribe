@@ -25,7 +25,7 @@ namespace MerchantTribeStore.Areas.account.Controllers
             ViewBag.XButton = MTApp.ThemeManager().ButtonUrl("x", Request.IsSecureConnection);
             ViewBag.AddButton = MTApp.ThemeManager().ButtonUrl("AddToCart", Request.IsSecureConnection);
 
-            List<WishListItem> items = MTApp.CatalogServices.WishListItems.FindByCustomerIdPaged(SessionManager.GetCurrentUserId(), 1, 50);
+            List<WishListItem> items = MTApp.CatalogServices.WishListItems.FindByCustomerIdPaged(SessionManager.GetCurrentUserId(MTApp.CurrentStore), 1, 50);
             List<Models.SavedItemViewModel> model = PrepItems(items);
             if (model.Count < 1)
             {
@@ -38,7 +38,7 @@ namespace MerchantTribeStore.Areas.account.Controllers
         [HttpPost]
         public ActionResult Delete(long itemid)
         {
-            string customerId = SessionManager.GetCurrentUserId();
+            string customerId = SessionManager.GetCurrentUserId(MTApp.CurrentStore);
             WishListItem wi = MTApp.CatalogServices.WishListItems.Find(itemid);
             if (wi != null)            
             {
@@ -54,7 +54,7 @@ namespace MerchantTribeStore.Areas.account.Controllers
         [HttpPost]
         public ActionResult AddToCart(long itemid)
         {
-            string customerId = SessionManager.GetCurrentUserId();
+            string customerId = SessionManager.GetCurrentUserId(MTApp.CurrentStore);
             WishListItem wi = MTApp.CatalogServices.WishListItems.Find(itemid);
             if (wi != null)
             {
@@ -71,14 +71,14 @@ namespace MerchantTribeStore.Areas.account.Controllers
                                                                                             wi.SelectionData,
                                                                                             1,
                                                                                             MTApp);
-                            Order Basket = SessionManager.CurrentShoppingCart(MTApp.OrderServices);
-                            if (Basket.UserID != SessionManager.GetCurrentUserId())
+                            Order Basket = SessionManager.CurrentShoppingCart(MTApp.OrderServices, MTApp.CurrentStore);
+                            if (Basket.UserID != SessionManager.GetCurrentUserId(MTApp.CurrentStore))
                             {
-                                Basket.UserID = SessionManager.GetCurrentUserId();
+                                Basket.UserID = SessionManager.GetCurrentUserId(MTApp.CurrentStore);
                             }
 
                             MTApp.AddToOrderWithCalculateAndSave(Basket, li);
-                            SessionManager.SaveOrderCookies(Basket);
+                            SessionManager.SaveOrderCookies(Basket, MTApp.CurrentStore);
 
                             return Redirect("~/cart");                        
                     }            

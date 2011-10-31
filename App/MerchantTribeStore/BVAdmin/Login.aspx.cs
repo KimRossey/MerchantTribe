@@ -7,7 +7,34 @@ namespace MerchantTribeStore
 {
 
     partial class BVAdmin_Login : System.Web.UI.Page, IMultiStorePage
-    {        
+    {
+        
+        public MerchantTribeApplication MTApp { get; set; }
+        
+        protected override void OnPreInit(System.EventArgs e)
+        {
+            base.OnPreInit(e);
+            MTApp = MerchantTribeApplication.InstantiateForDataBase(new RequestContext());
+
+            // Determine store id        
+            MTApp.CurrentStore = MerchantTribe.Commerce.Utilities.UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, MTApp.AccountServices);
+            if (MTApp.CurrentStore == null)
+            {
+                Response.Redirect("~/storenotfound");
+            }
+
+            if (MTApp.CurrentStore.Status == MerchantTribe.Commerce.Accounts.StoreStatus.Deactivated)
+            {
+                Response.Redirect("~/storenotavailable");
+            }
+
+            // Culture Settings
+            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(MTApp.CurrentStore.Settings.CultureCode);
+            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(MTApp.CurrentStore.Settings.CultureCode);
+
+            IntegrationLoader.AddIntegrations(this.MTApp.CurrentRequestContext.IntegrationEvents, this.MTApp.CurrentStore);        
+        }
+
         protected override void OnLoad(System.EventArgs e)
         {
             base.OnLoad(e);
@@ -71,7 +98,7 @@ namespace MerchantTribeStore
 
             string err = string.Empty;
 
-            if ((MTApp.AccountServices.LoginAdminUser(email, password, ref err, Page.Request.RequestContext.HttpContext)))
+            if ((MTApp.AccountServices.LoginAdminUser(email, password, ref err, Page.Request.RequestContext.HttpContext, MTApp)))
             {
 
                 if (Request.QueryString["wizard"] != null)

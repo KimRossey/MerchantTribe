@@ -85,10 +85,10 @@ namespace MerchantTribeStore
             //routes.IgnoreRoute("{resource}.aspx/{*pathInfo}");
             
             // Admin Routes
-            routes.MapPageRoute("adminlogin", "account/login", "~/BVAdmin/Login.aspx");
-            routes.MapPageRoute("adminresetpassword", "account/resetpassword", "~/BVAdmin/ResetPassword.aspx");
-            routes.MapPageRoute("adminresetpassword2", "account/resetpassword2", "~/BVAdmin/ResetPassword2.aspx");
-            routes.MapPageRoute("adminlogout", "account/logout", "~/BVAdmin/logout.aspx");
+            routes.MapPageRoute("adminlogin", "adminaccount/login", "~/BVAdmin/Login.aspx");
+            routes.MapPageRoute("adminresetpassword", "adminaccount/resetpassword", "~/BVAdmin/ResetPassword.aspx");
+            routes.MapPageRoute("adminresetpassword2", "adminaccount/resetpassword2", "~/BVAdmin/ResetPassword2.aspx");
+            routes.MapPageRoute("adminlogout", "adminaccount/logout", "~/BVAdmin/logout.aspx");
                                                                                       
             // Products
             routes.MapRoute("products-rendersingle", "products/rendersingleproduct/{*params}",

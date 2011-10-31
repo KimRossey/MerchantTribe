@@ -76,7 +76,7 @@ namespace MerchantTribeStore.BVAdmin
             {
                 u.ResetKey = string.Empty; // Disable the key once it's been used.
                 MTApp.AccountServices.AdminUsers.Update(u);
-                Response.Redirect("~/account/login?reset=1");
+                Response.Redirect("~/adminaccount/login?reset=1");
             }
             else
             {

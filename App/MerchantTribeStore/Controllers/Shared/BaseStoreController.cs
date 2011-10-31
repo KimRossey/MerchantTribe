@@ -20,10 +20,10 @@ namespace MerchantTribeStore.Controllers.Shared
             //Cart Count
             string itemCount = "0";
             string subTotal = "$0.00";
-            if (SessionManager.CurrentUserHasCart())
+            if (SessionManager.CurrentUserHasCart(MTApp.CurrentStore))
             {
-                itemCount = SessionManager.GetCookieString(WebAppSettings.CookieNameCartItemCount(MTApp.CurrentStore.Id));
-                subTotal = SessionManager.GetCookieString(WebAppSettings.CookieNameCartSubTotal(MTApp.CurrentStore.Id));
+                itemCount = SessionManager.GetCookieString(WebAppSettings.CookieNameCartItemCount(MTApp.CurrentStore.Id), MTApp.CurrentStore);
+                subTotal = SessionManager.GetCookieString(WebAppSettings.CookieNameCartSubTotal(MTApp.CurrentStore.Id), MTApp.CurrentStore);
                 if (itemCount.Trim().Length < 1) itemCount = "0";
                 if (subTotal.Trim().Length < 1) subTotal = "$0.00";
             }
@@ -70,7 +70,7 @@ namespace MerchantTribeStore.Controllers.Shared
                     affid = Request.Params[WebAppSettings.AffiliateQueryStringName];
                     string referrerURL = Request.UrlReferrer.AbsoluteUri;
                     if (referrerURL == null) referrerURL = string.Empty;
-                    MTApp.ContactServices.RecordAffiliateReferral(affid, referrerURL);
+                    MTApp.ContactServices.RecordAffiliateReferral(affid, referrerURL, MTApp);
 
                 }
                 catch (System.Exception ex)

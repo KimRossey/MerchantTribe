@@ -82,7 +82,7 @@ namespace MerchantTribeStore
                 this.lnkGenerateBVBills.Visible = false;
             }
           
-            MerchantTribe.Commerce.SessionManager.SetCookieString("AdminLastManager", "Default.aspx?p=" + pageNumber.ToString());
+            MerchantTribe.Commerce.SessionManager.SetCookieString("AdminLastManager", "Default.aspx?p=" + pageNumber.ToString(), MTApp.CurrentStore);
             FindOrders(pageNumber);
 
             // Acumatica Warning

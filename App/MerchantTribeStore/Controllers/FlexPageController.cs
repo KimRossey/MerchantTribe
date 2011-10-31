@@ -58,7 +58,7 @@ namespace MerchantTribeStore.Controllers
             MTApp.CurrentRequestContext.FlexPageId = cat.Bvin;
             MTApp.CurrentRequestContext.UrlHelper = this.Url;
             
-            if (MTApp.CurrentRequestContext.IsEditMode)
+            if (MTApp.IsEditMode)
             {
                 ViewData["EditCss"] = "<link href=\"" + Url.Content("~/css/flexedit/styles.css") + "\" rel=\"stylesheet\" type=\"text/css\" />";
                 string editJS = "<script type=\"text/javascript\" src=\"" + Url.Content("~/content/FlexEdit.js") + "\"></script>";                
@@ -77,7 +77,7 @@ namespace MerchantTribeStore.Controllers
             // Load Content Parts for Page        
             try
             {
-                if (MTApp.CurrentRequestContext.IsEditMode)
+                if (MTApp.IsEditMode)
                 {
                     if (Request["preview"] == "1")
                     {

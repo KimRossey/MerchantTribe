@@ -50,7 +50,7 @@ namespace MerchantTribe.Commerce.Accounts
         }
 
         // Admin Users
-        public bool LoginAdminUser(string email, string password, ref string errorMessage, System.Web.HttpContextBase httpContext)
+        public bool LoginAdminUser(string email, string password, ref string errorMessage, System.Web.HttpContextBase httpContext, MerchantTribeApplication app)
         {
             bool result = false;
 
@@ -81,7 +81,7 @@ namespace MerchantTribe.Commerce.Accounts
 
                 if (AuthTokens.Create(token))
                 {
-                    Cookies.SetCookieGuid(WebAppSettings.CookieNameAuthenticationTokenAdmin(),
+                    Cookies.SetCookieGuid(WebAppSettings.CookieNameAuthenticationTokenAdmin(app.CurrentStore.Id),
                                                     token.TokenId,
                                                     httpContext, false, new EventLog());
                     result = true;
@@ -101,11 +101,11 @@ namespace MerchantTribe.Commerce.Accounts
 
             return result;
         }
-        public bool LogoutAdminUser(System.Web.HttpContextBase httpContext)
+        public bool LogoutAdminUser(System.Web.HttpContextBase httpContext, MerchantTribeApplication app)
         {
             bool result = true;
 
-            Cookies.SetCookieGuid(WebAppSettings.CookieNameAuthenticationTokenAdmin(),
+            Cookies.SetCookieGuid(WebAppSettings.CookieNameAuthenticationTokenAdmin(app.CurrentStore.Id),
                                                     System.Guid.NewGuid(),
                                                     httpContext, false, new EventLog());
 
@@ -507,7 +507,7 @@ namespace MerchantTribe.Commerce.Accounts
                 // Save data to store 
                 Stores.Update(s);
 
-                System.Web.HttpContext.Current.Response.Redirect("~/account/login?wizard=1");
+                System.Web.HttpContext.Current.Response.Redirect("~/adminaccount/login?wizard=1");
 
                 // Force this store into the request context so
                 // non-repository datalayer will read in the correct

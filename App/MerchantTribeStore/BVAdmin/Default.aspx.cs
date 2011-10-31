@@ -21,7 +21,7 @@ namespace MerchantTribeStore
             if (WebAppSettings.IsIndividualMode)
             {
                 // Simple pci check for default admin username
-                if (MTApp.CurrentRequestContext.CurrentAdministrator.Email == "admin@merchanttribe.com") Response.Redirect("ChangeEmail.aspx?pci=1");
+                if (MTApp.CurrentRequestContext.CurrentAdministrator(MTApp).Email == "admin@merchanttribe.com") Response.Redirect("ChangeEmail.aspx?pci=1");
             }
 
             this.pnlGettingStarted.Visible = !MTApp.CurrentStore.Settings.HideGettingStarted;

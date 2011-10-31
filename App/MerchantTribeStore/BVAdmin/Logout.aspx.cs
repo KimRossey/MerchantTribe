@@ -5,16 +5,38 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using MerchantTribe.Commerce.Accounts;
+using MerchantTribe.Commerce;
 
 namespace MerchantTribeStore.BVAdmin
 {
     public partial class Logout : System.Web.UI.Page
     {
+        public MerchantTribeApplication MTApp { get; set; }
+
+        protected override void OnPreInit(EventArgs e)
+        {
+            base.OnPreInit(e);
+            MTApp = MerchantTribeApplication.InstantiateForDataBase(new RequestContext());
+
+            // Store routing context for URL Rewriting
+            MTApp.CurrentRequestContext.RoutingContext = this.Request.RequestContext;
+
+            // Determine store id        
+            MTApp.CurrentStore = MerchantTribe.Commerce.Utilities.UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, MTApp.AccountServices);
+            if (MTApp.CurrentStore == null)
+            {
+                Response.Redirect("~/storenotfound");
+            }
+
+            if (MTApp.CurrentStore.Status == MerchantTribe.Commerce.Accounts.StoreStatus.Deactivated)
+            {
+                Response.Redirect("~/storenotavailable");
+            }
+        }
+        
         protected void Page_Load(object sender, EventArgs e)
         {
-            AccountService account = AccountService.InstantiateForDatabase(new MerchantTribe.Commerce.RequestContext());            
-            account.LogoutAdminUser(Page.Request.RequestContext.HttpContext);
-
+            MTApp.AccountServices.LogoutAdminUser(Page.Request.RequestContext.HttpContext, MTApp);
             Response.Redirect("~/");
         }
     }
