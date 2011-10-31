@@ -586,7 +586,6 @@
     <Content Include="BVAdmin\Images\WorkflowEnd.png" />
     <Content Include="BVAdmin\Images\Workflowstep.png" />
     <Content Include="BVAdmin\Login.aspx" />
-    <Content Include="BVAdmin\Logout.aspx" />
     <Content Include="BVAdmin\Marketing\Default.aspx" />
     <Content Include="BVAdmin\Marketing\OffersEdit.aspx" />
     <Content Include="BVAdmin\Marketing\Promotions.aspx" />
@@ -3437,13 +3436,6 @@
     </Compile>
     <Compile Include="BVAdmin\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="BVAdmin\Logout.aspx.cs">
-      <DependentUpon>Logout.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="BVAdmin\Logout.aspx.designer.cs">
-      <DependentUpon>Logout.aspx</DependentUpon>
     </Compile>
     <Compile Include="BVAdmin\Marketing\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

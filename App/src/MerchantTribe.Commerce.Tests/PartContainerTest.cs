@@ -190,7 +190,7 @@ namespace MerchantTribe.Commerce.Tests
             string expected = "<div class=\"cols\">";
             expected += "<div class=\"grid_12\" >";
 
-            expected += "<div class=\"cols spacerabove\"><div class=\"grid_6\" ></div><div class=\"grid_6l\" ></div><div class=\"clearcol\"></div></div>";
+            expected += "<div class=\"cols editable issortable spacerabove\"><div class=\"grid_6\" ></div><div class=\"grid_6l\" ></div><div class=\"clearcol\"></div></div>";
 
             expected += "</div>";
             expected += "<div class=\"clearcol\"></div>";
@@ -216,7 +216,7 @@ namespace MerchantTribe.Commerce.Tests
             string expected = "<div class=\"cols\">";
             expected += "<div class=\"grid_12\" >";
 
-            expected += "<div class=\"cols spacerabove\"><div class=\"grid_6\" >";
+            expected += "<div class=\"cols editable issortable spacerabove\"><div class=\"grid_6\" >";
             expected += SamplePart1.RawHtml;
             expected += "</div>";
 
