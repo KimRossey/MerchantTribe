@@ -32,7 +32,13 @@
             @Html.Raw((string)ViewData["sitefooter"])
         </div>
     </div>
+    <script src="https://analytics.merchanttribe.com/scripts/merchanttribe.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        MerchantTribeAnalytics.StoreId = '@ViewBag.StoreUniqueId';
+        MerchantTribeAnalytics.CustomerId = '@ViewBag.CustomerId';
+        MerchantTribeAnalytics.CustomerIp = '@ViewBag.CustomerIp';
+    </script>
     @RenderSection("PreBodyCloseContent", false)    
-    @Html.Raw((string)ViewData["analyticsbottom"])
+    @Html.Raw((string)ViewData["analyticsbottom"])    
 </body>
 </html>

@@ -7,3 +7,15 @@ else
 {
     @Html.Partial("_ViewOrder", (MerchantTribe.Commerce.Orders.Order)ViewBag.Order)
 }
+@{
+    var o = (MerchantTribe.Commerce.Orders.Order)ViewBag.Order;
+    var Grand = o.TotalGrand.ToString();
+}
+@section PreBodyCloseContent
+{
+    <script type="text/javascript">
+        MerchantTribeAnalytics.EventCode = '2';
+        MerchantTribeAnalytics.EventAmount = '@Grand';
+        MerchantTribeAnalytics.EventDescription = '@o.OrderNumber';
+    </script>
+}

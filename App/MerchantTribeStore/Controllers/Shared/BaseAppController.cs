@@ -46,6 +46,9 @@ namespace MerchantTribeStore.Controllers.Shared
             ViewBag.RootUrl = MTApp.CurrentStore.RootUrl();
             ViewBag.StoreClosed = MTApp.CurrentStore.Settings.StoreClosed;
             ViewBag.StoreName = MTApp.CurrentStore.Settings.FriendlyName;
+            ViewBag.StoreUniqueId = MTApp.CurrentStore.StoreUniqueId(MTApp);
+            ViewBag.CustomerIp = Request.UserHostAddress ?? "0.0.0.0";
+            ViewBag.CustomerId = SessionManager.GetCurrentUserId(MTApp.CurrentStore) ?? string.Empty;
 
             // Integrations
             IntegrationLoader.AddIntegrations(this.MTApp.CurrentRequestContext.IntegrationEvents, this.MTApp.CurrentStore);

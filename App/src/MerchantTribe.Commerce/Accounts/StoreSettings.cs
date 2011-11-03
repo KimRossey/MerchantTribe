@@ -165,6 +165,14 @@ namespace MerchantTribe.Commerce.Accounts
         public StoreSettingsTwitter Twitter { get; private set; }
         public StoreSettingsGooglePlus GooglePlus { get; private set; }
 
+        public string UniqueId
+        {
+            get { string result = GetProp("UniqueId");
+                return result;
+                }
+            set { SetProp("UniqueId", value); }
+        }
+
         public bool IsPrivateStore
         {
             get { return GetPropBool("IsPrivateStore"); }

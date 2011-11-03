@@ -27,7 +27,7 @@
                 {
                     <p>
                         It looks like you have an account already. Please login:</p>
-                    <form action="@Url.Content("~/signin?mode=checkout")" method="post">
+                    <form! action="@Url.Content("~/signin?mode=checkout")" method="post">
                     <table id="CurrentUserTable" cellspacing="0" cellpadding="3">
                         <tr>
                             <td class="formlabel">
@@ -64,7 +64,7 @@
                             </td>
                         </tr>
                     </table>
-                    </form>        
+                    </form!>        
                 }
             </div>
             &nbsp;
@@ -144,7 +144,7 @@
                 @Model.AgreedToTermsDescription
                 <p><a href="@Url.Content("~/policies/terms")" class="viewSiteTerms">View @Model.LabelTerms</a></p>
             }            
-            <input type="image" id="btnsubmit" alt="Place Order" src="@Model.ButtonCheckoutUrl" tabindex="3001" />            
+            <input type="image" id="btnsubmit" alt="Place Order" src="@Model.ButtonCheckoutUrl" tabindex="3001" />                        
         </div>
         <div class="section-totals">
             <h2>

@@ -317,7 +317,7 @@ namespace MerchantTribe.Commerce.Utilities
             
             sb.Append("<form class=\"searchform\" action=\"" + rootUrl + "search\" method=\"get\">");
 
-            sb.Append("<input type=\"textbox\" name=\"q\" class=\"searchinput\" /> <input class=\"searchgo\" type=\"image\" src=\"" + buttonUrl + "\" alt=\"Search\" />");
+            sb.Append("<input type=\"text\" name=\"q\" class=\"searchinput\" /> <input class=\"searchgo\" type=\"image\" src=\"" + buttonUrl + "\" alt=\"Search\" />");
 
             sb.Append("</form>");            
 
