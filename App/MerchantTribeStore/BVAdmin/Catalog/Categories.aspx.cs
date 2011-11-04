@@ -23,6 +23,8 @@ namespace MerchantTribeStore
                     return "Categories_EditCustom.aspx";    
                 case CategorySourceType.FlexPage:
                     return "Categories_EditFlexPage.aspx";
+                case CategorySourceType.CustomLink:
+                    return "Categories_EditCustomLink.aspx";
                 default:
                     return "Categories_Edit.aspx";
            }

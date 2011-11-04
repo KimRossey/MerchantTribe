@@ -18,6 +18,8 @@ namespace MerchantTribeStore.Areas.account
                 new { controller = "Authentication", action="SignIn"});
             context.MapRoute("customerlogout", "signout", 
                 new { controller = "Authentication", action = "SignOut" });
+            context.MapRoute("customerloginajax", "account/ajaxsignin",
+                new { controller = "Authentication", action = "AjaxSignIn" });
 
             context.MapRoute("forgotpassword-route", "account/forgotpassword/{email}/{returnmode}",
                 new { controller = "Authentication", action = "ForgotPassword", email = "", returnmode = "" });            

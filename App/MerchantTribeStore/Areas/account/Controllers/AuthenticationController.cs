@@ -8,6 +8,7 @@ using MerchantTribe.Commerce.Content;
 using MerchantTribe.Commerce.Membership;
 using MerchantTribe.Commerce.Utilities;
 using MerchantTribeStore.Models;
+using MerchantTribeStore.Controllers;
 using MerchantTribeStore.Controllers.Shared;
 using MerchantTribeStore.Areas.account.Models;
 
@@ -63,7 +64,15 @@ namespace MerchantTribeStore.Areas.account.Controllers
                 posted.Mode = Request.QueryString["mode"];
             }
 
-            if (ValidateLoginModel(posted, false))
+            ValidateModelResponse validated = ValidateLoginModel(posted, false);
+            if (validated.Success == false)
+            {
+                foreach (string s in validated.ResultMessages)
+                {
+                    FlashWarning(s);
+                }
+            }
+            else
             {
                 string errorMessage = string.Empty;
                 string userId = string.Empty;
@@ -120,7 +129,15 @@ namespace MerchantTribeStore.Areas.account.Controllers
             if (ViewBag.IsPrivateStore) return View("SignIn", model);
 
             // Process Requrest
-            if (ValidateLoginModel(posted, true))
+            ValidateModelResponse validated = ValidateLoginModel(posted, false);
+            if (validated.Success == false)
+            {
+                foreach(string s in validated.ResultMessages)
+                {
+                    FlashWarning(s);
+                }
+            }
+            else
             {
                 bool result = false;
               
@@ -157,30 +174,49 @@ namespace MerchantTribeStore.Areas.account.Controllers
             }
             return View("SignIn", model);
         }
-        private bool ValidateLoginModel(SignInViewModel posted, bool isCreate)
+
+        private class ValidateModelResponse
         {
-            bool result = true;
-            if (posted == null) return false;
+            public bool Success {get;set;}
+            public List<string> ResultMessages {get;set;}
+
+            public ValidateModelResponse()
+            {
+                Success = false;
+                ResultMessages = new List<string>();
+            }
+        }
+
+        private ValidateModelResponse ValidateLoginModel(SignInViewModel posted, bool isCreate)
+        {
+            ValidateModelResponse resp = new ValidateModelResponse();
+            resp.Success = true;
+            
+            if (posted == null) 
+            {
+                resp.Success = false;
+                return resp;
+            }
             if (!MerchantTribe.Web.Validation.EmailValidation.MeetsEmailFormatRequirements(posted.Email))
             {
-                result = false;
-                FlashWarning("Please enter a valid email address");
+                resp.Success = false;
+                resp.ResultMessages.Add("Please enter a valid email address");
             }
             if (posted.Password.Trim().Length < WebAppSettings.PasswordMinimumLength)
             {
-                result = false;
-                FlashWarning("Password must be at least " + WebAppSettings.PasswordMinimumLength + " characters long.");
+                resp.Success = false;
+                resp.ResultMessages.Add("Password must be at least " + WebAppSettings.PasswordMinimumLength + " characters long.");
             }
 
             if (isCreate)
             {
                 if (posted.PasswordConfirm != posted.Password)
                 {
-                    result = false;
-                    FlashWarning("Passwords don't match. Please try again.");
+                    resp.Success = false;
+                    resp.ResultMessages.Add("Passwords don't match. Please try again.");
                 }
             }
-            return result;
+            return resp;
         }
 
         public ActionResult SignOut()
@@ -290,5 +326,47 @@ namespace MerchantTribeStore.Areas.account.Controllers
                 }
             }
         }
+
+        // POST: /account/ajaxsignin
+        [HttpPost]
+        public ActionResult AjaxSignIn()
+        {
+            string email = Request.Form["email"] ?? string.Empty;
+            string password = Request.Form["password"] ?? string.Empty;
+
+            SignInViewModel posted = new SignInViewModel() { Email = email, 
+                                                             Password = password };
+                
+            ValidateModelResponse validated = ValidateLoginModel(posted, false);                                 
+            if (validated.Success)
+            {
+                string errorMessage = string.Empty;
+                string userId = string.Empty;
+                if (MTApp.MembershipServices.LoginCustomer(posted.Email.Trim(),
+                                        posted.Password.Trim(),
+                                        ref errorMessage,
+                                        this.Request.RequestContext.HttpContext,
+                                        ref userId, MTApp))
+                {
+                    MerchantTribe.Commerce.Orders.Order cart = SessionManager.CurrentShoppingCart(MTApp.OrderServices, MTApp.CurrentStore);
+                    if (cart != null && !string.IsNullOrEmpty(cart.bvin))
+                    {
+                        cart.UserEmail = posted.Email.Trim();
+                        cart.UserID = userId;
+                        MTApp.CalculateOrderAndSave(cart);
+                        SessionManager.SaveOrderCookies(cart, MTApp.CurrentStore);
+                    }                
+                    validated.Success = true;
+                }
+                else
+                {
+                    validated.ResultMessages.Add(errorMessage);
+                    validated.Success = false;
+                }                
+            }
+
+            return new PreJsonResult(MerchantTribe.Web.Json.ObjectToJson(validated));
+        }       
+
     }
 }

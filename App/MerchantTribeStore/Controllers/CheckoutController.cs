@@ -11,6 +11,7 @@ using MerchantTribe.Commerce.Orders;
 using MerchantTribeStore.Filters;
 using MerchantTribe.Commerce.Catalog;
 using MerchantTribeStore.Models;
+using MerchantTribeStore.Controllers;
 using MerchantTribe.Commerce.Content;
 using MerchantTribe.Commerce.Contacts;
 using MerchantTribe.Commerce.Payment;

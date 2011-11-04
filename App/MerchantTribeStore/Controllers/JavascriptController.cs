@@ -12,7 +12,7 @@ namespace MerchantTribeStore.Controllers
     // stores in sub folders get the correct paths.
     public class JavascriptController : Controller
     {
-        [OutputCache(VaryByHeader = "Host", VaryByParam = "filename", Duration = 150)]
+        [OutputCache(VaryByHeader = "Host", VaryByParam = "filename", Duration = 30)]
         public ActionResult Index(string filename)
         {
             string sourcecode = string.Empty;

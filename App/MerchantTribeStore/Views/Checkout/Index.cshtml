@@ -17,33 +17,24 @@
                 Email Address</h2>
             <input type="text" id="customeremail" name="customeremail"
                    tabindex="100" size="50" value="@Model.CurrentOrder.UserEmail" /><span class="requiredfield">*</span><br />
-            <div id="loginform">
+            <div id="loginform">                
                 @if (Model.IsLoggedIn)
                 {
-                    <p>
-                        You are logged into your account. Thank You.</p>
+                    <p>You are logged into your account. Thank You.</p>
                 }
                 else
                 {
-                    <p>
-                        It looks like you have an account already. Please login:</p>
-                    <form! action="@Url.Content("~/signin?mode=checkout")" method="post">
-                    <table id="CurrentUserTable" cellspacing="0" cellpadding="3">
-                        <tr>
-                            <td class="formlabel">
-                                Email:
-                            </td>
-                            <td class="formfield">
-                                <input type="text" class="forminput required logincontroltemailfield"
-                                            name="email" value="@Model.CurrentOrder.UserEmail" tabindex="150" />
-                            </td>
-                        </tr>
+                    <div id="login-changing" style="display: none;">
+                        <img src="@Url.Content("~/content/images/system/ajax-loader-small.gif")" border="0" alt="Loading..." /> Please Wait...
+                    </div>
+                    <p id="loginmessage">It looks like you have an account already. Please login:</p>                    
+                    <table id="loginformtable" cellspacing="0" cellpadding="3">
                         <tr>
                             <td class="formlabel">
                                 Password:
                             </td>
                             <td class="formfield">
-                                <input type="password" class="forminput required" title="Enter Your Password" tabindex="151"
+                                <input id="customerpassword" type="password" class="forminput required" title="Enter Your Password" tabindex="151"
                                     name="password" value="">
                             </td>
                         </tr>
@@ -52,7 +43,7 @@
                                 &nbsp;
                             </td>
                             <td class="formfield">
-                                <input type="image" alt="Login" src="@Model.ButtonLoginUrl" tabindex="152" />
+                                <a id="loginbutton" href="#" tabindex="152"><img alt="Login" src="@Model.ButtonLoginUrl"  /></a>
                             </td>
                         </tr>
                         <tr>
@@ -63,8 +54,7 @@
                                     Forgot Your Password? Click Here.</a>
                             </td>
                         </tr>
-                    </table>
-                    </form!>        
+                    </table>                    
                 }
             </div>
             &nbsp;
@@ -72,15 +62,15 @@
         <div class="section-shipping">
             <h2>
                 Shipping Address</h2>
-            @Html.Partial("_CheckoutAddress", new CheckoutAddressViewModel() 
-                                                { 
-                                                    Address=Model.CurrentOrder.ShippingAddress,
-                                                    Prefix = "shipping",
-                                                    TabIndex = 200,
-                                                    ShowPhone = true,
-                                                    Countries = Model.Countries,
-                                                    Violations = Model.Violations
-                                                })
+            @Html.Partial("_CheckoutAddress", new CheckoutAddressViewModel()
+       {
+           Address = Model.CurrentOrder.ShippingAddress,
+           Prefix = "shipping",
+           TabIndex = 200,
+           ShowPhone = true,
+           Countries = Model.Countries,
+           Violations = Model.Violations
+       })
                                                     
             <input type="hidden" id="tempshippingregion" value="@Model.CurrentOrder.ShippingAddress.RegionBvin" />
         </div>
@@ -89,7 +79,7 @@
                 Delivery Options</h2>            
             <div id="lstShipping"></div>
             <span class="shipping-changing" style="display: none;">
-                <img src="@Url.Content("~/content/images/system/ajax-loader-small.gif")" border="0" AlternateText="Loading..." />
+                <img src="@Url.Content("~/content/images/system/ajax-loader-small.gif")" border="0" alt="Loading..." />
             </span>
             <div id="shipping-not-valid">Enter a shipping address first</div>
             <div id="shipping-needs-refresh"></div>                    
@@ -101,15 +91,15 @@
                                                                        { <text> checked="checked"</text> } tabindex="400" />
             My billing address is the same as my shipping address
             <div id="billingwrapper">
-                @Html.Partial("_CheckoutAddress", new CheckoutAddressViewModel() 
-                                                { 
-                                                    Address=Model.CurrentOrder.BillingAddress,
-                                                    Prefix = "billing",
-                                                    TabIndex = 450,
-                                                    ShowPhone = false,
-                                                    Countries = Model.Countries,
-                                                    Violations = Model.Violations
-                                                })
+                @Html.Partial("_CheckoutAddress", new CheckoutAddressViewModel()
+           {
+               Address = Model.CurrentOrder.BillingAddress,
+               Prefix = "billing",
+               TabIndex = 450,
+               ShowPhone = false,
+               Countries = Model.Countries,
+               Violations = Model.Violations
+           })
                 <input type="hidden" id="tempbillingregion" value="@Model.CurrentOrder.BillingAddress.RegionBvin" />
             </div>
         </div>
@@ -120,8 +110,10 @@
             <div class="section-payment">                
                     <h2>@Model.LabelRewardPoints</h2>
                     @Model.RewardPointsAvailable<br />
-                    <input type="radio" @if (!Model.UseRewardsPoints) { <text>checked="checked"</text> } name="userewardspoints" title="Do Not Use Points" value="0" /> Do Not Use Points<br />                    
-                    <input type="radio" @if (Model.UseRewardsPoints) { <text>checked="checked"</text> } name="userewardspoints" title="Use Points" value="1" /> @Model.LabelRewardsUse<br />                                        
+                    <input type="radio" @if (!Model.UseRewardsPoints)
+                                        { <text>checked="checked"</text> } name="userewardspoints" title="Do Not Use Points" value="0" /> Do Not Use Points<br />                    
+                    <input type="radio" @if (Model.UseRewardsPoints)
+                                        { <text>checked="checked"</text> } name="userewardspoints" title="Use Points" value="1" /> @Model.LabelRewardsUse<br />                                        
             </div>
         </div>
         }

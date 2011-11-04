@@ -15,6 +15,7 @@
                 <asp:ListItem Value="4">Filtering Category</asp:ListItem>
                 <asp:ListItem Value="3">HTML Page</asp:ListItem>
                 <asp:ListItem Value="5">Web Site Page (BETA)</asp:ListItem>
+                <asp:ListItem Value="2">Custom Link</asp:ListItem>
             </asp:DropDownList></td>
             <td>in</td>
             <td><asp:DropDownList ID="lstParents" runat="server"></asp:DropDownList></td>

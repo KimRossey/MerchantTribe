@@ -164,6 +164,7 @@
   <ItemGroup>
     <Content Include="BVAdmin\Account.aspx" />
     <Content Include="BVAdmin\BVAdmin.js" />
+    <Content Include="BVAdmin\Catalog\Categories_EditCustomLink.aspx" />
     <Content Include="BVAdmin\Configuration\SocialMedia.aspx" />
     <Content Include="BVAdmin\Logout.aspx" />
     <Content Include="BVAdmin\SqlScripts\Full\CreateProcedures.sql" />
@@ -2219,6 +2220,13 @@
     </Compile>
     <Compile Include="BVAdmin\Catalog\Categories_EditCustom.aspx.designer.cs">
       <DependentUpon>Categories_EditCustom.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BVAdmin\Catalog\Categories_EditCustomLink.aspx.cs">
+      <DependentUpon>Categories_EditCustomLink.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BVAdmin\Catalog\Categories_EditCustomLink.aspx.designer.cs">
+      <DependentUpon>Categories_EditCustomLink.aspx</DependentUpon>
     </Compile>
     <Compile Include="BVAdmin\Catalog\Categories_EditDrillDown.aspx.cs">
       <DependentUpon>Categories_EditDrillDown.aspx</DependentUpon>
