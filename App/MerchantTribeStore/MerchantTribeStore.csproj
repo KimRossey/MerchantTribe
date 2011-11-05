@@ -738,6 +738,7 @@
     <Content Include="content\themes\theme-bv-stoneslate\buttons\SaveForLater.png" />
     <Content Include="content\themes\theme-bv-summerstore\buttons\PrintThisPage.png" />
     <Content Include="content\themes\theme-bv-summerstore\buttons\SaveForLater.png" />
+    <Content Include="Scripts\newsfeed.js" />
     <Content Include="Scripts\receipt.js" />
     <Content Include="Scripts\checkoutpaymenterror.js" />
     <Content Include="ClientBin\BVSoftware.SilverlightFileUpload.xap" />

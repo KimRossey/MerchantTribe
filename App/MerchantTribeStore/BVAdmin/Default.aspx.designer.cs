@@ -74,14 +74,5 @@ namespace MerchantTribeStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::MerchantTribeStore.BVAdmin_Controls_DashboardSalesSummary DashboardSalesSummary1;
-        
-        /// <summary>
-        /// DashboardNews1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::MerchantTribeStore.BVAdmin_Controls_DashboardNews DashboardNews1;
     }
 }

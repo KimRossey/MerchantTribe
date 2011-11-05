@@ -2,8 +2,10 @@
 <%@ Register Src="Controls/MessageBox.ascx" TagName="MessageBox" TagPrefix="uc2" %>
 <%@ Register src="Controls/DashboardOrderSummary.ascx" tagname="DashboardOrderSummary" tagprefix="uc4" %>
 <%@ Register src="Controls/DashboardAlerts.ascx" tagname="DashboardAlerts" tagprefix="uc5" %>
-<%@ Register src="Controls/DashboardNews.ascx" tagname="DashboardNews" tagprefix="uc6" %>
 <%@ Register src="Controls/DashboardSalesSummary.ascx" tagname="DashboardSalesSummary" tagprefix="uc7" %>
+<asp:Content ID="headercontent" ContentPlaceHolderID="headcontent" runat="server">
+    <script src="../scripts/newsfeed.js" type="text/javascript"></script>
+</asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
     <uc2:MessageBox ID="MessageBox1" runat="server" EnableViewState="false" />
     <div id="dashboard" >
@@ -37,8 +39,11 @@
                     <uc7:DashboardSalesSummary ID="DashboardSalesSummary1" runat="server" />                    
                 </div>
                          
-                <h3>BV News and Updates</h3>
-                <uc6:DashboardNews ID="DashboardNews1" runat="server" />            
+                <!--<h3>News and Updates</h3>
+                <div id="changing" style="display: none;">
+                    <img src="../content/images/system/ajax-loader-small.gif" border="0" alt="Loading..." /> Please Wait...
+                </div>
+                <div id="newsfeed"></div>                -->
         </div>       
         <div class="clear">&nbsp;</div>
     </div>
