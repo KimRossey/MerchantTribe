@@ -38,6 +38,7 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
                 context.Order.BillingAddress.CopyTo(n.BillingAddress);
                 context.Order.ShippingAddress.CopyTo(n.ShippingAddress);                
                 context.MTApp.MembershipServices.UpdateCustomer(n);
+                context.Order.CustomProperties.Add("bvsoftware", "allowpasswordreset", "1");
 
                 // Email Password to Customer
                 HtmlTemplate t = context.MTApp.ContentServices.GetHtmlTemplateOrDefault(HtmlTemplateType.ForgotPassword);                

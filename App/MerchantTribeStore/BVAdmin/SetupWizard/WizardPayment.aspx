@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
     <h1>
-        Store Setup - Step 2 of 3 - Payment Method</h1>
+        Store Setup - Step 2 of 4 - Payment Method</h1>
     <p class="flash-message-info">
         What type of payments will your store accept?</p>
     <p class="flash-message-minor">

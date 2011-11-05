@@ -103,7 +103,7 @@ namespace MerchantTribeStore
 
                 if (Request.QueryString["wizard"] != null)
                 {
-                    Response.Redirect("~/bvadmin/setupwizard/wizardtheme.aspx");
+                    Response.Redirect("~/bvadmin/setupwizard/wizardstart.aspx");
                 }
 
                 Response.Redirect("~/bvadmin");

@@ -25,7 +25,7 @@ namespace MerchantTribeStore
         private void LoadThemes()
         {
             ThemeManager tm = MTApp.ThemeManager();
-            List<ThemeView> available = tm.FindAvailableThemes();
+            List<ThemeView> available = tm.FindAvailableThemes(true);
             this.litThemes.Text = RenderThemes(available);
         }
 

@@ -132,6 +132,19 @@ namespace MerchantTribe.Commerce.Membership
 
             return result;
         }
+        public bool ResetPasswordForCustomer(string email, string newPassword)
+        {
+            bool result = false;
+            CustomerAccount u = Customers.FindByEmail(email);
+            if (u != null)
+            {
+                u.Password = u.EncryptPassword(newPassword);
+                Membership.CreateUserStatus s = CreateUserStatus.None;
+                result = UpdateCustomer(u, ref s);
+            }
+            return result;
+        }
+
         public bool DoPasswordsMatchForCustomer(string trialpassword, Membership.CustomerAccount u)
         {
             return u.Password.Equals(u.EncryptPassword(trialpassword), StringComparison.InvariantCulture);

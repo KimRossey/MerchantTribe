@@ -648,7 +648,23 @@ namespace MerchantTribeStore.Controllers
                     FlashFailure("Order could not be found. Please contact store for assistance.");
                     return;
                 }
-                                                                               
+
+                if (o.CustomProperties.Where(y => (y.DeveloperId == "bvsoftware")
+                                                    && (y.Key == "allowpasswordreset")
+                                                    && (y.Value == "1")
+                                                    ).Count() > 0)
+                {
+                    ViewBag.AllowPasswordReset = true;
+                    ViewBag.Email = o.UserEmail;
+                    ViewBag.OrderBvin = o.bvin;
+                    ViewBag.SubmitButtonUrl = MTApp.ThemeManager().ButtonUrl("Submit", Request.IsSecureConnection);
+                }
+                else
+                {
+                    ViewBag.AllowPasswordReset = false;
+                }
+
+
                 ViewBag.Order = o;
                 ViewBag.AcumaticaOrder = null;
 
@@ -937,5 +953,6 @@ namespace MerchantTribeStore.Controllers
             }            
             return Redirect("~/cart");
         }
+
     }
 }

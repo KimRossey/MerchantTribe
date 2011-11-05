@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="headcontent" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
-<h1>Store Setup - Step 3 of 3 - Complete!</h1>
+<h1>Store Setup - Step 4 of 4 - Complete!</h1>
 <p class="flash-message-info">All the basics are configured for your store.</p>
 <p class="flash-message-minor">There are plenty of options to explore on your own later.</p>
 <div style="width:500px;margin:0 auto;padding:50px 0;">

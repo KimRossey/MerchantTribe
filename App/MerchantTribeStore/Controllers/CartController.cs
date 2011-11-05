@@ -56,6 +56,10 @@ namespace MerchantTribeStore.Controllers
                     }
                 }
             }
+            if (result.StartsWith("~"))
+            {
+                result = Url.Content(result);
+            }
             return result;
         }
         private void SetPayPalVisibility(CartViewModel model)

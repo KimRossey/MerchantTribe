@@ -62,11 +62,10 @@ function LoginAjax() {
             },
             "json")
             .error(function () {
-                alert('error');
                 $('#login-changing').hide();
                 $('#loginmessage').html('Ajax error. contact administrator').show();
             })
-            .complete(function () { alert('complete'); $('#login-changing').hide(); });
+            .complete(function () {$('#login-changing').hide(); });
 
 }
 

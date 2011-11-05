@@ -1,4 +1,10 @@
-﻿<h1>Thank You! Order Received.</h1>
+﻿@section HeadContent
+{
+    <script type="text/javascript" src="@Url.Content("~/js/receipt.js")" ></script>
+}
+
+<h1>Thank You! Order Received.</h1>
+@Html.Partial("_SetFirstPassword")
 @if (ViewBag.AcumaticaOrder != null)
 {
     @Html.Partial("_ViewOrderAcumatica")

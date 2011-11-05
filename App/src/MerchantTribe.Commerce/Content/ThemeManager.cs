@@ -19,11 +19,16 @@ namespace MerchantTribe.Commerce.Content
 
         public static string DefaultThemeGuid = "bv-simplegray";
 
+
+        public List<ThemeView> FindAvailableThemes()
+        {
+            return FindAvailableThemes(false);
+        }
         /// <summary>
         /// Locate all available themes for a store
         /// </summary>
         /// <returns></returns>
-        public List<ThemeView> FindAvailableThemes()
+        public List<ThemeView> FindAvailableThemes(bool includeInstalled)
         {
             List<ThemeView> result = new List<ThemeView>();
             List<ThemeView> installed = FindInstalledThemes();
@@ -33,11 +38,12 @@ namespace MerchantTribe.Commerce.Content
             if (availablePaths.Length < 1) return result;
 
             foreach (string themePath in availablePaths)
-            {
+            {                
                 string themeId = System.IO.Path.GetFileName(themePath);
+                if (!themeId.StartsWith("theme-")) continue;
                 themeId = themeId.Replace("theme-", "");
 
-                if (!AlreadyInstalled(installed, themeId))
+                if (includeInstalled || !AlreadyInstalled(installed, themeId))
                 {
                     ThemeView v = new ThemeView();
                     v.LoadAvailableTheme(themeId);

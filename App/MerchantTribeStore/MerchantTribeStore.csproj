@@ -167,6 +167,9 @@
     <Content Include="BVAdmin\Catalog\Categories_EditCustomLink.aspx" />
     <Content Include="BVAdmin\Configuration\SocialMedia.aspx" />
     <Content Include="BVAdmin\Logout.aspx" />
+    <Content Include="BVAdmin\SetupWizard\EULA.txt" />
+    <Content Include="BVAdmin\SetupWizard\WizardSocialMedia.aspx" />
+    <Content Include="BVAdmin\SetupWizard\WizardStart.aspx" />
     <Content Include="BVAdmin\SqlScripts\Full\CreateProcedures.sql" />
     <Content Include="BVAdmin\SqlScripts\Full\CreateTables.sql" />
     <Content Include="BVAdmin\SqlScripts\Full\PopulateData.sql" />
@@ -684,6 +687,33 @@
     <Content Include="BVModules\Shipping\UPS\edit.ascx" />
     <Content Include="BVModules\Shipping\US Postal Service - Domestic\edit.ascx" />
     <Content Include="BVModules\Shipping\US Postal Service - International\edit.ascx" />
+    <Content Include="content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="content\themes\base\jquery.ui.all.css" />
+    <Content Include="content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="content\themes\base\jquery.ui.base.css" />
+    <Content Include="content\themes\base\jquery.ui.button.css" />
+    <Content Include="content\themes\base\jquery.ui.core.css" />
+    <Content Include="content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="content\themes\base\jquery.ui.slider.css" />
+    <Content Include="content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="content\themes\base\jquery.ui.theme.css" />
     <Content Include="content\themes\theme-bv-craftystore\buttons\PrintThisPage.png" />
     <Content Include="content\themes\theme-bv-craftystore\buttons\SaveForLater.png" />
     <Content Include="content\themes\theme-bv-fashionista\buttons\PrintThisPage.png" />
@@ -708,6 +738,7 @@
     <Content Include="content\themes\theme-bv-stoneslate\buttons\SaveForLater.png" />
     <Content Include="content\themes\theme-bv-summerstore\buttons\PrintThisPage.png" />
     <Content Include="content\themes\theme-bv-summerstore\buttons\SaveForLater.png" />
+    <Content Include="Scripts\receipt.js" />
     <Content Include="Scripts\checkoutpaymenterror.js" />
     <Content Include="ClientBin\BVSoftware.SilverlightFileUpload.xap" />
     <Content Include="ClientBin\MerchantTribe.SilverlightFileUpload.xap" />
@@ -3761,6 +3792,20 @@
     <Compile Include="BVAdmin\SetupWizard\WizardPayment.aspx.designer.cs">
       <DependentUpon>WizardPayment.aspx</DependentUpon>
     </Compile>
+    <Compile Include="BVAdmin\SetupWizard\WizardSocialMedia.aspx.cs">
+      <DependentUpon>WizardSocialMedia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BVAdmin\SetupWizard\WizardSocialMedia.aspx.designer.cs">
+      <DependentUpon>WizardSocialMedia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BVAdmin\SetupWizard\WizardStart.aspx.cs">
+      <DependentUpon>WizardStart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BVAdmin\SetupWizard\WizardStart.aspx.designer.cs">
+      <DependentUpon>WizardStart.aspx</DependentUpon>
+    </Compile>
     <Compile Include="BVAdmin\SetupWizard\WizardTheme.aspx.cs">
       <DependentUpon>WizardTheme.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -4367,6 +4412,7 @@
     <Content Include="Views\Shared\_FaceBookLike.cshtml" />
     <Content Include="Views\Shared\_Twitter.cshtml" />
     <Content Include="Views\Shared\_GooglePlusOne.cshtml" />
+    <Content Include="Views\Checkout\_SetFirstPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

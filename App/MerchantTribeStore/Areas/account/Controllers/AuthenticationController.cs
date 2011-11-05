@@ -178,8 +178,7 @@ namespace MerchantTribeStore.Areas.account.Controllers
         private class ValidateModelResponse
         {
             public bool Success {get;set;}
-            public List<string> ResultMessages {get;set;}
-
+            public List<string> ResultMessages {get;set;}                        
             public ValidateModelResponse()
             {
                 Success = false;
@@ -366,7 +365,70 @@ namespace MerchantTribeStore.Areas.account.Controllers
             }
 
             return new PreJsonResult(MerchantTribe.Web.Json.ObjectToJson(validated));
-        }       
+        }
+
+
+        // POST: /account/setfirstpassword
+        [HttpPost]
+        public ActionResult SetFirstPassword()
+        {
+            string email = Request.Form["email"] ?? string.Empty;
+            string password = Request.Form["password"] ?? string.Empty;
+            string orderbvin = Request.Form["orderbvin"] ?? string.Empty;
+
+            SimpleResponse resp = new SimpleResponse();
+            resp.Success = true;
+            
+            MerchantTribe.Commerce.Orders.Order order = MTApp.OrderServices.Orders.FindForCurrentStore(orderbvin);
+            if (order == null) 
+            {
+                resp.Success = false;
+                resp.Messages += "Order id was invalid for password reset. ";
+            }
+            else            
+            {
+                if (order.CustomProperties.Where(y => (y.DeveloperId == "bvsoftware")
+                                            && (y.Key=="allowpasswordreset")
+                                            && (y.Value=="1")).Count() < 1)
+                {
+                    resp.Success = false;
+                    resp.Messages += "This order does not allow password reset anymore. Please use the 'Forgot Password' link when signing in. ";
+                }
+            }
+            
+            if (password.Trim().Length < WebAppSettings.PasswordMinimumLength)
+            {
+                resp.Success = false;
+                resp.Messages += "Password must be at least " + WebAppSettings.PasswordMinimumLength + " characters long. ";
+            }
+            
+            if (resp.Success)
+            {
+                MTApp.MembershipServices.ResetPasswordForCustomer(email, password);                                
+
+                // Turn off reset key so that this can only happen once.
+                var prop = order.CustomProperties.Where(y => (y.DeveloperId == "bvsoftware")
+                                            && (y.Key=="allowpasswordreset")
+                                            && (y.Value=="1")).FirstOrDefault();
+                if (prop != null)
+                {
+                    prop.Value = "0";
+                }
+                MTApp.OrderServices.Orders.Update(order);
+            }
+            
+            return new PreJsonResult(MerchantTribe.Web.Json.ObjectToJson(resp));
+        }
+        private class SimpleResponse
+        {
+            public bool Success { get; set; }
+            public string Messages { get; set; }
+            public SimpleResponse()
+            {
+                Success = false;
+                Messages = string.Empty;
+            }
+        }
 
     }
 }

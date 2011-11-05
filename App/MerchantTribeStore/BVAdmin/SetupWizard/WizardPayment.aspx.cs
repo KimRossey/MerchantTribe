@@ -58,7 +58,7 @@ namespace MerchantTribeStore
             MTApp.CurrentStore.Settings.PaymentMethodsEnabled = newList;
             SavePayPalInfo();
             MTApp.UpdateCurrentStore();
-            Response.Redirect("WizardComplete.aspx");
+            Response.Redirect("WizardSocialMedia.aspx");
         }
 
         private void SavePayPalInfo()

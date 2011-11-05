@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="headcontent" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
-<h1>Store Setup - Step 1 of 3 - Themes</h1>
+<h1>Store Setup - Step 1 of 4 - Themes</h1>
 <p class="flash-message-info">Select a theme for your store.</p>
 <p class="flash-message-minor">You can pick a different design later if you're not sure. Just select one to get started.</p>
     <div style="padding:20px 80px;">
