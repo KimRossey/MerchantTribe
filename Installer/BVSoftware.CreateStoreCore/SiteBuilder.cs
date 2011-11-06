@@ -51,7 +51,7 @@ namespace BVSoftware.CreateStoreCore
             wl("What's Next?");
             wl("-------------------------------------------------");
             wl("1) Create an Empty Database in SQL Server");
-            wl("2) Run the 4 SQL Scripts in Order ");
+            wl("2) Run the 3 SQL Scripts in Order ");
             wl("3) Create an IIS Web Application");
             wl("4) Open the web site in a browser");
             wl("");
