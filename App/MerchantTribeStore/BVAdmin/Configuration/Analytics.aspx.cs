@@ -35,8 +35,19 @@ namespace MerchantTribeStore
 
             if (!Page.IsPostBack)
             {
+                if (WebAppSettings.IsCommercialVersion)
+                {
+                    this.MerchantTribeAnalyticsRow.Visible = true;
+                    this.MerchantTribeAnalyticsRow2.Visible = true;
+                }
+                else
+                {
+                    this.MerchantTribeAnalyticsRow.Visible = false;
+                    this.MerchantTribeAnalyticsRow2.Visible = false;
+                }
 
                 // Loading
+                this.chkUseMerchantTribeAnalytics.Checked = !MTApp.CurrentStore.Settings.Analytics.DisableMerchantTribeAnalytics;
                 this.chkGoogleAdwords.Checked = MTApp.CurrentStore.Settings.Analytics.UseGoogleAdWords;
                 this.GoogleAdwordsConversionIdField.Text = MTApp.CurrentStore.Settings.Analytics.GoogleAdWordsId;
                 this.GoogleAdwordsLabelField.Text = MTApp.CurrentStore.Settings.Analytics.GoogleAdWordsLabel;
@@ -59,6 +70,8 @@ namespace MerchantTribeStore
 
         protected void btnSave_Click(object sender, System.Web.UI.ImageClickEventArgs e)
         {
+
+            MTApp.CurrentStore.Settings.Analytics.DisableMerchantTribeAnalytics = !this.chkUseMerchantTribeAnalytics.Checked;
 
             MTApp.CurrentStore.Settings.Analytics.UseGoogleAdWords = this.chkGoogleAdwords.Checked;
             MTApp.CurrentStore.Settings.Analytics.GoogleAdWordsId = this.GoogleAdwordsConversionIdField.Text;

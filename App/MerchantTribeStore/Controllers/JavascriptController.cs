@@ -16,7 +16,7 @@ namespace MerchantTribeStore.Controllers
         public ActionResult Index(string filename)
         {
             string sourcecode = string.Empty;
-
+           
             switch (filename.Trim().ToLowerInvariant())
             {
                 case "checkout.js":
@@ -27,6 +27,9 @@ namespace MerchantTribeStore.Controllers
                     break;
                 case "checkoutpaymenterror.js":
                     sourcecode = LoadPhysical("~/scripts/CheckoutPaymentError.js");
+                    break;
+                case "bvinit.js":
+                    sourcecode = LoadPhysical("~/scripts/tinymce/bvinit.js");
                     break;
             }
 

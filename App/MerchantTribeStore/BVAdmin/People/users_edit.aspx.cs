@@ -156,6 +156,11 @@ namespace MerchantTribeStore
             foreach (WishListItem item in w)
             {
                 Product n = MTApp.CatalogServices.Products.Find(item.ProductId);
+                n.ImageFileSmall = MerchantTribe.Commerce.Storage.DiskStorage.ProductImageUrlSmall(
+                        MTApp.CurrentStore.Id,
+                        n.Bvin,
+                        n.ImageFileSmall,
+                        Request.IsSecureConnection); 
                 p.Add(n);
             }
 

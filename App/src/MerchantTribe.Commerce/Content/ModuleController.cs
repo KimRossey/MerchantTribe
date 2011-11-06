@@ -57,15 +57,9 @@ namespace MerchantTribe.Commerce.Content
 		public static StringCollection FindContentBlocks()
 		{
 			StringCollection result = new StringCollection();
-			result = ListFolders("BVModules\\ContentBlocks", "view.ascx");
+			result = ListFolders("Areas\\ContentBlocks\\Views", "Index.cshtml");
 			return result;
-		}
-
-		public static System.Web.UI.Control LoadContentBlock(string blockName, System.Web.UI.Page p)
-		{
-			string fullName = "BVModules\\ContentBlocks\\" + blockName + "\\view.ascx";
-			return LoadSingleControl(fullName,ref p);
-		}
+		}    
 		public static System.Web.UI.Control LoadContentBlockAdminView(string blockName, System.Web.UI.Page p)
 		{
 			string fullName = "BVModules\\ContentBlocks\\" + blockName + "\\adminview.ascx";
@@ -277,7 +271,8 @@ namespace MerchantTribe.Commerce.Content
 					string[] modules = Directory.GetDirectories(controlPath);
 					if (modules != null) {
 						for (int k = 0; k <= modules.Length - 1; k++) {
-							if (File.Exists(Path.Combine(modules[k], checkForFileName)) == true) {
+							if (File.Exists(Path.Combine(modules[k], checkForFileName)) == true ||
+                                checkForFileName.Trim() == string.Empty) {
 								result.Add(Path.GetFileName(Path.GetFileName(modules[k])));
 							}
 						}

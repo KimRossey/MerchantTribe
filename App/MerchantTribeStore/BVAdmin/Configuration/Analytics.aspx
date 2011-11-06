@@ -11,6 +11,15 @@
         <asp:Label id="lblError" runat="server" CssClass="errormessage"></asp:Label>
         <asp:Panel ID="pnlMain" runat="server" DefaultButton="btnSave">
         <table border="0" cellspacing="0" cellpadding="3">
+        <tr id="MerchantTribeAnalyticsRow" runat="server" visible="false">
+            <td class="formlabel">Use MerchantTribe Analytics:</td>
+            <td class="formfield">
+                <asp:CheckBox ID="chkUseMerchantTribeAnalytics" runat="server" />
+            </td>
+        </tr>
+        <tr id="MerchantTribeAnalyticsRow2" runat="server" visible="false">
+                        <td colspan="2">&nbsp;</td>
+        </tr>
         <tr>
             <td class="formlabel">Use Google Tracking:</td>
             <td class="formfield">

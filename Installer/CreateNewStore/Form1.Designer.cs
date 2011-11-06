@@ -33,7 +33,6 @@
             this.btnQuit = new System.Windows.Forms.Button();
             this.btnCreate = new System.Windows.Forms.Button();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblHeader
@@ -92,7 +91,6 @@
             this.linkLabel1.Text = "Read installation instructions";
             this.linkLabel1.Visible = false;
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked_1);
-            
             // 
             // Form1
             // 
@@ -101,7 +99,6 @@
             this.ClientSize = new System.Drawing.Size(492, 277);
             this.ControlBox = false;
             this.Controls.Add(this.btnCreate);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.btnQuit);
             this.Controls.Add(this.lblVersion);
@@ -123,7 +120,6 @@
         private System.Windows.Forms.Button btnQuit;
         private System.Windows.Forms.Button btnCreate;
         private System.Windows.Forms.LinkLabel linkLabel1;
-        private System.Windows.Forms.Button button1;
     }
 }
 

@@ -49,6 +49,33 @@ namespace MerchantTribeStore {
         protected global::System.Web.UI.WebControls.Panel pnlMain;
         
         /// <summary>
+        /// MerchantTribeAnalyticsRow control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow MerchantTribeAnalyticsRow;
+        
+        /// <summary>
+        /// chkUseMerchantTribeAnalytics control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkUseMerchantTribeAnalytics;
+        
+        /// <summary>
+        /// MerchantTribeAnalyticsRow2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow MerchantTribeAnalyticsRow2;
+        
+        /// <summary>
         /// chkGoogleTracker control.
         /// </summary>
         /// <remarks>

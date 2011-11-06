@@ -1,5 +1,5 @@
 <%@ Control Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVAdmin_Header" Codebehind="Header.ascx.cs" %>
-
+<script src="https://platform.twitter.com/widgets.js" type="text/javascript"></script>
 <div id="header">
     <div id="branding">
         <div id="brand">

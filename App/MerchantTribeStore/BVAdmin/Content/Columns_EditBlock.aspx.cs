@@ -8,8 +8,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 
 namespace MerchantTribeStore
-{
-
+{  
     partial class BVAdmin_Content_Columns_EditBlock : BaseAdminPage
     {
 
@@ -64,7 +63,7 @@ namespace MerchantTribeStore
 
         private void LoadEditor()
         {
-            System.Web.UI.Control tempControl = ModuleController.LoadContentBlockEditor(b.ControlName, this);
+            System.Web.UI.Control tempControl = ModuleController.LoadContentBlockEditor(b.ControlName.Replace(" ",""), this);
 
             if (tempControl is BVModule)
             {

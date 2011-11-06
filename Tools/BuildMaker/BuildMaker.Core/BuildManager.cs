@@ -480,6 +480,53 @@ namespace BuildMaker.Core
                 _Writer.WriteLine(ex.Message);
             }
         }
+        private void PackagingUpdateConfigForFree(string filename)
+        {
+            if (File.Exists(filename))
+            {
+                _Writer.WriteLine("Found Config");
+            }
+            else
+            {
+                _Writer.Write("Config file not found");
+                return;
+            }
+
+            try
+            {
+                FileInfo writerInfo = this.GetTemporaryFileInfo();
+                StreamWriter writer = new StreamWriter(writerInfo.OpenWrite());
+
+                using (StreamReader reader = File.OpenText(filename))
+                {
+                    string line = reader.ReadLine();
+
+                    while (line != null)
+                    {
+                        bool foundReplacement = false;
+                        
+                        if (TrySettingReplace(writer, _Writer, line,
+                            "storekey", "288B5403-5FD9-4e80-BFD4-1892E5553511")) foundReplacement = true;
+                        
+                        // Write the default line if we didn't match
+                        if (foundReplacement == false)
+                        {
+                            writer.WriteLine(line);
+                        }
+
+                        line = reader.ReadLine();
+                    }
+                }
+
+                writer.Close();
+                File.Copy(writerInfo.FullName, filename, true);
+
+            }
+            catch (Exception ex)
+            {
+                _Writer.WriteLine(ex.Message);
+            }
+        }
 
         private bool TrySettingReplace(StreamWriter writer, Writer _Writer, string line, string key, string value)
         {
@@ -502,6 +549,9 @@ namespace BuildMaker.Core
         {
             FileTools.RemoveFile(destinationFolder + "\\MerchantTribeStore\\BVAdmin\\SetupWizard\\Eula.txt", _Writer);
             FileTools.SingleFileCopy("App\\MerchantTribeStore\\BVAdmin\\SetupWizard\\Eula-Free.txt", destinationFolder + "\\MerchantTribeStore\\BVAdmin\\SetupWizard\\Eula.txt", _Writer);
+            
+            string configFile = destinationFolder + "\\MerchantTribeStore\\Web.config";
+            PackagingUpdateConfigForFree(configFile);
         }
 
         public void ZipMainBuild(string workingFolder, string outputName)        

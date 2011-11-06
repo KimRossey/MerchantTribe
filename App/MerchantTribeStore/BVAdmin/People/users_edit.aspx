@@ -99,10 +99,10 @@
             <tr>
                 <td class="FormLabel">
                     <asp:DataList ID="DataList1" runat="server" DataKeyField="bvin" BorderColor="#CCCCCC"
-                        CellPadding="2" GridLines="none" Width="100" RepeatColumns="3">
+                        CellPadding="2" GridLines="none" Width="100" RepeatColumns="2">
                         <ItemTemplate>
                             <a href="../../BVAdmin/Catalog/Products_Edit.aspx?id=<%#Eval("bvin") %>">
-                                <img src="../../<%#Eval("ImageFileSmall") %>" border="none" />
+                                <img src="<%#Eval("ImageFileSmall") %>" border="none" />
                                 <br />
                                 <%#Eval("ProductName") %>
                             </a>

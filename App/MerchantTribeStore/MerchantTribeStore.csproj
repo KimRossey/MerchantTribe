@@ -640,22 +640,22 @@
     <Content Include="BVAdmin\Styles.css" />
     <Content Include="BVAdmin\StylesPrint.css" />
     <Content Include="BVAdmin\WeeklySalesChart.aspx" />
-    <Content Include="BVModules\ContentBlocks\Banner Ad\editor.ascx" />
-    <Content Include="BVModules\ContentBlocks\Category Menu\editor.ascx" />
-    <Content Include="BVModules\ContentBlocks\Category Rotator\editor.ascx" />
+    <Content Include="BVModules\ContentBlocks\BannerAd\editor.ascx" />
+    <Content Include="BVModules\ContentBlocks\CategoryMenu\editor.ascx" />
+    <Content Include="BVModules\ContentBlocks\CategoryRotator\editor.ascx" />
     <Content Include="BVModules\ContentBlocks\Html\adminview.ascx" />
     <Content Include="BVModules\ContentBlocks\Html\editor.ascx" />
-    <Content Include="BVModules\ContentBlocks\Last Products Viewed\adminview.ascx" />
-    <Content Include="BVModules\ContentBlocks\Product Grid\adminview.ascx" />
-    <Content Include="BVModules\ContentBlocks\Product Grid\editor.ascx" />
-    <Content Include="BVModules\ContentBlocks\Product Rotator\adminview.ascx" />
-    <Content Include="BVModules\ContentBlocks\Product Rotator\editor.ascx" />
-    <Content Include="BVModules\ContentBlocks\RSS Feed Viewer\adminview.ascx" />
-    <Content Include="BVModules\ContentBlocks\RSS Feed Viewer\editor.ascx" />
-    <Content Include="BVModules\ContentBlocks\Side Menu\adminview.ascx" />
-    <Content Include="BVModules\ContentBlocks\Side Menu\editor.ascx" />
-    <Content Include="BVModules\ContentBlocks\Top 10 Products\adminview.ascx" />
-    <Content Include="BVModules\ContentBlocks\Top Weekly Sellers\adminview.ascx" />
+    <Content Include="BVModules\ContentBlocks\LastProductsViewed\adminview.ascx" />
+    <Content Include="BVModules\ContentBlocks\ProductGrid\adminview.ascx" />
+    <Content Include="BVModules\ContentBlocks\ProductGrid\editor.ascx" />
+    <Content Include="BVModules\ContentBlocks\ProductRotator\adminview.ascx" />
+    <Content Include="BVModules\ContentBlocks\ProductRotator\editor.ascx" />
+    <Content Include="BVModules\ContentBlocks\RSSFeedViewer\adminview.ascx" />
+    <Content Include="BVModules\ContentBlocks\RSSFeedViewer\editor.ascx" />
+    <Content Include="BVModules\ContentBlocks\SideMenu\adminview.ascx" />
+    <Content Include="BVModules\ContentBlocks\SideMenu\editor.ascx" />
+    <Content Include="BVModules\ContentBlocks\Top10Products\adminview.ascx" />
+    <Content Include="BVModules\ContentBlocks\TopWeeklySellers\adminview.ascx" />
     <Content Include="BVModules\Controls\CategoryBreadCrumbTrail.ascx" />
     <Content Include="BVModules\Controls\CreditCardInput.ascx" />
     <Content Include="BVModules\Controls\MasterPageJavascript.ascx" />
@@ -3214,7 +3214,6 @@
     </Compile>
     <Compile Include="BVAdmin\Controls\ContentColumnEditor.ascx.cs">
       <DependentUpon>ContentColumnEditor.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="BVAdmin\Controls\ContentColumnEditor.ascx.designer.cs">
       <DependentUpon>ContentColumnEditor.ascx</DependentUpon>
@@ -3828,25 +3827,25 @@
     <Compile Include="BVAdmin\WeeklySalesChart.aspx.designer.cs">
       <DependentUpon>WeeklySalesChart.aspx</DependentUpon>
     </Compile>
-    <Compile Include="BVModules\ContentBlocks\Banner Ad\editor.ascx.cs">
+    <Compile Include="BVModules\ContentBlocks\BannerAd\editor.ascx.cs">
       <DependentUpon>editor.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="BVModules\ContentBlocks\Banner Ad\editor.ascx.designer.cs">
+    <Compile Include="BVModules\ContentBlocks\BannerAd\editor.ascx.designer.cs">
       <DependentUpon>editor.ascx</DependentUpon>
     </Compile>
-    <Compile Include="BVModules\ContentBlocks\Category Menu\editor.ascx.cs">
-      <DependentUpon>editor.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="BVModules\ContentBlocks\Category Menu\editor.ascx.designer.cs">
-      <DependentUpon>editor.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="BVModules\ContentBlocks\Category Rotator\editor.ascx.cs">
+    <Compile Include="BVModules\ContentBlocks\CategoryMenu\editor.ascx.cs">
       <DependentUpon>editor.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="BVModules\ContentBlocks\Category Rotator\editor.ascx.designer.cs">
+    <Compile Include="BVModules\ContentBlocks\CategoryMenu\editor.ascx.designer.cs">
+      <DependentUpon>editor.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="BVModules\ContentBlocks\CategoryRotator\editor.ascx.cs">
+      <DependentUpon>editor.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BVModules\ContentBlocks\CategoryRotator\editor.ascx.designer.cs">
       <DependentUpon>editor.ascx</DependentUpon>
     </Compile>
     <Compile Include="BVModules\ContentBlocks\Html\adminview.ascx.cs">
@@ -3863,81 +3862,81 @@
     <Compile Include="BVModules\ContentBlocks\Html\editor.ascx.designer.cs">
       <DependentUpon>editor.ascx</DependentUpon>
     </Compile>
-    <Compile Include="BVModules\ContentBlocks\Last Products Viewed\adminview.ascx.cs">
+    <Compile Include="BVModules\ContentBlocks\LastProductsViewed\adminview.ascx.cs">
       <DependentUpon>adminview.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="BVModules\ContentBlocks\Last Products Viewed\adminview.ascx.designer.cs">
+    <Compile Include="BVModules\ContentBlocks\LastProductsViewed\adminview.ascx.designer.cs">
       <DependentUpon>adminview.ascx</DependentUpon>
     </Compile>
-    <Compile Include="BVModules\ContentBlocks\Product Grid\adminview.ascx.cs">
+    <Compile Include="BVModules\ContentBlocks\ProductGrid\adminview.ascx.cs">
       <DependentUpon>adminview.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="BVModules\ContentBlocks\Product Grid\adminview.ascx.designer.cs">
+    <Compile Include="BVModules\ContentBlocks\ProductGrid\adminview.ascx.designer.cs">
       <DependentUpon>adminview.ascx</DependentUpon>
     </Compile>
-    <Compile Include="BVModules\ContentBlocks\Product Grid\editor.ascx.cs">
+    <Compile Include="BVModules\ContentBlocks\ProductGrid\editor.ascx.cs">
       <DependentUpon>editor.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="BVModules\ContentBlocks\Product Grid\editor.ascx.designer.cs">
+    <Compile Include="BVModules\ContentBlocks\ProductGrid\editor.ascx.designer.cs">
       <DependentUpon>editor.ascx</DependentUpon>
     </Compile>
-    <Compile Include="BVModules\ContentBlocks\Product Rotator\adminview.ascx.cs">
+    <Compile Include="BVModules\ContentBlocks\ProductRotator\adminview.ascx.cs">
       <DependentUpon>adminview.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="BVModules\ContentBlocks\Product Rotator\adminview.ascx.designer.cs">
+    <Compile Include="BVModules\ContentBlocks\ProductRotator\adminview.ascx.designer.cs">
       <DependentUpon>adminview.ascx</DependentUpon>
     </Compile>
-    <Compile Include="BVModules\ContentBlocks\Product Rotator\editor.ascx.cs">
-      <DependentUpon>editor.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="BVModules\ContentBlocks\Product Rotator\editor.ascx.designer.cs">
-      <DependentUpon>editor.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="BVModules\ContentBlocks\RSS Feed Viewer\adminview.ascx.cs">
-      <DependentUpon>adminview.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="BVModules\ContentBlocks\RSS Feed Viewer\adminview.ascx.designer.cs">
-      <DependentUpon>adminview.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="BVModules\ContentBlocks\RSS Feed Viewer\editor.ascx.cs">
+    <Compile Include="BVModules\ContentBlocks\ProductRotator\editor.ascx.cs">
       <DependentUpon>editor.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="BVModules\ContentBlocks\RSS Feed Viewer\editor.ascx.designer.cs">
+    <Compile Include="BVModules\ContentBlocks\ProductRotator\editor.ascx.designer.cs">
       <DependentUpon>editor.ascx</DependentUpon>
     </Compile>
-    <Compile Include="BVModules\ContentBlocks\Side Menu\adminview.ascx.cs">
+    <Compile Include="BVModules\ContentBlocks\RSSFeedViewer\adminview.ascx.cs">
       <DependentUpon>adminview.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="BVModules\ContentBlocks\Side Menu\adminview.ascx.designer.cs">
+    <Compile Include="BVModules\ContentBlocks\RSSFeedViewer\adminview.ascx.designer.cs">
       <DependentUpon>adminview.ascx</DependentUpon>
     </Compile>
-    <Compile Include="BVModules\ContentBlocks\Side Menu\editor.ascx.cs">
+    <Compile Include="BVModules\ContentBlocks\RSSFeedViewer\editor.ascx.cs">
       <DependentUpon>editor.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="BVModules\ContentBlocks\Side Menu\editor.ascx.designer.cs">
+    <Compile Include="BVModules\ContentBlocks\RSSFeedViewer\editor.ascx.designer.cs">
       <DependentUpon>editor.ascx</DependentUpon>
     </Compile>
-    <Compile Include="BVModules\ContentBlocks\Top 10 Products\adminview.ascx.cs">
+    <Compile Include="BVModules\ContentBlocks\SideMenu\adminview.ascx.cs">
       <DependentUpon>adminview.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="BVModules\ContentBlocks\Top 10 Products\adminview.ascx.designer.cs">
+    <Compile Include="BVModules\ContentBlocks\SideMenu\adminview.ascx.designer.cs">
       <DependentUpon>adminview.ascx</DependentUpon>
     </Compile>
-    <Compile Include="BVModules\ContentBlocks\Top Weekly Sellers\adminview.ascx.cs">
+    <Compile Include="BVModules\ContentBlocks\SideMenu\editor.ascx.cs">
+      <DependentUpon>editor.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BVModules\ContentBlocks\SideMenu\editor.ascx.designer.cs">
+      <DependentUpon>editor.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="BVModules\ContentBlocks\Top10Products\adminview.ascx.cs">
       <DependentUpon>adminview.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="BVModules\ContentBlocks\Top Weekly Sellers\adminview.ascx.designer.cs">
+    <Compile Include="BVModules\ContentBlocks\Top10Products\adminview.ascx.designer.cs">
+      <DependentUpon>adminview.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="BVModules\ContentBlocks\TopWeeklySellers\adminview.ascx.cs">
+      <DependentUpon>adminview.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BVModules\ContentBlocks\TopWeeklySellers\adminview.ascx.designer.cs">
       <DependentUpon>adminview.ascx</DependentUpon>
     </Compile>
     <Compile Include="BVModules\Controls\CategoryBreadCrumbTrail.ascx.cs">

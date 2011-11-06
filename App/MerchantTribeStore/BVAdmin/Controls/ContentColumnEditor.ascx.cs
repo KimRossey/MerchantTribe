@@ -4,6 +4,10 @@ using MerchantTribe.Commerce.Content;
 
 namespace MerchantTribeStore
 {
+    public class BlankBlock: System.Web.UI.LiteralControl
+    {
+        public string bvin { get; set; }
+    }
 
     partial class BVAdmin_Controls_ContentColumnEditor : MerchantTribe.Commerce.Content.BVUserControl
     {
@@ -55,7 +59,7 @@ namespace MerchantTribeStore
             if (col != null)
             {
                 ContentBlock b = new ContentBlock();
-                b.ControlName = this.lstBlocks.SelectedValue;
+                b.ControlName = this.lstBlocks.SelectedValue;                
                 b.ColumnId = this.ColumnId;
                 col.Blocks.Add(b);
                 MyPage.MTApp.ContentServices.Columns.Update(col);
@@ -91,21 +95,30 @@ namespace MerchantTribeStore
 
                 System.Web.UI.Control viewControl;
 
-                viewControl = ModuleController.LoadContentBlockAdminView(b.ControlName, this.Page);
+                // Control name gets spaces replaced for backwards compatibility
+                viewControl = ModuleController.LoadContentBlockAdminView(b.ControlName.Replace(" ",""), this.Page);                
                 if (viewControl == null)
                 {
                     //No admin view, try standard view
-                    viewControl = ModuleController.LoadContentBlock(b.ControlName, this.Page);
+                    
+                    // Block views are now MVC partial so we need a way to render them here
+                    // There are some tricks but since this page will eventually go MVC itself
+                    // we'll just put in placeholders for now.
+                    //viewControl = ModuleController.LoadContentBlock(b.ControlName, this.Page);
+                    viewControl = new BlankBlock() { bvin= b.Bvin, Text= "<div>Block: " + b.ControlName + "</div>"};                    
                 }
 
 
                 if (viewControl != null)
                 {
-                    if (viewControl is BVModule)
+                    if ((viewControl is BVModule) || (viewControl is BlankBlock))
                     {
-                        ((BVModule)viewControl).BlockId = b.Bvin;
+                        if (viewControl is BVModule)
+                        {
+                            ((BVModule)viewControl).BlockId = b.Bvin;
+                        }
                         controlFound = true;
-                        e.Row.Cells[0].Controls.Add(new System.Web.UI.LiteralControl("<div style=\"width:280px;overflow:auto;\">"));
+                        e.Row.Cells[0].Controls.Add(new System.Web.UI.LiteralControl("<div style=\"width:280px;overflow:auto;\">"));                        
                         e.Row.Cells[0].Controls.Add(viewControl);
                         e.Row.Cells[0].Controls.Add(new System.Web.UI.LiteralControl("</div>"));
                     }
@@ -140,7 +153,7 @@ namespace MerchantTribeStore
         {
             bool result = false;
             System.Web.UI.Control editorControl;
-            editorControl = ModuleController.LoadContentBlockEditor(controlName, this.Page);
+            editorControl = ModuleController.LoadContentBlockEditor(controlName.Replace(" ",""), this.Page);
             if (editorControl != null)
             {
                 if (editorControl is BVModule)

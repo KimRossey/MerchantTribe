@@ -67,7 +67,7 @@ namespace MerchantTribeStore
             if (!Page.IsPostBack)
             {
                 Page.ClientScript.RegisterClientScriptInclude("tinymcejquery", Page.ResolveUrl("~/scripts/tinymce/jquery.tinymce.js"));
-                Page.ClientScript.RegisterClientScriptInclude("tinymceinit", Page.ResolveUrl("~/scripts/tinymce/bvinit.js"));
+                Page.ClientScript.RegisterClientScriptInclude("tinymceinit", Page.ResolveUrl("~/js/bvinit.js"));
             }
 
         }

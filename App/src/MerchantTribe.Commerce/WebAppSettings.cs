@@ -82,6 +82,23 @@ namespace MerchantTribe.Commerce
                 return true;
             }
         }
+        public static bool IsCommercialVersion
+        {
+            get
+            {
+                try
+                {
+                    string key = ConfigurationManager.AppSettings["storekey"];
+                    if (key == "C589E3FB-9B9D-47EB-A694-690A97742C82") return true;
+                }
+                catch (Exception ex)
+                {
+
+                }
+
+                return false;
+            }
+        }
         public static string ApplicationConnectionString
         {
             get

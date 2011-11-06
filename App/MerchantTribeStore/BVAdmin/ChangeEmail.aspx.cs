@@ -57,6 +57,12 @@ namespace MerchantTribeStore.BVAdmin
         {
             this.MessageBox1.ClearMessage();
 
+            if (!MerchantTribe.Web.Validation.EmailValidation.MeetsEmailFormatRequirements(this.NewEmailField.Text.Trim()))
+            {
+                this.MessageBox1.ShowError("Please enter a valid email address for your new adminstrator account.");
+                return;
+            }
+
             UserAccount u = GetCorrectUser();
             if (u == null)
             {

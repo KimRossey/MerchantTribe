@@ -1481,7 +1481,8 @@ namespace MerchantTribe.Commerce.Storage
         public static string GetMinifiedStyleSheet(long storeId, string themeId)
         {            
             string css = ReadStyleSheet(storeId, themeId);
-            css = css.Replace("{{assets}}", BaseStoreThemeUrl(storeId, themeId, true) + "assets/");
+            //css = css.Replace("{{assets}}", BaseStoreThemeUrl(storeId, themeId, true) + "assets/");
+            css = css.Replace("{{assets}}", "../../images/sites/" + storeId + "/themes/theme-" + themeId + "/assets/");
 
             // inject common themes
             string common = string.Empty;

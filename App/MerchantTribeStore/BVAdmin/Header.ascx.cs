@@ -43,14 +43,12 @@ namespace MerchantTribeStore
             this.BaseUrl = MyPage.MTApp.CurrentStore.RootUrlSecure();
             this.BaseStoreUrl = MyPage.MTApp.CurrentStore.RootUrl();
             this.AppVersion = WebAppSettings.SystemVersionNumber;
-            this.StoreName = MyPage.MTApp.CurrentStore.Settings.FriendlyName;
+            this.StoreName = MyPage.MTApp.CurrentStore.Settings.FriendlyName;            
 
             if (!HideMenu)
             {                
                 this.RenderedMenu = Helpers.Html.RenderMenu(SelectedTab, MyPage.MTApp.CurrentStore);                
             }            
-
-        }
-
+        }      
     }
 }

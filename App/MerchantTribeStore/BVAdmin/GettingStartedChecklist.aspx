@@ -4,7 +4,7 @@
 				<h3>Getting Started Checklist</h3>
 				<ul>
 					<li>
-						<a href="#" onclick="JavaScript:window.open('GettingStartedEmail.aspx','GettingStarted','width=500, height=400, menubar=no, scrollbars=yes, resizable=yes, status=no, toolbar=no')">Change admin username and 
+						<a href="#" onclick="JavaScript:window.open('ChangeEmail.aspx','GettingStarted','width=500, height=400, menubar=no, scrollbars=yes, resizable=yes, status=no, toolbar=no')">Change admin username and 
 							password from default</a></li>
 					<li>
 						<a href="Content/StoreInfo.aspx" target="_blank">Setup Contact Information</a></li>

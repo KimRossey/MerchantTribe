@@ -5,7 +5,7 @@ $(document).ready(function () {
     $('textarea.tinymce').tinymce({
 
             // Location of TinyMCE script
-            script_url : '/scripts/tinymce/tiny_mce.js',
+            script_url : '~/scripts/tinymce/tiny_mce.js',
 
             // General options
             theme: "advanced",
@@ -27,7 +27,7 @@ $(document).ready(function () {
             //height: 400,
 
             // Example content CSS (should be your site CSS)
-            content_css : "/scripts/tinymce/tinymce.css",
+            content_css : "~/scripts/tinymce/tinymce.css",
             body_class: "tinymcebody"
 
             // Drop lists for link/image/media/template dialogs

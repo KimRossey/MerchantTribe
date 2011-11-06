@@ -360,7 +360,7 @@ $(document).ready(function () {
     </asp:Panel>
     <div style="padding:50px 0 0 0;text-align:left;">
             <asp:ImageButton ID="btnDelete" runat="server" 
-                ImageUrl="/bvadmin/images/buttons/delete.png" AlternateText="delete" 
+                ImageUrl="../images/buttons/delete.png" AlternateText="delete" 
                 onclick="btnDelete_Click" />
     </div>
     <asp:HiddenField ID="BvinField" runat="server" />

@@ -27,10 +27,10 @@
     <div class="editorcontrols">        
         <a href="ProductsEdit_Tabs.aspx?id=<%=productBvin %>">Close</a> 
         &nbsp;<asp:ImageButton id="btnSaveOption" ClientIDMode="Static" runat="server" 
-            ImageUrl="/bvadmin/images/buttons/SaveChanges.png" 
+            ImageUrl="../images/buttons/SaveChanges.png" 
             onclick="btnSave_Click" /> 
         &nbsp;<asp:ImageButton id="btnSaveAndClose" ClientIDMode="Static" 
-            runat="server" ImageUrl="/bvadmin/images/buttons/SaveAndClose.png" 
+            runat="server" ImageUrl="../images/buttons/SaveAndClose.png" 
             onclick="btnSaveAndClose_Click" />
     </div>
 
