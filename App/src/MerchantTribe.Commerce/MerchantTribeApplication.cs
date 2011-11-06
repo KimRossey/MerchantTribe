@@ -630,13 +630,13 @@ namespace MerchantTribe.Commerce
         private List<Catalog.Category> CreateSampleCategories()
         {
             List<Catalog.Category> samples = new List<Category>();
-            samples.Add(CreateSampleCategory("Sample Products", "sample-products", "This is a sample category"));
-            samples.Add(CreateSampleCategory("More Sample Products", "more-sample", ""));
-            samples.Add(CreateSampleCategory("Demo Category", "demo-category", ""));
+            samples.Add(CreateSampleCategory("Sample Products", "sample-products", "This is a sample category", "Grid"));
+            samples.Add(CreateSampleCategory("More Sample Products", "more-sample", "", "DetailedList"));
+            samples.Add(CreateSampleCategory("Demo Category", "demo-category", "", "BulkQuantityList"));
             samples.Add(CreateSampleCategoryPage("About Us", "about-us-sample", "<h1>About Us</h1> <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p> <hr /> <p> <b>Mailing Address:</b><br /> {{storeaddress}} <p>"));
             return samples;
         }
-        private Catalog.Category CreateSampleCategory(string name, string url, string description)
+        private Catalog.Category CreateSampleCategory(string name, string url, string description, string template)
         {
             Catalog.Category result = new Category();
             result.Name = name;
@@ -647,6 +647,7 @@ namespace MerchantTribe.Commerce
             result.Keywords = MerchantTribe.Web.Text.TrimToLength(name, 250);
             result.ShowTitle = true;
             result.ShowInTopMenu = true;
+            result.TemplateName = template;
             CatalogServices.Categories.Create(result);
             return result;
         }
