@@ -360,7 +360,8 @@ namespace BuildMaker.Core
 
             // Add bin folder so source is smaller
             foldersToIgnoreDuringCopy.Add("bin");
-            //FileTools.FileCopyNoBackup("App\\components", destinationFolder + "\\components", _Writer, foldersToIgnoreDuringCopy);
+            FileTools.FileCopyNoBackup("App\\lib", destinationFolder + "\\lib", _Writer, foldersToIgnoreDuringCopy);
+            FileTools.FileCopyNoBackup("App\\packages", destinationFolder + "\\packages", _Writer, foldersToIgnoreDuringCopy);
             FileTools.FileCopyNoBackup("App\\src", destinationFolder + "\\src", _Writer, foldersToIgnoreDuringCopy);            
 
             FileTools.SingleFileCopy("App\\MerchantTribe.sln", destinationFolder + "\\MerchantTribeStore.sln", _Writer);
