@@ -1,0 +1,5 @@
+<MSDeploy.iisApp>
+  <iisApp path="BVCommerce" />
+  <dbfullsql path="Install.sql" />
+  <dbfullsql path="CreateTables.sql" />
+</MSDeploy.iisApp>

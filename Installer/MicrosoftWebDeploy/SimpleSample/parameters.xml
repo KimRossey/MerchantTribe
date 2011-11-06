@@ -1,0 +1,86 @@
+﻿<parameters>
+  <parameter name="Application Path"
+   description="The IIS Web Site Path where you'd like to install BV Commerce" 
+   defaultValue="Default Web Site/bvcommerce6"
+   tags="iisapp">
+   <parameterEntry type="ProviderPath" scope="iisapp" match="BVCommerce" />
+  </parameter>
+
+  <parameter 
+    name="SetAclParameter1" 
+    description="Sets the ACL on the images"
+    defaultValue="{Application Path}/images"
+    tags="Hidden"
+    >
+    <parameterEntry 
+      type="ProviderPath" 
+      scope="setAcl" 
+      match="BVCommerce/images$"
+      />
+  </parameter>
+  <parameter 
+    name="SetAclParameter2" 
+    description="Sets the ACL on the images/sites"
+    defaultValue="{Application Path}/images/sites"
+    tags="Hidden"
+    >
+    <parameterEntry 
+      type="ProviderPath" 
+      scope="setAcl" 
+      match="BVCommerce/images/sites$"
+      />
+  </parameter>
+  <parameter 
+    name="SetAclParameter3" 
+    description="Sets the ACL on the files"
+    defaultValue="{Application Path}/files"
+    tags="Hidden"
+    >
+    <parameterEntry 
+      type="ProviderPath" 
+      scope="setAcl" 
+      match="BVCommerce/files$"
+      />
+  </parameter>
+
+
+  <parameter name="Public Web Address"
+    description="The public address for your store (i.e. http://www.mystore.com)"
+    defaultValue="http://localhost/bvcommerce6"
+    tags="">
+    <parameterEntry type="TextFile" scope="BVCommerce\\web.config$" match="http://localhost" /> 
+  </parameter>
+
+  <parameter name="dbAdminUsername" defaultValue="sa" tags="SQL, dbAdminUsername">
+  </parameter>
+  <parameter name="dbAdminPassword" defaultValue="" tags="SQL, dbAdminPassword, Password">
+  </parameter>
+  <parameter name="dbServer" defaultValue="localhost" tags="SQL, dbServer">
+  </parameter>
+  <parameter name="dbName" defaultValue="BVCommerce6" tags="SQL, dbName">
+  </parameter>
+  <parameter name="dbUsername" defaultValue="BVCommerce6" tags="SQL, dbUsername">
+  </parameter>
+  <parameter name="dbUserPassword" defaultValue="BVCommerce6" tags="SQL, dbUserPassword, Password">
+  </parameter>
+
+  <parameter 
+    name="ConnectionString For Config" 
+    defaultValue="Data Source={dbServer};Initial Catalog={dbName};User ID={dbAdminUsername};Password={dbAdminPassword};"                   
+    tags="SQL, Hidden, SQLConnectionString"> 
+    <parameterEntry   
+       type = "ProviderPath"   
+       scope = "dbfullsql"   
+       match = "install.sql"  />
+   <parameterEntry   
+       type = "ProviderPath"   
+       scope = "dbfullsql"   
+       match = "CreateTables.sql"  />
+    <parameterEntry 
+      type="XmlFile" 
+      scope="BVCommerce\\web.config$" 
+      match="/configuration/connectionStrings/add[@name='commerce6ConnectionString']/@connectionString" /> 
+  </parameter>
+
+</parameters>
+

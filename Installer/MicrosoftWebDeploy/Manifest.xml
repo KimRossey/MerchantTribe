@@ -1,0 +1,18 @@
+<MSDeploy.iisApp>
+  <iisApp path="MerchantTribeStore" managedRuntimeVersion="v4.0" />
+  <dbfullsql path="CreateTables.sql" />
+  <dbfullsql path="CreateProcedures.sql" />
+  <dbfullsql path="PopulateData.sql" />
+  <setAcl
+          path="MerchantTribeStore/images" 
+          setAclAccess="Modify" 
+          />
+  <setAcl
+          path="MerchantTribeStore/images/sites" 
+          setAclAccess="Modify" 
+          />
+  <setAcl
+          path="MerchantTribeStore/files" 
+          setAclAccess="Modify" 
+          />
+</MSDeploy.iisApp>

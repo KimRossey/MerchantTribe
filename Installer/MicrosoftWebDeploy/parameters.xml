@@ -1,0 +1,87 @@
+﻿<parameters>
+  <parameter name="Application Path"
+   description="The IIS Web Site Path where you'd like to install MerchantTribe" 
+   defaultValue="Default Web Site/MerchantTribeStore"
+   tags="iisapp">
+   <parameterEntry type="ProviderPath" scope="iisapp" match="MerchantTribeStore" />
+  </parameter>
+
+  <parameter 
+    name="SetAclParameter1" 
+    defaultValue="{Application Path}/images"
+    tags="Hidden"
+    >
+    <parameterEntry 
+      type="ProviderPath" 
+      scope="setAcl" 
+      match="MerchantTribeStore/images$"
+      />
+  </parameter>
+  <parameter 
+    name="SetAclParameter2" 
+    defaultValue="{Application Path}/images/sites"
+    tags="Hidden"
+    >
+    <parameterEntry 
+      type="ProviderPath" 
+      scope="setAcl" 
+      match="MerchantTribeStore/images/sites$"
+      />
+  </parameter>
+  <parameter 
+    name="SetAclParameter3" 
+    defaultValue="{Application Path}/files"
+    tags="Hidden"
+    >
+    <parameterEntry 
+      type="ProviderPath" 
+      scope="setAcl" 
+      match="MerchantTribeStore/files$"
+      />
+  </parameter>
+
+
+  <parameter name="Public Web Address"
+    description="The public address for your store (i.e. http://www.mystore.com)"
+    defaultValue="http://localhost/MerchantTribeStore"
+    tags="">
+    <parameterEntry type="TextFile" scope="MerchantTribeStore\\web.config$" match="http://localhost" /> 
+  </parameter>
+
+  <parameter name="dbAdminUsername" defaultValue="sa" tags="SQL, dbAdminUsername">
+  </parameter>
+  <parameter name="dbAdminPassword" defaultValue="" tags="SQL, dbAdminPassword, Password">
+  </parameter>
+  <parameter name="dbServer" defaultValue="localhost" tags="SQL, dbServer">
+  </parameter>
+  <parameter name="dbName" defaultValue="MerchantTribe" tags="SQL, dbName">
+  </parameter>
+  <parameter name="dbUsername" defaultValue="merchanttribe" tags="SQL, dbUsername">
+  </parameter>
+  <parameter name="dbUserPassword" defaultValue="merchanttribe" tags="SQL, dbUserPassword, Password">
+  </parameter>
+
+  <parameter 
+    name="ConnectionString For Config" 
+    defaultValue="Data Source={dbServer};Initial Catalog={dbName};User ID={dbAdminUsername};Password={dbAdminPassword};"                   
+    tags="SQL, Hidden, SQLConnectionString"> 
+    <parameterEntry   
+       type = "ProviderPath"   
+       scope = "dbfullsql"   
+       match = "CreateTables.sql"  />
+    <parameterEntry   
+       type = "ProviderPath"   
+       scope = "dbfullsql"   
+       match = "CreateProcedures.sql"  />
+    <parameterEntry   
+       type = "ProviderPath"   
+       scope = "dbfullsql"   
+       match = "PopulateData.sql"  />
+    <parameterEntry 
+      type="XmlFile" 
+      scope="MerchantTribeStore\\web.config$" 
+      match="/configuration/connectionStrings/add[@name='commerce6ConnectionString']/@connectionString" /> 
+  </parameter>
+
+</parameters>
+
