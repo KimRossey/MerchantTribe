@@ -13,4 +13,10 @@ Desktop.ini
 *.xap
 [Cc]lientBin/
 *.orig
+Web.Debug.config
+Web.Release.config
+Web.Release-Hosted.config
+Web.Release-HostedStaging.config
+Web.Release-Source.config
+
 
