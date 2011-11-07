@@ -38,7 +38,7 @@
                 <div class="block">
                     <uc7:DashboardSalesSummary ID="DashboardSalesSummary1" runat="server" />                    
                 </div>
-                         
+                <iframe src="<%=NewsUrl%>" width="610" height="350" scrolling="auto"></iframe>  
                 <!--<h3>News and Updates</h3>
                 <div id="changing" style="display: none;">
                     <img src="../content/images/system/ajax-loader-small.gif" border="0" alt="Loading..." /> Please Wait...
