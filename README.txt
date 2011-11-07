@@ -10,5 +10,6 @@ is the best way to show your thanks for the software.
 
 For licensing information please see the included LICENSE.txt file.
 
-http://www.MerchantTribe.com
+http://MerchantTribe.com
+
 
