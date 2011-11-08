@@ -8,6 +8,7 @@ using MerchantTribe.Commerce.Membership;
 using MerchantTribe.Commerce.Utilities;
 using System.Text;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MerchantTribeStore.BVAdmin.Catalog
 {
@@ -291,6 +292,8 @@ namespace MerchantTribeStore.BVAdmin.Catalog
             this.Save();
 
             CategoryFacetManager manager = CategoryFacetManager.InstantiateForDatabase(MTApp.CurrentRequestContext);
+
+            
             CategoryFacet f = new CategoryFacet();
             f.CategoryId = this.BvinField.Value;
             f.PropertyId = long.Parse(this.lstProperty.SelectedItem.Value);
@@ -300,10 +303,26 @@ namespace MerchantTribeStore.BVAdmin.Catalog
 
             f.SortOrder = manager.FindMaxSortForCategoryParent(this.BvinField.Value, f.ParentPropertyId);
 
-            manager.Create(f);
-
-            RenderFilterTree();
+            if (!ExistsAlready(manager, f.CategoryId, f.PropertyId))
+            {
+                manager.Create(f);
+            }
             
+            RenderFilterTree();            
+        }
+
+        private bool ExistsAlready(CategoryFacetManager manager, string categoryBvin, long propertyId)
+        {
+            var facets = manager.FindByCategory(categoryBvin);
+            if (facets != null)
+            {
+                var count = facets.Where(y => y.PropertyId == propertyId).Count();
+                if (count > 0)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

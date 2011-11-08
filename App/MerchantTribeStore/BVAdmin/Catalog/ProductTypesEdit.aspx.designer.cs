@@ -40,31 +40,40 @@ namespace MerchantTribeStore {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
         
         /// <summary>
-        /// btnMovePropertyUp control.
+        /// lnkClose control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton btnMovePropertyUp;
+        protected global::System.Web.UI.WebControls.LinkButton lnkClose;
         
         /// <summary>
-        /// btnMovePropertyDown control.
+        /// imgCLose control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton btnMovePropertyDown;
+        protected global::System.Web.UI.WebControls.Image imgCLose;
         
         /// <summary>
-        /// lstProperties control.
+        /// btnSave control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox lstProperties;
+        protected global::System.Web.UI.WebControls.ImageButton btnSave;
+        
+        /// <summary>
+        /// litProducts control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litProducts;
         
         /// <summary>
         /// btnAddProperty control.
@@ -76,15 +85,6 @@ namespace MerchantTribeStore {
         protected global::System.Web.UI.WebControls.ImageButton btnAddProperty;
         
         /// <summary>
-        /// btnRemoveProperty control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton btnRemoveProperty;
-        
-        /// <summary>
         /// lstAvailableProperties control.
         /// </summary>
         /// <remarks>
@@ -94,21 +94,12 @@ namespace MerchantTribeStore {
         protected global::System.Web.UI.WebControls.ListBox lstAvailableProperties;
         
         /// <summary>
-        /// btnCancel control.
+        /// BvinField control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton btnCancel;
-        
-        /// <summary>
-        /// btnSave control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton btnSave;
+        protected global::System.Web.UI.WebControls.HiddenField BvinField;
     }
 }

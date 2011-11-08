@@ -2,7 +2,59 @@
     AutoEventWireup="True" Inherits="MerchantTribeStore.Product_ProductTypes_Edit" Codebehind="ProductTypesEdit.aspx.cs" %>
 
 <%@ Register Src="../Controls/MessageBox.ascx" TagName="MessageBox" TagPrefix="uc1" %>
-    
+
+<asp:Content ContentPlaceHolderID="headcontent" runat="server" ID="headcss">   
+    <script type="text/javascript">
+
+        function RemoveProduct(lnk) {
+
+            var id = $(lnk).attr('id');
+            id = id.replace('rem', '');
+            var typeid = '<%=TypeId %>';
+
+            $.post('ProductTypes_RemoveProperty.aspx',
+                   { "id": id,
+                       "typeid": typeid
+                   },
+                   function () {
+                       lnk.parent().parent().parent().parent().parent().slideUp('slow', function () {
+                           lnk.parent().parent().parent().parent().parent().remove();
+                       });
+                   }
+                  );                   
+        }
+         
+     </script>
+    <script type="text/javascript">
+        // Jquery Setup
+        $(document).ready(function () {
+            $(".selected-products").sortable({
+                placeholder: 'ui-state-highlight',
+                axis: 'y',
+                opacity: '0.75',
+                cursor: 'move',
+                update: function (event, ui) {
+                    //alert('Sending Sort:' + $(this).sortable('toArray'));
+                    var sorted = $(this).sortable('toArray');
+                    sorted += '';
+                    $.post('ProductTypes_SortProperties.aspx',
+                                                { "ids": sorted,
+                                                    "typeid": "<%=TypeId %>"
+                                                }
+                                                );
+                }
+            });
+            $(".selected-products").disableSelection();
+
+            $('.trash').click(function () {                
+                RemoveProduct($(this));
+                return false;
+            });
+
+        });
+    </script>
+</asp:Content>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <h1>
         Edit Product Type</h1>
@@ -18,45 +70,45 @@
                     ControlToValidate="ProductTypeNameField">*</asp:RequiredFieldValidator></td>
         </tr>
         <tr>
+            <td class="FormLabel" align="right">
+                <asp:LinkButton ID="lnkClose" runat="server" onclick="lnkClose_Click">
+                <asp:Image ID="imgCLose" runat="server" ImageUrl="~/BVAdmin/Images/Buttons/Cancel.png" />
+                </asp:LinkButton>
+                </td>
+            <td class="FormLabel" align="left">
+                <asp:ImageButton ID="btnSave" runat="server" AlternateText="Save Changes" 
+                    ImageUrl="~/BVAdmin/images/buttons/SaveChanges.png" onclick="btnSave_Click">
+                </asp:ImageButton></td>
+        </tr>
+        <tr>
+            <td colspan="2">&nbsp;</td>
+        </tr>
+        <tr>
             <td class="FormLabel" colspan="2">
-                <table cellspacing="0" cellpadding="3" border="0">
-                    <tr>
-                        <td class="FormLabel" valign="middle" align="right">
-                            <asp:ImageButton ID="btnMovePropertyUp" runat="server" AlternateText="Move Up" 
-                                ImageUrl="~/BVAdmin/images/buttons/up.png" onclick="btnMovePropertyUp_Click">
-                            </asp:ImageButton><br />
-                            <br />
-                            <asp:ImageButton ID="btnMovePropertyDown" runat="server" AlternateText="Move Down"
-                                ImageUrl="~/BVAdmin/images/buttons/down.png" 
-                                onclick="btnMovePropertyDown_Click"></asp:ImageButton></td>
-                        <td class="FormLabel" valign="top" align="left">
+                <table cellspacing="0" cellpadding="3" border="0" width="900">
+                    <tr>                        
+                        <td width="50%" class="FormLabel" valign="top" align="left">
                             Selected&nbsp;Properties<br />
-                            <asp:ListBox ID="lstProperties" runat="server" Rows="10"></asp:ListBox></td>
+                             <div class="selected-products">
+                                <asp:Literal ID="litProducts" runat="server"></asp:Literal>
+                            </div>
+                            </td>
                         <td class="FormLabel" valign="middle" align="center">
+                            &nbsp;<br />
+                            &nbsp;<br />
+                            &nbsp;<br />
                             <asp:ImageButton ID="btnAddProperty" runat="server" 
                                 ImageUrl="~/BVAdmin/images/buttons/Add.png" onclick="btnAddProperty_Click">
                             </asp:ImageButton><br />
                             <br />
-                            <asp:ImageButton ID="btnRemoveProperty" runat="server" 
-                                ImageUrl="~/BVAdmin/images/buttons/Remove.png" 
-                                onclick="btnRemoveProperty_Click">
-                            </asp:ImageButton></td>
-                        <td class="FormLabel" valign="top" align="left">
+                            </td>
+                        <td width="30%" class="FormLabel" valign="top" align="left">
                             Available Properties<br />
                             <asp:ListBox ID="lstAvailableProperties" runat="server" Rows="10" SelectionMode="Multiple">
                             </asp:ListBox></td>
                     </tr>
                 </table>
             </td>
-        </tr>
-        <tr>
-            <td class="FormLabel" align="left">
-                <asp:ImageButton ID="btnCancel" runat="server" CausesValidation="False" AlternateText="Cancel"
-                    ImageUrl="~/BVAdmin/images/buttons/Cancel.png" onclick="btnCancel_Click"></asp:ImageButton></td>
-            <td class="FormLabel" align="right">
-                <asp:ImageButton ID="btnSave" runat="server" AlternateText="Save Changes" 
-                    ImageUrl="~/BVAdmin/images/buttons/SaveChanges.png" onclick="btnSave_Click">
-                </asp:ImageButton></td>
-        </tr>
-    </table>
+        </tr>        
+    </table><asp:HiddenField ID="BvinField" runat="server" />
 </asp:Content>

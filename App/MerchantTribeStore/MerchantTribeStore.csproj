@@ -165,6 +165,8 @@
     <Content Include="BVAdmin\Account.aspx" />
     <Content Include="BVAdmin\BVAdmin.js" />
     <Content Include="BVAdmin\Catalog\Categories_EditCustomLink.aspx" />
+    <Content Include="BVAdmin\Catalog\ProductTypes_RemoveProperty.aspx" />
+    <Content Include="BVAdmin\Catalog\ProductTypes_SortProperties.aspx" />
     <Content Include="BVAdmin\Configuration\SocialMedia.aspx" />
     <Content Include="BVAdmin\Logout.aspx" />
     <Content Include="BVAdmin\SetupWizard\EULA.txt" />
@@ -2574,6 +2576,20 @@
     </Compile>
     <Compile Include="BVAdmin\Catalog\ProductTypesEdit.aspx.designer.cs">
       <DependentUpon>ProductTypesEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BVAdmin\Catalog\ProductTypes_RemoveProperty.aspx.cs">
+      <DependentUpon>ProductTypes_RemoveProperty.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BVAdmin\Catalog\ProductTypes_RemoveProperty.aspx.designer.cs">
+      <DependentUpon>ProductTypes_RemoveProperty.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BVAdmin\Catalog\ProductTypes_SortProperties.aspx.cs">
+      <DependentUpon>ProductTypes_SortProperties.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BVAdmin\Catalog\ProductTypes_SortProperties.aspx.designer.cs">
+      <DependentUpon>ProductTypes_SortProperties.aspx</DependentUpon>
     </Compile>
     <Compile Include="BVAdmin\Catalog\ProductUpSellCrossSell.aspx.cs">
       <DependentUpon>ProductUpSellCrossSell.aspx</DependentUpon>

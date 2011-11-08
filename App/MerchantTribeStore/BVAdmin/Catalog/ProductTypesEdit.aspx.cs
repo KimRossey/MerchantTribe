@@ -2,12 +2,15 @@ using System.Web.UI;
 using System.Collections.Generic;
 using MerchantTribe.Commerce.Catalog;
 using MerchantTribe.Commerce.Membership;
+using System.Text;
 
 namespace MerchantTribeStore
 {
 
     partial class Product_ProductTypes_Edit : BaseAdminPage
     {
+        public string TypeId = string.Empty;
+
         protected override void OnPreInit(System.EventArgs e)
         {
             base.OnPreInit(e);
@@ -27,6 +30,7 @@ namespace MerchantTribeStore
                 if (Request.QueryString["ID"] != null)
                 {
                     productID = Request.QueryString["id"];
+                    this.BvinField.Value = productID;
                 }
                 else
                 {
@@ -37,12 +41,13 @@ namespace MerchantTribeStore
                 LoadType();
             }
 
+            this.TypeId = this.BvinField.Value;
         }
 
         private void LoadType()
         {
             ProductType prodType = new ProductType();
-            prodType = MTApp.CatalogServices.ProductTypes.Find((string)ViewState["ID"]);
+            prodType = MTApp.CatalogServices.ProductTypes.Find(this.BvinField.Value);
             if (prodType != null)
             {
 
@@ -60,8 +65,8 @@ namespace MerchantTribeStore
                 msg.ShowError("Unable to load Product Type ID " + ViewState["ID"]);
             }
         }
-
-        protected void btnCancel_Click(System.Object sender, System.Web.UI.ImageClickEventArgs e)
+    
+        protected void lnkClose_Click(object sender, System.EventArgs e)
         {
             // Delete newly created item if user cancels so we don't leave a bunch of "new property"
             if (Request["newmode"] == "1")
@@ -75,7 +80,7 @@ namespace MerchantTribeStore
         {
             msg.ClearMessage();
             ProductType prodType = new ProductType();
-            prodType = MTApp.CatalogServices.ProductTypes.Find((string)ViewState["ID"]);
+            prodType = MTApp.CatalogServices.ProductTypes.Find(this.BvinField.Value);
             if (prodType != null)
             {
 
@@ -102,10 +107,8 @@ namespace MerchantTribeStore
         private void LoadPropertyLists()
         {
 
-            this.lstProperties.DataSource = MTApp.CatalogServices.ProductPropertiesFindForType((string)ViewState["ID"]);
-            this.lstProperties.DataTextField = "PropertyName";
-            this.lstProperties.DataValueField = "id";
-            this.lstProperties.DataBind();
+            List<ProductProperty> selectedProperties = MTApp.CatalogServices.ProductPropertiesFindForType(this.BvinField.Value);
+            this.litProducts.Text = RenderProperties(selectedProperties);
 
             this.lstAvailableProperties.DataSource = MTApp.CatalogServices.ProductPropertiesFindNotAssignedToType((string)ViewState["ID"]);
             this.lstAvailableProperties.DataTextField = "PropertyName";
@@ -121,44 +124,73 @@ namespace MerchantTribeStore
             this.LoadPropertyLists();
         }
 
-        protected void btnRemoveProperty_Click(System.Object sender, System.Web.UI.ImageClickEventArgs e)
+        private string RenderProperties(List<ProductProperty> props)
         {
-            string typeBvin = (string)ViewState["ID"];
-            long propertyId = long.Parse(lstAvailableProperties.SelectedValue);
-            MTApp.CatalogServices.ProductTypeRemoveProperty(typeBvin, propertyId);            
-            this.LoadPropertyLists();
-        }
+            string result = string.Empty;
 
-        protected void btnMovePropertyUp_Click(System.Object sender, System.Web.UI.ImageClickEventArgs e)
-        {
-            string typeBvin = (string)ViewState["ID"];
-            long selected = long.Parse(this.lstProperties.SelectedValue);
-            MTApp.CatalogServices.ProductTypeMovePropertyUp(typeBvin, selected);            
-            this.LoadPropertyLists();
-            foreach (System.Web.UI.WebControls.ListItem li in this.lstProperties.Items)
+            StringBuilder sb = new StringBuilder();
+
+            if ((props != null))
             {
-                if (li.Value == selected.ToString())
+                foreach (ProductProperty p in props)
                 {
-                    lstProperties.ClearSelection();
-                    li.Selected = true;
+                    RenderSingleProperty(p, sb);
                 }
             }
-        }
 
-        protected void btnMovePropertyDown_Click(System.Object sender, System.Web.UI.ImageClickEventArgs e)
-        {
-            string typeBvin = (string)ViewState["ID"];
-            long selected = long.Parse(this.lstProperties.SelectedValue);
-            MTApp.CatalogServices.ProductTypeMovePropertyDown(typeBvin, selected);            
-            this.LoadPropertyLists();
-            foreach (System.Web.UI.WebControls.ListItem li in this.lstProperties.Items)
-            {
-                if (li.Value == selected.ToString())
-                {
-                    lstProperties.ClearSelection();
-                    li.Selected = true;
-                }
-            }
+            result = sb.ToString();
+
+            return result;
         }
+        private void RenderSingleProperty(ProductProperty p, StringBuilder sb)
+        {
+
+            sb.Append("<div class=\"dragitem\" id=\"" + p.Id.ToString() + "\">");
+
+            sb.Append("<table border=\"0\" cellspacing=\"0\" cellpadding=\"2\" width=\"100%\">");
+            sb.Append("<tr>");
+            sb.Append("<td width=\"25%\">" + p.FriendlyTypeName + "</td>");
+            sb.Append("<td width=\"50%\">" + p.PropertyName + "</td>");
+            sb.Append("<td><a href=\"ProductTypes_RemoveProperty.aspx\" title=\"Remove Product Property\" id=\"rem" + p.Id.ToString() + "\" class=\"trash\"><img src=\"../../images/system/trashcan.png\" alt=\"Remove Property\" border=\"0\" /></a></td>");
+            sb.Append("<td class=\"handle\" align=\"right\"><img src=\"../../images/system/draghandle.png\" alt=\"sort\" border=\"0\" /></td>");
+            sb.Append("</tr>");
+            sb.Append("</table>");
+            sb.Append("</div>");
+
+        }
+      
+        //protected void btnMovePropertyUp_Click(System.Object sender, System.Web.UI.ImageClickEventArgs e)
+        //{
+        //    string typeBvin = (string)ViewState["ID"];
+        //    long selected = long.Parse(this.lstProperties.SelectedValue);
+        //    MTApp.CatalogServices.ProductTypeMovePropertyUp(typeBvin, selected);            
+        //    this.LoadPropertyLists();
+        //    foreach (System.Web.UI.WebControls.ListItem li in this.lstProperties.Items)
+        //    {
+        //        if (li.Value == selected.ToString())
+        //        {
+        //            lstProperties.ClearSelection();
+        //            li.Selected = true;
+        //        }
+        //    }
+        //}
+
+        //protected void btnMovePropertyDown_Click(System.Object sender, System.Web.UI.ImageClickEventArgs e)
+        //{
+        //    string typeBvin = (string)ViewState["ID"];
+        //    long selected = long.Parse(this.lstProperties.SelectedValue);
+        //    MTApp.CatalogServices.ProductTypeMovePropertyDown(typeBvin, selected);            
+        //    this.LoadPropertyLists();
+        //    foreach (System.Web.UI.WebControls.ListItem li in this.lstProperties.Items)
+        //    {
+        //        if (li.Value == selected.ToString())
+        //        {
+        //            lstProperties.ClearSelection();
+        //            li.Selected = true;
+        //        }
+        //    }
+        //}
+
+      
     }
 }
