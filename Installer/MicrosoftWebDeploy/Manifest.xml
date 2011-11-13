@@ -1,5 +1,5 @@
 <MSDeploy.iisApp>
-  <iisApp path="MerchantTribeStore" managedRuntimeVersion="v4.0" />
+  <iisApp path="MerchantTribeStore" managedRuntimeVersion="v4.0" enable32BitAppOnWin64="False" managedPipelineMode="Integrated" />
   <dbfullsql path="CreateTables.sql" />
   <dbfullsql path="CreateProcedures.sql" />
   <dbfullsql path="PopulateData.sql" />
