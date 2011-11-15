@@ -1,1 +1,0 @@
--path=c:\projects\bv{version} -sqlserver=localhost -sqldatabase=bvauto -sqluser=sa -sqlpassword=password -url=http://localhost/bv{version} -debug=true

@@ -18,5 +18,7 @@ Web.Release.config
 Web.Release-Hosted.config
 Web.Release-HostedStaging.config
 Web.Release-Source.config
+NoAutoInstallBuilds.txt
+AutoInstallBuilds.txt
 
 
