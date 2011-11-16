@@ -14,7 +14,17 @@ namespace MerchantTribeStore.Controllers
 {
     public class FlexPageController : Shared.BaseStoreController
     {
-
+        private bool IsHomePage(string bvin)
+        {
+            bool enabled = MTApp.CurrentStore.Settings.HomePageIsFlex;
+            if (!enabled) return false;
+            string homeBvin = MTApp.CurrentStore.Settings.HomePageIsFlexBvin ?? string.Empty;
+            if (homeBvin.Trim().ToLowerInvariant() == bvin.Trim().ToLowerInvariant())
+            {
+                return true;
+            }
+            return false;
+        }
 
         private void CheckFor301(string slug)
         {
@@ -50,6 +60,14 @@ namespace MerchantTribeStore.Controllers
                 return Redirect("~/Error?type=category");
             }
 
+            if (cat.Hidden)
+            {
+                if (!IsHomePage(cat.Bvin))
+                {
+                    return Redirect("~/Error?type=category");
+                }
+            }
+
             ViewBag.Title = cat.MetaTitle;            
             ViewBag.MetaKeywords = cat.MetaKeywords;
             ViewBag.MetaDescription = cat.MetaDescription;
@@ -69,9 +87,12 @@ namespace MerchantTribeStore.Controllers
                 ViewData["EditPopup"] = GetEditPopup();
             }
 
+            // Pre-Populate Empty Page
             if (cat.Versions.Count < 1)
             {
                 cat.Versions.Add(new CategoryPageVersion() { AdminName = "First Version", PublishedStatus = PublishStatus.Published, Root = cat.GetSimpleSample() });
+                MTApp.CatalogServices.Categories.Update(cat);
+                cat = MTApp.CatalogServices.Categories.Find(cat.Bvin);
             }
 
             // Load Content Parts for Page        

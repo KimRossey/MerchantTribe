@@ -21,6 +21,7 @@ namespace MerchantTribe.Commerce.Catalog
             data.PageId = model.PageId;
             data.PublishedStatus = (int)model.PublishedStatus;
             data.SerializedContent = model.Root.SerializeToString();
+            data.Areas = string.Empty;
         }
 
         protected override void CopyDataToModel(Data.EF.PageVersion data, CategoryPageVersion model)

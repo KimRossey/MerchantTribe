@@ -137,6 +137,9 @@ namespace MerchantTribeStore
             CategorySourceType sourceType = CategorySourceType.Manual;
             System.Enum.TryParse<CategorySourceType>(this.lstType.SelectedItem.Value, out sourceType);
             c.SourceType = sourceType;
+            c.Name = "NEW Page";            
+            c.RewriteUrl = "NEW-Page";
+            c.StoreId = MTApp.CurrentStore.Id;            
             MTApp.CatalogServices.Categories.Create(c);            
             Response.Redirect(EditorPage(c.SourceType) + "?id=" + c.Bvin);            
         }

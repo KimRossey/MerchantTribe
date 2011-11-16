@@ -25,7 +25,7 @@ namespace MerchantTribeStore
 
         public System.Web.IHttpHandler GetHttpHandler(RequestContext requestContext)
         {
-            string fullSlug = (string)requestContext.RouteData.Values["slug"];
+            string fullSlug = (string)(requestContext.RouteData.Values["slug"] ?? string.Empty);
             fullSlug = fullSlug.ToLowerInvariant() ?? string.Empty;
 
             // Application Context
@@ -35,6 +35,40 @@ namespace MerchantTribeStore
             // Determine store id        
             MTApp.CurrentStore = MerchantTribe.Commerce.Utilities.UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, MTApp.AccountServices);
             
+            // Home page check
+            if (fullSlug == string.Empty)
+            {
+
+                // Redirect to Sign up if we're multi-store
+                if (!MerchantTribe.Commerce.WebAppSettings.IsIndividualMode)
+                {
+                    if (MTApp.CurrentStore.StoreName == "www")
+                    {
+                        requestContext.RouteData.Values["controller"] = "Home";
+                        requestContext.RouteData.Values["area"] = "signup";
+                        requestContext.RouteData.Values["action"] = "Index";
+                        System.Web.Mvc.MvcHandler signupHandler = new MvcHandler(requestContext);
+                        return signupHandler;                                               
+                    }
+                }
+
+                // Check for custom homepage
+                string customSlug = GetCustomSlug(MTApp);
+                if (customSlug.Trim().Length < 1)
+                {
+                    // Send to home controller
+                    requestContext.RouteData.Values["controller"] = "Home";
+                    requestContext.RouteData.Values["action"] = "Index";
+                    System.Web.Mvc.MvcHandler homeHandler = new MvcHandler(requestContext);
+                    return homeHandler;                       
+                }
+                else
+                {
+                    // Pass along the slug to work with (custom page)
+                    fullSlug = customSlug;
+                    requestContext.RouteData.Values["slug"] = customSlug;
+                }
+            }
 
             // Check for Category/Page Match
             CategoryUrlMatchData categoryMatchData = IsCategoryMatch(fullSlug, MTApp);
@@ -129,6 +163,18 @@ namespace MerchantTribeStore
             }
 
             return false;
+        }
+
+        private string GetCustomSlug(MerchantTribe.Commerce.MerchantTribeApplication mtapp)
+        {
+            string result = string.Empty;
+            if (mtapp == null) return result;
+            if (mtapp.CurrentStore.Settings.HomePageIsFlex == false) return result;
+            string bvin = mtapp.CurrentStore.Settings.HomePageIsFlexBvin;
+            var cat = mtapp.CatalogServices.Categories.Find(bvin);
+            if (cat == null) return result;
+            result = cat.RewriteUrl;
+            return result;
         }
     }
 

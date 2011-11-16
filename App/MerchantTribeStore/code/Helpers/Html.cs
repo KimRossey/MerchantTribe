@@ -213,7 +213,7 @@ namespace MerchantTribeStore.Helpers
             sb.Append(AddMenuItem("URL Mapper", "content/customurl.aspx", root));
             sb.Append(AddMenuItem("Policies", "content/policies.aspx", root));
             sb.Append(AddMenuItem("Email Templates", "content/EmailTemplates.aspx", root));
-            //sb.Append(AddMenuItem("Home Page", "content/default.aspx", root));
+            sb.Append(AddMenuItem("Home Page", "content/default.aspx", root));
 
             sb.Append(CloseMenu());
 

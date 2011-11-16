@@ -262,6 +262,13 @@ namespace MerchantTribe.Commerce.Catalog
             IQueryable<Data.EF.bvc_Category> result = repository.Find().Where(y => y.StoreId == storeId).OrderBy(y => y.SortOrder);
             return ListPocoSnapshot(result);
         }
+        public List<CategorySnapshot> FindAllFlexPages()
+        {
+            long storeId = context.CurrentStore.Id;
+            IQueryable<Data.EF.bvc_Category> result = repository.Find().Where(y => y.StoreId == storeId)
+                    .Where(y => y.SourceType == (int)Catalog.CategorySourceType.FlexPage).OrderBy(y => y.SortOrder);
+            return ListPocoSnapshot(result);
+        }
         public List<CategorySnapshot> FindAllForAllStores()
         {
             return this.FindAllPagedForAllStores(1, int.MaxValue);

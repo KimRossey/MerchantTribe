@@ -143,7 +143,7 @@ namespace MerchantTribeStore
             routes.MapPageRoute("admin", "admin", "~/bvadmin/default.aspx");
                                     
             // Home page
-            routes.MapRoute("homepage", "", new { controller = "Home", action = "Index" });
+            //routes.MapRoute("homepage", "", new { controller = "Home", action = "Index" });
 
             // Other Routes
             routes.MapRoute("fileuploadhandler", "fileuploadhandler/{typecode}/{*details}", new { controller = "FileUpload", action = "Index" });

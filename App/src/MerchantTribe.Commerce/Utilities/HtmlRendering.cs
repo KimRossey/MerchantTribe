@@ -113,7 +113,7 @@ namespace MerchantTribe.Commerce.Utilities
             //Find Categories to Display in Menu
             Catalog.CategoryRepository repo = Catalog.CategoryRepository.InstantiateForDatabase(requestContext);
             List<Catalog.CategorySnapshot> categories = repo.FindForMainMenu();
-
+            
             // Limit number of links
             int stopCount = categories.Count -1;
             if ((maxLinks > 0) && ((maxLinks - 1) < stopCount))

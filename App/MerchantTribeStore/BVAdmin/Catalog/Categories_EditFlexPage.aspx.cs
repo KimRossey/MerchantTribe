@@ -55,6 +55,7 @@ namespace MerchantTribeStore.BVAdmin.Catalog
                             ViewState["type"] = Request.QueryString["type"];
                         }
                         this.ParentIDField.Value = (string)Request.QueryString["ParentID"];
+                        CreateCategory();                        
                     }
                     else
                     {
@@ -72,12 +73,25 @@ namespace MerchantTribeStore.BVAdmin.Catalog
             ValidateCurrentUserHasPermission(SystemPermissions.CatalogView);
         }
 
+        private Category CreateCategory()
+        {
+            Category c = MTApp.CatalogServices.Categories.Find(this.BvinField.Value);
+            if (c == null) c = new Category();
+            c.Name = "NEW Web Site Page";
+            c.ParentId = this.ParentIDField.Value;
+            c.RewriteUrl = "NEW-Web-Site-Page";
+            c.SourceType = CategorySourceType.FlexPage;
+            c.StoreId = MTApp.CurrentStore.Id;            
+            MTApp.CatalogServices.Categories.Create(c);
+            this.BvinField.Value = c.Bvin;
+            return LoadCategory();
+        }
+
         private Category LoadCategory()
         {
             Category c = MTApp.CatalogServices.Categories.Find(this.BvinField.Value);
             if (c != null)
             {
-
                 if (c.Bvin != string.Empty)
                 {
                     this.NameField.Text = c.Name;                    
@@ -85,7 +99,8 @@ namespace MerchantTribeStore.BVAdmin.Catalog
                     this.MetaKeywordsField.Text = c.MetaKeywords;
                     this.MetaTitleField.Text = c.MetaTitle;
                     this.RewriteUrlField.Text = c.RewriteUrl;
-                    this.ParentIDField.Value = c.ParentId;                  
+                    this.ParentIDField.Value = c.ParentId;
+                    this.chkHidden.Checked = c.Hidden;
                 }
             }
             return c;
@@ -110,6 +125,7 @@ namespace MerchantTribeStore.BVAdmin.Catalog
                 c.MetaKeywords = this.MetaKeywordsField.Text.Trim();
                 c.ShowInTopMenu = false;
                 c.SourceType = CategorySourceType.FlexPage;
+                c.Hidden = this.chkHidden.Checked;
 
                 string oldUrl = c.RewriteUrl;
 

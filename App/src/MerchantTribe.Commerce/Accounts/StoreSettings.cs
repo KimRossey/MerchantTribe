@@ -361,6 +361,21 @@ namespace MerchantTribe.Commerce.Accounts
             set { SetProp("MetaKeywords", value); }
         }
 
+
+        public bool HomePageIsFlex
+        {
+            get { return GetPropBool("HomePageIsFlex"); }
+            set { SetProp("HomePageIsFlex", value); }
+        }       
+        public string HomePageIsFlexBvin
+        {
+            get
+            {
+                return GetProp("HomePageIsFlexBvin");
+            }
+            set { SetProp("HomePageIsFlexBvin", value); }
+        }
+
         // Rewards Points
         public bool RewardsPointsOnPurchasesActive
         {

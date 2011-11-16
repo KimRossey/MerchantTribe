@@ -76,6 +76,12 @@
                 </td>
             </tr>
             <tr>
+                <td class="formlabel" style="height: 26px">
+                    &nbsp;</td>
+                <td class="formfield">
+                    <asp:CheckBox ID="chkHidden" runat="server" Text="Hide Category (unless home page)" TabIndex="2009" /></td>
+            </tr>
+            <tr>
                 <td class="formlabel">&nbsp;</td>
                 <td class="formfield"><asp:ImageButton Id="btnEdit" runat="server" 
                         ImageUrl="~/BVAdmin/Images/Buttons/EditThisPage.png" onclick="btnEdit_Click" /></td>
