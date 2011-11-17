@@ -117,7 +117,7 @@ namespace MerchantTribeStore
 
                 FilesDropDownList.DataSource = files;
                 FilesDropDownList.DataTextField = "CombinedDisplay";
-                FilesDropDownList.DataValueField = "FileId";
+                FilesDropDownList.DataValueField = "Bvin";
                 FilesDropDownList.DataBind();
             }
         }
