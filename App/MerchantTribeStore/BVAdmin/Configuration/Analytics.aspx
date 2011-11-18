@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/BVAdmin/BVAdminNav.master" AutoEventWireup="True" Inherits="MerchantTribeStore.BVAdmin_Configuration_Analytics" title="Untitled Page" Codebehind="Analytics.aspx.cs" %>
+﻿<%@ Page ValidateRequest="false" Language="C#" MasterPageFile="~/BVAdmin/BVAdminNav.master" AutoEventWireup="True" Inherits="MerchantTribeStore.BVAdmin_Configuration_Analytics" title="Untitled Page" Codebehind="Analytics.aspx.cs" %>
 <%@ Register Src="../Controls/MessageBox.ascx" TagName="MessageBox" TagPrefix="uc1" %>
 <%@ Register src="NavMenu.ascx" tagname="NavMenu" tagprefix="uc2" %>
 <asp:Content ID="nav" ContentPlaceHolderID="NavContent" runat="server">

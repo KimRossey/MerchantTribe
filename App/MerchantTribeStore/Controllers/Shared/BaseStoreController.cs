@@ -41,7 +41,7 @@ namespace MerchantTribeStore.Controllers.Shared
             }
 
             // Additional Meta Tags
-            ViewData["AdditionalMetaTags"] = MerchantTribe.Web.HtmlSanitizer.MakeHtmlSafe(MTApp.CurrentStore.Settings.Analytics.AdditionalMetaTags);
+            ViewData["AdditionalMetaTags"] = MTApp.CurrentStore.Settings.Analytics.AdditionalMetaTags;
 
             // JQuery
             ViewBag.JqueryInclude = Helpers.Html.JQueryIncludes(Url.Content("~/scripts"), this.Request.IsSecureConnection);
