@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using MerchantTribeStore
+<!DOCTYPE html>
 <html>
 <head>
     <title>@ViewBag.Title</title>
@@ -6,10 +7,10 @@
     <meta name="description" content="@Html.Raw(ViewBag.MetaDescription)" />
     <link href="@Url.Content("~/css/system/styles.css")" rel="Stylesheet" type="text/css" />    
     <link href="@Url.Content("~/content/flexbase.css")" rel="Stylesheet" type="text/css" />    
-    <link href="@Html.Raw((string)ViewData["css"])" rel="stylesheet" type="text/css" />
+    <link href="@Html.Raw((string)ViewData["css"])" rel="stylesheet" type="text/css" />    
     @Html.Raw((string)ViewData["jqueryinclude"])   
     @RenderSection("HeadContent", false)    
-    @Html.Raw((string)ViewData["analyticstop"])
+    @Html.Raw((string)ViewData["analyticstop"])    
 </head>
 <body @if (!String.IsNullOrEmpty(ViewBag.BodyClass)) { <text>class="@ViewBag.BodyClass"</text> } >
     @if (IsSectionDefined("AdminPanel"))
@@ -44,5 +45,6 @@
     
     @RenderSection("PreBodyCloseContent", false)    
     @Html.Raw((string)ViewData["analyticsbottom"])    
+    @Html.Partial("~/Views/Shared/_RegisteredScripts.cshtml")
 </body>
 </html>
