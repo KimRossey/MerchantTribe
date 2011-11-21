@@ -132,22 +132,30 @@ namespace MerchantTribe.Commerce.Catalog
             foreach (OptionItem item in subitems)
             {
                 item.OptionBvin = optionBvin;
+                item.StoreId = context.CurrentStore.Id;
             }
 
             int maxSort = FindMaxSort(subitems);
 
             // Create or Update
             foreach (OptionItem itemnew in subitems)
-            {
-                if (itemnew.Bvin == string.Empty)
+            {                             
                 {
-                    maxSort++;
-                    itemnew.SortOrder = maxSort;
-                    Create(itemnew);
-                }
-                else
-                {
-                    Update(itemnew);
+                    if (itemnew.Bvin == string.Empty)
+                    {
+                        maxSort++;
+                        itemnew.SortOrder = maxSort;
+                        Create(itemnew);
+                    }
+                    else
+                    {
+                        OptionItem existingNew = Find(itemnew.Bvin);
+                        if (existingNew == null)
+                        {
+                            Create(itemnew);
+                        }                        
+                        Update(itemnew);
+                    }
                 }
             }    
         

@@ -77,7 +77,7 @@ namespace MerchantTribeStore.api.rest
                 ApiResponse<bool> response = new ApiResponse<bool>();
 
                 string productBvin = GetParameterByIndex(2, parameters);
-                string propertyValue = GetParameterByIndex(3, parameters);
+                string propertyValue = postdata;
                 response.Content = MTApp.CatalogServices.ProductPropertyValues.SetPropertyValue(productBvin, id, propertyValue);
 
                 data = MerchantTribe.Web.Json.ObjectToJson(response);

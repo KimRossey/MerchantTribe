@@ -53,7 +53,7 @@ namespace MerchantTribe.Commerce.Catalog
             this.DiscountType = (ProductVolumeDiscountType)((int)dto.DiscountType);
             this.LastUpdated = dto.LastUpdated;
             this.ProductId = dto.ProductId ?? string.Empty;
-            this.Qty = this.Qty;
+            this.Qty = dto.Qty;
         }	
 
 	}
