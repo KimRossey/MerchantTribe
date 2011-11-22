@@ -228,11 +228,14 @@ namespace MerchantTribe.Commerce.Catalog
             // new variant option may have been added
             this.UpdateShortVariants(p);
 
-            // Clear and Rebuild Inventory Objects
-            ProductInventories.DeleteByProductId(p.Bvin);
-            InventoryGenerateForProduct(Products.Find(p.Bvin));
+            
 
-            this.VariantsReloadForProduct(p);
+            // Clear and Rebuild Inventory Objects            
+            Product reloadedProduct = Products.Find(p.Bvin);
+            InventoryGenerateForProduct(reloadedProduct);
+            CleanUpInventory(reloadedProduct);
+
+            p = Products.Find(p.Bvin);            
         }
         public void VariantsReloadForProduct(Product p)
         {
@@ -659,11 +662,47 @@ namespace MerchantTribe.Commerce.Catalog
                 foreach (Variant v in localProduct.Variants)
                 {
                     InventoryGenerateSingleInventory(localProduct.Bvin, v.Bvin, 0, 0);
-                }
+                }                
             }
             else
             {
                 InventoryGenerateSingleInventory(localProduct.Bvin, string.Empty, 0, 0);
+            }            
+        }
+        public void CleanUpInventory(Product p)
+        {
+            if (p == null) return;
+            List<ProductInventory> allInventory = ProductInventories.FindByProductId(p.Bvin);
+            if (allInventory == null) return;
+            if (allInventory.Count < 1) return;
+
+            if (p.HasVariants())
+            {                
+                foreach (ProductInventory inv in allInventory)
+                {
+                    if (inv.VariantId.Trim() == string.Empty)
+                    {
+                        // Remove non-variant inventory levels
+                        ProductInventories.Delete(inv.Bvin);
+                    }
+
+                    if (p.Variants.Where(y => y.Bvin == inv.VariantId).Count() <= 0)
+                    {
+                        // Remove variant inventory levels that don't apply anymore
+                        ProductInventories.Delete(inv.Bvin);
+                    }
+                }
+            }
+            else
+            {
+                // Remove all variant inventory levels
+                foreach (ProductInventory inv in allInventory)
+                {
+                    if (inv.VariantId.Trim() != string.Empty)
+                    {
+                        ProductInventories.Delete(inv.Bvin);
+                    }
+                }
             }
         }
         private void InventoryGenerateSingleInventory(string bvin, string variantId, int onHand, int lowStockPoint)

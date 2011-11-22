@@ -159,6 +159,11 @@ namespace MerchantTribeStore
         protected void btnGenerateAll_Click(object sender, System.Web.UI.ImageClickEventArgs e)
         {
             MTApp.CatalogServices.VariantsGenerateAllPossible(localProduct);
+
+            //// Generate Inventory to Match Variants
+            //MTApp.CatalogServices.InventoryGenerateForProduct(localProduct);
+            //MTApp.CatalogServices.UpdateProductVisibleStatusAndSave(localProduct);
+
             Response.Redirect("ProductChoices_Variants.aspx?id=" + productBvin);
         }
 
@@ -191,6 +196,10 @@ namespace MerchantTribeStore
                     MTApp.CatalogServices.ProductVariants.Create(v);
                 }
             }
+
+            //// Generate Inventory to Match
+            //MTApp.CatalogServices.InventoryGenerateForProduct(localProduct);
+            //MTApp.CatalogServices.UpdateProductVisibleStatusAndSave(localProduct);
 
             Response.Redirect("ProductChoices_Variants.aspx?id=" + productBvin);
         }

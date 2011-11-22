@@ -74,7 +74,7 @@ namespace MerchantTribe.Commerce.Catalog
             if (items != null)
             {
                 var parts = (from i in items
-                             where i.OptionBvin == this.Bvin
+                             where i.OptionBvin.Replace("-","") == this.Bvin.Replace("-","")
                              orderby i.SortOrder
                              select i).ToList();
                 if (parts != null)
@@ -132,7 +132,7 @@ namespace MerchantTribe.Commerce.Catalog
             // check to see if this option contains a specific item
             foreach (OptionItem oi in this.Items)
             {
-                if (oi.Bvin == itemBvin) return true;
+                if (oi.Bvin.Replace("-","") == itemBvin.Replace("-","")) return true;
             }
 
             return false;

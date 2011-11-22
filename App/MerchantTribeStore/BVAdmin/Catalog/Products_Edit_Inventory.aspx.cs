@@ -61,14 +61,12 @@ namespace MerchantTribeStore
 
         private void LoadInventory()
         {
-            List<ProductInventory> inventory = MTApp.CatalogServices.ProductInventories.FindByProductId(this.bvinfield.Value);
-            if (inventory.Count < 1)
-            {
-                MTApp.CatalogServices.InventoryGenerateForProduct(localProduct);
-                MTApp.CatalogServices.UpdateProductVisibleStatusAndSave(localProduct);
-                inventory = MTApp.CatalogServices.ProductInventories.FindByProductId(this.bvinfield.Value);
-            }
-
+            List<ProductInventory> inventory = new List<ProductInventory>();                        
+            MTApp.CatalogServices.InventoryGenerateForProduct(localProduct);
+            MTApp.CatalogServices.CleanUpInventory(localProduct);
+            MTApp.CatalogServices.UpdateProductVisibleStatusAndSave(localProduct);
+            inventory = MTApp.CatalogServices.ProductInventories.FindByProductId(this.bvinfield.Value);
+            
             if (localProduct.IsAvailableForSale)
             {
                 this.lblIsAvailable.Text = "<div class=\"flash-message-success\">This product is displayed on the store based on inventory.</div>";

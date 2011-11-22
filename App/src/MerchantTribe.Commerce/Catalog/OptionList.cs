@@ -21,7 +21,7 @@ namespace MerchantTribe.Commerce.Catalog
 
             foreach (Option o in this.VariantsOnly())
             {                
-                    if (o.Bvin == selection.OptionBvin)
+                    if (o.Bvin.Replace("-","") == selection.OptionBvin.Replace("-",""))
                     {
                         if (o.ItemsContains(selection.SelectionData))
                         {
