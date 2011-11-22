@@ -818,6 +818,12 @@ namespace MerchantTribe.CommerceDTO.v1.Client
             result = RestHelper.GetRequest<ApiResponse<List<ProductReviewDTO>>>(this.fullApiUri + "productreviews/?key=" + Enc(key));
             return result;
         }
+        public ApiResponse<List<ProductReviewDTO>> ProductReviewsByProduct(string productBvin)
+        {
+            ApiResponse<List<ProductReviewDTO>> result = new ApiResponse<List<ProductReviewDTO>>();
+            result = RestHelper.GetRequest<ApiResponse<List<ProductReviewDTO>>>(this.fullApiUri + "productreviews/?key=" + Enc(key) + "&productbvin=" + Enc(productBvin));
+            return result;
+        }
         public ApiResponse<ProductReviewDTO> ProductReviewsFind(string bvin)
         {
             ApiResponse<ProductReviewDTO> result = new ApiResponse<ProductReviewDTO>();

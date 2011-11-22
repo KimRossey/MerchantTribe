@@ -25,9 +25,20 @@ namespace MerchantTribeStore.api.rest
 
             if (string.Empty == (parameters ?? string.Empty))
             {
+                string byProduct = querystring["productbvin"] ?? string.Empty;
+                
                 // Find All                
-                ApiResponse<List<ProductReviewDTO>> response = new ApiResponse<List<ProductReviewDTO>>();                
-                List<ProductReview> items = MTApp.CatalogServices.ProductReviews.FindAllPaged(1, int.MaxValue);
+                ApiResponse<List<ProductReviewDTO>> response = new ApiResponse<List<ProductReviewDTO>>();
+                List<ProductReview> items = new List<ProductReview>();
+                if (byProduct != string.Empty)
+                {
+                    items = MTApp.CatalogServices.ProductReviews.FindByProductId(byProduct);
+                }
+                else
+                {
+                    items = MTApp.CatalogServices.ProductReviews.FindAllPaged(1, int.MaxValue);
+                }
+                 
                 if (items == null)
                 {
                     response.Errors.Add(new ApiError("NULL", "Could not locate reviews. Try again."));
