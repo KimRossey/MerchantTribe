@@ -28,18 +28,49 @@ namespace MerchantTribeStore.api.rest
 
             if ((string.Empty == (parameters ?? string.Empty)) && (email.Trim().Length < 1))
             {
-                // List
-                ApiResponse<List<CustomerAccountDTO>> response = new ApiResponse<List<CustomerAccountDTO>>();
-
-                List<CustomerAccount> results = MTApp.MembershipServices.Customers.FindAll();
-                List<CustomerAccountDTO> dto = new List<CustomerAccountDTO>();
-
-                foreach (CustomerAccount item in results)
+                string countonly = querystring["countonly"] ?? string.Empty;
+                string page = querystring["page"] ?? "1";
+                int pageInt = 1;
+                int.TryParse(page, out pageInt);
+                string pageSize = querystring["pagesize"] ?? "9";
+                int pageSizeInt = 9;
+                int.TryParse(pageSize, out pageSizeInt);
+                
+                if (querystring["countonly"] != null)
                 {
-                    dto.Add(item.ToDto());
+                    // List by Page
+                    ApiResponse<long> response = new ApiResponse<long>();
+                    int results = MTApp.MembershipServices.Customers.CountOfAll();                    
+                    response.Content = (long)results;
+                    data = MerchantTribe.Web.Json.ObjectToJson(response);
                 }
-                response.Content = dto;
-                data = MerchantTribe.Web.Json.ObjectToJson(response);
+                else if (querystring["page"] != null)
+                {
+                    // List by Page
+                    ApiResponse<List<CustomerAccountDTO>> response = new ApiResponse<List<CustomerAccountDTO>>();
+                    List<CustomerAccount> results = MTApp.MembershipServices.Customers.FindAllPaged(pageInt, pageSizeInt);
+                    List<CustomerAccountDTO> dto = new List<CustomerAccountDTO>();
+                    foreach (CustomerAccount item in results)
+                    {
+                        dto.Add(item.ToDto());
+                    }
+                    response.Content = dto;
+                    data = MerchantTribe.Web.Json.ObjectToJson(response);
+                }
+                else
+                {
+                    // List
+                    ApiResponse<List<CustomerAccountDTO>> response = new ApiResponse<List<CustomerAccountDTO>>();
+                    List<CustomerAccount> results = MTApp.MembershipServices.Customers.FindAll();
+                    List<CustomerAccountDTO> dto = new List<CustomerAccountDTO>();
+
+                    foreach (CustomerAccount item in results)
+                    {
+                        dto.Add(item.ToDto());
+                    }
+                    response.Content = dto;
+                    data = MerchantTribe.Web.Json.ObjectToJson(response);
+                }
             }
             else
             {

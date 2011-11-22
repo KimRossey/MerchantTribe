@@ -22,22 +22,23 @@ namespace MerchantTribeStore.api.rest
         public override string GetAction(string parameters, System.Collections.Specialized.NameValueCollection querystring)
         {            
             string data = string.Empty;
-
             if (string.Empty == (parameters ?? string.Empty))
             {
                 // List
                 string categoryBvin = querystring["bycategory"] ?? string.Empty;
+                string countonly = querystring["countonly"] ?? string.Empty;
+
+                string page = querystring["page"] ?? "1";
+                int pageInt = 1;
+                int.TryParse(page, out pageInt);
+                string pageSize = querystring["pagesize"] ?? "9";
+                int pageSizeInt = 9;
+                int.TryParse(pageSize, out pageSizeInt);
+                int totalCount = 0;
 
                 if (categoryBvin.Trim().Length > 0)
-                {
-                    string page = querystring["page"] ?? "1";
-                    int pageInt = 1;
-                    int.TryParse(page, out pageInt);
-                    string pageSize = querystring["pagesize"] ?? "9";
-                    int pageSizeInt = 9;
-                    int.TryParse(pageSize, out pageSizeInt);
-                    int totalCount = 0;
-
+                {                    
+                    // by category
                     ApiResponse<PageOfProducts> responsePage = new ApiResponse<PageOfProducts>();
                     responsePage.Content = new PageOfProducts();
 
@@ -50,12 +51,36 @@ namespace MerchantTribeStore.api.rest
                     }                    
                     data = MerchantTribe.Web.Json.ObjectToJson(responsePage);
                 }
+                else if (querystring["page"] != null)
+                {
+                    // all by page
+                    ApiResponse<PageOfProducts> responsePage = new ApiResponse<PageOfProducts>();
+                    responsePage.Content = new PageOfProducts();
+
+                    List<Product> resultItems = new List<Product>();
+                    resultItems = MTApp.CatalogServices.Products.FindAllPaged(pageInt, pageSizeInt);                    
+                    foreach (Product p in resultItems)
+                    {
+                        responsePage.Content.Products.Add(p.ToDto());
+                    }
+                    data = MerchantTribe.Web.Json.ObjectToJson(responsePage);
+                }
+                else if (querystring["countonly"] != null)
+                {
+                    // count only
+                    ApiResponse<long> responseCount = new ApiResponse<long>();
+                    responseCount.Content = 0;                    
+                    int output = MTApp.CatalogServices.Products.FindAllCount();
+                    responseCount.Content = output;
+                    data = MerchantTribe.Web.Json.ObjectToJson(responseCount);
+                }
                 else
                 {
+                    // single product
                     ApiResponse<List<ProductDTO>> response = new ApiResponse<List<ProductDTO>>();
 
-                    List<Product> results = new List<Product>();                                      
-                    results = MTApp.CatalogServices.Products.FindAllPaged(1, 1000);                  
+                    List<Product> results = new List<Product>();
+                    results = MTApp.CatalogServices.Products.FindAllPaged(1, 1000);
                     List<ProductDTO> dto = new List<ProductDTO>();
                     foreach (Product item in results)
                     {

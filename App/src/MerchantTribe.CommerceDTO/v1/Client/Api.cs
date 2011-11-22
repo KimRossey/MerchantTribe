@@ -127,6 +127,19 @@ namespace MerchantTribe.CommerceDTO.v1.Client
             result = RestHelper.GetRequest<ApiResponse<List<CustomerAccountDTO>>>(this.fullApiUri + "customeraccounts/?key=" + Enc(key));
             return result;
         }
+        public ApiResponse<long> CustomerAccountsCountOfAll()
+        {
+            ApiResponse<long> result = new ApiResponse<long>();
+            result = RestHelper.GetRequest<ApiResponse<long>>(this.fullApiUri + "customeraccounts/?key=" + Enc(key) + "&countonly=1");
+            return result;
+        }
+        public ApiResponse<List<CustomerAccountDTO>> CustomerAccountsFindAllByPage(int pageNumber, int pageSize)
+        {
+            ApiResponse<List<CustomerAccountDTO>> result = new ApiResponse<List<CustomerAccountDTO>>();
+            result = RestHelper.GetRequest<ApiResponse<List<CustomerAccountDTO>>>(this.fullApiUri + "customeraccounts/?key=" + Enc(key) + "&page=" + pageNumber + "&pagesize=" + pageSize);
+            return result;
+        }
+
         public ApiResponse<CustomerAccountDTO> CustomerAccountsFind(string bvin)
         {
             ApiResponse<CustomerAccountDTO> result = new ApiResponse<CustomerAccountDTO>();
@@ -506,6 +519,18 @@ namespace MerchantTribe.CommerceDTO.v1.Client
             result = RestHelper.GetRequest<ApiResponse<PageOfProducts>>(this.fullApiUri + "products/?key=" + Enc(key) + "&bycategory=" + Enc(categoryBvin) + "&page=" + pageNumber + "&pagesize=" + pageSize);
             return result;
         }
+        public ApiResponse<PageOfProducts> ProductsFindPage(int pageNumber, int pageSize)
+        {
+            ApiResponse<PageOfProducts> result = new ApiResponse<PageOfProducts>();
+            result = RestHelper.GetRequest<ApiResponse<PageOfProducts>>(this.fullApiUri + "products/?key=" + Enc(key) + "&page=" + pageNumber + "&pagesize=" + pageSize);
+            return result;
+        }
+        public ApiResponse<long> ProductsCountOfAll()
+        {
+            ApiResponse<long> result = new ApiResponse<long>();
+            result = RestHelper.GetRequest<ApiResponse<long>>(this.fullApiUri + "products/?key=" + Enc(key) + "&countonly=1");
+            return result;
+        }
         public ApiResponse<ProductDTO> ProductsFind(string bvin)
         {
             ApiResponse<ProductDTO> result = new ApiResponse<ProductDTO>();
@@ -787,6 +812,12 @@ namespace MerchantTribe.CommerceDTO.v1.Client
         }
 
         // Product Reviews
+        public ApiResponse<List<ProductReviewDTO>> ProductReviewsFindAll()
+        {
+            ApiResponse<List<ProductReviewDTO>> result = new ApiResponse<List<ProductReviewDTO>>();
+            result = RestHelper.GetRequest<ApiResponse<List<ProductReviewDTO>>>(this.fullApiUri + "productreviews/?key=" + Enc(key));
+            return result;
+        }
         public ApiResponse<ProductReviewDTO> ProductReviewsFind(string bvin)
         {
             ApiResponse<ProductReviewDTO> result = new ApiResponse<ProductReviewDTO>();
