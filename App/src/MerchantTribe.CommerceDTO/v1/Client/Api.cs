@@ -17,7 +17,10 @@ namespace MerchantTribe.CommerceDTO.v1.Client
     {
         private string Enc(string input)
         {
-            return System.Web.HttpUtility.UrlEncode(input);
+            // The web request class actuall does encoding for us
+            // so we only need to encode the "/" character
+            return input.Replace("/", "%2F");
+            //return System.Web.HttpUtility.UrlEncode(input);
         }
 
         private string baseUri = "http://localhost";
@@ -431,7 +434,7 @@ namespace MerchantTribe.CommerceDTO.v1.Client
         public ApiResponse<bool> ProductPropertiesSetValueForProduct(long id, string productBvin, string propertyValue, long choiceId)
         {
             ApiResponse<bool> result = new ApiResponse<bool>();
-            result = RestHelper.PostRequest<ApiResponse<bool>>(this.fullApiUri + "productproperties/" + id + "/valuesforproduct/" + Enc(productBvin) + "/" + Enc(propertyValue) + "/" + choiceId + "?key=" + Enc(key), string.Empty);
+            result = RestHelper.PostRequest<ApiResponse<bool>>(this.fullApiUri + "productproperties/" + id + "/valuesforproduct/" + Enc(productBvin) + "/?key=" + Enc(key), propertyValue);
             return result;
         }
             
