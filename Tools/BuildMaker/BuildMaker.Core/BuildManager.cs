@@ -364,7 +364,7 @@ namespace BuildMaker.Core
             FileTools.FileCopyNoBackup("App\\packages", destinationFolder + "\\packages", _Writer, foldersToIgnoreDuringCopy);
             FileTools.FileCopyNoBackup("App\\src", destinationFolder + "\\src", _Writer, foldersToIgnoreDuringCopy);            
 
-            FileTools.SingleFileCopy("App\\MerchantTribe.sln", destinationFolder + "\\MerchantTribeStore.sln", _Writer);
+            FileTools.SingleFileCopy("App\\MerchantTribeStore.sln", destinationFolder + "\\MerchantTribeStore.sln", _Writer);
 
             // Copy Web Platform Installer Files
             _Writer.WriteLine("Copying Web Platform Installer Files");
