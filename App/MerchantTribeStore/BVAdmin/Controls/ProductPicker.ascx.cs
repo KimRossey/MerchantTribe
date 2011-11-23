@@ -235,9 +235,9 @@ namespace MerchantTribeStore
         public void LoadSearch()
         {
             int totalCount = 0;
-            this.GridView1.PageIndex = (CurrentPage - 1);
+            this.GridView1.PageIndex = 0;
             this.GridView1.DataSource = MyPage.MTApp.CatalogServices.Products.FindByCriteria(GetCurrentCriteria(),
-                                                                                        this.GridView1.PageIndex * this.GridView1.PageSize,
+                                                                                        CurrentPage,
                                                                                         this.GridView1.PageSize,
                                                                                         ref totalCount);
             this.GridView1.DataBind();
