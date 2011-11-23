@@ -52,7 +52,7 @@
   </parameter>
   <parameter name="dbAdminPassword" defaultValue="" tags="SQL, dbAdminPassword, Password">
   </parameter>
-  <parameter name="dbServer" defaultValue="localhost" tags="SQL, dbServer">
+  <parameter name="dbServer" defaultValue=".\SQLExpress" tags="SQL, dbServer">
   </parameter>
   <parameter name="dbName" defaultValue="MerchantTribe" tags="SQL, dbName">
   </parameter>
