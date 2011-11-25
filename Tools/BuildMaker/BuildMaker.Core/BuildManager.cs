@@ -52,8 +52,9 @@ namespace BuildMaker.Core
                 ZipMainBuild(workingFolder, "MerchantTribe" + currentVersion.Replace(".","") + ".zip");
                 CopyFreeFiles(workingFolder, fullBuildFolder + "\\src");
                 ZipFreeBuild(workingFolder, "MerchantTribe" + currentVersion.Replace(".", "") + "_free.zip");
-                ZipWebPlatformInstaller(workingFolder, "MerchantTribe" + currentVersion.Replace(".", "") + "_WebPI.zip");                
-                                                
+                ZipWebPlatformInstaller(workingFolder, "MerchantTribe" + currentVersion.Replace(".", "") + "_WebPI.zip");
+                GenerateWebPiFeed(workingFolder, "MerchantTribe" + currentVersion.Replace(".", "") + "_WebPI.zip");
+      
                 // Try Auto Install
                 if (File.Exists("AutoInstallBuilds.txt"))
                 {
@@ -614,6 +615,79 @@ namespace BuildMaker.Core
             string hash = HashTools.GetSHA1HashForFile(workingFolder + "\\" + outputName);
             File.WriteAllText(workingFolder + "\\" + outputName + ".sha1.txt", hash);
             _Writer.WriteLine("Finished Zipping Web Platform Installer Build");
+        }
+
+        public void GenerateWebPiFeed(string workingFolder, string builtFileName)
+        {
+            _Writer.WriteLine("Genering Web PI Sample Feed File");
+           
+            string sourceFile = "Installer\\MicrosoftWebDeploy\\SampleFeed.txt";
+            string outputFile = "Builds\\LatestBuildFeed.xml";
+            string zipFile = workingFolder + "\\" + builtFileName;
+            string hashFile = workingFolder + "\\" + builtFileName + ".sha1.txt";
+
+            _Writer.WriteLine("Source Feed: " + sourceFile);
+            _Writer.WriteLine("Output Feed: " + outputFile);
+            _Writer.WriteLine("Zip File: " + zipFile);
+            _Writer.WriteLine("Hash File: " + hashFile);
+
+            string hash = string.Empty;
+            string zipSize = "0";
+
+            if (File.Exists(hashFile))
+            {
+                string[] hashLines = File.ReadAllLines(hashFile);
+                if (hashLines.Length > 0)
+                {
+                    hash = hashLines[0];
+                    _Writer.WriteLine("Hash = " + hash);
+                }
+            }
+            else
+            {
+                _Writer.WriteLine("FAIL: Missing Hash File");
+            }
+            if (File.Exists(zipFile))
+            {
+                
+                FileInfo zipInfo = new FileInfo(zipFile);
+                if (zipInfo != null)
+                {
+                   decimal zipSizeInKb = Math.Ceiling((zipInfo.Length / 1024m));
+                    zipSize= zipSizeInKb.ToString();
+                    _Writer.WriteLine("Zip Size: " + zipSize);
+                }
+            }
+            else
+            {
+                _Writer.WriteLine("FAIL: Missing Zip File");
+            }
+
+            if (File.Exists(sourceFile))
+            {
+
+                string fullDir = FileTools.CurrentWorkingDirectory();
+                fullDir = Path.Combine(fullDir, workingFolder);
+                fullDir = Path.Combine(fullDir, builtFileName);
+                string fileUrl = "file:///" + fullDir;
+
+                string versionNumber = VersionGetFullBuildNumber();
+                string appName = "MerchantTribe " + versionNumber;
+
+                string sourceFeedText = File.ReadAllText(sourceFile);
+                sourceFeedText = sourceFeedText.Replace("!!FILESIZEINKB!!", zipSize);
+                sourceFeedText = sourceFeedText.Replace("!!INSTALLERURL!!", fileUrl);
+                sourceFeedText = sourceFeedText.Replace("!!SHA1!!", hash);
+                sourceFeedText = sourceFeedText.Replace("!!APPNAME!!", appName);
+
+                FileTools.RemoveFile(outputFile, _Writer);
+                File.WriteAllText(outputFile, sourceFeedText);
+                _Writer.WriteLine("Sample Feed written: " + outputFile);
+            }
+            else
+            {
+                _Writer.WriteLine("FAIL: Could not locate source feed file");
+            }
         }
 
         private void RunProcess(string processName, string commands)

@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <webpiFile version="3.0.0.0"/>
+  <title>MerchantTribe Custom Feed for Web PI</title>
+  <link href="http://localhost/SampleFeed.xml" />
+  <updated>2009-9-29T16:30:00Z</updated>
+  <author>
+    <name>BV Software LLC</name>
+    <uri>http://www.bvsoftware.com</uri>
+  </author>
+  <id>http://localhost/SampleFeed.xml</id>
+
+  <entry>
+    <productId>MerchantTribeLocal</productId>
+    <title>!!APPNAME!!</title>
+    <summary>local web pi for MerchantTribe</summary>
+    <longSummary>Long summary of SampleProduct</longSummary>
+    <productFamily>Local Tools</productFamily>
+    <version>1.0.0</version>
+    <images>
+      <icon>c:\git\MerchantTribe\SampleProductIcon.png</icon>
+    </images>
+    <author>
+      <name>BV Software LLC</name>
+      <uri>http://www.bvsoftware.com</uri>
+    </author>
+    <published>2011-11-01T00:00:00Z</published>
+
+    <!-- How can WebPI know your product is installed? -->
+    <discoveryHint>
+      <or>
+        <!-- 1. Through registry (version value should be 1.0.0, if dont care about the verion, should be just keypath) -->
+        <discoveryHint>
+          <registry>
+            <keyPath>HKEY_LOCAL_MACHINE\SOFTWARE\MerchantTribeLocal\Merchant Tribe Local 1.0.0</keyPath>
+            <valueName>Version</valueName>
+            <valueValue>1.0.0</valueValue>
+          </registry>
+        </discoveryHint>
+        <discoveryHint>
+          <file>
+            <!-- 2. Through filepath - if the exe is at this location, WebPI will know that SampleProduct is installed -->
+            <filePath>%ProgramFiles%\MerchantTribeLocal\MerchantTribeLocal.exe</filePath>
+          </file>
+        </discoveryHint>
+      </or>
+    </discoveryHint>
+
+    <!-- 
+         What products need to be installed first? 
+         Define dependencies through ProductId property of products
+         declared in the main WebProductList file or other previously 
+         added feeds 
+    -->
+    <dependency>
+      <productId>IISManagementConsole</productId>
+    </dependency>
+
+    <!-- 
+         installers and installer commands. Here you can define separate installers for
+         different architectures, OSes, SKUs and languages
+    -->
+    <installers>
+      <installer>
+        <id>1</id>
+        <languageId>en</languageId>                  
+  	<eulaURL>http://MerchantTribe.com</eulaURL>
+        <installerFile>
+          <!-- size in KBs -->
+          <fileSize>!!FILESIZEINKB!!</fileSize>          
+          <installerURL>!!INSTALLERURL!!</installerURL>
+          <sha1>!!SHA1!!</sha1>
+        </installerFile>
+        <helpLink>http://MerchantTribe.com</helpLink>
+ 	<msDeploy></msDeploy>     
+      </installer>
+    </installers>
+  </entry>
+
+  <!-- define a tab that contains SampleProduct -->
+  <tabs>
+    <tab>
+      <pillarTab>
+        <id>LocalToolsTab</id>
+        <name>Local Tools Tab</name>
+        <description>My sample tab for my sample product</description>
+        <pillar>
+	  <id>AppGalleryServer</id>
+          <name>Local Tools</name>
+          <description>My Local tools</description>
+          <groupingId>LocalToolsFamilyGrouping</groupingId>
+          <recommended>
+            <productId>MerchantTribeLocal</productId>
+          </recommended>
+        </pillar>
+      </pillarTab>
+    </tab>
+  </tabs>
+  <groupings>
+    <grouping>
+      <id>LocalToolsFamilyGrouping</id>
+      <attribute>productFamilty</attribute>
+      <include>
+        <item>Local Tools</item>
+      </include>
+    </grouping>
+  </groupings>
+  
+</feed>
