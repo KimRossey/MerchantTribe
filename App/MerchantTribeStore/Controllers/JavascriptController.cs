@@ -12,18 +12,24 @@ namespace MerchantTribeStore.Controllers
     // stores in sub folders get the correct paths.
     public class JavascriptController : Controller
     {
-        [OutputCache(VaryByHeader = "Host", VaryByParam = "filename", Duration = 150)]
+        [OutputCache(VaryByHeader = "Host", VaryByParam = "filename", Duration = 30)]
         public ActionResult Index(string filename)
         {
             string sourcecode = string.Empty;
-
+           
             switch (filename.Trim().ToLowerInvariant())
             {
                 case "checkout.js":
                     sourcecode = LoadPhysical("~/scripts/Checkout.js");
                     break;
+                case "receipt.js":
+                    sourcecode = LoadPhysical("~/scripts/receipt.js");
+                    break;
                 case "checkoutpaymenterror.js":
                     sourcecode = LoadPhysical("~/scripts/CheckoutPaymentError.js");
+                    break;
+                case "bvinit.js":
+                    sourcecode = LoadPhysical("~/scripts/tinymce/bvinit.js");
                     break;
             }
 

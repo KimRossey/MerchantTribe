@@ -164,6 +164,14 @@
   <ItemGroup>
     <Content Include="BVAdmin\Account.aspx" />
     <Content Include="BVAdmin\BVAdmin.js" />
+    <Content Include="BVAdmin\Catalog\Categories_EditCustomLink.aspx" />
+    <Content Include="BVAdmin\Catalog\ProductTypes_RemoveProperty.aspx" />
+    <Content Include="BVAdmin\Catalog\ProductTypes_SortProperties.aspx" />
+    <Content Include="BVAdmin\Configuration\SocialMedia.aspx" />
+    <Content Include="BVAdmin\Logout.aspx" />
+    <Content Include="BVAdmin\SetupWizard\EULA.txt" />
+    <Content Include="BVAdmin\SetupWizard\WizardSocialMedia.aspx" />
+    <Content Include="BVAdmin\SetupWizard\WizardStart.aspx" />
     <Content Include="BVAdmin\SqlScripts\Full\CreateProcedures.sql" />
     <Content Include="BVAdmin\SqlScripts\Full\CreateTables.sql" />
     <Content Include="BVAdmin\SqlScripts\Full\PopulateData.sql" />
@@ -587,7 +595,6 @@
     <Content Include="BVAdmin\Images\WorkflowEnd.png" />
     <Content Include="BVAdmin\Images\Workflowstep.png" />
     <Content Include="BVAdmin\Login.aspx" />
-    <Content Include="BVAdmin\Logout.aspx" />
     <Content Include="BVAdmin\Marketing\Default.aspx" />
     <Content Include="BVAdmin\Marketing\OffersEdit.aspx" />
     <Content Include="BVAdmin\Marketing\Promotions.aspx" />
@@ -637,22 +644,23 @@
     <Content Include="BVAdmin\Styles.css" />
     <Content Include="BVAdmin\StylesPrint.css" />
     <Content Include="BVAdmin\WeeklySalesChart.aspx" />
-    <Content Include="BVModules\ContentBlocks\Banner Ad\editor.ascx" />
-    <Content Include="BVModules\ContentBlocks\Category Menu\editor.ascx" />
-    <Content Include="BVModules\ContentBlocks\Category Rotator\editor.ascx" />
+    <Content Include="BVModules\ContentBlocks\BannerAd\editor.ascx" />
+    <Content Include="BVModules\ContentBlocks\CategoryMenu\editor.ascx" />
+    <Content Include="BVModules\ContentBlocks\CategoryRotator\editor.ascx" />
     <Content Include="BVModules\ContentBlocks\Html\adminview.ascx" />
     <Content Include="BVModules\ContentBlocks\Html\editor.ascx" />
-    <Content Include="BVModules\ContentBlocks\Last Products Viewed\adminview.ascx" />
-    <Content Include="BVModules\ContentBlocks\Product Grid\adminview.ascx" />
-    <Content Include="BVModules\ContentBlocks\Product Grid\editor.ascx" />
-    <Content Include="BVModules\ContentBlocks\Product Rotator\adminview.ascx" />
-    <Content Include="BVModules\ContentBlocks\Product Rotator\editor.ascx" />
-    <Content Include="BVModules\ContentBlocks\RSS Feed Viewer\adminview.ascx" />
-    <Content Include="BVModules\ContentBlocks\RSS Feed Viewer\editor.ascx" />
-    <Content Include="BVModules\ContentBlocks\Side Menu\adminview.ascx" />
-    <Content Include="BVModules\ContentBlocks\Side Menu\editor.ascx" />
-    <Content Include="BVModules\ContentBlocks\Top 10 Products\adminview.ascx" />
-    <Content Include="BVModules\ContentBlocks\Top Weekly Sellers\adminview.ascx" />
+    <Content Include="BVModules\ContentBlocks\ImageRotator\editor.ascx" />
+    <Content Include="BVModules\ContentBlocks\LastProductsViewed\adminview.ascx" />
+    <Content Include="BVModules\ContentBlocks\ProductGrid\adminview.ascx" />
+    <Content Include="BVModules\ContentBlocks\ProductGrid\editor.ascx" />
+    <Content Include="BVModules\ContentBlocks\ProductRotator\adminview.ascx" />
+    <Content Include="BVModules\ContentBlocks\ProductRotator\editor.ascx" />
+    <Content Include="BVModules\ContentBlocks\RSSFeedViewer\adminview.ascx" />
+    <Content Include="BVModules\ContentBlocks\RSSFeedViewer\editor.ascx" />
+    <Content Include="BVModules\ContentBlocks\SideMenu\adminview.ascx" />
+    <Content Include="BVModules\ContentBlocks\SideMenu\editor.ascx" />
+    <Content Include="BVModules\ContentBlocks\Top10Products\adminview.ascx" />
+    <Content Include="BVModules\ContentBlocks\TopWeeklySellers\adminview.ascx" />
     <Content Include="BVModules\Controls\CategoryBreadCrumbTrail.ascx" />
     <Content Include="BVModules\Controls\CreditCardInput.ascx" />
     <Content Include="BVModules\Controls\MasterPageJavascript.ascx" />
@@ -684,6 +692,60 @@
     <Content Include="BVModules\Shipping\UPS\edit.ascx" />
     <Content Include="BVModules\Shipping\US Postal Service - Domestic\edit.ascx" />
     <Content Include="BVModules\Shipping\US Postal Service - International\edit.ascx" />
+    <Content Include="content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="content\themes\base\jquery.ui.all.css" />
+    <Content Include="content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="content\themes\base\jquery.ui.base.css" />
+    <Content Include="content\themes\base\jquery.ui.button.css" />
+    <Content Include="content\themes\base\jquery.ui.core.css" />
+    <Content Include="content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="content\themes\base\jquery.ui.slider.css" />
+    <Content Include="content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="content\themes\base\jquery.ui.theme.css" />
+    <Content Include="content\themes\theme-bv-craftystore\buttons\PrintThisPage.png" />
+    <Content Include="content\themes\theme-bv-craftystore\buttons\SaveForLater.png" />
+    <Content Include="content\themes\theme-bv-fashionista\buttons\PrintThisPage.png" />
+    <Content Include="content\themes\theme-bv-fashionista\buttons\SaveForLater.png" />
+    <Content Include="content\themes\theme-bv-homegarden\buttons\PrintThisPage.png" />
+    <Content Include="content\themes\theme-bv-homegarden\buttons\SaveForLater.png" />
+    <Content Include="content\themes\theme-bv-jewelryred\buttons\PrintThisPage.png" />
+    <Content Include="content\themes\theme-bv-jewelryred\buttons\SaveForLater.png" />
+    <Content Include="content\themes\theme-bv-seattle\buttons\PrintThisPage.png" />
+    <Content Include="content\themes\theme-bv-seattle\buttons\SaveForLater.png" />
+    <Content Include="content\themes\theme-bv-simpleblue\buttons\PrintThisPage.png" />
+    <Content Include="content\themes\theme-bv-simpleblue\buttons\SaveForLater.png" />
+    <Content Include="content\themes\theme-bv-simplegray\buttons\PrintThisPage.png" />
+    <Content Include="content\themes\theme-bv-simplegray\buttons\SaveForLater.png" />
+    <Content Include="content\themes\theme-bv-simplegreen\buttons\PrintThisPage.png" />
+    <Content Include="content\themes\theme-bv-simplegreen\buttons\SaveForLater.png" />
+    <Content Include="content\themes\theme-bv-simplepurple\buttons\PrintThisPage.png" />
+    <Content Include="content\themes\theme-bv-simplepurple\buttons\SaveForLater.png" />
+    <Content Include="content\themes\theme-bv-simplered\buttons\PrintThisPage.png" />
+    <Content Include="content\themes\theme-bv-simplered\buttons\SaveForLater.png" />
+    <Content Include="content\themes\theme-bv-stoneslate\buttons\PrintThisPage.png" />
+    <Content Include="content\themes\theme-bv-stoneslate\buttons\SaveForLater.png" />
+    <Content Include="content\themes\theme-bv-summerstore\buttons\PrintThisPage.png" />
+    <Content Include="content\themes\theme-bv-summerstore\buttons\SaveForLater.png" />
+    <Content Include="Scripts\ImageRotator.js" />
+    <Content Include="Scripts\newsfeed.js" />
+    <Content Include="Scripts\receipt.js" />
     <Content Include="Scripts\checkoutpaymenterror.js" />
     <Content Include="ClientBin\BVSoftware.SilverlightFileUpload.xap" />
     <Content Include="ClientBin\MerchantTribe.SilverlightFileUpload.xap" />
@@ -2084,11 +2146,14 @@
     <Compile Include="api\rest\TaxSchedulesHandler.cs" />
     <Compile Include="api\rest\UtilitiesHandler.cs" />
     <Compile Include="api\rest\VendorsHandler.cs" />
+    <Compile Include="api\rest\WishListItemsHandler.cs" />
     <Compile Include="Areas\account\accountAreaRegistration.cs" />
     <Compile Include="Areas\account\Controllers\AuthenticationController.cs" />
     <Compile Include="Areas\account\Controllers\ManagementController.cs" />
     <Compile Include="Areas\account\Controllers\AddressBookController.cs" />
     <Compile Include="Areas\account\Controllers\OrderHistoryController.cs" />
+    <Compile Include="Areas\account\Controllers\WishListController.cs" />
+    <Compile Include="Areas\account\Models\SavedItemViewModel.cs" />
     <Compile Include="Areas\account\Models\SignInViewModel.cs" />
     <Compile Include="Areas\ContentBlocks\ContentBlocksAreaRegistration.cs" />
     <Compile Include="Areas\ContentBlocks\Controllers\BannerAdController.cs" />
@@ -2096,6 +2161,7 @@
     <Compile Include="Areas\ContentBlocks\Controllers\CategoryRotatorController.cs" />
     <Compile Include="Areas\ContentBlocks\Controllers\FeaturedProductsController.cs" />
     <Compile Include="Areas\ContentBlocks\Controllers\HtmlController.cs" />
+    <Compile Include="Areas\ContentBlocks\Controllers\ImageRotatorController.cs" />
     <Compile Include="Areas\ContentBlocks\Controllers\LastProductsViewedController.cs" />
     <Compile Include="Areas\ContentBlocks\Controllers\ProductGridController.cs" />
     <Compile Include="Areas\ContentBlocks\Controllers\ProductRotatorController.cs" />
@@ -2105,6 +2171,8 @@
     <Compile Include="Areas\ContentBlocks\Controllers\TopWeeklySellersController.cs" />
     <Compile Include="Areas\ContentBlocks\Models\BannerAdViewModel.cs" />
     <Compile Include="Areas\ContentBlocks\Models\CategoryMenuViewModel.cs" />
+    <Compile Include="Areas\ContentBlocks\Models\FeaturedProductsViewModel.cs" />
+    <Compile Include="Areas\ContentBlocks\Models\ImageRotatorViewModel.cs" />
     <Compile Include="Areas\ContentBlocks\Models\RssFeedViewModel.cs" />
     <Compile Include="Areas\ContentBlocks\Models\SideMenuItem.cs" />
     <Compile Include="Areas\ContentBlocks\Models\SideMenuViewModel.cs" />
@@ -2192,6 +2260,13 @@
     </Compile>
     <Compile Include="BVAdmin\Catalog\Categories_EditCustom.aspx.designer.cs">
       <DependentUpon>Categories_EditCustom.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BVAdmin\Catalog\Categories_EditCustomLink.aspx.cs">
+      <DependentUpon>Categories_EditCustomLink.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BVAdmin\Catalog\Categories_EditCustomLink.aspx.designer.cs">
+      <DependentUpon>Categories_EditCustomLink.aspx</DependentUpon>
     </Compile>
     <Compile Include="BVAdmin\Catalog\Categories_EditDrillDown.aspx.cs">
       <DependentUpon>Categories_EditDrillDown.aspx</DependentUpon>
@@ -2507,6 +2582,20 @@
     </Compile>
     <Compile Include="BVAdmin\Catalog\ProductTypesEdit.aspx.designer.cs">
       <DependentUpon>ProductTypesEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BVAdmin\Catalog\ProductTypes_RemoveProperty.aspx.cs">
+      <DependentUpon>ProductTypes_RemoveProperty.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BVAdmin\Catalog\ProductTypes_RemoveProperty.aspx.designer.cs">
+      <DependentUpon>ProductTypes_RemoveProperty.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BVAdmin\Catalog\ProductTypes_SortProperties.aspx.cs">
+      <DependentUpon>ProductTypes_SortProperties.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BVAdmin\Catalog\ProductTypes_SortProperties.aspx.designer.cs">
+      <DependentUpon>ProductTypes_SortProperties.aspx</DependentUpon>
     </Compile>
     <Compile Include="BVAdmin\Catalog\ProductUpSellCrossSell.aspx.cs">
       <DependentUpon>ProductUpSellCrossSell.aspx</DependentUpon>
@@ -2836,6 +2925,13 @@
     </Compile>
     <Compile Include="BVAdmin\Configuration\Shipping_Zones_Edit.aspx.designer.cs">
       <DependentUpon>Shipping_Zones_Edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BVAdmin\Configuration\SocialMedia.aspx.cs">
+      <DependentUpon>SocialMedia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BVAdmin\Configuration\SocialMedia.aspx.designer.cs">
+      <DependentUpon>SocialMedia.aspx</DependentUpon>
     </Compile>
     <Compile Include="BVAdmin\Configuration\StoreInfo.aspx.cs">
       <DependentUpon>StoreInfo.aspx</DependentUpon>
@@ -3733,6 +3829,20 @@
     <Compile Include="BVAdmin\SetupWizard\WizardPayment.aspx.designer.cs">
       <DependentUpon>WizardPayment.aspx</DependentUpon>
     </Compile>
+    <Compile Include="BVAdmin\SetupWizard\WizardSocialMedia.aspx.cs">
+      <DependentUpon>WizardSocialMedia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BVAdmin\SetupWizard\WizardSocialMedia.aspx.designer.cs">
+      <DependentUpon>WizardSocialMedia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BVAdmin\SetupWizard\WizardStart.aspx.cs">
+      <DependentUpon>WizardStart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BVAdmin\SetupWizard\WizardStart.aspx.designer.cs">
+      <DependentUpon>WizardStart.aspx</DependentUpon>
+    </Compile>
     <Compile Include="BVAdmin\SetupWizard\WizardTheme.aspx.cs">
       <DependentUpon>WizardTheme.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3754,25 +3864,25 @@
     <Compile Include="BVAdmin\WeeklySalesChart.aspx.designer.cs">
       <DependentUpon>WeeklySalesChart.aspx</DependentUpon>
     </Compile>
-    <Compile Include="BVModules\ContentBlocks\Banner Ad\editor.ascx.cs">
+    <Compile Include="BVModules\ContentBlocks\BannerAd\editor.ascx.cs">
       <DependentUpon>editor.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="BVModules\ContentBlocks\Banner Ad\editor.ascx.designer.cs">
+    <Compile Include="BVModules\ContentBlocks\BannerAd\editor.ascx.designer.cs">
       <DependentUpon>editor.ascx</DependentUpon>
     </Compile>
-    <Compile Include="BVModules\ContentBlocks\Category Menu\editor.ascx.cs">
-      <DependentUpon>editor.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="BVModules\ContentBlocks\Category Menu\editor.ascx.designer.cs">
-      <DependentUpon>editor.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="BVModules\ContentBlocks\Category Rotator\editor.ascx.cs">
+    <Compile Include="BVModules\ContentBlocks\CategoryMenu\editor.ascx.cs">
       <DependentUpon>editor.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="BVModules\ContentBlocks\Category Rotator\editor.ascx.designer.cs">
+    <Compile Include="BVModules\ContentBlocks\CategoryMenu\editor.ascx.designer.cs">
+      <DependentUpon>editor.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="BVModules\ContentBlocks\CategoryRotator\editor.ascx.cs">
+      <DependentUpon>editor.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BVModules\ContentBlocks\CategoryRotator\editor.ascx.designer.cs">
       <DependentUpon>editor.ascx</DependentUpon>
     </Compile>
     <Compile Include="BVModules\ContentBlocks\Html\adminview.ascx.cs">
@@ -3789,81 +3899,88 @@
     <Compile Include="BVModules\ContentBlocks\Html\editor.ascx.designer.cs">
       <DependentUpon>editor.ascx</DependentUpon>
     </Compile>
-    <Compile Include="BVModules\ContentBlocks\Last Products Viewed\adminview.ascx.cs">
-      <DependentUpon>adminview.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="BVModules\ContentBlocks\Last Products Viewed\adminview.ascx.designer.cs">
-      <DependentUpon>adminview.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="BVModules\ContentBlocks\Product Grid\adminview.ascx.cs">
-      <DependentUpon>adminview.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="BVModules\ContentBlocks\Product Grid\adminview.ascx.designer.cs">
-      <DependentUpon>adminview.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="BVModules\ContentBlocks\Product Grid\editor.ascx.cs">
+    <Compile Include="BVModules\ContentBlocks\ImageRotator\editor.ascx.cs">
       <DependentUpon>editor.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="BVModules\ContentBlocks\Product Grid\editor.ascx.designer.cs">
+    <Compile Include="BVModules\ContentBlocks\ImageRotator\editor.ascx.designer.cs">
       <DependentUpon>editor.ascx</DependentUpon>
     </Compile>
-    <Compile Include="BVModules\ContentBlocks\Product Rotator\adminview.ascx.cs">
+    <Compile Include="BVModules\ContentBlocks\LastProductsViewed\adminview.ascx.cs">
       <DependentUpon>adminview.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="BVModules\ContentBlocks\Product Rotator\adminview.ascx.designer.cs">
+    <Compile Include="BVModules\ContentBlocks\LastProductsViewed\adminview.ascx.designer.cs">
       <DependentUpon>adminview.ascx</DependentUpon>
     </Compile>
-    <Compile Include="BVModules\ContentBlocks\Product Rotator\editor.ascx.cs">
-      <DependentUpon>editor.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="BVModules\ContentBlocks\Product Rotator\editor.ascx.designer.cs">
-      <DependentUpon>editor.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="BVModules\ContentBlocks\RSS Feed Viewer\adminview.ascx.cs">
+    <Compile Include="BVModules\ContentBlocks\ProductGrid\adminview.ascx.cs">
       <DependentUpon>adminview.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="BVModules\ContentBlocks\RSS Feed Viewer\adminview.ascx.designer.cs">
+    <Compile Include="BVModules\ContentBlocks\ProductGrid\adminview.ascx.designer.cs">
       <DependentUpon>adminview.ascx</DependentUpon>
     </Compile>
-    <Compile Include="BVModules\ContentBlocks\RSS Feed Viewer\editor.ascx.cs">
+    <Compile Include="BVModules\ContentBlocks\ProductGrid\editor.ascx.cs">
       <DependentUpon>editor.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="BVModules\ContentBlocks\RSS Feed Viewer\editor.ascx.designer.cs">
+    <Compile Include="BVModules\ContentBlocks\ProductGrid\editor.ascx.designer.cs">
       <DependentUpon>editor.ascx</DependentUpon>
     </Compile>
-    <Compile Include="BVModules\ContentBlocks\Side Menu\adminview.ascx.cs">
+    <Compile Include="BVModules\ContentBlocks\ProductRotator\adminview.ascx.cs">
       <DependentUpon>adminview.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="BVModules\ContentBlocks\Side Menu\adminview.ascx.designer.cs">
+    <Compile Include="BVModules\ContentBlocks\ProductRotator\adminview.ascx.designer.cs">
       <DependentUpon>adminview.ascx</DependentUpon>
     </Compile>
-    <Compile Include="BVModules\ContentBlocks\Side Menu\editor.ascx.cs">
+    <Compile Include="BVModules\ContentBlocks\ProductRotator\editor.ascx.cs">
       <DependentUpon>editor.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="BVModules\ContentBlocks\Side Menu\editor.ascx.designer.cs">
+    <Compile Include="BVModules\ContentBlocks\ProductRotator\editor.ascx.designer.cs">
       <DependentUpon>editor.ascx</DependentUpon>
     </Compile>
-    <Compile Include="BVModules\ContentBlocks\Top 10 Products\adminview.ascx.cs">
+    <Compile Include="BVModules\ContentBlocks\RSSFeedViewer\adminview.ascx.cs">
       <DependentUpon>adminview.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="BVModules\ContentBlocks\Top 10 Products\adminview.ascx.designer.cs">
+    <Compile Include="BVModules\ContentBlocks\RSSFeedViewer\adminview.ascx.designer.cs">
       <DependentUpon>adminview.ascx</DependentUpon>
     </Compile>
-    <Compile Include="BVModules\ContentBlocks\Top Weekly Sellers\adminview.ascx.cs">
+    <Compile Include="BVModules\ContentBlocks\RSSFeedViewer\editor.ascx.cs">
+      <DependentUpon>editor.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BVModules\ContentBlocks\RSSFeedViewer\editor.ascx.designer.cs">
+      <DependentUpon>editor.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="BVModules\ContentBlocks\SideMenu\adminview.ascx.cs">
       <DependentUpon>adminview.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="BVModules\ContentBlocks\Top Weekly Sellers\adminview.ascx.designer.cs">
+    <Compile Include="BVModules\ContentBlocks\SideMenu\adminview.ascx.designer.cs">
+      <DependentUpon>adminview.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="BVModules\ContentBlocks\SideMenu\editor.ascx.cs">
+      <DependentUpon>editor.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BVModules\ContentBlocks\SideMenu\editor.ascx.designer.cs">
+      <DependentUpon>editor.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="BVModules\ContentBlocks\Top10Products\adminview.ascx.cs">
+      <DependentUpon>adminview.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BVModules\ContentBlocks\Top10Products\adminview.ascx.designer.cs">
+      <DependentUpon>adminview.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="BVModules\ContentBlocks\TopWeeklySellers\adminview.ascx.cs">
+      <DependentUpon>adminview.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BVModules\ContentBlocks\TopWeeklySellers\adminview.ascx.designer.cs">
       <DependentUpon>adminview.ascx</DependentUpon>
     </Compile>
     <Compile Include="BVModules\Controls\CategoryBreadCrumbTrail.ascx.cs">
@@ -4103,6 +4220,7 @@
     <Compile Include="code\CustomRouter.cs" />
     <Compile Include="code\ErrorTypes.cs" />
     <Compile Include="code\Helpers\Html.cs" />
+    <Compile Include="code\HtmlHelperExtensions.cs" />
     <Compile Include="code\IMessageBox.cs" />
     <Compile Include="code\IntegrationLoader.cs" />
     <Compile Include="code\IStorePage.cs" />
@@ -4152,6 +4270,8 @@
     <Compile Include="Models\CheckoutPaymentViewModel.cs" />
     <Compile Include="Models\CheckoutViewModel.cs" />
     <Compile Include="Models\ContentColumnIdentifier.cs" />
+    <Compile Include="Models\FaceBookLikeModel.cs" />
+    <Compile Include="Models\GooglePlusOneViewModel.cs" />
     <Compile Include="Models\PagerViewModel.cs" />
     <Compile Include="Models\ProductListViewModel.cs" />
     <Compile Include="Models\ProductPageViewModel.cs" />
@@ -4173,6 +4293,7 @@
     <Compile Include="Models\AddressViewModel.cs" />
     <Compile Include="Models\EstimateShippingViewModel.cs" />
     <Compile Include="Models\SuperStoreViewModel.cs" />
+    <Compile Include="Models\TwitterViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -4235,6 +4356,8 @@
     <Content Include="Areas\signup\Views\MarketingPages\Features.cshtml" />
     <Content Include="Areas\signup\Views\Register\ProcessSignup.cshtml" />
     <Content Include="Areas\signup\Views\Register\Index.cshtml" />
+    <Content Include="Areas\account\Views\WishList\Index.cshtml" />
+    <Content Include="Areas\ContentBlocks\Views\ImageRotator\Index.cshtml" />
     <None Include="BVAdmin\Orders\RMA.aspx.cs.exclude" />
     <None Include="BVAdmin\Orders\RMA.aspx.exclude" />
     <None Include="BVAdmin\Orders\RMADetail.aspx.cs.exclude" />
@@ -4326,6 +4449,17 @@
     <Content Include="Views\Checkout\_CreditCardInput.cshtml" />
     <Content Include="Views\Checkout\PaymentError.cshtml" />
     <Content Include="Views\PayPalExpressCheckout\Index.cshtml" />
+    <Content Include="Views\Category\GridWithSubs.cshtml" />
+    <Content Include="Views\Category\DetailedList.cshtml" />
+    <Content Include="Views\Products\RenderSingleProductDetailed.cshtml" />
+    <Content Include="Views\Category\BulkOrderList.cshtml" />
+    <Content Include="Views\Category\BulkQuantityList.cshtml" />
+    <Content Include="Views\Shared\_FaceBookSetup.cshtml" />
+    <Content Include="Views\Shared\_FaceBookLike.cshtml" />
+    <Content Include="Views\Shared\_Twitter.cshtml" />
+    <Content Include="Views\Shared\_GooglePlusOne.cshtml" />
+    <Content Include="Views\Checkout\_SetFirstPassword.cshtml" />
+    <Content Include="Views\Shared\_RegisteredScripts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

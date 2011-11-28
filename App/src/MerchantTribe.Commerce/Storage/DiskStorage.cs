@@ -884,12 +884,12 @@ namespace MerchantTribe.Commerce.Storage
             return result;
         }
 
-        public static bool DeleteProductImages(long storeId, long productId)
+        public static bool DeleteProductImages(long storeId, string productId)
         {
             bool result = true;
 
             string sourceFolder = WebAppSettings.BaseImagePhysicalPath;
-            sourceFolder += storeId.ToString() + "/products/" + productId.ToString() + "/";
+            sourceFolder += storeId.ToString() + "/products/" + productId + "/";
 
             if (Directory.Exists(sourceFolder))
             {
@@ -907,10 +907,10 @@ namespace MerchantTribe.Commerce.Storage
 
             return result;
         }
-        public static bool DeleteProductVariantImage(long storeId, long productId, string variantId)
+        public static bool DeleteProductVariantImage(long storeId, string productId, string variantId)
         {
             string sourceFolder = WebAppSettings.BaseImagePhysicalPath;
-            sourceFolder += storeId.ToString() + "/products/" + productId.ToString() + "/variants/" + variantId;
+            sourceFolder += storeId.ToString() + "/products/" + productId + "/variants/" + variantId;
 
             if (Directory.Exists(sourceFolder))
             {
@@ -926,6 +926,36 @@ namespace MerchantTribe.Commerce.Storage
             }
 
             return false;
+        }
+
+        public static bool CloneAllProductFiles(long storeId, string originalId, string newId)
+        {
+            bool result = true;
+
+            string sourceFolder = WebAppSettings.BaseImagePhysicalPath;
+            sourceFolder += storeId.ToString() + "/products/" + originalId + "/";
+
+            string destFolder = WebAppSettings.BaseImagePhysicalPath;
+            destFolder += storeId.ToString() + "/products/" + newId + "/";
+            
+            if (Directory.Exists(sourceFolder))
+            {
+                if (!Directory.Exists(destFolder))
+                {
+                    Directory.CreateDirectory(destFolder);
+                }
+                try
+                {
+                    FileHelper.CopyAllFiles(sourceFolder, destFolder);
+                }
+                catch (Exception ex)
+                {
+                    result = false;
+                    EventLog.LogEvent(ex);
+                }
+            }
+
+            return result;
         }
 
         public static bool DeleteCategoryImages(long storeId, long categoryId)
@@ -1451,7 +1481,8 @@ namespace MerchantTribe.Commerce.Storage
         public static string GetMinifiedStyleSheet(long storeId, string themeId)
         {            
             string css = ReadStyleSheet(storeId, themeId);
-            css = css.Replace("{{assets}}", BaseStoreThemeUrl(storeId, themeId, true) + "assets/");
+            //css = css.Replace("{{assets}}", BaseStoreThemeUrl(storeId, themeId, true) + "assets/");
+            css = css.Replace("{{assets}}", "../../images/sites/" + storeId + "/themes/theme-" + themeId + "/assets/");
 
             // inject common themes
             string common = string.Empty;

@@ -45,6 +45,11 @@ namespace MerchantTribeStore.Controllers.Shared
             ViewBag.RootUrlSecure = MTApp.CurrentStore.RootUrlSecure();
             ViewBag.RootUrl = MTApp.CurrentStore.RootUrl();
             ViewBag.StoreClosed = MTApp.CurrentStore.Settings.StoreClosed;
+            ViewBag.StoreName = MTApp.CurrentStore.Settings.FriendlyName;
+            ViewBag.StoreUniqueId = MTApp.CurrentStore.StoreUniqueId(MTApp);
+            ViewBag.CustomerIp = Request.UserHostAddress ?? "0.0.0.0";
+            ViewBag.CustomerId = SessionManager.GetCurrentUserId(MTApp.CurrentStore) ?? string.Empty;
+            ViewBag.HideAnalytics = MTApp.CurrentStore.Settings.Analytics.DisableMerchantTribeAnalytics;
 
             // Integrations
             IntegrationLoader.AddIntegrations(this.MTApp.CurrentRequestContext.IntegrationEvents, this.MTApp.CurrentStore);
@@ -54,7 +59,7 @@ namespace MerchantTribeStore.Controllers.Shared
         {
 
             Guid? tokenId = MerchantTribe.Web.Cookies.GetCookieGuid(
-                                WebAppSettings.CookieNameAuthenticationTokenAdmin(),
+                                WebAppSettings.CookieNameAuthenticationTokenAdmin(app.CurrentStore.Id),
                                 httpContext, new EventLog());
 
             // no token, return

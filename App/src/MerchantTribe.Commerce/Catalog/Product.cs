@@ -669,34 +669,106 @@ namespace MerchantTribe.Commerce.Catalog
         //}
         public Product Clone(bool cloneProductChoicesAndInputs, bool cloneProductImages)
         {
-            System.IO.MemoryStream memoryStream = new System.IO.MemoryStream();
-            System.Runtime.Serialization.Formatters.Binary.BinaryFormatter formatter
-                = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-            formatter.Serialize(memoryStream, this);
-            memoryStream.Position = 0;
-            Product newProduct = (Product)formatter.Deserialize(memoryStream);
+            Product result = new Product();
 
-            newProduct.Bvin = System.Guid.NewGuid().ToString();
-
-            //newProduct.AdditionalImages = new Collection<Catalog.ProductImage>();
-            if (!cloneProductImages)
+            result.AllowReviews = this.AllowReviews;
+            result.Bvin = string.Empty;
+            result.CreationDateUtc = DateTime.UtcNow;
+            
+            foreach (CustomProperty prop in this.CustomProperties)
             {
-                newProduct.ImageFileSmall = string.Empty;
-                newProduct.ImageFileMedium = string.Empty;
-                newProduct.ImageFileSmallAlternateText = string.Empty;
-                newProduct.ImageFileMediumAlternateText = string.Empty;
+                result.CustomProperties.Add(prop.DeveloperId, prop.Key, prop.Value);                
             }
 
-            foreach (CustomProperty cp in this.CustomProperties)
+            result.Featured = this.Featured;
+            result.GiftWrapAllowed = this.GiftWrapAllowed;
+            result.GiftWrapPrice = this.GiftWrapPrice;
+            if (cloneProductImages == true)
             {
-                newProduct.CustomProperties.Add(cp);
+                result.ImageFileMedium = this.ImageFileMedium;
+                result.ImageFileMediumAlternateText = this.ImageFileMediumAlternateText;
+                result.ImageFileSmall = this.ImageFileSmall;
+                result.ImageFileSmallAlternateText = this.ImageFileSmallAlternateText;
+
+
+                foreach (var img in this.Images)
+                {
+                    ProductImage imgClone = img.Clone();
+                    imgClone.ProductId = string.Empty;
+                    result.Images.Add(imgClone);
+                }                
+            }
+            result.InventoryMode = this.InventoryMode;
+            result.IsAvailableForSale = this.IsAvailableForSale;
+            result.Keywords = this.Keywords;
+            result.ListPrice = this.ListPrice;
+            result.LongDescription = this.LongDescription;
+            result.ManufacturerId = this.ManufacturerId;
+            result.MetaDescription = this.MetaDescription;
+            result.MetaKeywords = this.MetaKeywords;
+            result.MetaTitle = this.MetaTitle;
+            result.MinimumQty = this.MinimumQty;
+            
+            result.PostContentColumnId = this.PostContentColumnId;
+            result.PreContentColumnId = this.PreContentColumnId;
+            result.PreTransformLongDescription = this.PreTransformLongDescription;
+            result.ProductName = this.ProductName;
+            result.ProductTypeId = this.ProductTypeId;
+            
+            result.ShippingDetails.ExtraShipFee = this.ShippingDetails.ExtraShipFee;
+            result.ShippingDetails.Height = this.ShippingDetails.Height;
+            result.ShippingDetails.IsNonShipping = this.ShippingDetails.IsNonShipping;
+            result.ShippingDetails.Length = this.ShippingDetails.Length;
+            result.ShippingDetails.ShippingScheduleId = this.ShippingDetails.ShippingScheduleId;
+            result.ShippingDetails.ShippingSource = this.ShippingDetails.ShippingSource;
+            this.ShippingDetails.ShippingSourceAddress.CopyTo(result.ShippingDetails.ShippingSourceAddress);
+            result.ShippingDetails.ShippingSourceId = this.ShippingDetails.ShippingSourceId;
+            result.ShippingDetails.ShipSeparately = this.ShippingDetails.ShipSeparately;
+            result.ShippingDetails.Weight = this.ShippingDetails.Weight;
+            result.ShippingDetails.Width = this.ShippingDetails.Width;
+
+            result.ShippingMode = this.ShippingMode;
+            result.ShortDescription = this.ShortDescription;
+            result.SiteCost = this.SiteCost;
+            result.SitePrice = this.SitePrice;
+            result.SitePriceOverrideText = this.SitePriceOverrideText;
+            result.Sku = this.Sku;
+            result.Status = this.Status;
+            result.StoreId = this.StoreId;
+
+            foreach (ProductDescriptionTab tab in this.Tabs)
+            {
+                result.Tabs.Add(new ProductDescriptionTab()
+                {
+                    HtmlData = tab.HtmlData,
+                    SortOrder = tab.SortOrder,
+                    TabTitle = tab.TabTitle,
+                    LastUpdated = DateTime.UtcNow
+                });
             }
 
-            //clear the product reviews
-            newProduct.Reviews = new List<Catalog.ProductReview>();
+            result.TaxExempt = this.TaxExempt;
+            result.TaxSchedule = this.TaxSchedule;
+            result.UrlSlug = string.Empty;
+            result.VendorId = this.VendorId;
 
-            return newProduct;
+            if (cloneProductChoicesAndInputs == true)
+            {
+                foreach (var opt in this.Options)
+                {
+                    Option c = opt.Clone();
+                    result.Options.Add(c);
+                }                
+                //result.Variants = this.Variants;
+            }
+                                                      
+            result.Bvin = System.Guid.NewGuid().ToString();
+        
+
+                
+            return result;
         }
+
         public Product Clone()
         {
             return Clone(true, true);

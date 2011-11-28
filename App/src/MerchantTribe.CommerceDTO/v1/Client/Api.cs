@@ -17,7 +17,10 @@ namespace MerchantTribe.CommerceDTO.v1.Client
     {
         private string Enc(string input)
         {
-            return System.Web.HttpUtility.UrlEncode(input);
+            // The web request class actuall does encoding for us
+            // so we only need to encode the "/" character
+            return input.Replace("/", "%2F");
+            //return System.Web.HttpUtility.UrlEncode(input);
         }
 
         private string baseUri = "http://localhost";
@@ -124,6 +127,19 @@ namespace MerchantTribe.CommerceDTO.v1.Client
             result = RestHelper.GetRequest<ApiResponse<List<CustomerAccountDTO>>>(this.fullApiUri + "customeraccounts/?key=" + Enc(key));
             return result;
         }
+        public ApiResponse<long> CustomerAccountsCountOfAll()
+        {
+            ApiResponse<long> result = new ApiResponse<long>();
+            result = RestHelper.GetRequest<ApiResponse<long>>(this.fullApiUri + "customeraccounts/?key=" + Enc(key) + "&countonly=1");
+            return result;
+        }
+        public ApiResponse<List<CustomerAccountDTO>> CustomerAccountsFindAllByPage(int pageNumber, int pageSize)
+        {
+            ApiResponse<List<CustomerAccountDTO>> result = new ApiResponse<List<CustomerAccountDTO>>();
+            result = RestHelper.GetRequest<ApiResponse<List<CustomerAccountDTO>>>(this.fullApiUri + "customeraccounts/?key=" + Enc(key) + "&page=" + pageNumber + "&pagesize=" + pageSize);
+            return result;
+        }
+
         public ApiResponse<CustomerAccountDTO> CustomerAccountsFind(string bvin)
         {
             ApiResponse<CustomerAccountDTO> result = new ApiResponse<CustomerAccountDTO>();
@@ -431,7 +447,7 @@ namespace MerchantTribe.CommerceDTO.v1.Client
         public ApiResponse<bool> ProductPropertiesSetValueForProduct(long id, string productBvin, string propertyValue, long choiceId)
         {
             ApiResponse<bool> result = new ApiResponse<bool>();
-            result = RestHelper.PostRequest<ApiResponse<bool>>(this.fullApiUri + "productproperties/" + id + "/valuesforproduct/" + Enc(productBvin) + "/" + Enc(propertyValue) + "/" + choiceId + "?key=" + Enc(key), string.Empty);
+            result = RestHelper.PostRequest<ApiResponse<bool>>(this.fullApiUri + "productproperties/" + id + "/valuesforproduct/" + Enc(productBvin) + "/?key=" + Enc(key), propertyValue);
             return result;
         }
             
@@ -501,6 +517,18 @@ namespace MerchantTribe.CommerceDTO.v1.Client
         {
             ApiResponse<PageOfProducts> result = new ApiResponse<PageOfProducts>();
             result = RestHelper.GetRequest<ApiResponse<PageOfProducts>>(this.fullApiUri + "products/?key=" + Enc(key) + "&bycategory=" + Enc(categoryBvin) + "&page=" + pageNumber + "&pagesize=" + pageSize);
+            return result;
+        }
+        public ApiResponse<PageOfProducts> ProductsFindPage(int pageNumber, int pageSize)
+        {
+            ApiResponse<PageOfProducts> result = new ApiResponse<PageOfProducts>();
+            result = RestHelper.GetRequest<ApiResponse<PageOfProducts>>(this.fullApiUri + "products/?key=" + Enc(key) + "&page=" + pageNumber + "&pagesize=" + pageSize);
+            return result;
+        }
+        public ApiResponse<long> ProductsCountOfAll()
+        {
+            ApiResponse<long> result = new ApiResponse<long>();
+            result = RestHelper.GetRequest<ApiResponse<long>>(this.fullApiUri + "products/?key=" + Enc(key) + "&countonly=1");
             return result;
         }
         public ApiResponse<ProductDTO> ProductsFind(string bvin)
@@ -784,6 +812,18 @@ namespace MerchantTribe.CommerceDTO.v1.Client
         }
 
         // Product Reviews
+        public ApiResponse<List<ProductReviewDTO>> ProductReviewsFindAll()
+        {
+            ApiResponse<List<ProductReviewDTO>> result = new ApiResponse<List<ProductReviewDTO>>();
+            result = RestHelper.GetRequest<ApiResponse<List<ProductReviewDTO>>>(this.fullApiUri + "productreviews/?key=" + Enc(key));
+            return result;
+        }
+        public ApiResponse<List<ProductReviewDTO>> ProductReviewsByProduct(string productBvin)
+        {
+            ApiResponse<List<ProductReviewDTO>> result = new ApiResponse<List<ProductReviewDTO>>();
+            result = RestHelper.GetRequest<ApiResponse<List<ProductReviewDTO>>>(this.fullApiUri + "productreviews/?key=" + Enc(key) + "&productbvin=" + Enc(productBvin));
+            return result;
+        }
         public ApiResponse<ProductReviewDTO> ProductReviewsFind(string bvin)
         {
             ApiResponse<ProductReviewDTO> result = new ApiResponse<ProductReviewDTO>();
@@ -932,6 +972,32 @@ namespace MerchantTribe.CommerceDTO.v1.Client
         {
             ApiResponse<string> result = new ApiResponse<string>();
             result = RestHelper.PostRequest<ApiResponse<string>>(this.fullApiUri + "utilities/slugify?key=" + Enc(key), input);
+            return result;
+        }
+
+        // Wish List Items
+        public ApiResponse<WishListItemDTO> WishListItemsFind(long id)
+        {
+            ApiResponse<WishListItemDTO> result = new ApiResponse<WishListItemDTO>();
+            result = RestHelper.GetRequest<ApiResponse<WishListItemDTO>>(this.fullApiUri + "wishlistitems/" + id + "?key=" + Enc(key));
+            return result;
+        }
+        public ApiResponse<WishListItemDTO> WishListItemsCreate(WishListItemDTO item)
+        {
+            ApiResponse<WishListItemDTO> result = new ApiResponse<WishListItemDTO>();
+            result = RestHelper.PostRequest<ApiResponse<WishListItemDTO>>(this.fullApiUri + "wishlistitems/?key=" + Enc(key), MerchantTribe.Web.Json.ObjectToJson(item));
+            return result;
+        }
+        public ApiResponse<WishListItemDTO> WishListItemsUpdate(WishListItemDTO item)
+        {
+            ApiResponse<WishListItemDTO> result = new ApiResponse<WishListItemDTO>();
+            result = RestHelper.PostRequest<ApiResponse<WishListItemDTO>>(this.fullApiUri + "wishlistitems/" + item.Id + "?key=" + Enc(key), MerchantTribe.Web.Json.ObjectToJson(item));
+            return result;
+        }
+        public ApiResponse<bool> WishListItemsDelete(long id)
+        {
+            ApiResponse<bool> result = new ApiResponse<bool>();
+            result = RestHelper.DeleteRequest<ApiResponse<bool>>(this.fullApiUri + "wishlistitems/" + id + "?key=" + Enc(key), string.Empty);
             return result;
         }
        

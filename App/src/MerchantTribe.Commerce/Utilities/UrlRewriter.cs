@@ -129,12 +129,20 @@ namespace MerchantTribe.Commerce.Utilities
 
 		public static string BuildUrlForCategory(Catalog.CategorySnapshot c, System.Web.Routing.RequestContext routingContext)
 		{
+            if (c.SourceType == Catalog.CategorySourceType.CustomLink)
+            {
+                if (c.CustomPageUrl != string.Empty) return c.CustomPageUrl;
+            }
             if (c.RewriteUrl == string.Empty) return string.Empty;
             RouteCollection r = System.Web.Routing.RouteTable.Routes;
             return r.GetVirtualPath(routingContext, "bvroute", new RouteValueDictionary(new { slug = c.RewriteUrl })).VirtualPath.ToString();
 		}
         public static string BuildUrlForCategory(Catalog.CategorySnapshot c, System.Web.Routing.RequestContext routingContext, string pageNumber)
         {
+            if (c.SourceType == Catalog.CategorySourceType.CustomLink)
+            {
+                if (c.CustomPageUrl != string.Empty) return c.CustomPageUrl;
+            }
             if (c.RewriteUrl == string.Empty) return string.Empty;
             RouteCollection r = System.Web.Routing.RouteTable.Routes;
             string result = r.GetVirtualPath(routingContext, "bvroute", new RouteValueDictionary(new { slug = c.RewriteUrl })).VirtualPath.ToString();
@@ -143,6 +151,10 @@ namespace MerchantTribe.Commerce.Utilities
         }
         public static string BuildUrlForCategory(Catalog.CategorySnapshot c, System.Web.Routing.RequestContext routingContext, string pageNumber, string filternode)
         {
+            if (c.SourceType == Catalog.CategorySourceType.CustomLink)
+            {
+                if (c.CustomPageUrl != string.Empty) return c.CustomPageUrl;
+            }
             if (c.RewriteUrl == string.Empty) return string.Empty;
             RouteCollection r = System.Web.Routing.RouteTable.Routes;
             string result = r.GetVirtualPath(routingContext, "bvroute", new RouteValueDictionary(new { slug = c.RewriteUrl })).VirtualPath.ToString();

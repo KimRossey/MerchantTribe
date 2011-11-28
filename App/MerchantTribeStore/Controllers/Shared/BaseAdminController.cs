@@ -18,7 +18,7 @@ namespace MerchantTribeStore.Controllers.Shared
             set { _AuthTokenGuid = value; }
         }
 
-
+        public MerchantTribeApplication MTApp { get; set; }
 
         MerchantTribe.Commerce.RequestContext _CurrentRequestContext = new RequestContext();        
         public MerchantTribe.Commerce.RequestContext CurrentRequestContext
@@ -47,20 +47,25 @@ namespace MerchantTribeStore.Controllers.Shared
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             base.OnActionExecuting(filterContext);
-
+            MTApp = MerchantTribeApplication.InstantiateForDataBase(new RequestContext());
+        
             // Store routing context for URL Rewriting
-            CurrentRequestContext.RoutingContext = this.Request.RequestContext;
+            MTApp.CurrentRequestContext.RoutingContext = this.Request.RequestContext;
 
             // Determine store id        
-            CurrentStore = MerchantTribe.Commerce.Utilities.UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, AccountServices);
-            if (CurrentStore == null)
+            // Determine store id        
+            MTApp.CurrentStore = MerchantTribe.Commerce.Utilities.UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, MTApp.AccountServices);
+            if (MTApp.CurrentStore == null)
             {
                 Response.Redirect("~/storenotfound");
             }
 
-            if (CurrentStore.Status == MerchantTribe.Commerce.Accounts.StoreStatus.Deactivated)
+            if (MTApp.CurrentStore.Status == MerchantTribe.Commerce.Accounts.StoreStatus.Deactivated)
             {
+                //if ((AvailableWhenInactive == false))
+                //{
                 Response.Redirect("~/storenotavailable");
+                //}
             }
 
             // Culture Settings
@@ -70,16 +75,6 @@ namespace MerchantTribeStore.Controllers.Shared
             IntegrationLoader.AddIntegrations(this._CurrentRequestContext.IntegrationEvents, this.CurrentStore);
 
             ValidateAdminLogin();
-
-
-            // Wallpaper
-            string wallpaper = "BrownStripes.jpg";        
-            string wall = SessionManager.GetCookieString("AdminWallpaper");
-            if (wall != string.Empty)
-            {
-                wallpaper = wall;
-            }
-            ViewData["wallpaper"] = Url.Content("~/images/system/" + wallpaper);        
 
             // Jquery
             ViewData["JQueryInclude"] = Helpers.Html.JQueryIncludes(Url.Content("~/scripts"), this.Request.IsSecureConnection);
@@ -91,7 +86,7 @@ namespace MerchantTribeStore.Controllers.Shared
         {
             bool validLogin = false;
 
-            Guid? tokenId = MerchantTribe.Web.Cookies.GetCookieGuid(WebAppSettings.CookieNameAuthenticationTokenAdmin(),
+            Guid? tokenId = MerchantTribe.Web.Cookies.GetCookieGuid(WebAppSettings.CookieNameAuthenticationTokenAdmin(MTApp.CurrentStore.Id),
                     this.HttpContext,
                     new EventLog());
 
@@ -105,7 +100,7 @@ namespace MerchantTribeStore.Controllers.Shared
 
             if (validLogin == false)
             {
-                Response.Redirect("~/account/login");
+                Response.Redirect("~/adminaccount/login");
             }
             
             _AuthTokenGuid = tokenId;

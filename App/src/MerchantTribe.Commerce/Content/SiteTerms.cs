@@ -259,7 +259,7 @@ namespace MerchantTribe.Commerce.Content
 				case SiteTermIds.WasThisReviewHelpful:
 					return "Was this review helpful?";
 				case SiteTermIds.WishList:
-					return "Wish List";
+					return "Saved Items";
 				case SiteTermIds.WriteAReview:
 					return "Write a Review?";
 				case SiteTermIds.YouSave:

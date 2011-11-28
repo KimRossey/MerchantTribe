@@ -50,8 +50,6 @@ namespace MerchantTribe.Commerce
         public const string SessionId = "merchanttribesessionid";
         public const string CartId = "merchanttribecartid";
 
-        public const string WishlistItemSessionKey = "UserAddedWishlistItem";
-
         public const string VersioningFolder = "\\bvadmin\\versioning\\";
         public const string SqlVersioningFolder = "\\bvadmin\\versioning\\sql\\";
         public const string SqlFolder = "\\bvadmin\\bvsql\\";
@@ -82,6 +80,23 @@ namespace MerchantTribe.Commerce
                 }
 
                 return true;
+            }
+        }
+        public static bool IsCommercialVersion
+        {
+            get
+            {
+                try
+                {
+                    string key = ConfigurationManager.AppSettings["storekey"];
+                    if (key == "C589E3FB-9B9D-47EB-A694-690A97742C82") return true;
+                }
+                catch (Exception ex)
+                {
+
+                }
+
+                return false;
             }
         }
         public static string ApplicationConnectionString
@@ -225,14 +240,7 @@ namespace MerchantTribe.Commerce
         {
             get { return true; }
         }                    
-        public static string CartIdCookieName
-        {
-            get { return "MerchantTribeCartId"; }
-        }
-        public static string PendingPaymentCardIdCookieName
-        {
-            get { return "MerchantTribeCartIdPendingPayment"; }
-        }
+        
         public static string Cryptography3DesKey
         {
             get { return "EDBE6BF8A92A417cBCD3DB23120861B5DE780BA44DB44166888707607A2A16FBBADFD3E111D54396A5701CE43E0EC3FFAE5543370AF54228B65CB87D7E346048"; }

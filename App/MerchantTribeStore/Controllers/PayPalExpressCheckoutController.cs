@@ -91,7 +91,7 @@ namespace MerchantTribeStore.Controllers
                 }
                 finally
                 {
-                    Order o = SessionManager.CurrentShoppingCart(MTApp.OrderServices);
+                    Order o = SessionManager.CurrentShoppingCart(MTApp.OrderServices, MTApp.CurrentStore);
                     ViewBag.HideEditButton = false;
                     if (o.CustomProperties["PaypalAddressOverride"] != null)
                     {
@@ -162,10 +162,10 @@ namespace MerchantTribeStore.Controllers
         }        
         private void LoadShippingMethodsForOrder()
         {
-            Order o = SessionManager.CurrentShoppingCart(MTApp.OrderServices);            
+            Order o = SessionManager.CurrentShoppingCart(MTApp.OrderServices, MTApp.CurrentStore);            
             o.ShippingAddress.CopyTo(o.BillingAddress);
             MTApp.CalculateOrderAndSave(o);
-            SessionManager.SaveOrderCookies(o);            
+            SessionManager.SaveOrderCookies(o, MTApp.CurrentStore);            
             LoadShippingMethodsForOrder(o);
         }
         private void LoadShippingMethodsForOrder(Order o)
@@ -237,13 +237,13 @@ namespace MerchantTribeStore.Controllers
                 // Save as Order
                 MerchantTribe.Commerce.BusinessRules.OrderTaskContext c
                     = new MerchantTribe.Commerce.BusinessRules.OrderTaskContext(MTApp);
-                c.UserId = SessionManager.GetCurrentUserId();
+                c.UserId = SessionManager.GetCurrentUserId(MTApp.CurrentStore);
                 c.Order = model.CurrentOrder;
 
                 if (MerchantTribe.Commerce.BusinessRules.Workflow.RunByName(c, MerchantTribe.Commerce.BusinessRules.WorkflowNames.ProcessNewOrder))
                 {
                     // Clear Cart ID because we're now an order
-                    SessionManager.CurrentCartID = string.Empty;
+                    SessionManager.SetCurrentCartId(MTApp.CurrentStore, string.Empty);
 
                     // Process Payment
                     if (MerchantTribe.Commerce.BusinessRules.Workflow.RunByName(c, MerchantTribe.Commerce.BusinessRules.WorkflowNames.ProcessNewOrderPayments))
@@ -300,7 +300,7 @@ namespace MerchantTribeStore.Controllers
         [HttpPost]
         public ActionResult Edit()
         {
-            Order o = SessionManager.CurrentShoppingCart(MTApp.OrderServices);
+            Order o = SessionManager.CurrentShoppingCart(MTApp.OrderServices, MTApp.CurrentStore);
 
             PayPalAPI ppAPI = MerchantTribe.Commerce.Utilities.PaypalExpressUtilities.GetPaypalAPI();
             try
@@ -362,7 +362,7 @@ namespace MerchantTribeStore.Controllers
 
             // Save all the changes to the order
             MTApp.OrderServices.Orders.Update(model.CurrentOrder);
-            SessionManager.SaveOrderCookies(model.CurrentOrder);
+            SessionManager.SaveOrderCookies(model.CurrentOrder, MTApp.CurrentStore);
         }
         private void SavePaymentInfo(CheckoutViewModel model)
         {

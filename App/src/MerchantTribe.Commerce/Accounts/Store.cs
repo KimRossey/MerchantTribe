@@ -83,6 +83,18 @@ namespace MerchantTribe.Commerce.Accounts
             Settings = new StoreSettings(this);
         }
 
+        public string StoreUniqueId(MerchantTribeApplication app)
+        {
+            string result = Settings.UniqueId;
+            if (result == string.Empty)
+            {
+                result = System.Guid.NewGuid().ToString();
+                this.Settings.UniqueId = result;
+                app.AccountServices.Stores.Update(this);
+            }
+            return result;
+        }
+                     
         public bool HasCustomUrl
         {
             get

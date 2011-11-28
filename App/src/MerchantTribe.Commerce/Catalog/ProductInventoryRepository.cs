@@ -77,6 +77,12 @@ namespace MerchantTribe.Commerce.Catalog
         {
             return this.Find(new PrimaryKey(bvin));
         }
+        public bool InventoryExists(ProductInventory item)
+        {
+            var inventory = FindByProductIdAndVariantId(item.ProductBvin, item.VariantId);
+            if (inventory != null) return true;
+            return false;
+        }
         public override bool Create(ProductInventory item)
         {
             if (item.Bvin == string.Empty)
@@ -85,6 +91,10 @@ namespace MerchantTribe.Commerce.Catalog
             }
             item.StoreId = context.CurrentStore.Id;
             item.LastUpdated = DateTime.UtcNow;
+
+            // See if we need to update instead of create
+            if (InventoryExists(item)) return Update(item);
+                        
  	        return base.Create(item);
         }
         public bool Update(ProductInventory c)

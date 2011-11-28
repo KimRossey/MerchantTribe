@@ -249,7 +249,7 @@ namespace MerchantTribe.Commerce
         {
             get
             {
-                return SessionManager.GetCurrentUserId();
+                return SessionManager.GetCurrentUserId(this.CurrentStore);
             }
         }
         public Membership.CustomerAccount CurrentCustomer
@@ -489,7 +489,7 @@ namespace MerchantTribe.Commerce
             OrdersShipItems(p, o);
             BusinessRules.OrderTaskContext c = new BusinessRules.OrderTaskContext(this);
             c.Order = o;
-            c.UserId = SessionManager.GetCurrentUserId();
+            c.UserId = SessionManager.GetCurrentUserId(this.CurrentStore);
             if (!BusinessRules.Workflow.RunByName(c, BusinessRules.WorkflowNames.PackageShipped))
             {
                 EventLog.LogEvent("PackageShippedWorkflow", "Package Shipped Workflow Failed", EventLogSeverity.Debug);
@@ -630,13 +630,13 @@ namespace MerchantTribe.Commerce
         private List<Catalog.Category> CreateSampleCategories()
         {
             List<Catalog.Category> samples = new List<Category>();
-            samples.Add(CreateSampleCategory("Sample Products", "sample-products", "This is a sample category"));
-            samples.Add(CreateSampleCategory("More Sample Products", "more-sample", ""));
-            samples.Add(CreateSampleCategory("Demo Category", "demo-category", ""));
+            samples.Add(CreateSampleCategory("Sample Products", "sample-products", "This is a sample category", "Grid"));
+            samples.Add(CreateSampleCategory("More Sample Products", "more-sample", "", "DetailedList"));
+            samples.Add(CreateSampleCategory("Demo Category", "demo-category", "", "BulkQuantityList"));
             samples.Add(CreateSampleCategoryPage("About Us", "about-us-sample", "<h1>About Us</h1> <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p> <hr /> <p> <b>Mailing Address:</b><br /> {{storeaddress}} <p>"));
             return samples;
         }
-        private Catalog.Category CreateSampleCategory(string name, string url, string description)
+        private Catalog.Category CreateSampleCategory(string name, string url, string description, string template)
         {
             Catalog.Category result = new Category();
             result.Name = name;
@@ -647,6 +647,7 @@ namespace MerchantTribe.Commerce
             result.Keywords = MerchantTribe.Web.Text.TrimToLength(name, 250);
             result.ShowTitle = true;
             result.ShowInTopMenu = true;
+            result.TemplateName = template;
             CatalogServices.Categories.Create(result);
             return result;
         }
@@ -1021,6 +1022,7 @@ namespace MerchantTribe.Commerce
         }
         public bool DestroyCustomerAccount(string bvin)
         {
+            CatalogServices.WishListItems.DeleteForCustomerId(bvin);
             ContactServices.Affiliates.DeleteAffiliateContactsForCustomer(bvin);
             return MembershipServices.Customers.Delete(bvin);
         }           
@@ -1072,6 +1074,7 @@ namespace MerchantTribe.Commerce
             if (CatalogServices.CategoriesXProducts.DeleteAllForProduct(bvin) == false) return false;
 
             // WishList
+            CatalogServices.WishListItems.DeleteForProductId(bvin);
 
             // Files   
             CatalogServices.ProductFiles.DeleteForProductId(bvin);
@@ -1138,6 +1141,35 @@ namespace MerchantTribe.Commerce
                 ids.Add(rel.UserId);
             }
             return MembershipServices.Customers.FindMany(ids);
+        }
+
+
+        // Flex Page Status
+        public bool IsEditMode
+        {
+            get
+            {
+                bool result = false;
+                if (SessionManager.GetCookieString("IsEditMode", this.CurrentStore) == "1")
+                {
+                    if (this.CurrentRequestContext.IsAdmin(this))
+                    {
+                        result = true;
+                    }
+                }
+                return result;
+            }
+            set
+            {
+                if (value == true)
+                {
+                    SessionManager.SetCookieString("IsEditMode", "1", this.CurrentStore);
+                }
+                else
+                {
+                    SessionManager.SetCookieString("IsEditMode", "0", this.CurrentStore);
+                }
+            }
         }
         
     }

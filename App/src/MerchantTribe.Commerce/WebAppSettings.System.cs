@@ -6,7 +6,7 @@ namespace MerchantTribe.Commerce
 
         const string SUPERADMINEMAIL = "noreply@merchanttribe.com";
         const string APPLICATION_NAME = "MerchantTribe";
-        const string APPLICATION_VERSION = "1.0.0.125";
+const string APPLICATION_VERSION = "1.2.0.224";
 
         public static string SuperAdminEmail
         {
@@ -73,6 +73,11 @@ namespace MerchantTribe.Commerce
             }
         }
 
+
+        public static string CookieNameCartIdPaymentPending(long storeId)
+        {
+            return "merchanttribe-cartid-pendingpayment-" + storeId.ToString();
+        }
         public static string CookieNameCartId(long storeId)
         {
             return "merchanttribe-cartid-" + storeId.ToString();
@@ -85,13 +90,13 @@ namespace MerchantTribe.Commerce
         {
             return "merchanttribe-cartsubtotal-" + storeId.ToString();
         }
-        public static string CookieNameAuthenticationTokenAdmin()
+        public static string CookieNameAuthenticationTokenAdmin(long storeId)
         {
-            return "merchanttribe-authtoken";
+            return "merchanttribe-authtoken-" + storeId.ToString();
         }
-        public static string CookieNameAuthenticationTokenCustomer()
+        public static string CookieNameAuthenticationTokenCustomer(long storeId)
         {
-            return "merchanttribe-authtokencustomer";
+            return "merchanttribe-authtokencustomer-" + storeId.ToString();
         }
         public static string CookieNameLastCategory(long storeId)
         {

@@ -45,24 +45,11 @@ function BindJsonForms() {
 
 function BindEditable() {
     $('.editable').unbind();
-    $('.coltools').unbind();
     $('.edithandle').unbind();
-
-    $('.coltools').hover(
-        function () { $(this).addClass('formhover'); $(this).find('.coledittools').show(); },
-        function () { $(this).removeClass('formhover'); $(this).find('.coledittools').hide(); }
-        );
     $('.editable').hover(
-                    function () { $(this).addClass('formhover'); $(this).find('.edittools').show(); },
-                    function () { $(this).removeClass('formhover'); $(this).find('.edittools').hide(); }
+                    function () { $(this).addClass('formhover'); $(this).children('.edittools').show(); },
+                    function () { $(this).removeClass('formhover'); $(this).children('.edittools').hide(); }
                     );
-
-    $('.coltools').click(
-        function () {
-            var div = $(this).parent();
-            ShowEditor(div);
-        }
-    );
     $('.edithandle').click(
         function () {
             var div = $(this).parent().parent();
@@ -194,11 +181,15 @@ function BindCancelFormButtons() {
     });
 }
 
-
 function DisplayPlaceholder() {
-    if ($('.editable').size() < 1) {
-        $('.grid_12 > .droppable').append('<div class="editplaceholder">Drag and Drop Parts to add Content to this Page</div>');        
-    }
+    $('.droppable').each(function () {
+        if ($(this).find('.editable').size() < 1) {
+            $(this).append('<div class="editplaceholder">Drag and Drop Parts to add Content to this Page</div>');
+        }
+        else {
+            //$(this).find('.editplaceholder').remove();
+        }
+    });
 }
 
 function BindEverything() {
@@ -209,8 +200,7 @@ function BindEverything() {
     BindCancelFormButtons();
     BindEditable();    
     BindSortable();
-    $('.edittools').hide();
-    $('.coledittools').hide();
+    $('.edittools').hide();    
 }
 
 function BindSortable() {
@@ -316,23 +306,17 @@ if (args.lineNumber != 0) {
     }  
 
 
-$(document).ready(function () {
-
-      
-
+$(document).ready(function () {      
     // Popup Close
     $('#editorclose').click(function () {
         CloseDialog();
         return false;
     });
-
     $('#editorclose2').click(function () {
         CloseDialog();
         return false;
     });
-
     BindEverything();
     CloseDialog();
     DisplayPlaceholder();
-
 });

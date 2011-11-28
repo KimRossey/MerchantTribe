@@ -84,6 +84,7 @@
           <EntitySet Name="PageVersions" EntityType="EfModels.Store.PageVersions" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="QueuedTasks" EntityType="EfModels.Store.QueuedTasks" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ToDoItems" EntityType="EfModels.Store.ToDoItems" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="WishListItems" EntityType="EfModels.Store.WishListItems" store:Type="Tables" Schema="dbo" />
           <AssociationSet Name="FK_bv_SearchObjectWords_bv_SearchLexicon" Association="EfModels.Store.FK_bv_SearchObjectWords_bv_SearchLexicon">
             <End Role="bv_SearchLexicon" EntitySet="bv_SearchLexicon" />
             <End Role="bv_SearchObjectWords" EntitySet="bv_SearchObjectWords" />
@@ -1294,6 +1295,18 @@
           <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="255" />
           <Property Name="Details" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
+        <EntityType Name="WishListItems">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="StoreId" Type="bigint" Nullable="false" />
+          <Property Name="CustomerId" Type="nvarchar" Nullable="false" MaxLength="36" />
+          <Property Name="LastUpdated" Type="datetime" Nullable="false" />
+          <Property Name="ProductId" Type="nvarchar" Nullable="false" MaxLength="36" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="SelectionData" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
         <Association Name="FK_bv_SearchObjectWords_bv_SearchLexicon">
           <End Role="bv_SearchLexicon" Type="EfModels.Store.bv_SearchLexicon" Multiplicity="1" />
           <End Role="bv_SearchObjectWords" Type="EfModels.Store.bv_SearchObjectWords" Multiplicity="*" />
@@ -1888,6 +1901,7 @@
             <End Role="bvc_Product" EntitySet="bvc_Product" />
             <End Role="bvc_ProductPropertyValue" EntitySet="bvc_ProductPropertyValue" />
           </AssociationSet>
+          <EntitySet Name="WishListItems" EntityType="EfModels.WishListItem" />
           </EntityContainer>
         <EntityType Name="bv_SearchLexicon">
           <Key>
@@ -3388,6 +3402,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="WishListItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="StoreId" Nullable="false" />
+          <Property Type="String" Name="CustomerId" Nullable="false" MaxLength="36" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="LastUpdated" Nullable="false" />
+          <Property Type="String" Name="ProductId" Nullable="false" MaxLength="36" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Quantity" Nullable="false" />
+          <Property Type="String" Name="SelectionData" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -4564,6 +4590,19 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="WishListItems">
+            <EntityTypeMapping TypeName="EfModels.WishListItem">
+              <MappingFragment StoreEntitySet="WishListItems">
+                <ScalarProperty Name="SelectionData" ColumnName="SelectionData" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -4584,7 +4623,7 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="Models" ZoomLevel="46" ShowGrid="true">
+      <Diagram Name="Models" ZoomLevel="59" ShowGrid="true">
         <EntityTypeShape EntityType="EfModels.bv_SearchLexicon" Width="1.875" PointX="7.75" PointY="14.375" Height="1.5956835937499818" />
         <EntityTypeShape EntityType="EfModels.bv_SearchObjects" Width="1.875" PointX="7.375" PointY="17" Height="2.3648893229166106" />
         <EntityTypeShape EntityType="EfModels.bv_SearchObjectWords" Width="2" PointX="10.25" PointY="16.875" Height="2.1725878906249818" />
@@ -4696,15 +4735,11 @@
         <AssociationConnector Association="EfModels.FK_ecommrc_Taxes_ecommrc_Stores" >
           <ConnectorPoint PointX="0.59375" PointY="13.662903645833353" />
           <ConnectorPoint PointX="0.59375" PointY="16.09375" />
-          <ConnectorPoint PointX="1.3385441666666667" PointY="16.09375" />
-          <ConnectorPoint PointX="1.5052108333333332" PointY="16.09375" />
-          <ConnectorPoint PointX="1.7526079166666666" PointY="16.09375" />
-          <ConnectorPoint PointX="1.9192745833333331" PointY="16.09375" />
           <ConnectorPoint PointX="5.25" PointY="16.09375" />
         </AssociationConnector>
         <AssociationConnector Association="EfModels.FK_ecommrc_TaxSchedules_ecommrc_Stores" >
-          <ConnectorPoint PointX="1.4218775" PointY="13.662903645833353" />
-          <ConnectorPoint PointX="1.4218775" PointY="23.615143229166677" />
+          <ConnectorPoint PointX="0.62500249999999991" PointY="13.662903645833353" />
+          <ConnectorPoint PointX="0.62500249999999991" PointY="23.615143229166677" />
           <ConnectorPoint PointX="3" PointY="23.615143229166677" />
         </AssociationConnector>
         <AssociationConnector Association="EfModels.FK_ecommrc_Taxes_ecommrc_TaxSchedules" >
@@ -4747,8 +4782,8 @@
         </AssociationConnector>
         <EntityTypeShape EntityType="EfModels.ecommrc_StoreSettings" Width="2.25" PointX="2.25" PointY="19.875" Height="1.980286458333353" />
         <AssociationConnector Association="EfModels.FK_ecommrc_StoreSettings_ecommrc_Stores" >
-          <ConnectorPoint PointX="1.8359412499999999" PointY="13.662903645833353" />
-          <ConnectorPoint PointX="1.8359412499999999" PointY="20.865143229166677" />
+          <ConnectorPoint PointX="0.56249750000000009" PointY="13.662903645833353" />
+          <ConnectorPoint PointX="0.56249750000000009" PointY="20.865143229166677" />
           <ConnectorPoint PointX="2.25" PointY="20.865143229166677" />
         </AssociationConnector>
         <EntityTypeShape EntityType="EfModels.bvc_UserXContact" Width="1.75" PointX="21" PointY="11.5" Height="1.980286458333353" />
@@ -4794,6 +4829,7 @@
           <ConnectorPoint PointX="15.25" PointY="11.571726888020834" />
           <ConnectorPoint PointX="15.75" PointY="11.571726888020834" />
         </AssociationConnector>
+        <EntityTypeShape EntityType="EfModels.WishListItem" Width="1.5" PointX="0.75" PointY="16.75" Height="2.3648893229166674" />
       </Diagram>
     </Diagrams>
   </Designer>

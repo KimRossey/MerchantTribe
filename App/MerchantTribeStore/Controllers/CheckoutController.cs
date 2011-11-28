@@ -11,6 +11,7 @@ using MerchantTribe.Commerce.Orders;
 using MerchantTribeStore.Filters;
 using MerchantTribe.Commerce.Catalog;
 using MerchantTribeStore.Models;
+using MerchantTribeStore.Controllers;
 using MerchantTribe.Commerce.Content;
 using MerchantTribe.Commerce.Contacts;
 using MerchantTribe.Commerce.Payment;
@@ -62,7 +63,7 @@ namespace MerchantTribeStore.Controllers
         }
         private void LoadOrder(CheckoutViewModel model)
         {
-            Order result = SessionManager.CurrentShoppingCart(MTApp.OrderServices);
+            Order result = SessionManager.CurrentShoppingCart(MTApp.OrderServices, MTApp.CurrentStore);
             if (result == null) Response.Redirect("~/cart");           
             model.CurrentOrder = result;
 
@@ -241,7 +242,7 @@ namespace MerchantTribeStore.Controllers
         }
         private void TagOrderWithAffiliate(CheckoutViewModel model)
         {
-            string affid = MTApp.ContactServices.GetValidAffiliateId().ToString();
+            string affid = MTApp.ContactServices.GetValidAffiliateId(MTApp).ToString();
             if (!string.IsNullOrEmpty(affid))
             {
                 model.CurrentOrder.AffiliateID = affid;
@@ -295,7 +296,7 @@ namespace MerchantTribeStore.Controllers
 
             // Save all the changes to the order
             MTApp.OrderServices.Orders.Update(model.CurrentOrder);
-            SessionManager.SaveOrderCookies(model.CurrentOrder);
+            SessionManager.SaveOrderCookies(model.CurrentOrder, MTApp.CurrentStore);
         }
         private void LoadPaymentFromForm(CheckoutViewModel model)
         {
@@ -434,7 +435,7 @@ namespace MerchantTribeStore.Controllers
                 model.Violations.AddRange(ValidateAddress(model.CurrentOrder.BillingAddress, "Billing"));
             }
 
-            Order Basket = SessionManager.CurrentShoppingCart(MTApp.OrderServices);
+            Order Basket = SessionManager.CurrentShoppingCart(MTApp.OrderServices, MTApp.CurrentStore);
             //Collection<GiftCertificate> gcs = Basket.GetGiftCertificates();
             //decimal totalValue = 0m;
             //foreach (GiftCertificate item in gcs) {
@@ -568,7 +569,7 @@ namespace MerchantTribeStore.Controllers
         {
             // Save as Order
             OrderTaskContext c = new OrderTaskContext(MTApp);
-            c.UserId = SessionManager.GetCurrentUserId();
+            c.UserId = SessionManager.GetCurrentUserId(MTApp.CurrentStore);
             c.Order = model.CurrentOrder;
 
             // Check for PayPal Request            
@@ -593,7 +594,7 @@ namespace MerchantTribeStore.Controllers
                 if (Workflow.RunByName(c, WorkflowNames.ProcessNewOrder) == true)
                 {
                     // Clear Cart ID because we're now an order
-                    SessionManager.CurrentCartID = string.Empty;
+                    SessionManager.SetCurrentCartId(MTApp.CurrentStore, string.Empty);
 
                     // Process Payment
                     if (MerchantTribe.Commerce.BusinessRules.Workflow.RunByName(c, MerchantTribe.Commerce.BusinessRules.WorkflowNames.ProcessNewOrderPayments))
@@ -606,7 +607,7 @@ namespace MerchantTribeStore.Controllers
                     else
                     {
                         // Redirect to Payment Error
-                        SessionManager.CurrentPaymentPendingCartId = model.CurrentOrder.bvin;
+                        SessionManager.SetCurrentPaymentPendingCartId(MTApp.CurrentStore, model.CurrentOrder.bvin);
                         Response.Redirect("~/checkout/paymenterror");
                     }
                 }
@@ -647,7 +648,23 @@ namespace MerchantTribeStore.Controllers
                     FlashFailure("Order could not be found. Please contact store for assistance.");
                     return;
                 }
-                                                                               
+
+                if (o.CustomProperties.Where(y => (y.DeveloperId == "bvsoftware")
+                                                    && (y.Key == "allowpasswordreset")
+                                                    && (y.Value == "1")
+                                                    ).Count() > 0)
+                {
+                    ViewBag.AllowPasswordReset = true;
+                    ViewBag.Email = o.UserEmail;
+                    ViewBag.OrderBvin = o.bvin;
+                    ViewBag.SubmitButtonUrl = MTApp.ThemeManager().ButtonUrl("Submit", Request.IsSecureConnection);
+                }
+                else
+                {
+                    ViewBag.AllowPasswordReset = false;
+                }
+
+
                 ViewBag.Order = o;
                 ViewBag.AcumaticaOrder = null;
 
@@ -749,7 +766,7 @@ namespace MerchantTribeStore.Controllers
             Order o = MTApp.OrderServices.Orders.FindForCurrentStore(orderid);
             MTApp.OrderServices.OrdersRequestShippingMethodByUniqueKey(rateKey, o);
             MTApp.CalculateOrderAndSave(o);
-            SessionManager.SaveOrderCookies(o);
+            SessionManager.SaveOrderCookies(o, MTApp.CurrentStore);
 
             result.totalsastable = o.TotalsAsTable();
             
@@ -815,7 +832,7 @@ namespace MerchantTribeStore.Controllers
         }
         private void LoadPendingOrder(CheckoutViewModel model)
         {
-            string bvin = SessionManager.CurrentPaymentPendingCartId;
+            string bvin = SessionManager.GetCurrentPaymentPendingCartId(MTApp.CurrentStore);
             if (bvin.Trim().Length < 1) Response.Redirect("~/cart");
 
             Order result = MTApp.OrderServices.Orders.FindForCurrentStore(bvin);
@@ -898,13 +915,13 @@ namespace MerchantTribeStore.Controllers
         {
             // Save as Order
             OrderTaskContext c = new OrderTaskContext(MTApp);
-            c.UserId = SessionManager.GetCurrentUserId();
+            c.UserId = SessionManager.GetCurrentUserId(MTApp.CurrentStore);
             c.Order = model.CurrentOrder;
 
             if (Workflow.RunByName(c, WorkflowNames.ProcessNewOrderPayments) == true)
             {
                 // Clear Pending Cart ID because payment is good
-                SessionManager.CurrentPaymentPendingCartId = string.Empty;
+                SessionManager.SetCurrentPaymentPendingCartId(MTApp.CurrentStore, string.Empty);
 
                 // Process Post Payment Stuff                    
                 MerchantTribe.Commerce.BusinessRules.Workflow.RunByName(c, MerchantTribe.Commerce.BusinessRules.WorkflowNames.ProcessNewOrderAfterPayments);
@@ -917,7 +934,7 @@ namespace MerchantTribeStore.Controllers
         [HttpPost]
         public ActionResult Cancel()
         {
-            string bvin = SessionManager.CurrentPaymentPendingCartId;
+            string bvin = SessionManager.GetCurrentPaymentPendingCartId(MTApp.CurrentStore);
             if (bvin.Trim().Length < 1) Response.Redirect("~/cart");
 
             Order Basket = MTApp.OrderServices.Orders.FindForCurrentStore(bvin);
@@ -932,9 +949,10 @@ namespace MerchantTribeStore.Controllers
                 Basket.Notes.Add(n);
 
                 MTApp.OrderServices.Orders.Update(Basket);
-                SessionManager.CurrentPaymentPendingCartId = string.Empty;                
+                SessionManager.SetCurrentPaymentPendingCartId(MTApp.CurrentStore, string.Empty);                
             }            
             return Redirect("~/cart");
         }
+
     }
 }

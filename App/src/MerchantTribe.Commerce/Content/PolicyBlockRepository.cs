@@ -89,7 +89,7 @@ namespace MerchantTribe.Commerce.Content
         public List<PolicyBlock> FindForPolicy(string policyId)
         {
             var items = repository.Find().Where(y => y.PolicyID == policyId)
-                                        .OrderByDescending(y => y.SortOrder);
+                                        .OrderBy(y => y.SortOrder);
             return ListPoco(items);
         }
         public void DeleteForPolicy(string policyId)

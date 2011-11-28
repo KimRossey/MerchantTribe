@@ -250,11 +250,20 @@ namespace MerchantTribe.Commerce.Content.Parts
         public bool RemoveColumn()
         {
             if (_Columns.Count < 3) return false;
+            
+            // Move Parts from last column to next to last so
+            // they aren't destroyed
+            foreach (IContentPart p in _Columns[_Columns.Count - 1].Parts)
+            {
+                _Columns[_Columns.Count - 2].AddPart(p);
+            }
 
+            // resize second to last and remove last column
             int nextToLastSize = (int)_Columns[_Columns.Count - 2].Size;
             int lastSize = (int)_Columns[_Columns.Count - 1].Size;
             _Columns[_Columns.Count - 2].Size = (ColumnSize)(nextToLastSize + lastSize);
             _Columns.RemoveAt(_Columns.Count - 1);
+
             return true;            
         }
 
@@ -403,14 +412,12 @@ namespace MerchantTribe.Commerce.Content.Parts
         {
             StringBuilder sb = new StringBuilder();
 
+            sb.Append("<div class=\"cols editable issortable");
             if (this.SpacerAbove)
             {
-                sb.Append("<div class=\"cols spacerabove\"");
+                sb.Append(" spacerabove");
             }
-            else
-            {
-                sb.Append("<div class=\"cols\"");
-            }
+            sb.Append("\"");
 
             if (IsEditMode)
             {
@@ -421,13 +428,8 @@ namespace MerchantTribe.Commerce.Content.Parts
             
             if (IsEditMode)
             {
-
-                sb.Append("<div class=\"coltools\">");
-                sb.Append("<div class=\"coledittools\">");                                
-                sb.Append("  <a href=\"#\" class=\"deletecols\" id=\"dp" + this.Id + "\">&nbsp;</a>");
-                sb.Append("  <a href=\"#\" class=\"sorthandle\">&nbsp;</a>");                                                
-                sb.Append("</div>");
-                sb.Append("<strong>Columns</strong></div>");                
+                sb.Append(PartHelper.RenderEditTools(this.Id));                                                
+                sb.Append("<div class=\"colholder\"><strong>Columns</strong></div>");                
             }
 
             for (int i = 0; i < _Columns.Count; i++)

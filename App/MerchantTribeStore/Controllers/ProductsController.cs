@@ -30,7 +30,7 @@ namespace MerchantTribeStore.Controllers
             model.PreRenderedOptions = HtmlRendering.ProductOptions(model.LocalProduct.Options, model.Selections);
             
             // Record and Return view
-            PersonalizationServices.RecordProductViews(model.LocalProduct.Bvin);
+            PersonalizationServices.RecordProductViews(model.LocalProduct.Bvin, MTApp);
             return View(model);
         }
 
@@ -48,39 +48,51 @@ namespace MerchantTribeStore.Controllers
                 if (model.LineItemId == string.Empty) model.LineItemId = lineItemString;
             }
 
-            ParseSelections(model);            
-            bool IsPurchasable = ValidateSelections(model);
-            if ((IsPurchasable))
+            ParseSelections(model);
+
+            if (Request.Form["savelaterbutton.x"] != null)
             {
-
-                DetermineQuantityToAdd(model);
-                if (model.Quantity > 0)
+                // Save for Later
+                MTApp.CatalogServices.SaveProductToWishList(model.LocalProduct, model.Selections,1,  MTApp);
+                return Redirect("~/account/saveditems");
+            }
+            else
+            {
+                // Add to Cart
+                bool IsPurchasable = ValidateSelections(model);
+                if ((IsPurchasable))
                 {
-                    LineItem li = MTApp.CatalogServices.ConvertProductToLineItem(model.LocalProduct,
-                                                                                    model.Selections,
-                                                                                    model.Quantity,
-                                                                                    MTApp);
 
-                    Order Basket = SessionManager.CurrentShoppingCart(MTApp.OrderServices);
-                    if (Basket.UserID != SessionManager.GetCurrentUserId())
+                    DetermineQuantityToAdd(model);
+                    if (model.Quantity > 0)
                     {
-                        Basket.UserID = SessionManager.GetCurrentUserId();
-                    }
+                        LineItem li = MTApp.CatalogServices.ConvertProductToLineItem(model.LocalProduct,
+                                                                                        model.Selections,
+                                                                                        model.Quantity,
+                                                                                        MTApp);
 
-                    if (model.LineItemId.Trim().Length > 0)
-                    {                        
-                        long lineItemId = 0;
-                        long.TryParse(model.LineItemId, out lineItemId);
-                        var toRemove = Basket.Items.Where(y => y.Id == lineItemId).SingleOrDefault();
-                        if (toRemove != null) Basket.Items.Remove(toRemove);
-                    }
+                        Order Basket = SessionManager.CurrentShoppingCart(MTApp.OrderServices, MTApp.CurrentStore);
+                        if (Basket.UserID != SessionManager.GetCurrentUserId(MTApp.CurrentStore))
+                        {
+                            Basket.UserID = SessionManager.GetCurrentUserId(MTApp.CurrentStore);
+                        }
 
-                    MTApp.AddToOrderWithCalculateAndSave(Basket, li);
-                    SessionManager.SaveOrderCookies(Basket);
-                    
-                    return Redirect("~/cart");
+                        if (model.LineItemId.Trim().Length > 0)
+                        {
+                            long lineItemId = 0;
+                            long.TryParse(model.LineItemId, out lineItemId);
+                            var toRemove = Basket.Items.Where(y => y.Id == lineItemId).SingleOrDefault();
+                            if (toRemove != null) Basket.Items.Remove(toRemove);
+                        }
+
+                        MTApp.AddToOrderWithCalculateAndSave(Basket, li);
+                        SessionManager.SaveOrderCookies(Basket, MTApp.CurrentStore);
+
+                        return Redirect("~/cart");
+                    }
                 }
             }
+            
 
             // Load Selections from form here
             // Do checks and add
@@ -124,6 +136,7 @@ namespace MerchantTribeStore.Controllers
             ViewBag.RelatedItemsTitle = SiteTerms.GetTerm(SiteTermIds.RelatedItems);
             ViewBag.AddToCartButtonUrl = MTApp.ThemeManager().ButtonUrl("addtocart", Request.IsSecureConnection);
             ViewBag.SubmitButtonUrl = MTApp.ThemeManager().ButtonUrl("submit", Request.IsSecureConnection);
+            ViewBag.SaveLaterButton = MTApp.ThemeManager().ButtonUrl("SaveForLater", Request.IsSecureConnection);
 
             CheckForBackOrder(model);
 
@@ -142,6 +155,10 @@ namespace MerchantTribeStore.Controllers
                 model.LineItemId = Request.QueryString["LineItemId"];
             }
 
+            if (SessionManager.IsUserAuthenticated(MTApp))
+            {
+                model.IsAvailableForWishList = true;
+            }
             return model;
         }
         private Product ParseProductFromSlug(string slug)
@@ -288,7 +305,7 @@ namespace MerchantTribeStore.Controllers
                 long lineItemId = 0;
                 long.TryParse(model.LineItemId, out lineItemId);
 
-                Order o = SessionManager.CurrentShoppingCart(MTApp.OrderServices);
+                Order o = SessionManager.CurrentShoppingCart(MTApp.OrderServices, MTApp.CurrentStore);
                 if (o != null)
                 {
                     var li = o.Items.Where(y => y.Id == lineItemId).SingleOrDefault();
@@ -302,7 +319,7 @@ namespace MerchantTribeStore.Controllers
         }
         private void RenderPrices(ProductPageViewModel model)
         {
-            string userId = SessionManager.GetCurrentUserId();
+            string userId = SessionManager.GetCurrentUserId(MTApp.CurrentStore);
             StringBuilder sb = new StringBuilder();
 
             sb.Append("<div class=\"prices\">");

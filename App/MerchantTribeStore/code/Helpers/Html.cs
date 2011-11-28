@@ -105,17 +105,17 @@ namespace MerchantTribeStore.Helpers
                 // CDN JQuery
                 if (IsSecure)
                 {
-                    sb.Append("<script src='https://ajax.microsoft.com/ajax/jQuery/jquery-1.4.4.min.js' type=\"text/javascript\"></script>");
+                    sb.Append("<script src='https://ajax.microsoft.com/ajax/jQuery/jquery-1.5.1.min.js' type=\"text/javascript\"></script>");
                 }
                 else
                 {
-                    sb.Append("<script src='http://ajax.microsoft.com/ajax/jQuery/jquery-1.4.4.min.js' type=\"text/javascript\"></script>");
+                    sb.Append("<script src='http://ajax.microsoft.com/ajax/jQuery/jquery-1.5.1.min.js' type=\"text/javascript\"></script>");
                 }
             }
             else
             {
                 // Local JQuery
-                sb.Append("<script src='" + baseScriptFolder + "jquery-1.4.4.min.js' type=\"text/javascript\"></script>");
+                sb.Append("<script src='" + baseScriptFolder + "jquery-1.5.1.min.js' type=\"text/javascript\"></script>");
             }
             sb.Append(System.Environment.NewLine);
 
@@ -213,7 +213,7 @@ namespace MerchantTribeStore.Helpers
             sb.Append(AddMenuItem("URL Mapper", "content/customurl.aspx", root));
             sb.Append(AddMenuItem("Policies", "content/policies.aspx", root));
             sb.Append(AddMenuItem("Email Templates", "content/EmailTemplates.aspx", root));
-            //sb.Append(AddMenuItem("Home Page", "content/default.aspx", root));
+            sb.Append(AddMenuItem("Home Page", "content/default.aspx", root));
 
             sb.Append(CloseMenu());
 
@@ -276,6 +276,7 @@ namespace MerchantTribeStore.Helpers
             sb.Append(AddMenuItem("Shipping: Methods", "configuration/Shipping.aspx", root));
             sb.Append(AddMenuItem("Shipping: Zones", "configuration/Shipping_Zones.aspx", root));
             sb.Append(AddMenuItem("Shipping: Handling", "configuration/ShippingHandling.aspx", root));
+            sb.Append(AddMenuItem("Social Media", "configuration/SocialMedia.aspx", root));
             sb.Append(AddMenuItem("Tax Schedules", "configuration/TaxClasses.aspx", root));
             sb.Append(AddMenuItem("Themes", "configuration/themes.aspx", root));
 

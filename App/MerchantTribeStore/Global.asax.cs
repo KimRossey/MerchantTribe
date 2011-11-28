@@ -85,10 +85,10 @@ namespace MerchantTribeStore
             //routes.IgnoreRoute("{resource}.aspx/{*pathInfo}");
             
             // Admin Routes
-            routes.MapPageRoute("adminlogin", "account/login", "~/BVAdmin/Login.aspx");
-            routes.MapPageRoute("adminresetpassword", "account/resetpassword", "~/BVAdmin/ResetPassword.aspx");
-            routes.MapPageRoute("adminresetpassword2", "account/resetpassword2", "~/BVAdmin/ResetPassword2.aspx");
-            routes.MapPageRoute("adminlogout", "account/logout", "~/BVAdmin/logout.aspx");
+            routes.MapPageRoute("adminlogin", "adminaccount/login", "~/BVAdmin/Login.aspx");
+            routes.MapPageRoute("adminresetpassword", "adminaccount/resetpassword", "~/BVAdmin/ResetPassword.aspx");
+            routes.MapPageRoute("adminresetpassword2", "adminaccount/resetpassword2", "~/BVAdmin/ResetPassword2.aspx");
+            routes.MapPageRoute("adminlogout", "adminaccount/logout", "~/BVAdmin/logout.aspx");
                                                                                       
             // Products
             routes.MapRoute("products-rendersingle", "products/rendersingleproduct/{*params}",
@@ -117,6 +117,7 @@ namespace MerchantTribeStore
             routes.MapRoute("cart-addcoupon", "cart/addcoupon", new { controller = "Cart", action = "AddCoupon" });
             routes.MapRoute("cart-removecoupont", "cart/removecoupon", new { controller = "Cart", action = "RemoveCoupon" });
             routes.MapRoute("cart-removeitem", "cart/removelineitem", new { controller = "Cart", action = "RemoveLineItem" });
+            routes.MapRoute("cart-bulkadd", "cart/bulkadd", new { controller = "Cart", action = "BulkAdd" });
 
             // checkouts
             routes.MapRoute("checkout-route", "checkout/{action}/{*slug}",
@@ -142,7 +143,7 @@ namespace MerchantTribeStore
             routes.MapPageRoute("admin", "admin", "~/bvadmin/default.aspx");
                                     
             // Home page
-            routes.MapRoute("homepage", "", new { controller = "Home", action = "Index" });
+            //routes.MapRoute("homepage", "", new { controller = "Home", action = "Index" });
 
             // Other Routes
             routes.MapRoute("fileuploadhandler", "fileuploadhandler/{typecode}/{*details}", new { controller = "FileUpload", action = "Index" });

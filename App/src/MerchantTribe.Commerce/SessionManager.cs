@@ -1,5 +1,6 @@
 using System;
 using System.Web;
+using MerchantTribe.Commerce.Accounts;
 
 namespace MerchantTribe.Commerce
 {
@@ -52,7 +53,7 @@ namespace MerchantTribe.Commerce
 
         public static bool IsUserAuthenticated(MerchantTribeApplication app)
         {
-                string uid = GetCurrentUserId();
+                string uid = GetCurrentUserId(app.CurrentStore);
                 if (uid.Trim() == string.Empty) return false;
                 MerchantTribe.Commerce.Membership.CustomerAccount customer = app.MembershipServices.Customers.Find(uid);
                 if (customer == null) return false;
@@ -440,7 +441,7 @@ namespace MerchantTribe.Commerce
                 HttpContext.Current.Session[variableName] = value;
             }
         }
-        public static string GetCookieString(string cookieName)
+        public static string GetCookieString(string cookieName, Store currentStore)
         {
             string result = string.Empty;
 
@@ -452,17 +453,15 @@ namespace MerchantTribe.Commerce
                     {
                         if (HttpContext.Current.Request.Browser.Cookies == true)
                         {
-                            RequestContext context = RequestContext.GetCurrentRequestContext();
-
-                            if (context.CurrentStore.Settings.CookieDomain.Trim() != string.Empty)
+                            if (currentStore.Settings.CookieDomain.Trim() != string.Empty)
                             {
-                                string domain = System.Text.RegularExpressions.Regex.Replace(context.CurrentStore.Settings.CookieDomain, "[^A-Za-z0-9]", "");
+                                string domain = System.Text.RegularExpressions.Regex.Replace(currentStore.Settings.CookieDomain, "[^A-Za-z0-9]", "");
                                 cookieName = cookieName + domain;
                             }
 
-                            if (context.CurrentStore.Settings.CookiePath != string.Empty)
+                            if (currentStore.Settings.CookiePath != string.Empty)
                             {
-                                string path = System.Text.RegularExpressions.Regex.Replace(context.CurrentStore.Settings.CookiePath, "[^A-Za-z0-9]", "");
+                                string path = System.Text.RegularExpressions.Regex.Replace(currentStore.Settings.CookiePath, "[^A-Za-z0-9]", "");
                                 cookieName = cookieName + path;
                             }
 
@@ -484,35 +483,34 @@ namespace MerchantTribe.Commerce
 
             return result;
         }
-        public static void SetCookieString(string cookieName, string value)
+        public static void SetCookieString(string cookieName, string value, Store currentStore)
         {
             if (HttpContext.Current != null)
             {
                 if (HttpContext.Current.Request.Browser.Cookies == true)
                 {
                     try
-                    {
-                        RequestContext context = RequestContext.GetCurrentRequestContext();
-                        if (context.CurrentStore.Settings.CookieDomain.Trim() != string.Empty)
+                    {                        
+                        if (currentStore.Settings.CookieDomain.Trim() != string.Empty)
                         {
-                            string domain = System.Text.RegularExpressions.Regex.Replace(context.CurrentStore.Settings.CookieDomain, "[^A-Za-z0-9]", "");
+                            string domain = System.Text.RegularExpressions.Regex.Replace(currentStore.Settings.CookieDomain, "[^A-Za-z0-9]", "");
                             cookieName = cookieName + domain;
                         }
 
-                        if (context.CurrentStore.Settings.CookiePath != string.Empty)
+                        if (currentStore.Settings.CookiePath != string.Empty)
                         {
-                            string path = System.Text.RegularExpressions.Regex.Replace(context.CurrentStore.Settings.CookiePath, "[^A-Za-z0-9]", "");
+                            string path = System.Text.RegularExpressions.Regex.Replace(currentStore.Settings.CookiePath, "[^A-Za-z0-9]", "");
                             cookieName = cookieName + path;
                         }
 
                         System.Web.HttpCookie saveCookie = new System.Web.HttpCookie(cookieName, value);
-                        if (context.CurrentStore.Settings.CookieDomain.Trim() != string.Empty)
+                        if (currentStore.Settings.CookieDomain.Trim() != string.Empty)
                         {
-                            saveCookie.Domain = context.CurrentStore.Settings.CookieDomain;
+                            saveCookie.Domain = currentStore.Settings.CookieDomain;
                         }
-                        if (context.CurrentStore.Settings.CookiePath.Trim() != string.Empty)
+                        if (currentStore.Settings.CookiePath.Trim() != string.Empty)
                         {
-                            saveCookie.Path = context.CurrentStore.Settings.CookiePath;
+                            saveCookie.Path = currentStore.Settings.CookiePath;
                         }
                         saveCookie.Expires = DateTime.Now.AddYears(50);
                         HttpContext.Current.Response.Cookies.Add(saveCookie);
@@ -524,7 +522,7 @@ namespace MerchantTribe.Commerce
                 }
             }
         }
-        public static void SetCookieString(string cookieName, string value, DateTime expirationDate, bool secure)
+        public static void SetCookieString(string cookieName, string value, Store currentStore, DateTime expirationDate, bool secure)
         {
             if (HttpContext.Current != null)
             {
@@ -532,27 +530,26 @@ namespace MerchantTribe.Commerce
                 {
                     try
                     {
-                        RequestContext context = RequestContext.GetCurrentRequestContext();
-                        if (context.CurrentStore.Settings.CookieDomain.Trim() != string.Empty)
+                        if (currentStore.Settings.CookieDomain.Trim() != string.Empty)
                         {
-                            string domain = System.Text.RegularExpressions.Regex.Replace(context.CurrentStore.Settings.CookieDomain, "[^A-Za-z0-9]", "");
+                            string domain = System.Text.RegularExpressions.Regex.Replace(currentStore.Settings.CookieDomain, "[^A-Za-z0-9]", "");
                             cookieName = cookieName + domain;
                         }
 
-                        if (context.CurrentStore.Settings.CookiePath != string.Empty)
+                        if (currentStore.Settings.CookiePath != string.Empty)
                         {
-                            string path = System.Text.RegularExpressions.Regex.Replace(context.CurrentStore.Settings.CookiePath, "[^A-Za-z0-9]", "");
+                            string path = System.Text.RegularExpressions.Regex.Replace(currentStore.Settings.CookiePath, "[^A-Za-z0-9]", "");
                             cookieName = cookieName + path;
                         }
 
                         System.Web.HttpCookie saveCookie = new System.Web.HttpCookie(cookieName, value);
-                        if (context.CurrentStore.Settings.CookieDomain.Trim() != string.Empty)
+                        if (currentStore.Settings.CookieDomain.Trim() != string.Empty)
                         {
-                            saveCookie.Domain = context.CurrentStore.Settings.CookieDomain;
+                            saveCookie.Domain = currentStore.Settings.CookieDomain;
                         }
-                        if (context.CurrentStore.Settings.CookiePath.Trim() != string.Empty)
+                        if (currentStore.Settings.CookiePath.Trim() != string.Empty)
                         {
-                            saveCookie.Path = context.CurrentStore.Settings.CookiePath;
+                            saveCookie.Path = currentStore.Settings.CookiePath;
                         }
                         saveCookie.Expires = expirationDate;
                         saveCookie.Secure = secure;
@@ -567,85 +564,60 @@ namespace MerchantTribe.Commerce
         }
         #endregion
 
-        public static void SaveOrderCookies(Orders.Order o)
-        {
-            RequestContext context = RequestContext.GetCurrentRequestContext();
-            long storeId = context.CurrentStore.Id;
-
+        public static void SaveOrderCookies(Orders.Order o, Store currentStore)
+        {            
             if (o.IsPlaced)
             {
                 // Clear Cookies
-                SetCookieString(WebAppSettings.CookieNameCartId(storeId), string.Empty);
-                SetCookieString(WebAppSettings.CookieNameCartItemCount(storeId), "0");
-                SetCookieString(WebAppSettings.CookieNameCartSubTotal(storeId), "0");
+                SetCookieString(WebAppSettings.CookieNameCartId(currentStore.Id), string.Empty, currentStore);
+                SetCookieString(WebAppSettings.CookieNameCartItemCount(currentStore.Id), "0", currentStore);
+                SetCookieString(WebAppSettings.CookieNameCartSubTotal(currentStore.Id), "0", currentStore);
             }
             else
             {
                 // Save Cart Cookie
-                SetCookieString(WebAppSettings.CookieNameCartId(storeId), o.bvin);
-                SetCookieString(WebAppSettings.CookieNameCartItemCount(storeId), Math.Round(o.TotalQuantity, 0).ToString());
-                SetCookieString(WebAppSettings.CookieNameCartSubTotal(storeId), o.TotalOrderAfterDiscounts.ToString("c"));
+                SetCookieString(WebAppSettings.CookieNameCartId(currentStore.Id), o.bvin, currentStore);
+                SetCookieString(WebAppSettings.CookieNameCartItemCount(currentStore.Id), Math.Round(o.TotalQuantity, 0).ToString(), currentStore);
+                SetCookieString(WebAppSettings.CookieNameCartSubTotal(currentStore.Id), o.TotalOrderAfterDiscounts.ToString("c"), currentStore);
             }
         }
 
-        public static string CurrentCartID
+        public static string GetCurrentCartID(Store currentStore)
         {
-            get
-            {
                 string result = string.Empty;
-
-                // Check Session First
-                //result = GetSessionString(CurrentCartIdSessionVariable);
-
-                // Check Cookie Second
-                if (result == string.Empty)
-                {
-                    result = GetCookieString(WebAppSettings.CartIdCookieName);
-                    //if (result != string.Empty)
-                    //{
-                    //    SetSessionString(CurrentCartIdSessionVariable, result);
-                    //}
-                }
+                result = GetCookieString(WebAppSettings.CookieNameCartId(currentStore.Id), currentStore);            
 
                 return result;
-            }
-            set
-            {
-                //SetSessionString(CurrentCartIdSessionVariable, value);
-                SetCookieString(WebAppSettings.CartIdCookieName, value);
-            }
         }
-        public static string CurrentPaymentPendingCartId
+        public static void SetCurrentCartId(Store currentStore, string value)
+        {            
+                SetCookieString(WebAppSettings.CookieNameCartId(currentStore.Id), value, currentStore);            
+        }
+        public static string GetCurrentPaymentPendingCartId(Store currentStore)
         {
-            get
-            {
-                return GetCookieString(WebAppSettings.PendingPaymentCardIdCookieName);                                    
-            }
-            set
-            {
-                SetCookieString(WebAppSettings.PendingPaymentCardIdCookieName, value, DateTime.Now.AddDays(14), true);                
-            }
+                return GetCookieString(WebAppSettings.CookieNameCartIdPaymentPending(currentStore.Id), currentStore);                                    
+        }
+        public static void SetCurrentPaymentPendingCartId(Store currentStore, string value)
+        {
+                SetCookieString(WebAppSettings.CookieNameCartIdPaymentPending(currentStore.Id), value, currentStore, DateTime.Now.AddDays(14), true);                
         }
 
-        public static void SetCurrentAffiliateId(long id, DateTime expirationDate)
+        public static void SetCurrentAffiliateId(long id, DateTime expirationDate, Store currentStore)
         {
-            SetCookieString(WebAppSettings.CustomerIdCookieName + "Referrer", id.ToString(), expirationDate, false);
+            SetCookieString(WebAppSettings.CustomerIdCookieName + "Referrer", id.ToString(), currentStore, expirationDate, false);
         }
-        public static long CurrentAffiliateID
+        public static long CurrentAffiliateID(Store currentStore)
         {
-            get
-            {
-                string temp = GetCookieString(WebAppSettings.CustomerIdCookieName + "Referrer");
+                string temp = GetCookieString(WebAppSettings.CustomerIdCookieName + "Referrer", currentStore);
                 long result = 0;
                 long.TryParse(temp, out result);
                 return result;
-            }
         }
 
-        public static bool CurrentUserHasCart()
+        public static bool CurrentUserHasCart(Store currentStore)
         {
             bool result = false;
-            if (CurrentCartID == string.Empty)
+            if (GetCurrentCartID(currentStore) == string.Empty)
             {
                 result = false;
             }
@@ -656,11 +628,11 @@ namespace MerchantTribe.Commerce
             return result;
         }
 
-        public static Orders.Order CurrentShoppingCart(Orders.OrderService svc)
+        public static Orders.Order CurrentShoppingCart(Orders.OrderService svc, Store currentStore)
         {
             Orders.Order result = null;
 
-            if (CurrentUserHasCart())
+            if (CurrentUserHasCart(currentStore))
             {
                 Orders.Order cachedCart = SessionManager.CachedShoppingCart;
                 if (cachedCart != null)
@@ -669,7 +641,7 @@ namespace MerchantTribe.Commerce
                 }
                 else
                 {
-                    result = svc.Orders.FindForCurrentStore(CurrentCartID);
+                    result = svc.Orders.FindForCurrentStore(GetCurrentCartID(currentStore));
                     if (result != null)
                     {
                         if (!result.IsPlaced)
@@ -686,7 +658,7 @@ namespace MerchantTribe.Commerce
 
             result = new Orders.Order();
             svc.Orders.Upsert(result);
-            CurrentCartID = result.bvin;
+            SetCurrentCartId(currentStore, result.bvin);
             SessionManager.CachedShoppingCart = result;
             return result;
         }
@@ -696,69 +668,13 @@ namespace MerchantTribe.Commerce
             CachedShoppingCart = null;
         }
 
-        //public static string PersonalThemeName
-        //{
-        //    get
-        //    {
-        //        if (HttpContext.Current != null)
-        //        {
-        //            return (string)HttpContext.Current.Session["PersonalThemeName"];
-        //        }
-        //        else
-        //        {
-        //            return string.Empty;
-        //        }
-        //    }
-        //    set
-        //    {
-        //        if (HttpContext.Current != null)
-        //        {
-        //            // Set Session Variable
-        //            HttpContext.Current.Session["PersonalThemeName"] = value;
 
-        //            //set cookie
-        //            HttpCookie checkCookie;
-        //            checkCookie = HttpContext.Current.Request.Cookies["BVC5ThemeName"];
-        //            if (checkCookie != null)
-        //            {
-        //                checkCookie.Value = value;
-        //            }
-        //            else
-        //            {
-        //                checkCookie = new HttpCookie("BVC5ThemeName", value);
-        //                HttpContext.Current.Request.Cookies.Add(checkCookie);
-        //            }
-        //            checkCookie = null;
-        //        }
-        //    }
-        //}
-
-        public static string GetCurrentUserId()
+        public static string GetCurrentUserId(Store currentStore)
         {
             string result = string.Empty;
-            result = GetCookieString(WebAppSettings.CookieNameAuthenticationTokenCustomer());
+            result = GetCookieString(WebAppSettings.CookieNameAuthenticationTokenCustomer(currentStore.Id), currentStore);
             return result;
         }
 
-        //public static void SetCurrentUserId(string userId, bool rememberUser)
-        //{
-        //    SetSessionString(CurrentUserIdSessionVariable, userId);
-
-        //    if (WebAppSettings.RememberUsers && rememberUser)
-        //    {
-        //        SetCookieString(WebAppSettings.CustomerIdCookieName, userId);
-        //    }
-        //    else
-        //    {
-        //        SetCookieString(WebAppSettings.CustomerIdCookieName, "");
-        //    }
-
-        //    Orders.Order cart = SessionManager.CurrentShoppingCart();
-        //    if (cart != null && !string.IsNullOrEmpty(cart.Bvin))
-        //    {
-        //        cart.AssignToUser(userId);
-        //        Orders.Order.Update(cart);
-        //    }
-        //}
     }
 }

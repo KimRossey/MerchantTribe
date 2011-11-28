@@ -23,19 +23,52 @@ namespace MerchantTribeStore.api.rest
         {
             string data = string.Empty;
 
-            // Find One Specific Category
-            ApiResponse<ProductReviewDTO> response = new ApiResponse<ProductReviewDTO>();
-            string bvin = FirstParameter(parameters);
-            ProductReview item = MTApp.CatalogServices.ProductReviews.Find(bvin);
-            if (item == null)
+            if (string.Empty == (parameters ?? string.Empty))
             {
-                response.Errors.Add(new ApiError("NULL", "Could not locate that item. Check bvin and try again."));
+                string byProduct = querystring["productbvin"] ?? string.Empty;
+                
+                // Find All                
+                ApiResponse<List<ProductReviewDTO>> response = new ApiResponse<List<ProductReviewDTO>>();
+                List<ProductReview> items = new List<ProductReview>();
+                if (byProduct != string.Empty)
+                {
+                    items = MTApp.CatalogServices.ProductReviews.FindByProductId(byProduct);
+                }
+                else
+                {
+                    items = MTApp.CatalogServices.ProductReviews.FindAllPaged(1, int.MaxValue);
+                }
+                 
+                if (items == null)
+                {
+                    response.Errors.Add(new ApiError("NULL", "Could not locate reviews. Try again."));
+                }
+                else
+                {
+                    foreach (ProductReview r in items)
+                    {
+                        response.Content.Add(r.ToDto());
+                    }                    
+                }
+                data = MerchantTribe.Web.Json.ObjectToJson(response);
             }
             else
             {
-                response.Content = item.ToDto();
+
+                // Find One Specific Category
+                ApiResponse<ProductReviewDTO> response = new ApiResponse<ProductReviewDTO>();
+                string bvin = FirstParameter(parameters);
+                ProductReview item = MTApp.CatalogServices.ProductReviews.Find(bvin);
+                if (item == null)
+                {
+                    response.Errors.Add(new ApiError("NULL", "Could not locate that item. Check bvin and try again."));
+                }
+                else
+                {
+                    response.Content = item.ToDto();
+                }
+                data = MerchantTribe.Web.Json.ObjectToJson(response);
             }
-            data = MerchantTribe.Web.Json.ObjectToJson(response);
 
             return data;
         }

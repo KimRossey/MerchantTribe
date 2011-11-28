@@ -69,6 +69,8 @@ namespace MerchantTribeStore.api.rest
                     return new OrderTransactionsHandler(app);
                 case "utilities":
                     return new UtilitiesHandler(app);
+                case "wishlistitems":
+                    return new WishListItemsHandler(app);
             }
 
             return null;

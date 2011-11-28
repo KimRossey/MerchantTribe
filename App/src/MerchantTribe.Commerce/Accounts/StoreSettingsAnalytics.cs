@@ -13,7 +13,16 @@ namespace MerchantTribe.Commerce.Accounts
         {
             parent = s;
         }
-        
+
+        public bool DisableMerchantTribeAnalytics
+        {
+            get { 
+                if (!WebAppSettings.IsCommercialVersion) return false;
+                return parent.GetPropBoolWithDefault("DisableMerchantTribeAnalytics", false);
+            }
+            set { parent.SetProp("DisableMerchantTribeAnalytics", value); }
+        }
+
         public bool UseGoogleTracker
         {
             get { return parent.GetPropBool("UseGoogleTracker"); }

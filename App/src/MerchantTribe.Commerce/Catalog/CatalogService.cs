@@ -26,6 +26,7 @@ namespace MerchantTribe.Commerce.Catalog
         public ProductTypeRepository ProductTypes { get; private set; }
         public ProductTypePropertyAssociationRepository ProductTypesXProperties { get; private set; }
         public ProductPropertyRepository ProductProperties { get; private set; }
+        public WishListItemRepository WishListItems { get; private set; }
 
         public static CatalogService InstantiateForMemory(RequestContext c)
         {
@@ -45,7 +46,8 @@ namespace MerchantTribe.Commerce.Catalog
                                      ProductInventoryRepository.InstantiateForMemory(c),
                                      ProductTypeRepository.InstantiateForMemory(c),
                                      ProductTypePropertyAssociationRepository.InstantiateForMemory(c),
-                                     ProductPropertyRepository.InstantiateForMemory(c));
+                                     ProductPropertyRepository.InstantiateForMemory(c),
+                                     WishListItemRepository.InstantiateForMemory(c));
         }
         public static CatalogService InstantiateForDatabase(RequestContext c)
         {
@@ -65,7 +67,8 @@ namespace MerchantTribe.Commerce.Catalog
                                      ProductInventoryRepository.InstantiateForDatabase(c),
                                      ProductTypeRepository.InstantiateForDatabase(c),
                                      ProductTypePropertyAssociationRepository.InstantiateForDatabase(c),
-                                     ProductPropertyRepository.InstantiateForDatabase(c));
+                                     ProductPropertyRepository.InstantiateForDatabase(c),
+                                     WishListItemRepository.InstantiateForDatabase(c));
         }
         public CatalogService(RequestContext c,
                               CategoryRepository categories,
@@ -83,7 +86,8 @@ namespace MerchantTribe.Commerce.Catalog
                               ProductInventoryRepository inventory,
                               ProductTypeRepository types,
                               ProductTypePropertyAssociationRepository typesXProperties,
-                              ProductPropertyRepository properties)
+                              ProductPropertyRepository properties,
+                              WishListItemRepository wishItems)
         {
             context = c;
             Categories = categories;
@@ -102,6 +106,7 @@ namespace MerchantTribe.Commerce.Catalog
             this.ProductTypes = types;
             this.ProductTypesXProperties = typesXProperties;
             this.ProductProperties = properties;
+            this.WishListItems = wishItems;
         }
 
         //public bool DoesCategoryNameExist(string categoryName, string parentId)
@@ -132,10 +137,7 @@ namespace MerchantTribe.Commerce.Catalog
         //    return result;
         //}
 
-      
-
-        
-
+              
         public List<CategorySnapshot> FindCategoriesForProduct(string productBvin)
         {
             List<CategoryProductAssociation> crosses = CategoriesXProducts.FindForProduct(productBvin, 1, int.MaxValue);
@@ -197,7 +199,23 @@ namespace MerchantTribe.Commerce.Catalog
 
             return li;
         }
-
+        
+        public bool SaveProductToWishList(Orders.IPurchasable p, OptionSelectionList selections, int quantity, MerchantTribeApplication app)
+        {
+            WishListItem wi = new WishListItem();            
+            if (p != null)
+            {
+                Orders.PurchasableSnapshot snapshot = p.AsPurchasable(selections, app, true);
+                if (snapshot != null)
+                {                    
+                    wi.ProductId = snapshot.ProductId;
+                    wi.Quantity = quantity;
+                    wi.SelectionData = snapshot.SelectionData;
+                    wi.CustomerId = SessionManager.GetCurrentUserId(app.CurrentStore); 
+                }
+            }
+            return WishListItems.Create(wi);
+        }
         
 
         //Variants
@@ -210,11 +228,14 @@ namespace MerchantTribe.Commerce.Catalog
             // new variant option may have been added
             this.UpdateShortVariants(p);
 
-            // Clear and Rebuild Inventory Objects
-            ProductInventories.DeleteByProductId(p.Bvin);
-            InventoryGenerateForProduct(Products.Find(p.Bvin));
+            
 
-            this.VariantsReloadForProduct(p);
+            // Clear and Rebuild Inventory Objects            
+            Product reloadedProduct = Products.Find(p.Bvin);
+            InventoryGenerateForProduct(reloadedProduct);
+            CleanUpInventory(reloadedProduct);
+
+            p = Products.Find(p.Bvin);            
         }
         public void VariantsReloadForProduct(Product p)
         {
@@ -450,8 +471,8 @@ namespace MerchantTribe.Commerce.Catalog
             totalCount = this.ProductPropertyValues.FindCountProductIdsMatchingKey(key);            
             List<string> matches = this.ProductPropertyValues.FindProductIdsMatchingKey(key, pageNumber, pageSize);
             return Products.FindMany(matches);
-        }
-        
+        }                
+
         //Product Inventory
         public void UpdateProductVisibleStatusAndSave(string productBvin)
         {
@@ -641,11 +662,47 @@ namespace MerchantTribe.Commerce.Catalog
                 foreach (Variant v in localProduct.Variants)
                 {
                     InventoryGenerateSingleInventory(localProduct.Bvin, v.Bvin, 0, 0);
-                }
+                }                
             }
             else
             {
                 InventoryGenerateSingleInventory(localProduct.Bvin, string.Empty, 0, 0);
+            }            
+        }
+        public void CleanUpInventory(Product p)
+        {
+            if (p == null) return;
+            List<ProductInventory> allInventory = ProductInventories.FindByProductId(p.Bvin);
+            if (allInventory == null) return;
+            if (allInventory.Count < 1) return;
+
+            if (p.HasVariants())
+            {                
+                foreach (ProductInventory inv in allInventory)
+                {
+                    if (inv.VariantId.Trim() == string.Empty)
+                    {
+                        // Remove non-variant inventory levels
+                        ProductInventories.Delete(inv.Bvin);
+                    }
+
+                    if (p.Variants.Where(y => y.Bvin == inv.VariantId).Count() <= 0)
+                    {
+                        // Remove variant inventory levels that don't apply anymore
+                        ProductInventories.Delete(inv.Bvin);
+                    }
+                }
+            }
+            else
+            {
+                // Remove all variant inventory levels
+                foreach (ProductInventory inv in allInventory)
+                {
+                    if (inv.VariantId.Trim() != string.Empty)
+                    {
+                        ProductInventories.Delete(inv.Bvin);
+                    }
+                }
             }
         }
         private void InventoryGenerateSingleInventory(string bvin, string variantId, int onHand, int lowStockPoint)

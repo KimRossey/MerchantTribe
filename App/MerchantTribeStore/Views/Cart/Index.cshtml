@@ -8,7 +8,7 @@
     <div id="cartsubtitle">
         @if (Model.CartEmpty)
         {
-            <h3>Your shopping cart is empty! <a href="@Model.KeepShoppingUrl">Keep Shopping</a> &raquo;</h3>                 
+            <h3>Your shopping cart is empty! <a href="@Html.Raw(Model.KeepShoppingUrl)">Keep Shopping</a> &raquo;</h3>                 
         }
         else
         {
@@ -41,7 +41,7 @@
                                     <img src="@item.ImageUrl" alt="@item.Item.ProductName" />
                                 </a>
                             }
-                            else                                
+                            else
                             {
                                 <text>&nbsp;</text>
                             }
@@ -65,7 +65,7 @@
                     </td>
                     <td class="productquantitycolumn">
                         <div>
-                            <a href="">@string.Format("{0:#}", item.Item.Quantity)</a>
+                            <a href="@item.LinkUrl">@string.Format("{0:#}", item.Item.Quantity)</a>
                         </div>
                     </td>
                     <td class="producttotalcolumn">
@@ -107,7 +107,7 @@
                     <td class="formfield">@string.Format("{0:c}", Model.CurrentOrder.TotalOrderAfterDiscounts));</td>
                 </tr>
             }
-            else                
+            else
             {
                 <tr>
                     <td class="formlabel">Sub Total:</td>

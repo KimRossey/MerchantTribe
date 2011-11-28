@@ -2,12 +2,11 @@
     Layout = null;
 }
 @model MerchantTribeStore.Models.SingleProductViewModel
-
-@if (Model.IsLastItem) 
+@if (Model.IsLastItem == true) 
 {
     <text><div class="record lastrecord"></text>
 }
-else if (Model.IsFirstItem)
+else if (Model.IsFirstItem == true)
 {
   <text><div class="record firstrecord"></text>
 }

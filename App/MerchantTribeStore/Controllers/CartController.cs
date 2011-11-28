@@ -56,6 +56,10 @@ namespace MerchantTribeStore.Controllers
                     }
                 }
             }
+            if (result.StartsWith("~"))
+            {
+                result = Url.Content(result);
+            }
             return result;
         }
         private void SetPayPalVisibility(CartViewModel model)
@@ -105,6 +109,58 @@ namespace MerchantTribeStore.Controllers
             return View(model);
         }
 
+        // POST: /Cart/BulkAdd
+        [HttpPost]
+        public ActionResult BulkAdd(FormCollection form)
+        {
+            if (form["bulkitem"] != null)
+            {
+                string allIds = form["bulkitem"];
+                string[] ids = allIds.Split(',');
+                foreach (string single in ids)
+                {
+                    Product p = MTApp.CatalogServices.Products.Find(single);
+                    if (p != null)
+                    {
+                        AddSingleProduct(p, 1);
+                    }
+                }
+            }                
+            foreach (string key in form.AllKeys)
+            {                
+                if (key.StartsWith("bulkqty"))
+                {
+                    string id = key.Substring(7, key.Length-7);
+                    string qtyString = form[key];
+                    int qty = 1;
+                    int.TryParse(qtyString, out qty);
+                    if (qty >= 1)
+                    {
+                        Product p = MTApp.CatalogServices.Products.Find(id);
+                        if (p != null)
+                        {
+                            AddSingleProduct(p, qty);
+                        }
+                    }
+                }
+            }
+            return Redirect("~/cart");
+        }
+
+        private void AddSingleProduct(Product p, int quantity)
+        {
+            int qty = quantity;
+            if (qty < 1) qty = 1;            
+            if (p != null)
+            {             
+                Order o = SessionManager.CurrentShoppingCart(MTApp.OrderServices, MTApp.CurrentStore);
+                LineItem li = MTApp.CatalogServices.ConvertProductToLineItem(p, new OptionSelectionList(), qty, MTApp);
+                li.Quantity = qty;
+                MTApp.AddToOrderWithCalculateAndSave(o, li);
+                SessionManager.SaveOrderCookies(o, MTApp.CurrentStore);
+            }
+        }
+
         private void CheckForQuickAdd()
         {
             if (this.Request.QueryString["quickaddid"] != null)
@@ -122,10 +178,7 @@ namespace MerchantTribeStore.Controllers
                             quantity = val;
                         }
                     }
-                    Order o = SessionManager.CurrentShoppingCart(MTApp.OrderServices);
-                    LineItem li = MTApp.CatalogServices.ConvertProductToLineItem(prod, new OptionSelectionList(), quantity, MTApp);
-                    MTApp.AddToOrderWithCalculateAndSave(o, li);
-                    SessionManager.SaveOrderCookies(o);
+                    AddSingleProduct(prod, quantity);                    
                 }
             }
             else if (this.Request.QueryString["quickaddsku"] != null)
@@ -143,17 +196,13 @@ namespace MerchantTribeStore.Controllers
                             quantity = val;
                         }
                     }
-                    Order o = SessionManager.CurrentShoppingCart(MTApp.OrderServices);
-                    LineItem li = MTApp.CatalogServices.ConvertProductToLineItem(prod, new OptionSelectionList(), quantity, MTApp);
-                    li.Quantity = quantity;
-                    MTApp.AddToOrderWithCalculateAndSave(o, li);
-                    SessionManager.SaveOrderCookies(o);
+                    AddSingleProduct(prod, quantity);                    
                 }
             }
             else if (this.Request.QueryString["multi"] != null)
             {
                 string[] skus = Request.QueryString["multi"].Split(';');
-                Order Basket = SessionManager.CurrentShoppingCart(MTApp.OrderServices);
+                Order Basket = SessionManager.CurrentShoppingCart(MTApp.OrderServices, MTApp.CurrentStore);
                 bool addedParts = false;
 
                 foreach (string s in skus)
@@ -175,9 +224,7 @@ namespace MerchantTribeStore.Controllers
                             {
                                 qty = 1;
                             }
-                            LineItem li = MTApp.CatalogServices.ConvertProductToLineItem(p, new OptionSelectionList(), qty, MTApp);
-                            li.Quantity = qty;
-                            Basket.Items.Add(li);
+                            AddSingleProduct(p, qty);                            
                             addedParts = true;
                         }
                     }
@@ -185,13 +232,13 @@ namespace MerchantTribeStore.Controllers
                 if (addedParts)
                 {
                     MTApp.CalculateOrderAndSave(Basket);
-                    SessionManager.SaveOrderCookies(Basket);
+                    SessionManager.SaveOrderCookies(Basket, MTApp.CurrentStore);
                 }
             }
         }
         private void LoadCart(CartViewModel model)
         {
-            Order Basket = SessionManager.CurrentShoppingCart(MTApp.OrderServices);
+            Order Basket = SessionManager.CurrentShoppingCart(MTApp.OrderServices, MTApp.CurrentStore);
             if (Basket == null) return;
             model.CurrentOrder = Basket;
 
@@ -252,7 +299,7 @@ namespace MerchantTribeStore.Controllers
             }
 
             OrderTaskContext c = new OrderTaskContext(MTApp);
-            c.UserId = SessionManager.GetCurrentUserId();
+            c.UserId = SessionManager.GetCurrentUserId(MTApp.CurrentStore);
             c.Order = model.CurrentOrder;
             if (Workflow.RunByName(c, WorkflowNames.CheckoutSelected))
             {
@@ -283,7 +330,7 @@ namespace MerchantTribeStore.Controllers
             // Save as Order
             MerchantTribe.Commerce.BusinessRules.OrderTaskContext c
                 = new MerchantTribe.Commerce.BusinessRules.OrderTaskContext(MTApp);
-            c.UserId = SessionManager.GetCurrentUserId();
+            c.UserId = SessionManager.GetCurrentUserId(MTApp.CurrentStore);
             c.Order = Basket;
             bool checkoutFailed = false;
             if (!MerchantTribe.Commerce.BusinessRules.Workflow.RunByName(c, MerchantTribe.Commerce.BusinessRules.WorkflowNames.CheckoutSelected))
@@ -340,7 +387,7 @@ namespace MerchantTribeStore.Controllers
 
             string orderBvin = Request["orderbvin"] ?? string.Empty;
 
-            Order Basket = SessionManager.CurrentShoppingCart(MTApp.OrderServices);
+            Order Basket = SessionManager.CurrentShoppingCart(MTApp.OrderServices, MTApp.CurrentStore);
             if (Basket != null)
             {
                 if (Basket.bvin == orderBvin)
@@ -350,7 +397,7 @@ namespace MerchantTribeStore.Controllers
                     {
                         Basket.Items.Remove(li);
                         MTApp.CalculateOrderAndSave(Basket);
-                        SessionManager.SaveOrderCookies(Basket);
+                        SessionManager.SaveOrderCookies(Basket, MTApp.CurrentStore);
                     }
                 }
             }
@@ -360,11 +407,11 @@ namespace MerchantTribeStore.Controllers
         [HttpPost]
         public ActionResult AddCoupon()
         {
-            Order Basket = SessionManager.CurrentShoppingCart(MTApp.OrderServices);
+            Order Basket = SessionManager.CurrentShoppingCart(MTApp.OrderServices, MTApp.CurrentStore);
             string code = Request["couponcode"] ?? string.Empty;
             Basket.AddCouponCode(code.Trim());
             MTApp.CalculateOrderAndSave(Basket);
-            SessionManager.SaveOrderCookies(Basket);
+            SessionManager.SaveOrderCookies(Basket, MTApp.CurrentStore);
             return Redirect("~/cart");
         }
 
@@ -375,10 +422,10 @@ namespace MerchantTribeStore.Controllers
             long tempid = 0;
             long.TryParse(couponid, out tempid);
 
-            Order Basket = SessionManager.CurrentShoppingCart(MTApp.OrderServices);
+            Order Basket = SessionManager.CurrentShoppingCart(MTApp.OrderServices, MTApp.CurrentStore);
             Basket.RemoveCouponCode(tempid);
             MTApp.CalculateOrderAndSave(Basket);
-            SessionManager.SaveOrderCookies(Basket);
+            SessionManager.SaveOrderCookies(Basket, MTApp.CurrentStore);
 
             return Redirect("~/cart");
         }

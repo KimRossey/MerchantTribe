@@ -22,9 +22,9 @@ namespace MerchantTribeStore.Controllers
             ViewBag.GetRatesButton = this.MTApp.ThemeManager().ButtonUrl("GetRates", Request.IsSecureConnection);
             ViewBag.Countries = MTApp.CurrentStore.Settings.FindActiveCountries();
 
-            if (SessionManager.CurrentUserHasCart())
+            if (SessionManager.CurrentUserHasCart(MTApp.CurrentStore))
             {
-                Order basket = SessionManager.CurrentShoppingCart(MTApp.OrderServices);
+                Order basket = SessionManager.CurrentShoppingCart(MTApp.OrderServices, MTApp.CurrentStore);
                 if (basket.ShippingAddress.CountryBvin != string.Empty)
                 {
                     model.CountryId = basket.ShippingAddress.CountryBvin;                    
@@ -105,9 +105,9 @@ namespace MerchantTribeStore.Controllers
 
         private void GetRates(EstimateShippingViewModel model)
         {
-            if (SessionManager.CurrentUserHasCart() == true)
+            if (SessionManager.CurrentUserHasCart(MTApp.CurrentStore) == true)
             {
-                Order Basket = SessionManager.CurrentShoppingCart(MTApp.OrderServices);
+                Order Basket = SessionManager.CurrentShoppingCart(MTApp.OrderServices, MTApp.CurrentStore);
                 if (Basket != null)
                 {
                     Basket.ShippingAddress.PostalCode = model.PostalCode;
@@ -214,7 +214,7 @@ namespace MerchantTribeStore.Controllers
             result.rates = HtmlRendering.ShippingRatesToRadioButtons(rates, 300, o.ShippingMethodUniqueKey);
 
             MTApp.CalculateOrderAndSave(o);
-            SessionManager.SaveOrderCookies(o);
+            SessionManager.SaveOrderCookies(o, MTApp.CurrentStore);
 
             result.totalsastable = o.TotalsAsTable();
 

@@ -9,19 +9,16 @@ namespace MerchantTribe.Commerce
     {
         
         public Accounts.Store CurrentStore { get; set; }
-        public Accounts.UserAccount CurrentAdministrator 
+        public Accounts.UserAccount CurrentAdministrator(MerchantTribeApplication app) 
         {
-            get
-            {                
-                if (!IsAdmin()) return null;
+                if (!IsAdmin(app)) return null;
                 Accounts.AccountService accountServices = Accounts.AccountService.InstantiateForDatabase(this);
                 Accounts.UserAccount admin = accountServices.FindAdminUserByAuthTokenId(_adminAuthTokenId.Value);
                 
                 if (admin == null) return null;
                 if (admin.Id < 1) return null;
 
-                return admin;
-            }                
+                return admin;        
         }
        
         public string ConnectionString { get; set; }
@@ -34,7 +31,7 @@ namespace MerchantTribe.Commerce
         private bool? _adminResult;
         private Guid? _adminAuthTokenId;
 
-        public bool IsAdmin()
+        public bool IsAdmin(MerchantTribeApplication app)
         {
             // don't check more than once per request
             if (_adminResult.HasValue) return _adminResult.Value;
@@ -47,7 +44,7 @@ namespace MerchantTribe.Commerce
                 if (System.Web.HttpContext.Current.Request.RequestContext.HttpContext == null) return false;
 
                                   
-                    Guid? tokenId = MerchantTribe.Web.Cookies.GetCookieGuid(WebAppSettings.CookieNameAuthenticationTokenAdmin(),
+                    Guid? tokenId = MerchantTribe.Web.Cookies.GetCookieGuid(WebAppSettings.CookieNameAuthenticationTokenAdmin(app.CurrentStore.Id),
                    System.Web.HttpContext.Current.Request.RequestContext.HttpContext, new EventLog());
 
                     // no token, return
@@ -72,28 +69,6 @@ namespace MerchantTribe.Commerce
             return false;                                      
         }
 
-        public bool IsEditMode {
-            get { bool result = false;
-                  if (SessionManager.GetCookieString("IsEditMode") == "1")
-                    {
-                        if (IsAdmin())
-                        {
-                            result = true;
-                        }                       
-                    }
-                  return result;
-            }
-            set {
-                if (value == true)
-                {
-                    SessionManager.SetCookieString("IsEditMode", "1");
-                }
-                else
-                {
-                    SessionManager.SetCookieString("IsEditMode", "0");
-                }
-            }
-        }
 
         public RequestContext()
         {
@@ -105,7 +80,6 @@ namespace MerchantTribe.Commerce
         }
 
         
-
         public static RequestContext GetCurrentRequestContext()
         {
             RequestContext alternateContext = new RequestContext();

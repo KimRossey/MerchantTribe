@@ -20,6 +20,9 @@ namespace MerchantTribe.Commerce.Accounts
             Analytics = new StoreSettingsAnalytics(this);            
             MailServer = new StoreSettingsMailServer(this);
             PayPal = new StoreSettingsPayPal(this);
+            FaceBook = new StoreSettingsFaceBook(this);
+            Twitter = new StoreSettingsTwitter(this);
+            GooglePlus = new StoreSettingsGooglePlus(this);
         }
 
         #region Setter Helpers
@@ -112,6 +115,16 @@ namespace MerchantTribe.Commerce.Accounts
             StoreSetting s = GetSetting(name);
             return s.ValueAsBool;
         }
+        internal bool GetPropBoolWithDefault(string name, bool defaultValue)
+        {
+            StoreSetting s = GetSetting(name);
+            if (s.SettingValue == string.Empty)
+            {
+                SetProp(name, defaultValue);
+                return defaultValue;
+            }
+            return s.ValueAsBool;
+        }
         internal int GetPropInt(string name)
         {
             StoreSetting s = GetSetting(name);
@@ -148,7 +161,17 @@ namespace MerchantTribe.Commerce.Accounts
         public StoreSettingsAnalytics Analytics { get; private set; }        
         public StoreSettingsMailServer MailServer { get; private set; }
         public StoreSettingsPayPal PayPal { get; private set; }
+        public StoreSettingsFaceBook FaceBook { get; private set; }
+        public StoreSettingsTwitter Twitter { get; private set; }
+        public StoreSettingsGooglePlus GooglePlus { get; private set; }
 
+        public string UniqueId
+        {
+            get { string result = GetProp("UniqueId");
+                return result;
+                }
+            set { SetProp("UniqueId", value); }
+        }
 
         public bool IsPrivateStore
         {
@@ -336,6 +359,21 @@ namespace MerchantTribe.Commerce.Accounts
         {
             get { return GetProp("MetaKeywords"); }
             set { SetProp("MetaKeywords", value); }
+        }
+
+
+        public bool HomePageIsFlex
+        {
+            get { return GetPropBool("HomePageIsFlex"); }
+            set { SetProp("HomePageIsFlex", value); }
+        }       
+        public string HomePageIsFlexBvin
+        {
+            get
+            {
+                return GetProp("HomePageIsFlexBvin");
+            }
+            set { SetProp("HomePageIsFlexBvin", value); }
         }
 
         // Rewards Points

@@ -29,7 +29,9 @@ function IsEmailKnown() {
             function (data) {
                 if (data.success == "1") {
                     $('#loginform').show();
-                    $('.logincontrolemailfield').val(emailfield);
+                    $('#loginformtable').show();
+                    $('#loginmessage').html('It looks like you have an account already. Please login:');
+                    $('#loginbutton').show();
                 }
                 else {
                     $('#loginform').hide();
@@ -37,6 +39,36 @@ function IsEmailKnown() {
             },
             "json");
 }
+
+function LoginAjax() {
+    $('#login-changing').show();
+    $('#loginmessage').hide();
+    $('#loginformtable').hide();
+    var emailfield = $('#customeremail').val();
+    var passwordfield = $('#customerpassword').val();
+    $.post('~/account/AjaxSignIn',
+            { "email": emailfield,
+                "password": passwordfield
+            },
+            function (data) {
+                $('#login-changing').hide();
+                if (data.Success == "True" || data.Success == true) {
+                    $('#loginmessage').html('You are logged in. Thank You!').show();
+                }
+                else {
+                    $('#loginmessage').html('Login failed. Please try again.').show();
+                    $('#loginformtable').show();
+                }
+            },
+            "json")
+            .error(function () {
+                $('#login-changing').hide();
+                $('#loginmessage').html('Ajax error. contact administrator').show();
+            })
+            .complete(function () {$('#login-changing').hide(); });
+
+}
+
 function IsEmpty(input) { if (input.length > 0) { return false; } return true; }
 
 function IsShippingValid() {
@@ -79,7 +111,7 @@ function RefreshShipping() {
                                 $('#totalsastable').html(data.totalsastable);
                                 BindShippingRadioButtons();
                             },
-                            error: function (data) {                                
+                            error: function (data) {
                                 $('.shipping-changing').hide();
                                 $('#shipping-not-valid').show();
                                 ClearTotals();
@@ -91,11 +123,11 @@ function ShippingAddressChanged() {
 
     $('#lstShipping').html('');
     ClearTotals();
-    
+
     if (IsShippingValid()) {
         RefreshShipping();
         $('#shipping-not-valid').hide();
-        }
+    }
     else {
         $('#shipping-not-valid').show();
     }
@@ -130,7 +162,7 @@ function ApplyCurrentShippingRate() {
     ApplyShippingMethod(rateKey);
 }
 
-function BindStateDropDownLists() {    
+function BindStateDropDownLists() {
     $('#shippingstate').change(
     function () { ShippingAddressChanged(); }
     );
@@ -142,8 +174,8 @@ function BindShippingRadioButtons() {
     );
 }
 
-      function LoadRegionsWithSelection(regionlist, countryid, selectedregion) {
-            $.post('~/estimateshipping/getregions/' + countryid,
+function LoadRegionsWithSelection(regionlist, countryid, selectedregion) {
+    $.post('~/estimateshipping/getregions/' + countryid,
           { "regionid": selectedregion },
           function (data) {
               regionlist.html(data.Regions);
@@ -153,14 +185,14 @@ function BindShippingRadioButtons() {
           },
          "json"
          );
-      } 
-      
+}
+
 
 
 function CloseDialog() {
     $('.overlay').remove();
     $('.modal').hide();
-    }
+}
 
 function OpenDialog(lnk) {
     $('<div />').addClass('overlay').appendTo('body').show();
@@ -168,56 +200,55 @@ function OpenDialog(lnk) {
     var loadid = $(lnk).attr('href');
     //LoadDialog(loadid.replace('edit', ''));
     $('#popoverpage').attr('src', loadid);
-    }
-
-    
+}
 
 // Document Ready Function
-    $(document).ready(function () {
+$(document).ready(function () {
 
-        BindStateDropDownLists();
+    BindStateDropDownLists();
 
-        $('#chkbillsame').click(function () { CheckChanged(); return true; });
-        $('#cccardnumber').change(function () { CleanCC(); });
-        $('#billingcountryname').change(function () {
-            LoadRegionsWithSelection($('#billingstate'), $('#billingcountryname option:selected').val(), $('#tempbillingregion').val());
-        });
-        $('#shippingcountryname').change(function () {
-            LoadRegionsWithSelection($('#shippingstate'), $('#shippingcountryname option:selected').val(), $('#tempshippingregion').val());
-            ShippingAddressChanged();
-        });
-        // Trigger First Change
-        LoadRegionsWithSelection($('#shippingstate'), $('#shippingcountryname option:selected').val(), $('#tempshippingregion').val());
+    $('#chkbillsame').click(function () { CheckChanged(); return true; });
+    $('#cccardnumber').change(function () { CleanCC(); });
+    $('#billingcountryname').change(function () {
         LoadRegionsWithSelection($('#billingstate'), $('#billingcountryname option:selected').val(), $('#tempbillingregion').val());
-
-        $('#shippingregionname').change(function () { ShippingAddressChanged(); });
-        $('#shippingfirstname').change(function () { ShippingAddressChanged(); });
-        $('#shippinglastname').change(function () { ShippingAddressChanged(); });
-        $('#shippingaddress').change(function () { ShippingAddressChanged(); });
-        $('#shippingcity').change(function () { ShippingAddressChanged(); });
-        $('#shippingzip').change(function () { ShippingAddressChanged(); });
-        //BindShippingRadioButtons();    
-        CheckChanged();
-
+    });
+    $('#shippingcountryname').change(function () {
+        LoadRegionsWithSelection($('#shippingstate'), $('#shippingcountryname option:selected').val(), $('#tempshippingregion').val());
         ShippingAddressChanged();
+    });
+    // Trigger First Change
+    LoadRegionsWithSelection($('#shippingstate'), $('#shippingcountryname option:selected').val(), $('#tempshippingregion').val());
+    LoadRegionsWithSelection($('#billingstate'), $('#billingcountryname option:selected').val(), $('#tempbillingregion').val());
 
-        // Email Field
-        $('#customeremail').change(function () { IsEmailKnown(); });
-        IsEmailKnown();
+    $('#shippingregionname').change(function () { ShippingAddressChanged(); });
+    $('#shippingfirstname').change(function () { ShippingAddressChanged(); });
+    $('#shippinglastname').change(function () { ShippingAddressChanged(); });
+    $('#shippingaddress').change(function () { ShippingAddressChanged(); });
+    $('#shippingcity').change(function () { ShippingAddressChanged(); });
+    $('#shippingzip').change(function () { ShippingAddressChanged(); });
+    //BindShippingRadioButtons();    
+    CheckChanged();
 
-        // Popup Close
-        $("#dialogclose").click(function () {
-            CloseDialog();
-            return false;
-        });
+    ShippingAddressChanged();
 
-        // Popup Open
-        $(".popover").click(function () {
-            OpenDialog($(this));
-            return false;
-        });
+    // Email Field
+    $('#customeremail').change(function () { IsEmailKnown(); });
+    $('#loginbutton').click(function () { LoginAjax(); return false; });
+    IsEmailKnown();
 
+    // Popup Close
+    $("#dialogclose").click(function () {
         CloseDialog();
-    });           // End Document Ready
+        return false;
+    });
+
+    // Popup Open
+    $(".popover").click(function () {
+        OpenDialog($(this));
+        return false;
+    });
+
+    CloseDialog();
+});             // End Document Ready
         
 

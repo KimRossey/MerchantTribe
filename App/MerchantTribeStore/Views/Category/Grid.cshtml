@@ -21,24 +21,6 @@
             @Html.Raw(ViewBag.DisplayHtml)
         </div>
     }
-    @if (Model.SubCategories.Count > 0)
-    {
-        <div id="categorygridsubtemplate">
-        @foreach (var subcat in Model.SubCategories)
-        {
-            <div class="record">
-                <div class="recordimage">
-                    <a id="recordimageanchor" runat="server" href="@subcat.LinkUrl">
-                        <img id="recordimageimg" runat="server" src="@subcat.IconUrl" border="0" alt="@subcat.AltText" />
-                    </a>
-                </div>
-                <div class="recordname">
-                    <a id="recordnameanchor" runat="server" href="@subcat.LinkUrl">@subcat.Name</a>
-                </div>
-            </div>
-        }
-        </div>
-    }    
     <div id="categorygridtemplate">            
         <div id="categorygridtemplaterecords">
             @Html.Partial("~/Views/Shared/_Pager.cshtml", Model.PagerData)

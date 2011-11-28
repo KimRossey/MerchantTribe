@@ -80,7 +80,7 @@ namespace MerchantTribeStore.Controllers.Shared
         {
             bool validLogin = false;
 
-            Guid? tokenId = MerchantTribe.Web.Cookies.GetCookieGuid(WebAppSettings.CookieNameAuthenticationTokenAdmin(),
+            Guid? tokenId = MerchantTribe.Web.Cookies.GetCookieGuid(WebAppSettings.CookieNameAuthenticationTokenAdmin(MTApp.CurrentStore.Id),
                     this.HttpContext,
                     new EventLog());
 
@@ -94,7 +94,7 @@ namespace MerchantTribeStore.Controllers.Shared
 
             if (validLogin == false)
             {
-                Response.Redirect("~/account/login");
+                Response.Redirect("~/adminaccount/login");
             }
 
             _AuthTokenGuid = tokenId;

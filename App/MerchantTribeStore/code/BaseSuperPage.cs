@@ -83,7 +83,7 @@ namespace MerchantTribeStore
         {
             bool validLogin = false;
 
-            Guid? tokenId = Cookies.GetCookieGuid(WebAppSettings.CookieNameAuthenticationTokenAdmin(),
+            Guid? tokenId = Cookies.GetCookieGuid(WebAppSettings.CookieNameAuthenticationTokenAdmin(MTApp.CurrentStore.Id),
                     this.Page.Request.RequestContext.HttpContext,
                     new EventLog());
 
@@ -97,7 +97,7 @@ namespace MerchantTribeStore
 
             if (validLogin == false)
             {
-                Response.Redirect("~/account/login");
+                Response.Redirect("~/adminaccount/login");
             }
 
             _AuthTokenGuid = tokenId;

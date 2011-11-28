@@ -132,6 +132,19 @@ namespace MerchantTribe.Commerce.Membership
 
             return result;
         }
+        public bool ResetPasswordForCustomer(string email, string newPassword)
+        {
+            bool result = false;
+            CustomerAccount u = Customers.FindByEmail(email);
+            if (u != null)
+            {
+                u.Password = u.EncryptPassword(newPassword);
+                Membership.CreateUserStatus s = CreateUserStatus.None;
+                result = UpdateCustomer(u, ref s);
+            }
+            return result;
+        }
+
         public bool DoPasswordsMatchForCustomer(string trialpassword, Membership.CustomerAccount u)
         {
             return u.Password.Equals(u.EncryptPassword(trialpassword), StringComparison.InvariantCulture);
@@ -193,7 +206,7 @@ namespace MerchantTribe.Commerce.Membership
 
             return result;
         }
-        public bool LoginCustomer(string email, string password, ref string errorMessage, System.Web.HttpContextBase context, ref string userId)
+        public bool LoginCustomer(string email, string password, ref string errorMessage, System.Web.HttpContextBase context, ref string userId, MerchantTribeApplication app)
         {
             bool result = false;
 
@@ -215,7 +228,7 @@ namespace MerchantTribe.Commerce.Membership
 
                 userId = u.Bvin;
 
-                Cookies.SetCookieString(WebAppSettings.CookieNameAuthenticationTokenCustomer(),
+                Cookies.SetCookieString(WebAppSettings.CookieNameAuthenticationTokenCustomer(app.CurrentStore.Id),
                                                 u.Bvin,
                                                 context, false, new EventLog());
                 result = true;
@@ -230,10 +243,10 @@ namespace MerchantTribe.Commerce.Membership
 
             return result;
         }
-        public bool LogoutCustomer(System.Web.HttpContextBase context)
+        public bool LogoutCustomer(System.Web.HttpContextBase context, MerchantTribeApplication app)
         {
             bool result = true;
-            Cookies.SetCookieString(WebAppSettings.CookieNameAuthenticationTokenCustomer(),
+            Cookies.SetCookieString(WebAppSettings.CookieNameAuthenticationTokenCustomer(app.CurrentStore.Id),
                                                     "",
                                                     context, false, new EventLog());
             return result;

@@ -21,11 +21,11 @@ namespace MerchantTribe.Commerce
 
         }
 
-        public static void RecordProductViews(string bvin)
+        public static void RecordProductViews(string bvin, MerchantTribeApplication app)
         {
             if (WebAppSettings.LastProductsViewedCookieName != string.Empty)
             {
-                string SavedProductIDs = SessionManager.GetCookieString(WebAppSettings.LastProductsViewedCookieName);
+                string SavedProductIDs = SessionManager.GetCookieString(WebAppSettings.LastProductsViewedCookieName, app.CurrentStore);
                 if (SavedProductIDs != string.Empty)
                 {
                     string[] AllIDs = SavedProductIDs.Split(',');
@@ -41,18 +41,18 @@ namespace MerchantTribe.Commerce
                             }
                         }
                     }
-                    SessionManager.SetCookieString(WebAppSettings.LastProductsViewedCookieName, string.Join(",", q.ToArray()));
+                    SessionManager.SetCookieString(WebAppSettings.LastProductsViewedCookieName, string.Join(",", q.ToArray()), app.CurrentStore);
                 }
                 else
                 {
-                    SessionManager.SetCookieString(WebAppSettings.LastProductsViewedCookieName, bvin);
+                    SessionManager.SetCookieString(WebAppSettings.LastProductsViewedCookieName, bvin, app.CurrentStore);
                 }
             }
         }
 
         public static List<Catalog.Product> GetProductsViewed(MerchantTribeApplication app)
         {
-            string SavedProductIDs = SessionManager.GetCookieString(WebAppSettings.LastProductsViewedCookieName);
+            string SavedProductIDs = SessionManager.GetCookieString(WebAppSettings.LastProductsViewedCookieName, app.CurrentStore);
             List<Catalog.Product> result = new List<Catalog.Product>();
             if (SavedProductIDs != string.Empty)
             {

@@ -113,7 +113,7 @@ namespace MerchantTribe.Commerce.Utilities
             //Find Categories to Display in Menu
             Catalog.CategoryRepository repo = Catalog.CategoryRepository.InstantiateForDatabase(requestContext);
             List<Catalog.CategorySnapshot> categories = repo.FindForMainMenu();
-
+            
             // Limit number of links
             int stopCount = categories.Count -1;
             if ((maxLinks > 0) && ((maxLinks - 1) < stopCount))
@@ -317,7 +317,7 @@ namespace MerchantTribe.Commerce.Utilities
             
             sb.Append("<form class=\"searchform\" action=\"" + rootUrl + "search\" method=\"get\">");
 
-            sb.Append("<input type=\"textbox\" name=\"q\" class=\"searchinput\" /> <input class=\"searchgo\" type=\"image\" src=\"" + buttonUrl + "\" alt=\"Search\" />");
+            sb.Append("<input type=\"text\" name=\"q\" class=\"searchinput\" /> <input class=\"searchgo\" type=\"image\" src=\"" + buttonUrl + "\" alt=\"Search\" />");
 
             sb.Append("</form>");            
 

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Catalog;
 
 namespace MerchantTribeStore.Controllers
 {
@@ -33,9 +34,7 @@ namespace MerchantTribeStore.Controllers
             SessionManager.CategoryLastId = string.Empty;
             ViewBag.Title = MTApp.CurrentStore.Settings.FriendlyName;
             ViewBag.BodyClass = "store-home-page";
-
             return View();
         }
-
     }
 }
