@@ -56,6 +56,10 @@
     <dependency>
       <productId>IISManagementConsole</productId>
     </dependency>
+    <keywords>
+	<keywordId>ASPNET4</keywordId>
+        <keywordId>SQL</keywordId>
+    </keywords>
 
     <!-- 
          installers and installer commands. Here you can define separate installers for
