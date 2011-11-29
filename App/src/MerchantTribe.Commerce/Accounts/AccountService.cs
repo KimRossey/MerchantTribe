@@ -507,7 +507,8 @@ namespace MerchantTribe.Commerce.Accounts
                 // Save data to store 
                 Stores.Update(s);
 
-                System.Web.HttpContext.Current.Response.Redirect("~/adminaccount/login?wizard=1");
+                // No longer need to redirect because home controller handles this
+                //System.Web.HttpContext.Current.Response.Redirect("~/adminaccount/login?wizard=1");
 
                 // Force this store into the request context so
                 // non-repository datalayer will read in the correct
