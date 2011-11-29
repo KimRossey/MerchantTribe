@@ -3,6 +3,7 @@
   <dbfullsql path="CreateTables.sql" />
   <dbfullsql path="CreateProcedures.sql" />
   <dbfullsql path="PopulateData.sql" />
+  <dbfullsql path="UserAccount.sql" />
   <setAcl
           path="MerchantTribeStore/images" 
           setAclAccess="Modify" 

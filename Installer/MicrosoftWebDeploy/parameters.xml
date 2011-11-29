@@ -55,10 +55,13 @@
   <parameter name="dbServer" defaultValue="localhost" tags="SQL, dbServer">
   </parameter>
   <parameter name="dbName" defaultValue="MerchantTribe" tags="SQL, dbName">
+    <parameterEntry type="TextFile" match="PlaceHolderForDb" scope="UserAccount.sql" />
   </parameter>
   <parameter name="dbUsername" defaultValue="merchanttribe" tags="SQL, dbUsername">
+   <parameterEntry type="TextFile" match="PlaceHolderForUser" scope="UserAccount.sql" />
   </parameter>
   <parameter name="dbUserPassword" defaultValue="merchanttribe" tags="SQL, dbUserPassword, Password">
+   <parameterEntry type="TextFile" match="PlaceHolderForPassword" scope="UserAccount.sql" />
   </parameter>
   <parameter 
     name="ConnectionString For Config" 
@@ -75,7 +78,11 @@
     <parameterEntry   
        type = "ProviderPath"   
        scope = "dbfullsql"   
-       match = "PopulateData.sql"  />    
+       match = "PopulateData.sql"  />
+     <parameterEntry
+       type = "ProviderPath"
+       scope = "dbfullsql"
+       match = "UserAccount.sql" />    
   </parameter>
   <parameter
      name="ConnectionString for Store"

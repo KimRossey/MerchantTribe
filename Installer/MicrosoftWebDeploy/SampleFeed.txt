@@ -54,7 +54,14 @@
          added feeds 
     -->
     <dependency>
-      <productId>IISManagementConsole</productId>
+        <and>
+          <dependency>
+              <productId>ASPNET</productId>
+          </dependency>
+          <dependency>
+		<productId>MVC3</productId>
+          </dependency>                  
+        </and>
     </dependency>
     <keywords>
 	<keywordId>ASPNET4</keywordId>

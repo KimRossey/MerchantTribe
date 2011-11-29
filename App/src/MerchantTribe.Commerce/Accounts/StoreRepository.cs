@@ -89,12 +89,12 @@ namespace MerchantTribe.Commerce.Accounts
         public Store FindById(long id)
         {
             IQueryable<Data.EF.ecommrc_Stores> s = repository.Find().Where(y => y.Id == id);
-            return SinglePoco(s);
+            return FirstPoco(s);
         }
         public Store FindByStoreName(string storeName)
         {
             IQueryable<Data.EF.ecommrc_Stores> s = repository.Find().Where(y => y.StoreName == storeName);
-            return SinglePoco(s);
+            return FirstPoco(s);
         }
         public long FindStoreIdByCustomUrl(string hostName)
         {

@@ -374,6 +374,7 @@ namespace BuildMaker.Core
             FileTools.SingleFileCopy("App\\MerchantTribeStore\\BVAdmin\\SqlScripts\\Full\\CreateTables.sql", destinationFolder + "\\CreateTables.sql", _Writer);
             FileTools.SingleFileCopy("App\\MerchantTribeStore\\BVAdmin\\SqlScripts\\Full\\CreateProcedures.sql", destinationFolder + "\\CreateProcedures.sql", _Writer);
             FileTools.SingleFileCopy("App\\MerchantTribeStore\\BVAdmin\\SqlScripts\\Full\\PopulateData.sql", destinationFolder + "\\PopulateData.sql", _Writer);
+            FileTools.SingleFileCopy("App\\MerchantTribeStore\\BVAdmin\\SqlScripts\\Full\\UserAccount.sql", destinationFolder + "\\UserAccount.sql", _Writer);
             
             // Create placeholder for "Sites"
             _Writer.WriteLine("Creating placeholder for sites at " + destinationFolder + "\\MerchantTribeStore\\images\\sites\\placeholder.txt");
@@ -608,6 +609,7 @@ namespace BuildMaker.Core
                 mainZip.AddFile(workingFolder + "\\Full\\src\\CreateTables.sql", "");                
                 mainZip.AddFile(workingFolder + "\\Full\\src\\CreateProcedures.sql", "");
                 mainZip.AddFile(workingFolder + "\\Full\\src\\PopulateData.sql", "");
+                mainZip.AddFile(workingFolder + "\\Full\\src\\UserAccount.sql", "");
                 mainZip.Comment = "This zip was created at " + System.DateTime.Now.ToString("G");
                 mainZip.Save(workingFolder + "\\" + outputName);
             }

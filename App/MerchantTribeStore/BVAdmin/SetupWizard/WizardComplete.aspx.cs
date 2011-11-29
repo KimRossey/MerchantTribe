@@ -17,6 +17,10 @@ namespace MerchantTribeStore
         {
             base.OnLoad(e);
             {
+                // Mark Wizard as Complete
+                MTApp.CurrentStore.Settings.WizardComplete = true;
+                MTApp.AccountServices.Stores.Update(MTApp.CurrentStore);
+
                 TweetUrl = BuildTweetUrl();
             }
         }

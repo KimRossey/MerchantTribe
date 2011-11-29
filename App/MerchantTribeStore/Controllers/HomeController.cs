@@ -31,6 +31,15 @@ namespace MerchantTribeStore.Controllers
                 }
             }
 
+            if (WebAppSettings.IsCommercialVersion || WebAppSettings.IsIndividualMode)
+            {
+                // Wizard Check
+                if (MTApp.CurrentStore.Settings.WizardComplete == false)
+                {
+                    Response.Redirect(this.MTApp.StoreUrl(false, false) + "adminaccount/login?wizard=1");
+                }
+            }
+
             SessionManager.CategoryLastId = string.Empty;
             ViewBag.Title = MTApp.CurrentStore.Settings.FriendlyName;
             ViewBag.BodyClass = "store-home-page";

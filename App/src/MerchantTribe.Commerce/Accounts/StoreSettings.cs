@@ -245,6 +245,15 @@ namespace MerchantTribe.Commerce.Accounts
             set { SetProp("UseSSL", value); }
         }
 
+        public bool WizardComplete
+        {
+            get
+            {
+                return GetPropBool("WizardComplete");
+            }
+            set { SetProp("WizardComplete", value); }
+        }
+
         // Time and Culture
         public TimeZoneInfo TimeZone
         {

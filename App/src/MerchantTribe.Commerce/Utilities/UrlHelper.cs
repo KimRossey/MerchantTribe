@@ -142,16 +142,6 @@ namespace MerchantTribe.Commerce.Utilities
                 return app.AccountServices.FindOrCreateIndividualStore();
             }
 
-            // Debug Helper
-            if (url.ToString().StartsWith("http://localhost:8888"))
-            {
-                url = new System.Uri(url.ToString().Replace("http://localhost:8888", "http://www.samplelocalhost6.com"));
-            }
-            if (url.ToString().StartsWith("https://localhost:8888"))
-            {
-                url = new System.Uri(url.ToString().Replace("https://localhost:8888", "https://www.samplelocalhost6.com"));
-            }
-
             // Multi Mode
             Accounts.Store result = null;
 
