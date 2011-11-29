@@ -33,7 +33,7 @@ namespace MerchantTribeStore
             MTApp.CurrentRequestContext.RoutingContext = requestContext;
 
             // Determine store id        
-            MTApp.CurrentStore = MerchantTribe.Commerce.Utilities.UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, MTApp.AccountServices);
+            MTApp.CurrentStore = MerchantTribe.Commerce.Utilities.UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, MTApp);
             
             // Home page check
             if (fullSlug == string.Empty)

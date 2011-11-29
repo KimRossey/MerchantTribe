@@ -52,9 +52,10 @@ namespace MerchantTribeStore
         {
             base.OnPreInit(e);
             MTApp = MerchantTribeApplication.InstantiateForDataBase(new RequestContext());
+            MTApp.CurrentRequestContext.RoutingContext = this.Request.RequestContext;
 
             // Determine store id        
-            MTApp.CurrentStore = UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, MTApp.AccountServices);
+            MTApp.CurrentStore = UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, MTApp);
             if (MTApp.CurrentStore == null)
             {
                 Response.Redirect("~/storenotfound");
@@ -69,7 +70,7 @@ namespace MerchantTribeStore
 
             if (!Request.IsSecureConnection)
             {
-                SSL.SSLRedirect(this, this.MTApp.CurrentStore, SSL.SSLRedirectTo.SSL);
+                SSL.SSLRedirect(this.MTApp, this.MTApp.CurrentStore, SSL.SSLRedirectTo.SSL);
             }
         }
 

@@ -106,22 +106,7 @@ namespace MerchantTribe.Commerce
                             return ((IMultiStorePage)System.Web.HttpContext.Current.Handler).MTApp.CurrentRequestContext;
                         }
                     }
-                }
-                else if (System.ServiceModel.Web.WebOperationContext.Current != null)
-                {
-                    // WCF call instead of web page
-                    if (System.ServiceModel.Web.WebOperationContext.Current.IncomingRequest != null)
-                    {
-                        if (System.ServiceModel.Web.WebOperationContext.Current.IncomingRequest.Headers != null)
-                        {
-                            Accounts.AccountService accountServices = Accounts.AccountService.InstantiateForDatabase(alternateContext);
-
-                            string requestHost = System.ServiceModel.Web.WebOperationContext.Current.IncomingRequest.Headers["Host"];
-                            long wcfStoreId = Utilities.UrlHelper.ParseStoreId(new Uri("http://" + requestHost), accountServices);
-                            alternateContext.CurrentStore.Id = wcfStoreId;
-                        }                        
-                    }
-                }
+                }                
             }
             catch
             {

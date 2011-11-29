@@ -4,6 +4,7 @@ using System.Text;
 using MerchantTribe.Commerce;
 using MerchantTribe.Commerce.Content;
 using System.Collections.Specialized;
+using MerchantTribe.Commerce.Utilities;
 
 namespace MerchantTribeStore
 {
@@ -40,14 +41,15 @@ namespace MerchantTribeStore
         {
             base.OnLoad(e);
 
-            this.BaseUrl = MyPage.MTApp.CurrentStore.RootUrlSecure();
-            this.BaseStoreUrl = MyPage.MTApp.CurrentStore.RootUrl();
+            this.BaseUrl = MyPage.MTApp.StoreUrl(true, false);
+            this.BaseStoreUrl = MyPage.MTApp.StoreUrl(false, true);
+            
             this.AppVersion = WebAppSettings.SystemVersionNumber;
             this.StoreName = MyPage.MTApp.CurrentStore.Settings.FriendlyName;            
 
             if (!HideMenu)
             {                
-                this.RenderedMenu = Helpers.Html.RenderMenu(SelectedTab, MyPage.MTApp.CurrentStore);                
+                this.RenderedMenu = Helpers.Html.RenderMenu(SelectedTab, MyPage.MTApp);                
             }            
         }      
     }

@@ -49,7 +49,7 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
                     List<IReplaceable> replacers = new List<IReplaceable>();
                     replacers.Add(n);
                     replacers.Add(new Replaceable("[[NewPassword]]", newPassword));
-                    t = t.ReplaceTagsInTemplate(context.MTApp, replacers);
+                    t = t.ReplaceTagsInTemplate(context.MTApp.CurrentStore.RootUrl(), context.MTApp, replacers);
 
                     m = t.ConvertToMailMessage(n.Email);
                     

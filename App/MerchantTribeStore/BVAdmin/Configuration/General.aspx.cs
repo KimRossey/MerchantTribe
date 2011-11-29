@@ -56,6 +56,8 @@ namespace MerchantTribeStore
                 this.chkClosed.Checked = MTApp.CurrentStore.Settings.StoreClosed;
                 this.ClosedMessageField.Text = MTApp.CurrentStore.Settings.StoreClosedDescription;
                 this.GuestPassword.Text = MTApp.CurrentStore.Settings.StoreClosedGuestPassword;
+                this.chkUseSSL.Checked = MTApp.CurrentStore.Settings.UseSSL;
+                this.chkForceDomains.Checked = MTApp.CurrentStore.Settings.ForceDomains;
             }
             UpdateLogoImage();
             LoadAlternateDomains();
@@ -111,6 +113,9 @@ namespace MerchantTribeStore
             MTApp.CurrentStore.Settings.StoreClosed = this.chkClosed.Checked;
             MTApp.CurrentStore.Settings.StoreClosedDescription = this.ClosedMessageField.Text.Trim();
             MTApp.CurrentStore.Settings.StoreClosedGuestPassword = this.GuestPassword.Text.Trim();
+
+            MTApp.CurrentStore.Settings.UseSSL = this.chkUseSSL.Checked;
+            MTApp.CurrentStore.Settings.ForceDomains = this.chkForceDomains.Checked;
 
             MTApp.UpdateCurrentStore();
             return result;

@@ -35,10 +35,10 @@ namespace MerchantTribe.Commerce.Utilities
             return sb.ToString();
         }
 
-        public static string StandardFooter(Accounts.Store store)
-        {            
+        public static string StandardFooter(MerchantTribeApplication app)
+        {
             return "{{copyright}} | <a href=\""
-                   + store.RootUrl()
+                   + app.StoreUrl(false, true)
                    + "SiteMap\"><span>SiteMap</span></a> ";                                    
         }
 
@@ -48,20 +48,19 @@ namespace MerchantTribe.Commerce.Utilities
             return copyrightTag;
         }
 
-        public static string Logo(Accounts.Store store, bool isSecureRequest)
+        public static string Logo(MerchantTribeApplication app, bool isSecureRequest)
         {
+            string storeRootUrl = app.StoreUrl(isSecureRequest, false);
+            string storeName = app.CurrentStore.Settings.FriendlyName;
 
-            string storeRootUrl = store.RootUrl();
-            string storeName = store.Settings.FriendlyName;
-
-            string logoImage = store.Settings.LogoImageFullUrl(isSecureRequest); 
-            string logoText = store.Settings.LogoText;
+            string logoImage = app.CurrentStore.Settings.LogoImageFullUrl(isSecureRequest);
+            string logoText = app.CurrentStore.Settings.LogoText;
 
             StringBuilder sb = new StringBuilder();
 
             sb.Append("<a href=\"" + storeRootUrl + "\" title=\"" + storeName + "\"");
 
-            if (store.Settings.UseLogoImage)
+            if (app.CurrentStore.Settings.UseLogoImage)
             {
                 sb.Append("><img src=\"" + logoImage + "\" alt=\"" + storeName + "\" />");
 
@@ -76,12 +75,12 @@ namespace MerchantTribe.Commerce.Utilities
             return sb.ToString();
         }
 
-        public static string LogoText(Accounts.Store store)
+        public static string LogoText(MerchantTribeApplication app)
         {
 
-            string storeRootUrl = store.RootUrl();
-            string storeName = store.Settings.FriendlyName;
-            string logoText = store.Settings.LogoText;
+            string storeRootUrl = app.StoreUrl(false, true);
+            string storeName = app.CurrentStore.Settings.FriendlyName;
+            string logoText = app.CurrentStore.Settings.LogoText;
 
             StringBuilder sb = new StringBuilder();
 
@@ -93,9 +92,9 @@ namespace MerchantTribe.Commerce.Utilities
             return sb.ToString();
         }
 
-        public static string CartLink(Accounts.Store store, string itemCount)
+        public static string CartLink(MerchantTribeApplication app, string itemCount)
         {
-            string storeRootUrl = store.RootUrl();
+            string storeRootUrl = app.StoreUrl(false, true);
             StringBuilder sb = new StringBuilder();
             sb.Append("<a href=\"" + storeRootUrl + "cart/\"><span>View Cart: ");
             sb.Append(itemCount);
@@ -254,8 +253,8 @@ namespace MerchantTribe.Commerce.Utilities
         {
             StringBuilder sb = new StringBuilder();
 
-            string rootUrl = app.CurrentStore.RootUrl();
-            string rootUrlSecure = app.CurrentStore.RootUrlSecure();
+            string rootUrl = app.StoreUrl(false, true);
+            string rootUrlSecure = app.StoreUrl(true, false);
 
             sb.Append("<ul>");
 
@@ -312,7 +311,7 @@ namespace MerchantTribe.Commerce.Utilities
         {
             StringBuilder sb = new StringBuilder();
 
-            string rootUrl = app.CurrentStore.RootUrl();
+            string rootUrl = app.StoreUrl(false, true);
             string buttonUrl = app.ThemeManager().ButtonUrl("Go", app.CurrentRequestContext.RoutingContext.HttpContext.Request.IsSecureConnection);
             
             sb.Append("<form class=\"searchform\" action=\"" + rootUrl + "search\" method=\"get\">");

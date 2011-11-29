@@ -35,12 +35,10 @@ namespace MerchantTribeStore.Controllers
             base.OnActionExecuting(filterContext);
 
             MTApp = MerchantTribeApplication.InstantiateForDataBase(new RequestContext());
-
-            // Store routing context for URL Rewriting            
             MTApp.CurrentRequestContext.RoutingContext = this.Request.RequestContext;
 
             // Determine store id        
-            MTApp.CurrentStore = MerchantTribe.Commerce.Utilities.UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, MTApp.AccountServices);
+            MTApp.CurrentStore = MerchantTribe.Commerce.Utilities.UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, MTApp);
             if (MTApp.CurrentStore == null)
             {
                 Response.Redirect("~/storenotfound");

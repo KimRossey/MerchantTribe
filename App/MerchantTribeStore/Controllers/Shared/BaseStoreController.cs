@@ -16,7 +16,6 @@ namespace MerchantTribeStore.Controllers.Shared
         {
             base.OnActionExecuting(filterContext);
 
-            
             //Cart Count
             string itemCount = "0";
             string subTotal = "$0.00";
@@ -32,7 +31,7 @@ namespace MerchantTribeStore.Controllers.Shared
 
             // style sheet
             ThemeManager themes = MTApp.ThemeManager();
-            ViewBag.Css = themes.CurrentStyleSheet(System.Web.HttpContext.Current.Request.IsSecureConnection);
+            ViewBag.Css = themes.CurrentStyleSheet(MTApp,System.Web.HttpContext.Current.Request.IsSecureConnection);
 
             // Add Google Tracker to Page
             if (MTApp.CurrentStore.Settings.Analytics.UseGoogleTracker)
@@ -56,7 +55,7 @@ namespace MerchantTribeStore.Controllers.Shared
             ViewData["siteheader"] = MerchantTribe.Commerce.Utilities.TagReplacer.ReplaceContentTags(header, MTApp, itemCount, Request.IsSecureConnection);
             if ((footer.Trim().Length < 1))
             {
-                footer = MerchantTribe.Commerce.Utilities.HtmlRendering.StandardFooter(MTApp.CurrentStore);
+                footer = MerchantTribe.Commerce.Utilities.HtmlRendering.StandardFooter(MTApp);
             }
             footer = footer + MerchantTribe.Commerce.Utilities.HtmlRendering.PromoTag();
             ViewData["sitefooter"] = MerchantTribe.Commerce.Utilities.TagReplacer.ReplaceContentTags(footer, MTApp, itemCount, Request.IsSecureConnection);

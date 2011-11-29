@@ -143,7 +143,7 @@ namespace MerchantTribeStore
                     Literal litTemplate = (Literal)e.Item.FindControl("litTemplate");
                     if (litTemplate != null)
                     {
-                        t = t.ReplaceTagsInTemplate(MTApp, o, o.ItemsAsReplaceable());
+                        t = t.ReplaceTagsInTemplate(Page.ResolveUrl("~"),MTApp, o, o.ItemsAsReplaceable());
                         litTemplate.Text = t.Body;
                     }
                 }

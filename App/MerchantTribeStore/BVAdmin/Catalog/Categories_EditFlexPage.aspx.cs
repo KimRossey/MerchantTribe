@@ -225,8 +225,8 @@ namespace MerchantTribeStore.BVAdmin.Catalog
                 }
                 else
                 {
-                    Uri rootUri = new Uri(MTApp.CurrentStore.RootUrl());
-                    string host = rootUri.DnsSafeHost;                    
+                    Uri rootUri = new Uri(Page.ResolveUrl("~"));
+                    string host = rootUri.Authority; // Authority include port numbers
                     destination = "http://" + host + destination;
                 }
                 Response.Redirect(destination);

@@ -20,6 +20,7 @@ namespace MerchantTribeStore.Areas.signup.Controllers
         {
             base.OnActionExecuting(filterContext);
             MTApp = MerchantTribeApplication.InstantiateForDataBase(_BVRequestContext);
+            MTApp.CurrentRequestContext.RoutingContext = this.Request.RequestContext;
 
             // JQuery
             ViewBag.JqueryInclude = Helpers.Html.JQueryIncludes(Url.Content("~/scripts"), this.Request.IsSecureConnection);

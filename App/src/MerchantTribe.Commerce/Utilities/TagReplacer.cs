@@ -18,11 +18,11 @@ namespace MerchantTribe.Commerce.Utilities
             RouteCollection r = System.Web.Routing.RouteTable.Routes;
             //VirtualPathData homeLink = r.GetVirtualPath(requestContext.RoutingContext, "homepage", new RouteValueDictionary());
             
-            output = output.Replace("{{homelink}}", currentStore.RootUrl());
-            output = output.Replace("{{logo}}", HtmlRendering.Logo(currentStore, isSecureRequest));
-            output = output.Replace("{{logotext}}", HtmlRendering.LogoText(currentStore));
+            output = output.Replace("{{homelink}}", app.StoreUrl(isSecureRequest, false));
+            output = output.Replace("{{logo}}", HtmlRendering.Logo(app, isSecureRequest));
+            output = output.Replace("{{logotext}}", HtmlRendering.LogoText(app));
             output = output.Replace("{{headermenu}}", HtmlRendering.HeaderMenu(app.CurrentRequestContext.RoutingContext, app.CurrentRequestContext));
-            output = output.Replace("{{cartlink}}", HtmlRendering.CartLink(currentStore, itemCount));
+            output = output.Replace("{{cartlink}}", HtmlRendering.CartLink(app, itemCount));
             output = output.Replace("{{copyright}}", "<span class=\"copyright\">Copyright &copy;" + DateTime.Now.Year.ToString() + "</span>");
             output = output.Replace("{{headerlinks}}", HtmlRendering.HeaderLinks(app, currentUserId));
             output = output.Replace("{{searchform}}", HtmlRendering.SearchForm(app));

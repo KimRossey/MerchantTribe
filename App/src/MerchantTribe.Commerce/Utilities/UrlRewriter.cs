@@ -8,7 +8,7 @@ using System.Web.Routing;
 namespace MerchantTribe.Commerce.Utilities
 {
 	public class UrlRewriter
-	{    
+	{        
         public static bool IsProductSlugInUse(string slug, string bvin, MerchantTribeApplication app)
         {
             Catalog.Product p = app.CatalogServices.Products.FindBySlug(slug);

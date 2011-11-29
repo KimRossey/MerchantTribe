@@ -8,17 +8,17 @@ namespace MerchantTribe.Commerce.Utilities
 {
     public class UrlHelper
     {
-        public static void RedirectToMainStoreUrl(long storeId, System.Uri requestedUrl, AccountService accountService)
+        public static void RedirectToMainStoreUrl(long storeId, System.Uri requestedUrl, MerchantTribeApplication app)
         {
-            Accounts.Store store = accountService.Stores.FindById(storeId);
+            Accounts.Store store = app.AccountServices.Stores.FindById(storeId);
             if (store == null) return;
 
-            string destination = store.RootUrl();
-            if (requestedUrl.ToString().ToLowerInvariant().StartsWith("https://"))
-            {
-                destination = store.RootUrlSecure();
-            }
+            string host = requestedUrl.Authority;
+            string relativeRoot = "http://" + host;
 
+            bool secure = false;
+            if (requestedUrl.ToString().ToLowerInvariant().StartsWith("https://")) secure = true;
+            string destination = app.StoreUrl(secure, false);
             
             string pathAndQuery = requestedUrl.PathAndQuery;
             // Trim starting slash because root URL already has this
@@ -33,10 +33,10 @@ namespace MerchantTribe.Commerce.Utilities
             }
         }
 
-        public static long GetStoreIdForCustomUrl(System.Uri url, AccountService accountService)
+        public static long GetStoreIdForCustomUrl(System.Uri url, MerchantTribeApplication app)
         {
             string host = url.DnsSafeHost.ToLowerInvariant();
-            long result = accountService.Stores.FindStoreIdByCustomUrl(host);
+            long result = app.AccountServices.Stores.FindStoreIdByCustomUrl(host);
 
             if (result < 1)
             {
@@ -47,7 +47,7 @@ namespace MerchantTribe.Commerce.Utilities
                 {
                     if (possible.StoreId > 0)
                     {
-                        RedirectToMainStoreUrl(possible.StoreId, url, accountService);
+                        RedirectToMainStoreUrl(possible.StoreId, url, app);
                     }
                 }
             }
@@ -89,14 +89,14 @@ namespace MerchantTribe.Commerce.Utilities
             return result;
         }
 
-        public static long ParseStoreId(System.Uri url, AccountService accountService)
+        public static long ParseStoreId(System.Uri url, MerchantTribeApplication app)
         {
             long result = -1;
 
             // Individual Mode
             if (WebAppSettings.IsIndividualMode)
             {
-                Accounts.Store temp = accountService.FindOrCreateIndividualStore();
+                Accounts.Store temp = app.AccountServices.FindOrCreateIndividualStore();
                 if (temp != null) return temp.Id;
             }
 
@@ -114,7 +114,7 @@ namespace MerchantTribe.Commerce.Utilities
             {
                 // see if we're matching site domain first
                 string storeName = ParseStoreName(url);
-                Accounts.Store current = accountService.Stores.FindByStoreName(storeName);
+                Accounts.Store current = app.AccountServices.Stores.FindByStoreName(storeName);
                 if (current != null)
                 {
                     if (current.Id > 0)
@@ -126,7 +126,7 @@ namespace MerchantTribe.Commerce.Utilities
             else
             {
                 // not on main domain, try custom urls
-                result = GetStoreIdForCustomUrl(url, accountService);
+                result = GetStoreIdForCustomUrl(url, app);
             }
 
             return result;                           
@@ -134,12 +134,12 @@ namespace MerchantTribe.Commerce.Utilities
 
 
         // Primary Method to Detect Store from Uri
-        public static Accounts.Store ParseStoreFromUrl(System.Uri url, AccountService accountService)
+        public static Accounts.Store ParseStoreFromUrl(System.Uri url, MerchantTribeApplication app)
         {
             // Individual Mode
             if (WebAppSettings.IsIndividualMode)
             {
-                return accountService.FindOrCreateIndividualStore();
+                return app.AccountServices.FindOrCreateIndividualStore();
             }
 
             // Debug Helper
@@ -155,12 +155,15 @@ namespace MerchantTribe.Commerce.Utilities
             // Multi Mode
             Accounts.Store result = null;
 
-            long storeid = ParseStoreId(url, accountService);
+            long storeid = ParseStoreId(url, app);
             if (storeid > 0)
             {
-                result = accountService.Stores.FindById(storeid);
+                result = app.AccountServices.Stores.FindById(storeid);
             }
             return result;
         }
+
+        
+
     }
 }

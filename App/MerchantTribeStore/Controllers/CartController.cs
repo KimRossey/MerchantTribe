@@ -303,7 +303,7 @@ namespace MerchantTribeStore.Controllers
             c.Order = model.CurrentOrder;
             if (Workflow.RunByName(c, WorkflowNames.CheckoutSelected))
             {
-                Response.Redirect(MTApp.CurrentStore.RootUrlSecure() + "checkout");
+                Response.Redirect(MTApp.StoreUrl(true, false) + "checkout");
             }
             else
             {

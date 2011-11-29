@@ -6,6 +6,7 @@ using System.Xml;
 using System.Xml.Linq;
 using System.IO;
 using MerchantTribe.Web;
+using MerchantTribe.Commerce.Utilities;
 
 namespace MerchantTribe.Commerce.Content.Parts
 {
@@ -84,7 +85,7 @@ namespace MerchantTribe.Commerce.Content.Parts
                 case "showeditor":             
                     result.IsFinishedEditing = false;
                     result.Success = true;
-                    result.ResultHtml = BuildEditor(containerCategory, string.Empty, app.CurrentRequestContext);
+                    result.ResultHtml = BuildEditor(containerCategory, string.Empty, app);
                     //result.ScriptFunction = initScript;
                     break;
                 case "saveedit":  
@@ -123,7 +124,7 @@ namespace MerchantTribe.Commerce.Content.Parts
                     app.CatalogServices.Categories.Update(containerCategory);
                     result.Success = true;
                     result.IsFinishedEditing = false;
-                    result.ResultHtml = BuildEditor(containerCategory, editMessage, app.CurrentRequestContext);
+                    result.ResultHtml = BuildEditor(containerCategory, editMessage, app);
                     //result.ScriptFunction = initScript;
                     break;
                 case "canceledit":
@@ -206,8 +207,10 @@ namespace MerchantTribe.Commerce.Content.Parts
            }                  
        }
 
-       private string BuildEditor(Catalog.Category containerCategory, string message, MerchantTribe.Commerce.RequestContext context)
-       {
+       private string BuildEditor(Catalog.Category containerCategory, string message, MerchantTribeApplication app){
+
+           MerchantTribe.Commerce.RequestContext context = app.CurrentRequestContext;
+
            long versionId = containerCategory.GetCurrentVersion().Id;
            ImageDisplayFile img = new ImageDisplayFile();
            if (this.Images.Count > 0) img = this.Images[0];
@@ -248,7 +251,7 @@ namespace MerchantTribe.Commerce.Content.Parts
 
            // We have to pull the host out because the ToAbsolute of the virutal path utility
            // will append sub folder name if the web site is not the root app in IIS
-           string currentFullRoot = context.CurrentStore.RootUrl();
+           string currentFullRoot = app.StoreUrl(false, false);
            Uri fullUri = new Uri(currentFullRoot);
            string host = fullUri.DnsSafeHost;
            sb.Append("http://" + host);

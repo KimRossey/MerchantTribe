@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using MerchantTribe.Commerce;
 using MerchantTribe.Commerce.Content;
 using MerchantTribeStore.Filters;
+using MerchantTribe.Commerce.Utilities;
 
 
 namespace MerchantTribeStore.Controllers.Shared
@@ -19,14 +20,12 @@ namespace MerchantTribeStore.Controllers.Shared
         {
             base.OnActionExecuting(filterContext);
             MTApp = MerchantTribeApplication.InstantiateForDataBase(new RequestContext());
-
             // Check for non-www url and redirect if needed
             //RedirectBVCommerceCom(System.Web.HttpContext.Current);
-
             MTApp.CurrentRequestContext.RoutingContext = this.Request.RequestContext;
 
             // Determine store id        
-            MTApp.CurrentStore = MerchantTribe.Commerce.Utilities.UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, MTApp.AccountServices);
+            MTApp.CurrentStore = MerchantTribe.Commerce.Utilities.UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, MTApp);
             if (MTApp.CurrentStore == null)
             {
                 Response.Redirect("~/storenotfound");
@@ -42,8 +41,10 @@ namespace MerchantTribeStore.Controllers.Shared
 
             // Store data for admin panel
             ViewBag.IsAdmin = IsCurrentUserAdmin(this.MTApp, this.Request.RequestContext.HttpContext);
-            ViewBag.RootUrlSecure = MTApp.CurrentStore.RootUrlSecure();
-            ViewBag.RootUrl = MTApp.CurrentStore.RootUrl();
+            
+            ViewBag.RootUrlSecure = this.MTApp.StoreUrl(true, false);
+            ViewBag.RootUrl = this.MTApp.StoreUrl(false, true);
+
             ViewBag.StoreClosed = MTApp.CurrentStore.Settings.StoreClosed;
             ViewBag.StoreName = MTApp.CurrentStore.Settings.FriendlyName;
             ViewBag.StoreUniqueId = MTApp.CurrentStore.StoreUniqueId(MTApp);

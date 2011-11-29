@@ -107,7 +107,7 @@
                             <asp:TextBox id="LogoTextField" runat="server" Columns="50"></asp:TextBox>                            
                      </td>
                 </tr>                                
-                <tr class="logo-image-controls" style="display:none;">
+                                <tr class="logo-image-controls" style="display:none;">
                                     <td class="formlabel" class="vt">
                                         Store Logo Image:
                                     </td>
@@ -116,7 +116,23 @@
                                             class="iconimage" alt="Store Logo" /><br />
                                        <asp:FileUpload id="imgupload" runat="server" clientidmode="static" Columns="40" />
                                     </td>
-                                </tr> 
+                                </tr>
+                                <tr>
+                                    <td class="formlabel">
+                                        Use SSL:
+                                    </td>
+                                    <td class="formfield">                                                                                                                                                                                                                                                
+                                        <asp:CheckBox ID="chkUseSSL" Text="Use SSL (https://) security when needed" runat="server" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="formlabel">
+                                        Force Domains:
+                                    </td>
+                                    <td class="formfield">                                                                                                                                                                                                                                                
+                                        <asp:CheckBox ID="chkForceDomains" Text="When off you can use 'localhost' or other relative domains" runat="server" />
+                                    </td>
+                                </tr>
                                 <tr>
                                     <td colspan="2">&nbsp;</td>
                                 </tr>

@@ -83,11 +83,11 @@ namespace MerchantTribe.Commerce.Utilities
 			return url;
 		}
 
-		public static void SSLRedirect(System.Web.UI.Page page, Accounts.Store currentStore, SSLRedirectTo RedirectTo)
+		public static void SSLRedirect(MerchantTribeApplication app, Accounts.Store currentStore, SSLRedirectTo RedirectTo)
 		{
-            string CurrentUrl = page.Request.RawUrl.ToLower(); //UrlRewriter.GetRewrittenUrlFromRequest(page.Request).ToLower();
-			string StandardURL = currentStore.RootUrl().ToLower();
-            string SecureURL = currentStore.RootUrlSecure().ToLower();
+            string CurrentUrl = app.CurrentRequestContext.RoutingContext.HttpContext.Request.RawUrl.ToLower(); //UrlRewriter.GetRewrittenUrlFromRequest(page.Request).ToLower();
+            string StandardURL = app.StoreUrl(false, true).ToLowerInvariant();
+            string SecureURL = app.StoreUrl(true, false).ToLowerInvariant();
 			string sessionId = WebAppSettings.SessionId;
 			string cartId = WebAppSettings.CartId;
 			string currentSessionId = SessionManager.GetCurrentUserId(currentStore);
@@ -98,7 +98,7 @@ namespace MerchantTribe.Commerce.Utilities
 			//if the urls match, then for some reason we aren't replacing anything
 			//so if we redirect then we will go into a loop
 			if (url != CurrentUrl) {
-				page.Response.Redirect(url);
+                app.CurrentRequestContext.RoutingContext.HttpContext.Response.Redirect(url);				
 			}
 		}
 

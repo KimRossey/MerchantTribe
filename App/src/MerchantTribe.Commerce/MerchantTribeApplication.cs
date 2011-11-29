@@ -18,6 +18,82 @@ namespace MerchantTribe.Commerce
         private MerchantTribe.Commerce.RequestContext _CurrentRequestContext = new MerchantTribe.Commerce.RequestContext();
         private bool _IsForMemoryOnly = false;
 
+        private string _CurrentRelativeRoot = string.Empty;
+        public string CurrentRelativeRoot { 
+            get {
+                if (_CurrentRelativeRoot.Trim() == string.Empty)
+                {
+                    if (this.CurrentRequestContext != null)
+                    {
+                        if (this.CurrentRequestContext.RoutingContext != null)
+                        {
+                            try
+                            {
+                                System.Web.Mvc.UrlHelper helper = new System.Web.Mvc.UrlHelper(this.CurrentRequestContext.RoutingContext);
+                                if (helper != null)
+                                {
+                                    this._CurrentRelativeRoot = helper.Content("~");
+                                }
+                            }
+                            catch
+                            {
+                                this._CurrentRelativeRoot = string.Empty;
+                            }
+                        }
+                    }
+                }                
+                return _CurrentRelativeRoot;                
+            } 
+            private set{ _CurrentRelativeRoot = value;}         
+        }
+        public string StoreUrl(bool forceSecure, bool forceNonSecure)
+        {
+            string result = this.CurrentRelativeRoot;
+
+            // Force non-SSL if we've turned off SSL
+            bool useSSL = this.CurrentStore.Settings.UseSSL;
+            if (!useSSL) forceNonSecure = true;
+
+            if (this.CurrentStore != null)
+            {
+                if (this.CurrentStore.Settings.ForceDomains)
+                {
+
+                    if (forceSecure && useSSL)
+                    {
+                        result = this.CurrentStore.RootUrlSecure();
+                    }
+                    else
+                    {
+                        result = this.CurrentStore.RootUrl();
+                    }
+                }
+                else
+                {
+                    // not forcing domains so build off of relative
+                    if (forceSecure && useSSL)
+                    {
+                        if (result.StartsWith("http://"))
+                        {
+                            result = result.Replace("http://", "https://");
+                        }
+                    }
+                    if (forceNonSecure)
+                    {
+                        if (result.StartsWith("https://"))
+                        {
+                            result = result.Replace("https://", "http://");
+                        }
+                    }
+                }
+            }
+            if (result.EndsWith("/") == false)
+            {
+                result += "/";
+            }
+            return result;
+        }
+
         private AccountService _AccountService = null;
         public AccountService AccountServices
         {

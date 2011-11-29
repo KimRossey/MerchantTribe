@@ -50,7 +50,7 @@ namespace MerchantTribeStore.Controllers.Shared
             MTApp = new MerchantTribeApplication(CurrentRequestContext);
 
             // Determine store id        
-            CurrentStore = MerchantTribe.Commerce.Utilities.UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, MTApp.AccountServices);
+            CurrentStore = MerchantTribe.Commerce.Utilities.UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, MTApp);
             if (CurrentStore == null)
             {
                 Response.Redirect("~/storenotfound");
@@ -72,7 +72,7 @@ namespace MerchantTribeStore.Controllers.Shared
             
             ViewBag["AppVersion"] = WebAppSettings.SystemVersionNumber;
             ViewBag["StoreName"] = MTApp.CurrentStore.Settings.FriendlyName;
-            ViewBag["RenderedMenu"] = Helpers.Html.RenderSuperMenu(MTApp.CurrentStore);                
+            ViewBag["RenderedMenu"] = Helpers.Html.RenderSuperMenu(MTApp);                
 
         }
 

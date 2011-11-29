@@ -60,7 +60,6 @@
   </parameter>
   <parameter name="dbUserPassword" defaultValue="merchanttribe" tags="SQL, dbUserPassword, Password">
   </parameter>
-
   <parameter 
     name="ConnectionString For Config" 
     defaultValue="Data Source={dbServer};Initial Catalog={dbName};User ID={dbAdminUsername};Password={dbAdminPassword};"                   
@@ -76,12 +75,16 @@
     <parameterEntry   
        type = "ProviderPath"   
        scope = "dbfullsql"   
-       match = "PopulateData.sql"  />
+       match = "PopulateData.sql"  />    
+  </parameter>
+  <parameter
+     name="ConnectionString for Store"
+     defaultValue="Data Source={dbServer};Initial Catalog={dbName};User Id={dbUsername};Password={dbUserPassword};"
+     tags="SQL, Hidden, SQLConnectionString">
     <parameterEntry 
       type="XmlFile" 
       scope="MerchantTribeStore\\web.config$" 
-      match="/configuration/connectionStrings/add[@name='commerce6ConnectionString']/@connectionString" /> 
-  </parameter>
-
+      match="/configuration/connectionStrings/add[@name='commerce6ConnectionString']/@connectionString" />   
+  </parameter>   
 </parameters>
 

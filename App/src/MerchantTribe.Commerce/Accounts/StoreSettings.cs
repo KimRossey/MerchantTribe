@@ -217,6 +217,34 @@ namespace MerchantTribe.Commerce.Accounts
             set { SetProp("LeadSource", value); }
         }
 
+        // SSL and Domain Settings
+        public bool ForceDomains
+        {
+            get {
+                // Force Domain Redirects for Hosted Version
+                if (WebAppSettings.IsIndividualMode ||
+                    WebAppSettings.IsCommercialVersion)
+                {
+                    return GetPropBool("ForceDomains");
+                }
+                return true;
+            }
+            set { SetProp("ForceDomains", value); }
+        }
+        public bool UseSSL
+        {
+            get {
+                // Force SSL for hosted version
+                if (WebAppSettings.IsIndividualMode ||
+                    WebAppSettings.IsCommercialVersion)
+                {
+                    return GetPropBool("UseSSL");
+                }
+                return true;
+            }
+            set { SetProp("UseSSL", value); }
+        }
+
         // Time and Culture
         public TimeZoneInfo TimeZone
         {

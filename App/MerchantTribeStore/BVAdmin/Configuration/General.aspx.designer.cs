@@ -121,6 +121,24 @@ namespace MerchantTribeStore {
         protected global::System.Web.UI.WebControls.FileUpload imgupload;
         
         /// <summary>
+        /// chkUseSSL control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkUseSSL;
+        
+        /// <summary>
+        /// chkForceDomains control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkForceDomains;
+        
+        /// <summary>
         /// btnSave control.
         /// </summary>
         /// <remarks>

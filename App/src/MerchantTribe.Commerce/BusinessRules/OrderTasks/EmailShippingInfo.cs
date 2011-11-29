@@ -39,7 +39,7 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
 				if (toEmail.Trim().Length > 0) {
 
                     Content.HtmlTemplate t = context.MTApp.ContentServices.GetHtmlTemplateOrDefault(Content.HtmlTemplateType.OrderShipment);
-                    t = t.ReplaceTagsInTemplate(context.MTApp, context.Order, context.Order.PackagesAsReplaceable());
+                    t = t.ReplaceTagsInTemplate(context.MTApp.CurrentStore.RootUrl(), context.MTApp, context.Order, context.Order.PackagesAsReplaceable());
 
 					System.Net.Mail.MailMessage m = new System.Net.Mail.MailMessage();
 					m = t.ConvertToMailMessage(toEmail);

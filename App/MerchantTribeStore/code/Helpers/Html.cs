@@ -130,12 +130,12 @@ namespace MerchantTribeStore.Helpers
             return sb.ToString();
         }
 
-        public static string RenderSuperMenu(MerchantTribe.Commerce.Accounts.Store currentStore)
+        public static string RenderSuperMenu(MerchantTribeApplication app)
         {
             StringBuilder sb = new StringBuilder();
             AdminTabType tab = AdminTabType.None;
 
-            string root = currentStore.RootUrlSecure();
+            string root = app.StoreUrl(true, false);
             root += "super/";
 
             sb.Append("<ul>");
@@ -157,11 +157,11 @@ namespace MerchantTribeStore.Helpers
             return sb.ToString();
         }
 
-        public static string RenderMenu(AdminTabType selected, MerchantTribe.Commerce.Accounts.Store currentStore)
+        public static string RenderMenu(AdminTabType selected, MerchantTribeApplication app)
         {
             StringBuilder sb = new StringBuilder();
 
-            string root = currentStore.RootUrlSecure();
+            string root = app.StoreUrl(true, false);
             root += "bvadmin/";
 
             sb.Append("<ul>");
@@ -185,7 +185,7 @@ namespace MerchantTribeStore.Helpers
             // Marketing Menu
             sb.Append(OpenMenu("Marketing", selected, AdminTabType.Marketing));
             sb.Append(AddMenuItem("Promotions", "marketing/promotions.aspx", root));            
-            sb.Append(AddMenuItem(currentStore.Settings.RewardsPointsName, "marketing/rewardspoints.aspx", root));
+            sb.Append(AddMenuItem(app.CurrentStore.Settings.RewardsPointsName, "marketing/rewardspoints.aspx", root));
             sb.Append(CloseMenu());
 
             // People Menu
@@ -241,15 +241,15 @@ namespace MerchantTribeStore.Helpers
             // Reports Menu
             sb.Append(OpenMenu("Reports", selected, AdminTabType.Reports));
 
-            sb.Append(AddMenuItemWithoutRoot("Transactions by Day", currentStore.RootUrlSecure() + "bvmodules/reports/Daily Sales/view.aspx"));
-            sb.Append(AddMenuItemWithoutRoot("Orders | by Date", currentStore.RootUrlSecure() + "bvmodules/reports/Sales By Date/view.aspx"));
-            sb.Append(AddMenuItemWithoutRoot("Orders | by Affiliate", currentStore.RootUrlSecure() + "bvmodules/reports/Affiliate Sales/view.aspx"));
+            sb.Append(AddMenuItemWithoutRoot("Transactions by Day", app.StoreUrl(true, false) + "bvmodules/reports/Daily Sales/view.aspx"));
+            sb.Append(AddMenuItemWithoutRoot("Orders | by Date", app.StoreUrl(true, false) + "bvmodules/reports/Sales By Date/view.aspx"));
+            sb.Append(AddMenuItemWithoutRoot("Orders | by Affiliate", app.StoreUrl(true, false) + "bvmodules/reports/Affiliate Sales/view.aspx"));
             //sb.Append(AddMenuItem("Sales | by Coupon", Page.ResolveUrl("~/bvmodules/reports/Sales By Coupon/view.aspx", root)));
             //sb.Append(AddMenuItemWithoutRoot("Customer List", Page.ResolveUrl("~/bvmodules/reports/Customer List/view.aspx")));
             //sb.Append(AddMenuItemWithoutRoot("Keyword Searches", Page.ResolveUrl("~/bvmodules/reports/Keyword Searches/view.aspx")));
             //sb.Append(AddMenuItemWithoutRoot("Shopping Carts", Page.ResolveUrl("~/bvmodules/reports/Shopping Carts/view.aspx")));
             //sb.Append(AddMenuItemWithoutRoot("Top Customers", Page.ResolveUrl("~/bvmodules/reports/Top Customers/view.aspx")));
-            sb.Append(AddMenuItemWithoutRoot("Top Products", currentStore.RootUrlSecure() + "bvmodules/reports/Top Products/view.aspx"));
+            sb.Append(AddMenuItemWithoutRoot("Top Products", app.StoreUrl(true, false) + "bvmodules/reports/Top Products/view.aspx"));
 
             //StringCollection sc = ModuleController.FindReports();
             //string reportRoot = this.MyPage.CurrentStore.RootUrlSecure() + "bvmodules/reports/";

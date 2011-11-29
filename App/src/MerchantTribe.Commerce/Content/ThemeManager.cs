@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Xml;
 using System.IO;
+using MerchantTribe.Commerce.Utilities;
 
 namespace MerchantTribe.Commerce.Content
 {
@@ -131,17 +132,17 @@ namespace MerchantTribe.Commerce.Content
         //    return CurrentStyleSheet(s, isSecure);
         //}
 
-        public string CurrentStyleSheet()
+        public string CurrentStyleSheet(MerchantTribeApplication app)
         {
-            return CurrentStyleSheet(false);
+            return CurrentStyleSheet(app, false);
         }
 
-        public string CurrentStyleSheet(bool isSecure)
+        public string CurrentStyleSheet(MerchantTribeApplication app, bool isSecure)
         {
             string defaultCss = "/content/themes/theme-" + DefaultThemeGuid + "/styles.css";
 
             if (MTApp.CurrentStore == null) return defaultCss;                        
-            return FullCss(isSecure);
+            return FullCss(app, isSecure);
         }
 
         public ThemeInfo GetThemeInfo(string themeId)
@@ -158,13 +159,12 @@ namespace MerchantTribe.Commerce.Content
             return true;
         }
      
-        public string FullCss(bool isSecure)
+        public string FullCss(MerchantTribeApplication app, bool isSecure)
         {            
             string defaultCss = "/content/themes/theme-" + DefaultThemeGuid + "/styles.css";                                    
             if (MTApp.CurrentStore == null) return defaultCss;
 
-            string result = MTApp.CurrentStore.RootUrl();
-            if (isSecure) result = MTApp.CurrentStore.RootUrlSecure();
+            string result = app.StoreUrl(isSecure, false);
             result += "css/theme-" + MTApp.CurrentStore.Settings.ThemeId + "/styles.css";            
 
             return result;                                    

@@ -690,6 +690,9 @@
     <Content Include="BVModules\Shipping\UPS\edit.ascx" />
     <Content Include="BVModules\Shipping\US Postal Service - Domestic\edit.ascx" />
     <Content Include="BVModules\Shipping\US Postal Service - International\edit.ascx" />
+    <Content Include="content\systemtemplates\default.html" />
+    <Content Include="content\systemtemplates\parts\footer.html" />
+    <Content Include="content\systemtemplates\parts\header.html" />
     <Content Include="content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />

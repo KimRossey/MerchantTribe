@@ -25,7 +25,6 @@ namespace MerchantTribeStore.Areas.ContentBlocks.Controllers
                 model.CssId = block.BaseSettings.GetSettingOrEmpty("cssid");
                 model.CssClass = block.BaseSettings.GetSettingOrEmpty("cssclass");
                 model.LinkUrl = block.BaseSettings.GetSettingOrEmpty("linkurl");
-
                 model.ImageUrl = TagReplacer.ReplaceContentTags(model.ImageUrl,
                                                                 MTApp,
                                                                 "",

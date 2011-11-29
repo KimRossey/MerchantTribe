@@ -21,6 +21,7 @@ namespace MerchantTribeStore
         {
             base.OnPreInit(e);
             MTApp = MerchantTribeApplication.InstantiateForDataBase(new RequestContext());
+            MTApp.CurrentRequestContext.RoutingContext = this.Request.RequestContext;
         }
         protected override void OnInit(EventArgs e)
         {

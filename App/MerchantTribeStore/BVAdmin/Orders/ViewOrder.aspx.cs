@@ -362,7 +362,7 @@ namespace MerchantTribeStore
                         if (toEmail.Trim().Length > 0)
                         {
                             System.Net.Mail.MailMessage m = new System.Net.Mail.MailMessage();
-                            t = t.ReplaceTagsInTemplate(MTApp, o, o.ItemsAsReplaceable());
+                            t = t.ReplaceTagsInTemplate(Page.ResolveUrl("~"), MTApp, o, o.ItemsAsReplaceable());
                             m = t.ConvertToMailMessage(toEmail);
                             if (m != null)
                             {
