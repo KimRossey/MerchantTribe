@@ -219,16 +219,11 @@ namespace MerchantTribeStore.BVAdmin.Catalog
                 Category c = MTApp.CatalogServices.Categories.Find(this.BvinField.Value);
                 MTApp.IsEditMode = true;
                 string destination = UrlRewriter.BuildUrlForCategory(new CategorySnapshot(c), MTApp.CurrentRequestContext.RoutingContext);
+                destination = "../../" + destination;
                 if (destination.StartsWith("http"))
                 {
                     destination = destination.Replace("https://", "http://");
-                }
-                else
-                {
-                    Uri rootUri = new Uri(Page.ResolveUrl("~"));
-                    string host = rootUri.Authority; // Authority include port numbers
-                    destination = "http://" + host + destination;
-                }
+                }                
                 Response.Redirect(destination);
             }
         }
