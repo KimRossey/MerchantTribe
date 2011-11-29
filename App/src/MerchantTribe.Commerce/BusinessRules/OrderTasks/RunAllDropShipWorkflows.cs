@@ -153,7 +153,7 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
                 List<Content.IReplaceable> replacers = new List<Content.IReplaceable>();
                 replacers.Add(order);
                 replacers.Add(vendorOrManufacturer);
-                t = t.ReplaceTagsInTemplate(app.CurrentStore.RootUrl(), app, replacers, order.ItemsAsReplaceable());
+                t = t.ReplaceTagsInTemplate(app, replacers, order.ItemsAsReplaceable());
 
 				System.Net.Mail.MailMessage m = new System.Net.Mail.MailMessage();
 				if (vendorOrManufacturer != null) {

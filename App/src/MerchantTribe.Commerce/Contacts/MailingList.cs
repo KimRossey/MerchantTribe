@@ -36,7 +36,7 @@ namespace MerchantTribe.Commerce.Contacts
 			if (t != null) {				
 					foreach (MailingListMember m in this.Members) {
 						try {
-                            Content.HtmlTemplate copy = t.ReplaceTagsInTemplate(app.CurrentStore.RootUrl(), app, m);
+                            Content.HtmlTemplate copy = t.ReplaceTagsInTemplate(app, m);
 							System.Net.Mail.MailMessage msg = new System.Net.Mail.MailMessage();
 							msg = copy.ConvertToMailMessage(m.EmailAddress);
 							if (msg != null) {
@@ -55,7 +55,7 @@ namespace MerchantTribe.Commerce.Contacts
 
 			if (this.Members.Count > 0) {
 				if (t != null) {
-                    Content.HtmlTemplate copy = t.ReplaceTagsInTemplate(app.CurrentStore.RootUrl(), app, this.Members[0]);
+                    Content.HtmlTemplate copy = t.ReplaceTagsInTemplate(app, this.Members[0]);
                     result = copy.ConvertToMailMessage(this.Members[0].EmailAddress);
 				}
 			}

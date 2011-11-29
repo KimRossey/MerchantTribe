@@ -45,23 +45,23 @@ namespace MerchantTribe.Commerce.Content
             t.TemplateType = HtmlTemplateType.Custom;
             return t;
         }
-        public HtmlTemplate ReplaceTagsInTemplate(string relativeRoot, MerchantTribeApplication app, IReplaceable item)
+        public HtmlTemplate ReplaceTagsInTemplate(MerchantTribeApplication app, IReplaceable item)
         {
             List<IReplaceable> items = new List<IReplaceable>();
             items.Add(item);
-            return ReplaceTagsInTemplate(relativeRoot, app, items);
+            return ReplaceTagsInTemplate(app, items);
         }
-        public HtmlTemplate ReplaceTagsInTemplate(string relativeRoot, MerchantTribeApplication app, IReplaceable item, List<IReplaceable> repeatingItems)
+        public HtmlTemplate ReplaceTagsInTemplate(MerchantTribeApplication app, IReplaceable item, List<IReplaceable> repeatingItems)
         {
             List<IReplaceable> items = new List<IReplaceable>();
             items.Add(item);
-            return ReplaceTagsInTemplate(relativeRoot, app, items, repeatingItems);
+            return ReplaceTagsInTemplate(app, items, repeatingItems);
         }
-        public HtmlTemplate ReplaceTagsInTemplate(string relativeRoot, MerchantTribeApplication app, List<IReplaceable> items)
+        public HtmlTemplate ReplaceTagsInTemplate(MerchantTribeApplication app, List<IReplaceable> items)
         {
-            return ReplaceTagsInTemplate(relativeRoot, app, items, new List<IReplaceable>());
+            return ReplaceTagsInTemplate(app, items, new List<IReplaceable>());
         }
-        public HtmlTemplate ReplaceTagsInTemplate(string relativeRoot, MerchantTribeApplication app, List<IReplaceable> items, List<IReplaceable> repeatingItems)
+        public HtmlTemplate ReplaceTagsInTemplate(MerchantTribeApplication app, List<IReplaceable> items, List<IReplaceable> repeatingItems)
         {
             HtmlTemplate copy = this.Clone();            
 

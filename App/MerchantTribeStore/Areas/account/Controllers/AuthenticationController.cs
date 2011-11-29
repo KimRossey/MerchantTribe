@@ -287,7 +287,7 @@ namespace MerchantTribeStore.Areas.account.Controllers
                             tempList.Add(thisUser);
                             tempList.Add(new Replaceable("[[NewPassword]]", newPassword));
 
-                            t = t.ReplaceTagsInTemplate(Url.Content("~"), MTApp, tempList);
+                            t = t.ReplaceTagsInTemplate(MTApp, tempList);
 
                             m = t.ConvertToMailMessage(thisUser.Email);
 
