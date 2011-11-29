@@ -11,6 +11,7 @@
     @Html.Raw((string)ViewData["jqueryinclude"])   
     @RenderSection("HeadContent", false)    
     @Html.Raw((string)ViewData["analyticstop"])    
+    @Html.Raw((string)ViewData["AdditionalMetaTags"])
 </head>
 <body @if (!String.IsNullOrEmpty(ViewBag.BodyClass)) { <text>class="@ViewBag.BodyClass"</text> } >
     @if (IsSectionDefined("AdminPanel"))
