@@ -6,7 +6,7 @@ namespace MerchantTribe.Commerce
 
         const string SUPERADMINEMAIL = "noreply@merchanttribe.com";
         const string APPLICATION_NAME = "MerchantTribe";
-const string APPLICATION_VERSION = "1.2.0.230";
+const string APPLICATION_VERSION = "1.2.0.231";
 
         public static string SuperAdminEmail
         {
@@ -51,19 +51,19 @@ const string APPLICATION_VERSION = "1.2.0.230";
             return result;
         }
 
-        public static string BaseImageUrl
-        {
-            get
-            {
-                return ApplicationBaseImageUrl;
-            }
-        }
-        public static string BaseImageUrlSecure()
-        {
-            string result = BaseImageUrl;
-            result = result.Replace("http://", "https://");
-            return result;
-        }
+        //public static string BaseImageUrl
+        //{
+        //    get
+        //    {
+        //        return ApplicationBaseImageUrl;
+        //    }
+        //}
+        //public static string BaseImageUrlSecure()
+        //{
+        //    string result = BaseImageUrl;
+        //    result = result.Replace("http://", "https://");
+        //    return result;
+        //}
 
         public static string BaseImagePhysicalPath
         {

@@ -26,8 +26,7 @@ namespace MerchantTribe.Commerce.Utilities
             output = output.Replace("{{copyright}}", "<span class=\"copyright\">Copyright &copy;" + DateTime.Now.Year.ToString() + "</span>");
             output = output.Replace("{{headerlinks}}", HtmlRendering.HeaderLinks(app, currentUserId));
             output = output.Replace("{{searchform}}", HtmlRendering.SearchForm(app));
-            output = output.Replace("{{assets}}", MerchantTribe.Commerce.Storage.DiskStorage.BaseStoreThemeUrl(currentStore.Id, currentStore.Settings.ThemeId, isSecureRequest) + "assets/");
-            output = output.Replace("{{img}}", MerchantTribe.Commerce.Storage.DiskStorage.BaseStoreUrl(currentStore.Id, isSecureRequest) + "storeassets/");
+            output = output.Replace("{{assets}}", MerchantTribe.Commerce.Storage.DiskStorage.BaseUrlForStoreTheme(app, currentStore.Settings.ThemeId, isSecureRequest) + "assets/");            
 
             output = output.Replace("{{storeaddress}}", app.ContactServices.Addresses.FindStoreContactAddress().ToHtmlString());
 

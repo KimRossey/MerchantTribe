@@ -138,10 +138,10 @@ namespace MerchantTribe.Commerce
         {
             get { return ConfigurationManager.AppSettings["BaseApplicationUrl"]; }
         }
-        public static string ApplicationBaseImageUrl
-        {
-            get { return ApplicationBaseUrl + "images/sites/"; }
-        }
+        //public static string ApplicationBaseImageUrl
+        //{
+        //    get { return ApplicationBaseUrl + "images/sites/"; }
+        //}
         public static string ApplicationBaseImagePhysicalPath
         {
             get

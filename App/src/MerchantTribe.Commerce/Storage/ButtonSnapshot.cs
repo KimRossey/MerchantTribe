@@ -8,15 +8,15 @@ namespace MerchantTribe.Commerce.Storage
     public class ButtonSnapshot
     {
         private string _FileName = string.Empty;
-        private long _storeId = 0;
+        private MerchantTribeApplication _app = null;
         private string _themeId = string.Empty;
 
         public string FileName { get { return _FileName; } }
 
-        public ButtonSnapshot(string fileName, long storeId, string themeId)
+        public ButtonSnapshot(string fileName, MerchantTribeApplication app, string themeId)
         {
             _FileName = fileName;
-            _storeId = storeId;
+            _app = app;
             _themeId = themeId;
         }
 
@@ -26,7 +26,7 @@ namespace MerchantTribe.Commerce.Storage
         }
         public string Url(bool isSecure)
         {
-            return DiskStorage.ThemeButtonUrl(_storeId, _themeId, _FileName, isSecure);
+            return DiskStorage.ThemeButtonUrl(_app, _themeId, _FileName, isSecure);
         }
     }
 }

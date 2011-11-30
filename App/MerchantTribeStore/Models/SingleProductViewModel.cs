@@ -36,7 +36,7 @@ namespace MerchantTribeStore.Models
             this.IsLastItem = false;
             this.Item = p;
             this.ImageUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductImageUrlSmall(
-                mtapp.CurrentStore.Id,
+                mtapp,
                 p.Bvin,
                 p.ImageFileSmall,
                 mtapp.CurrentRequestContext.RoutingContext.HttpContext.Request.IsSecureConnection);                

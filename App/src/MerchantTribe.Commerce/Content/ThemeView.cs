@@ -28,8 +28,9 @@ namespace MerchantTribe.Commerce.Content
             set { _IsCustomized = value; }
         }      
   
-        public void LoadInstalledTheme(long storeId, string themeId)
+        public void LoadInstalledTheme(MerchantTribeApplication app, string themeId)
         {
+            long storeId = app.CurrentStore.Id;
             string themePhysicalRoot = Storage.DiskStorage.BaseStoreThemePhysicalPath(storeId, themeId);
 
             if (!Directory.Exists(themePhysicalRoot))
@@ -54,7 +55,7 @@ namespace MerchantTribe.Commerce.Content
 
             if (File.Exists(Path.Combine(themePhysicalRoot,"preview.png")))
             {
-                _PreviewImageUrl = Storage.DiskStorage.BaseStoreThemeUrl(storeId, themeId, true) + "preview.png";
+                _PreviewImageUrl = Storage.DiskStorage.BaseUrlForStoreTheme(app, themeId, true) + "preview.png";
             }
             else
             {

@@ -284,8 +284,8 @@ namespace MerchantTribe.Commerce.Tests
             Assert.AreEqual("outside", test5.RawHtml);
 
             // Make sure everything renders as expected
-            string expectedRender = expected.RenderForDisplay(new RequestContext(), null);
-            string actualRender = actual.RenderForDisplay(new RequestContext(), null);
+            string expectedRender = expected.RenderForDisplay(new MerchantTribeApplication(new RequestContext(), true), null);
+            string actualRender = actual.RenderForDisplay(new MerchantTribeApplication(new RequestContext(), true), null);
             Assert.AreEqual(expectedRender, actualRender);
         }
     }

@@ -53,7 +53,7 @@ namespace MerchantTribe.Commerce.Utilities
             string storeRootUrl = app.StoreUrl(isSecureRequest, false);
             string storeName = app.CurrentStore.Settings.FriendlyName;
 
-            string logoImage = app.CurrentStore.Settings.LogoImageFullUrl(isSecureRequest);
+            string logoImage = app.CurrentStore.Settings.LogoImageFullUrl(app, isSecureRequest);
             string logoText = app.CurrentStore.Settings.LogoText;
 
             StringBuilder sb = new StringBuilder();
@@ -210,7 +210,7 @@ namespace MerchantTribe.Commerce.Utilities
 
         string imageUrl 
             = MerchantTribe.Commerce.Storage.DiskStorage.ProductImageUrlSmall(
-                    ((IMultiStorePage)page).MTApp.CurrentStore.Id, 
+                    ((IMultiStorePage)page).MTApp, 
                     p.Bvin, 
                     p.ImageFileSmall, 
                     page.Request.IsSecureConnection);

@@ -294,7 +294,7 @@ namespace MerchantTribeStore
 
         private void LoadImagePreview(Product p)
         {
-            this.imgPreviewSmall.ImageUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductImageUrlSmall(MTApp.CurrentStore.Id, p.Bvin, p.ImageFileSmall, true);
+            this.imgPreviewSmall.ImageUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductImageUrlSmall(MTApp, p.Bvin, p.ImageFileSmall, true);
         }
       
         private void CancelClick()

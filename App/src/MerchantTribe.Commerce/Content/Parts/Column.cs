@@ -88,22 +88,22 @@ namespace MerchantTribe.Commerce.Content.Parts
 
         public string Id { get; set; }
 
-        public string RenderForDisplay(RequestContext context, Catalog.Category containerCategory)
+        public string RenderForDisplay(MerchantTribeApplication app, Catalog.Category containerCategory)
         {
             StringBuilder sb = new StringBuilder();
             foreach (IContentPart p in _Parts)
             {
-                sb.Append(p.RenderForDisplay(context, containerCategory));
+                sb.Append(p.RenderForDisplay(app, containerCategory));
             }
             return sb.ToString();            
         }
 
-        public string RenderForEdit(RequestContext context, Catalog.Category containerCategory)
+        public string RenderForEdit(MerchantTribeApplication app, Catalog.Category containerCategory)
         {
             StringBuilder sb = new StringBuilder();
             foreach (IContentPart p in _Parts)
             {
-                sb.Append(p.RenderForEdit(context, containerCategory));                
+                sb.Append(p.RenderForEdit(app, containerCategory));                
             }
             //sb.Append("<div class=\"editplaceholder\">Drag Parts Here</div>");
             return sb.ToString();
@@ -141,7 +141,7 @@ namespace MerchantTribe.Commerce.Content.Parts
                     {
                         this.AddPart(part);
                         app.CatalogServices.Categories.Update(containerCategory);
-                        result.ResultHtml = part.RenderForEdit(app.CurrentRequestContext, containerCategory);
+                        result.ResultHtml = part.RenderForEdit(app, containerCategory);
                     }
                     break;
                 case "resort":

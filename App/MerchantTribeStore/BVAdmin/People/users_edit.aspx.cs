@@ -157,7 +157,7 @@ namespace MerchantTribeStore
             {
                 Product n = MTApp.CatalogServices.Products.Find(item.ProductId);
                 n.ImageFileSmall = MerchantTribe.Commerce.Storage.DiskStorage.ProductImageUrlSmall(
-                        MTApp.CurrentStore.Id,
+                        MTApp,
                         n.Bvin,
                         n.ImageFileSmall,
                         Request.IsSecureConnection); 

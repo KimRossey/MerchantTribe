@@ -106,7 +106,7 @@ namespace MerchantTribeStore.BVAdmin.Catalog
     
         private void UpdateIconImage(Category c)
         {
-            IconImage = MerchantTribe.Commerce.Storage.DiskStorage.CategoryIconUrl(MTApp.CurrentStore.Id, c.Bvin, c.ImageUrl, true);
+            IconImage = MerchantTribe.Commerce.Storage.DiskStorage.CategoryIconUrl(MTApp, c.Bvin, c.ImageUrl, true);
             if (IconImage == string.Empty || c.ImageUrl == string.Empty)
             {
                 IconImage = Page.ResolveUrl("~/content/admin/images/MissingImage.png");

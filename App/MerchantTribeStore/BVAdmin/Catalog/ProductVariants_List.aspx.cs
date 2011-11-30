@@ -65,7 +65,7 @@ namespace MerchantTribeStore
             // Image
             sb.Append("<td width=\"75\">");
             sb.Append("<img width=\"50\" src=\"");
-            sb.Append(MerchantTribe.Commerce.Storage.DiskStorage.ProductVariantImageUrlMedium(this.MTApp.CurrentStore.Id, p.Bvin, p.ImageFileSmall, v.Bvin, true));
+            sb.Append(MerchantTribe.Commerce.Storage.DiskStorage.ProductVariantImageUrlMedium(this.MTApp, p.Bvin, p.ImageFileSmall, v.Bvin, true));
             sb.Append("\" border=\"0\" />");
             sb.Append("</td>");
 

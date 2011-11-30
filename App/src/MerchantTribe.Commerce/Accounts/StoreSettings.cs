@@ -297,9 +297,9 @@ namespace MerchantTribe.Commerce.Accounts
             set { SetProp("LogoImage", value); }
         }
 
-        public string LogoImageFullUrl(bool isSecure)
+        public string LogoImageFullUrl(MerchantTribeApplication app, bool isSecure)
         {
-            return Storage.DiskStorage.StoreLogoUrl(this._Store.Id, this.LogoRevision, this.LogoImage, isSecure);
+            return Storage.DiskStorage.StoreLogoUrl(app, this.LogoRevision, this.LogoImage, isSecure);
         }
 
         public bool UseLogoImage

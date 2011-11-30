@@ -408,7 +408,7 @@ namespace MerchantTribe.Commerce.Content.Parts
         public string Id { get; set; }
 
 
-        private string Render(RequestContext context, bool IsEditMode, Catalog.Category containerCategory)
+        private string Render(MerchantTribeApplication app, bool IsEditMode, Catalog.Category containerCategory)
         {
             StringBuilder sb = new StringBuilder();
 
@@ -475,12 +475,12 @@ namespace MerchantTribe.Commerce.Content.Parts
                     }
                     sb.Append("</strong> [" + ((int)_Columns[i].Size).ToString() + "]</div>");                    
 
-                    sb.Append(_Columns[i].RenderForEdit(context, containerCategory));
+                    sb.Append(_Columns[i].RenderForEdit(app, containerCategory));
                     sb.Append("</div>");
                 }
                 else
                 {
-                    sb.Append(_Columns[i].RenderForDisplay(context, containerCategory));
+                    sb.Append(_Columns[i].RenderForDisplay(app, containerCategory));
                 }
                 sb.Append("</div>");
             }
@@ -489,14 +489,14 @@ namespace MerchantTribe.Commerce.Content.Parts
             return sb.ToString();
         }
 
-        public string RenderForEdit(RequestContext context, Catalog.Category containerCategory)
+        public string RenderForEdit(MerchantTribeApplication app, Catalog.Category containerCategory)
         {
-            return Render(context, true, containerCategory);
+            return Render(app, true, containerCategory);
         }
 
-        public string RenderForDisplay(RequestContext context, Catalog.Category containerCategory)
+        public string RenderForDisplay(MerchantTribeApplication app, Catalog.Category containerCategory)
         {
-            return Render(context, false, containerCategory);
+            return Render(app, false, containerCategory);
         }
 
 
@@ -539,7 +539,7 @@ namespace MerchantTribe.Commerce.Content.Parts
                 case "canceledit":
                     result.Success = true;
                     result.IsFinishedEditing = true;
-                    result.ResultHtml = this.RenderForEdit(app.CurrentRequestContext, containerCategory);
+                    result.ResultHtml = this.RenderForEdit(app, containerCategory);
                     break;
                 case "deletepart":
                     containerCategory.GetCurrentVersion().Root.RemovePart(this.Id);                    

@@ -65,7 +65,7 @@ namespace MerchantTribeStore
 
         private void UpdateLogoImage()
         {
-            LogoImage = MTApp.CurrentStore.Settings.LogoImageFullUrl(Page.Request.IsSecureConnection);
+            LogoImage = MTApp.CurrentStore.Settings.LogoImageFullUrl(MTApp, Page.Request.IsSecureConnection);
             if (MTApp.CurrentStore.Settings.LogoImage.Trim() == string.Empty)
             {
                 LogoImage = "../../content/admin/images/MissingImage.png";

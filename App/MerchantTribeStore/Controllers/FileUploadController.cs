@@ -48,13 +48,13 @@ namespace MerchantTribeStore.Controllers
                         if (DiskStorage.UploadFlexPageImagePartial(CurrentStore.Id, inputStream, fileName, isFirstPart, categoryId, pageVersion) == true)
                         {                            
                             result.Data = new { success = "1", 
-                                                imageurl=DiskStorage.FlexPageImageUrl(CurrentStore.Id, categoryId, pageVersion, fileName, false),
+                                                imageurl=DiskStorage.FlexPageImageUrl(MTApp, categoryId, pageVersion, fileName, false),
                                                 filename=MerchantTribe.Web.Text.CleanFileName(fileName)};
                         }
                         else
                         {
                             result.Data = new { success = "0", 
-                                                imageurl=DiskStorage.FlexPageImageUrl(CurrentStore.Id, categoryId, pageVersion, string.Empty, false),
+                                                imageurl=DiskStorage.FlexPageImageUrl(MTApp, categoryId, pageVersion, string.Empty, false),
                                                 filename=string.Empty};
                         }                                                
                     }                    

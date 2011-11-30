@@ -28,19 +28,19 @@ namespace MerchantTribe.Commerce.Content.Parts
             this._Container = container;
         }
 
-        public string RenderForDisplay(RequestContext context, Catalog.Category containerCategory)
+        public string RenderForDisplay(MerchantTribeApplication app, Catalog.Category containerCategory)
         {
             return RawHtml;            
         }
 
-        public string RenderForEdit(RequestContext context, Catalog.Category containerCategory)
+        public string RenderForEdit(MerchantTribeApplication app, Catalog.Category containerCategory)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("<div id=\"part" + Id + "\" class=\"editable issortable\">");
 
             sb.Append(PartHelper.RenderEditTools(this.Id));
             
-            sb.Append(RenderForDisplay(context, containerCategory));
+            sb.Append(RenderForDisplay(app, containerCategory));
             sb.Append("</div>");
 
             return sb.ToString();
@@ -78,13 +78,13 @@ namespace MerchantTribe.Commerce.Content.Parts
                     this.RawHtml = form["changedtext"];
                     result.IsFinishedEditing = true;                    
                     result.Success = true;
-                    result.ResultHtml = this.RenderForEdit(app.CurrentRequestContext, containerCategory);
+                    result.ResultHtml = this.RenderForEdit(app, containerCategory);
                     app.CatalogServices.Categories.Update(containerCategory);
                     break;
                 case "canceledit":
                     result.Success = true;
                     result.IsFinishedEditing = true;
-                    result.ResultHtml = this.RenderForEdit(app.CurrentRequestContext, containerCategory);
+                    result.ResultHtml = this.RenderForEdit(app, containerCategory);
                     break;
                 case "deletepart":
                     containerCategory.GetCurrentVersion().Root.RemovePart(this.Id);

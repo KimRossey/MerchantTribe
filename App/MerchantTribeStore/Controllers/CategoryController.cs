@@ -61,7 +61,7 @@ namespace MerchantTribeStore.Controllers
             {
                 ViewBag.ShowBanner = true;
                 ViewBag.BannerUrl = MerchantTribe.Commerce.Storage.DiskStorage.CategoryBannerUrl(
-                                        MTApp.CurrentStore.Id, 
+                                        MTApp, 
                                         cat.Bvin, 
                                         cat.BannerImageUrl, 
                                         Request.IsSecureConnection);                
@@ -101,7 +101,7 @@ namespace MerchantTribeStore.Controllers
                 model.LinkUrl = UrlRewriter.BuildUrlForCategory(snap, 
                                                                 MTApp.CurrentRequestContext.RoutingContext);
                 model.IconUrl = MerchantTribe.Commerce.Storage.DiskStorage.CategoryIconUrl(
-                                                                MTApp.CurrentStore.Id, 
+                                                                MTApp, 
                                                                 snap.Bvin, 
                                                                 snap.ImageUrl, 
                                                                 Request.IsSecureConnection);
@@ -271,7 +271,7 @@ namespace MerchantTribeStore.Controllers
             {
                 ViewBag.ShowBanner = true;
                 ViewBag.BannerUrl = MerchantTribe.Commerce.Storage.DiskStorage.CategoryBannerUrl(
-                                        MTApp.CurrentStore.Id,
+                                        MTApp,
                                         cat.Bvin,
                                         cat.BannerImageUrl,
                                         Request.IsSecureConnection);

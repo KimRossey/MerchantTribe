@@ -259,7 +259,7 @@ namespace MerchantTribeStore.Controllers
                     ci.ShowImage = true;
                     ci.ImageUrl = MerchantTribe.Commerce.Storage
                                   .DiskStorage.ProductVariantImageUrlMedium(
-                                  MTApp.CurrentStore.Id, li.ProductId,
+                                  MTApp, li.ProductId,
                                   associatedProduct.ImageFileSmall,
                                   li.VariantId, Request.IsSecureConnection);
 

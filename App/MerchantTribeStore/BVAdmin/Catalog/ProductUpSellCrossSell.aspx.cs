@@ -71,7 +71,7 @@ namespace MerchantTribeStore
             Product p = MTApp.CatalogServices.Products.Find(r.RelatedProductId);
             if (p != null) name = p.Sku + "<br />" + p.ProductName;
 
-            string imageUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductImageUrlSmall(MTApp.CurrentStore.Id, p.Bvin, p.ImageFileSmall, true);
+            string imageUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductImageUrlSmall(MTApp, p.Bvin, p.ImageFileSmall, true);
 
             sb.Append("<div class=\"dragitem\" id=\"item" + r.RelatedProductId.ToString() + "\"><table class=\"formtable\" width=\"100%\"><tr>");
             sb.Append("<td width=\"60\" class=\"imgfield\">");

@@ -17,7 +17,7 @@ namespace MerchantTribeStore
             if (Request.QueryString["id"] != null)
             {
                 Product prod = MyPage.MTApp.CatalogServices.Products.Find(Request.QueryString["id"]);
-                productImage.ImageUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductImageUrlSmall(this.MyPage.MTApp.CurrentStore.Id, prod.Bvin, prod.ImageFileSmall, true);
+                productImage.ImageUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductImageUrlSmall(this.MyPage.MTApp, prod.Bvin, prod.ImageFileSmall, true);
                 productLabel.Text = prod.ProductName;
                 productSkuLabel.Text = prod.Sku;
                 productPrice.Text = prod.SitePrice.ToString("C");

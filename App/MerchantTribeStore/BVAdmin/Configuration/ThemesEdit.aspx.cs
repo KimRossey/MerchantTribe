@@ -50,7 +50,7 @@ namespace MerchantTribeStore
                 this.VersionUrlField.Text = info.VersionUrl;
 
                 ThemeView tv = new ThemeView();
-                tv.LoadInstalledTheme(MTApp.CurrentStore.Id, themeId);
+                tv.LoadInstalledTheme(MTApp, themeId);
                 this.imgPreview.ImageUrl = tv.PreviewImageUrl + "?uid=" + System.Guid.NewGuid().ToString();
             }
 

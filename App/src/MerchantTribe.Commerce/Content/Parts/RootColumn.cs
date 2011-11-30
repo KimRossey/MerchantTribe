@@ -29,7 +29,7 @@ namespace MerchantTribe.Commerce.Content.Parts
             //ignore
         }
 
-        private string Render(RequestContext context, bool isEditMode, Catalog.Category containerCategory)
+        private string Render(MerchantTribeApplication app, bool isEditMode, Catalog.Category containerCategory)
         {
             StringBuilder sb = new StringBuilder();
 
@@ -47,12 +47,12 @@ namespace MerchantTribe.Commerce.Content.Parts
                 if (isEditMode)
                 {
                     
-                    sb.Append(p.RenderForEdit(context, containerCategory));
+                    sb.Append(p.RenderForEdit(app, containerCategory));
                     
                 }
                 else
                 {
-                    sb.Append(p.RenderForDisplay(context, containerCategory));
+                    sb.Append(p.RenderForDisplay(app, containerCategory));
                 }
             }
 
@@ -67,13 +67,13 @@ namespace MerchantTribe.Commerce.Content.Parts
             sb.Append("</div>");
             return sb.ToString();
         }
-        public string RenderForDisplay(RequestContext context, Catalog.Category containerCategory)
+        public string RenderForDisplay(MerchantTribeApplication app, Catalog.Category containerCategory)
         {
-            return Render(context, false, containerCategory);
+            return Render(app, false, containerCategory);
         }
-        public string RenderForEdit(RequestContext context, Catalog.Category containerCategory)
+        public string RenderForEdit(MerchantTribeApplication app, Catalog.Category containerCategory)
         {
-            return Render(context, true, containerCategory);
+            return Render(app, true, containerCategory);
         }
 
         public bool NoGutter
@@ -141,7 +141,7 @@ namespace MerchantTribe.Commerce.Content.Parts
 
         public string MovePart(string fromPart, string toPart, string partId, 
                             List<string> sortedIds,
-                            RequestContext context, 
+                            MerchantTribeApplication app, 
                             MerchantTribe.Commerce.Catalog.Category baseCategory)
         {
             string result = string.Empty;
@@ -153,7 +153,7 @@ namespace MerchantTribe.Commerce.Content.Parts
                 IColumn container = destination as IColumn;
                 container.AddPart(toMove);
                 container.SortParts(sortedIds);
-                result = toMove.RenderForEdit(context, baseCategory);
+                result = toMove.RenderForEdit(app, baseCategory);
             }
             return result;
         }
@@ -202,7 +202,7 @@ namespace MerchantTribe.Commerce.Content.Parts
                     {
                         this.AddPart(part);
                         app.CatalogServices.Categories.Update(containerCategory);
-                        result.ResultHtml = part.RenderForEdit(app.CurrentRequestContext, containerCategory);
+                        result.ResultHtml = part.RenderForEdit(app, containerCategory);
                     }
                     break;
                 case "deletepart":
@@ -223,7 +223,7 @@ namespace MerchantTribe.Commerce.Content.Parts
                         idList2.Add(s.Trim().Replace("part", ""));
                     }
                     result.ResultHtml = this.MovePart(fromId, toId, movedId, idList2,
-                                        app.CurrentRequestContext, containerCategory);
+                                        app, containerCategory);
                     app.CatalogServices.Categories.Update(containerCategory);
                     result.Success = true;                    
                     break;

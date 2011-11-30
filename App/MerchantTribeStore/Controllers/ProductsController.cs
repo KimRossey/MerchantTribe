@@ -140,7 +140,7 @@ namespace MerchantTribeStore.Controllers
 
             CheckForBackOrder(model);
 
-            model.MainImageUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductImageUrlMedium(MTApp.CurrentStore.Id, model.LocalProduct.Bvin, model.LocalProduct.ImageFileSmall, Request.IsSecureConnection);
+            model.MainImageUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductImageUrlMedium(MTApp, model.LocalProduct.Bvin, model.LocalProduct.ImageFileSmall, Request.IsSecureConnection);
             model.MainImageAltText = model.LocalProduct.ImageFileSmallAlternateText;
             
             // Prices                        
@@ -365,19 +365,19 @@ namespace MerchantTribeStore.Controllers
         }
         private void RenderSingleAdditionalImage(StringBuilder sb, ProductImage img)
         {
-            string mediumUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductAdditionalImageUrlMedium(MTApp.CurrentStore.Id,
+            string mediumUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductAdditionalImageUrlMedium(MTApp,
                                                                                                        img.ProductId,
                                                                                                        img.Bvin,
                                                                                                        img.FileName,
                                                                                                        false);
-            string largeUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductAdditionalImageUrlOriginal(MTApp.CurrentStore.Id,
+            string largeUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductAdditionalImageUrlOriginal(MTApp,
                                                                                                        img.ProductId,
                                                                                                        img.Bvin,
                                                                                                        img.FileName,
                                                                                                        false);
             sb.Append("<a href=\"" + largeUrl + "\" alt=\"" + mediumUrl + "\" class=\"popover\">");
             sb.Append("<img src=\"");
-            sb.Append(MerchantTribe.Commerce.Storage.DiskStorage.ProductAdditionalImageUrlTiny(MTApp.CurrentStore.Id,
+            sb.Append(MerchantTribe.Commerce.Storage.DiskStorage.ProductAdditionalImageUrlTiny(MTApp,
                                                                                                       img.ProductId,
                                                                                                       img.Bvin,
                                                                                                       img.FileName,
@@ -543,7 +543,7 @@ namespace MerchantTribeStore.Controllers
 
                 result.Price = MerchantTribe.Commerce.Utilities.HtmlRendering.UserSpecificPriceForDisplay(price);
                 result.Sku = price.Sku;
-                result.ImageUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductImageUrlMedium(MTApp.CurrentStore.Id, p.Bvin, p.ImageFileSmall, false);
+                result.ImageUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductImageUrlMedium(MTApp, p.Bvin, p.ImageFileSmall, false);
                 result.IsValid = price.IsValid;
                 if (result.IsValid)
                 {
@@ -555,7 +555,7 @@ namespace MerchantTribeStore.Controllers
                 }
                 if (price.VariantId.Length > 0)
                 {
-                    result.ImageUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductVariantImageUrlMedium(MTApp.CurrentStore.Id, p.Bvin, p.ImageFileSmall, price.VariantId, false);
+                    result.ImageUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductVariantImageUrlMedium(MTApp, p.Bvin, p.ImageFileSmall, price.VariantId, false);
                 }
 
                 // Make sure we have stock on the product or variant

@@ -30,7 +30,7 @@ namespace MerchantTribe.Commerce.Content.Parts
             this._Container = container;
         }
 
-        public string RenderForDisplay(RequestContext context, Catalog.Category cat)
+        public string RenderForDisplay(MerchantTribeApplication app, Catalog.Category cat)
         {
             string sizeClass = "flexsize12";
             if (this._Container != null)
@@ -48,19 +48,19 @@ namespace MerchantTribe.Commerce.Content.Parts
             {
                 ImageDisplayFile img = this.Images[0];
                 long versionId = cat.GetCurrentVersion().Id;
-                url = Storage.DiskStorage.FlexPageImageUrl(context.CurrentStore.Id, cat.Bvin, versionId.ToString(), img.FileName, true);
+                url = Storage.DiskStorage.FlexPageImageUrl(app, cat.Bvin, versionId.ToString(), img.FileName, true);
                 alt = img.AltText;                
             }
 
             return "<img src=\"" + url + "\" alt=\"" + alt + "\" class=\"" + sizeClass + "\" />";
         }
 
-        public string RenderForEdit(RequestContext context, Catalog.Category cat)
+        public string RenderForEdit(MerchantTribeApplication app, Catalog.Category cat)
         {
             StringBuilder sb = new StringBuilder();            
             sb.Append("<div id=\"part" + Id + "\" class=\"editable issortable\">");
             sb.Append(PartHelper.RenderEditTools(this.Id));
-            sb.Append(RenderForDisplay(context, cat));
+            sb.Append(RenderForDisplay(app, cat));
             sb.Append("</div>");
 
             return sb.ToString();
@@ -130,7 +130,7 @@ namespace MerchantTribe.Commerce.Content.Parts
                 case "canceledit":
                     result.Success = true;
                     result.IsFinishedEditing = true;
-                    result.ResultHtml = this.RenderForEdit(app.CurrentRequestContext, containerCategory);
+                    result.ResultHtml = this.RenderForEdit(app, containerCategory);
                     break;
                 case "deletepart":
                     containerCategory.GetCurrentVersion().Root.RemovePart(this.Id);
@@ -224,7 +224,7 @@ namespace MerchantTribe.Commerce.Content.Parts
                alt = this.Images[0].AltText;
                if (this.Images[0].FileName.Trim().Length > 0)
                {
-                   previewUrl = Storage.DiskStorage.FlexPageImageUrl(containerCategory.StoreId, containerCategory.Bvin, versionId.ToString(), img.FileName, false);
+                   previewUrl = Storage.DiskStorage.FlexPageImageUrl(app, containerCategory.Bvin, versionId.ToString(), img.FileName, false);
                }               
            }
                      

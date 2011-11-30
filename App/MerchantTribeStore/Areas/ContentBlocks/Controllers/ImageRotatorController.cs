@@ -54,7 +54,7 @@ namespace MerchantTribeStore.Areas.ContentBlocks.Controllers
         {
             if (raw.Trim().ToLowerInvariant().StartsWith("http")) return raw;
             return MerchantTribe.Commerce.Storage.DiskStorage.AssetUrl(
-                MTApp.CurrentStore.Id, MTApp.CurrentStore.Settings.ThemeId,
+                MTApp, MTApp.CurrentStore.Settings.ThemeId,
                 raw, Request.IsSecureConnection);
         }
 

@@ -12,43 +12,35 @@ namespace MerchantTribe.Commerce.Storage
     public class DiskStorage
     {
 
-        internal static string BaseUrl()
+        internal static string BaseUrl(MerchantTribeApplication app)
         {
-            return BaseUrl(false);
+            return BaseUrl(app, false);
         }
-        internal static string BaseUrl(bool isSecure)
+        internal static string BaseUrl(MerchantTribeApplication app, bool isSecure)
         {
-            string u = WebAppSettings.ApplicationBaseImageUrl;
-            if (isSecure)
-            {
-                u = u.Replace("http://", "https://");
-            }
+            string u = app.StoreUrl(isSecure, false);            
             return u;
         }
-        protected static string BaseImageUrl()
+        protected static string BaseUrlForSites(MerchantTribeApplication app, bool isSecure)
         {
-            string u = WebAppSettings.ApplicationBaseImageUrl;
+            string u = BaseUrl(app, isSecure) + "images/sites/";
             return u;
         }
-        internal static string BaseStoreUrl(long storeId)
+        internal static string BaseUrlForSingleStore(MerchantTribeApplication app, bool isSecure)
         {
-            return BaseStoreUrl(storeId, false);
-        }
-        internal static string BaseStoreUrl(long storeId, bool isSecure)
-        {
-            return BaseUrl(isSecure) + storeId.ToString() + "/";
+            return BaseUrlForSites(app, isSecure) + app.CurrentStore.Id.ToString() + "/";
         }
         internal static string BaseStorePhysicalPath(long storeId)
         {
             return WebAppSettings.ApplicationBaseImagePhysicalPath + storeId.ToString() + "\\";
         }
-        internal static string BaseStoreThemeUrl(long storeId, string themeId)
+        internal static string BaseUrlForStoreTheme(MerchantTribeApplication app, string themeId)
         {
-            return BaseStoreThemeUrl(storeId, themeId, false);
+            return BaseUrlForStoreTheme(app, themeId, false);
         }
-        internal static string BaseStoreThemeUrl(long storeId, string themeId, bool isSecure)
+        internal static string BaseUrlForStoreTheme(MerchantTribeApplication app, string themeId, bool isSecure)
         {
-            return BaseStoreUrl(storeId, isSecure) + "themes/theme-" + themeId + "/";
+            return BaseUrlForSingleStore(app, isSecure) + "themes/theme-" + themeId + "/";            
         }
         internal static string BaseStoreThemePhysicalPath(long storeId, string themeId)
         {
@@ -241,39 +233,7 @@ namespace MerchantTribe.Commerce.Storage
             return result;
         }
 
-        public static string ProductImageUrlOriginal(long storeId, string productId, string productImage, bool isSecure)
-        {
-            string u = BaseImageUrl().ToString();
-            if (isSecure)
-            {
-                u = u.Replace("http://", "https://");
-            }
-            u += storeId.ToString() + "/products/" + productId + "/";
-            u += productImage;
-
-            if (productImage.Trim().Length < 1)
-            {
-                u = "/Content/admin/images/MissingImage.png";
-            }
-            return u;
-        }
-        public static string ProductImageUrlMedium(long storeId, string productId, string productImage, bool isSecure)
-        {
-            string u = BaseImageUrl().ToString();
-            if (isSecure)
-            {
-                u = u.Replace("http://", "https://");
-            }
-            u += storeId.ToString() + "/products/" + productId + "/medium/";
-            u += productImage;
-
-            if (productImage.Trim().Length < 1)
-            {
-                u = "/Content/admin/images/MissingImage.png";
-            }
-            return u;
-        }
-        public static string ProductImageUrlSmall(long storeId, string productId, string productImage, bool isSecure)
+        public static string ProductImageUrlOriginal(MerchantTribeApplication app, string productId, string productImage, bool isSecure)
         {
             // return outside image references without rewriting
             if (productImage.StartsWith("http"))
@@ -281,40 +241,68 @@ namespace MerchantTribe.Commerce.Storage
                 return productImage;
             }
 
-            string u = BaseImageUrl().ToString();
-            if (isSecure)
-            {
-                u = u.Replace("http://", "https://");
-            }
-            u += storeId.ToString() + "/products/" + productId + "/small/";
+            string u = BaseUrlForSingleStore(app, isSecure);
+            u += "products/" + productId + "/";
             u += productImage;
 
             if (productImage.Trim().Length < 1)
             {
-                u = "/Content/admin/images/MissingImage.png";
+                u = BaseUrl(app, isSecure) + "Content/admin/images/MissingImage.png";
+            }
+            return u;
+        }
+        public static string ProductImageUrlMedium(MerchantTribeApplication app, string productId, string productImage, bool isSecure)
+        {
+            // return outside image references without rewriting
+            if (productImage.StartsWith("http"))
+            {
+                return productImage;
+            }
+
+            string u = BaseUrlForSingleStore(app, isSecure);
+            u += "products/" + productId + "/medium/";
+            u += productImage;
+
+            if (productImage.Trim().Length < 1)
+            {
+                u = BaseUrl(app, isSecure) + "Content/admin/images/MissingImage.png";
+            }
+            return u;
+        }
+        public static string ProductImageUrlSmall(MerchantTribeApplication app, string productId, string productImage, bool isSecure)
+        {
+            // return outside image references without rewriting
+            if (productImage.StartsWith("http"))
+            {
+                return productImage;
+            }
+
+            string u = BaseUrlForSingleStore(app, isSecure);
+            u += "products/" + productId + "/small/";
+            u += productImage;
+
+            if (productImage.Trim().Length < 1)
+            {
+                u = BaseUrl(app, isSecure) + "Content/admin/images/MissingImage.png";
             }
             return u;
         }
 
         //Flex Page Image Upload
-        public static string FlexPageImageUrl(long storeId, string categoryId, string pageVersion, string fileName, bool isSecure)
+        public static string FlexPageImageUrl(MerchantTribeApplication app, string categoryId, string pageVersion, string fileName, bool isSecure)
         {
-            string missing = "/Content/admin/images/MissingImage.png";
-
+            string missing = BaseUrl(app, isSecure) + "Content/admin/images/MissingImage.png";
             if (fileName == string.Empty) return missing;
 
+            long storeId = app.CurrentStore.Id;
             string physicalLocation = WebAppSettings.BaseImagePhysicalPath;
             physicalLocation += storeId.ToString() + "/pages/" + categoryId + "/" + pageVersion + "/";
             physicalLocation += System.IO.Path.GetFileName(MerchantTribe.Web.Text.CleanFileName(fileName));
 
             if (!File.Exists(physicalLocation)) return missing;
 
-            string u = BaseImageUrl().ToString();
-            if (isSecure)
-            {
-                u = u.Replace("http://", "https://");
-            }
-            u += storeId.ToString() + "/pages/" + categoryId + "/" + pageVersion + "/";
+            string u = BaseUrlForSingleStore(app, isSecure);
+            u += "pages/" + categoryId + "/" + pageVersion + "/";
             u += MerchantTribe.Web.Text.CleanFileName(fileName);
             return u;
         }
@@ -459,77 +447,65 @@ namespace MerchantTribe.Commerce.Storage
 
             return result;
         }
-        public static string ProductAdditionalImageUrlOriginal(long storeId, string productId, string imageId, string productImage, bool isSecure)
+        public static string ProductAdditionalImageUrlOriginal(MerchantTribeApplication app, string productId, string imageId, string productImage, bool isSecure)
         {
-            string u = BaseImageUrl().ToString();
-            if (isSecure)
-            {
-                u = u.Replace("http://", "https://");
-            }
-            u += storeId.ToString() + "/products/" + productId + "/additional/";
+            string u = BaseUrlForSingleStore(app, isSecure);
+            u += "products/" + productId + "/additional/";
             u += imageId + "/";
             u += productImage;
 
             if (productImage.Trim().Length < 1)
             {
-                u = "/Content/admin/images/MissingImage.png";
+                u = BaseUrl(app, isSecure) + "Content/admin/images/MissingImage.png";
             }
             return u;
         }
-        public static string ProductAdditionalImageUrlMedium(long storeId, string productId, string imageId, string productImage, bool isSecure)
+        public static string ProductAdditionalImageUrlMedium(MerchantTribeApplication app, string productId, string imageId, string productImage, bool isSecure)
         {
-            string u = BaseImageUrl().ToString();
-            if (isSecure)
-            {
-                u = u.Replace("http://", "https://");
-            }
-            u += storeId.ToString() + "/products/" + productId + "/additional/";
+            string u = BaseUrlForSingleStore(app, isSecure);
+            u += "products/" + productId + "/additional/";
             u += imageId + "/medium/";
             u += productImage;
 
             if (productImage.Trim().Length < 1)
             {
-                u = "/Content/admin/images/MissingImage.png";
+                u = BaseUrl(app, isSecure) + "Content/admin/images/MissingImage.png";
             }
             return u;
         }
-        public static string ProductAdditionalImageUrlSmall(long storeId, string productId, string imageId, string productImage, bool isSecure)
+        public static string ProductAdditionalImageUrlSmall(MerchantTribeApplication app, string productId, string imageId, string productImage, bool isSecure)
         {
-            string u = BaseImageUrl().ToString();
-            if (isSecure)
-            {
-                u = u.Replace("http://", "https://");
-            }
-            u += storeId.ToString() + "/products/" + productId + "/additional/";
+            string u = BaseUrlForSingleStore(app, isSecure);
+            u += "products/" + productId + "/additional/";
             u += imageId + "/small/";
             u += productImage;
 
             if (productImage.Trim().Length < 1)
             {
-                u = "/Content/admin/images/MissingImage.png";
+                u = BaseUrl(app, isSecure) + "Content/admin/images/MissingImage.png";
             }
             return u;
         }
-        public static string ProductAdditionalImageUrlTiny(long storeId, string productId, string imageId, string productImage, bool isSecure)
+        public static string ProductAdditionalImageUrlTiny(MerchantTribeApplication app, string productId, string imageId, string productImage, bool isSecure)
         {
-            string u = BaseImageUrl().ToString();
-            if (isSecure)
-            {
-                u = u.Replace("http://", "https://");
-            }
-            u += storeId.ToString() + "/products/" + productId + "/additional/";
+            if (productImage.StartsWith("http")) return productImage;
+
+            string u = BaseUrlForSingleStore(app, isSecure);
+            u += "products/" + productId + "/additional/";
             u += imageId + "/tiny/";
             u += productImage;
 
             if (productImage.Trim().Length < 1)
             {
-                u = "/Content/admin/images/MissingImage.png";
+                u = BaseUrl(app, isSecure) + "Content/admin/images/MissingImage.png";
             }
             return u;
         }
 
-        public static string ProductVariantImageUrlMedium(long storeId, string productId, string productImage, string variantId, bool isSecure)
-        {            
+        public static string ProductVariantImageUrlMedium(MerchantTribeApplication app, string productId, string productImage, string variantId, bool isSecure)
+        {
+            long storeId = app.CurrentStore.Id;
+
             if (VariantImageExists(storeId, productId, variantId))
             {
                 string variantImage = string.Empty;
@@ -547,17 +523,22 @@ namespace MerchantTribe.Commerce.Storage
                     }
                 }
 
-                string u = BaseImageUrl().ToString();
-                if (isSecure)
+
+                if (productImage.StartsWith("http")) return productImage;
+
+                string u = BaseUrlForSingleStore(app, isSecure);
+                u += "products/" + productId + "/variants/" + variantId;
+                u += "/medium/" + variantImage;                               
+
+                if (productImage.Trim().Length < 1)
                 {
-                    u = u.Replace("http://", "https://");
+                    u = BaseUrl(app, isSecure) + "Content/admin/images/MissingImage.png";
                 }
-                u += storeId.ToString() + "/products/" + productId + "/variants/" + variantId + "/medium/" + variantImage;
                 return u;
             }
             else
             {
-                return ProductImageUrlMedium(storeId, productId, productImage, isSecure);
+                return ProductImageUrlMedium(app, productId, productImage, isSecure);
             }                                    
         }
 
@@ -691,47 +672,31 @@ namespace MerchantTribe.Commerce.Storage
 
             return result;
         }
-        public static string CategoryBannerUrl(long storeId, string categoryId, string imageName, bool isSecure)
+        public static string CategoryBannerUrl(MerchantTribeApplication app, string categoryId, string imageName, bool isSecure)
         {
-            string u = BaseImageUrl();
-            if (isSecure)
-            {
-                u = u.Replace("http://", "https://");
-            }
-            u += storeId.ToString() + "/categorybanners/" + categoryId.ToString() + "/banner/";
+            string u = BaseUrlForSingleStore(app, isSecure);
+            u += "categorybanners/" + categoryId.ToString() + "/banner/";
             u += imageName;
             return u;
         }
-        public static string CategoryBannerOriginalUrl(long storeId, string categoryId, string imageName, bool isSecure)
+        public static string CategoryBannerOriginalUrl(MerchantTribeApplication app, string categoryId, string imageName, bool isSecure)
         {
-            string u = BaseImageUrl();
-            if (isSecure)
-            {
-                u = u.Replace("http://", "https://");
-            }
-            u += storeId.ToString() + "/categorybanners/" + categoryId.ToString() + "/";
+            string u = BaseUrlForSingleStore(app, isSecure);
+            u += "categorybanners/" + categoryId.ToString() + "/";
             u += imageName;
             return u;
         }
-        public static string CategoryIconUrl(long storeId, string categoryId, string imageName, bool isSecure)
+        public static string CategoryIconUrl(MerchantTribeApplication app, string categoryId, string imageName, bool isSecure)
         {
-            string u = BaseImageUrl();
-            if (isSecure)
-            {
-                u = u.Replace("http://", "https://");
-            }
-            u += storeId.ToString() + "/categoryicons/" + categoryId.ToString() + "/small/";
+            string u = BaseUrlForSingleStore(app, isSecure);
+            u += "categoryicons/" + categoryId.ToString() + "/small/";
             u += imageName;
             return u;
         }
-        public static string CategoryIconOriginalUrl(long storeId, string categoryId, string imageName, bool isSecure)
+        public static string CategoryIconOriginalUrl(MerchantTribeApplication app, string categoryId, string imageName, bool isSecure)
         {
-            string u = BaseImageUrl();
-            if (isSecure)
-            {
-                u = u.Replace("http://", "https://");
-            }
-            u += storeId.ToString() + "/categoryicons/" + categoryId.ToString() + "/";
+            string u = BaseUrlForSingleStore(app, isSecure);
+            u += "categoryicons/" + categoryId.ToString() + "/";
             u += imageName;
             return u;
         }
@@ -815,43 +780,33 @@ namespace MerchantTribe.Commerce.Storage
 
             return result;
         }
-     
-        public static string StoreLogoOriginalUrl(long storeId, long logorevision, string logoimage)
+
+        public static string StoreLogoOriginalUrl(MerchantTribeApplication app, long logorevision, string logoimage)
         {
-            return StoreLogoOriginalUrl(storeId, logorevision, logoimage, false);
+            return StoreLogoOriginalUrl(app, logorevision, logoimage, false);
         }
 
-        public static string StoreLogoOriginalUrl(long storeId, long logorevision, string logoimage, bool isSecure)
+        public static string StoreLogoOriginalUrl(MerchantTribeApplication app, long logorevision, string logoimage, bool isSecure)
         {
-            string result = BaseImageUrl().ToString();
-            if (isSecure)
-            {
-                result = result.Replace("http://", "https://");
-            }
-
-            result += storeId.ToString() + "/storelogo/" + logorevision.ToString() + logoimage;
+            string result = BaseUrlForSingleStore(app, isSecure);
+            result += "storelogo/" + logorevision.ToString() + logoimage;
 
             return result;
         }
 
-        public static string StoreLogoUrl(long storeId, long logorevision, string imageName)
+        public static string StoreLogoUrl(MerchantTribeApplication app, long logorevision, string imageName)
         {
-            return StoreLogoUrl(storeId, logorevision, imageName, false);
+            return StoreLogoUrl(app, logorevision, imageName, false);
         }
-        public static string StoreLogoUrl(long storeId, long logorevision, string imageName, bool isSecure)
+        public static string StoreLogoUrl(MerchantTribeApplication app, long logorevision, string imageName, bool isSecure)
         {
             if (imageName == "[[default]]")
             {
-                return "/content/images/system/DefaultStoreLogo.png";
+                return BaseUrl(app, isSecure) + "content/images/system/DefaultStoreLogo.png";
             }
 
-            string result = BaseImageUrl().ToString();
-            if (isSecure)
-            {
-                result = result.Replace("http://", "https://");
-            }
-
-            result += storeId.ToString() + "/storelogo/" + logorevision.ToString() + "/logo/" + imageName;
+            string result = BaseUrlForSingleStore(app, isSecure);
+            result += "storelogo/" + logorevision.ToString() + "/logo/" + imageName;
 
             return result;
         }
@@ -1056,21 +1011,22 @@ namespace MerchantTribe.Commerce.Storage
         {
             return BaseStoreThemePhysicalPath(storeId, themeId) + "assets\\";            
         }
-        public static string AssetUrl(long storeId, string themeId, string fileName, bool isSecure)
-        {
-            return BaseStoreThemeUrl(storeId, themeId, isSecure) + "assets/" + fileName;
+        public static string AssetUrl(MerchantTribeApplication app, string themeId, string fileName, bool isSecure)
+        {            
+            return BaseUrlForStoreTheme(app, themeId, isSecure) + "assets/" + fileName;
         }
-        public static List<AssetSnapshot> ListAssetsForTheme(long storeId, string themeId)
+        public static List<AssetSnapshot> ListAssetsForTheme(MerchantTribeApplication app, string themeId)
         {
             List<AssetSnapshot> result = new List<AssetSnapshot>();
 
+            long storeId = app.CurrentStore.Id;
             string p = AssetPhysicalPath(storeId, themeId);
             if (Directory.Exists(p))
             {
                 string[] files = Directory.GetFiles(p);
                 foreach (string f in files)
                 {
-                    AssetSnapshot snap = new AssetSnapshot(Path.GetFileName(f), storeId, themeId);
+                    AssetSnapshot snap = new AssetSnapshot(Path.GetFileName(f), app, themeId);
                     result.Add(snap);
                 }
             }
@@ -1118,23 +1074,24 @@ namespace MerchantTribe.Commerce.Storage
         {
             return BaseStoreThemePhysicalPath(storeId, themeId) + "buttons\\";
         }
-        public static string ThemeButtonUrl(long storeId, string themeId, string fileName, bool isSecure)
+        public static string ThemeButtonUrl(MerchantTribeApplication app, string themeId, string fileName, bool isSecure)
         {
-            string u = BaseStoreThemeUrl(storeId, themeId, isSecure);
+            string u = BaseUrlForStoreTheme(app, themeId, isSecure);
             u += "buttons/" + fileName;
             return u;
         }
-        public static List<ButtonSnapshot> ListButtonsForTheme(long storeId, string themeId)
+        public static List<ButtonSnapshot> ListButtonsForTheme(MerchantTribeApplication app, string themeId)
         {
             List<ButtonSnapshot> result = new List<ButtonSnapshot>();
 
+            long storeId = app.CurrentStore.Id;
             string p = ThemeButtonPhysicalPath(storeId, themeId);
             if (Directory.Exists(p))
             {
                 string[] files = Directory.GetFiles(p);
                 foreach (string f in files)
                 {
-                    ButtonSnapshot snap = new ButtonSnapshot(Path.GetFileName(f), storeId, themeId);
+                    ButtonSnapshot snap = new ButtonSnapshot(Path.GetFileName(f), app, themeId);
                     result.Add(snap);
                 }
             }
@@ -1182,21 +1139,22 @@ namespace MerchantTribe.Commerce.Storage
         {
             return BaseStorePhysicalPath(storeId) + "storeassets\\";
         }
-        public static string StoreAssetUrl(long storeId, string fileName, bool isSecure)
+        public static string StoreAssetUrl(MerchantTribeApplication app, string fileName, bool isSecure)
         {
-            return BaseStoreUrl(storeId, isSecure) + "storeassets/" + fileName;
+            return BaseUrlForSingleStore(app, isSecure) + "storeassets/" + fileName;
         }
-        public static List<StoreAssetSnapshot> ListStoreAssets(long storeId)
+        public static List<StoreAssetSnapshot> ListStoreAssets(MerchantTribeApplication app)
         {
             List<StoreAssetSnapshot> result = new List<StoreAssetSnapshot>();
 
+            long storeId = app.CurrentStore.Id;
             string p = StoreAssetPhysicalPath(storeId);
             if (Directory.Exists(p))
             {
                 string[] files = Directory.GetFiles(p);
                 foreach (string f in files)
                 {
-                    StoreAssetSnapshot snap = new StoreAssetSnapshot(Path.GetFileName(f), storeId);
+                    StoreAssetSnapshot snap = new StoreAssetSnapshot(Path.GetFileName(f), app);
                     result.Add(snap);
                 }
             }
@@ -1458,21 +1416,22 @@ namespace MerchantTribe.Commerce.Storage
         {
             return ReadThemeFile(storeId, themeId, "styles.css");
         }
-        public static bool WriteStyleSheet(long storeId,string themeId, string css)
+        public static bool WriteStyleSheet(MerchantTribeApplication app,string themeId, string css)
         {
             bool result = true;
-
+            long storeId = app.CurrentStore.Id;
             result =  WriteThemeFile(storeId, themeId, "styles.css", css);
-            MinifyStyleSheet(storeId, themeId);
+            MinifyStyleSheet(app, themeId);
 
             return result;
         }
            
-        public static bool MinifyStyleSheet(long storeId,string themeId)
+        public static bool MinifyStyleSheet(MerchantTribeApplication app,string themeId)
         {
+            long storeId = app.CurrentStore.Id;
             bool result = true;
             string css = ReadStyleSheet(storeId, themeId);
-            css = css.Replace("{{assets}}", BaseStoreThemeUrl(storeId, themeId, true) + "assets/");
+            css = css.Replace("{{assets}}", BaseUrlForStoreTheme(app, themeId, true) + "assets/");
             string compressed = MerchantTribe.Web.Css.Compressor.Minify(css);
             result = WriteThemeFile(storeId, themeId, "styles.min.css", compressed);
             return result;

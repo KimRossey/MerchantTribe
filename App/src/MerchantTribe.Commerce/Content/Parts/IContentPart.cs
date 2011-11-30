@@ -10,9 +10,9 @@ namespace MerchantTribe.Commerce.Content.Parts
 
         string Id { get; set; }
 
-        string RenderForDisplay(RequestContext context, Catalog.Category containerCategory);
+        string RenderForDisplay(MerchantTribeApplication app, Catalog.Category containerCategory);
 
-        string RenderForEdit(RequestContext context, Catalog.Category containerCategory);
+        string RenderForEdit(MerchantTribeApplication app, Catalog.Category containerCategory);
 
         ColumnSize MinimumSize();
 

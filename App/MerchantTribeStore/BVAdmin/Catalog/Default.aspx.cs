@@ -135,7 +135,7 @@ namespace MerchantTribeStore
 
             string destinationLink = "Products_Edit.aspx?id=" + p.Bvin;
 
-            string imageUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductImageUrlSmall(((IMultiStorePage)this.Page).MTApp.CurrentStore.Id, p.Bvin, p.ImageFileSmall, Page.Request.IsSecureConnection);
+            string imageUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductImageUrlSmall(((IMultiStorePage)this.Page).MTApp, p.Bvin, p.ImageFileSmall, Page.Request.IsSecureConnection);
 
             sb.Append("<div class=\"record\"><a href=\"" + destinationLink + "\">");
 

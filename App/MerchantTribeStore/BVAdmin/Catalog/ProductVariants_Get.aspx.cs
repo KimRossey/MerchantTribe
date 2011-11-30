@@ -39,7 +39,7 @@ namespace MerchantTribeStore
                     {
                         output.Price = p.SitePrice;
                     }
-                    output.ImageUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductVariantImageUrlMedium(this.MTApp.CurrentStore.Id, p.Bvin, p.ImageFileSmall, result.Bvin, true);
+                    output.ImageUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductVariantImageUrlMedium(this.MTApp, p.Bvin, p.ImageFileSmall, result.Bvin, true);
 
                     foreach (string s in result.SelectionNames(p.Options.VariantsOnly()))
                     {

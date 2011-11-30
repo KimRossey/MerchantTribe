@@ -88,7 +88,7 @@ namespace MerchantTribe.Commerce.Content
                 string themeId = System.IO.Path.GetFileName(themePath);
                 themeId = themeId.Replace("theme-", "");
                 ThemeView v = new ThemeView();
-                v.LoadInstalledTheme(MTApp.CurrentStore.Id, themeId);
+                v.LoadInstalledTheme(MTApp, themeId);
                 result.Add(v);
             }
 
@@ -173,7 +173,7 @@ namespace MerchantTribe.Commerce.Content
         public string ButtonUrl(string buttonName, bool isSecure)
         {
             string fileName = buttonName + ".png";
-            return Storage.DiskStorage.ThemeButtonUrl(MTApp.CurrentStore.Id, MTApp.CurrentStore.Settings.ThemeId, fileName, isSecure);
+            return Storage.DiskStorage.ThemeButtonUrl(MTApp, MTApp.CurrentStore.Settings.ThemeId, fileName, isSecure);
         }
 
         public bool InstallTheme(string themeId)
@@ -256,7 +256,7 @@ namespace MerchantTribe.Commerce.Content
 
         public bool UpdateStyleSheet(string themeId, string updatedCSS)
         {
-            return Storage.DiskStorage.WriteStyleSheet(MTApp.CurrentStore.Id, themeId, updatedCSS);
+            return Storage.DiskStorage.WriteStyleSheet(MTApp, themeId, updatedCSS);
         }
 
         public bool CopyCurrentContentColumnsToTheme(string themeId)

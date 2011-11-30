@@ -194,7 +194,7 @@ namespace MerchantTribeStore
         }
         private void UpdateIconImage(Category c)
         {
-            IconImage = MerchantTribe.Commerce.Storage.DiskStorage.CategoryIconUrl(MTApp.CurrentStore.Id, c.Bvin, c.ImageUrl, true);
+            IconImage = MerchantTribe.Commerce.Storage.DiskStorage.CategoryIconUrl(MTApp, c.Bvin, c.ImageUrl, true);
             if (IconImage == string.Empty || c.ImageUrl == string.Empty)
             {
                 IconImage = Page.ResolveUrl("~/content/admin/images/MissingImage.png");
@@ -202,7 +202,7 @@ namespace MerchantTribeStore
         }
         private void UpdateBannerImage(Category c)
         {
-            BannerImage = MerchantTribe.Commerce.Storage.DiskStorage.CategoryBannerUrl(MTApp.CurrentStore.Id, c.Bvin, c.BannerImageUrl, true);
+            BannerImage = MerchantTribe.Commerce.Storage.DiskStorage.CategoryBannerUrl(MTApp, c.Bvin, c.BannerImageUrl, true);
             if (BannerImage == string.Empty || c.BannerImageUrl == string.Empty)
             {
                 BannerImage = Page.ResolveUrl("~/content/admin/images/MissingImage.png");

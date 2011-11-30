@@ -121,7 +121,7 @@ namespace MerchantTribeStore
             sb.Append("<div class=\"dragitem\" id=\"img" + img.Bvin + "\"><table class=\"formtable\" width=\"100%\"><tr>");
             sb.Append("<td width=\"25%\"><a href=\"" + destinationLink + "\">");            
             sb.Append("<img src=\"");
-            sb.Append(MerchantTribe.Commerce.Storage.DiskStorage.ProductAdditionalImageUrlTiny(MTApp.CurrentStore.Id,
+            sb.Append(MerchantTribe.Commerce.Storage.DiskStorage.ProductAdditionalImageUrlTiny(MTApp,
                                                                                                       img.ProductId,
                                                                                                       img.Bvin,
                                                                                                       img.FileName,

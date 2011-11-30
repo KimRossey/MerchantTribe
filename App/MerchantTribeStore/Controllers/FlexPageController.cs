@@ -102,16 +102,16 @@ namespace MerchantTribeStore.Controllers
                 {
                     if (Request["preview"] == "1")
                     {
-                        ViewData["ContentParts"] = cat.Versions[0].Root.RenderForDisplay(MTApp.CurrentRequestContext, cat);
+                        ViewData["ContentParts"] = cat.Versions[0].Root.RenderForDisplay(MTApp, cat);
                     }
                     else
                     {
-                        ViewData["ContentParts"] = cat.Versions[0].Root.RenderForEdit(MTApp.CurrentRequestContext, cat);
+                        ViewData["ContentParts"] = cat.Versions[0].Root.RenderForEdit(MTApp, cat);
                     }
                 }
                 else
                 {
-                    ViewData["ContentParts"] = cat.Versions[0].Root.RenderForDisplay(MTApp.CurrentRequestContext, cat);
+                    ViewData["ContentParts"] = cat.Versions[0].Root.RenderForDisplay(MTApp, cat);
                 }
             }
             catch (Exception ex)

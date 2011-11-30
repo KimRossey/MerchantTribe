@@ -44,7 +44,7 @@ namespace MerchantTribeStore
             sb.Append("<ul class=\"removablelist\">");
 
             List<MerchantTribe.Commerce.Storage.ButtonSnapshot> buttons =
-                MerchantTribe.Commerce.Storage.DiskStorage.ListButtonsForTheme(MTApp.CurrentStore.Id, themeid);
+                MerchantTribe.Commerce.Storage.DiskStorage.ListButtonsForTheme(MTApp, themeid);
             foreach (MerchantTribe.Commerce.Storage.ButtonSnapshot snapshot in buttons)
             {
                 sb.Append("<li id=\"" + snapshot.FileName + "\">");

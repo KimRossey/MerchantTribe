@@ -41,7 +41,7 @@ namespace MerchantTribeStore
             sb.Append("<ul class=\"removablelist\">");
 
             List<MerchantTribe.Commerce.Storage.StoreAssetSnapshot> assets =
-                MerchantTribe.Commerce.Storage.DiskStorage.ListStoreAssets(MTApp.CurrentStore.Id);
+                MerchantTribe.Commerce.Storage.DiskStorage.ListStoreAssets(MTApp);
             foreach (MerchantTribe.Commerce.Storage.StoreAssetSnapshot snapshot in assets)
             {
                 sb.Append("<li id=\"" + snapshot.FileName + "\">");

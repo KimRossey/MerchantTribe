@@ -8,14 +8,14 @@ namespace MerchantTribe.Commerce.Storage
     public class StoreAssetSnapshot
     {
         private string _FileName = string.Empty;
-        private long _storeId = 0;
+        private MerchantTribeApplication _app = null;
 
         public string FileName { get { return _FileName; } }
 
-        public StoreAssetSnapshot(string fileName, long storeId)
+        public StoreAssetSnapshot(string fileName, MerchantTribeApplication app)
         {
             _FileName = fileName;
-            _storeId = storeId;
+            _app = app;
         }
 
         public string Url()
@@ -24,7 +24,7 @@ namespace MerchantTribe.Commerce.Storage
         }
         public string Url(bool isSecure)
         {
-            return DiskStorage.StoreAssetUrl(_storeId, _FileName, isSecure);
+            return DiskStorage.StoreAssetUrl(_app, _FileName, isSecure);
         }
 
     }
