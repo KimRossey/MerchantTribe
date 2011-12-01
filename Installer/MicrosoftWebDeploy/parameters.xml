@@ -45,14 +45,14 @@
     description="The public address for your store (i.e. http://www.mystore.com)"
     defaultValue="http://localhost/MerchantTribeStore"
     tags="">
-    <parameterEntry type="TextFile" scope="MerchantTribeStore\\web.config$" match="http://localhost" /> 
+    <parameterEntry type="XmlFile" scope="\\web.config$" match="/configuration/appSettings/add[@key='BaseApplicationUrl']/@value" /> 
   </parameter>
 
   <parameter name="dbAdminUsername" defaultValue="sa" tags="SQL, dbAdminUsername">
   </parameter>
   <parameter name="dbAdminPassword" defaultValue="" tags="SQL, dbAdminPassword, Password">
   </parameter>
-  <parameter name="dbServer" defaultValue="localhost" tags="SQL, dbServer">
+  <parameter name="dbServer" defaultValue=".\sqlexpress" tags="SQL, dbServer">
   </parameter>
   <parameter name="dbName" defaultValue="MerchantTribe" tags="SQL, dbName">
     <parameterEntry type="TextFile" match="PlaceHolderForDb" scope="UserAccount.sql" />
@@ -90,7 +90,7 @@
      tags="SQL, Hidden, SQLConnectionString">
     <parameterEntry 
       type="XmlFile" 
-      scope="MerchantTribeStore\\web.config$" 
+      scope="\\web.config$" 
       match="/configuration/connectionStrings/add[@name='commerce6ConnectionString']/@connectionString" />   
   </parameter>   
 </parameters>
