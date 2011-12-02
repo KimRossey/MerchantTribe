@@ -44,7 +44,7 @@
   <parameter name="Public Web Address"
     description="The public address for your store (i.e. http://www.mystore.com)"
     defaultValue="http://localhost/MerchantTribeStore"
-    tags="">
+    tags="AppURL">
     <parameterEntry type="XmlFile" scope="\\web.config$" match="/configuration/appSettings/add[@key='BaseApplicationUrl']/@value" /> 
   </parameter>
 
