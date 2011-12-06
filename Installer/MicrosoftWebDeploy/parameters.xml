@@ -60,7 +60,7 @@
   <parameter name="dbUsername" defaultValue="merchanttribe" tags="SQL, dbUsername">
    <parameterEntry type="TextFile" match="PlaceHolderForUser" scope="UserAccount.sql" />
   </parameter>
-  <parameter name="dbUserPassword" defaultValue="merchanttribe" tags="SQL, dbUserPassword, Password">
+  <parameter name="dbUserPassword" defaultValue="" tags="SQL, dbUserPassword, Password, New">
    <parameterEntry type="TextFile" match="PlaceHolderForPassword" scope="UserAccount.sql" />
   </parameter>
   <parameter 
