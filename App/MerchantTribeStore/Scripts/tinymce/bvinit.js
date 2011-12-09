@@ -26,6 +26,8 @@ $(document).ready(function () {
             //width:800,
             //height: 400,
 
+            extended_valid_elements: "iframe[src|width|height|name|align|frameborder|webkitAllowFullScreen|mozallowfullscreen|allowFullScreen]",
+ 
             // Example content CSS (should be your site CSS)
             content_css : "~/scripts/tinymce/tinymce.css",
             body_class: "tinymcebody"

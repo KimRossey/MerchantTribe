@@ -52,7 +52,7 @@
                 <td class="formlabel">URL:
                     </td>
                 <td class="formfield">
-                  /<asp:TextBox ID="RewriteUrlField" ClientIDMode="Static" runat="server" Width="700px" TabIndex="2022"></asp:TextBox>
+                  /<asp:TextBox ID="RewriteUrlField" ClientIDMode="Static" runat="server" Width="700px" TabIndex="2100"></asp:TextBox>
                     <br />
                     <uc4:UrlsAssociated ID="UrlsAssociated1" runat="server" />
                 </td>
@@ -60,42 +60,43 @@
             <tr>
                 <td class="formlabel">Meta Title:</td>
                 <td class="formfield">
-                    <asp:TextBox ID="MetaTitleField" runat="server" MaxLength="512" TabIndex="2002" Width="750px"></asp:TextBox>
+                    <asp:TextBox ID="MetaTitleField" runat="server" MaxLength="512"  Width="750px" TabIndex="2200"></asp:TextBox>
                 </td>
             </tr>
             <tr>
                 <td class="formlabel">Meta Desc:</td>
                 <td class="formfield">
-                  <asp:TextBox ID="MetaDescriptionField" runat="server" MaxLength="255" TabIndex="2003" Width="750px" ></asp:TextBox>
+                  <asp:TextBox ID="MetaDescriptionField" runat="server" MaxLength="255"  Width="750px" TabIndex="2300" ></asp:TextBox>
                 </td>
             </tr>
             <tr>
                 <td class="formlabel">Meta Keywords:</td>
                 <td class="formfield">
-                  <asp:TextBox ID="MetaKeywordsField" runat="server" MaxLength="255" TabIndex="2004" Width="750px"></asp:TextBox>
+                  <asp:TextBox ID="MetaKeywordsField" runat="server" MaxLength="255"  Width="750px" TabIndex="2400"></asp:TextBox>
                 </td>
             </tr>
             <tr>
                 <td class="formlabel" style="height: 26px">
                     &nbsp;</td>
                 <td class="formfield">
-                    <asp:CheckBox ID="chkHidden" runat="server" Text="Hide Category (unless home page)" TabIndex="2009" /></td>
+                    <asp:CheckBox ID="chkHidden" runat="server" Text="Hide Category (unless home page)" TabIndex="2500" /></td>
             </tr>
+        
             <tr>
                 <td class="formlabel">&nbsp;</td>
                 <td class="formfield"><asp:ImageButton Id="btnEdit" runat="server" 
-                        ImageUrl="~/BVAdmin/Images/Buttons/EditThisPage.png" onclick="btnEdit_Click" /></td>
+                        ImageUrl="~/BVAdmin/Images/Buttons/EditThisPage.png" onclick="btnEdit_Click" TabIndex="2700" /></td>
             </tr>
         </table>
         </div>
         <div class="editorcontrols">
-        <asp:ImageButton ID="btnCancel" TabIndex="2500" runat="server" ImageUrl="../images/buttons/Cancel.png"
+        <asp:ImageButton ID="btnCancel" TabIndex="2800" runat="server" ImageUrl="../images/buttons/Cancel.png"
                         CausesValidation="False" onclick="btnCancel_Click"></asp:ImageButton>
-<asp:ImageButton ID="UpdateButton" TabIndex="2501" runat="server" 
+<asp:ImageButton ID="UpdateButton" TabIndex="2900" runat="server" 
                         ImageUrl="../images/buttons/Update.png" onclick="UpdateButton_Click">
                     </asp:ImageButton>
                     <asp:ImageButton ID="btnSaveChanges" runat="server" ImageUrl="../images/buttons/SaveChanges.png"
-                        TabIndex="2502" onclick="btnSaveChanges_Click" />
+                        TabIndex="3000" onclick="btnSaveChanges_Click" />
         </div>
     </asp:Panel>    
     <asp:HiddenField ID="BvinField" runat="server" />

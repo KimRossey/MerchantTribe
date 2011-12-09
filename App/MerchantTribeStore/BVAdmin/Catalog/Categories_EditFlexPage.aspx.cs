@@ -125,7 +125,8 @@ namespace MerchantTribeStore.BVAdmin.Catalog
                 c.MetaKeywords = this.MetaKeywordsField.Text.Trim();
                 c.ShowInTopMenu = false;
                 c.SourceType = CategorySourceType.FlexPage;
-                c.Hidden = this.chkHidden.Checked;
+                c.Hidden = this.chkHidden.Checked;                
+                c.CustomPageLayout = CustomPageLayoutType.Empty;                             
 
                 string oldUrl = c.RewriteUrl;
 
@@ -145,8 +146,7 @@ namespace MerchantTribeStore.BVAdmin.Catalog
                     this.MessageBox1.ShowWarning("The requested URL is already in use by another item.");
                     return false;
                 }
-
-                c.CustomPageLayout = CustomPageLayoutType.Empty;
+                
                 c.CustomerChangeableSortOrder = true;
 
                 if (this.BvinField.Value == string.Empty)

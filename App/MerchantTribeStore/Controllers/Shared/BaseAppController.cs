@@ -50,7 +50,7 @@ namespace MerchantTribeStore.Controllers.Shared
             ViewBag.StoreUniqueId = MTApp.CurrentStore.StoreUniqueId(MTApp);
             ViewBag.CustomerIp = Request.UserHostAddress ?? "0.0.0.0";
             ViewBag.CustomerId = SessionManager.GetCurrentUserId(MTApp.CurrentStore) ?? string.Empty;
-            ViewBag.HideAnalytics = MTApp.CurrentStore.Settings.Analytics.DisableMerchantTribeAnalytics;            
+            ViewBag.HideAnalytics = MTApp.CurrentStore.Settings.Analytics.DisableMerchantTribeAnalytics;
 
             // Integrations
             IntegrationLoader.AddIntegrations(this.MTApp.CurrentRequestContext.IntegrationEvents, this.MTApp.CurrentStore);
