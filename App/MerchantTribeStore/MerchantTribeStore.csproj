@@ -317,7 +317,6 @@
     <Content Include="BVAdmin\Content\StoreAssets.js" />
     <Content Include="BVAdmin\Content\StoreAssets_Delete.aspx" />
     <Content Include="BVAdmin\Content\StoreClosed.aspx" />
-    <Content Include="BVAdmin\Content\Template_Edit.aspx" />
     <Content Include="BVAdmin\Controllers\Slugify.aspx" />
     <Content Include="BVAdmin\Controls\AddressEditor.ascx" />
     <Content Include="BVAdmin\Controls\BooleanModifierField.ascx" />
@@ -3192,13 +3191,6 @@
     </Compile>
     <Compile Include="BVAdmin\Content\StoreClosed.aspx.designer.cs">
       <DependentUpon>StoreClosed.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="BVAdmin\Content\Template_Edit.aspx.cs">
-      <DependentUpon>Template_Edit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="BVAdmin\Content\Template_Edit.aspx.designer.cs">
-      <DependentUpon>Template_Edit.aspx</DependentUpon>
     </Compile>
     <Compile Include="BVAdmin\Controllers\Slugify.aspx.cs">
       <DependentUpon>Slugify.aspx</DependentUpon>

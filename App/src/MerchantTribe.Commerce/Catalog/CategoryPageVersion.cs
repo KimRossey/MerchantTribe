@@ -17,6 +17,7 @@ namespace MerchantTribe.Commerce.Catalog
         public DateTime AvailableEndDateUtc { get; set; }        
         public RootColumn Root { get; set; }
         public PublishStatus PublishedStatus { get; set; }
+        public AreaData Areas { get; set; }
 
         public CategoryPageVersion()
         {
@@ -28,6 +29,7 @@ namespace MerchantTribe.Commerce.Catalog
             AvailableEndDateUtc = new DateTime(9999, 1, 1);
             Root = new RootColumn();            
             PublishedStatus = PublishStatus.Draft;
+            Areas = new AreaData();
         }
        
     }

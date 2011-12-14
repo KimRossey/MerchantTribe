@@ -20,7 +20,23 @@ namespace MerchantTribe.Commerce
 
                 return admin;        
         }
-       
+
+
+        public Catalog.Category CurrentCategory { get; set; }
+        public Catalog.Product CurrentProduct { get; set; }
+        public Orders.Order CurrentReceiptOrder { get; set; }
+        public Orders.Order CurrentCart { get; set; }
+
+        /* Added for template support */
+        public string PageTitle { get; set; }
+        public string MetaKeywords { get; set; }
+        public string MetaDescription { get; set; }
+        public string MetaAdditionalText { get; set; }
+        public string CartItemCount { get; set; }
+        public string CartSubtotal { get; set; }
+        public List<string> TempMessages { get; set; }
+        /* end Added for template support */
+
         public string ConnectionString { get; set; }
         public string ConnectionStringForEntityFramework { get; set; }
         public Integration IntegrationEvents { get; set; }
@@ -77,6 +93,16 @@ namespace MerchantTribe.Commerce
             ConnectionStringForEntityFramework = WebAppSettings.ApplicationConnectionStringForEntityFramework;
             IntegrationEvents = new Integration();
             RoutingContext = null;
+
+            this.MetaAdditionalText = string.Empty;
+            this.MetaKeywords = string.Empty;
+            this.MetaDescription = string.Empty;
+            this.PageTitle = string.Empty;
+            this.TempMessages = new List<string>();
+
+            this.CartItemCount = string.Empty;
+            this.CartSubtotal = string.Empty;
+
         }
 
         

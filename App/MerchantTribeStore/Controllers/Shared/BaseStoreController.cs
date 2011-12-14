@@ -27,8 +27,11 @@ namespace MerchantTribeStore.Controllers.Shared
                 if (subTotal.Trim().Length < 1) subTotal = "$0.00";
             }
             ViewData["CurrentCartItemCount"] = itemCount;
-            ViewData["CurrentCartSubTotal"] = subTotal;
+            this.MTApp.CurrentRequestContext.CartItemCount = itemCount;
 
+            ViewData["CurrentCartSubTotal"] = subTotal;
+            this.MTApp.CurrentRequestContext.CartSubtotal = subTotal;
+            
             // style sheet
             ThemeManager themes = MTApp.ThemeManager();
             ViewBag.Css = themes.CurrentStyleSheet(MTApp,System.Web.HttpContext.Current.Request.IsSecureConnection);
@@ -41,7 +44,7 @@ namespace MerchantTribeStore.Controllers.Shared
 
             // Additional Meta Tags
             ViewData["AdditionalMetaTags"] = MTApp.CurrentStore.Settings.Analytics.AdditionalMetaTags;
-
+            
             // JQuery
             ViewBag.JqueryInclude = Helpers.Html.JQueryIncludes(Url.Content("~/scripts"), this.Request.IsSecureConnection);
 

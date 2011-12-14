@@ -56,8 +56,13 @@ namespace MerchantTribe.Commerce.Storage
             string p = BuiltinThemesPath();
             p = p.Replace("\\themes", "\\demoimages");
             return p;
+        }       
+        protected static string BuiltInSystemTemplatesPath()
+        {
+            string p = BuiltinThemesPath();
+            p = p.Replace("\\themes", "\\systemtemplates");
+            return p;
         }
-
         public static bool ValidateImageType(string extension)
         {
             bool result = false;
@@ -1425,7 +1430,37 @@ namespace MerchantTribe.Commerce.Storage
 
             return result;
         }
-           
+
+
+        public static string ReadTemplate(string templateName, long storeId, string themeId)
+        {
+            return ReadThemeFile(storeId, themeId, "\\templates\\" + templateName);
+        }
+        public static string ReadTemplatePart(string partName, long storeId, string themeId)
+        {
+            return ReadThemeFile(storeId, themeId, "\\templates\\parts\\" + partName);
+        }
+        public static string ReadSystemTemplate(string templateName)
+        {
+            string result = string.Empty;
+            string location = BuiltInSystemTemplatesPath() + "\\" + templateName;
+            if (File.Exists(location))
+            {
+                result = File.ReadAllText(location);
+            }
+            return result;
+        }
+        public static string ReadSystemTemplatePart(string partName)
+        {
+            string result = string.Empty;
+            string location = BuiltInSystemTemplatesPath() + "\\parts\\" + partName;
+            if (File.Exists(location))
+            {
+                result = File.ReadAllText(location);
+            }
+            return result;
+        }
+
         public static bool MinifyStyleSheet(MerchantTribeApplication app,string themeId)
         {
             long storeId = app.CurrentStore.Id;

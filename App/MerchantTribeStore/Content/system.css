@@ -1,6 +1,6 @@
 ﻿/* Credit Card Logos */
 .cc-visa,.cc-mastercard,.cc-amex,.cc-discover,.cc-diners,.cc-jcb 
-{width:47px;height:30px;display:inline-block;background: url('~/images/system/creditcards.png') no-repeat 0px 0px;border:solid 1px #999;}
+{width:47px;height:30px;display:inline-block;background: url('../images/system/creditcards.png') no-repeat 0px 0px;border:solid 1px #999;}
 
 .cc-visa {background-position:0 0;}
 .cc-mastercard {background-position: -47px 0;}
@@ -11,7 +11,7 @@
 
 #popup-wrapper #main-content {background:#fff;color:#666;padding:10px;}
 
-#adminpanel {background: #ccc url('~/images/system/AdminPanelBg.png') repeat-x;
+#adminpanel {background: #ccc url('../images/system/AdminPanelBg.png') repeat-x;
              height:30px;padding:0 20px;color:#333;text-align:left;overflow:hidden;}
 #adminpanel a {display:block;float:left;font-size:13px;line-height:30px;padding:0 0 0 0;
                margin:0;text-decoration:none;color:#333;}                            

@@ -20,8 +20,8 @@ namespace MerchantTribe.Commerce.Catalog
             data.Id = model.Id;
             data.PageId = model.PageId;
             data.PublishedStatus = (int)model.PublishedStatus;
-            data.SerializedContent = model.Root.SerializeToString();
-            data.Areas = string.Empty;
+            data.SerializedContent = model.Root.SerializeToString();            
+            data.Areas = MerchantTribe.Web.Json.ObjectToJson(model.Areas);
         }
 
         protected override void CopyDataToModel(Data.EF.PageVersion data, CategoryPageVersion model)
@@ -34,6 +34,15 @@ namespace MerchantTribe.Commerce.Catalog
             model.PageId = data.PageId;
             model.PublishedStatus = (PublishStatus)data.PublishedStatus;
             model.Root.DeserializeFromXml(data.SerializedContent);
+            try
+            {
+                AreaData a = MerchantTribe.Web.Json.ObjectFromJson<AreaData>(data.Areas);
+                model.Areas = a;
+            }
+            catch
+            {
+                model.Areas = new AreaData();
+            }
         }
 
         public CategoryPageVersionRepository(IRepositoryStrategy<Data.EF.PageVersion> strategy, ILogger log)

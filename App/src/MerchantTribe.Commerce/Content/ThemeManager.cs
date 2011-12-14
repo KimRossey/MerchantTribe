@@ -176,6 +176,13 @@ namespace MerchantTribe.Commerce.Content
             return Storage.DiskStorage.ThemeButtonUrl(MTApp, MTApp.CurrentStore.Settings.ThemeId, fileName, isSecure);
         }
 
+        public string ThemeFileUrl(string fileName, MerchantTribeApplication app)
+        {
+            string result = Storage.DiskStorage.BaseUrlForStoreTheme(app, app.CurrentStore.Settings.ThemeId);
+            result = result + fileName;
+            return result;
+        }
+
         public bool InstallTheme(string themeId)
         {
             bool result = false;
@@ -377,6 +384,31 @@ namespace MerchantTribe.Commerce.Content
             }
             MTApp.ContentServices.Columns.Update(col);
 
+        }
+
+        public string GetTemplatePartFromCurrentTheme(string partName)
+        {
+            string result = Storage.DiskStorage.ReadTemplatePart(partName, MTApp.CurrentStore.Id, MTApp.CurrentStore.Settings.ThemeId);
+            if (result == string.Empty) result = GetSystemTemplatePart(partName);
+            return result;
+        }
+        public string GetTemplateFromCurrentTheme(string templateName)
+        {
+            string result = Storage.DiskStorage.ReadTemplate(templateName, MTApp.CurrentStore.Id, MTApp.CurrentStore.Settings.ThemeId);
+            if (result == string.Empty) result = Storage.DiskStorage.ReadTemplate("default.html", MTApp.CurrentStore.Id, MTApp.CurrentStore.Settings.ThemeId);
+            if (result == string.Empty) result = GetSystemTemplate(templateName);
+            return result;
+        }
+        private string GetSystemTemplatePart(string partName)
+        {
+            string result = Storage.DiskStorage.ReadSystemTemplatePart(partName);
+            return result;
+        }
+        private string GetSystemTemplate(string templateName)
+        {
+            string result = Storage.DiskStorage.ReadSystemTemplate(templateName);
+            if (result == string.Empty) result = Storage.DiskStorage.ReadSystemTemplate("default.html");
+            return result;
         }
         
     }

@@ -305,6 +305,7 @@
     <Compile Include="Contacts\VendorManufacturerContactRepository.cs" />
     <Compile Include="Contacts\VendorManufacturerType.cs" />
     <Compile Include="Contacts\VendorRepository.cs" />
+    <Compile Include="Content\AreaData.cs" />
     <Compile Include="Content\BVShippingModule.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -350,6 +351,25 @@
     <Compile Include="Content\PublishStatus.cs" />
     <Compile Include="Content\Replaceable.cs" />
     <Compile Include="Content\SiteTermIds.cs" />
+    <Compile Include="Content\Templates\ITagHandler.cs" />
+    <Compile Include="Content\Templates\ParsedTag.cs" />
+    <Compile Include="Content\Templates\TagHandlers\AdminPanel.cs" />
+    <Compile Include="Content\Templates\TagHandlers\AnalyticsBottom.cs" />
+    <Compile Include="Content\Templates\TagHandlers\AnalyticsTop.cs" />
+    <Compile Include="Content\Templates\TagHandlers\Area.cs" />
+    <Compile Include="Content\Templates\TagHandlers\Copyright.cs" />
+    <Compile Include="Content\Templates\TagHandlers\Css.cs" />
+    <Compile Include="Content\Templates\TagHandlers\Include.cs" />
+    <Compile Include="Content\Templates\TagHandlers\JavaScript.cs" />
+    <Compile Include="Content\Templates\TagHandlers\Link.cs" />
+    <Compile Include="Content\Templates\TagHandlers\Logo.cs" />
+    <Compile Include="Content\Templates\TagHandlers\MainMenu.cs" />
+    <Compile Include="Content\Templates\TagHandlers\MetaTags.cs" />
+    <Compile Include="Content\Templates\TagHandlers\PageTitle.cs" />
+    <Compile Include="Content\Templates\TagHandlers\PromoTag.cs" />
+    <Compile Include="Content\Templates\TagHandlers\SearchForm.cs" />
+    <Compile Include="Content\Templates\TagHandlers\TempMessage.cs" />
+    <Compile Include="Content\Templates\TemplateProcessor.cs" />
     <Compile Include="Content\ThemeManager.cs" />
     <Compile Include="Content\ThemeView.cs" />
     <Compile Include="Controls\AddressTypes.cs" />
@@ -515,8 +535,6 @@
     <Compile Include="Content\Policy.cs" />
     <Compile Include="Content\PolicyBlock.cs" />
     <Compile Include="Content\SiteTerms.cs" />
-    <Compile Include="Content\Templates\ParserMessage.cs" />
-    <Compile Include="Content\Templates\TemplateParser.cs" />
     <Compile Include="Content\TextEditorBase.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
