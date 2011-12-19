@@ -45,6 +45,9 @@ namespace MerchantTribeStore.Controllers.Shared
             // Additional Meta Tags
             ViewData["AdditionalMetaTags"] = MTApp.CurrentStore.Settings.Analytics.AdditionalMetaTags;
             
+            // Bottom Analytics Tags
+            this.ViewData["analyticsbottom"] = MTApp.CurrentStore.Settings.Analytics.BottomAnalytics ?? string.Empty;
+
             // JQuery
             ViewBag.JqueryInclude = Helpers.Html.JQueryIncludes(Url.Content("~/scripts"), this.Request.IsSecureConnection);
 

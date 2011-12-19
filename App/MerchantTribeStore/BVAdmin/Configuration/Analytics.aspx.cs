@@ -64,6 +64,7 @@ namespace MerchantTribeStore
                 this.YahooAccountIdField.Text = MTApp.CurrentStore.Settings.Analytics.YahooAccountId;
 
                 this.AdditionalMetaTagsField.Text = MTApp.CurrentStore.Settings.Analytics.AdditionalMetaTags;
+                this.BottomAnalyticsField.Text = MTApp.CurrentStore.Settings.Analytics.BottomAnalytics;
 
             }
         }
@@ -89,7 +90,8 @@ namespace MerchantTribeStore
             MTApp.CurrentStore.Settings.Analytics.YahooAccountId = this.YahooAccountIdField.Text;
 
             MTApp.CurrentStore.Settings.Analytics.AdditionalMetaTags = this.AdditionalMetaTagsField.Text;
-
+            MTApp.CurrentStore.Settings.Analytics.BottomAnalytics = this.BottomAnalyticsField.Text;
+            
             MTApp.UpdateCurrentStore();
 
             this.MessageBox1.ShowOk("Settings Saved!");

@@ -95,7 +95,14 @@
                 &lt;meta name=&quot;google-site-verification&quot; content=&quot;FqmYcwmgR326V7S3v4oEhxQsacwmgR32jsIgFw&quot; /&gt;</span>
                 <asp:TextBox ID="AdditionalMetaTagsField" TextMode="MultiLine" Wrap="false" 
                     Rows="4" Columns="50" Width="500px" runat="server"></asp:TextBox></td>
-        </tr>          
+        </tr>        
+           <tr>
+            <td class="formlabel">Bottom of Page Tags:</td>
+            <td class="formfield">
+                <span class="smalltext">Add any analytics or HTML tags that should come right before the &lt;/body&gt; tag.</span>
+                <asp:TextBox ID="BottomAnalyticsField" TextMode="MultiLine" Wrap="false" 
+                    Rows="4" Columns="50" Width="500px" runat="server"></asp:TextBox></td>
+        </tr>        
         <tr>  <td>&nbsp;</td>
                 <td class="formfield"><asp:ImageButton ID="btnSave" CausesValidation="true"
                             runat="server" ImageUrl="../images/buttons/SaveChanges.png" 

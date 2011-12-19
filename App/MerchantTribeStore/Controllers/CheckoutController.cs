@@ -722,15 +722,11 @@ namespace MerchantTribeStore.Controllers
                     this.ViewData["analyticstop"] = MerchantTribe.Commerce.Metrics.GoogleAnalytics.RenderLatestTracker(MTApp.CurrentStore.Settings.Analytics.GoogleTrackerId);
                 }
             }
-
-
-            // Clear Bottom Analytics Tags
-            this.ViewData["analyticsbottom"] = string.Empty;
-
+            
             // Adwords Tracker at bottom if needed
             if (MTApp.CurrentStore.Settings.Analytics.UseGoogleAdWords)
             {
-                this.ViewData["analyticsbottom"] = MerchantTribe.Commerce.Metrics.GoogleAnalytics.RenderGoogleAdwordTracker(
+                this.ViewData["analyticsbottom"] += MerchantTribe.Commerce.Metrics.GoogleAnalytics.RenderGoogleAdwordTracker(
                                                         o.TotalGrand,
                                                         MTApp.CurrentStore.Settings.Analytics.GoogleAdWordsId,
                                                         MTApp.CurrentStore.Settings.Analytics.GoogleAdWordsLabel,

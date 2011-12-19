@@ -103,5 +103,15 @@ namespace MerchantTribe.Commerce.Accounts
             }
             set { parent.SetProp("AdditionalMetaTags", value); }
         }
+
+        public string BottomAnalytics
+        {
+            get
+            {
+                string prop = parent.GetProp("BottomAnalytics");
+                return prop;
+            }
+            set { parent.SetProp("BottomAnalytics", value); }
+        }
     }
 }
