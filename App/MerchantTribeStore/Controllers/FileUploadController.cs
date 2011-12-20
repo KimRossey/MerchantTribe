@@ -45,7 +45,7 @@ namespace MerchantTribeStore.Controllers
                         string categoryId = detailParts[0];
                         string pageVersion = detailParts[1];
 
-                        if (DiskStorage.UploadFlexPageImagePartial(CurrentStore.Id, inputStream, fileName, isFirstPart, categoryId, pageVersion) == true)
+                        if (DiskStorage.UploadFlexPageImagePartial(MTApp.CurrentStore.Id, inputStream, fileName, isFirstPart, categoryId, pageVersion) == true)
                         {                            
                             result.Data = new { success = "1", 
                                                 imageurl=DiskStorage.FlexPageImageUrl(MTApp, categoryId, pageVersion, fileName, false),

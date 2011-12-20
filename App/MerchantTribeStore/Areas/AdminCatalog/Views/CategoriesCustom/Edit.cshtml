@@ -1,0 +1,91 @@
+﻿@model MerchantTribe.Commerce.Catalog.Category
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@section HeadContent
+{
+<script type="text/javascript">
+    // Jquery Setup
+    $(document).ready(function () {
+
+        $("#name").change(function () {
+
+            rawName = $("#name").val();
+            cleanName = $("#rewriteurl").val();
+
+            $.post('../../../Controllers/Slugify.aspx',
+                        { "input": rawName },
+                        function (data) {
+                            if (cleanName == "") {
+                                $("#rewriteurl").val(data);
+                            }
+                        });
+        });
+
+
+    });
+    </script>
+}
+<h1>Edit Custom Page</h1>    
+@Html.Raw((string)TempData["messages"])
+BREADCRUMB TRAIL GOES HERE<br />    
+<form method="post" action="#">
+        <div class="controlarea2 padded">
+        <table class="formtable" border="0" cellspacing="0" cellpadding="3" width="100%">
+            <tr>
+                <td class="formlabel">Template:</td>
+                <td colspan="2" class="formfield">
+                    TEMPLATE LIST HERE</td>
+            </tr>
+            <tr>
+                <td class="formlabel">
+                    Name:</td>
+                <td class="formfield">
+                    <input type="text" name="name" id="name" maxlength="100" tabindex="1900" value="@Model.Name" style="width:650px;" />
+                </td>
+                <td>IN STORE PLACEHOLDER</td>
+            </tr>
+            <tr>
+                <td class="formlabel">
+                    HTML:</td>
+                <td colspan="2" class="formfield"><uc1:HtmlEditor ID="DescriptionField" runat="server" EditorHeight="600" EditorWidth="800"
+                        EditorWrap="true" TabIndex="2001" />
+                </td>
+            </tr>            
+            <tr>
+                <td class="formlabel">Page Name:
+                    </td>
+                <td colspan="2" class="formfield">                    
+                    <input type="text" id="rewriteurl" name="rewriteurl" value="@Model.RewriteUrl" tabindex="2001" style="width:700px;" />
+                    <br />
+                    @Html.Raw(ViewBag.UrlsAssociated);                    
+                </td>
+            </tr>
+            <tr>
+                <td class="formlabel">Meta Title:</td>
+                <td colspan="2" class="formfield">                    
+                    <input type="text" name="metatitle" value="@Model.MetaTitle" maxlength="512" tabindex="2002" style="width:750px;" />
+                </td>
+            </tr>
+            <tr>
+                <td class="formlabel">Meta Desc:</td>
+                <td colspan="2" class="formfield">                  
+                  <input type="text" name="metadescription" value="@Model.MetaDescription" maxlength="255" tabindex="2003" style="width:750px;" />
+                </td>
+            </tr>
+            <tr>
+                <td class="formlabel">Meta Keywords:</td>
+                <td colspan="2" class="formfield">
+                  <input type="text" name="metakeywords" value="@Model.MetaKeywords" maxlength="255" tabindex="2004" style="width:750px;" />
+                </td>
+            </tr>
+        </table>
+        </div>
+        <div class="editorcontrols">
+            <a href="#">Close</a>
+            <input type="image" src="#" alt="Update" name="UpdateButton" value="UpdateButton" />
+            <input type="image" src="#" alt="Save Changes" name="SaveButton" value="SaveButton" />                    
+        </div>    
+</form>

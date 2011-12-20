@@ -79,7 +79,7 @@
 }
 
 <h1>My To Do List (MVC):</h1>
-    @Html.Raw((string)TempData["message"])&nbsp;<br />
+    @Html.Raw((string)TempData["messages"])&nbsp;<br />
     <form action="/todo/create" method="post">
     <div class="editorpanel">    
     <input type="text" name="title" id="newitemtitle" size="50" />

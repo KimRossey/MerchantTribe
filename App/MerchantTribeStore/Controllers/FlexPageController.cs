@@ -78,7 +78,7 @@ namespace MerchantTribeStore.Controllers
             
             if (MTApp.IsEditMode)
             {
-                ViewData["EditCss"] = "<link href=\"" + Url.Content("~/css/flexedit/styles.css") + "\" rel=\"stylesheet\" type=\"text/css\" />";
+                ViewData["EditCss"] = "<link href=\"" + Url.Content("~/content/flexedit.css") + "\" rel=\"stylesheet\" type=\"text/css\" />";
                 string editJS = "<script type=\"text/javascript\" src=\"" + Url.Content("~/content/FlexEdit.js") + "\"></script>";                
                 editJS += "<script type=\"text/javascript\" src=\"" + Url.Content("~/scripts/Silverlight.js") + "\"></script>";
               

@@ -6,7 +6,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Login</title>
-    <link href="<%=Page.ResolveUrl("~/css/admin/styles.css") %>" rel="stylesheet" type="text/css" />
+    <link href="<%=Page.ResolveUrl("~/bvadmin/styles.css") %>" rel="stylesheet" type="text/css" />
      <script type="text/javascript" src="../Bvc.js" language="javascript"></script>
 </head>
 <body>

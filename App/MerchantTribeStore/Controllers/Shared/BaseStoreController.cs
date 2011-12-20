@@ -118,7 +118,11 @@ namespace MerchantTribeStore.Controllers.Shared
             ViewBag.TwitterDefaultTweetText = MTApp.CurrentStore.Settings.Twitter.DefaultTweetText;
 
             ViewBag.UseGooglePlus = MTApp.CurrentStore.Settings.GooglePlus.UseGooglePlus;
-            
+
+            // Culture Settings
+            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(MTApp.CurrentStore.Settings.CultureCode);
+            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(MTApp.CurrentStore.Settings.CultureCode);
+
         }
 
     }

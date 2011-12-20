@@ -2155,6 +2155,8 @@
     <Compile Include="Areas\account\Controllers\WishListController.cs" />
     <Compile Include="Areas\account\Models\SavedItemViewModel.cs" />
     <Compile Include="Areas\account\Models\SignInViewModel.cs" />
+    <Compile Include="Areas\AdminCatalog\AdminCatalogAreaRegistration.cs" />
+    <Compile Include="Areas\AdminCatalog\Controllers\CategoriesCustomController.cs" />
     <Compile Include="Areas\ContentBlocks\ContentBlocksAreaRegistration.cs" />
     <Compile Include="Areas\ContentBlocks\Controllers\BannerAdController.cs" />
     <Compile Include="Areas\ContentBlocks\Controllers\CategoryMenuController.cs" />
@@ -4276,6 +4278,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\AdminCatalog\Models\" />
+    <Folder Include="Areas\AdminCatalog\Views\Shared\" />
     <Folder Include="Areas\ContentBlocks\Views\Shared\" />
     <Folder Include="aspnet_client\system_web\4_0_30128\" />
     <Folder Include="content\themes\theme-bv-simpleblue\assets\" />
@@ -4336,6 +4340,8 @@
     <Content Include="Areas\signup\Views\Register\Index.cshtml" />
     <Content Include="Areas\account\Views\WishList\Index.cshtml" />
     <Content Include="Areas\ContentBlocks\Views\ImageRotator\Index.cshtml" />
+    <Content Include="Areas\AdminCatalog\Views\Web.config" />
+    <Content Include="Areas\AdminCatalog\Views\CategoriesCustom\Edit.cshtml" />
     <None Include="BVAdmin\Orders\RMA.aspx.cs.exclude" />
     <None Include="BVAdmin\Orders\RMA.aspx.exclude" />
     <None Include="BVAdmin\Orders\RMADetail.aspx.cs.exclude" />

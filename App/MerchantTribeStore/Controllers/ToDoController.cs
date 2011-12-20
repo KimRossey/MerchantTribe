@@ -25,14 +25,14 @@ namespace MerchantTribeStore.Controllers
             }
             
             List<ToDoItem> items = new List<ToDoItem>();
-            UserAccount adminUser = CurrentRequestContext.CurrentAdministrator(MTApp);
+            UserAccount adminUser = MTApp.CurrentRequestContext.CurrentAdministrator(MTApp);
             if (adminUser != null)
             {
-                ToDoItemRepository repository = new ToDoItemRepository(CurrentRequestContext);
+                ToDoItemRepository repository = new ToDoItemRepository(MTApp.CurrentRequestContext);
                 items = repository.FindByAccountId(adminUser.Id);
             }
 
-            if (failed) TempData["message"] = "<div class=\"flash-message-warning\">Failed to Create Task. Please Try Again.</div>";
+            FlashFailure("Failed to Create Task. Please Try Again.");            
             return View(items);
         }
 
@@ -54,13 +54,13 @@ namespace MerchantTribeStore.Controllers
             {
                 ToDoItem item = new ToDoItem()
                 {
-                    AccountId = CurrentRequestContext.CurrentAdministrator(MTApp).Id,
+                    AccountId = MTApp.CurrentRequestContext.CurrentAdministrator(MTApp).Id,
                     Details = details,
                     IsComplete = false,
                     Title = title
                 };
 
-                ToDoItemRepository repository = new ToDoItemRepository(CurrentRequestContext);
+                ToDoItemRepository repository = new ToDoItemRepository(MTApp.CurrentRequestContext);
                 if (repository.Create(item))
                 {
                     fail = false;                    
@@ -93,8 +93,8 @@ namespace MerchantTribeStore.Controllers
             try
             {
 
-                long accountId = CurrentRequestContext.CurrentAdministrator(MTApp).Id;
-                ToDoItemRepository repository = new ToDoItemRepository(CurrentRequestContext);
+                long accountId = MTApp.CurrentRequestContext.CurrentAdministrator(MTApp).Id;
+                ToDoItemRepository repository = new ToDoItemRepository(MTApp.CurrentRequestContext);
                 ToDoItem item = repository.Find(id);
                 if (item != null)
                 {
@@ -122,8 +122,8 @@ namespace MerchantTribeStore.Controllers
             try
             {
 
-                long accountId = CurrentRequestContext.CurrentAdministrator(MTApp).Id;
-                ToDoItemRepository repository = new ToDoItemRepository(CurrentRequestContext);
+                long accountId = MTApp.CurrentRequestContext.CurrentAdministrator(MTApp).Id;
+                ToDoItemRepository repository = new ToDoItemRepository(MTApp.CurrentRequestContext);
                 ToDoItem item = repository.Find(id);
                 if (item != null)
                 {
@@ -161,8 +161,8 @@ namespace MerchantTribeStore.Controllers
                 }
             }
 
-            long accountId = CurrentRequestContext.CurrentAdministrator(MTApp).Id;
-            ToDoItemRepository repository = new ToDoItemRepository(CurrentRequestContext);
+            long accountId = MTApp.CurrentRequestContext.CurrentAdministrator(MTApp).Id;
+            ToDoItemRepository repository = new ToDoItemRepository(MTApp.CurrentRequestContext);
 
             List<ToDoItem> items = repository.FindByAccountId(accountId);
             repository.AutoSubmit = false;

@@ -55,30 +55,8 @@ namespace MerchantTribeStore.Controllers
             string themeId = themename.Replace("theme-", "");
             ThemeManager themes = MTApp.ThemeManager();
 
-            string css = string.Empty;
-            string physicalFile = string.Empty;
-            string baseUrl = Url.Content("~");
-
-            switch (themeId.Trim().ToLowerInvariant())
-            {
-                case "admin":
-                    physicalFile = Server.MapPath("~/bvadmin/Styles.css");
-                    css = themes.AdminStyleSheetContentMinifiedAndReplaced(physicalFile, baseUrl);
-                    break;
-                case "system":
-                    physicalFile = Server.MapPath("~/content/system.css");
-                    css = themes.AdminStyleSheetContentMinifiedAndReplaced(physicalFile, baseUrl);
-                    break;
-                case "flexedit":
-                    physicalFile = Server.MapPath("~/content/FlexEdit.css");
-                    css = themes.AdminStyleSheetContentMinifiedAndReplaced(physicalFile, baseUrl);
-                    break;
-                default:
-                    css = themes.CurrentStyleSheetContentMinifiedAndReplaced(themeId);
-                    break;
-            }
-                                           
-                                    
+            string css = themes.CurrentStyleSheetContentMinifiedAndReplaced(themeId);
+                                                                              
             Response.AddHeader("content-disposition", "attachment; filename=styles.css");            
             return Content(css, "text/css");                        
         }

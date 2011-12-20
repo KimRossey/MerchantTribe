@@ -49,7 +49,7 @@ namespace MerchantTribeStore.BVAdmin.Catalog
                     {
                         if (category.SourceType == CategorySourceType.CustomPage)
                         {
-                            Response.Redirect("Categories_EditCustom.aspx?id=" + category.Bvin);
+                            Response.Redirect("Categories/Custom/Edit/" + category.Bvin);
                         }
                     }
 

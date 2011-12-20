@@ -8,7 +8,7 @@ using MerchantTribe.Commerce.Accounts;
 
 namespace MerchantTribeStore.Controllers.Shared
 {
-    public class BaseAdminController : Controller
+    public class BaseAdminController : BaseAppController
     {
         // Initialize Store Specific Request Data
         private Guid? _AuthTokenGuid = null;
@@ -18,66 +18,25 @@ namespace MerchantTribeStore.Controllers.Shared
             set { _AuthTokenGuid = value; }
         }
 
-        public MerchantTribeApplication MTApp { get; set; }
-
-        MerchantTribe.Commerce.RequestContext _CurrentRequestContext = new RequestContext();        
-        public MerchantTribe.Commerce.RequestContext CurrentRequestContext
-        {
-            get { return _CurrentRequestContext; }
-            set { _CurrentRequestContext = value; }
-        }
-        public MerchantTribe.Commerce.Accounts.Store CurrentStore
-        {
-            get { return _CurrentRequestContext.CurrentStore; }
-            set { _CurrentRequestContext.CurrentStore = value; }
-        }
-        private AccountService _AccountService = null;
-        public AccountService AccountServices
-        {
-            get
-            {
-                if (_AccountService == null)
-                {
-                    _AccountService = AccountService.InstantiateForDatabase(_CurrentRequestContext);
-                }
-                return _AccountService;
-            }
-        }
+        public AdminTabType SelectedTab = AdminTabType.Dashboard;        
 
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             base.OnActionExecuting(filterContext);
-            MTApp = MerchantTribeApplication.InstantiateForDataBase(new RequestContext());
-            MTApp.CurrentRequestContext.RoutingContext = this.Request.RequestContext;
-
-            // Determine store id        
-            // Determine store id        
-            MTApp.CurrentStore = MerchantTribe.Commerce.Utilities.UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, MTApp);
-            if (MTApp.CurrentStore == null)
-            {
-                Response.Redirect("~/storenotfound");
-            }
-
-            if (MTApp.CurrentStore.Status == MerchantTribe.Commerce.Accounts.StoreStatus.Deactivated)
-            {
-                //if ((AvailableWhenInactive == false))
-                //{
-                Response.Redirect("~/storenotavailable");
-                //}
-            }
 
             // Culture Settings
-            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(CurrentStore.Settings.CultureCode);
-            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(CurrentStore.Settings.CultureCode);
-
-            IntegrationLoader.AddIntegrations(this._CurrentRequestContext.IntegrationEvents, this.CurrentStore);
-
-            ValidateAdminLogin();
+            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(MTApp.CurrentStore.Settings.CultureCode);
+            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(MTApp.CurrentStore.Settings.CultureCode);
+            
+            ValidateAdminLogin();            
 
             // Jquery
             ViewData["JQueryInclude"] = Helpers.Html.JQueryIncludes(Url.Content("~/scripts"), this.Request.IsSecureConnection);
 
-            //ViewData["headerhtml"] = Helpers.Html.AdminHeader(CurrentStore, AdminTabType.None);
+            ViewData["AppVersion"] = WebAppSettings.SystemVersionNumber;
+            ViewData["StoreName"] = MTApp.CurrentStore.Settings.FriendlyName;
+            ViewData["RenderedMenu"] = Helpers.Html.RenderMenu(this.SelectedTab, MTApp);
+            ViewData["HideMenu"] = 0;
         }
 
         public void ValidateAdminLogin()
@@ -90,7 +49,7 @@ namespace MerchantTribeStore.Controllers.Shared
 
             if (tokenId.HasValue)
             {
-                if (this.AccountServices.IsTokenValidForStore(CurrentStore.Id, tokenId.Value))
+                if (this.MTApp.AccountServices.IsTokenValidForStore(this.MTApp.CurrentStore.Id, tokenId.Value))
                 {
                     validLogin = true;
                 }

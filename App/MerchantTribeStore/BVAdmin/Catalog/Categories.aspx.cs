@@ -13,20 +13,20 @@ namespace MerchantTribeStore
     partial class BVAdmin_Catalog_Categories : BaseAdminPage
     {
 
-        private string EditorPage(CategorySourceType type)
+        private string EditorPage(CategorySourceType type, string bvin)
         {
             switch (type)
             {
                 case CategorySourceType.DrillDown:
-                    return "Categories_EditDrillDown.aspx";
+                    return "Categories_EditDrillDown.aspx?id=" + bvin;
                 case CategorySourceType.CustomPage:
-                    return "Categories_EditCustom.aspx";    
+                    return "Categories/Custom/Edit/" + bvin;    
                 case CategorySourceType.FlexPage:
-                    return "Categories_EditFlexPage.aspx";
+                    return "Categories_EditFlexPage.aspx?id=" + bvin;
                 case CategorySourceType.CustomLink:
-                    return "Categories_EditCustomLink.aspx";
+                    return "Categories_EditCustomLink.aspx?id=" + bvin;
                 default:
-                    return "Categories_Edit.aspx";
+                    return "Categories_Edit.aspx?id=" + bvin;
            }
         }
 
@@ -95,7 +95,7 @@ namespace MerchantTribeStore
                 foreach (CategorySnapshot child in children)
                 {
 
-                    string editUrl = EditorPage(child.SourceType) + "?id=" + child.Bvin;
+                    string editUrl = EditorPage(child.SourceType, child.Bvin);
                     string icon = Page.ResolveUrl("~/bvadmin/images/" + IconImage(child.SourceType));
                     
 
@@ -141,7 +141,7 @@ namespace MerchantTribeStore
             c.RewriteUrl = "NEW-Page";
             c.StoreId = MTApp.CurrentStore.Id;            
             MTApp.CatalogServices.Categories.Create(c);            
-            Response.Redirect(EditorPage(c.SourceType) + "?id=" + c.Bvin);            
+            Response.Redirect(EditorPage(c.SourceType, c.Bvin));            
         }
     }
     
