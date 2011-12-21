@@ -73,6 +73,7 @@ namespace MerchantTribeStore.Controllers
 
             // Record Category View
             MerchantTribe.Commerce.SessionManager.CategoryLastId = cat.Bvin;
+            MTApp.CurrentRequestContext.CurrentCategory = cat;
 
             if (cat.TemplateName == "BV Grid") cat.TemplateName = "Grid"; // Safety Check from older versions
             string viewName = cat.TemplateName.Trim();

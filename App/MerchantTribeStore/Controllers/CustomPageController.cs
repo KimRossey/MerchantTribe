@@ -26,6 +26,7 @@ namespace MerchantTribeStore.Controllers
             
             // Record View for Analytics
             RecordCategoryView(cat.Bvin);
+            
 
             // Get page.html Template
             ThemeManager tm = MTApp.ThemeManager();

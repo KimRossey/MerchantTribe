@@ -35,6 +35,17 @@ namespace MerchantTribe.Commerce.Content.Templates.TagHandlers
                    sb.Append("*** STORE IS CLOSED, SHOPPERS CAN'T SEE THIS PAGE ***</a>");
                }
 
+
+               if (app.CurrentRequestContext.CurrentCategory != null)
+               {
+                   MerchantTribe.Commerce.Catalog.Category c = app.CurrentRequestContext.CurrentCategory;
+                   string editUrl = app.CatalogServices.EditorRouteForCategory(c.SourceType, c.Bvin);
+                   editUrl = app.CurrentRelativeRoot + editUrl.TrimStart('/');
+                   sb.Append("<a href=\"");
+                   sb.Append(editUrl);
+                   sb.Append("\" class=\"editlink\">Edit This Page</a>");
+               }
+
                sb.Append("<a href=\"" + app.CurrentStore.RootUrlSecure() + "bvadmin\" class=\"right\">Go To Admin Dashboard</a>");
                sb.Append("</div>");
                 

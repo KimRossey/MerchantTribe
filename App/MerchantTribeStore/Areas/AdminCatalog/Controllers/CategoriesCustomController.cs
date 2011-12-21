@@ -9,6 +9,7 @@ using MerchantTribe.Commerce;
 using MerchantTribeStore.Filters;
 using MerchantTribe.Commerce.Membership;
 using MerchantTribe.Commerce.Utilities;
+using System.Text;
 
 namespace MerchantTribeStore.Areas.AdminCatalog.Controllers
 {
@@ -26,9 +27,34 @@ namespace MerchantTribeStore.Areas.AdminCatalog.Controllers
         private Category EditorSetup(string id)
         {
             Category result = MTApp.CatalogServices.Categories.Find(id);
+            if (result == null) result = new Category();
+
+            // Fill with data from category, making sure legacy description is used if no area data
+            CategoryPageVersion version = result.GetCurrentVersion();
+            if (version.Id == 0)
+            {
+                // Create Initial Version
+                version.PublishedStatus = PublishStatus.Draft;
+                version.PageId = result.Bvin;
+                result.Versions.Add(version);
+                MTApp.CatalogServices.Categories.Update(result);
+                version = result.GetCurrentVersion();
+            }            
+            if (!version.Areas.HasArea("main"))
+            {
+                version.Areas.SetAreaContent("main", result.PreTransformDescription);
+                MTApp.CatalogServices.Categories.Update(result);
+            }
+            string areaMain = version.Areas.GetAreaContent("main");
+            if (areaMain == string.Empty && result.PreTransformDescription != string.Empty)
+            {
+                result.GetCurrentVersion().Areas.SetAreaContent("main", result.PreTransformDescription);
+            }
+
+
             ViewData["ViewInStoreUrl"] = UrlRewriter.BuildUrlForCategory(new CategorySnapshot(result), MTApp.CurrentRequestContext.RoutingContext);
             LoadTemplates();
-            //this.UrlsAssociated1.LoadUrls();
+            ViewData["OtherUrls"] = LoadUrls(result);
             return result;
         }
 
@@ -46,7 +72,7 @@ namespace MerchantTribeStore.Areas.AdminCatalog.Controllers
         {
             Category c = EditorSetup(id);
 
-            bool success = this.Save(c, posted);
+            bool success = this.Save(c, posted, Request.Form);
             if (!success)
             {
                 this.FlashFailure("Error during update. Please check event log.");
@@ -59,14 +85,15 @@ namespace MerchantTribeStore.Areas.AdminCatalog.Controllers
 
                 if (Request.Form["SaveButton"] != null || Request.Form["SaveButton.x"] != null)
                 {
-                    return Redirect("~/bvadmin/catalog.categories.aspx");
+                    string destination = Url.Content("~/bvadmin/catalog/categories.aspx");
+                    return Redirect(destination);
                 }                
             }
             
             return View(c);
         }
 
-        private bool Save(Category current, Category posted)
+        private bool Save(Category current, Category posted, System.Collections.Specialized.NameValueCollection form)
         {
 
             bool result = false;
@@ -74,8 +101,18 @@ namespace MerchantTribeStore.Areas.AdminCatalog.Controllers
             if (current != null)
             {
                 current.Name = posted.Name.Trim();
-                //current.Description = posted.Description.Trim();
-                //current.PreTransformDescription = posted.PreTransformDescription.Trim();
+
+                /* Areas */
+                string mainArea = string.Empty;
+                if (form["area-main"] != null)
+                {
+                    mainArea = form["area-main"];
+                }
+                current.Description = mainArea;
+                current.PreTransformDescription = mainArea;
+                current.GetCurrentVersion().Areas.SetAreaContent("main", mainArea);                
+                
+                /* Other Settings */
                 current.MetaDescription = posted.MetaDescription.Trim();
                 current.MetaTitle = posted.MetaTitle.Trim();
                 current.MetaKeywords = posted.MetaKeywords.Trim();
@@ -131,6 +168,27 @@ namespace MerchantTribeStore.Areas.AdminCatalog.Controllers
         {
             List<string> templates = MTApp.ThemeManager().ListTemplatesForCurrentTheme();
             ViewData["templates"] = templates;
+        }
+
+        private string LoadUrls(Category cat)
+        {
+            if (cat == null) return string.Empty;
+
+            List<CustomUrl> all = MTApp.ContentServices.CustomUrls.FindBySystemData(cat.Bvin);
+            if (all == null) return string.Empty;
+            if (all.Count < 1) return string.Empty;
+            
+            StringBuilder sb = new StringBuilder();
+            sb.Append("<ul class=\"redirects301\">");
+            foreach (CustomUrl c in all)
+            {
+                sb.Append("<li>");
+                sb.Append(HttpUtility.HtmlEncode(c.RequestedUrl));
+                sb.Append(" <a href=\"#\" class=\"remove301\" id=\"remove" + c.Bvin + "\">Remove");
+                sb.Append("</a></li>");
+            }
+            sb.Append("</ul>");
+            return sb.ToString();            
         }
     }
 }

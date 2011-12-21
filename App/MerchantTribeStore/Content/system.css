@@ -16,4 +16,7 @@
 #adminpanel a {display:block;float:left;font-size:13px;line-height:30px;padding:0 0 0 0;
                margin:0;text-decoration:none;color:#333;}                            
 #adminpanel a.right {float:right;}
+#adminpanel a.editlink {padding:0 10px;height:20px;line-height:20px;background:#666;color:#fff;
+                        margin:5px 20px 0 20px;border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;}
+#adminpanel a.editlink:hover {background:#000;}
 #adminpanel a.red {color:#900;}

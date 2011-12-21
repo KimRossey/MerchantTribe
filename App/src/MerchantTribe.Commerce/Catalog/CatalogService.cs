@@ -137,7 +137,26 @@ namespace MerchantTribe.Commerce.Catalog
         //    return result;
         //}
 
-              
+
+        public string EditorRouteForCategory(CategorySourceType type, string bvin)
+        {
+            string prefix = "/bvadmin/catalog/";
+
+            switch (type)
+            {
+                case CategorySourceType.DrillDown:
+                    return prefix + "Categories_EditDrillDown.aspx?id=" + bvin;
+                case CategorySourceType.CustomPage:
+                    return prefix + "Categories/Custom/Edit/" + bvin;
+                case CategorySourceType.FlexPage:
+                    return prefix + "Categories_EditFlexPage.aspx?id=" + bvin;
+                case CategorySourceType.CustomLink:
+                    return prefix + "Categories_EditCustomLink.aspx?id=" + bvin;
+                default:
+                    return prefix + "Categories_Edit.aspx?id=" + bvin;
+            }
+        }
+
         public List<CategorySnapshot> FindCategoriesForProduct(string productBvin)
         {
             List<CategoryProductAssociation> crosses = CategoriesXProducts.FindForProduct(productBvin, 1, int.MaxValue);

@@ -12,24 +12,7 @@ namespace MerchantTribeStore
 
     partial class BVAdmin_Catalog_Categories : BaseAdminPage
     {
-
-        private string EditorPage(CategorySourceType type, string bvin)
-        {
-            switch (type)
-            {
-                case CategorySourceType.DrillDown:
-                    return "Categories_EditDrillDown.aspx?id=" + bvin;
-                case CategorySourceType.CustomPage:
-                    return "Categories/Custom/Edit/" + bvin;    
-                case CategorySourceType.FlexPage:
-                    return "Categories_EditFlexPage.aspx?id=" + bvin;
-                case CategorySourceType.CustomLink:
-                    return "Categories_EditCustomLink.aspx?id=" + bvin;
-                default:
-                    return "Categories_Edit.aspx?id=" + bvin;
-           }
-        }
-
+        
         private string IconImage(CategorySourceType type)
         {
             switch (type)
@@ -95,7 +78,8 @@ namespace MerchantTribeStore
                 foreach (CategorySnapshot child in children)
                 {
 
-                    string editUrl = EditorPage(child.SourceType, child.Bvin);
+                    string editUrl = "~" + MTApp.CatalogServices.EditorRouteForCategory(child.SourceType, child.Bvin);
+                    editUrl = Page.ResolveUrl(editUrl);
                     string icon = Page.ResolveUrl("~/bvadmin/images/" + IconImage(child.SourceType));
                     
 
@@ -139,9 +123,18 @@ namespace MerchantTribeStore
             c.SourceType = sourceType;
             c.Name = "NEW Page";            
             c.RewriteUrl = "NEW-Page";
-            c.StoreId = MTApp.CurrentStore.Id;            
-            MTApp.CatalogServices.Categories.Create(c);            
-            Response.Redirect(EditorPage(c.SourceType, c.Bvin));            
+            c.StoreId = MTApp.CurrentStore.Id;
+
+            if (c.SourceType == CategorySourceType.CustomPage)
+            {
+                c.GetCurrentVersion().Areas.SetAreaContent("Main", string.Empty);
+                c.TemplateName = "default.html";                
+            }
+            MTApp.CatalogServices.Categories.Create(c);
+
+            string editUrl = "~" + MTApp.CatalogServices.EditorRouteForCategory(c.SourceType, c.Bvin);
+            editUrl = Page.ResolveUrl(editUrl);
+            Response.Redirect(editUrl);            
         }
     }
     

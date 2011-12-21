@@ -6,7 +6,23 @@
 }
 @section HeadContent
 {
+
+<script src="@Url.Content("~/scripts/tinymce/jquery.tinymce.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/js/bvinit.js")" type="text/javascript"></script>
+
 <script type="text/javascript">
+
+    function Remove301(lnk) {
+        var id = lnk.attr('id');
+        var idr = id.replace('remove', '');
+        $.post('@Url.Content("~/bvadmin/content/CustomUrlRemove.aspx")',
+            { "id": idr },
+            function () {
+                lnk.parent().slideUp('slow', function () { lnk.parent().remove(); });
+            }
+            );
+    }
+
     // Jquery Setup
     $(document).ready(function () {
 
@@ -23,6 +39,12 @@
                             }
                         });
         });
+
+        $('.remove301').click(function () {
+            Remove301($(this));
+            return false;
+        });
+
     });
     </script>
 }
@@ -45,49 +67,48 @@
             </tr>
             <tr>
                 <td class="formlabel">
-                    Name / Title:</td>
+                    Name:</td>
                 <td class="formfield">
-                    <input type="text" name="name" id="name" maxlength="100" tabindex="1900" value="@Model.Name" style="width:600px;" />
+                    <input type="text" name="name" id="name" maxlength="100" tabindex="1900" value="@Model.Name" style="width:700px;" />
                 </td>                
             </tr>            
             <tr>
                 <td class="formlabel">Page Name (URL):
                     </td>
                 <td class="formfield">                    
-                    <input type="text" id="rewriteurl" name="rewriteurl" value="@Model.RewriteUrl" tabindex="2001" style="width:600px;" />
+                    <input type="text" id="rewriteurl" name="rewriteurl" value="@Model.RewriteUrl" tabindex="2001" style="width:700px;" />
                     <br />
-                    @Html.Raw(ViewBag.UrlsAssociated)                    
+                    @Html.Raw((string)ViewData["OtherUrls"])                    
                 </td>
             </tr>
             <tr>
                 <td class="formlabel">Meta Title:</td>
                 <td class="formfield">                    
-                    <input type="text" name="metatitle" value="@Model.MetaTitle" maxlength="512" tabindex="2002" style="width:600px;" />
+                    <input type="text" name="metatitle" value="@Model.MetaTitle" maxlength="512" tabindex="2002" style="width:700px;" />
                 </td>
             </tr>
             <tr>
                 <td class="formlabel">Meta Desc:</td>
                 <td class="formfield">                  
-                  <input type="text" name="metadescription" value="@Model.MetaDescription" maxlength="255" tabindex="2003" style="width:600px;" />
+                  <input type="text" name="metadescription" value="@Model.MetaDescription" maxlength="255" tabindex="2003" style="width:700px;" />
                 </td>
             </tr>
             <tr>
                 <td class="formlabel">Meta Keywords:</td>
                 <td class="formfield">
-                  <input type="text" name="metakeywords" value="@Model.MetaKeywords" maxlength="255" tabindex="2004" style="width:600px;" />
+                  <input type="text" name="metakeywords" value="@Model.MetaKeywords" maxlength="255" tabindex="2004" style="width:700px;" />
+                </td>
+            </tr>                        
+            <tr>
+                <td class="formlabel">HTML:</td>
+                <td class="formfield">
+                    <textarea id="area-main" rows="10" cols="60" name="area-main" class="tinymce" style="width:700px;height:300px;">
+                        @Html.Raw(Model.GetCurrentVersion().Areas.GetAreaContent("main"))
+                    </textarea>
                 </td>
             </tr>
-            @foreach (string areaName in Model.GetCurrentVersion().Areas.Keys)
-            {
-            <tr>
-                <td class="formlabel">
-                    Area (@areaName):</td>
-                <td class="formfield">EDITOR HERE
-                </td>
-            </tr>                
-            }
-            
         </table>
+        
         </div>
         <div class="editorcontrols">
             <a href="@Url.Content("~/bvadmin/catalog/categories.aspx")">Close</a>
