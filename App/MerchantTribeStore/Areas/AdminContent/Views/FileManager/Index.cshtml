@@ -1,0 +1,55 @@
+﻿@model MerchantTribeStore.Areas.AdminContent.Models.FileManagerViewModel
+
+@{
+    ViewBag.Title = "File Manager";
+    Layout = "~/Views/Shared/_AdminLayoutWithNav.cshtml";
+}
+@section nav {    
+    <div class="controlarea">
+    <form action="@Url.Content("~/bvadmin/content/filemanager/upload")" method="post" enctype="multipart/form-data">
+        <input type="file" name="postedfile" /><br />        
+        <input type="image" src="../images/buttons/upload.png" alt="Upload File" />
+        <input type="hidden" name="path" value="@Model.Path" />
+    </form>
+    </div>
+    <div class="controlarea">
+    <form action="@Url.Content("~/bvadmin/content/filemanager/createdirectory")" method="post">
+        Add New Directory<br />
+        <input type="text" name="newdirectoryname" size="20" />
+        <input type="image" src="../images/buttons/submit.png" alt="Add New Directory" />
+    </form>
+    </div>
+}
+<h1>File Manager</h1>
+<div class="controlarea">
+<a href="@Url.Content("~/bvadmin/content/filemanager")">Home</a>
+</div>
+<table width="100%">
+@if (Model.AllowParentPath)
+{
+<tr>
+    <td style="width:50px;">ICON</td>
+    <td><a href="@Url.Content("~/bvadmin/content/filemanager?path=" + Model.ParentPath)">&laquo; Up One Level</a></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+</tr>
+}
+@foreach (string d in Model.Directories)
+{
+    <tr>
+        <td style="width:50px;">ICON</td>
+        <td><a href="@Url.Content("~/bvadmin/content/filemanager?path=" + Model.ChildPath(d))">@d</a></td>
+        <td>&nbsp;</td>
+        <td>TRASH</td>
+    </tr>
+}
+@foreach (string f in Model.Files)
+{
+    <tr>
+        <td style="width:50px;">ICON</td>
+        <td>@f</td>
+        <td>EDIT</td>
+        <td>TRASH</td>
+    </tr>
+}
+</table>

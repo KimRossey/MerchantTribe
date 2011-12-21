@@ -1590,5 +1590,154 @@ namespace MerchantTribe.Commerce.Storage
 
             return result;
         }
+
+
+        // File Manager
+        public static string FileManagerCleanPath(string rawPath)
+        {
+            string correctPath = rawPath.Replace('/', '\\');
+            correctPath = correctPath.TrimStart('\\');
+            correctPath = correctPath.Replace("..", ""); // Don't allow escape to above
+            correctPath = correctPath.Replace("\"", "");
+            correctPath = correctPath.Replace(":", "");
+            correctPath = correctPath.Replace("*", "");
+            correctPath = correctPath.Replace("?", "");
+            correctPath = correctPath.Replace("<", "");
+            correctPath = correctPath.Replace(">", "");
+            correctPath = correctPath.Replace("|", "");
+            correctPath = correctPath.Replace("$", "");
+            correctPath = correctPath.Replace("%", "");
+
+            // replace double slashes with singles
+            int failCounter = 0;
+            while (correctPath.Contains("\\\\"))
+            {
+                failCounter++;
+                correctPath = correctPath.Replace("\\\\", "\\");
+
+                // Fail safe in case we have someone trying gum up the works 
+                // with a really poorly formed path
+                if (failCounter > 100)
+                {
+                    correctPath = string.Empty;
+                    break;
+                }
+            }
+            return correctPath;
+        }
+        private static string FullPhysicalPath(long storeId, string path)
+        {
+            string correctPath = FileManagerCleanPath(path);            
+            string fullPath = BaseStorePhysicalPath(storeId) + correctPath;
+            return fullPath;
+        }
+        public static List<string> FileManagerListDirectories(long storeId, string path)
+        {
+            List<string> result = new List<string>();
+
+            string fullPath = FullPhysicalPath(storeId, path);
+            if (!Directory.Exists(fullPath))
+            {
+                return result;
+            }
+            string[] allDirs = Directory.GetDirectories(fullPath);
+            if (allDirs != null)
+            {
+                foreach (string d in allDirs)
+                {
+                    result.Add(Path.GetFileName(d));
+                }
+            }
+
+            return result;
+        }
+        public static List<string> FileManagerListFiles(long storeId, string path)
+        {
+            List<string> result = new List<string>();
+
+            string fullPath = FullPhysicalPath(storeId, path);
+            if (!Directory.Exists(fullPath))
+            {
+                return result;
+            }
+            string[] allFiles = Directory.GetFiles(fullPath);
+            if (allFiles != null)
+            {
+                foreach (string f in allFiles)
+                {
+                    result.Add(Path.GetFileName(f));
+                }
+            }
+
+            return result;
+        }
+        public static bool FileManagerCreateDirectory(long storeId, string path)
+        {
+            bool result = false;
+
+            string fullPath = FullPhysicalPath(storeId, path);
+            if (!Directory.Exists(fullPath))
+            {
+                try
+                {
+                    DirectoryInfo info = Directory.CreateDirectory(fullPath);
+                    if (info != null)
+                    {
+                        result = info.Exists;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    EventLog.LogEvent(ex);                    
+                }
+            }
+
+            return result;
+        }
+        public static bool FileManagerDeleteDirectory(long storeId, string path)
+        {
+            bool result = true;
+
+            string fullPath = FullPhysicalPath(storeId, path);
+
+            if (Directory.Exists(fullPath))
+            {
+                try
+                {
+                    FileHelper.DeleteDirectoryAndFilesRecursive(fullPath);
+                }
+                catch (Exception ex)
+                {
+                    result = false;
+                    EventLog.LogEvent(ex);
+                }
+            }
+
+            return result;
+        }
+        public static bool FileManagerCreateFile(long storeId, string pathAndFileName, HttpPostedFile file)
+        {
+            string fullPath = FullPhysicalPath(storeId, pathAndFileName);
+            return WriteFileToPath(fullPath, file);
+        }
+        public static bool FileManagerDeleteFile(long storeId, string pathAndFileName)
+        {
+            string fullPath = FullPhysicalPath(storeId, pathAndFileName);
+            if (File.Exists(fullPath))
+            {
+                try
+                {
+                    File.SetAttributes(fullPath, FileAttributes.Normal);
+                    File.Delete(fullPath);                    
+                }
+                catch (Exception ex)
+                {
+                    EventLog.LogEvent(ex);
+                    return false;
+                }
+            }
+
+            return true;
+        }
     }
 }
