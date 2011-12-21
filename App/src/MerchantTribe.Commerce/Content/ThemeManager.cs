@@ -410,6 +410,12 @@ namespace MerchantTribe.Commerce.Content
             if (result == string.Empty) result = Storage.DiskStorage.ReadSystemTemplate("default.html");
             return result;
         }
+        public List<string> ListTemplatesForCurrentTheme()
+        {
+            List<string> result = Storage.DiskStorage.ListAllAvailableTemplates(MTApp.CurrentStore.Id, MTApp.CurrentStore.Settings.ThemeId);
+            if (result.Count < 1) result.Add("default.html");
+            return result;
+        }
         
     }
 }

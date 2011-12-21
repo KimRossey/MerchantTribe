@@ -1460,6 +1460,34 @@ namespace MerchantTribe.Commerce.Storage
             }
             return result;
         }
+        public static List<string> ListAllAvailableTemplates(long storeId, string themeId)
+        {
+            List<string> result = new List<string>();
+
+            string location = BaseStoreThemePhysicalPath(storeId, themeId);
+            location = Path.Combine(location, "templates");
+            if (Directory.Exists(location))
+            {
+                string[] files = Directory.GetFiles(location);
+                foreach (string f in files)
+                {
+                    string templateName = Path.GetFileName(f);
+                    string extension = Path.GetExtension(f);
+                    extension = extension.ToLowerInvariant();
+                    if (extension == ".html" || extension == ".htm")
+                    {
+                        result.Add(templateName);
+                    }                    
+                }
+            }
+
+            if (!result.Contains("default.html", StringComparer.InvariantCultureIgnoreCase))
+            {
+                result.Insert(0, "default.html");
+            }
+            
+            return result;
+        }
 
         public static bool MinifyStyleSheet(MerchantTribeApplication app,string themeId)
         {

@@ -27,10 +27,10 @@ namespace MerchantTribeStore.Controllers
             // Record View for Analytics
             RecordCategoryView(cat.Bvin);
 
-
             // Get page.html Template
             ThemeManager tm = MTApp.ThemeManager();
-            string template = tm.GetTemplateFromCurrentTheme("default.html");
+            if (cat.TemplateName == string.Empty) { cat.TemplateName = "default.html"; }
+            string template = tm.GetTemplateFromCurrentTheme(cat.TemplateName);
 
 
             // Fill with data from category, making sure legacy description is used if no area data
