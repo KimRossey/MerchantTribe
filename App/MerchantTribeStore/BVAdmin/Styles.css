@@ -461,3 +461,11 @@ ul.redirects301 li a:hover {background-color:#c00;color:#fff;}
 
 .totaldiscountdetail {font-size:11px;color:#666; text-align:left;}
 .totaldiscount {font-size:11px;}
+
+table.liststyle1 {border:0; border-style:none;}
+table.liststyle1 tr td {padding:0px 5px;font-size:14px;line-height:38px;}
+table.liststyle1 tr td.listitem {border-bottom:solid 1px #f0f0f0;}
+
+.shadowed {-webkit-box-shadow: -6px 8px 6px -6px #666;
+	        -moz-box-shadow: -6px 8px 6px -6px #666;
+	        box-shadow: -6px 8px 6px -6px #666;}

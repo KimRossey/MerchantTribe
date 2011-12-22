@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using MerchantTribeStore.Models;
 
 namespace MerchantTribeStore.Areas.AdminContent.Models
-{
+{    
     public class FileManagerViewModel
     {
+        public BreadCrumbViewModel BreadCrumbs { get; set; }
         public List<string> Directories { get; set; }
         public List<string> Files { get; set; }        
         public string Path { get; set; }
@@ -35,12 +37,14 @@ namespace MerchantTribeStore.Areas.AdminContent.Models
         {
             this.Path = path.TrimStart('\\');
             this.Directories = new List<string>();
-            this.Files = new List<string>();            
+            this.Files = new List<string>();
+            this.BreadCrumbs = new BreadCrumbViewModel();
         }
 
         public string ChildPath(string directoryName)
         {
             return Path + "\\" + directoryName;
         }
+
     }
 }
