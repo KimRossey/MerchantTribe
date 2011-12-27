@@ -64,9 +64,87 @@ namespace MerchantTribeStore.Areas.AdminContent.Controllers
             FileManagerViewModel model = new FileManagerViewModel(cleanPath);
             model.Directories = DiskStorage.FileManagerListDirectories(MTApp.CurrentStore.Id, cleanPath);
             model.Files = DiskStorage.FileManagerListFiles(MTApp.CurrentStore.Id, cleanPath);
-            model.BreadCrumbs = BuildBreadCrumbs(cleanPath);           
+            model.BreadCrumbs = BuildBreadCrumbs(cleanPath);
+            model.BasePreviewUrl = "~/images/sites/" + MTApp.CurrentStore.Id + "/";
+
             return View(model);
         }
 
+        [HttpPost]
+        public ActionResult CreateDirectory()
+        {
+            string path = Request.Form["path"] ?? string.Empty;
+            path = DiskStorage.FileManagerCleanPath(path);
+            string newDirName = Request.Form["newdirectoryname"] ?? string.Empty;
+            newDirName = DiskStorage.FileManagerCleanPath(newDirName);
+
+            string fullPath = path + "\\" + newDirName;
+            DiskStorage.FileManagerCreateDirectory(MTApp.CurrentStore.Id, fullPath);
+
+            string destination = Url.Content("~/bvadmin/content/filemanager?path=" + path);
+            return new RedirectResult(destination);
+        }
+
+        [HttpPost]
+        public ActionResult DeleteDirectory()
+        {
+            string path = Request.Form["path"] ?? string.Empty;
+            path = DiskStorage.FileManagerCleanPath(path);
+            string deletePath = Request.Form["deletepath"] ?? string.Empty;
+            deletePath = DiskStorage.FileManagerCleanPath(deletePath);
+
+            if (!DiskStorage.FileManagerIsSystemPath(deletePath))
+            {
+                DiskStorage.FileManagerDeleteDirectory(MTApp.CurrentStore.Id, deletePath);
+            }
+
+            string destination = Url.Content("~/bvadmin/content/filemanager?path=" + path);
+            return new RedirectResult(destination);
+        }
+
+        [HttpPost]
+        public ActionResult Upload()
+        {
+            string path = Request.Form["path"] ?? string.Empty;
+            path = DiskStorage.FileManagerCleanPath(path);
+
+            try
+            {
+                foreach (string inputTagName in Request.Files)
+                {
+                    HttpPostedFileBase file = Request.Files[inputTagName];
+                    if (file.ContentLength > 0)
+                    {
+                        string completeFileName = file.FileName;
+                        string nameSmall = System.IO.Path.GetFileName(completeFileName);
+                        string fullPathAndName = path + "\\" + nameSmall;
+                        DiskStorage.FileManagerCreateFile(MTApp.CurrentStore.Id, fullPathAndName, file);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                FlashFailure(ex.Message);
+                MerchantTribe.Commerce.EventLog.LogEvent(ex);
+            }
+
+            string destination = Url.Content("~/bvadmin/content/filemanager?path=" + path);
+            return new RedirectResult(destination);
+        }
+
+        [HttpPost]
+        public ActionResult DeleteFile()
+        {
+            string path = Request.Form["path"] ?? string.Empty;
+            path = DiskStorage.FileManagerCleanPath(path);
+            string fileName = Request.Form["filename"] ?? string.Empty;
+            fileName = DiskStorage.FileManagerCleanPath(fileName);
+
+            string fullPath = path + "\\" + fileName;
+            DiskStorage.FileManagerDeleteFile(MTApp.CurrentStore.Id, fullPath);
+
+            string destination = Url.Content("~/bvadmin/content/filemanager?path=" + path);
+            return new RedirectResult(destination);
+        }
     }
 }

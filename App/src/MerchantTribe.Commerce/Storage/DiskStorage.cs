@@ -729,6 +729,29 @@ namespace MerchantTribe.Commerce.Storage
 
             return result;
         }
+        private static bool WriteFileToPath(string saveLocation, System.Web.HttpPostedFileBase file)
+        {
+            bool result = true;
+
+            try
+            {
+                if (file != null)
+                {
+                    if (Directory.Exists(Path.GetDirectoryName(saveLocation)) == false)
+                    {
+                        Directory.CreateDirectory(Path.GetDirectoryName(saveLocation));
+                    }
+                    file.SaveAs(saveLocation);
+                }
+            }
+            catch (Exception ex)
+            {
+                EventLog.LogEvent(ex);
+                result = false;
+            }
+
+            return result;
+        }
         private static bool WriteBytesToPath(string saveLocation, byte[] data)
         {
             bool result = true;
@@ -1631,6 +1654,20 @@ namespace MerchantTribe.Commerce.Storage
             string fullPath = BaseStorePhysicalPath(storeId) + correctPath;
             return fullPath;
         }
+        public static bool FileManagerIsSystemPath(string path)
+        {
+            string p = FileManagerCleanPath(path);
+            p = p.Trim().ToLowerInvariant();
+
+            if (p == "filevault") return true;
+            if (p == "products") return true;
+            if (p == "storeassets") return true;
+            if (p == "storelogo") return true;
+            if (p == "themes") return true;
+            if (p == "pages") return true;
+
+            return false;
+        }
         public static List<string> FileManagerListDirectories(long storeId, string path)
         {
             List<string> result = new List<string>();
@@ -1715,7 +1752,7 @@ namespace MerchantTribe.Commerce.Storage
 
             return result;
         }
-        public static bool FileManagerCreateFile(long storeId, string pathAndFileName, HttpPostedFile file)
+        public static bool FileManagerCreateFile(long storeId, string pathAndFileName, HttpPostedFileBase file)
         {
             string fullPath = FullPhysicalPath(storeId, pathAndFileName);
             return WriteFileToPath(fullPath, file);

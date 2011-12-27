@@ -10,7 +10,8 @@ namespace MerchantTribeStore.Areas.AdminContent.Models
     {
         public BreadCrumbViewModel BreadCrumbs { get; set; }
         public List<string> Directories { get; set; }
-        public List<string> Files { get; set; }        
+        public List<string> Files { get; set; }
+        public string BasePreviewUrl { get; set; }
         public string Path { get; set; }
         public string ParentPath { 
             get
@@ -39,6 +40,7 @@ namespace MerchantTribeStore.Areas.AdminContent.Models
             this.Directories = new List<string>();
             this.Files = new List<string>();
             this.BreadCrumbs = new BreadCrumbViewModel();
+            this.BasePreviewUrl = string.Empty;
         }
 
         public string ChildPath(string directoryName)
@@ -46,5 +48,20 @@ namespace MerchantTribeStore.Areas.AdminContent.Models
             return Path + "\\" + directoryName;
         }
 
+        public string PreviewUrl(string fileName)
+        {
+            string result = this.BasePreviewUrl + RelativeFileUrl(fileName);
+            return result;
+        }
+        private string RelativeFileUrl(string fileName)
+        {
+            string result = this.Path;
+            result = result.Replace("\\", "/");
+            result = result.TrimStart('/');
+            result = result.TrimEnd('/');
+            result = result + "/" + fileName;
+
+            return result;
+        }
     }
 }
