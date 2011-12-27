@@ -206,13 +206,15 @@ namespace MerchantTribeStore.Helpers
             // Pages Menu
             sb.Append(OpenMenu("Pages", selected, AdminTabType.Content));
             sb.Append(AddMenuItem("Pages", "catalog/categories.aspx", root));
-            sb.Append(AddMenuItem("Page Images", "content/StoreAssets.aspx", root));
-            
-            sb.Append(AddMenuItem("Content Columns", "content/columns.aspx", root));
-            sb.Append(AddMenuItem("General Meta Tags", "content/metatags.aspx", root));
+            sb.Append(AddMenuItem("File Manager", "content/filemanager", root));
             sb.Append(AddMenuItem("URL Mapper", "content/customurl.aspx", root));
+            sb.Append(AddMenuItem("--------------", "catalog/categories.aspx", root));
+            sb.Append(AddMenuItem("Site Meta Tags", "content/metatags.aspx", root));            
             sb.Append(AddMenuItem("Policies", "content/policies.aspx", root));
             sb.Append(AddMenuItem("Email Templates", "content/EmailTemplates.aspx", root));
+            sb.Append(AddMenuItem("--------------", "catalog/categories.aspx", root));
+            sb.Append(AddMenuItem("Page Images", "content/StoreAssets.aspx", root));
+            sb.Append(AddMenuItem("Content Columns", "content/columns.aspx", root));
             sb.Append(AddMenuItem("Home Page", "content/default.aspx", root));
 
             sb.Append(CloseMenu());
