@@ -10,50 +10,50 @@
         <text> class="input-validation-error"</text>
     }
 }
-@section HeadContent{
-    <script type="text/javascript">
+@section HeadContent{        
+    <script type="text/javascript">        
+        // Jquery Setup
+        $(document).ready(function () {
 
-    // Jquery Setup
-    $(document).ready(function () {
+                    $('#storename').blur(
+                        function () {
 
-        $('#storename').blur(
-            function () {
+                            $('#storename-results').html('<img src="@Url.Content("~/content/images/system/ajax-loader.gif")" alt="Loading..." />');
+                            $('#storename-results').show();                            
 
-                $('#storename-results').html('<img src="@Url.Content("~/content/images/system/ajax-loader.gif")" alt="Loading..." />');
-                $('#storename-results').show();
+                            var name = $('#storename').attr('value');
+                            var jsondata = "{storename:'" + name.replace("'", "") + "'}";
+                            $.ajax(
+                            { type: "POST",
+                                contentType: "application/json; charset=utf-8",
+                                url: "@Url.Content("~/signup/JsonCheckStoreName")",
+                                data: jsondata,
+                                dataType: "json",
+                                success: function (data) {
+                                    $('#storename').attr('value', data.cleanstorename);
+                                    $('#storename-results').html(data.message);
+                                },
+                                error: function () { $('#storename-results').html(''); }
+                            });
 
-                var name = $('#storename').attr('value');
-                var jsondata = "{storename:'" + name.replace("'", "") + "'}";
-                $.ajax(
-                { type: "POST",
-                    contentType: "application/json; charset=utf-8",
-                    url: "@Url.Content("~/signup/JsonCheckStoreName")",
-                    data: jsondata,
-                    dataType: "json",
-                    success: function (data) {
-                        $('#storename').attr('value', data.cleanstorename);
-                        $('#storename-results').html(data.message);
-                    },
-                    error: function () { $('#storename-results').html(''); }
-                });
+                            return;
+                        }
+                        );
 
-                return;
-            }
-            );
-
-        $('#chkagree').click(
-                function () {
-                    if ($('#chkagree').is(':checked')) {
-                        $('#submitbutton').removeAttr('disabled');
-                    }
-                    else {
-                        $('#submitbutton').attr('disabled', true);
-                    }
-                    return;
-                }
-             );
-
-    });
+                    $('#chkagree').click(
+                            function () {
+                                if ($('#chkagree').is(':checked')) {
+                                    $('#submitbutton').removeAttr('disabled');
+                                }
+                                else {
+                                    $('#submitbutton').attr('disabled', true);
+                                }
+                                return;
+                            }
+                         );
+        
+        
+        });    
     </script>
 }
 <div class="col-1">
@@ -63,7 +63,7 @@
         <h2 class="c">
             No long-term contracts. Cancel at any time risk free.</h2>
         @Html.Raw((string)TempData["messages"])
-        <form action="@Url.Content("~/signup/register")" method="post">
+        <form action="@Url.Content("~/signup/register/" + Model.PlanName)" method="post">
         <div class="registration-section">
             <div class="registration-form-area">
                 <h3>
@@ -228,7 +228,7 @@
                         If you have questions please <a href="http://www.bvsoftware.com/company/contact.aspx"
                             target="_blank">contact us</a>.</p>
                     <p>
-                        <input type="checkbox" id="chkagree" name="chkagree"
+                        <input type="checkbox" id="chkagree" style="width:auto !important;" name="chkagree"
                         @if (Model.Agreed) {
                             <text> checked="checked"</text> 
                             }/>                        
@@ -243,5 +243,6 @@
             </p>
         </div>
         </form>
+
     </div>
 </div>

@@ -15,15 +15,12 @@ blockquote, q {quotes:"" "";}
 
 body 
 {
-    font-family:Helvetica,Arial,sans-serif;
-    font-size:12px;    
-    font-style:normal;
-    font-variant:normal;
-    font-weight:normal;
-    line-height:1.416;    
-    color: #5C5C56;
-    background-color:#f5f6f7;      
+    background: #cbd2db 
+      url('../images/system/AdminBackground.png'); 
+      font-family: 'Actor', Arial, Verdana, Sans-Serif; 
+     color:#333339;font-size: 16px;line-height:1.375em;                         
 }
+
 .c {margin-left:auto;margin-right:auto;text-align:center;}
 .clear {clear:both;line-height:1px;font-size:1px;height:1px;}
 .hide, .h {display: none;}
@@ -61,104 +58,64 @@ ul li {margin:0 0 9px 12px;}
 .showbullets li {margin-left:3em;line-height:1.1em;}
      
                 
-#main-content {margin:0;}
-#maintext-wrapper {width:960px;margin:0 auto;padding:0;  
-                   /*background: url('http://localhost:1802/content/images/960grid.png') repeat-y;*/}
-#maintext,#main-text {margin:0 0px;}
-#maintext p {}
-#maintext a {text-decoration:underline;}
-#maintext em {font-style:normal;color:#6385a1;font-weight:bold;}
 
-/* columns */
-.column-side {width:220px;float:left;}
-.column-main {width:700px;float:right;}
-.column-center {width:420px;padding-top:20px;margin:0 auto;}
+h1 {font-size:32px;font-weight:bold;color:#333339;line-height:1.25em;letter-spacing:-0.00em; font-family: 'Droid Sans', Arial, Verdana, Sans-Serif;}
+h1 a {color:#333339;text-decoration:none;}
+h1 a:hover {color:#333339;text-decoration:underline;}
+h1 a:visited {color:#333339;}
 
+h2 {font-size:20px;font-weight:bold;color:#303B4C;line-height:1em;font-family: 'Droid Sans',Actor, Arial, Verdana, Sans-Serif;letter-spacing:-0.05em;}
+h3 {font-size:20px;font-weight:bold;color:#000;line-height:1.11111em;font-family: 'Droid Sans',Actor, Arial, Verdana, Sans-Serif;}
+h4 {font-size:16px;font-weight:bold;color:#000;line-height:1.25em;font-family: Actor, Arial, Verdana, Sans-Serif;}
+h5 {font-size:16px;font-weight:bold;color:#000;line-height:1.429em;letter-spacing:-0.05em;}
+h6 {font-size:16px;font-weight:bold;color:#303B4C;line-height:1.429em;letter-spacing:-0.05em;}
 
-h1, .trialform h5 {color:#000;margin:0px 0 15px 0;font-size:18pt;letter-spacing:-1px;font-weight:bold;}
-h2 {font-weight:bold;color:#666;margin:0 0 0 0;font-size:16px;}
-h3 {margin:0;padding:0;font-weight:bold;font-size:16px;}
-h4 {}
-h5 {font-weight:bold;}
 img.callout {float:right;border:solid 5px #ccc;margin:5px;}
 
-/* Header Tags */
-#header {margin:0;padding:0;height:51px;}
-#headerwrapper {height:51px;}
-#header a {color:#666;}
-#header a:visited {color:#666;}
-#header a:hover {text-decoration:none;}                 
-#header ul {margin:0;padding:0;list-style:none;}
-#header li {display:block;float:left;margin:0;padding:0;}
-#bv-logo {width:185px;height:51px;overflow:hidden;float:left;margin:0 0 0 10px;}
-#action-links {width:485px;height:51px;overflow:hidden;float:left;margin:0 0 0 0;
-               font-size:13px;}
-#action-links li {margin:0;padding:0;}
-#action-links li a {display:block;height:22px;margin:22px 20px 0 0;}
-#action-links li a:hover {text-decoration:underline;}
-#phone {float:right;text-align:right;width:270px;margin:0 10px 0 0;padding:0;}
-#phone span {display:block;height:22px;margin:20px 0 0 0;color:#999;
-             font-size:16px;font-weight:bold;}
-#phone strong {font-weight:bold;color:#006;}             
+/* Header */
+#header {background: transparent;
+         height:80px;overflow:hidden;}
+#header #logo-area {height:70px;width:310px;float:left;}
+#header #logo-area a {font-size:36px;color:#fff;text-decoration:none;
+                      line-height:1em;padding:18px 0 0 10px;display:
+                      block;font-weight:bold;letter-spacing:-2px;
+color:#303B4C;text-shadow: 0 1px 0 rgba(255,255,255,0.5);}
+#header #logo-area a .logo2 {color:#303B4C;}
 
-.headertabs {height:55px;margin:0px auto 0px auto;padding:0;border-bottom:solid 1px #d8d9da;}
-.headertabs ul {margin:0;padding:0;}             
-.headertabs ul li {display:block;float:left;margin:0 1px 0 0;}
-.headertabs ul li a {margin:0 0px 0 0;}
-.headertabs .nocreditcard {float:right;text-align:right;color:#006;
-                           line-height:1em;
-                           font-size:18px;font-weight:bold;padding:35px 0 0 0;margin:0px 35px 0 0;}                           
-/* Submenu */
-.submenu {width:940px;margin:30px auto 0 auto;height:28px;}
-.submenu a {color:#666;}
-.submenu a:hover {color:#6385a1;text-decoration:none;}
-.submenulogo {width:300px;float:left;margin:0;}
-.submenulogo h1 {font-size:18px;color:#666;font-weight:bold;margin:0;}
-.submenulinks {width:620px;float:right;}
-.submenulinks ul {margin:0;padding:0;list-style:none;}
-.submenulinks li {display:block;float:right;margin:0;padding:0;}
-.submenulinks li a {display:block;height:20px;margin:5px 0 0 0;padding:0 0 0 20px;}
-.submenulinks li a img {margin-top:-2px;}
+#header ul {list-style:none;}                           
+#header li {float:left;list-style:none;}
 
-/* Footer tags */
-#footer{text-align:center;padding:0;line-height:1.6em;}
-#footer-wrapper {width:940px;margin:0 auto;}
-#footermenu {margin:0px auto; text-align:center;padding:0px 0 5px 0;}
-#footermenu a {height:20px;margin:2px 10px; text-align:center;}
+#links-area {width:490px;height:24px;margin:32px 10px 0 0;float:right;
+             font-size:18px; line-height:1.286em;
+             color:#303B4C;text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+             }
+#links-area ul {float:right;}
+#links-area li {float:left;}                            
+#links-area a {color:#303B4C;text-shadow: 0 1px 0 rgba(255,255,255,0.5);text-decoration:none;font-size:18px;
+               font-family: 'Droid Sans'}  
+#links-area a:hover {color:#303B4C;text-decoration:underline;}                    
+#links-area a span {display:block;height:18px;padding:0 0 0 18px;}
 
-/* Hero Graphics */
-img.awards {margin:10px auto;display:block;}
-.homehero {background: #b4c3e2 url('/content/images/system/HeroFeb10.jpg') no-repeat top left; width:620px; height:200px;
-           margin:10px 0 20px 0;color:#006;padding:0;}
-.homehero h1 {color:#006;padding:18px 0 0 0;margin:0 0 0 20px;}           
-.homeregistration {width:300px;height:542px;margin:10px 0 0 0;
-                   background:transparent url('/content/images/system/SignUpBg.png') no-repeat top left;}
-.homeregistration h3 {color:#006;}
 
-#hero-home {width:940px;margin:10px auto 20px auto;height:300px;overflow:hidden; background: url('/content/homepage/Hero2009.jpg') no-repeat top left;}
-#hero-home .block {height:198px;}
+/* Main Content Wrapper */
+#main-content {width:940px;margin:0 auto;
+background-color:#fff;
+border-bottom:solid 1px #b4b4b4;padding:10px 10px 20px 10px;
+  -webkit-box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+   box-shadow: 0px 0px 10px rgba(0,0,0,0.5);}
 
-#hero-home-left{padding:0;margin:0;width:430px;float:left;height:170px;}
-#hero-home h1 {margin:100px 0 0 20px;font-size:18pt;line-height:1em;letter-spacing:-0.05em;font-weight:bold;
-               color:#555;}
-#hero-home h1 strong {color:#33789C;}
-#hero-home-right a {display:block;margin:0;padding:0;width:340px;height:200px;}
 
-.freetrialbutton {padding:10px;}
-.freetrialbutton a {display:block;height:70px;width:270px; background: url('/content/images/FreeTrialHuge.png') no-repeat top left;}
-.freetrialbutton a span {display:none;}
+/* Footer */
+#footer {clear:both;text-align:center;padding:10px 0 0 0;
+         color:#303B4C;
+         text-shadow: 0 1px 0 rgba(255,255,255,0.5);font-size:12px;
+        }
+#footer a {color:#303B4C;text-shadow: 0 1px 0 rgba(255,255,255,0.5);text-decoration:none;}
+#footer a:hover {color:#ff9400;text-decoration:underline;}
 
-#hero-home-left .freetrialbutton {margin:10px 0 0 60px;}
-
-#hero-title {margin:10px auto; width:940px;height:30px;
-             background: #b5ced2 url('images/titlebg.png') repeat-x top left;}
-#hero-title h1 {font-size:18pt;line-height:1em;letter-spacing:-0.05em;font-weight:bold;color:#555;                
-                height:30px;}
-               
-#hero-small-wrapper {width:950px;margin:0 auto;}
-
-/* homepage */
-.h-ad {display:block;margin:0 0 20px 0;}
+.topfooter {width:940px;padding:10px 10px;margin:0 auto;}
+.bottomfooter, .bvtag {display:block;width:940px;padding:5px 10px;margin:0 auto;}
+#footer .bvtag a {}
 
 /* column layouts */
 .col-1 {margin:10px 0 0 0;}
@@ -280,24 +237,6 @@ img.awards {margin:10px auto;display:block;}
                                 border-bottom:solid 1px #ccc;}
 
 
-/* Tour Pages */
-.pager {height:28px;font-size:18px;}
-.pager .last {text-align:left;float:left;width:300px;height:25px;}
-.pager .next {text-align:right;float:right;width:300px;height:25px;}
-
-.superh1 {width:940px;margin:0px auto 10px auto;padding:0;background-color:#f60;
-          height:70px;text-align:left;
-          
-          -moz-border-radius-bottomleft:10px;
-          -moz-border-radius-bottomright:10px;
-          -webkit-border-bottom-left-radius:10px;
-          -webkit-border-bottom-right-radius:10px;
-          
-          }
-.superh1 h1 {margin:0px 0 0 10px;padding:10px 0 0 0;color:#fff;font-size:48px;line-height:1em;}
-h1.c {margin-bottom:0;}
-h2.c {color:#b4c3e2;}
-
 .planchart {margin:30px auto 50px auto;padding:0;text-align:center;
             height:230px;display:block;}
 ul.planchart li {margin:15px 0 0 0;border:solid 1px #ccc;
@@ -333,62 +272,3 @@ ul.planchart em {color:#006; font-style:normal;}
 .priceplans .rowalt td.p3 {background-color:#fdfce3;}
 
 .priceplans tr.planname td {width:100px;height:120px;padding:0;}
-
-/* Design Page */
-.feature {width:300px;}
-.tour-design-1 {margin:30px 0 0 0;height:250px;background: url('/content/images/system/tourdesign1.png') no-repeat top left;}
-.tour-design-1 .feature {float:right;margin:70px 10px 0 0;}
-
-.tour-design-2 {margin:30px 0 0 0;height:315px;}
-.tour-design-2 .feature {float:left;margin:120px 0 0 10px;}
-.premium {float:right;}
-
-.tour-design-3 {margin:50px 0 20px 0;height:315px; background: url('/content/images/system/tourdesign3.png') no-repeat top left;}
-.tour-design-3 .feature {float:right; width:265px; margin: 40px 0px 0 0;}
-.tour-design-3 .feature h3 {color:#f60;}
-
-.tour-tracking-1 { height:300px; margin:30px 0 0 0;
-                   background: url('/content/images/system/tourtracking2.png') no-repeat 0 0px;}
-.tour-tracking-1 .feature {float:right;margin:10px 10px 0 0;}
-
-.tour-tracking-2 {height:250px; margin:0px 0 0 0;
-                   background: #fff url('/content/images/system/tourtracking1.png') no-repeat top right;}
-.tour-tracking-2 .feature {float:left;margin: 0 0 0 10px;}
-
-.tour-tracking-3 {height: 300px; margin:0 0 0 0;
-                  background: url('/content/images/system/tourtracking3.png') no-repeat 40px 0;}
-.tour-tracking-3 .feature {float:right;margin:15px 10px 0 0;}
-
-
-.tour-hosting-1 {height: 400px; margin:0 0 0 0;
-                  background: url('/content/images/system/tourhosting1.png') no-repeat 340px 0px;}
-.tour-hosting-1 .feature {float:left;margin:50px 0 0 20px;}
-
-
-.tour-sell h4 {font-weight:bold;color:#000;}
-
-.tour-sell-0 {margin:0; background:#fff;}
-.tour-sell-0 .feature {width:620px;margin:20px auto 0 auto;}
-
-.tour-sell-1 {margin:0 0 0 0;height:200px; background: #fff url('/content/images/system/newsell1.png') no-repeat 80px 0px;}
-.tour-sell-1 .feature {float:right; margin: 30px 10px 0 0;}
-
-.tour-sell-2 {margin:0 0 0 0;height:470px; background: #fff url('/content/images/system/newsell2.png') no-repeat top right;}
-.tour-sell-2 .feature {float:left; margin: 0px 0 0 10px;}
-
-.tour-sell-3 {margin:40px 0 0 0;height:520px; background: #fff url('/content/images/system/toursell3.jpg') no-repeat top left;}
-.tour-sell-3 .feature {float:right; margin: 0px 10px 0 0;}
-
-.tour-sell-4 {margin:30px 0 0 0;height:285px; background: #fff url('/content/images/system/newsell4.png') no-repeat top right;}
-.tour-sell-4 .feature {float:left; margin: 20px 0 0 10px;}
-
-.tour-sell-5 {margin:40px 0 0 0;height:300px; background: #fff url('/content/images/system/newsell5.png') no-repeat 40px 0;}
-.tour-sell-5 .feature {float:right; margin: 20px 10px 0 0;}
-
-.gallery table {margin:0 auto;}
-.gallery td {vertical-align:bottom;text-align:center;}
-.gallery td img {border:solid 1px #ccc;margin:5px;}
-
-/* PayPalOffer */
-#expires {color:#fff;}
-#expires table {margin:-30px auto 0 auto;}

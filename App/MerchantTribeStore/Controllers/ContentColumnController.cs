@@ -22,7 +22,7 @@ namespace MerchantTribeStore.Controllers
             {
                 col = MTApp.ContentServices.Columns.FindByDisplayName(id);
             }
-            if (col == null) return Content("Column Not Found");
+            if (col == null) return Content(string.Empty); // Content("Column Not Found");
             
             return View(col);
         }

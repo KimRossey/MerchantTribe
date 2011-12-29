@@ -14,6 +14,7 @@ namespace MerchantTribeStore.Areas.signup.Models
         public bool Agreed { get; set; }
         public bool FromHomePage { get; set; }
         public List<string> InvalidFields { get; set; }
+        public string PlanName { get; set; }
 
         public RegisterViewModel()
         {
@@ -22,6 +23,7 @@ namespace MerchantTribeStore.Areas.signup.Models
             this.Agreed = false;
             this.FromHomePage = false;
             this.InvalidFields = new List<string>();
+            this.PlanName = string.Empty;
         }
     }
 }

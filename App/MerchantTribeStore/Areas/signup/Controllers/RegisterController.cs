@@ -15,39 +15,45 @@ namespace MerchantTribeStore.Areas.signup.Controllers
 
         private RegisterViewModel RegisterSetup(string id)
         {
-            RegisterViewModel model = new RegisterViewModel();
+            RegisterViewModel model = new RegisterViewModel();            
             SetPlanFromName(id, model);
 
             return model;
         }
         private void SetPlanFromName(string id, RegisterViewModel model)
         {
-            if (id != string.Empty)
-            {
+            if (id == null) return;
+            if (id == string.Empty) return;
+            
                 switch (id.Trim().ToLower())
                 {
                     case "starter":
                         model.RegistrationData.plan = 0;
                         model.HideCreditCard = true;
+                        model.PlanName = id.Trim().ToLowerInvariant();
                         break;
                     case "basic":
-                        model.RegistrationData.plan = 1;                        
+                        model.RegistrationData.plan = 1;
+                        model.PlanName = id.Trim().ToLowerInvariant();
                         break;
                     case "plus":
                         model.RegistrationData.plan = 2;
+                        model.PlanName = id.Trim().ToLowerInvariant();
                         break;
                     case "premium":
                         model.RegistrationData.plan = 3;
+                        model.PlanName = id.Trim().ToLowerInvariant();
                         break;
                     case "max":
                         model.RegistrationData.plan = 99;
+                        model.PlanName = id.Trim().ToLowerInvariant();
                         break;
                     default:
                         model.RegistrationData.plan = 0;
                         model.HideCreditCard = true;
+                        model.PlanName = id.Trim().ToLowerInvariant();
                         break;
-                }
-            }
+                }            
         }
         private void AddPlanDetails(RegisterViewModel model)
         {
@@ -110,7 +116,7 @@ namespace MerchantTribeStore.Areas.signup.Controllers
             if (Request.Form != null)
             {
                 model.RegistrationData.email = Request.Form["email"] ?? model.RegistrationData.email;
-                model.RegistrationData.password = Request.Form["passsword"] ?? model.RegistrationData.password;
+                model.RegistrationData.password = Request.Form["password"] ?? model.RegistrationData.password;
                 model.RegistrationData.storename = Request.Form["storename"] ?? model.RegistrationData.storename;
                 if (Request.Form["expmonth"] != null)
                 {
@@ -258,11 +264,7 @@ namespace MerchantTribeStore.Areas.signup.Controllers
                                                                 billingAccount);
                     if (s != null)
                     {
-                        if (isPayPalLead)
-                        {
-                            s.Settings.LeadSource = "PayPalOffer";
-                            MTApp.AccountServices.Stores.Update(s);
-                        }
+                        
 
                         string e = MerchantTribe.Web.Cryptography.Base64.ConvertStringToBase64(u.Email);
                         string st = MerchantTribe.Web.Cryptography.Base64.ConvertStringToBase64(s.StoreName);

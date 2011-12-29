@@ -27,13 +27,7 @@ namespace MerchantTribeStore.Areas.signup.Controllers
 
             // Phone
             ViewBag.PhoneNumber = "1-804-476-0030";
-            string payPalLead = SessionManager.GetCookieString("PayPalLead", MTApp.CurrentStore);
-            if (!String.IsNullOrEmpty(payPalLead))
-            {
-                // PayPal Phone Number
-                ViewBag.PhoneNumber = "1-877-896-0295";
-            }
-
+            
             // Google Analytics Tracker
             ViewBag.SignUpGoogleId = "UA-66804-7";
         }
