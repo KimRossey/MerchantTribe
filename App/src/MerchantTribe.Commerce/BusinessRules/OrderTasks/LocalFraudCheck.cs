@@ -51,10 +51,10 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
 		}
 
 		private void PopulateFraudData(Security.FraudCheckData d, OrderTaskContext context)
-		{
-			if (HttpContext.Current != null) {
-				if (HttpContext.Current.Request.UserHostAddress != null) {
-					d.IpAddress = HttpContext.Current.Request.UserHostAddress;
+		{            
+			if (context.MTApp.CurrentRequestContext.RoutingContext.HttpContext != null) {
+				if (context.MTApp.CurrentRequestContext.RoutingContext.HttpContext.Request.UserHostAddress != null) {
+					d.IpAddress = context.MTApp.CurrentRequestContext.RoutingContext.HttpContext.Request.UserHostAddress;
 				}
 			}
 			

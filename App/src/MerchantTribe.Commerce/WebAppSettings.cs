@@ -154,14 +154,6 @@ namespace MerchantTribe.Commerce
                         result += "\\";
                     }
 
-                //if (HttpContext.Current != null)
-                //{
-                //    result = HttpContext.Current.Request.MapPath("~/images/sites");
-                //    if (!result.EndsWith("\\"))
-                //    {
-                //        result += "\\";
-                //    }
-                //}                
                 return result;
             }
         }

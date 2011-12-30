@@ -21,8 +21,9 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
 		{
 			if (context.Inputs["Mode"] != null) {
 				if (context.Inputs["Mode"].Value == "PaypalExpress") {
-					if (HttpContext.Current != null) {
-						PayPalAPI ppAPI = Utilities.PaypalExpressUtilities.GetPaypalAPI();
+                    if (context.MTApp.CurrentRequestContext.RoutingContext.HttpContext != null)
+                    {
+						PayPalAPI ppAPI = Utilities.PaypalExpressUtilities.GetPaypalAPI(context.MTApp.CurrentStore);
 						try {
 
                             string cartReturnUrl = string.Empty;
@@ -33,8 +34,11 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
                                 cartCancelUrl = context.MTApp.CurrentRequestContext.CurrentStore.RootUrlSecure() + "checkout";
                             }
 
+                            EventLog.LogEvent("PayPal Express Checkout", "CartCancelUrl=" + cartCancelUrl, EventLogSeverity.Information);
+                            EventLog.LogEvent("PayPal Express Checkout", "CartReturnUrl=" + cartReturnUrl, EventLogSeverity.Information);
+
 							SetExpressCheckoutResponseType expressResponse;
-							PaymentActionCodeType mode = PaymentActionCodeType.None;
+							PaymentActionCodeType mode = PaymentActionCodeType.Authorization;
 
                             if (context.MTApp.CurrentRequestContext.CurrentStore.Settings.PayPal.ExpressAuthorizeOnly)
                             {
@@ -78,6 +82,10 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
                                         address.PostalCode, 
                                         address.Phone, 
                                         context.Order.OrderNumber + System.Guid.NewGuid().ToString());
+                                    if (expressResponse == null)
+                                    {
+                                        EventLog.LogEvent("PayPal Express Checkout", "Express Response Was Null!", EventLogSeverity.Error);
+                                    }
 								}
 								else {
 									EventLog.LogEvent("StartPaypalExpressCheckout", "Country with bvin " + address.CountryBvin + " was not found.", EventLogSeverity.Error);
@@ -91,6 +99,10 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
                                                                         mode,
                                                                         PayPalAPI.GetCurrencyCodeType(context.MTApp.CurrentRequestContext.CurrentStore.Settings.PayPal.Currency), 
                                                                         context.Order.OrderNumber + System.Guid.NewGuid().ToString());
+                                if (expressResponse == null)
+                                {
+                                    EventLog.LogEvent("PayPal Express Checkout", "Express Response2 Was Null!", EventLogSeverity.Error);
+                                }
 							}
 
 							if (expressResponse.Ack == AckCodeType.Success || expressResponse.Ack == AckCodeType.SuccessWithWarning) {
@@ -101,6 +113,8 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
                                 //Orders.OrderPaymentManager payManager = new Orders.OrderPaymentManager(context.Order);
                                 //payManager.PayPalExpressAddInfo(context.Order.TotalGrand, expressResponse.Token);
 
+                                EventLog.LogEvent("PayPal Express Checkout", "Response SUCCESS", EventLogSeverity.Information);
+
                                 Orders.OrderNote note = new Orders.OrderNote();
                                 note.IsPublic = false;
 								note.Note = "Paypal Order Accepted With Paypal Order Number: " + expressResponse.Token;
@@ -109,10 +123,10 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
                                 {
                                     if (string.Compare(context.MTApp.CurrentRequestContext.CurrentStore.Settings.PayPal.Mode, "Live", true) == 0)
                                     {
-										HttpContext.Current.Response.Redirect("https://www.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=" + expressResponse.Token, false);
+										context.MTApp.CurrentRequestContext.RoutingContext.HttpContext.Response.Redirect("https://www.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=" + expressResponse.Token, true);
 									}
 									else {
-										HttpContext.Current.Response.Redirect("https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=" + expressResponse.Token, false);
+                                        context.MTApp.CurrentRequestContext.RoutingContext.HttpContext.Response.Redirect("https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=" + expressResponse.Token, true);
 									}
 
 								}

@@ -2246,8 +2246,6 @@
     <Compile Include="Areas\signup\Controllers\MarketingPagesController.cs" />
     <Compile Include="Areas\signup\Controllers\PoliciesController.cs" />
     <Compile Include="Areas\signup\Controllers\RegisterController.cs" />
-    <Compile Include="Areas\signup\Models\FeatureDetails.cs" />
-    <Compile Include="Areas\signup\Models\FeatureSection.cs" />
     <Compile Include="Areas\signup\Models\RegisterViewModel.cs" />
     <Compile Include="Areas\signup\signupAreaRegistration.cs" />
     <Compile Include="BVAdmin\Account.aspx.cs">

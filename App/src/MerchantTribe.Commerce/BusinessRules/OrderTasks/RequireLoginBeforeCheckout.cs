@@ -15,8 +15,9 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
 		{
 			try {
 				if (context.UserId.Trim() == string.Empty) {
-					if (HttpContext.Current != null) {
-						HttpContext.Current.Response.Redirect("~/login.aspx?ReturnTo=Checkout");
+                    if (context.MTApp.CurrentRequestContext.RoutingContext.HttpContext != null)
+                    {
+                        context.MTApp.CurrentRequestContext.RoutingContext.HttpContext.Response.Redirect("~/login.aspx?ReturnTo=Checkout");
 					}
 				}
 			}

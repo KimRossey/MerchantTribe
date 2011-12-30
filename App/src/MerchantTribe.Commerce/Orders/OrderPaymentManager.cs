@@ -757,7 +757,7 @@ namespace MerchantTribe.Commerce.Orders
             Payment.Method.PaypalExpress processor = new Payment.Method.PaypalExpress();
             if (processor != null)
             {
-                processor.Authorize(t);
+                processor.Authorize(t, this.MTApp);
                 ot = new OrderTransaction(t);
                 ot.LinkedToTransaction = infoTransaction.IdAsString;
             }
@@ -790,7 +790,7 @@ namespace MerchantTribe.Commerce.Orders
             Payment.Method.PaypalExpress processor = new Payment.Method.PaypalExpress();
             if (processor != null)
             {
-                processor.Capture(t);
+                processor.Capture(t, this.MTApp);
                 ot = new OrderTransaction(t);
                 ot.LinkedToTransaction = holdTransaction.IdAsString;
             }
@@ -822,7 +822,7 @@ namespace MerchantTribe.Commerce.Orders
             Payment.Method.PaypalExpress processor = new Payment.Method.PaypalExpress();
             if (processor != null)
             {
-                processor.Charge(t);
+                processor.Charge(t, this.MTApp);
                 ot = new OrderTransaction(t);
                 ot.LinkedToTransaction = infoTransaction.IdAsString;
             }
@@ -857,7 +857,7 @@ namespace MerchantTribe.Commerce.Orders
             Payment.Method.PaypalExpress processor = new Payment.Method.PaypalExpress();
             if (processor != null)
             {
-                processor.Refund(t);
+                processor.Refund(t, this.MTApp);
                 ot = new OrderTransaction(t);
                 ot.LinkedToTransaction = previousTransaction.IdAsString;
             }
@@ -889,7 +889,7 @@ namespace MerchantTribe.Commerce.Orders
             Payment.Method.PaypalExpress processor = new Payment.Method.PaypalExpress();  
             if (processor != null)
             {
-                processor.Void(t);
+                processor.Void(t, this.MTApp);
                 ot = new OrderTransaction(t);
                 ot.LinkedToTransaction = previousTransaction.IdAsString;
 
@@ -935,12 +935,12 @@ namespace MerchantTribe.Commerce.Orders
                         if (p.Action == MerchantTribe.Payment.ActionType.PayPalHold)
                         {
                             t.Action = MerchantTribe.Payment.ActionType.PayPalCapture;
-                            processor.Capture(t);
+                            processor.Capture(t, this.MTApp);
                         }
                         else
                         {
                             t.Action = MerchantTribe.Payment.ActionType.PayPalCharge;
-                            processor.Charge(t);
+                            processor.Charge(t, this.MTApp);
                         }
                                                 
                         Orders.OrderTransaction ot = new Orders.OrderTransaction(t);

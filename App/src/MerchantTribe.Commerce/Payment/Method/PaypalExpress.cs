@@ -21,11 +21,9 @@ namespace MerchantTribe.Commerce.Payment.Method
             get { return "PayPal Express"; }
         }
 
-        private Accounts.Store currentStore = RequestContext.GetCurrentRequestContext().CurrentStore;
-
-        public bool Authorize(MerchantTribe.Payment.Transaction t)
-        {
-            PayPalAPI ppAPI = Utilities.PaypalExpressUtilities.GetPaypalAPI();
+        public bool Authorize(MerchantTribe.Payment.Transaction t, MerchantTribeApplication app)
+        {            
+            PayPalAPI ppAPI = Utilities.PaypalExpressUtilities.GetPaypalAPI(app.CurrentStore);
             try
             {
                 DoExpressCheckoutPaymentResponseType paymentResponse;
@@ -35,7 +33,7 @@ namespace MerchantTribe.Commerce.Payment.Method
                                    t.PreviousTransactionAuthCode,
                                     string.Format("{0:N}", t.Amount),
                                     PaymentActionCodeType.Order,
-                                    PayPalAPI.GetCurrencyCodeType(currentStore.Settings.PayPal.Currency),
+                                    PayPalAPI.GetCurrencyCodeType(app.CurrentStore.Settings.PayPal.Currency),
                                     t.MerchantInvoiceNumber + System.Guid.NewGuid().ToString());
 
                     if ((paymentResponse.Ack == AckCodeType.Success) || (paymentResponse.Ack == AckCodeType.SuccessWithWarning))
@@ -66,9 +64,9 @@ namespace MerchantTribe.Commerce.Payment.Method
             return false;
         }
 
-        public bool Capture(MerchantTribe.Payment.Transaction t)
+        public bool Capture(MerchantTribe.Payment.Transaction t, MerchantTribeApplication app)
         {
-            PayPalAPI ppAPI = Utilities.PaypalExpressUtilities.GetPaypalAPI();
+            PayPalAPI ppAPI = Utilities.PaypalExpressUtilities.GetPaypalAPI(app.CurrentStore);
             try
             {
                 string OrderNumber = t.MerchantInvoiceNumber + System.Guid.NewGuid().ToString();
@@ -76,7 +74,7 @@ namespace MerchantTribe.Commerce.Payment.Method
                 DoCaptureResponseType captureResponse = ppAPI.DoCapture(t.PreviousTransactionNumber,
                                                                         "Thank you for your payment.",
                                                                         string.Format("{0:N}", t.Amount),
-                                                                        PayPalAPI.GetCurrencyCodeType(currentStore.Settings.PayPal.Currency), 
+                                                                        PayPalAPI.GetCurrencyCodeType(app.CurrentStore.Settings.PayPal.Currency), 
                                                                         OrderNumber);
                 
                 if ((captureResponse.Ack == AckCodeType.Success) || (captureResponse.Ack == AckCodeType.SuccessWithWarning))
@@ -147,9 +145,9 @@ namespace MerchantTribe.Commerce.Payment.Method
             }
 
         }
-        public bool Charge(MerchantTribe.Payment.Transaction t)
+        public bool Charge(MerchantTribe.Payment.Transaction t, MerchantTribeApplication app)
         {       
-            PayPalAPI ppAPI = Utilities.PaypalExpressUtilities.GetPaypalAPI();
+            PayPalAPI ppAPI = Utilities.PaypalExpressUtilities.GetPaypalAPI(app.CurrentStore);
             try {
                 string OrderNumber = t.MerchantInvoiceNumber + System.Guid.NewGuid().ToString();
 
@@ -159,7 +157,7 @@ namespace MerchantTribe.Commerce.Payment.Method
                                                                 t.PreviousTransactionAuthCode,
                                                                 string.Format("{0:N}", t.Amount),
                                                                 PaymentActionCodeType.Sale, 
-                                                                PayPalAPI.GetCurrencyCodeType(currentStore.Settings.PayPal.Currency), 
+                                                                PayPalAPI.GetCurrencyCodeType(app.CurrentStore.Settings.PayPal.Currency), 
                                                                 OrderNumber);
 
                 if ((paymentResponse.Ack == AckCodeType.Success) || (paymentResponse.Ack == AckCodeType.SuccessWithWarning))
@@ -207,9 +205,9 @@ namespace MerchantTribe.Commerce.Payment.Method
         }
 
 
-        public bool Refund(MerchantTribe.Payment.Transaction t)
+        public bool Refund(MerchantTribe.Payment.Transaction t, MerchantTribeApplication app)
         {
-                PayPalAPI ppAPI = Utilities.PaypalExpressUtilities.GetPaypalAPI();
+                PayPalAPI ppAPI = Utilities.PaypalExpressUtilities.GetPaypalAPI(app.CurrentStore);
                 try {
                     if (t.PreviousTransactionNumber != null)
                     {
@@ -245,9 +243,9 @@ namespace MerchantTribe.Commerce.Payment.Method
                 return false;
         }
 
-        public bool Void(MerchantTribe.Payment.Transaction t)
+        public bool Void(MerchantTribe.Payment.Transaction t, MerchantTribeApplication app)
         {
-            PayPalAPI ppAPI = Utilities.PaypalExpressUtilities.GetPaypalAPI();
+            PayPalAPI ppAPI = Utilities.PaypalExpressUtilities.GetPaypalAPI(app.CurrentStore);
             try
             {
                 if (t.PreviousTransactionNumber != null)

@@ -69,7 +69,7 @@ namespace MerchantTribeStore.Controllers
             if (string.IsNullOrEmpty(token)) Response.Redirect("~/cart");
 
             
-                PayPalAPI ppAPI = MerchantTribe.Commerce.Utilities.PaypalExpressUtilities.GetPaypalAPI();
+                PayPalAPI ppAPI = MerchantTribe.Commerce.Utilities.PaypalExpressUtilities.GetPaypalAPI(this.MTApp.CurrentStore);
                 bool failed = false;
                 GetExpressCheckoutDetailsResponseType ppResponse = null;
                 try
@@ -302,7 +302,7 @@ namespace MerchantTribeStore.Controllers
         {
             Order o = SessionManager.CurrentShoppingCart(MTApp.OrderServices, MTApp.CurrentStore);
 
-            PayPalAPI ppAPI = MerchantTribe.Commerce.Utilities.PaypalExpressUtilities.GetPaypalAPI();
+            PayPalAPI ppAPI = MerchantTribe.Commerce.Utilities.PaypalExpressUtilities.GetPaypalAPI(this.MTApp.CurrentStore);
             try
             {
                 string cartReturnUrl = MTApp.CurrentStore.RootUrlSecure() + "paypalexpresscheckout";

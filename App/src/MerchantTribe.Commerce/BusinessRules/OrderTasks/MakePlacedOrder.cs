@@ -31,12 +31,13 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
 					}				
 			//}
 
-			if (System.Web.HttpContext.Current != null) {
+                    if (context.MTApp.CurrentRequestContext.RoutingContext.HttpContext != null)
+                    {
 				Orders.OrderNote note = new Orders.OrderNote();
                 note.IsPublic = false;
-				note.Note = "Customer IP: " + HttpContext.Current.Request.UserHostAddress;
-				note.Note += "<br> Customer Host: " + HttpContext.Current.Request.UserHostName;
-				note.Note += "<br> Browser: " + HttpContext.Current.Request.UserAgent;
+                note.Note = "Customer IP: " + context.MTApp.CurrentRequestContext.RoutingContext.HttpContext.Request.UserHostAddress;
+                note.Note += "<br> Customer Host: " + context.MTApp.CurrentRequestContext.RoutingContext.HttpContext.Request.UserHostName;
+                note.Note += "<br> Browser: " + context.MTApp.CurrentRequestContext.RoutingContext.HttpContext.Request.UserAgent;
 				context.Order.Notes.Add(note);
 			}
 

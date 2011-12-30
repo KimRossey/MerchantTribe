@@ -11,25 +11,21 @@ namespace MerchantTribe.Commerce.Utilities
 	public class PaypalExpressUtilities
 	{
 
-        public static PayPalAPI GetPaypalAPI()
-		{
-            RequestContext context = RequestContext.GetCurrentRequestContext();
-            if (context == null) return null;
-
+        public static PayPalAPI GetPaypalAPI(Accounts.Store currentStore)
+		{            
 			com.paypal.sdk.profiles.IAPIProfile APIProfile 
-                = Utilities.PaypalExpressUtilities.CreateAPIProfile(context.CurrentStore.Settings.PayPal.UserName,
-                                                                    context.CurrentStore.Settings.PayPal.Password,
-                                                                    context.CurrentStore.Settings.PayPal.Signature,
-                                                                    context.CurrentStore.Settings.PayPal.FastSignupEmail);
+                = Utilities.PaypalExpressUtilities.CreateAPIProfile(currentStore.Settings.PayPal.UserName,
+                                                                    currentStore.Settings.PayPal.Password,
+                                                                    currentStore.Settings.PayPal.Signature,
+                                                                    currentStore.Settings.PayPal.FastSignupEmail,
+                                                                    currentStore.Settings.PayPal.Mode);
             
 			return new PayPalAPI(APIProfile);
 		}
 
-		private static com.paypal.sdk.profiles.IAPIProfile CreateAPIProfile(string PayPalUserName, string PayPalPassword, string PayPalSignature, string subject)
+		private static com.paypal.sdk.profiles.IAPIProfile CreateAPIProfile(string PayPalUserName, string PayPalPassword, string PayPalSignature, string subject, string mode)
 		{
-            RequestContext context = RequestContext.GetCurrentRequestContext();
-            if (context == null) return null;
-
+            
             com.paypal.sdk.profiles.IAPIProfile profile = null;
 
             try
@@ -39,7 +35,9 @@ namespace MerchantTribe.Commerce.Utilities
                 if (profile != null)
                 {
 
-                    profile.Environment = context.CurrentStore.Settings.PayPal.Mode;
+                    profile.Environment = mode;
+
+                    EventLog.LogEvent("PayPal Express Get Api", "Getting Environment " + mode, EventLogSeverity.Information);
 
                     if (PayPalUserName.Trim().Length > 0)
                     {
@@ -63,7 +61,7 @@ namespace MerchantTribe.Commerce.Utilities
                 }
             }
             catch (Exception ex)
-            {
+            {                
                 EventLog.LogEvent("PayPal Utilities", ex.Message + " | " + ex.StackTrace, EventLogSeverity.Warning);
             }
 
