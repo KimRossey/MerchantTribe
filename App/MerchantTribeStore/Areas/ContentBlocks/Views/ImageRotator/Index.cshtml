@@ -3,52 +3,50 @@
 @Html.SafeRegisterScript("~/scripts/ImageRotator.js")
 @if (Model.Images.Count > 0)
 {
-    <div class="@Model.CssClass">     
-    <ul id="@Model.CssId" class="imagerotatorlist" style="height:@(Model.Height)px;width:@(Model.Width)px;">        
-        @for(int i = 0; i < Model.Images.Count; i++)
-        {
-            var img = Model.Images[i];
-            <li @if (i == 0) { <text>class="show"</text> }>            
-            <a href="@img.Url" @if (img.NewWindow == true) { <text> target="_blank"</text> }>
-            <img src="@img.ImageUrl" alt="@img.Caption" />")            
-            </a>                    
-            </li>
-        }
-    </ul>
+    <div class="@Model.CssClass">
+        <ul id="@(Model.CssId)" class="imagerotatorlist" style="height:@(Model.Height)px;width:@(Model.Width)px;">
+            @for (int i = 0; i < Model.Images.Count; i++)
+            {
+                var img = Model.Images[i];
+                <li @if (i == 0)
+                    { <text>class="show"</text> }><a href="@img.Url" @if (img.NewWindow == true)
+                                                                                  { <text> target="_blank"</text> }>
+                    <img src="@img.ImageUrl" alt="@img.Caption" />
+                </a></li>
+            }
+        </ul>
     </div>
     <script type="text/javascript">
         $(document).ready(function() {
-            StartRotator(@Model.CssId);
+            StartRotator('@(Model.CssId)', @(Model.Pause));
         });
     </script>
-     sb.Append("<style type=""text/css"">")
+    <style type="text/css">
+    
+        #@(Model.CssId) {
 
-        sb.Append("#rotator" + cleanId + " {")
+        @if (Model.Height > 0)
+        {
+            <text>height: @(Model.Height)px;</text>
+        }
+        @if (Model.Width > 0)
+        {
+            <text>width: @(Model.Width)px;</text>
+        }
+        
+        position:relative;
+        margin:0;padding:0;
+        }
 
-        Dim h As Integer = SettingsManager.GetIntegerSetting("Height")
-        Dim w As Integer = SettingsManager.GetIntegerSetting("Width")
+        #@(Model.CssId) li {        
+            list-style:none;
+            float:left;
+            position:absolute;
+            margin:0;padding:0;
+        }
 
-        If (h > 0) Then
-            sb.Append(" height:" + h.ToString() + "px;")
-        End If
-        If (w > 0) Then
-            sb.Append(" width:" + w.ToString() + "px;")
-        End If
-
-        sb.Append(" position:relative;")
-        sb.Append(" margin:0;padding:0;")
-        sb.Append("}")
-
-        sb.Append("#rotator" + cleanId + " li {")
-        sb.Append("list-style:none;")
-        sb.Append("float:left;")
-        sb.Append("position:absolute;")
-        sb.Append("margin:0;padding:0;")
-        sb.Append("} ")
-
-        sb.Append("#rotator" + cleanId + " li.show {")
-        sb.Append("z-index:500;")
-        sb.Append("} ")
-
-        sb.Append("</style>")
+        #@(Model.CssId) li.show {        
+            z-index:500;
+        }
+    </style>
 }

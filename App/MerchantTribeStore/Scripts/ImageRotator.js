@@ -1,8 +1,8 @@
 
 function RotateImages(id)
 {
-    var current = ($('#rotator' + id + ' li.show')?  $('#rotator' + id + ' li.show') : $('#rotator' + id + ' li:first'));
-    var next = ((current.next().length) ? ((current.next().hasClass('show')) ? $('#rotator' + id + ' li:first') :current.next()) : $('#rotator' + id + ' li:first'));
+    var current = ($('#' + id + ' li.show')?  $('#' + id + ' li.show') : $('#' + id + ' li:first'));
+    var next = ((current.next().length) ? ((current.next().hasClass('show')) ? $('#' + id + ' li:first') :current.next()) : $('#' + id + ' li:first'));
 
     next.css({opacity: 0.0})
         .addClass('show')
@@ -12,10 +12,10 @@ function RotateImages(id)
         .removeClass('show');
 }
             
-function StartRotator(id, pause)
-{
-    $('#rotator' + id + ' li').css({opacity: 0.0});
-    $('#rotator' + id + ' li:first').css({opacity: 1.0});
+function StartRotator(id, pause) {
+    
+    $('#' + id + ' li').css({opacity: 0.0});
+    $('#' + id + ' li:first').css({opacity: 1.0});
 
     if (pause < 0)
     {

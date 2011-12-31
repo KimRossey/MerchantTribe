@@ -7,7 +7,10 @@
         
         string keyName = "SafeRegisteredScripts";
         object list = ViewData[keyName];
-        if (list == null) list = new List<string>();
+        if (list == null) 
+        {
+            list = new List<string>();
+        }
         if (list != null)
         {
             List<string> registered = (List<string>)list;
@@ -28,6 +31,5 @@
     }
     <script src="@Html.Raw(destination)" type="text/javascript"></script>                    
 }
-
 
 

@@ -10,7 +10,8 @@
     <link href="@Html.Raw((string)ViewData["css"])" rel="stylesheet" type="text/css" />    
     @Html.Raw((string)ViewData["jqueryinclude"])   
     @RenderSection("HeadContent", false)    
-    @Html.Raw((string)ViewData["analyticstop"])    
+    @Html.Raw((string)ViewData["analyticstop"])        
+    <script type="text/javascript" src="@Url.Content("~/scripts/ImageRotator.js")"></script>
     @Html.Raw((string)ViewData["AdditionalMetaTags"])
 </head>
 <body @if (!String.IsNullOrEmpty(ViewBag.BodyClass)) { <text>class="@ViewBag.BodyClass"</text> } >
@@ -47,5 +48,6 @@
     @RenderSection("PreBodyCloseContent", false)    
     @Html.Raw((string)ViewData["analyticsbottom"])    
     @Html.Partial("~/Views/Shared/_RegisteredScripts.cshtml")
+    
 </body>
 </html>

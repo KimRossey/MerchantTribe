@@ -24,7 +24,8 @@
  <tr>
     <td class="formlabel"><asp:ImageButton ID="btnCancel" runat="server" 
             ImageUrl="~/BVAdmin/Images/Buttons/Cancel.png" onclick="btnCancel_Click" /></td>
-    <td class="forminput"><asp:ImageButton ID="btnNew" runat="Server" ImageUrl="~/BVAdmin/Images/buttons/New.png" /></td>
+    <td class="forminput"><asp:ImageButton ID="btnNew" runat="Server" 
+            ImageUrl="~/BVAdmin/Images/buttons/New.png" onclick="btnNew_Click" /></td>
  </tr>
  </table>
  <asp:HiddenField ID="EditBvinField" runat="server" />
@@ -32,7 +33,11 @@
  </div>
  <div style="text-align:left;">&nbsp;
 <asp:Panel ID="pnlMain" runat="server" DefaultButton="btnOkay">    
-                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="3" GridLines="None" DataKeyNames="bvin" Width="400px">
+                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
+                    CellPadding="3" GridLines="None" DataKeyNames="Id" Width="400px" 
+                    onrowcancelingedit="GridView1_RowCancelingEdit" 
+                    onrowdeleting="GridView1_RowDeleting" onrowediting="GridView1_RowEditing" 
+                    onrowupdating="GridView1_RowUpdating">
                     <Columns>
                         <asp:ImageField DataImageUrlField="Setting1" HeaderText="Image" NullDisplayText="No Image">
                         </asp:ImageField>
@@ -77,7 +82,8 @@
            </tr>
                <tr>
                 <td class="formlabel">&nbsp;</td>
-                <td class="forminput"><asp:ImageButton ID="btnOkay" runat="server" ImageUrl="~/bvadmin/images/buttons/Ok.png" /></td>
+                <td class="forminput"><asp:ImageButton ID="btnOkay" runat="server" 
+                        ImageUrl="~/bvadmin/images/buttons/Ok.png" onclick="btnOkay_Click" /></td>
            </tr>
             </table>                     
 </asp:Panel>

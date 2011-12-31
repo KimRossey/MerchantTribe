@@ -28,9 +28,11 @@ namespace MerchantTribeStore.Areas.ContentBlocks.Models
         public string CssClass { get; set; }
         public int Height { get; set; }
         public int Width { get; set; }
+        public int Pause { get; set; }
 
             public ImageRotatorViewModel()
             {
+                this.Pause = 3;
                 this.Images = new List<ImageRotatorImageViewModel>();
                 this.CssClass = string.Empty;
                 this.CssId = string.Empty;
