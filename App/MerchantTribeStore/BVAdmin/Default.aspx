@@ -23,9 +23,9 @@
                     <a style="float:right;" href="catalog/categories.aspx" title="Add Categories"><img src="images/buttons/Dashboard_AddCategories.png" alt="Add Categories" /></a>                                                        
                     <div class="clear"></div>
                 </div>                
-                <a href="http://help.bvcommerce.com/pages/videos-creating-products" target="_blank" class="quickstarticon" title="Tutorial Video"><img src="images/QuickStartVideo.png" alt="Tutorial Video" /></a>                
-                <a href="http://help.bvcommerce.com/pages/managing-products-and-categories" target="_blank" class="quickstarticon" title="User Manual"><img src="images/QuickStartManual.png" alt="User Manual" /></a>
-                <a href="http://help.bvcommerce.com/pages/quick-start-guide" target="_blank" class="quickstarticon" title="QuickStart"><img src="images/QuickStartQuick.png" alt="Quick Start" /></a>
+                <a href="http://help.merchanttribestores.com/pages/videos-creating-products" target="_blank" class="quickstarticon" title="Tutorial Video"><img src="images/QuickStartVideo.png" alt="Tutorial Video" /></a>                
+                <a href="http://help.merchanttribestores.com/pages/managing-products-and-categories" target="_blank" class="quickstarticon" title="User Manual"><img src="images/QuickStartManual.png" alt="User Manual" /></a>
+                <a href="http://help.merchanttribestores.com/pages/quick-start-guide" target="_blank" class="quickstarticon" title="QuickStart"><img src="images/QuickStartQuick.png" alt="Quick Start" /></a>
                 <div style="text-align:center;display:none;">
                 <asp:LinkButton ID="lnkHideGettingStarted" runat="server" 
                         Text="Hide This" onclick="lnkHideGettingStarted_Click"></asp:LinkButton></div>

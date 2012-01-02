@@ -32,6 +32,9 @@ namespace MerchantTribeStore.Models
         public CheckoutPaymentViewModel PaymentViewModel { get; set; }
         public string ErrorCssClass { get; set; }
 
+        public string PayPalToken { get; set; }
+        public string PayPalPayerId { get; set; }
+
         public CheckoutViewModel()
         {
             this.CurrentOrder = new Order();
@@ -54,6 +57,8 @@ namespace MerchantTribeStore.Models
             this.Violations = new List<MerchantTribe.Web.Validation.RuleViolation>();
             this.PaymentViewModel = new CheckoutPaymentViewModel();
             this.ErrorCssClass = "input-validation-error";
+            this.PayPalPayerId = string.Empty;
+            this.PayPalToken = string.Empty;
         }
 
         public string IsErr(string nameWithoutPrefix)

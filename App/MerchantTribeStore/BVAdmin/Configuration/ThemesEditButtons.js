@@ -2,7 +2,7 @@
 function DeleteButton(fileName, itemToClose) {
 
     $.ajax({ type: 'POST',
-        url: '/bvadmin/configuration/ThemesEditButtons_Delete.aspx',
+        url: '/bvadmin/configuration/themeseditbuttons_delete.aspx',
         data: { themeid: $('#themeidfield').val(),
             buttonname: fileName
         },

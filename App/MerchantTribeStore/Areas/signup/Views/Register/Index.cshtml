@@ -26,7 +26,7 @@
                             $.ajax(
                             { type: "POST",
                                 contentType: "application/json; charset=utf-8",
-                                url: "@Url.Content("~/signup/JsonCheckStoreName")",
+                                url: "@Url.Content("~/signup/jsoncheckstorename")",
                                 data: jsondata,
                                 dataType: "json",
                                 success: function (data) {
@@ -106,8 +106,7 @@
                         Every MerchantTribe store needs a unique name which becomes the store's address. Later,
                         you'll be able to create a diplay name or use your own domain name.<br />
                         <strong>Use only letters and numbers - no spaces</strong></p>
-                    <strong>http://
-                        <input type="text" id="storename" name="storename" @IsErr("storename") value="@Model.RegistrationData.storename" class="" size="20" />.bvcommerce.com</strong><br />
+                    <strong><input type="text" id="storename" name="storename" @IsErr("storename") value="@Model.RegistrationData.storename" class="" size="20" />.merchanttribestores.com</strong><br />
                     <div id="storename-results">
                     </div>
                 </fieldset>

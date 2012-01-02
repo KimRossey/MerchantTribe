@@ -52,7 +52,7 @@ namespace MerchantTribeStore
                 this.LogoTextField.Text = MTApp.CurrentStore.Settings.LogoText;
                 this.uselogoimage.Checked = MTApp.CurrentStore.Settings.UseLogoImage;
                 this.chkHideGettingStarted.Checked = MTApp.CurrentStore.Settings.HideGettingStarted;
-                CNameRoot = MTApp.CurrentStore.StoreName + ".bvcommerce.com";
+                CNameRoot = MTApp.CurrentStore.StoreName + ".merchanttribestores.com";
                 this.chkClosed.Checked = MTApp.CurrentStore.Settings.StoreClosed;
                 this.ClosedMessageField.Text = MTApp.CurrentStore.Settings.StoreClosedDescription;
                 this.GuestPassword.Text = MTApp.CurrentStore.Settings.StoreClosedGuestPassword;

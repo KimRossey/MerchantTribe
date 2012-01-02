@@ -36,7 +36,7 @@ namespace MerchantTribeStore.Controllers
             ViewBag.BodyClass = "store-checkout-page";
 
             CheckoutViewModel model = new CheckoutViewModel();
-            //LoadOrder(model);
+            model.CurrentOrder = SessionManager.CurrentShoppingCart(MTApp.OrderServices, MTApp.CurrentStore);
 
             // Buttons
             ThemeManager themes = MTApp.ThemeManager();
@@ -65,8 +65,10 @@ namespace MerchantTribeStore.Controllers
         }        
         private void DisplayPaypalExpressMode(CheckoutViewModel model)
         {
-            string token = Request.QueryString["token"];
-            if (string.IsNullOrEmpty(token)) Response.Redirect("~/cart");
+            model.PayPalToken = Request.QueryString["token"] ?? string.Empty;
+            model.PayPalPayerId = Request.QueryString["payerId"] ?? string.Empty;
+            
+            if (string.IsNullOrEmpty(model.PayPalToken)) Response.Redirect("~/cart");
 
             
                 PayPalAPI ppAPI = MerchantTribe.Commerce.Utilities.PaypalExpressUtilities.GetPaypalAPI(this.MTApp.CurrentStore);
@@ -74,24 +76,21 @@ namespace MerchantTribeStore.Controllers
                 GetExpressCheckoutDetailsResponseType ppResponse = null;
                 try
                 {
-                    if (!GetExpressCheckoutDetails(ppAPI, ref ppResponse, model))
-                    {
                         if (!GetExpressCheckoutDetails(ppAPI, ref ppResponse, model))
                         {
                             failed = true;
                             EventLog.LogEvent("Paypal Express Checkout", "GetExpressCheckoutDetails call failed. Detailed Errors will follow. ", EventLogSeverity.Error);
                             foreach (ErrorType ppError in ppResponse.Errors)
                             {
-                                EventLog.LogEvent("Paypal error number: " + ppError.ErrorCode, "Paypal Error: '" + ppError.ShortMessage + "' Message: '" + ppError.LongMessage + "' " + " Values passed to GetExpressCheckoutDetails: Token: " + Request.QueryString["token"], EventLogSeverity.Error);
+                                EventLog.LogEvent("Paypal error number: " + ppError.ErrorCode, "Paypal Error: '" + ppError.ShortMessage + "' Message: '" + ppError.LongMessage + "' " + " Values passed to GetExpressCheckoutDetails: Token: " + model.PayPalToken, EventLogSeverity.Error);
                             }
                             this.FlashFailure("An error occurred during the Paypal Express checkout. No charges have been made. Please try again.");
                             ViewBag.HideCheckout = true;
                         }
-                    }
                 }
                 finally
                 {
-                    Order o = SessionManager.CurrentShoppingCart(MTApp.OrderServices, MTApp.CurrentStore);
+                    Order o = model.CurrentOrder;
                     ViewBag.HideEditButton = false;
                     if (o.CustomProperties["PaypalAddressOverride"] != null)
                     {
@@ -109,7 +108,7 @@ namespace MerchantTribeStore.Controllers
                             o.UserEmail = ppResponse.GetExpressCheckoutDetailsResponseDetails.PayerInfo.Payer;
                             if (string.IsNullOrEmpty(o.ShippingAddress.Phone))
                             {
-                                o.ShippingAddress.Phone = ppResponse.GetExpressCheckoutDetailsResponseDetails.ContactPhone;
+                                o.ShippingAddress.Phone = ppResponse.GetExpressCheckoutDetailsResponseDetails.ContactPhone ?? string.Empty;
                             }
                         }
                     }
@@ -123,7 +122,7 @@ namespace MerchantTribeStore.Controllers
             if (ppResponse.Ack == AckCodeType.Success || ppResponse.Ack == AckCodeType.SuccessWithWarning)
             {
                 model.CurrentOrder.UserEmail = ppResponse.GetExpressCheckoutDetailsResponseDetails.PayerInfo.Payer;
-                model.CurrentOrder.ShippingAddress.FirstName = ppResponse.GetExpressCheckoutDetailsResponseDetails.PayerInfo.PayerName.FirstName;
+                model.CurrentOrder.ShippingAddress.FirstName = ppResponse.GetExpressCheckoutDetailsResponseDetails.PayerInfo.PayerName.FirstName ?? string.Empty;
                 if (ppResponse.GetExpressCheckoutDetailsResponseDetails.PayerInfo.PayerName.MiddleName.Length > 0)
                 {
                     model.CurrentOrder.ShippingAddress.MiddleInitial = ppResponse.GetExpressCheckoutDetailsResponseDetails.PayerInfo.PayerName.MiddleName.Substring(0, 1);
@@ -132,18 +131,18 @@ namespace MerchantTribeStore.Controllers
                 {
                     model.CurrentOrder.ShippingAddress.MiddleInitial = string.Empty;
                 }
-                model.CurrentOrder.ShippingAddress.LastName = ppResponse.GetExpressCheckoutDetailsResponseDetails.PayerInfo.PayerName.LastName;
-                model.CurrentOrder.ShippingAddress.Company = ppResponse.GetExpressCheckoutDetailsResponseDetails.PayerInfo.PayerBusiness;
-                model.CurrentOrder.ShippingAddress.Line1 = ppResponse.GetExpressCheckoutDetailsResponseDetails.PayerInfo.Address.Street1;
-                model.CurrentOrder.ShippingAddress.Line2 = ppResponse.GetExpressCheckoutDetailsResponseDetails.PayerInfo.Address.Street2;
-                model.CurrentOrder.ShippingAddress.CountryData.Name = ppResponse.GetExpressCheckoutDetailsResponseDetails.PayerInfo.Address.CountryName;
+                model.CurrentOrder.ShippingAddress.LastName = ppResponse.GetExpressCheckoutDetailsResponseDetails.PayerInfo.PayerName.LastName ?? string.Empty;
+                model.CurrentOrder.ShippingAddress.Company = ppResponse.GetExpressCheckoutDetailsResponseDetails.PayerInfo.PayerBusiness ?? string.Empty;
+                model.CurrentOrder.ShippingAddress.Line1 = ppResponse.GetExpressCheckoutDetailsResponseDetails.PayerInfo.Address.Street1 ?? string.Empty;
+                model.CurrentOrder.ShippingAddress.Line2 = ppResponse.GetExpressCheckoutDetailsResponseDetails.PayerInfo.Address.Street2 ?? string.Empty;
+                model.CurrentOrder.ShippingAddress.CountryData.Name = ppResponse.GetExpressCheckoutDetailsResponseDetails.PayerInfo.Address.CountryName ?? string.Empty;
                 model.CurrentOrder.ShippingAddress.CountryData.Bvin = ppResponse.GetExpressCheckoutDetailsResponseDetails.PayerInfo.Address.Country.ToString();
-                model.CurrentOrder.ShippingAddress.City = ppResponse.GetExpressCheckoutDetailsResponseDetails.PayerInfo.Address.CityName;
-                model.CurrentOrder.ShippingAddress.RegionData.Name = ppResponse.GetExpressCheckoutDetailsResponseDetails.PayerInfo.Address.StateOrProvince;
+                model.CurrentOrder.ShippingAddress.City = ppResponse.GetExpressCheckoutDetailsResponseDetails.PayerInfo.Address.CityName ?? string.Empty;
+                model.CurrentOrder.ShippingAddress.RegionData.Name = ppResponse.GetExpressCheckoutDetailsResponseDetails.PayerInfo.Address.StateOrProvince ?? string.Empty;
                 model.CurrentOrder.ShippingAddress.RegionData.Abbreviation =
-                    model.CurrentOrder.ShippingAddress.RegionData.Name;
-                model.CurrentOrder.ShippingAddress.PostalCode = ppResponse.GetExpressCheckoutDetailsResponseDetails.PayerInfo.Address.PostalCode;
-                model.CurrentOrder.ShippingAddress.Phone = ppResponse.GetExpressCheckoutDetailsResponseDetails.PayerInfo.ContactPhone;
+                    model.CurrentOrder.ShippingAddress.RegionData.Name ?? string.Empty;
+                model.CurrentOrder.ShippingAddress.PostalCode = ppResponse.GetExpressCheckoutDetailsResponseDetails.PayerInfo.Address.PostalCode ?? string.Empty;
+                model.CurrentOrder.ShippingAddress.Phone = ppResponse.GetExpressCheckoutDetailsResponseDetails.PayerInfo.ContactPhone ?? string.Empty;
 
                 if (ppResponse.GetExpressCheckoutDetailsResponseDetails.PayerInfo.Address.AddressStatus == AddressStatusCodeType.Confirmed)
                 {
@@ -160,9 +159,9 @@ namespace MerchantTribeStore.Controllers
                 return false;
             }
         }        
-        private void LoadShippingMethodsForOrder()
+        private void LoadShippingMethodsForOrder(CheckoutViewModel model)
         {
-            Order o = SessionManager.CurrentShoppingCart(MTApp.OrderServices, MTApp.CurrentStore);            
+            Order o = model.CurrentOrder;            
             o.ShippingAddress.CopyTo(o.BillingAddress);
             MTApp.CalculateOrderAndSave(o);
             SessionManager.SaveOrderCookies(o, MTApp.CurrentStore);            
@@ -212,8 +211,9 @@ namespace MerchantTribeStore.Controllers
         {
             CheckoutViewModel model = IndexSetup();            
             DisplayPaypalExpressMode(model);
-            LoadShippingMethodsForOrder();
+            LoadShippingMethodsForOrder(model);
 
+            ViewBag.HideEditButton = true;
             return View(model);
         }
 
@@ -225,7 +225,7 @@ namespace MerchantTribeStore.Controllers
         {
             CheckoutViewModel model = IndexSetup();
             DisplayPaypalExpressMode(model);
-            LoadShippingMethodsForOrder();
+            LoadShippingMethodsForOrder(model);
 
             if (ValidatePage(model))
             {
@@ -261,6 +261,7 @@ namespace MerchantTribeStore.Controllers
                 FlashFailure(v.ErrorMessage);
             }
 
+            ViewBag.HideEditButton = true;
             return View(model);
         }
         private bool ValidatePage(CheckoutViewModel model)
@@ -300,7 +301,10 @@ namespace MerchantTribeStore.Controllers
         [HttpPost]
         public ActionResult Edit()
         {
-            Order o = SessionManager.CurrentShoppingCart(MTApp.OrderServices, MTApp.CurrentStore);
+            CheckoutViewModel model = IndexSetup();
+            DisplayPaypalExpressMode(model);
+            LoadShippingMethodsForOrder(model);
+            Order o = model.CurrentOrder;
 
             PayPalAPI ppAPI = MerchantTribe.Commerce.Utilities.PaypalExpressUtilities.GetPaypalAPI(this.MTApp.CurrentStore);
             try
@@ -369,8 +373,8 @@ namespace MerchantTribeStore.Controllers
             OrderPaymentManager payManager = new OrderPaymentManager(model.CurrentOrder, MTApp);
             payManager.ClearAllTransactions();
 
-            string token = Request.QueryString["Token"];
-            string payerId = Request.QueryString["PayerId"];
+            string token = model.PayPalToken;
+            string payerId = model.PayPalPayerId;
             if (!string.IsNullOrEmpty(payerId))
             {
                 // This is to fix a bug with paypal returning multiple payerId's

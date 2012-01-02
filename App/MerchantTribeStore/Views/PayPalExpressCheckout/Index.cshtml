@@ -7,7 +7,7 @@
         @Html.Action("Index", "ContentColumn", new { id = "601" })
     </div>
     <div class="sections">
-        <form action="@Url.Content("~/paypalexpresscheckout/edit")" method="post">
+        <form action="@Url.Content("~/paypalexpresscheckout/edit")?token=@Model.PayPalToken&payerid=@Model.PayPalPayerId" method="post">
         <div class="section-shipping">
             <h2>
                 Ship To:</h2>
@@ -126,7 +126,7 @@
             </table>
         </div>
         </form>
-        <form action="@Url.Content("~/paypalexpresscheckout")" method="post">
+        <form action="@Url.Content("~/paypalexpresscheckout")?token=@Model.PayPalToken&payerid=@Model.PayPalPayerId" method="post">
         <div class="section-delivery">
             <h2>
                 Shipping</h2>

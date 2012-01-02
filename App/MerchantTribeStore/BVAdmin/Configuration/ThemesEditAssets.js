@@ -2,7 +2,7 @@
 function DeleteAsset(fileName, itemToClose) {
 
     $.ajax({ type: 'POST',
-        url: '/bvadmin/configuration/ThemesEditAssets_Delete.aspx',
+        url: '/bvadmin/configuration/themeseditassets_delete.aspx',
         data: { themeid: $('#themeidfield').val(),
             assetname: fileName
         },

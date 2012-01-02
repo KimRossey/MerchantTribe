@@ -4,7 +4,7 @@ function UpdateCustomFiles() {
     $('#jsonoutput').html('<div class="flash-message-info">Saving. Please Wait...</div>').fadeIn(200);
     $('#updateonly').hide();
     $.ajax({ type: 'POST',
-        url: '/bvadmin/configuration/ThemesEditHeaderFooter_Update.aspx',
+        url: '/bvadmin/configuration/themeseditheaderfooter_update.aspx',
         data: { themeid: $('#themeidfield').val(),
             headerhtml: $('#headerhtml').serialize().replace('headerhtml=', ''),
             footerhtml: $('#footerhtml').serialize().replace('footerhtml=', '')

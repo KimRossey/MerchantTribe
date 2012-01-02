@@ -92,7 +92,7 @@ function RefreshShipping() {
 
     $.ajax(
                         { type: "POST",
-                            url: '~/estimateshipping/GetRatesAsRadioButtons',
+                            url: '~/estimateshipping/getratesasradiobuttons',
                             data: {
                                 country: $('#shippingcountryname :selected').val(),
                                 firstname: $('#shippingfirstname').val(),

@@ -215,6 +215,7 @@ namespace MerchantTribeStore
 
         void Application_BeginRequest(object sender, EventArgs e)
         {
+            CleanUpDomains();
             System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(MerchantTribe.Commerce.WebAppSettings.SiteCultureCode);
             System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(MerchantTribe.Commerce.WebAppSettings.SiteCultureCode);
         }
@@ -231,6 +232,30 @@ namespace MerchantTribeStore
             }
             else
                 return base.GetVaryByCustomString(context, custom);
+        }
+
+        // Lower cases url and replaces *.bvcommerce.com with *.merchanttribestores.com
+        private void CleanUpDomains()
+        {
+            // skip fixup for form posts
+            if (Request.HttpMethod.ToUpperInvariant() == "POST") return;
+
+            string original = Request.Url.OriginalString;
+
+            UriBuilder builder = new UriBuilder(Request.Url);
+
+            if (builder.Host.EndsWith("bvcommerce.com"))
+            {
+                builder.Host = builder.Host.Replace("bvcommerce.com", "merchanttribestores.com");
+            }
+            builder.Host = builder.Host.ToLowerInvariant();
+            builder.Path = builder.Path.ToLowerInvariant();
+
+            string destination = builder.ToString();
+            if (destination != original)
+            {
+                Response.RedirectPermanent(destination);
+            }            
         }
     }
 }

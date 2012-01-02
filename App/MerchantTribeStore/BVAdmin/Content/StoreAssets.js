@@ -2,7 +2,7 @@
 function DeleteAsset(fileName, itemToClose) {
 
     $.ajax({ type: 'POST',
-        url: '/bvadmin/content/StoreAssets_Delete.aspx',
+        url: '/bvadmin/content/storeassets_delete.aspx',
         data: { assetname: fileName
         },
         dataType: "json",

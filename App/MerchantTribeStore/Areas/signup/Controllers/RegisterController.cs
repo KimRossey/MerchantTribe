@@ -346,11 +346,11 @@ namespace MerchantTribeStore.Areas.signup.Controllers
             string msg = "";
             if (MTApp.AccountServices.StoreNameExists(clean))
             {
-                msg = "<div class=\"flash-message-failure\"><strong>" + clean + ".bvcommerce.com</strong><br />Store name is already taken.</div>";
+                msg = "<div class=\"flash-message-failure\"><strong>" + clean + ".merchanttribestores.com</strong><br />Store name is already taken.</div>";
             }
             else
             {
-                msg = "<div class=\"flash-message-success\"><strong>" + clean + ".bvcommerce.com</strong><br />Store name is available.</div>";
+                msg = "<div class=\"flash-message-success\"><strong>" + clean + ".merchanttribestores.com</strong><br />Store name is available.</div>";
             }
 
             if (clean == "")
