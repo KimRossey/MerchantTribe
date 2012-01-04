@@ -247,15 +247,18 @@ namespace MerchantTribeStore
             if (builder.Host.EndsWith("bvcommerce.com"))
             {
                 builder.Host = builder.Host.Replace("bvcommerce.com", "merchanttribestores.com");
+                Response.RedirectPermanent(builder.ToString());
             }
-            builder.Host = builder.Host.ToLowerInvariant();
-            builder.Path = builder.Path.ToLowerInvariant();
+            
+            // Skip case adjustment for now until we can test more
+            //builder.Host = builder.Host.ToLowerInvariant();
+            //builder.Path = builder.Path.ToLowerInvariant();
 
-            string destination = builder.ToString();
-            if (destination != original)
-            {
-                Response.RedirectPermanent(destination);
-            }            
+            //string destination = builder.ToString();
+            //if (destination != original)
+            //{
+            //    Response.RedirectPermanent(destination);
+            //}            
         }
     }
 }

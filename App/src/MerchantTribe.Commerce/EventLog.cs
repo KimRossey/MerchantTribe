@@ -50,6 +50,33 @@ namespace MerchantTribe.Commerce
             return true;    
         }
 
+
+        public static bool StoreLogEvent(long storeId, string source, string message, EventLogSeverity severity)
+        {
+            bool ret = false;
+            Metrics.EventLogEntry e = new Metrics.EventLogEntry(source, message, severity);
+            e.StoreId = storeId;
+            try
+            {
+                RequestContext context = new RequestContext();
+                context.CurrentStore = new Accounts.Store() { Id = storeId };
+                Metrics.EventLogRepository repository = new Metrics.EventLogRepository(context);
+                ret = repository.Create(e);
+                repository.Roll();
+            }
+            catch(Exception ex)
+            {
+                LogEvent(ex);
+                return false;
+            }
+            return true;
+        }
+        public static bool StoreLogEvent(long storeId, Exception ex)
+        {
+            StoreLogEvent(storeId, "Exception", ex.Message + " " + ex.StackTrace, EventLogSeverity.Error);
+            return true;
+        }
+
         /// <summary>
         /// Logs an exception to the BV Commerce log
         /// </summary>
@@ -109,6 +136,16 @@ namespace MerchantTribe.Commerce
             EventLog.LogEvent(source, message, severity);
         }
 
+
+        public void LogMessageStore(string message, long storeId)
+        {
+            EventLog.StoreLogEvent(storeId, "Logger", message, EventLogSeverity.Information);
+        }
+
+        public void LogExceptionStore(Exception ex, long storeId)
+        {
+            EventLog.StoreLogEvent(storeId, ex);
+        }
         #endregion
     }
 

@@ -113,9 +113,9 @@ namespace MerchantTribeStore.Areas.AdminCatalog.Controllers
                 current.GetCurrentVersion().Areas.SetAreaContent("main", mainArea);                
                 
                 /* Other Settings */
-                current.MetaDescription = posted.MetaDescription.Trim();
-                current.MetaTitle = posted.MetaTitle.Trim();
-                current.MetaKeywords = posted.MetaKeywords.Trim();
+                current.MetaDescription = form["metadescription"] ?? current.MetaDescription;
+                current.MetaTitle = form["metatitle"] ?? current.MetaTitle;
+                current.MetaKeywords = form["metakeywords"] ?? current.MetaKeywords;
                 current.ShowInTopMenu = false; // This could be changed to support show in top menu functionality
                 current.SourceType = CategorySourceType.CustomPage;
 
@@ -128,7 +128,7 @@ namespace MerchantTribeStore.Areas.AdminCatalog.Controllers
                 }
                 else
                 {
-                    current.RewriteUrl = MerchantTribe.Web.Text.Slugify(posted.RewriteUrl, true, true);
+                    current.RewriteUrl = MerchantTribe.Web.Text.Slugify(form["rewriteurl"] ?? current.RewriteUrl, true, true);
                 }
                 
                 if (UrlRewriter.IsCategorySlugInUse(current.RewriteUrl, current.Bvin, MTApp.CurrentRequestContext))

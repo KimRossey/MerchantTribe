@@ -17,20 +17,12 @@ namespace MerchantTribeStore.BVAdmin.SetupWizard
         protected override void OnLoad(System.EventArgs e)
         {
             base.OnLoad(e);
-            LoadLicense();            
-        }
 
-        private void LoadLicense()
-        {
-
-            if (MerchantTribe.Commerce.WebAppSettings.IsIndividualMode)
+            if (MerchantTribe.Commerce.WebAppSettings.IsHostedVersion == true)
             {
-                
-            }
-            else
-            {
-
+                Response.Redirect("WizardTheme.aspx");
             }
         }
+
     }
 }

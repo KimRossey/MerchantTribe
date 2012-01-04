@@ -167,6 +167,8 @@
     <Content Include="BVAdmin\Catalog\Categories_EditCustomLink.aspx" />
     <Content Include="BVAdmin\Catalog\ProductTypes_RemoveProperty.aspx" />
     <Content Include="BVAdmin\Catalog\ProductTypes_SortProperties.aspx" />
+    
+    <Content Include="BVAdmin\Configuration\EventLog.aspx" />
     <Content Include="BVAdmin\Configuration\SocialMedia.aspx" />
     <Content Include="BVAdmin\Images\FileIcons\aac_32.png" />
     <Content Include="BVAdmin\Images\FileIcons\ai_32.png" />
@@ -2801,6 +2803,13 @@
     <Compile Include="BVAdmin\Configuration\Email.aspx.designer.cs">
       <DependentUpon>Email.aspx</DependentUpon>
     </Compile>
+    <Compile Include="BVAdmin\Configuration\EventLog.aspx.cs">
+      <DependentUpon>EventLog.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BVAdmin\Configuration\EventLog.aspx.designer.cs">
+      <DependentUpon>EventLog.aspx</DependentUpon>
+    </Compile>
     <Compile Include="BVAdmin\Configuration\Fraud.aspx.cs">
       <DependentUpon>Fraud.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -4384,21 +4393,10 @@
     <Content Include="Areas\account\Views\Authentication\SignIn.cshtml" />
     <Content Include="Areas\signup\Views\Web.config" />
     <Content Include="Areas\signup\Views\Shared\_SignUpLayout.cshtml" />
-    <Content Include="Areas\signup\Views\MarketingPages\Tour.cshtml" />
-    <Content Include="Areas\signup\Views\Shared\_SignUpMenu.cshtml" />
-    <Content Include="Areas\signup\Views\MarketingPages\Sell.cshtml" />
-    <Content Include="Areas\signup\Views\MarketingPages\Secure.cshtml" />
-    <Content Include="Areas\signup\Views\MarketingPages\Promote.cshtml" />
-    <Content Include="Areas\signup\Views\MarketingPages\Themes.cshtml" />
-    <Content Include="Areas\signup\Views\MarketingPages\PayPalOffer.cshtml" />
-    <Content Include="Areas\signup\Views\MarketingPages\About.cshtml" />
-    <Content Include="Areas\signup\Views\MarketingPages\Design.cshtml" />
     <Content Include="Areas\signup\Views\MarketingPages\Pricing.cshtml" />
-    <Content Include="Areas\signup\Views\MarketingPages\Home.cshtml" />
     <Content Include="Areas\signup\Views\Policies\Privacy.cshtml" />
     <Content Include="Areas\signup\Views\Policies\Refund.cshtml" />
     <Content Include="Areas\signup\Views\Policies\Terms.cshtml" />
-    <Content Include="Areas\signup\Views\MarketingPages\Features.cshtml" />
     <Content Include="Areas\signup\Views\Register\ProcessSignup.cshtml" />
     <Content Include="Areas\signup\Views\Register\Index.cshtml" />
     <Content Include="Areas\account\Views\WishList\Index.cshtml" />

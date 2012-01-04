@@ -424,6 +424,8 @@
     <Compile Include="Marketing\PromotionQualifications\ProductType.cs" />
     <Compile Include="Marketing\PromotionRepository.cs" />
     <Compile Include="Marketing\PromotionStatus.cs" />
+    <Compile Include="Metrics\EventLogEntry.cs" />
+    <Compile Include="Metrics\EventLogRepository.cs" />
     <Compile Include="Metrics\GoogleAnalytics.cs" />
     <Compile Include="Metrics\MetricsServices.cs" />
     <Compile Include="Metrics\SearchQueryRepository.cs" />

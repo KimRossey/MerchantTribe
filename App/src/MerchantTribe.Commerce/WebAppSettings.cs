@@ -65,6 +65,14 @@ namespace MerchantTribe.Commerce
                 return string.Empty;
             }
         }
+        public static bool IsHostedVersion
+        {
+            get
+            {                
+                if ((IsIndividualMode == false) && (IsCommercialVersion == false)) return true;
+                return false;
+            }
+        }
         public static bool IsIndividualMode
         {
             get
