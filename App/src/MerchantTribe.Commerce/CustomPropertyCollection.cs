@@ -122,6 +122,10 @@ namespace MerchantTribe.Commerce
                 this.Add(new CustomProperty(devId, key, value));
             }
         }
+        public void SetProperty(string devId, string key, int value)
+        {
+            SetProperty(devId, key, value.ToString());            
+        }
         public string GetProperty(string devId, string key)
         {
             string result = string.Empty;
@@ -133,6 +137,24 @@ namespace MerchantTribe.Commerce
                     if (this[i].Key.Trim().ToLower() == key.Trim().ToLower())
                     {
                         result = this[i].Value;
+                        break;
+                    }
+                }
+            }
+
+            return result;
+        }
+        public int GetPropertyAsInt(string devId, string key)
+        {
+            int result = 0;
+
+            for (int i = 0; i <= this.Count - 1; i++)
+            {
+                if (this[i].DeveloperId.Trim().ToLower() == devId.Trim().ToLower())
+                {
+                    if (this[i].Key.Trim().ToLower() == key.Trim().ToLower())
+                    {
+                        result = this[i].ValueAsInt;
                         break;
                     }
                 }

@@ -804,8 +804,39 @@ namespace MerchantTribe.Commerce.Orders
             return true;
         }
 
-
-
+        // File Downloads
+        private string FileDownloadPropertyKey(string fileBvin)
+        {
+            return "file" + fileBvin;
+        }
+        public int GetFileDownloadCount(string fileBvin)
+        {
+            string key = FileDownloadPropertyKey(fileBvin);
+            return this.CustomProperties.GetPropertyAsInt("bvsoftware", key);            
+        }
+        public void IncreaseFileDownloadCount(string fileBvin)
+        {
+            string key = FileDownloadPropertyKey(fileBvin);
+            int current = this.CustomProperties.GetPropertyAsInt("bvsoftware", key);
+            if (current < 0) current = 0;
+            current++;
+            this.CustomProperties.SetProperty("bvsoftware", key, current);
+        }
+        public void DecreaseFileDownloadCount(string fileBvin)
+        {
+            string key = FileDownloadPropertyKey(fileBvin);
+            int current = this.CustomProperties.GetPropertyAsInt("bvsoftware", key);
+            if (current > 0)
+            {
+                current--;
+            }
+            this.CustomProperties.SetProperty("bvsoftware", key, current);
+        }
+        public void ResetFileDownloadCount(string fileBvin)
+        {
+            string key = FileDownloadPropertyKey(fileBvin);
+            this.CustomProperties.SetProperty("bvsoftware", key, 0);
+        }
 
 
         private bool DetermineIfAnyItemsAreShipping()

@@ -27,7 +27,19 @@ namespace MerchantTribe.Commerce
             get { return _Value; }
             set { _Value = value; }
         }
+        public int ValueAsInt
+        {
+            get {
+                int result = 0;
+                if (int.TryParse(this.Value, out result))
+                {
+                    return result;
+                }
+                return 0;
+            }
 
+            set { this.Value = value.ToString(); }
+        }
         public CustomProperty()
         {
 
